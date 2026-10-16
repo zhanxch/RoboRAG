@@ -1,0 +1,73 @@
+{
+  "scope": "One development layout, one rollout per condition; not a generalization benchmark",
+  "trials": [
+    {
+      "run": "deposit-fixed-l0-v2",
+      "evaluation_role": "development",
+      "task": "deposit_coin",
+      "layout": 0,
+      "seed": 0,
+      "mode": "fixed",
+      "model": "gpt-6-astra",
+      "effort": "medium",
+      "long_k": 6,
+      "short_k": 4,
+      "selector": "transition-v1",
+      "policy_code_commit": "0a2fe43",
+      "corpus_sha256": "af3df85fa13423dd2559fd392a0c44c61e879b13059487ff6ff5980ba1811129",
+      "layout_sha256": "53bd0820af9e5a8156e3ad0689f6ebbf40c28189c04991fb31d1d57ab3037f5f",
+      "policy_source_sha256": "b44c49385b9a38ff62337cbdc1ae41c4b199867e0453ecb6d4f6f67f465345ec",
+      "source_hash_note": "Recorded after launch; policy source files have not changed since this run started.",
+      "native_result_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706",
+      "native_result": {
+        "success_rate": 0.0,
+        "eval_time": 1,
+        "score": 20.0,
+        "details": {
+          "0": {
+            "layout_id": 0,
+            "success": false,
+            "score": 0.2
+          }
+        }
+      },
+      "artifact_directory": "runs/deposit-fixed-l0-v2",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit"
+    },
+    {
+      "run": "deposit-dual-l0-v1",
+      "evaluation_role": "development",
+      "task": "deposit_coin",
+      "layout": 0,
+      "seed": 0,
+      "mode": "dual",
+      "model": "gpt-6-astra",
+      "effort": "medium",
+      "long_k": 6,
+      "short_k": 4,
+      "selector": "transition-v1",
+      "policy_code_commit": "0a2fe43",
+      "corpus_sha256": "af3df85fa13423dd2559fd392a0c44c61e879b13059487ff6ff5980ba1811129",
+      "layout_sha256": "53bd0820af9e5a8156e3ad0689f6ebbf40c28189c04991fb31d1d57ab3037f5f",
+      "policy_source_sha256": "b44c49385b9a38ff62337cbdc1ae41c4b199867e0453ecb6d4f6f67f465345ec",
+      "source_hash_note": "Recorded by launcher",
+      "native_result_sha256": "99b780f4e1842dfa81b413ccd2e5302e5827cc349fea4edf978e1bd847986ed3",
+      "native_result": {
+        "success_rate": 0.0,
+        "eval_time": 1,
+        "score": 0.0,
+        "details": {
+          "0": {
+            "layout_id": 0,
+            "success": false,
+            "score": 0.0
+          }
+        }
+      },
+      "artifact_directory": "runs/deposit-dual-l0-v1",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit"
+    }
+  ]
+}

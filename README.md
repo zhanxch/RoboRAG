@@ -51,7 +51,7 @@ demo 在临时目录构建长期库，模拟一次插入失败后的检索，打
 ```bash
 python scripts/fetch_demonstrations.py --task stack_blocks --episodes 0,1,2
 python scripts/build_visual_bank.py --manifest data/runtime-data/stack_blocks/train/sources-0-1-2.json --output data/corpora/stack_blocks/v2.json
-python scripts/run_episode.py --task stack_blocks --mode dual --corpus data/corpora/stack_blocks/v2.json --output runs/stack-dual-l0
+python scripts/run_episode.py --task stack_blocks --mode dual --layout 0 --long-k 8 --short-k 4 --effort medium --corpus data/corpora/stack_blocks/v2.json --output runs/stack-dual-l0
 python scripts/summarize_runs.py --output runs/summary.json
 ```
 

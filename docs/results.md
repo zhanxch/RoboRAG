@@ -21,7 +21,16 @@ regrasped the wood block and completed the stack. At step 160, short-term retrie
 included the earlier placement interval 110–120, outside a latest-four-chunk
 window, while retaining the latest interval 150–160. This verifies retrieval of
 older relevant experience but does not by itself establish a causal contribution
-to recovery. The fixed-context validation control is still in progress.
+to recovery. The fixed-context validation control also scored **100/100 with
+success=true**, in **237 steps and 24 calls** (1,509,991 observed tokens).
+
+Both methods therefore succeeded in both selected layouts. RoboRAG used fewer
+steps/calls in development (195/20 versus 240/24), but more in validation
+(302/31 versus 237/24). These observations show neither a success-rate gain nor
+a consistent efficiency advantage for retrieval. The result is a working
+dual-memory control pilot, not evidence that this selector outperforms fixed
+demonstrations. The four trials share identical frozen corpus, retrieval-controller
+source and harness hashes; their per-method context selection differs as intended.
 
 Thus RoboRAG has two completed successful pilot rollouts: one development layout
 and one layout not used for this project's tuning. They are not two independent
@@ -36,6 +45,11 @@ resources to the successful task's controls and validation. It has **no final
 native score**, is recorded as an experimenter interruption, and is retained in
 the evidence manifest. No online evaluation trajectory was added to the frozen
 training bank.
+
+All pilot simulator and model-server processes have exited. The current repository
+passes 23 software regression tests, covering memory boundaries, evidence
+classification and cancellation cleanup. These tests are separate from the native
+robot-task outcomes above.
 
 ## First deposit-coin development pair, 2026-10-16
 

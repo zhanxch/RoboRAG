@@ -34,6 +34,7 @@ the original local transport files; subsequent runs use the copied equivalent.
 1. Prepare Isaac Sim 5.1 and the policy interpreter using the upstream installation instructions.
 2. Clone RoboICL into `vendor/RoboICL`, check out the commit above, and initialize its pinned submodules. On this host, identical clean dependency checkouts are reused via links to save disk space.
 3. Copy `local.runtime.example.json` to ignored `local.runtime.json` and set interpreter, library and asset paths.
+   On another host, set `COMPARE_CODEX_BIN` to the signed-in CLI executable; the copied adapter's fallback path belongs to the original host.
 4. Set `data/Assets` to the selected asset installation. This host reuses its existing corrected asset tree; run manifests record the actual asset path and layout hash. It has not been newly certified as a complete upstream asset revision.
 5. Use upstream `setup/fetch_reference.py deposit_coin --data-root /absolute/path/to/RoboRAG/data` with the policy interpreter. The published source HDF5 is checked by SHA256.
 6. Run `scripts/build_corpus.py --task deposit_coin` with the policy interpreter to build the dense corpus.

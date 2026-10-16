@@ -171,6 +171,15 @@ class RetrievalModel(Model):
             selected_long = select_diverse(scores, self.long_k, self.corpus["horizon"] * 2,
                                           anchors=(starts[0], starts[-1]))
         prefix = deepcopy(self.messages[:self.fixed_prefix_length])
+        live_calibration = []
+        if self.dialogue_config.include_head_calibration:
+            # The upstream initializer puts runtime calibration last. Keep it
+            # at the TRAIN/LIVE boundary after inserting our training context.
+            block = prefix[-1]
+            value = json.loads(block["content"][0]["text"])
+            if value["head_camera_calibration"]["source"] != "TEST_RUNTIME":
+                raise ValueError("Expected runtime calibration at the fixed-prefix boundary")
+            live_calibration.append(prefix.pop())
         prefix.append(text_message("LONG-TERM TRAINING MEMORY: separate recorded episode. Adapt actions to current geometry. Gaps omit transitions. Training instruction: " + self.source_episode["instruction"]))
         calibration = calibration_content(self.source_episode["head_reference"], self.long_records[starts[0]]["before"]["head_image"],
                                           "TRAIN", "Verified source HDF5", image_profile="native_jpeg", image_layout="triptych")
@@ -182,6 +191,7 @@ class RetrievalModel(Model):
             prefix.extend(self._train_chunk(self.long_records[start]))
             end = self.long_records[start]["end"]
         prefix.append(text_message("END LONG-TERM MEMORY. SHORT-TERM MEMORY below belongs only to the active episode. Latest observation is authoritative."))
+        prefix.extend(live_calibration)
 
         eligible = [r for r in self.live_memory._records if r["end"] <= self.step]
         latest = eligible[-1] if eligible else None

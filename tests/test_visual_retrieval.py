@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 AVAILABLE = importlib.util.find_spec("numpy") is not None and (ROOT / "vendor/RoboICL").is_dir()
 if AVAILABLE:
     sys.path.insert(0, str(ROOT / "vendor/RoboICL"))
-    from roborag.robot_memory import select_diverse, RetrievalModel, Model, render_selected_history
+    from roborag.robot_memory import select_diverse, RetrievalModel, Model, render_selected_history, align_phase
     from roborag.vision import distance, scene_distance
     import numpy as np
 
@@ -80,3 +80,13 @@ class VisualRetrievalTests(unittest.TestCase):
         self.assertEqual(output[-1], {"observation": 15})
         output[1]["action"] = "changed"
         self.assertEqual(records[0]["items"][0]["action"], 0)
+
+    def test_phase_alignment_disambiguates_initial_and_final_rest(self):
+        scores = [(0.2, 0), (.6, 10), (.8, 20), (.1, 190)]
+        cursor, ranked = align_phase(scores, 0, 5, initial=True)
+        self.assertEqual(cursor, 0)
+        self.assertEqual(min(ranked)[1], 0)
+        cursor, _ = align_phase([(2., 0), (.4, 10), (.2, 20), (0., 190)], cursor, 5)
+        self.assertEqual(cursor, 20)
+        cursor, _ = align_phase([(0., 0), (.2, 10), (.4, 20), (0., 190)], cursor, 5)
+        self.assertEqual(cursor, 10)  # limited recovery backtrack, no end jump

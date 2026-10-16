@@ -45,7 +45,7 @@ def main():
         if not target.exists():
             partial = target.with_suffix(".hdf5.partial")
             url = f"https://huggingface.co/datasets/{repo}/resolve/{revision}/{item['path']}"
-            subprocess.run(["curl", "-fL", "--retry", "4", "--connect-timeout", "30", "--max-time", "600",
+            subprocess.run(["curl", "--http1.1", "-fL", "--retry", "4", "--connect-timeout", "30", "--max-time", "600",
                             "-C", "-", "-o", str(partial), url], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
             if partial.stat().st_size != item["size"] or sha(partial) != expected:
                 raise ValueError(f"Download integrity mismatch: {partial}")

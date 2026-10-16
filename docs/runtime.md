@@ -58,6 +58,16 @@ by source hash and interval; equal frame numbers from separate episodes cannot
 overwrite each other. This spatial descriptor is a baseline, not a validated
 object/role representation.
 
+The next controller revision (`scene-phase-transition-v3`) also aligns a source
+phase cursor from the latest RGB/state match, permitting two horizons of
+backtracking and four horizons of forward matching per new observation.
+Retrieval applies a soft distance-from-phase prior while retaining initial and
+terminal anchors. This prevents a robot's initial rest pose from preferentially
+retrieving return-to-home actions at the end of the source trajectory. The cursor
+uses observed similarity, not the evaluation step count or hidden task progress.
+Fixed selection remains uniform. This is an additional development hypothesis
+that needs live validation; both code revision and selector version are logged.
+
 Observed policy environment: Python 3.11, torch 2.7.0+cu128, torchvision 0.22.0+cu128,
 numpy 1.26.0, h5py 3.16.0, Pillow 12.3.0, scipy 1.15.3,
 jsonschema 4.26.0 and websockets 15.0.1. Simulator and policy interpreters are

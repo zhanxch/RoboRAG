@@ -37,6 +37,17 @@ def select_diverse(scored, count, separation, anchors=()):
     return sorted(selected[:count])
 
 
+def align_phase(scored, cursor, horizon, *, initial=False):
+    """Observation-driven local alignment prevents rest poses matching episode end."""
+    if not initial:
+        nearby = [(score, start) for score, start in scored
+                  if cursor - 2*horizon <= start <= cursor + 4*horizon]
+        if nearby:
+            cursor = min(nearby)[1]
+    ranked = [(score + .35*abs(start-cursor)/(2*horizon), start) for score, start in scored]
+    return cursor, ranked
+
+
 def render_selected_history(records, chosen, current_step, observation):
     """Keep observed intent/receipts for omitted intervals without asserting outcomes."""
     output = [observation(0)]
@@ -125,6 +136,8 @@ class RetrievalModel(Model):
         self.long_records = {r["start"]: r for r in records}
         if len(self.long_records) != len(records) or not records:
             raise ValueError("Empty or duplicate intervals in selected source")
+        self._long_cursor = min(self.long_records)
+        self._cursor_step = None
 
     def _feature(self, step):
         if step not in self._feature_cache:
@@ -168,7 +181,12 @@ class RetrievalModel(Model):
         if self.rag_mode == "fixed":
             selected_long = sorted(set(starts[i] for i in np.linspace(0, len(starts)-1, self.long_k).round().astype(int)))
         else:
-            selected_long = select_diverse(scores, self.long_k, self.corpus["horizon"] * 2,
+            ranked = scores
+            if self.multi_episode:
+                cursor, ranked = align_phase(scores, self._long_cursor, self.corpus["horizon"],
+                                             initial=self.step == 0 or self._cursor_step == self.step)
+                self._long_cursor, self._cursor_step = cursor, self.step
+            selected_long = select_diverse(ranked, self.long_k, self.corpus["horizon"] * 2,
                                           anchors=(starts[0], starts[-1]))
         prefix = deepcopy(self.messages[:self.fixed_prefix_length])
         live_calibration = []
@@ -209,7 +227,8 @@ class RetrievalModel(Model):
         self._log("retrieval.jsonl", {"step": self.step, "mode": self.rag_mode,
                   "corpus_sha256": self.corpus_hash, "long_selected": selected_long,
                   "source_episode_sha256": self._selected_source, "source_scene_distances": self._source_scores,
-                  "retrieval_version": "scene-then-transition-v2" if self.multi_episode else "transition-v1",
+                  "retrieval_version": "scene-phase-transition-v3" if self.multi_episode else "transition-v1",
+                  "source_phase_cursor": self._long_cursor if self.multi_episode and self.rag_mode != "fixed" else None,
                   "long_distances": {str(start): score for score, start in scores if start in selected_long},
                   "short_selected": sorted(chosen), "short_pool_size": len(eligible),
                   "latest_interval": [latest["start"], latest["end"]] if latest else None,

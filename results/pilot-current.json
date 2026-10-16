@@ -17,6 +17,7 @@
         "attempted_model_calls": 60,
         "known_total_tokens": 2997194,
         "calls_without_usage": 0,
+        "latest_observed_step": 300,
         "latest_decision_step": 295,
         "exit": {
           "returncode": 0,
@@ -107,6 +108,7 @@
         "attempted_model_calls": 60,
         "known_total_tokens": 3214814,
         "calls_without_usage": 0,
+        "latest_observed_step": 300,
         "latest_decision_step": 295,
         "exit": {
           "returncode": 0,
@@ -199,6 +201,7 @@
         "attempted_model_calls": 23,
         "known_total_tokens": 1154044,
         "calls_without_usage": 1,
+        "latest_observed_step": 110,
         "latest_decision_step": 105,
         "exit": {
           "returncode": null,
@@ -314,6 +317,7 @@
         "attempted_model_calls": 20,
         "known_total_tokens": 1289773,
         "calls_without_usage": 0,
+        "latest_observed_step": 195,
         "latest_decision_step": 190,
         "exit": {
           "returncode": 0,

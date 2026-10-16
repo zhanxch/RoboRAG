@@ -44,6 +44,12 @@ class NativeEvidenceTests(unittest.TestCase):
         self.assertFalse(result["valid_native_episode"])
         self.assertIsNone(result["score_0_100"])
 
+    def test_inflight_observation_append_does_not_invent_executed_steps(self):
+        path = self.folder / "policy/episode/observations.jsonl"
+        path.parent.mkdir(parents=True)
+        path.write_text('{"step": 0}\n{"step": 5}\n{"step": 10, "images":')
+        self.assertEqual(summarize(self.folder)["latest_observed_step"], 5)
+
 
 if __name__ == "__main__":
     unittest.main()

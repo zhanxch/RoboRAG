@@ -11,6 +11,25 @@ def load(path):
     return json.loads(path.read_text()) if path.is_file() else None
 
 
+def latest_observed_step(folder):
+    latest = None
+    for path in folder.glob("policy/*/observations.jsonl"):
+        previous, last = None, None
+        with path.open() as handle:
+            for line in handle:
+                previous, last = last, line
+        for line in (last, previous):
+            if line is None:
+                continue
+            try:
+                step = json.loads(line)["step"]
+            except (json.JSONDecodeError, KeyError):
+                continue
+            latest = step if latest is None else max(latest, step)
+            break
+    return latest
+
+
 def summarize(folder):
     run = load(folder / "run.json")
     if not run:
@@ -66,6 +85,7 @@ def summarize(folder):
            "native_result": str(result_paths[0]) if len(result_paths) == 1 else None,
            "completed_model_calls": completed, "attempted_model_calls": len(calls),
            "known_total_tokens": known_tokens, "calls_without_usage": missing_usage,
+           "latest_observed_step": latest_observed_step(folder),
            "latest_decision_step": decisions[-1]["step"] if decisions else None,
            "latest_intent_not_verified_outcome": decisions[-1]["execution_note"] if decisions else None,
            "exit": exit_info, "manual_stop": manual_stop}

@@ -56,10 +56,12 @@ class TransportCleanupTests(unittest.TestCase):
                             pass  # Cancellation intentionally closes this request.
                     worker = threading.Thread(target=request, daemon=True)
                     worker.start()
-                    while not child_file.exists():
+                    while child is None:
                         self.assertLess(time.monotonic(), deadline, "fake inference did not start")
-                        time.sleep(.02)
-                    child = int(child_file.read_text())
+                        try:
+                            child = int(child_file.read_text())
+                        except (FileNotFoundError, ValueError):
+                            time.sleep(.02)
                     self.assertTrue(Path(f"/proc/{child}").exists())
                     server.send_signal(signal.SIGTERM)
                     server.wait(timeout=5)
@@ -69,8 +71,12 @@ class TransportCleanupTests(unittest.TestCase):
                     self.assertEqual(record["error"], "SystemExit")
                 finally:
                     if server.poll() is None:
-                        server.kill()
-                        server.wait(timeout=5)
+                        server.terminate()
+                        try:
+                            server.wait(timeout=5)
+                        except subprocess.TimeoutExpired:
+                            server.kill()
+                            server.wait(timeout=5)
                     if child and Path(f"/proc/{child}").exists():
                         os.kill(child, signal.SIGKILL)
 

@@ -11,6 +11,7 @@ import socket
 import subprocess
 import sys
 import time
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -133,6 +134,9 @@ def main():
     if args.capture_only:
         simulator.append("--capture-only")
     write(out / "run.json", {
+        "started_at_utc": datetime.now(timezone.utc).isoformat(),
+        "roborag_commit": subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(),
+        "roborag_worktree_changes": subprocess.check_output(["git", "-C", str(ROOT), "status", "--porcelain"], text=True).splitlines(),
         "arguments": {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
         "dependencies": pinned, "roboicl_commit": subprocess.check_output(["git", "-C", str(code), "rev-parse", "HEAD"], text=True).strip(),
         "layout": str(layout), "layout_sha256": hashlib.sha256(layout.read_bytes()).hexdigest(),
@@ -165,6 +169,16 @@ def main():
             elif name == "policy":
                 ready(policy_port, process, timeout=300)
         rc = processes[-1].wait()
+        if rc == 0:
+            if args.capture_only:
+                if not list((out / "camera_preflight").rglob("capture_probe.json")):
+                    raise RuntimeError("Simulator returned zero without camera capture evidence")
+            else:
+                results = list((out / "native").rglob("_result.json"))
+                result = json.loads(results[0].read_text()) if len(results) == 1 else None
+                if (not result or result.get("eval_time") != 1 or result.get("policy_error")
+                        or list((out / "native").rglob("_infrastructure_failure.json"))):
+                    raise RuntimeError("Simulator returned zero without one complete native evaluation")
         write(out / "exit.json", {"returncode": rc, "wall_seconds": time.monotonic() - started})
         return rc
     except BaseException as error:

@@ -1,0 +1,38 @@
+{
+  "created_at_utc": "2026-10-16T09:45:48.611676+00:00",
+  "purpose": "Small stack_blocks pilot; one untouched-by-this-project layout for post-development validation",
+  "task": "stack_blocks",
+  "development_layouts": [
+    0
+  ],
+  "validation_layouts": [
+    1
+  ],
+  "seed": 0,
+  "variant": "standard",
+  "conditions": [
+    "fixed",
+    "dual"
+  ],
+  "model": "gpt-6-astra",
+  "effort": "medium",
+  "long_k": 8,
+  "short_k": 4,
+  "bank_sha256": "1e51e175a3f43eb67e3bf6e3cb86dcb2f50736967c693f7cb9dc51b0b1cee0f1",
+  "policy_sha256": {
+    "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+    "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365"
+  },
+  "gate": "First establish full native success on development layout 0. Freeze the bank and controller before validation. If this gate fails, document changes before running validation.",
+  "selection_note": "Validation layout 1 has not been inspected or run in this project at plan creation. Existing runs and scores from other projects are not counted as RoboRAG evidence.",
+  "primary_outcomes": [
+    "native score 0-100",
+    "native full-success flag"
+  ],
+  "limitations": [
+    "one rollout per validation condition",
+    "same chunk quotas, not exactly matched token consumption",
+    "account-based transport differs from the paper API",
+    "overlapping wall times are not comparable"
+  ]
+}

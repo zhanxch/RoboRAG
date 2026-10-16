@@ -19,18 +19,21 @@ ICL 使模型能够通过输入中的示例适应任务，推理时无需更新�
 
 ## Current scope
 
-当前版本是可运行的双库原型，包含：
+当前版本包含双库核心与真实 RoboDojo 执行接入：
 
 - 离线 JSON 快照构建与加载；长期库只接收训练集中的示范或整理后的经验。
 - episode 独立的短期内存库、只检索截至当前时刻可见的历史、关闭后清空。
 - 机器人及动作接口匹配、两路独立检索配额、最新交互保留。
-- 明确分离的上下文输出、快照哈希，以及用于验证机制的合成案例。
+- 公开 HDF5 训练轨迹下载、固定版本及 SHA256 校验、视觉与动作片段入库。
+- 冻结 ResNet-18 多视角特征、本体状态检索；多示范库先按初始画面空间特征选轨迹，再检索片段。
+- RoboDojo 相机、动作控制、模型调用、原生评分和可审计检索日志。
+- `zero`、`fixed`、`long_only`、`dual` 四种比较模式；固定选段和双库检索使用相同模型与片段配额。
 
-检索器目前使用词项集合相似度，预算以记录条数计。**尚未实现视觉 embedding、真实 token/image 预算、模型调用、机器人控制或仿真评测；合成示例没有性能结论。** 原型代码为新建实现，未包含上游控制框架代码。
+纯 Python 核心保留词项检索，用于验证隔离和时序约束；真实机器人接入使用视觉检索。上下文配额以片段数计，并受上游图像上限约束；这不等于严格相同的 token 消耗。当前正进行小规模开发实验，**不将模型的“已抓住”等意图文字当作成功，不将相机测试或中断回合计入成绩**。实时进展见 [工作记录](docs/progress.md)。
 
 ## Run locally
 
-Python 3.10+，原型运行及测试只使用标准库。在仓库根目录运行：
+Python 3.10+，核心示例只依赖标准库。在仓库根目录运行：
 
 ```bash
 PYTHONPATH=src python3 -m roborag.demo
@@ -38,6 +41,15 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
 
 demo 在临时目录构建长期库，模拟一次插入失败后的检索，打印两路检索结果，再关闭本次短期库。所有数据、动作和机器人标识均为合成示例，不连接硬件或模型服务。
+
+真实 RoboDojo 环境与模型传输配置见 [runtime](docs/runtime.md)。配置完成后，用策略 Python 环境运行：
+
+```bash
+python scripts/fetch_demonstrations.py --task stack_blocks --episodes 0,1,2
+python scripts/build_visual_bank.py --manifest data/runtime-data/stack_blocks/train/sources-0-1-2.json --output data/corpora/stack_blocks/v2.json
+python scripts/run_episode.py --task stack_blocks --mode dual --corpus data/corpora/stack_blocks/v2.json --output runs/stack-dual-l0
+python scripts/summarize_runs.py --output runs/summary.json
+```
 
 ## Repository
 
@@ -47,8 +59,10 @@ src/roborag/schema.py  经验记录、当前查询与上下文结构
 src/roborag/memory.py  长期快照与 episode 短期库
 src/roborag/retrieval.py  两路检索与上下文组装
 src/roborag/demo.py    合成案例
+src/roborag/robot_memory.py  真实视觉片段检索与上下文组装
+src/roborag/vision.py  多视角与初始场景编码
+scripts/              数据入库、仿真启动和结果汇总
 tests/                隔离、时序与检索边界验证
 ```
 
-下一步先确定一种仿真环境及其轨迹格式，完成真实数据入库，再固定控制模型进行检索消融。大型轨迹、图像、索引、运行日志和凭据均不纳入 Git。
-
+机器人接入复用 RoboICL 的观测/动作协议、IK 与 RoboDojo 适配器；项目动机从 ICL 与检索展开，工程依赖来源在 [runtime](docs/runtime.md) 中明确记录。大型轨迹、图像、索引、运行日志和凭据均不纳入 Git。

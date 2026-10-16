@@ -9,6 +9,7 @@ from PIL import Image
 
 class VisualEncoder:
     name = "torchvision-resnet18-IMAGENET1K_V1-global-3view"
+    scene_name = "torchvision-resnet18-IMAGENET1K_V1-head-2x2-grid"
 
     def __init__(self):
         import torch
@@ -31,8 +32,20 @@ class VisualEncoder:
             features = self.model(self.torch.stack(tensors)).numpy()
         return features / np.maximum(np.linalg.norm(features, axis=1, keepdims=True), 1e-8)
 
+    def scene(self, image_url):
+        """Keep spatial order when comparing initial scenes from different episodes."""
+        raw = base64.b64decode(image_url.split(",", 1)[1], validate=True)
+        with Image.open(BytesIO(raw)) as image:
+            image = image.convert("RGB")
+            w, h = image.size
+            tensors = [self.transform(image.crop((x*w//2, y*h//2, (x+1)*w//2, (y+1)*h//2)))
+                       for y in range(2) for x in range(2)]
+        with self.torch.inference_mode():
+            features = self.model(self.torch.stack(tensors)).numpy()
+        return features / np.maximum(np.linalg.norm(features, axis=1, keepdims=True), 1e-8)
 
-def distance(visual_a, state_a, visual_b, state_b):
+
+def distance(visual_a, state_a, visual_b, state_b, *, state_weight=.5):
     visual_cost = float(np.mean(1 - np.sum(np.asarray(visual_a) * np.asarray(visual_b), axis=1)))
     state_cost = 0.
     for arm in ("left", "right"):
@@ -43,5 +56,12 @@ def distance(visual_a, state_a, visual_b, state_b):
         cosine = abs(float(np.dot(qa, qb))) / max(float(np.linalg.norm(qa) * np.linalg.norm(qb)), 1e-8)
         state_cost += float(2 * np.arccos(np.clip(cosine, 0, 1)) / np.pi)
         state_cost += .5 * abs(float(state_a[f"{arm}_ee_joint_state"][0]) - float(state_b[f"{arm}_ee_joint_state"][0]))
-    return 3 * visual_cost + .5 * state_cost
+    return 3 * visual_cost + state_weight * state_cost
 
+
+def scene_distance(a, b):
+    """Ordered spatial cells: swapping left and right objects must change distance."""
+    a, b = np.asarray(a), np.asarray(b)
+    if a.shape != b.shape or a.ndim != 2 or a.shape[0] != 4:
+        raise ValueError("Scene descriptors need four ordered spatial cells")
+    return float(np.mean(1 - np.sum(a * b, axis=1)))

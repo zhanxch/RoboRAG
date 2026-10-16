@@ -41,6 +41,23 @@ normalized view vectors, plus measured robot end-effector and gripper state.
 It is a first retrieval baseline, with no claim of optimal visual representation.
 The encoder runs on CPU, leaving GPU memory to simulation.
 
+The v2 bank supports multiple pinned training episodes. Use
+`scripts/fetch_demonstrations.py --task stack_blocks --episodes 0,1,2`, then
+`scripts/build_visual_bank.py --manifest data/runtime-data/stack_blocks/train/sources-0-1-2.json --output data/corpora/stack_blocks/v2.json`.
+Each source is checked against the fixed-revision Hugging Face LFS SHA256, its
+25 Hz frequency, camera arrays and action bounds. Published trajectories are
+not assigned a replay-verified success label without such evidence.
+
+V2 chooses one coherent source episode from ordered 2×2 head-image ResNet
+features at live step zero; that choice is frozen within the episode. Both
+`fixed` and retrieval methods share this source selection. Dynamic retrieval
+then compares the three-view features and robot state within that source,
+reducing the state weight from 0.5 to 0.2 because absolute arm positions can
+confuse different layouts and manipulation roles. Training records are keyed
+by source hash and interval; equal frame numbers from separate episodes cannot
+overwrite each other. This spatial descriptor is a baseline, not a validated
+object/role representation.
+
 Observed policy environment: Python 3.11, torch 2.7.0+cu128, torchvision 0.22.0+cu128,
 numpy 1.26.0, h5py 3.16.0, Pillow 12.3.0, scipy 1.15.3,
 jsonschema 4.26.0 and websockets 15.0.1. Simulator and policy interpreters are
@@ -68,6 +85,11 @@ as procedural anchors and fills remaining slots by state/visual distance with
 temporal diversity. The short-term index contains only this episode's committed
 interactions. Initial and latest observations, action receipts and rejection tails
 are retained; selected earlier interactions are presented chronologically.
+From v2 onward, omitted live intervals retain their recorded execution/intent
+summaries as text. They are explicitly marked as unverified intent rather than
+success labels. The initial two deposit runs predate this correction; their
+source hashes remain recorded, so their results must not be silently pooled
+with later versions.
 
 `--allow-shared-gpu` permits a second pilot only with at least 11,000 MiB free GPU
 memory at launch. Overlapping process IDs are logged. Concurrent wall times must

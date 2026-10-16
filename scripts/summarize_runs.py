@@ -20,6 +20,7 @@ def summarize(folder):
     failures += list((folder / "native").rglob("_policy_error.json"))
     native = load(result_paths[0]) if len(result_paths) == 1 else None
     exit_info = load(folder / "exit.json")
+    manual_stop = load(folder / "manual_stop.json")
     decisions = []
     for path in folder.glob("policy/*/decisions.jsonl"):
         for line in path.read_text().splitlines():
@@ -51,6 +52,8 @@ def summarize(folder):
         status = "capture_only"
     elif valid:
         status = "native_completed"
+    elif manual_stop:
+        status = "interrupted_by_experimenter"
     elif failures or exit_info:
         status = "incomplete_or_infrastructure_failure"
     else:
@@ -65,7 +68,7 @@ def summarize(folder):
            "known_total_tokens": known_tokens, "calls_without_usage": missing_usage,
            "latest_decision_step": decisions[-1]["step"] if decisions else None,
            "latest_intent_not_verified_outcome": decisions[-1]["execution_note"] if decisions else None,
-           "exit": exit_info}
+           "exit": exit_info, "manual_stop": manual_stop}
     return row
 
 

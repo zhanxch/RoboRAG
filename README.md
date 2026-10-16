@@ -17,6 +17,10 @@ ICL 使模型能够通过输入中的示例适应任务，推理时无需更新�
 
 研究背景及来源见 [motivation](docs/motivation.md)，工程设计见 [architecture](docs/architecture.md)，验证路径见 [experiments](docs/experiments.md)。
 
+## Pilot status
+
+真实 RoboDojo `stack_blocks` 开发布局 0 已取得 **100/100、完整成功**：195 步、20 次模型调用。固定上下文对照与未参与调优的布局验证正在进行，暂不宣称检索带来增益或已证明泛化。最初投币试验中的负面结果也保留在 [results](docs/results.md)。
+
 ## Current scope
 
 当前版本包含双库核心与真实 RoboDojo 执行接入：

@@ -3,6 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import argparse
 import json
 from pathlib import Path
+import signal
 import traceback
 from .codex_cli import infer, write_json
 
@@ -45,8 +46,15 @@ if __name__ == "__main__":
     p.add_argument("--port", type=int, required=True)
     p.add_argument("--output", type=Path, required=True)
     a = p.parse_args()
+    def interrupted(signum, frame):
+        # Unwind infer() so its child process group is terminated and reaped.
+        raise SystemExit(128 + signum)
+    signal.signal(signal.SIGTERM, interrupted)
     server = HTTPServer(("127.0.0.1", a.port), Handler)
     server.output = a.output.resolve()
     server.calls = 0
     print(f"READY 127.0.0.1:{a.port}", flush=True)
-    server.serve_forever()
+    try:
+        server.serve_forever()
+    finally:
+        server.server_close()

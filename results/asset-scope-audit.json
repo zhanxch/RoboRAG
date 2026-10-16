@@ -1,0 +1,204 @@
+{
+  "scope": "Partial read-only comparison of robot URDF/config/meshes, four stack-block variants and two layouts; not a full transitive asset-tree audit",
+  "repository": "RoboDojo-Benchmark/RoboDojo",
+  "reference_revision": "0a709fe7863f6c869a8d141676585a883fce4270",
+  "files": [
+    {
+      "path": "Assets/Robots/x5/X5A.urdf",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423",
+      "actual": "7aaa308a1a5b6a213d914db86ba09ddd6252f25cb498ac9a148bfa6c7166a423"
+    },
+    {
+      "path": "Assets/Robots/x5/curobo_tmp.yml",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "5eea08bf7ef276bf9dfd078ef9f69221e9a67c8cf6cd19fce5ef66d42e96b3f2",
+      "actual": "5eea08bf7ef276bf9dfd078ef9f69221e9a67c8cf6cd19fce5ef66d42e96b3f2"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/base_link.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "898dbe3af3a98857358ac5a3d74e085ec9c69946737e767dad139776761cbd92",
+      "actual": "898dbe3af3a98857358ac5a3d74e085ec9c69946737e767dad139776761cbd92"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/camera.glb",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "9833e436988bcd83f3113ab1071428427c80d6a1392d9e0b7cf35d2b6e949d7c",
+      "actual": "9833e436988bcd83f3113ab1071428427c80d6a1392d9e0b7cf35d2b6e949d7c"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/camera_base.glb",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "d771a24ab886166536ffe4a0719af1163e44fac4067e07110cf72a7a01d260b0",
+      "actual": "d771a24ab886166536ffe4a0719af1163e44fac4067e07110cf72a7a01d260b0"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link1.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "04a52b86a5b28c847377a9167e7effab0478fa591052e83b0b32cf8709bb3885",
+      "actual": "04a52b86a5b28c847377a9167e7effab0478fa591052e83b0b32cf8709bb3885"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link2.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "2865da6a962c814abaf9251497bcf5f5e3b67610e3b657ddcaa9de8b3d45e83e",
+      "actual": "2865da6a962c814abaf9251497bcf5f5e3b67610e3b657ddcaa9de8b3d45e83e"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link3.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "3ac2411b0cbffcf4808cae4c215cfeab607f240cd124eeba209ac7986ac047c0",
+      "actual": "3ac2411b0cbffcf4808cae4c215cfeab607f240cd124eeba209ac7986ac047c0"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link4.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "3447ddef920c22e4607b887e1cc588037dfb51c37825c4cac86a5391425469c4",
+      "actual": "3447ddef920c22e4607b887e1cc588037dfb51c37825c4cac86a5391425469c4"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link5.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "934b3e70ce2987f8de999de29d8ef72c8370dced8e9fdf6f9ddd3e7e24c1e464",
+      "actual": "934b3e70ce2987f8de999de29d8ef72c8370dced8e9fdf6f9ddd3e7e24c1e464"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link6.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "32dca4ededcf3215163207b9aea1046114ae59921555d1e068ee46fa6e53915e",
+      "actual": "32dca4ededcf3215163207b9aea1046114ae59921555d1e068ee46fa6e53915e"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link7.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "ec3d40b39cccde0075ca3d16603f14f180fce41a46b446473d384def7a1b0be0",
+      "actual": "ec3d40b39cccde0075ca3d16603f14f180fce41a46b446473d384def7a1b0be0"
+    },
+    {
+      "path": "Assets/Robots/x5/meshes/link8.STL",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "29f7a8379cad81797e82e4ba099455cc275ac6ac5bb9e264ce46719fd7d2bb60",
+      "actual": "29f7a8379cad81797e82e4ba099455cc275ac6ac5bb9e264ce46719fd7d2bb60"
+    },
+    {
+      "path": "Assets/Robots/x5/robot_config.yml",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "9de4f63b84c0f730623c09af7a2d530d84973981397280b6e4b626b50ba6f1c9",
+      "actual": "9de4f63b84c0f730623c09af7a2d530d84973981397280b6e4b626b50ba6f1c9"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00009/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "62c621540be0b5439154cb5cdbcca4defe6675eb4a2129b0d99f5e3c58399a66",
+      "actual": "62c621540be0b5439154cb5cdbcca4defe6675eb4a2129b0d99f5e3c58399a66"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00009/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "22b7384bd96388fe70961f0a5d16e55d83d2a1314d42a2a919557fdbb4ce2e1e",
+      "actual": "22b7384bd96388fe70961f0a5d16e55d83d2a1314d42a2a919557fdbb4ce2e1e"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00009/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "edce904abea5428dbcc91972d3a26ac9bf6482511d962c9485d9c96ed7d1f46e",
+      "actual": "edce904abea5428dbcc91972d3a26ac9bf6482511d962c9485d9c96ed7d1f46e"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00012/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "ef6619b9e0813eb3d0fb0c492a9bbbcf1b6eac470598214a2c435c8018f184f2",
+      "actual": "ef6619b9e0813eb3d0fb0c492a9bbbcf1b6eac470598214a2c435c8018f184f2"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00012/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "1e674058e0051fa062a05d470269681dfc03396ebf650ef7500007b0964ebb44",
+      "actual": "1e674058e0051fa062a05d470269681dfc03396ebf650ef7500007b0964ebb44"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00012/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "de1de2a3912a3a3cba5cc4d07c41205272eb958e50c4882d0fe28ea690730c6e",
+      "actual": "de1de2a3912a3a3cba5cc4d07c41205272eb958e50c4882d0fe28ea690730c6e"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00015/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "9742cd9a72f2125fee2cac9e12594ccc9a62e6285ae8b646ce92f7ab74feafc9",
+      "actual": "9742cd9a72f2125fee2cac9e12594ccc9a62e6285ae8b646ce92f7ab74feafc9"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00015/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "0fb0918b2b8e889aa74f0020ea114eeb731afc8aabc771048ee3f459d53b913f",
+      "actual": "0fb0918b2b8e889aa74f0020ea114eeb731afc8aabc771048ee3f459d53b913f"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00015/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "697f736c68fd7173ca54838b9f98dc5a4424d8dc567b6019d48bae6e5e7d99b0",
+      "actual": "697f736c68fd7173ca54838b9f98dc5a4424d8dc567b6019d48bae6e5e7d99b0"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00018/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "a70a0b51294fda7870866948c1dff4ad41b7348139235e7cec52e92b4569597c",
+      "actual": "a70a0b51294fda7870866948c1dff4ad41b7348139235e7cec52e92b4569597c"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00018/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "d2be9c9a95dcd2c3337229aef0f878fea08652ba372fa40452a9c37580991cb2",
+      "actual": "d2be9c9a95dcd2c3337229aef0f878fea08652ba372fa40452a9c37580991cb2"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/block/00018/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "492383081d92e01aa1a760f62687bcdb45dfd9b337a7589e855e9bd619ad3233",
+      "actual": "492383081d92e01aa1a760f62687bcdb45dfd9b337a7589e855e9bd619ad3233"
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/stack_blocks_0.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "9a6b1ba160b2fc5420fd4aa858400b1ee0346d7d7449bdd85aa99d9f65418191",
+      "actual": "9a6b1ba160b2fc5420fd4aa858400b1ee0346d7d7449bdd85aa99d9f65418191"
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/stack_blocks_1.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "a051b1e8b4914ee3a2db8f206a0554f8a24cc91cc720f3d641197fc25e06781b",
+      "actual": "a051b1e8b4914ee3a2db8f206a0554f8a24cc91cc720f3d641197fc25e06781b"
+    }
+  ],
+  "audited_at_utc": "2026-10-16T10:04:28.409213+00:00"
+}

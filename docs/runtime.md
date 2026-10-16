@@ -20,7 +20,10 @@ remain in the dependency checkouts. No benchmark scoring or task source is edite
 
 The Codex CLI transport was copied from the user's existing local
 `infiniDojo/reproduction/policy_compare/{codex_inference,roboicl_codex_transport}.py`
-adaptation, with the import changed to a package-relative import. It uses the
+adaptation, using a package-relative import. The current bridge also unwinds
+in-flight inference on SIGTERM so canceled runs do not orphan CLI processes;
+the four frozen stack trials were launched before this lifecycle-only fix.
+It uses the
 existing signed-in CLI without exporting credentials. It serializes role history,
 attaches images, disables agent tools and validates the returned action JSON.
 It is **not** the original paper's API condition. The first fixed/dual runs use
@@ -113,6 +116,15 @@ errors, setup failures and interrupted episodes are not successful evaluations.
 `policy/*/retrieval.jsonl` records selected training intervals, short-term history
 and corpus hash. `decisions/call-*` preserves supplied images, actions and usage.
 All large artifacts stay under ignored `runs/` and `data/`.
+
+The legacy `RoboICL` segment in native output paths comes from the reused
+simulator adapter's policy label. The actual RoboRAG selector, model configuration
+and source hashes are recorded by the enclosing run manifest and retrieval log.
+
+A [partial asset audit](../results/asset-scope-audit.json) matched all 28 checked
+robot URDF/config/mesh, block variant and layout files to the upstream frozen
+asset revision. No assets were changed during this read-only audit. This is not
+a complete transitive audit of all room, material, sensor and generated files.
 
 Use `--role validation` only after freezing the policy and bank and selecting
 layouts not used for development. The default is `development`. Export compact

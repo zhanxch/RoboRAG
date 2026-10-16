@@ -1,6 +1,6 @@
 # Pilot results
 
-## Stack-blocks development success
+## Stack-blocks pilot
 
 The frozen `scene-phase-transition-v3` RoboRAG controller completed
 `stack_blocks`, standard layout 0, with native **100/100 and success=true**.
@@ -9,10 +9,24 @@ The long-term bank contained three published training episodes and 58 valid
 chunks. Each decision selected up to eight training chunks and four live chunks,
 with compressed execution summaries retained separately.
 
-This is one development success and establishes a working control pipeline.
-It does not establish an advantage over fixed context. A matched fixed-context
-run on layout 0 and a frozen-controller run on predeclared validation layout 1
-are in progress. The [validation plan](../experiments/stack-v3-validation-plan.json)
+The matched fixed-context control also succeeded on layout 0, scoring 100/100
+in 240 steps and 24 model calls. Observed token totals were 1,289,773 for RoboRAG
+and 1,506,661 for fixed context. This one development pair shows fewer calls for
+RoboRAG, not a statistically established efficiency or success-rate advantage.
+
+With the controller and bank frozen, RoboRAG also succeeded on predeclared
+validation layout 1: **100/100, success=true, 302 steps and 31 calls** (2,048,690
+observed tokens). A placement became unstable around steps 110–130; the policy
+regrasped the wood block and completed the stack. At step 160, short-term retrieval
+included the earlier placement interval 110–120, outside a latest-four-chunk
+window, while retaining the latest interval 150–160. This verifies retrieval of
+older relevant experience but does not by itself establish a causal contribution
+to recovery. The fixed-context validation control is still in progress.
+
+Thus RoboRAG has two completed successful pilot rollouts: one development layout
+and one layout not used for this project's tuning. They are not two independent
+held-out trials and do not constitute a benchmark-wide result.
+The [validation plan](../experiments/stack-v3-validation-plan.json)
 was recorded before inspecting or executing layout 1. Native evidence is in
 [the current pilot manifest](../results/pilot-current.json).
 
@@ -52,8 +66,8 @@ above does not isolate the contribution of each change. Comparisons must use mat
 context quotas and code revision. Layouts used for tuning remain development
 data even if a later rollout succeeds on them.
 
-Limits: one development layout per condition; no uncertainty estimate or
-generalization claim; local asset tree not newly certified against the complete
-upstream asset revision; transport differs from the paper API; concurrent wall
+Limits: one rollout per condition/layout; no uncertainty estimate or broad
+generalization claim; the [28-file asset subset audit](../results/asset-scope-audit.json)
+passed, but the complete asset tree was not newly certified; transport differs from the paper API; concurrent wall
 times are not a matched latency measurement. Capture tests and incomplete
 startup attempts are excluded from scored trials.

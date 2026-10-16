@@ -1,0 +1,7 @@
+{
+  "sim_python": "/absolute/path/to/isaac-sim-env/bin/python",
+  "policy_python": "/absolute/path/to/policy-env/bin/python",
+  "upstream": "/absolute/path/to/RoboRAG/vendor/RoboICL",
+  "assets": "/absolute/path/to/RoboDojo/Assets",
+  "sim_library": "/absolute/path/to/isaac-sim-env/lib"
+}

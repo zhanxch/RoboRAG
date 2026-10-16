@@ -11,10 +11,11 @@ dist/
 data/
 artifacts/
 runs/
+vendor/
+local.runtime.json
 *.sqlite*
 *.npy
 *.npz
 *.pt
 *.pth
 *.mp4
-

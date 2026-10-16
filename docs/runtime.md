@@ -113,3 +113,10 @@ errors, setup failures and interrupted episodes are not successful evaluations.
 `policy/*/retrieval.jsonl` records selected training intervals, short-term history
 and corpus hash. `decisions/call-*` preserves supplied images, actions and usage.
 All large artifacts stay under ignored `runs/` and `data/`.
+
+Use `--role validation` only after freezing the policy and bank and selecting
+layouts not used for development. The default is `development`. Export compact
+native evidence with `scripts/export_evidence.py runs/<name> ... --output results/<report>.json`.
+This preserves native result JSON, hashes, source/configuration identity and
+video paths. Interrupted policy scores and missing completion evidence remain
+excluded from valid scores; a process exit code of zero is insufficient.

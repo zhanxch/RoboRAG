@@ -56,6 +56,7 @@ def main():
     parser.add_argument("--layout", type=int, default=0)
     parser.add_argument("--variant", choices=("standard", "random"), default="standard")
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--role", choices=("development", "validation"), default="development")
     parser.add_argument("--mode", choices=("zero", "fixed", "dual", "long_only"), default="dual")
     parser.add_argument("--effort", default="medium")
     parser.add_argument("--long-k", type=int, default=6)
@@ -143,7 +144,7 @@ def main():
         "assets": runtime["assets"], "asset_audit": "reused local assets; not a new complete official-revision audit",
         "commands": {"transport": transport, "policy": policy, "simulator": simulator},
         "model": "gpt-6-astra", "transport": "Codex-account adaptation, not original paper API",
-        "evaluation_role": "development", "capture_only": args.capture_only,
+        "evaluation_role": args.role, "capture_only": args.capture_only,
         "overlapping_compute_pids_at_launch": busy.splitlines(),
         "source_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                           for folder in (ROOT / "src", ROOT / "scripts") for p in folder.rglob("*.py")},

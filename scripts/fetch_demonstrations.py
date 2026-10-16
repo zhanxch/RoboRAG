@@ -7,6 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import time
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,8 +46,18 @@ def main():
         if not target.exists():
             partial = target.with_suffix(".hdf5.partial")
             url = f"https://huggingface.co/datasets/{repo}/resolve/{revision}/{item['path']}"
-            subprocess.run(["curl", "--http1.1", "-fL", "--retry", "4", "--connect-timeout", "30", "--max-time", "600",
-                            "-C", "-", "-o", str(partial), url], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+            for attempt in range(3):
+                if partial.exists() and partial.stat().st_size == item["size"] and sha(partial) == expected:
+                    break
+                # Start a fresh curl invocation after a truncated transfer so
+                # -C reads the newly saved offset instead of discarding progress.
+                result = subprocess.run(["curl", "--http1.1", "-fL", "--retry", "2", "--connect-timeout", "30", "--max-time", "600",
+                                         "-C", "-", "-o", str(partial), url], stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+                if result.returncode == 0:
+                    break
+                if attempt == 2:
+                    raise RuntimeError(f"Download failed; partial preserved at {partial}: {result.stderr.decode(errors='replace')[-800:]}")
+                time.sleep(2)
             if partial.stat().st_size != item["size"] or sha(partial) != expected:
                 raise ValueError(f"Download integrity mismatch: {partial}")
             partial.replace(target)

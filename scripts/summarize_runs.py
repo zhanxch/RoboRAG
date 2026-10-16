@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import math
 from pathlib import Path
 
 
@@ -16,6 +17,7 @@ def summarize(folder):
         return None
     result_paths = list((folder / "native").rglob("_result.json"))
     failures = list((folder / "native").rglob("_infrastructure_failure.json"))
+    failures += list((folder / "native").rglob("_policy_error.json"))
     native = load(result_paths[0]) if len(result_paths) == 1 else None
     exit_info = load(folder / "exit.json")
     decisions = []
@@ -38,7 +40,12 @@ def summarize(folder):
                 missing_usage += 1
         else:
             missing_usage += 1
-    valid = bool(native and native.get("eval_time") == 1 and not failures and not native.get("policy_error"))
+    score = native.get("score") if native else None
+    valid = bool(native and native.get("eval_time") == 1 and not failures and not native.get("policy_error")
+                 and type(score) in (float, int) and math.isfinite(score) and 0 <= score <= 100
+                 and native.get("success_rate") in (0, 1)
+                 and not any(d.get("interrupted") or d.get("policy_error")
+                             for d in native.get("details", {}).values()))
     if run.get("capture_only"):
         valid = False
         status = "capture_only"
@@ -49,6 +56,7 @@ def summarize(folder):
     else:
         status = "running_or_interrupted_no_exit_evidence"
     row = {"run": folder.name, "mode": run["arguments"]["mode"], "task": run["arguments"]["task"],
+           "evaluation_role": run.get("evaluation_role", "unspecified"),
            "layout": run["arguments"]["layout"], "status": status, "valid_native_episode": valid,
            "score_0_100": native["score"] if valid else None,
            "success_rate": native["success_rate"] if valid else None,

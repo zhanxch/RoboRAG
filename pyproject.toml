@@ -5,11 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "roborag"
 version = "0.1.0"
-description = "Dual-memory retrieval prototype for robot in-context learning"
+description = "Minimal code-as-policy control over RoboRAG's MCP-based embodied MHS"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
+[project.optional-dependencies]
+mhs = ["mcp>=1.28,<2"]
+cap = ["mcp>=1.28,<2", "jsonschema>=4,<5"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
-

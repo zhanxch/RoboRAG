@@ -1,5 +1,29 @@
 # RoboRAG
 
+本分支 `feat/mhs-cap-minimal` 先实现 **单模型 CaP + 本体 skill + 自定义具身 MHS**。
+MHS 是 RoboRAG 自己定义的设备语义契约，使用 MCP 做能力发现和调用传输。
+这里的 MHS 独立于 Anthropic 的同名研究预览，不依赖其未公开 SDK。
+
+闭环：任务和最新观测 → 模型生成 Python 程序 → MHS 调用预编写 skill →
+实际回执与新观测 → 同一模型继续或修正。第一版保持同步、单设备会话，RAG 关闭；
+当前回合的程序、回执和错误仍保留在工作记忆中。
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -e '.[cap]'
+.venv/bin/python -m roborag.cap.demo --output runs/mhs-cap-demo --reject-first-move
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+默认 demo 使用**确定性假模型和合成设备**，经真实 MCP stdio 子进程验证故障反馈、
+重新生成程序和完成后停止。它不需要模型账户、GPU 或仿真资产，不是 manipulation 成绩。
+实际模型入口、可替换设备服务、支持的 Python 子集和当前验证边界见
+[MHS + CaP 最小版本](docs/mhs-cap-minimal.md)；后续顺序见 [control TODO](docs/control-todo.md)。
+
+以下保留原有 RAG 试点的说明和运行入口；该试点与本分支的新闭环分别验证。
+
+## 历史 RAG 试点
+
 **Retrieval-Augmented In-Context Learning for Robot Control**
 
 RoboRAG 探索如何为机器人持续选择有用的上下文：执行前构建长期经验库，执行中维护独立的短期经验库，再将两路检索结果提供给具有 in-context learning（ICL）能力的策略模型。

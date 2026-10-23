@@ -67,7 +67,9 @@ def materialize_images(value, directory):
     return visit(copy.deepcopy(value)), images
 
 
-def infer(payload, schema, directory, *, effort="medium", timeout=600):
+def infer(payload, schema, directory, *, model="gpt-6-astra", effort="medium", timeout=600):
+    if not isinstance(model, str) or not model.strip():
+        raise ValueError("model must be a nonempty string")
     directory = Path(directory).resolve()
     directory.mkdir(parents=True, exist_ok=False)
     rendered, images = materialize_images(payload, directory)
@@ -81,7 +83,7 @@ def infer(payload, schema, directory, *, effort="medium", timeout=600):
     (directory / "prompt.txt").write_text(prompt)
     binary = os.environ.get("COMPARE_CODEX_BIN", "/home/zxc/.local/bin/codex")
     command = [binary, "--no-daemon", "exec", "--ignore-user-config", "--ephemeral",
-               "--skip-git-repo-check", "--sandbox", "read-only", "--model", "gpt-6-astra",
+               "--skip-git-repo-check", "--sandbox", "read-only", "--model", model,
                "-c", f'model_reasoning_effort="{effort}"', "-c", 'web_search="disabled"']
     for name in ("shell_tool", "unified_exec", "multi_agent", "apps", "plugins", "hooks",
                  "browser_use", "computer_use", "image_generation", "memories", "view_image",
@@ -93,7 +95,7 @@ def infer(payload, schema, directory, *, effort="medium", timeout=600):
     command += ["--output-schema", str(directory / "schema.json"),
                 "--output-last-message", str(answer), "--json", "-"]
     write_json(directory / "invocation.json", {"command": command, "images": images,
-        "model": "gpt-6-astra", "effort": effort, "transport": "codex-cli-chatgpt-login",
+        "model": model, "effort": effort, "transport": "codex-cli-chatgpt-login",
         "provider_snapshot_available": False, "opaque_reasoning_replayed": False})
     environment = {k: v for k, v in os.environ.items() if not k.startswith((
         "PYTHON", "LD_", "CUDA", "CONDA", "VIRTUAL_ENV", "ASTRA", "ROBODOJO", "ROBOICL"))}

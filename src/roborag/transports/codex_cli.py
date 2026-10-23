@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import signal
 import subprocess
 import tempfile
@@ -21,25 +22,58 @@ def write_json(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
 
 
+def normalize_usage(usage):
+    """Unavailable usage is unknown, not a zero-token inference."""
+    usage = usage if isinstance(usage, dict) else {}
+    def count(key):
+        value = usage.get(key)
+        return value if type(value) is int and value >= 0 else None
+    incoming, outgoing, cached = (count(k) for k in ("input_tokens", "output_tokens", "cached_input_tokens"))
+    if incoming is not None and cached is not None and cached > incoming:
+        cached = None
+    return {"input_tokens": incoming, "output_tokens": outgoing,
+            "total_tokens": incoming + outgoing if incoming is not None and outgoing is not None else None,
+            "input_tokens_details": {"cached_tokens": cached}}
+
+
 def validate_cli_events(events, directory):
     """Allow only the observed startup capability notice, never execution errors."""
-    capability_notice = "Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`."
+    capability_notices = {
+        "Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`.",
+        "Code Mode is unavailable because code-mode host is disabled. Falling back to direct tools; enable `features.code_mode_host` and install `codex-code-mode-host`.",
+    }
+    proxy_notice_prefix = (
+        "Under-development features enabled: respect_system_proxy. Under-development "
+        "features are incomplete and may behave unpredictably. To suppress this warning, "
+        "set `suppress_unstable_features_warning = true` in "
+    )
     started = False
-    notices, unexpected = [], []
+    notices, retries, unexpected = [], [], []
     for event in events:
         if event.get("type") == "turn.started":
             started = True
+        if (event.get("type") == "error" and re.fullmatch(
+                r"Reconnecting\.\.\. [1-9]\d*/[1-9]\d* \(stream disconnected before completion: [^\n]+\)",
+                event.get("message", ""))):
+            retries.append(event)
+            continue
+        if event.get("type") == "error":
+            unexpected.append(event)
         item = event.get("item", {})
+        message = item.get("message", "")
+        known_startup = (message in capability_notices or
+                         (message.startswith(proxy_notice_prefix) and message.endswith("/config.toml.")))
         if (not started and event.get("type") == "item.completed"
-                and item.get("type") == "error" and item.get("message") == capability_notice):
+                and item.get("type") == "error" and known_startup):
             notices.append(event)
         elif item.get("type") not in (None, "agent_message", "reasoning"):
             unexpected.append(event)
     complete = [e for e in events if e.get("type") == "turn.completed"]
     write_json(Path(directory) / "event_validation.json", {
         "disabled_capability_notices": notices, "unexpected_events": unexpected,
+        "transport_retry_notices": retries,
         "completed_turns": len(complete)})
-    if not complete or unexpected or any(e.get("type") in ("turn.failed", "error") for e in events):
+    if len(complete) != 1 or unexpected or any(e.get("type") == "turn.failed" for e in events):
         raise RuntimeError(f"Codex failed or attempted an external tool; see {directory}")
     return complete[-1].get("usage", {})
 
@@ -84,7 +118,8 @@ def infer(payload, schema, directory, *, model="gpt-6-astra", effort="medium", t
     binary = os.environ.get("COMPARE_CODEX_BIN", "/home/zxc/.local/bin/codex")
     command = [binary, "--no-daemon", "exec", "--ignore-user-config", "--ephemeral",
                "--skip-git-repo-check", "--sandbox", "read-only", "--model", model,
-               "-c", f'model_reasoning_effort="{effort}"', "-c", 'web_search="disabled"']
+               "-c", f'model_reasoning_effort="{effort}"', "-c", 'web_search="disabled"',
+               "-c", "features.respect_system_proxy=true"]
     for name in ("shell_tool", "unified_exec", "multi_agent", "apps", "plugins", "hooks",
                  "browser_use", "computer_use", "image_generation", "memories", "view_image",
                  "code_mode", "code_mode_host", "goals"):
@@ -129,7 +164,4 @@ def infer(payload, schema, directory, *, model="gpt-6-astra", effort="medium", t
     result = json.loads(answer.read_text())
     import jsonschema
     jsonschema.validate(result, schema)
-    return result, {"input_tokens": usage.get("input_tokens", 0),
-        "output_tokens": usage.get("output_tokens", 0),
-        "total_tokens": usage.get("input_tokens", 0) + usage.get("output_tokens", 0),
-        "input_tokens_details": {"cached_tokens": usage.get("cached_input_tokens", 0)}}
+    return result, normalize_usage(usage)

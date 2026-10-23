@@ -20,7 +20,7 @@ class NoPolicyClient:
 
 
 @contextmanager
-def open_environment():
+def open_environment(*, register_task=True):
     from roboicl.paths import ROBODOJO, configure_imports
     configure_imports("sim")
     from isaaclab.app import AppLauncher
@@ -79,17 +79,21 @@ def open_environment():
         env.reset(seed=[args.layout])
         # EvalEnv.run_eval normally registers these before dispatching a policy.
         # Without registration an empty reward-check list can end the episode.
-        env.run_reward()
-        if hasattr(env, "get_score"):
-            env.get_score()
-        if getattr(env, "interact", False) and hasattr(env, "query_support_arm_traj"):
-            for index in env.get_running_env_idx_list():
-                env.query_support_arm_traj(env_idx=index)
+        if register_task:
+            env.run_reward()
+            if hasattr(env, "get_score"):
+                env.get_score()
+            if getattr(env, "interact", False) and hasattr(env, "query_support_arm_traj"):
+                for index in env.get_running_env_idx_list():
+                    env.query_support_arm_traj(env_idx=index)
         env.ik_continuity_guard = IKContinuityGuard(0.15, log_path=output / "ik-continuity.jsonl")
         from roboicl.rollout import _ready_observation
-        _ready_observation(env)
+        if register_task:
+            _ready_observation(env)
         (output / "ready.json").write_text(json.dumps({"task": args.task, "layout": args.layout, "seed": args.seed,
-                                                      "backend": "native RoboDojo / Isaac Sim", "benchmark_evaluation": False}))
+            "backend": "native RoboDojo / Isaac Sim",
+            "task_registration": "runtime" if register_task else "caller",
+            "benchmark_evaluation": False if register_task else None}))
         yield env, output
     finally:
         try:

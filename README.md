@@ -24,6 +24,9 @@ python3 -m venv .venv
 独立 MCP 客户端接入、真实模型入口与验证边界见
 [标准 MCP + CaP 最小版本](docs/cap-mcp-minimal.md)，后续见 [control TODO](docs/control-todo.md)。
 
+已有 RoboICL 策略也可通过同一标准 MCP 服务获取原生观测并逐步执行动作。
+[Astra xhigh 叠衣服试验](docs/roboicl-mcp-trial.md)保留历史示范和策略，单独验证这条接入路径的效果与消耗。
+
 以下保留原有 RAG 试点的说明和运行入口；该试点与本分支的新闭环分别验证。
 
 ## 历史 RAG 试点

@@ -25,6 +25,20 @@ def create_server(device):
     if device.joint_limits:
         tools["move_joints"] = (device.move_joints, "Move one arm to absolute joint positions in radians within native limits; interpolate locally, keep other arm and grippers.",
                                 schema({"arm": arm, "positions": vector(len(device.joint_limits["left"]))}, ("arm", "positions")))
+    if getattr(device, "supports_control_step", False):
+        action_modes = []
+        for mode, length in (("ee_pose", 7), ("arm_joint_state", 6)):
+            fields = {f"{s}_{mode}": vector(length) for s in ("left", "right")}
+            fields.update({f"{s}_ee_joint_state": {"type": "array", "minItems": 1, "maxItems": 1,
+                                                  "items": {"type": "number", "minimum": 0, "maximum": 1}}
+                           for s in ("left", "right")})
+            action_modes.append(schema(fields, fields))
+        tools.update({
+            "read_observation": (device.native_observation, "Read lossless RGB, native proprioception and camera calibration. No object truth or task scores.", schema({})),
+            "control_step": (device.control_step, "Execute one native 25 Hz dual-arm target without added CaP interpolation. Absolute EE wxyz or joint radians, explicit gripper targets. Native IK continuity guard applies.", schema({"action": {"oneOf": action_modes}}, ("action",))),
+            "episode_status": (device.episode_status, "Read executed step count, native step limit and terminal flag; does not disclose reward or task score.", schema({})),
+            "finish_evaluation": (device.finish_evaluation, "Finalize native evaluation only after the environment ends. Scores are saved offline, not returned to the policy.", schema({})),
+        })
     resources = {
         "robodojo://robot": ("Robot reference", lambda: dict(device.describe(), joint_limits_rad=device.joint_limits)),
         "robodojo://state": ("Current proprioception", device.observe),
@@ -42,10 +56,14 @@ def create_server(device):
             value = tools[name][0](**arguments)
             if name == "camera_observe":
                 return CallToolResult(content=value)
+            if name == "read_observation":
+                return CallToolResult(**value)
             return CallToolResult(content=[TextContent(type="text", text=json.dumps(value, allow_nan=False))],
                                   structuredContent=value)
         except Exception as exc:
-            return CallToolResult(isError=True, content=[TextContent(type="text", text=f"{type(exc).__name__}: {exc}")])
+            extra = ({"structuredContent": {"controller_event": exc.controller_event}}
+                     if getattr(exc, "controller_event", None) else {})
+            return CallToolResult(isError=True, content=[TextContent(type="text", text=f"{type(exc).__name__}: {exc}")], **extra)
 
     @server.list_resources()
     async def list_resources():

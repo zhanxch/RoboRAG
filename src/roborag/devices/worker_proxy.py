@@ -19,7 +19,9 @@ class WorkerProxy:
         self.selector = selectors.DefaultSelector()
         self.selector.register(self.process.stdout, selectors.EVENT_READ)
         try:
-            self.joint_limits = self._receive()["joint_limits"]
+            ready = self._receive()
+            self.joint_limits = ready["joint_limits"]
+            self.supports_control_step = ready.get("supports_control_step", False)
         except BaseException:
             self.close()
             raise
@@ -39,7 +41,9 @@ class WorkerProxy:
         line, self.buffer = self.buffer.split(b"\n", 1)
         result = json.loads(line)
         if not result["ok"]:
-            raise DeviceError(result["error"])
+            error = DeviceError(result["error"])
+            error.controller_event = result.get("controller_event")
+            raise error
         return result["value"]
 
     def _call(self, method, **arguments):
@@ -65,6 +69,10 @@ class WorkerProxy:
     def gripper(self, arm, opening): return self._call("gripper", arm=arm, opening=opening)
     def execution_status(self): return self._call("execution_status")
     def stop(self): return self._call("stop")
+    def native_observation(self): return self._call("native_observation")
+    def control_step(self, action): return self._call("control_step", action=action)
+    def episode_status(self): return self._call("episode_status")
+    def finish_evaluation(self): return self._call("finish_evaluation")
 
     def close(self):
         if self.process.stdin and not self.process.stdin.closed:

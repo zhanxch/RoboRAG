@@ -12,7 +12,7 @@ class ProgramError(ValueError):
     pass
 
 
-METHODS = {"describe", "observe", "move", "gripper", "stop"}
+METHODS = {"call_tool", "read_resource"}
 ALLOWED = (ast.Module, ast.Assign, ast.Expr, ast.If, ast.For, ast.Break, ast.Continue,
            ast.Pass, ast.Name, ast.Load, ast.Store, ast.Constant, ast.List, ast.Tuple,
            ast.Dict, ast.Subscript, ast.Call, ast.Attribute, ast.keyword, ast.BinOp,
@@ -40,15 +40,15 @@ def parse(source):
             raise ProgramError("only JSON constants are supported")
         if isinstance(node, (ast.Assign, ast.For)):
             targets = node.targets if isinstance(node, ast.Assign) else [node.target]
-            if any(not isinstance(t, ast.Name) or t.id in ("robot", "range") for t in targets):
+            if any(not isinstance(t, ast.Name) or t.id in ("mcp", "range") for t in targets):
                 raise ProgramError("assign only to local variable names")
         if isinstance(node, ast.Attribute):
-            if not isinstance(node.value, ast.Name) or node.value.id != "robot" or node.attr not in METHODS:
-                raise ProgramError("only documented robot methods are available")
+            if not isinstance(node.value, ast.Name) or node.value.id != "mcp" or node.attr not in METHODS:
+                raise ProgramError("only documented MCP methods are available")
         if isinstance(node, ast.Call):
             if not isinstance(node.func, ast.Attribute) and not (
                     isinstance(node.func, ast.Name) and node.func.id == "range"):
-                raise ProgramError("calls must target robot methods or range")
+                raise ProgramError("calls must target MCP methods or range")
             if any(k.arg is None for k in node.keywords):
                 raise ProgramError("expanded keyword arguments are unsupported")
     return tree
@@ -59,8 +59,8 @@ class _Continue(Exception): pass
 
 
 class Program:
-    def __init__(self, robot, emit, *, max_operations=5000, max_calls=64):
-        self.robot, self.emit = robot, emit
+    def __init__(self, mcp, emit, *, max_operations=5000, max_calls=64):
+        self.mcp, self.emit = mcp, emit
         self.remaining, self.calls = max_operations, max_calls
         self.variables = {}
 
@@ -155,15 +155,16 @@ class Program:
                 return result
             self.calls -= 1
             if self.calls < 0:
-                raise ProgramError("device call budget exhausted")
+                raise ProgramError("MCP call budget exhausted")
             name = node.func.attr
             event = {"method": name, "args": args, "kwargs": kwargs}
             try:
-                result = getattr(self.robot, name)(*args, **kwargs)
+                result = getattr(self.mcp, name)(*args, **kwargs)
                 # Deep copy JSON values; programs never receive a driver object.
                 result = json.loads(json.dumps(result, allow_nan=False))
             except Exception as exc:
-                self.emit(dict(event, status="error", error=f"{type(exc).__name__}: {exc}"))
+                self.emit(dict(event, status="error", error=f"{type(exc).__name__}: {exc}",
+                               result=getattr(exc, "result", None)))
                 raise
             self.emit(dict(event, status="returned", result=result))
             return result

@@ -1,24 +1,28 @@
 # RoboRAG
 
-本分支 `feat/mhs-cap-minimal` 先实现 **单模型 CaP + 本体 skill + 自定义具身 MHS**。
-MHS 是 RoboRAG 自己定义的设备语义契约，使用 MCP 做能力发现和调用传输。
-这里的 MHS 独立于 Anthropic 的同名研究预览，不依赖其未公开 SDK。
+本分支 `feat/mhs-cap-minimal` 实现 **标准 MCP + 单模型 Code-as-Policy + RoboDojo 本体技能**。
+RoboDojo 的状态、相机和动作通过标准 MCP 服务提供，CaP 使用同一入口生成并执行程序。
+不另设 MHS 协议版本，也不要求所有机器人实现固定的五个机械臂接口。
 
-闭环：任务和最新观测 → 模型生成 Python 程序 → MHS 调用预编写 skill →
-实际回执与新观测 → 同一模型继续或修正。第一版保持同步、单设备会话，RAG 关闭；
-当前回合的程序、回执和错误仍保留在工作记忆中。
+闭环：任务与观测 → 模型生成程序 → MCP 调用本体技能 → 回执、错误和新观测 → 同一模型继续。
+运动插值、IK、关节限制与仿真步进留在本体侧。第一版为单环境、串行阻塞调用；RAG 关闭。
 
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[cap]'
-.venv/bin/python -m roborag.cap.demo --output runs/mhs-cap-demo --reject-first-move
+# 无 GPU / 模型账户的合成闭环，含一次拒绝后的修正
+.venv/bin/python -m roborag.cap.demo --output runs/mcp-demo --reject-first-move
+# 复用已配置的 RoboDojo 运行时，在真实仿真中验证 MCP 接口
+.venv/bin/python scripts/run_cap_robodojo.py --runtime /absolute/path/to/local.runtime.json \
+  --task stack_blocks --smoke --output runs/robodojo-mcp-smoke
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-默认 demo 使用**确定性假模型和合成设备**，经真实 MCP stdio 子进程验证故障反馈、
-重新生成程序和完成后停止。它不需要模型账户、GPU 或仿真资产，不是 manipulation 成绩。
-实际模型入口、可替换设备服务、支持的 Python 子集和当前验证边界见
-[MHS + CaP 最小版本](docs/mhs-cap-minimal.md)；后续顺序见 [control TODO](docs/control-todo.md)。
+原生服务提供 RGB、本体状态、末端位姿/关节运动、夹爪指令、执行反馈与停止；
+当前适配器支持双 ARX-X5。通用 CaP 核心不依赖这些工具名或机械臂形态。
+`--smoke` 使用脚本代替模型，验证接口调用与观测到的位移，不计 manipulation 成绩。
+独立 MCP 客户端接入、真实模型入口与验证边界见
+[标准 MCP + CaP 最小版本](docs/cap-mcp-minimal.md)，后续见 [control TODO](docs/control-todo.md)。
 
 以下保留原有 RAG 试点的说明和运行入口；该试点与本分支的新闭环分别验证。
 

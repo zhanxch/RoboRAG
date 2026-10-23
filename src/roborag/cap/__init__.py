@@ -1,4 +1,4 @@
-"""Minimal code-as-policy loop over RoboRAG MHS."""
+"""Minimal code-as-policy loop over standard MCP servers."""
 
 from .harness import run_episode
 

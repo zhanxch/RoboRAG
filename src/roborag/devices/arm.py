@@ -1,20 +1,11 @@
-"""RoboRAG MHS v0.1: a project-owned embodied interface carried over MCP."""
+"""Helpers for the example arm adapters; these are not protocol requirements."""
 from __future__ import annotations
 
 import math
-from typing import Protocol
 
 
 class DeviceError(RuntimeError):
     """A driver error; earlier commands may already have moved the device."""
-
-
-class Device(Protocol):
-    def describe(self) -> dict: ...
-    def observe(self) -> dict: ...
-    def move(self, arm: str, position: list[float]) -> dict: ...
-    def gripper(self, arm: str, opening: float) -> dict: ...
-    def stop(self) -> dict: ...
 
 
 def position3(value):
@@ -32,14 +23,8 @@ def opening01(value):
 
 def description(device_id, arms, frame, *, backend, limits):
     return {
-        "interface": "roborag-mhs/0.1", "standard_owner": "RoboRAG",
         "device_id": device_id, "backend": backend, "arms": arms,
         "frame": frame, "units": "metres", "limits": limits,
-        "skills": {
-            "observe()": "Read fresh state and available camera images.",
-            "move(arm, position)": "Move EE to absolute xyz, preserving observed orientation and gripper target.",
-            "gripper(arm, opening)": "Command 0=closed, 1=open; completion does not prove grasp success.",
-            "stop()": "Stop dispatching new commands in this synchronous simulation adapter.",
-        },
+        "capabilities": "Discover supported operations and their input schemas through MCP tools/list.",
         "execution": "Blocking calls. Failure aborts the program; already executed motion is not rolled back.",
     }

@@ -6,7 +6,7 @@ import sys
 
 from .brains import CodexBrain, FixtureBrain
 from .harness import run_episode
-from roborag.mhs.client import MCPDevice
+from .mcp_client import MCPClient
 
 
 def main():
@@ -18,7 +18,7 @@ def main():
     parser.add_argument("--max-rounds", type=int, default=8)
     parser.add_argument("--reject-first-move", action="store_true")
     parser.add_argument("--server-config", type=Path,
-                        help="Trusted JSON with command, args and optional env for a RoboRAG MHS stdio server")
+                        help="Trusted MCP stdio config: command, args, optional env/timeout/before_round/on_exit")
     parser.add_argument("--task", default="Move the block to the target and release it.")
     args = parser.parse_args()
     if args.server_config and (args.brain == "fixture" or args.reject_first_move):
@@ -29,17 +29,20 @@ def main():
     if args.server_config:
         server = json.loads(args.server_config.read_text())
     else:
-        server = {"command": sys.executable, "args": ["-m", "roborag.mhs.server"],
-                  "env": {"PYTHONPATH": str(Path(__file__).resolve().parents[2])}}
+        server = {"command": sys.executable, "args": ["-m", "roborag.devices.synthetic_server"],
+                  "env": {"PYTHONPATH": str(Path(__file__).resolve().parents[2])},
+                  "before_round": [{"tool": "observe"}], "on_exit": [{"tool": "stop"}]}
         if args.reject_first_move:
             server["args"].append("--reject-first-move")
     brain = (FixtureBrain() if args.brain == "fixture" else
              CodexBrain(output / "model", model=args.model, effort=args.effort))
-    with MCPDevice(server["command"], server.get("args", []), env=server.get("env")) as robot:
-        summary = run_episode(robot, brain, args.task, output=output, max_rounds=args.max_rounds)
+    with MCPClient(server["command"], server.get("args", []), env=server.get("env"),
+                   timeout=server.get("timeout", 30)) as mcp:
+        summary = run_episode(mcp, brain, args.task, output=output, max_rounds=args.max_rounds,
+                              before_round=server.get("before_round", []), on_exit=server.get("on_exit", []))
         if not args.server_config:
             # Fixture-only external check, never injected into the model context.
-            final = robot.observe()
+            final = mcp.call_tool("observe")["structuredContent"]
             summary["synthetic_check"] = (final["objects"]["block"] == final["objects"]["target"]
                                           and not final["held"])
             (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")

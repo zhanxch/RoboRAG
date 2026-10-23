@@ -9,19 +9,23 @@ from .program import Program
 INSTRUCTIONS = """Control the supplied device by writing a short Python program.
 Return {kind: 'program', code: '...', note: '...'} or
 {kind: 'finish', code: '', note: 'evidence and remaining uncertainty'}.
-Use robot.describe(), robot.observe(), robot.move(arm, position),
-robot.gripper(arm, opening), robot.stop() exactly as the capability description says.
+Use mcp.call_tool(name, arguments) for the discovered tools, and
+mcp.read_resource(uri) for resources from a server that advertises them.
+Tool names, argument schemas and physical semantics come from the server catalog.
+call_tool returns the standard MCP result: optional structuredContent plus content
+blocks (text/image/resource). read_resource returns a contents list.
+No observation, movement or stop tool is universally required or assumed.
 Supported Python: local variables, JSON literals, indexing, numeric arithmetic,
 comparisons, if/else, for over a list or range (max 100), break/continue.
 Imports, functions, while, comprehensions and other Python APIs are unavailable.
 At most 64 device calls and 5000 interpreter operations per program.
 Read feedback before correcting an error: earlier motion is not rolled back.
 Use short programs and return for visual reasoning when the scene needs inspection.
-Gripper commands do not prove grasp success. Finish is your assessment, not a score.
+A tool returning successfully is not proof of task success. Finish is your assessment, not a score.
 """
 
 
-def run_episode(robot, brain, task, *, output, max_rounds=8):
+def run_episode(mcp, brain, task, *, output, max_rounds=8, before_round=(), on_exit=()):
     if type(max_rounds) is not int or not 1 <= max_rounds <= 80:
         raise ValueError("max_rounds must be an integer in [1, 80]")
     output = Path(output)
@@ -33,23 +37,24 @@ def run_episode(robot, brain, task, *, output, max_rounds=8):
             stream.write(json.dumps(event, ensure_ascii=False, allow_nan=False) + "\n")
 
     summary = {"status": "round_limit", "task_success": None, "rounds": 0,
-               "interface": "roborag-mhs/0.1"}
+               "protocol": "MCP", "transport": "stdio"}
     try:
-        capabilities = robot.describe()
+        capabilities = deepcopy(mcp.catalog)
         log({"type": "start", "task": task, "capabilities": capabilities,
              "brain": getattr(brain, "metadata", {"kind": "custom"}), "rag": "off"})
         for turn in range(1, max_rounds + 1):
             summary["rounds"] = turn
-            observation = robot.observe()
+            observations = [{"tool": call["tool"], "result": mcp.call_tool(
+                call["tool"], call.get("arguments", {}))} for call in before_round]
             context = {"instructions": INSTRUCTIONS, "task": task,
-                       "capabilities": capabilities, "observation": observation,
+                       "capabilities": capabilities, "inputs": observations,
                        "history": deepcopy(history)}
             decision = brain(context)
             if (not isinstance(decision, dict) or decision.get("kind") not in ("program", "finish")
                     or not isinstance(decision.get("code"), str)
                     or not isinstance(decision.get("note"), str)):
                 raise ValueError("brain must return kind, code and note")
-            log({"type": "decision", "round": turn, "observation": observation, **decision})
+            log({"type": "decision", "round": turn, "inputs": observations, **decision})
             if decision["kind"] == "finish":
                 if decision["code"].strip():
                     raise ValueError("finish cannot contain executable code")
@@ -64,7 +69,7 @@ def run_episode(robot, brain, task, *, output, max_rounds=8):
 
             feedback = {"decision": decision, "status": "executed", "calls": calls}
             try:
-                Program(robot, emit).execute(decision["code"])
+                Program(mcp, emit).execute(decision["code"])
             except Exception as exc:
                 feedback.update(status="error", error=f"{type(exc).__name__}: {exc}")
             history.append(feedback)
@@ -73,10 +78,13 @@ def run_episode(robot, brain, task, *, output, max_rounds=8):
         summary.update(status="failed", error=f"{type(exc).__name__}: {exc}")
         raise
     finally:
-        try:
-            log({"type": "stop", "result": robot.stop()})
-        except Exception as exc:
-            summary.update(status="failed", stop_error=f"{type(exc).__name__}: {exc}")
+        # Device lifecycle is explicit host configuration, never inferred from names.
+        for call in on_exit:
+            try:
+                log({"type": "on_exit", "tool": call["tool"], "result": mcp.call_tool(
+                    call["tool"], call.get("arguments", {}))})
+            except Exception as exc:
+                summary.update(status="failed", cleanup_error=f"{type(exc).__name__}: {exc}")
         (output / "summary.json").write_text(
             json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return summary

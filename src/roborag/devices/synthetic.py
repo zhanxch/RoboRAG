@@ -3,7 +3,7 @@ from copy import deepcopy
 import math
 from uuid import uuid4
 
-from .device import DeviceError, description, opening01, position3
+from .arm import DeviceError, description, opening01, position3
 
 
 class SyntheticDevice:

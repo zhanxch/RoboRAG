@@ -1,8 +1,23 @@
-# RoboRAG
+# RoboRAG: Interaction-Aware Retrieval-Augmented Manipulation
 
-**Retrieval-Augmented In-Context Learning for Robot Control**
+**面向交互阶段与经验的检索增强机器人操作**
 
-RoboRAG 探索如何为机器人持续选择有用的上下文：执行前构建长期经验库，执行中维护独立的短期经验库，再将两路检索结果提供给具有 in-context learning（ICL）能力的策略模型。
+RoboRAG 研究如何根据当前交互阶段，存储、检索并使用历史交互经验，以改善 Agent 的后续决策。
+经验表示与更新、阶段感知的检索与使用、跨后端验证是拟贡献；MCP 是支撑接口，不单独宣称算法创新。
+当前实现与实验结果分别记录，研究目标不代表已经证明的收益。
+
+## 经验图库与 GPT 规划
+
+[交互经验图库](docs/graph-bank.md) 提供真实示范 graph、阶段、动作前后证据和浏览前端。
+graph 记录历史，`next` 是示范顺序；GPT 根据当前初始图像、任务要求和少量检索参考生成新 plan，
+再生成当前场景的新 action chunk，二者不需要与历史节点一一对应。
+
+[MCP 接入](docs/rag-mcp.md) 已跑通“检索 → GPT 新 plan → 分段执行”。标准积木 layout 0 开发回合
+取得原生 **100 分、success=true**，179 个原生控制步、18 次动作段调用，缓存输入占比约 92.1%。
+该回合使用与示范一致的 14 维 link6 增量动作；此前失败尝试也保留在报告中。
+这验证了流程可运行，不证明 RAG 相对无 RAG 的成功率或成本优势。
+
+下述双库方法与配对结果是此前保留的实现和实验，与此次 MCP 开发回合分开记录。
 
 ## Motivation
 

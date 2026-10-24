@@ -1,0 +1,2 @@
+# Install into a dedicated --target directory; simulator keeps its existing deps.
+mcp==2.3.0

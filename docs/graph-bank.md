@@ -38,7 +38,7 @@ graph 的 `semantics.role=recorded_experience` 明确这一点。`next` 边仅�
 
 时间窗口使用 `[start_frame, end_frame)`。图的来源和 Codex 提取配置保存在 JSON 中。
 当前图是自动提取的参考经验，阶段边界是估计值；尚未作为人工标注 GT。
-当前提供库侧检索与上下文接口，尚未接入在线执行器，也没有从初始图像直接生成 plan 的功能。
+当前提供库侧检索与上下文接口。本分支另有 [MCP 在线接入](rag-mcp.md)：GPT 读取当前图像及参考后生成新 plan，再提交新动作。新 plan 单独保存在运行记录中，不会覆盖经验图。
 
 ## 构图库
 
@@ -153,7 +153,7 @@ context_for_model = result["model_context"]
 索引、图文件按文件版本缓存，查询本身不调用 LLM。原始视频/动作保留在 HDF5 中，默认只返回引用；
 少量代表经验按需展开，避免每次把所有 graph 和数百行控制数据发送给模型。
 页面报告字符数、字节数和本地查询耗时，不将字符数冒充 token 或实际费用。
-离线 Codex 构图和下游 Agent 的推理仍有成本；当前没有端到端成本/收益实验。
+离线 Codex 构图和下游 Agent 的推理仍有成本；[MCP 开发实测](rag-mcp.md) 已记录在线 token、缓存与原生结果，尚无证明净收益的匹配对照。
 
 ## GPT 规划环节：当前已支持与尚未接入的部分
 
@@ -161,7 +161,7 @@ context_for_model = result["model_context"]
 执行时：当前图像/本体状态 + plan 中的子目标 → RAG 提供局部动作证据 → GPT 生成新的 action chunk → 执行后再观察。
 这里的检索问题可以由同一个 GPT 在正常决策过程中构造，不要求额外调用一次模型只做查询改写。
 
-当前实现的是中间的经验索引、检索、证据读取、上下文封装和可视化；尚未实现两端的 GPT 规划器与在线闭环。
+当前已实现经验索引、检索、证据读取、上下文封装与可视化；本分支的 MCP 接入同时记录 GPT 的新 plan 和在线动作闭环，具体实现与试验限制见 [接入说明](rag-mcp.md)。
 返回 `model_context.purpose` 区分 `evidence_for_gpt_planning` 与 `evidence_for_gpt_action_generation`，
 并明确要求根据当前目标/图像/状态生成新计划或动作、绑定当前物体、引用采用的来源。
 索引中的自动文字、源数据中的数值测量、GPT 对当前场景的判断应分别标明，不能混成一种“事实”。

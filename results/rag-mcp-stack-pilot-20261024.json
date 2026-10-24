@@ -1,0 +1,243 @@
+{
+  "schema": "roborag.mcp-pilot-summary.v1",
+  "runs": [
+    {
+      "run": "/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-mcp-stack-l0-v1",
+      "complete": false,
+      "native": null,
+      "controller": "HexaShell kinematic adapter; GPT authored TCP waypoint chunks",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "failure": {
+        "complete": false,
+        "error": "KeyboardInterrupt",
+        "detail": "",
+        "wall_seconds": 85.68983225198463
+      },
+      "reported_usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "actual_billed_usd": null,
+      "cached_input_fraction": null,
+      "uncached_input_tokens": null,
+      "completed_native_turns": 0,
+      "model_request_count": null,
+      "tool_counts": {
+        "observe": 1,
+        "read_action_reference": 2,
+        "retrieve_evidence": 1
+      },
+      "native_control_steps": 0,
+      "executed_delta_rows": 0,
+      "executed_waypoints": 0,
+      "retrieval_context_chars": [
+        2240
+      ],
+      "plan_steps": 0,
+      "plan_adaptation": null,
+      "workflow_verified": null,
+      "wall_seconds": 85.68983225198463
+    },
+    {
+      "run": "/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-mcp-stack-l0-v2",
+      "complete": false,
+      "native": null,
+      "controller": "HexaShell kinematic adapter; GPT authored TCP waypoint chunks",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "failure": {
+        "error": "FileNotFoundError",
+        "detail": "[Errno 2] No such file or directory: '/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-mcp-stack-l0-v2/outbox/01792824099025130222.json.tmp'",
+        "complete": false
+      },
+      "reported_usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "actual_billed_usd": null,
+      "cached_input_fraction": null,
+      "uncached_input_tokens": null,
+      "completed_native_turns": 0,
+      "model_request_count": null,
+      "tool_counts": {
+        "execute_chunk": 1,
+        "observe": 1,
+        "read_action_reference": 2,
+        "record_plan": 1,
+        "retrieve_evidence": 1
+      },
+      "native_control_steps": 82,
+      "executed_delta_rows": 0,
+      "executed_waypoints": 3,
+      "retrieval_context_chars": [
+        2229
+      ],
+      "plan_steps": 4,
+      "plan_adaptation": "采用历史示范的先包围再闭合、竖直抬起确认、上方对齐后下降松爪的策略。跳过历史底座搬运和双臂切换：当前三块都在右侧，紫色位置适合作底座。只用当前相机标定计算绝对世界TCP，绝不照抄历史link6位移。短批次合并无障碍移动；不确定抓举后及释放后停下查看自动返回头部和右腕图像。估计边长及夹持偏移将由现场图像修正。",
+      "workflow_verified": null,
+      "wall_seconds": 303.35628231999
+    },
+    {
+      "run": "/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-mcp-stack-l0-v3",
+      "complete": true,
+      "native": {
+        "success_rate": 0.0,
+        "eval_time": 1,
+        "score": 15.0,
+        "details": {
+          "0": {
+            "layout_id": 0,
+            "success": false,
+            "score": 0.15
+          }
+        }
+      },
+      "controller": "HexaShell kinematic adapter; GPT authored TCP waypoint chunks",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "failure": null,
+      "reported_usage": {
+        "input_tokens": 501268,
+        "cached_input_tokens": 463488,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6835,
+        "reasoning_output_tokens": 3161
+      },
+      "actual_billed_usd": null,
+      "cached_input_fraction": 0.9246311354405229,
+      "uncached_input_tokens": 37780,
+      "completed_native_turns": 1,
+      "model_request_count": null,
+      "tool_counts": {
+        "execute_chunk": 8,
+        "observe": 1,
+        "read_action_reference": 2,
+        "record_plan": 1,
+        "retrieve_evidence": 1
+      },
+      "native_control_steps": 550,
+      "executed_delta_rows": 0,
+      "executed_waypoints": 21,
+      "retrieval_context_chars": [
+        2257
+      ],
+      "plan_steps": 4,
+      "plan_adaptation": "Reuse historical close-then-lift verification and low release followed by upward withdrawal from stack_blocks-0003:p04 and p06. Skip historical base relocation, left-arm work, and arm switching because all live cubes are on the right. Recompute all fingertip TCP targets from current camera calibration, never copy historical link6 poses or deltas. Use downward approach and x finger separation, tentative grasp TCP z=0.765, free travel z=0.89-0.92. Pause after each lift for head and active wrist RGB confirmation, adjust live grasp offset if needed; release white with its bottom near wood top z=0.78 and purple bottom near white top z=0.82. Check receipts and revise unreachable targets. Continue settling/correcting until episode_over.",
+      "workflow_verified": true,
+      "wall_seconds": 352.31608015706297
+    },
+    {
+      "run": "/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-mcp-stack-l0-v4",
+      "complete": true,
+      "native": {
+        "success_rate": 0.0,
+        "eval_time": 1,
+        "score": 0.0,
+        "details": {
+          "0": {
+            "layout_id": 0,
+            "success": false,
+            "score": 0.0
+          }
+        }
+      },
+      "controller": "HexaShell kinematic adapter; GPT authored TCP waypoint chunks",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "failure": null,
+      "reported_usage": {
+        "input_tokens": 1035526,
+        "cached_input_tokens": 990592,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15141,
+        "reasoning_output_tokens": 8253
+      },
+      "actual_billed_usd": null,
+      "cached_input_fraction": 0.9566075598294973,
+      "uncached_input_tokens": 44934,
+      "completed_native_turns": 1,
+      "model_request_count": null,
+      "tool_counts": {
+        "execute_chunk": 10,
+        "observe": 1,
+        "read_action_reference": 2,
+        "record_plan": 1,
+        "retrieve_evidence": 1
+      },
+      "native_control_steps": 454,
+      "executed_delta_rows": 0,
+      "executed_waypoints": 22,
+      "retrieval_context_chars": [
+        2204
+      ],
+      "plan_steps": 4,
+      "plan_adaptation": "Use only right arm and leave wood in its current place as base, skipping historical base relocation and arm switching. Reuse stationary closure then lift verification from stack_blocks-0001:p02 and supported release/upward withdrawal/home from p09 end. All absolute fingertip TCP coordinates are recomputed from current RGB/calibration; no historical link6 coordinates copied. Cube sizes/heights and grasp offsets will be refined from fresh head/wrist views. Pause after uncertain lifts and releases; correct XY offsets to under 1 cm. Keep left arm at home and reserve right-arm return-home motion.",
+      "workflow_verified": true,
+      "wall_seconds": 690.9605146270478
+    },
+    {
+      "run": "/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-mcp-stack-l0-v5-delta",
+      "complete": true,
+      "native": {
+        "success_rate": 1.0,
+        "eval_time": 1,
+        "score": 100.0,
+        "details": {
+          "0": {
+            "layout_id": 0,
+            "success": true,
+            "score": 1.0
+          }
+        }
+      },
+      "controller": "RoboICL world link6 delta grammar; native RoboDojo EE control",
+      "model": "gpt-6-astra",
+      "effort": "medium",
+      "failure": null,
+      "reported_usage": {
+        "input_tokens": 929882,
+        "cached_input_tokens": 856064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3506,
+        "reasoning_output_tokens": 358
+      },
+      "actual_billed_usd": null,
+      "cached_input_fraction": 0.9206157340393727,
+      "uncached_input_tokens": 73818,
+      "completed_native_turns": 1,
+      "model_request_count": null,
+      "tool_counts": {
+        "execute_chunk": 18,
+        "observe": 1,
+        "read_action_reference": 3,
+        "record_plan": 1,
+        "retrieve_evidence": 1
+      },
+      "native_control_steps": 179,
+      "executed_delta_rows": 152,
+      "executed_waypoints": 2,
+      "retrieval_context_chars": [
+        2171
+      ],
+      "plan_steps": 4,
+      "plan_adaptation": "Use right arm for both transfers and leave wood as stationary base. Reuse demonstrated downward orientation (wxyz approximately .5,-.5,.5,.5), open approach, stationary closure, lift verification, slow vertical placement and open withdrawal. Skip base relocation and left-arm cross-center grasps. All targets calculated from live calibrated RGB.",
+      "workflow_verified": true,
+      "wall_seconds": 289.4591742970515
+    }
+  ],
+  "interpretation": [
+    "Development integration pilot, not a heldout success-rate study.",
+    "Historical RAG data supports GPT; generated plans and live actions are separate records.",
+    "MCP chunks, delta rows, waypoints and native control steps are different counts; PhysX integration substeps are not counted here.",
+    "Reported token usage covers online policy calls, not offline graph construction or a per-run invoice.",
+    "Cache usage is measured, but no causal improvement over a no-RAG policy is established without a controlled comparison.",
+    "Interrupted attempts may consume unreported tokens; missing usage is not zero."
+  ]
+}

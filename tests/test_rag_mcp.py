@@ -44,6 +44,11 @@ class MCPIntegration(unittest.IsolatedAsyncioTestCase):
                     segments=[dict(delta=row,repeat=24),dict(delta=row,repeat=1)]))
                 self.assertTrue(invalid.is_error)
                 self.assertEqual(memory.submit.call_count,count)
+                memory.state=lambda:dict(step=500,episode_over=True)
+                ended=await client.call_tool("measure_scene", {})
+                self.assertFalse(ended.is_error)
+                self.assertIn("episode_over",ended.content[0].text)
+                self.assertEqual(memory.submit.call_count,count)  # simulator no longer consumes inbox
 
     async def test_delta_protocol_exposes_same_grammar_as_recorded_actions(self):
         with tempfile.TemporaryDirectory() as temp:

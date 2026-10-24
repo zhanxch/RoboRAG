@@ -196,6 +196,10 @@ def create_server(memory):
                 raise ToolError("Provide both pixel coordinates u,v")
             arguments = dict(u=u, v=v, outline=json.dumps(outline) if outline is not None else None)
             async with memory.lock:
+                state = memory.state()
+                if state["episode_over"]:
+                    return dict(episode_over=True, measured_at_step=state["step"],
+                                plan_ok=False, plan_fail_reason="episode_over")
                 request = dict(measure=dict(command=command, arguments=arguments), subgoal="Measure current RGB geometry")
                 receipt = await memory.submit(request)
                 memory.audit("measure_scene", request, receipt)

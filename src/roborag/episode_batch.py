@@ -111,7 +111,7 @@ def main():
                         record["result"] = json.loads(result.read_text()) if result.exists() else None
                         records.append(record)
                         del active[key]
-                    print(json.dumps(dict(case=key, finished=True, returncode=process.returncode,
+                        print(json.dumps(dict(case=key, finished=True, returncode=process.returncode,
                                               score=(record["result"] or {}).get("native", {}).get("score"))), flush=True)
                 # Allocate the next simulator only after the previous launch
                 # has finished GPU initialization. This avoids racing the free-
@@ -140,6 +140,10 @@ def main():
                     wall_seconds=time.monotonic()-started))
                 if cases or active:
                     time.sleep(5)
+    except BaseException as exc:
+        write(out / "exit.json", dict(complete=False,error=type(exc).__name__,detail=str(exc),
+                                      wall_seconds=time.monotonic()-started))
+        raise
     finally:
         for process, log, record in active.values():
             if process.poll() is None:

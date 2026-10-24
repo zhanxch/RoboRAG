@@ -19,7 +19,7 @@ from mcp.types import CallToolResult, ImageContent, TextContent, ToolAnnotations
 from pydantic import BaseModel, Field
 
 from .graph_server import BankStore, frame_bytes
-from .rag_execution import validate_chunk, validate_delta_actions
+from .rag_execution import validate_chunk, expand_delta_actions
 
 
 from .episode_files import write_json
@@ -40,6 +40,11 @@ class Waypoint(BaseModel):
     open_axis: Literal["x", "y", "z"] = "x"
     gripper: float | None = None
     hold_steps: int = 0
+
+
+class DeltaSegment(BaseModel):
+    delta: list[float]
+    repeat: int = Field(ge=1, le=24, strict=True)
 
 
 class EpisodeMemory:
@@ -173,6 +178,29 @@ def create_server(memory):
         memory.audit("observe", dict(cameras=cameras, calibration=calibration), dict(step=memory.state()["step"]))
         return memory.observation(cameras, calibration=calibration)
 
+    if memory.task == "fold_clothes":
+        @server.tool(annotations=read_only)
+        async def measure_scene(command: Literal["cloth_landmarks", "table_xy"] = "cloth_landmarks",
+                                u: int | None = None, v: int | None = None,
+                                outline: list[list[int]] | None = None) -> dict:
+            """Current RGB geometry: cloth boundary, measured plane and interior grasp points.
+
+            No motion or action steps. Use once initially before writing your plan.
+            Optional u,v seed selects cloth; outline supplies ordered visible boundary pixels
+            when color segmentation misses patterned cloth. table_xy projects one pixel
+            using the measured plane. Check plan_ok, uncertainty and outline against RGB.
+            Points describe the visible silhouette, not layer identity, grasp or task success.
+            Fold targets, motion and completion decisions remain yours.
+            """
+            if (u is None) != (v is None) or (command == "table_xy" and u is None):
+                raise ToolError("Provide both pixel coordinates u,v")
+            arguments = dict(u=u, v=v, outline=json.dumps(outline) if outline is not None else None)
+            async with memory.lock:
+                request = dict(measure=dict(command=command, arguments=arguments), subgoal="Measure current RGB geometry")
+                receipt = await memory.submit(request)
+                memory.audit("measure_scene", request, receipt)
+                return receipt["result"]
+
     @server.tool()
     def record_plan(current_scene: str, steps: list[PlanStep], adaptation: str) -> dict:
         """Record YOUR new plan based on current scene + retrieved evidence, before movement.
@@ -226,7 +254,8 @@ def create_server(memory):
         server.remove_tool("execute_chunk")
 
         @server.tool(name="execute_chunk")
-        async def execute_delta_chunk(subgoal: str, actions: list[list[float]], expected_feedback: str,
+        async def execute_delta_chunk(subgoal: str, expected_feedback: str, actions: list[list[float]] | None = None,
+                                      segments: list[DeltaSegment] | None = None,
                                       return_home: bool = False,
                                       cameras: list[Literal["head", "wrist_l", "wrist_r"]] = ["head", "wrist_r"]) -> CallToolResult:
             """Submit 1-24 NEW action rows in the SAME format as historical action references.
@@ -236,18 +265,21 @@ def create_server(memory):
             Start from current action_state EE poses. Accumulate subsequent rows from
             PREVIOUS REQUESTED targets. Gripper 0=closed/1=open, held per row. 25Hz.
             Per-arm limits per row: translation norm<=0.035m; rotation norm<=0.35rad.
+            Prefer segments=[{delta:[14 numbers],repeat:N},...] for repeated rows.
+            Segments expand EXACTLY to actions, with <=24 total rows; do not supply both.
             Both arms execute together. Large measured tracking error (>4cm) stops tail.
             No implicit grasp verification. Inspect returned RGB and revise from new state.
-            When tower stable and fingers clear, return_home=true with actions=[] returns
+            When the object is released and fingers clear, return_home=true returns
             both arms to their initial joint poses, satisfying the task's final requirement.
             """
             if memory.plan is None:
                 raise ToolError("record_plan must precede execution")
-            if return_home and actions:
-                raise ToolError("Use actions=[] for return_home")
+            if return_home and (actions or segments):
+                raise ToolError("Leave actions and segments empty for return_home")
+            encoding = [s.model_dump() for s in segments] if segments else None
             if not return_home:
                 try:
-                    validate_delta_actions(actions)
+                    actions = expand_delta_actions(actions, encoding)
                 except ValueError as exc:
                     raise ToolError(str(exc)) from exc
             async with memory.lock:
@@ -258,6 +290,8 @@ def create_server(memory):
                     request["chunk"] = [dict(arm=side,home=True,gripper=1) for side in ("left", "right")]
                 else:
                     request["actions"] = actions
+                    if encoding:
+                        request["action_encoding"] = dict(segments=encoding)
                 receipt = await memory.submit(request)
                 memory.audit("execute_chunk", request, receipt)
                 return memory.observation(cameras, receipt=receipt["result"])

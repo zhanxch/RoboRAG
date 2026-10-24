@@ -49,6 +49,7 @@ def main():
     app = AppLauncher(args).app
     from roborag.hexashell_adapter import EpisodeAPI, write_json
     from roborag.rag_execution import execute_chunk, execute_delta_actions
+    from roborag.scene_measurements import measure_scene
     class LiveAPI(EpisodeAPI):
         def state(self):
             value = super().state()
@@ -126,6 +127,8 @@ def main():
                 if request.get("finish") == "agent_exit":
                     api.stop("agent_exit")
                     result, code = dict(episode_over=True, step=api.step, reason="agent_exit"), 0
+                elif "measure" in request:
+                    result, code = measure_scene(api, args.hexashell, request["measure"])
                 else:
                     result = (execute_delta_actions(api, request["actions"]) if "actions" in request
                               else execute_chunk(api, request["chunk"]))

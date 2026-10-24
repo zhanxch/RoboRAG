@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import AsyncMock
 
 from roborag.rag_execution import validate_chunk
 try:
@@ -20,6 +21,30 @@ ROOT = Path(__file__).resolve().parents[1]
 @unittest.skipUnless(Client is not None and (ROOT / "data/graph-bank/v1/execution-index.json").exists(),
                      "Optional MCP 2.x runtime and local graph bank required")
 class MCPIntegration(unittest.IsolatedAsyncioTestCase):
+    async def test_cloth_measurement_and_compressed_actions_over_real_protocol(self):
+        from mcp.types import CallToolResult, TextContent
+        with tempfile.TemporaryDirectory() as temp:
+            memory=EpisodeMemory(ROOT / "data/graph-bank/v1", ROOT / "data", temp, temp,
+                                 "fold_clothes", controller="delta")
+            memory.state=lambda:dict(step=0,episode_over=False)
+            memory.submit=AsyncMock(return_value=dict(result=dict(plan_ok=True,measured_at_step=0)))
+            memory.observation=lambda *a,**kw:CallToolResult(content=[TextContent(type="text",text="fresh observation")])
+            async with Client(create_server(memory)) as client:
+                measured=await client.call_tool("measure_scene", {})
+                self.assertFalse(measured.is_error)  # allowed before GPT planning
+                self.assertIn("measure",memory.submit.call_args.args[0])
+                memory.plan={"steps":["test"]}
+                row=[0,0,0,0,0,0,1, .01,0,0,0,0,0,1]
+                result=await client.call_tool("execute_chunk",dict(subgoal="test",expected_feedback="moved",
+                    segments=[dict(delta=row,repeat=3)]))
+                self.assertFalse(result.is_error)
+                self.assertEqual(memory.submit.call_args.args[0]["actions"],[row,row,row])
+                count=memory.submit.call_count
+                invalid=await client.call_tool("execute_chunk",dict(subgoal="test",expected_feedback="none",
+                    segments=[dict(delta=row,repeat=24),dict(delta=row,repeat=1)]))
+                self.assertTrue(invalid.is_error)
+                self.assertEqual(memory.submit.call_count,count)
+
     async def test_delta_protocol_exposes_same_grammar_as_recorded_actions(self):
         with tempfile.TemporaryDirectory() as temp:
             memory = EpisodeMemory(ROOT / "data/graph-bank/v1", ROOT / "data", temp, temp,

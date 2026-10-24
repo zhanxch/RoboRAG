@@ -1,0 +1,769 @@
+{
+  "schema": "roborag.hexashell-fold-reference.v1",
+  "source": "/home/zxc/文档/ChatGPT/RoboRAG/results/hexashell-consumption-20261023.json",
+  "source_sha256": "d01e85452cae9b1378115685c17a6992e933ee1190d06fc5ddfcd4c713e2091a",
+  "task": "fold_clothes",
+  "reasoning_effort": "xhigh",
+  "cases": [
+    {
+      "variant": "standard",
+      "layout": 0,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 500,
+      "budgeted_commands": 5,
+      "wall_seconds": 259.8210821939865,
+      "agent_wall_seconds": 216.17369162698742,
+      "native_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 524109,
+          "cached_input_tokens": 487552,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2541,
+          "reasoning_output_tokens": 1187
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 524109,
+          "cached_input_tokens": 487552,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2541,
+          "reasoning_output_tokens": 1187
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l0",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l0/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l0/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 1,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 479,
+      "budgeted_commands": 5,
+      "wall_seconds": 204.0646546749631,
+      "agent_wall_seconds": 160.60409224196337,
+      "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 532356,
+          "cached_input_tokens": 492800,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2096,
+          "reasoning_output_tokens": 710
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 532356,
+          "cached_input_tokens": 492800,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2096,
+          "reasoning_output_tokens": 710
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l1",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l1/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l1/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 2,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 499,
+      "budgeted_commands": 6,
+      "wall_seconds": 269.60398221900687,
+      "agent_wall_seconds": 229.16121800499968,
+      "native_sha256": "21d1dcbb952b7e18b33725102335366b6c2eae4ede8e3d094b0e09b2da545bbe",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 621814,
+          "cached_input_tokens": 579072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3206,
+          "reasoning_output_tokens": 1704
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 621814,
+          "cached_input_tokens": 579072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3206,
+          "reasoning_output_tokens": 1704
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l2",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l2/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l2/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 3,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 391,
+      "budgeted_commands": 3,
+      "wall_seconds": 164.08319828496315,
+      "agent_wall_seconds": 120.8389250600012,
+      "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 347269,
+          "cached_input_tokens": 302720,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1264,
+          "reasoning_output_tokens": 338
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 347269,
+          "cached_input_tokens": 302720,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1264,
+          "reasoning_output_tokens": 338
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l3",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l3/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l3/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 4,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 468,
+      "budgeted_commands": 6,
+      "wall_seconds": 205.9447454959154,
+      "agent_wall_seconds": 165.28092843096238,
+      "native_sha256": "16162c622da06a98c5ec192fdb21fd65a65da2a69786381522b094e8c9e5b372",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 546421,
+          "cached_input_tokens": 504832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2210,
+          "reasoning_output_tokens": 862
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 546421,
+          "cached_input_tokens": 504832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2210,
+          "reasoning_output_tokens": 862
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l4",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l4/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l4/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 5,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 468,
+      "budgeted_commands": 5,
+      "wall_seconds": 247.86718186398502,
+      "agent_wall_seconds": 204.82917119201738,
+      "native_sha256": "8d58de40493367e0eb90d51b679cf434dcdcfe9f27d58ab52ae5e68661a9b5dd",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 533373,
+          "cached_input_tokens": 502272,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3045,
+          "reasoning_output_tokens": 1469
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 533373,
+          "cached_input_tokens": 502272,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3045,
+          "reasoning_output_tokens": 1469
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l5",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l5/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l5/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 6,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 349,
+      "budgeted_commands": 3,
+      "wall_seconds": 183.09779783408158,
+      "agent_wall_seconds": 140.4589454450179,
+      "native_sha256": "0d4366d03be196625243688d60cdd43a116e7150f009b1d930401dd64dcbd215",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 343561,
+          "cached_input_tokens": 308480,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1822,
+          "reasoning_output_tokens": 881
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 343561,
+          "cached_input_tokens": 308480,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1822,
+          "reasoning_output_tokens": 881
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l6",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l6/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l6/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 7,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 479,
+      "budgeted_commands": 5,
+      "wall_seconds": 223.88260510494,
+      "agent_wall_seconds": 180.63307589304168,
+      "native_sha256": "0a6c48e1585d26c3ecfe9911fcb4e59335ae6b75a143789a651b0185fbb61144",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 522867,
+          "cached_input_tokens": 483072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2074,
+          "reasoning_output_tokens": 778
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 522867,
+          "cached_input_tokens": 483072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2074,
+          "reasoning_output_tokens": 778
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l7",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l7/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l7/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 8,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 468,
+      "budgeted_commands": 5,
+      "wall_seconds": 245.13542041403707,
+      "agent_wall_seconds": 202.6942128619412,
+      "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 410702,
+          "cached_input_tokens": 372864,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2427,
+          "reasoning_output_tokens": 1264
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 410702,
+          "cached_input_tokens": 372864,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2427,
+          "reasoning_output_tokens": 1264
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l8",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l8/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l8/_result.json"
+    },
+    {
+      "variant": "standard",
+      "layout": 9,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 500,
+      "budgeted_commands": 5,
+      "wall_seconds": 187.63633554405533,
+      "agent_wall_seconds": 146.78457746794447,
+      "native_sha256": "d806ccca9dd0ef6e8fe6e5737d1d190f3a3fc4aa837a9035cbdf7ef8b24b69b4",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 419313,
+          "cached_input_tokens": 382720,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2243,
+          "reasoning_output_tokens": 1080
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 419313,
+          "cached_input_tokens": 382720,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2243,
+          "reasoning_output_tokens": 1080
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l9",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l9/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l9/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 0,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 486,
+      "budgeted_commands": 11,
+      "wall_seconds": 489.94948986102827,
+      "agent_wall_seconds": 348.1837027280126,
+      "native_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 1078822,
+          "cached_input_tokens": 1026304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5239,
+          "reasoning_output_tokens": 2070
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 1078822,
+          "cached_input_tokens": 1026304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5239,
+          "reasoning_output_tokens": 2070
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l0",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l0/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l0/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 1,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 356,
+      "budgeted_commands": 3,
+      "wall_seconds": 227.034291983,
+      "agent_wall_seconds": 178.37991714605596,
+      "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 307935,
+          "cached_input_tokens": 275072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1867,
+          "reasoning_output_tokens": 872
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 307935,
+          "cached_input_tokens": 275072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1867,
+          "reasoning_output_tokens": 872
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l1",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l1/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l1/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 2,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 341,
+      "budgeted_commands": 3,
+      "wall_seconds": 217.91687558498234,
+      "agent_wall_seconds": 166.2568445140496,
+      "native_sha256": "cc6468b7f7528bd52d7561d2f877115ef92241bd4a3fd3868f48e41f5da17fd0",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 498901,
+          "cached_input_tokens": 457984,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2236,
+          "reasoning_output_tokens": 999
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 498901,
+          "cached_input_tokens": 457984,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2236,
+          "reasoning_output_tokens": 999
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l2",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l2/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l2/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 3,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": true,
+      "progress": 100.0,
+      "steps": 403,
+      "budgeted_commands": 4,
+      "wall_seconds": 243.4376609219471,
+      "agent_wall_seconds": 195.98374317900743,
+      "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 486501,
+          "cached_input_tokens": 429568,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2351,
+          "reasoning_output_tokens": 986
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 486501,
+          "cached_input_tokens": 429568,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2351,
+          "reasoning_output_tokens": 986
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l3",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l3/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l3/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 4,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 498,
+      "budgeted_commands": 6,
+      "wall_seconds": 263.46970594197046,
+      "agent_wall_seconds": 216.61933885503095,
+      "native_sha256": "16162c622da06a98c5ec192fdb21fd65a65da2a69786381522b094e8c9e5b372",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 582938,
+          "cached_input_tokens": 542720,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2550,
+          "reasoning_output_tokens": 1311
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 582938,
+          "cached_input_tokens": 542720,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2550,
+          "reasoning_output_tokens": 1311
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l4",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l4/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l4/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 5,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 500,
+      "budgeted_commands": 7,
+      "wall_seconds": 409.7308343750192,
+      "agent_wall_seconds": 359.68569095095154,
+      "native_sha256": "8d58de40493367e0eb90d51b679cf434dcdcfe9f27d58ab52ae5e68661a9b5dd",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 920160,
+          "cached_input_tokens": 864512,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5915,
+          "reasoning_output_tokens": 3339
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 920160,
+          "cached_input_tokens": 864512,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5915,
+          "reasoning_output_tokens": 3339
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l5",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l5/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l5/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 6,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 392,
+      "budgeted_commands": 5,
+      "wall_seconds": 238.4553996520117,
+      "agent_wall_seconds": 188.2068218200002,
+      "native_sha256": "3738c7205a9fc025d44cacdd806219107c6312f00ee08a7b86223bd62700b47a",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 651496,
+          "cached_input_tokens": 617984,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2558,
+          "reasoning_output_tokens": 908
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 651496,
+          "cached_input_tokens": 617984,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2558,
+          "reasoning_output_tokens": 908
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l6",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l6/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l6/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 7,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 0.0,
+      "steps": 330,
+      "budgeted_commands": 4,
+      "wall_seconds": 322.17252967401873,
+      "agent_wall_seconds": 272.1208703829907,
+      "native_sha256": "d22fd198bf5675844f47b4c72e68dcc1d9eb05807736c35e0f1af3d27004b813",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 494608,
+          "cached_input_tokens": 455680,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3377,
+          "reasoning_output_tokens": 1773
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 494608,
+          "cached_input_tokens": 455680,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3377,
+          "reasoning_output_tokens": 1773
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l7",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l7/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l7/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 8,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 500,
+      "budgeted_commands": 14,
+      "wall_seconds": 451.6780112480046,
+      "agent_wall_seconds": 395.62090362410527,
+      "native_sha256": "74e59b38fd7bd0e40eeaa094326fc7a61a8104c308d5f21c02dc3734e7746d17",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 713259,
+          "cached_input_tokens": 673152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5860,
+          "reasoning_output_tokens": 3020
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 713259,
+          "cached_input_tokens": 673152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5860,
+          "reasoning_output_tokens": 3020
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l8",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l8/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l8/_result.json"
+    },
+    {
+      "variant": "random",
+      "layout": 9,
+      "seed": 0,
+      "model": "gpt-6-astra",
+      "success": false,
+      "progress": 20.0,
+      "steps": 500,
+      "budgeted_commands": 7,
+      "wall_seconds": 397.8582775789546,
+      "agent_wall_seconds": 349.0078055090271,
+      "native_sha256": "d806ccca9dd0ef6e8fe6e5737d1d190f3a3fc4aa837a9035cbdf7ef8b24b69b4",
+      "accounting": {
+        "reported_usage": {
+          "input_tokens": 1003792,
+          "cached_input_tokens": 923136,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5635,
+          "reasoning_output_tokens": 2540
+        },
+        "known_token_lower_bounds": {
+          "input_tokens": 1003792,
+          "cached_input_tokens": 923136,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 5635,
+          "reasoning_output_tokens": 2540
+        },
+        "usage_reported_turns": 1,
+        "completed_native_turns": 1,
+        "terminal_usage_available": true,
+        "malformed_event_lines": 0,
+        "model_request_count": null,
+        "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+        "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+      },
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l9",
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l9/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l9/_result.json"
+    }
+  ]
+}

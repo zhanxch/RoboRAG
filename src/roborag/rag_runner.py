@@ -94,11 +94,15 @@ def main():
         "--port", str(port), "--controller", args.controller, "--task", args.task] + (["--no-rag"] if args.no_rag else [])
     paths = [ROOT / "src/roborag" / name for name in ("rag_mcp.py", "rag_execution.py", "rag_sim.py",
         "hexashell_adapter.py", "hexashell_agent.py", "graph_retrieval.py", "graph_chunks.py",
-        "rag_tasks.py", "rag_accounting.py", "episode_files.py")]
+        "rag_tasks.py", "rag_accounting.py", "episode_files.py", "scene_measurements.py")]
     paths += [Path(__file__).resolve(), args.bank.resolve() / "execution-index.json"]
+    paths += sorted((args.bank.resolve() / "graphs").glob("*.json"))
+    paths += sorted((hexa / "tasks/fold_clothes/tools/cloth_view").glob("*.py"))
+    paths += [hexa / "tools/table_plane/tool.py"]
     save(output / "run.json", dict(started_at=datetime.now(timezone.utc).isoformat(),
         args={k:str(v) if isinstance(v, Path) else v for k,v in vars(args).items()},
         schema="roborag.mcp-pilot.v2", task=task, model=args.model,
+        git_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
         source_sha256={str(p):digest(p) for p in paths},
         prompt_sha256=hashlib.sha256(prompt.encode()).hexdigest(),
         layout_sha256=digest(ROOT / f"data/Assets/Eval_Layout/RoboDojo/arx_x5/{args.seed}/{task}_{args.layout}.json"),
@@ -140,7 +144,6 @@ def main():
             raise RuntimeError("Incomplete native evaluation")
         calls, malformed_calls = read_jsonl(output / "mcp-calls.jsonl")
         names = [c["tool"] for c in calls]
-        chunks = [c for c in calls if c["tool"] == "execute_chunk"]
         result = dict(complete=True, native=native, native_result=completed["native_result"],
             native_sha256=digest(completed["native_result"]), native_agent=agent,
             wall_seconds=time.monotonic()-started, actual_billed_usd=None,

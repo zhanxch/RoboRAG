@@ -100,6 +100,23 @@ def validate_delta_actions(actions):
                 raise ValueError("Gripper targets must be in [0,1]")
 
 
+def expand_delta_actions(actions=None, segments=None):
+    """Lossless run-length encoding; fully validate before dispatching any row."""
+    if actions and segments:
+        raise ValueError("Choose actions or segments, not both")
+    if segments:
+        actions = []
+        for segment in segments:
+            repeat = segment.get("repeat")
+            if type(repeat) is not int or not 1 <= repeat <= 24:
+                raise ValueError("Segment repeat must be an integer from 1 to 24")
+            if len(actions) + repeat > 24:
+                raise ValueError("Total expanded rows must be <=24")
+            actions.extend([segment["delta"][:] for _ in range(repeat)])
+    validate_delta_actions(actions)
+    return actions
+
+
 def execute_delta_actions(api, actions):
     """RoboICL world link6 delta grammar, accumulated from the observed start pose."""
     import json

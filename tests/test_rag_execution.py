@@ -5,10 +5,29 @@ import unittest
 
 import numpy as np
 
-from roborag.rag_execution import execute_chunk, execute_delta_actions
+from roborag.rag_execution import execute_chunk, execute_delta_actions, expand_delta_actions
 
 HEXASHELL = Path(__file__).resolve().parents[1] / "vendor/HexaShell"
 sys.path.insert(0, str(HEXASHELL))
+
+
+class DeltaEncodingTests(unittest.TestCase):
+    def test_expansion_preserves_rows_and_does_not_alias_input(self):
+        move = [0,0,0,0,0,0,1, .01,0,0,0,0,0,0]
+        hold = [0,0,0,0,0,0,1, 0,0,0,0,0,0,0]
+        actions = expand_delta_actions(segments=[dict(delta=move,repeat=3),dict(delta=hold,repeat=2)])
+        self.assertEqual(actions,[move,move,move,hold,hold])
+        actions[0][7]=.02
+        self.assertEqual(actions[1][7],.01)
+        self.assertEqual(move[7],.01)
+
+    def test_invalid_tail_and_total_horizon_are_rejected(self):
+        row = [0]*14
+        for segments in ([dict(delta=row,repeat=24),dict(delta=row,repeat=1)],
+                         [dict(delta=row,repeat=1),dict(delta=[0]*13,repeat=1)],
+                         [dict(delta=row,repeat=True)]):
+            with self.assertRaises(ValueError):
+                expand_delta_actions(segments=segments)
 
 
 @unittest.skipUnless((HEXASHELL / "hexashell/server/core.py").exists(), "Optional HexaShell checkout required")

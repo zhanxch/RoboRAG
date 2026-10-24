@@ -1,0 +1,16 @@
+{
+  "schema": "roborag.offline-bank-cost.v1",
+  "task": "fold_clothes",
+  "model": "gpt-6-astra",
+  "effort": "medium",
+  "demonstrations": 3,
+  "graphs": 3,
+  "phases": 24,
+  "input_tokens": 57567,
+  "cached_input_tokens": 0,
+  "output_tokens": 4747,
+  "actual_billed_usd": null,
+  "source_manifest": "data/runtime-data/fold_clothes/train/sources-0-1-2.json",
+  "dataset_revision": "269457a3b42d8d0ae69898a601f2c1487c2f826e",
+  "interpretation": "One-time TRAIN annotation; reported separately from online execution. Automated phase labels are not human-verified ground truth."
+}

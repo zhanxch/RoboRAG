@@ -29,13 +29,15 @@ def aggregate(rows, planned=None):
         totals[field + "_known_lower_bound"] = sum(known)
     incoming, cached = totals["input_tokens"], totals["cached_input_tokens"]
     successes = sum(r["success"] for r in complete)
+    wall = [r["wall_seconds"] for r in rows if r.get("wall_seconds") is not None]
     return dict(planned=planned, recorded=len(rows), scored=len(complete), successes=successes,
         success_rate=successes/planned if planned and len(complete) == planned else None,
         scored_success_rate=successes/len(complete) if complete else None,
         mean_progress=average(complete, "progress"), mean_control_steps=average(complete, "steps"),
         mean_successful_control_steps=average([r for r in complete if r["success"]], "steps"),
-        mean_wall_seconds=average(complete, "wall_seconds"), mean_agent_wall_seconds=average(complete, "agent_wall_seconds"),
-        sum_episode_wall_seconds=sum(r["wall_seconds"] for r in complete if r.get("wall_seconds") is not None),
+        mean_wall_seconds=average(rows, "wall_seconds"), mean_agent_wall_seconds=average(rows, "agent_wall_seconds"),
+        sum_episode_wall_seconds=sum(wall) if rows and len(wall) == len(rows) else None,
+        sum_episode_wall_seconds_known_lower_bound=sum(wall),
         usage=totals, uncached_input_tokens=incoming-cached if incoming is not None and cached is not None else None,
         input_cache_fraction=cached/incoming if incoming and cached is not None else None,
         actual_billed_usd=None, model_request_count=None)

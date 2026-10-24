@@ -32,6 +32,14 @@ class FoldComparisonTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             aggregate([self.episode(), self.episode()], planned=1)
 
+    def test_incomplete_episode_wall_cost_is_kept_and_missing_is_unknown(self):
+        complete, failed = self.episode(), self.episode(complete=False)
+        self.assertEqual(aggregate([complete, failed])["sum_episode_wall_seconds"], 480)
+        failed["wall_seconds"] = None
+        summary = aggregate([complete, failed])
+        self.assertIsNone(summary["sum_episode_wall_seconds"])
+        self.assertEqual(summary["sum_episode_wall_seconds_known_lower_bound"], 240)
+
 
 if __name__ == '__main__':
     unittest.main()

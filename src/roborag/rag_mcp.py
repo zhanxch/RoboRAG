@@ -20,6 +20,8 @@ from pydantic import BaseModel, Field
 
 from .graph_server import BankStore, frame_bytes
 from .rag_execution import validate_chunk, expand_delta_actions
+from .action_targets import compile_targets
+from .graph_chunks import select_reference_window
 
 
 from .episode_files import write_json
@@ -45,6 +47,18 @@ class Waypoint(BaseModel):
 class DeltaSegment(BaseModel):
     delta: list[float]
     repeat: int = Field(ge=1, le=24, strict=True)
+
+
+class ArmTarget(BaseModel):
+    tcp_xyz: list[float] | None = None
+    quaternion_wxyz: list[float] | None = None
+    gripper: float | None = None
+
+
+class TargetSegment(BaseModel):
+    steps: int = Field(ge=1, le=24, strict=True)
+    left: ArmTarget | None = None
+    right: ArmTarget | None = None
 
 
 class EpisodeMemory:
@@ -134,7 +148,7 @@ def create_server(memory):
 
     @server.tool(annotations=read_only)
     def read_action_reference(source: str, include_actions: bool = False, images: bool = True,
-                              section: Literal["start", "end"] = "start") -> CallToolResult:
+                              section: Literal["start", "end", "close", "open"] = "start") -> CallToolResult:
         """Expand graph_id:phase_id from a retrieved graph into historical before/action/after evidence.
 
         Recorded actions are world link6 deltas. When the live controller uses that same
@@ -142,6 +156,9 @@ def create_server(memory):
         An absolute TCP controller requires a coordinate conversion; never blindly replay rows.
         Images are explicitly historical and must not replace current feedback.
         section=end selects the final window of a phase, useful for release/withdrawal.
+        section=close/open selects a window around the first gripper command crossing
+        0.5 in this phase. Use close for grasp posture; phase starts can be far away.
+        If no such event exists, the response explicitly falls back to phase start.
         Default summaries include displacement/gripper timing; raw arrays are optional.
         """
         if source not in memory.references or memory.no_rag:
@@ -149,12 +166,15 @@ def create_server(memory):
         graph_id, node_id = source.split(":", 1)
         retriever = memory.bank.retriever()
         phase = next(p for p in retriever.index["phases"] if p["id"] == source)
-        window = retriever.by_phase[(graph_id, node_id)][0 if section == "start" else -1]
+        graph = memory.bank.graph(graph_id)
+        window, selection = select_reference_window(memory.bank.source(graph),
+            retriever.by_phase[(graph_id, node_id)], section)
         transition = retriever.chunk(window["id"])
         if not include_actions:
             transition.pop("actions", None)
         packet = {"role": "HISTORICAL_REFERENCE", "source": source,
                   "phase_interval": [phase["start"], phase["end"]], "window_section": section,
+                  "window_selection": selection,
                   "before": phase["cue"], "operation": phase["action"], "phase_feedback": phase["feedback"],
                   "transition": transition}
         memory.audit("read_action_reference", dict(source=source, include_actions=include_actions, images=images, section=section), packet)
@@ -260,6 +280,7 @@ def create_server(memory):
         @server.tool(name="execute_chunk")
         async def execute_delta_chunk(subgoal: str, expected_feedback: str, actions: list[list[float]] | None = None,
                                       segments: list[DeltaSegment] | None = None,
+                                      targets: list[TargetSegment] | None = None,
                                       return_home: bool = False,
                                       cameras: list[Literal["head", "wrist_l", "wrist_r"]] = ["head", "wrist_r"]) -> CallToolResult:
             """Submit 1-24 NEW action rows in the SAME format as historical action references.
@@ -271,6 +292,13 @@ def create_server(memory):
             Per-arm limits per row: translation norm<=0.035m; rotation norm<=0.35rad.
             Prefer segments=[{delta:[14 numbers],repeat:N},...] for repeated rows.
             Segments expand EXACTLY to actions, with <=24 total rows; do not supply both.
+            To avoid calculating deltas, use targets=[{steps:N,left:{tcp_xyz:[x,y,z],
+            quaternion_wxyz:[w,x,y,z],gripper:0},right:{...}},...]. Select ONLY one
+            of actions, segments, targets. Omitted arms/fields hold previous targets.
+            Targets linearly interpolate LINK6 translation and world rotation to the
+            requested fingertip endpoints (local +X 0.145m); this is not straight TCP
+            motion during rotation. Gripper applies from the segment's first row.
+            Total steps<=24; same delta limits. No IK/grasp/fold planner is added.
             Both arms execute together. Large measured tracking error (>4cm) stops tail.
             No implicit grasp verification. Inspect returned RGB and revise from new state.
             When the object is released and fingers clear, return_home=true returns
@@ -278,10 +306,13 @@ def create_server(memory):
             """
             if memory.plan is None:
                 raise ToolError("record_plan must precede execution")
-            if return_home and (actions or segments):
-                raise ToolError("Leave actions and segments empty for return_home")
+            if return_home and (actions or segments or targets):
+                raise ToolError("Leave actions, segments and targets empty for return_home")
+            if not return_home and sum(bool(value) for value in (actions, segments, targets)) != 1:
+                raise ToolError("Choose exactly one of actions, segments or targets")
             encoding = [s.model_dump() for s in segments] if segments else None
-            if not return_home:
+            target_values = [s.model_dump(exclude_none=True) for s in targets] if targets else None
+            if not return_home and not targets:
                 try:
                     actions = expand_delta_actions(actions, encoding)
                 except ValueError as exc:
@@ -289,6 +320,11 @@ def create_server(memory):
             async with memory.lock:
                 if memory.state()["episode_over"]:
                     return memory.observation(cameras)
+                if target_values:
+                    try:
+                        actions = compile_targets(memory.state()["action_state"], target_values)
+                    except ValueError as exc:
+                        raise ToolError(str(exc)) from exc
                 request = dict(subgoal=subgoal, expected_feedback=expected_feedback)
                 if return_home:
                     request["chunk"] = [dict(arm=side,home=True,gripper=1) for side in ("left", "right")]
@@ -296,6 +332,8 @@ def create_server(memory):
                     request["actions"] = actions
                     if encoding:
                         request["action_encoding"] = dict(segments=encoding)
+                    elif target_values:
+                        request["action_encoding"] = dict(targets=target_values)
                 receipt = await memory.submit(request)
                 memory.audit("execute_chunk", request, receipt)
                 return memory.observation(cameras, receipt=receipt["result"])

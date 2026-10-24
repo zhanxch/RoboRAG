@@ -94,7 +94,7 @@ def main():
         "--port", str(port), "--controller", args.controller, "--task", args.task] + (["--no-rag"] if args.no_rag else [])
     paths = [ROOT / "src/roborag" / name for name in ("rag_mcp.py", "rag_execution.py", "rag_sim.py",
         "hexashell_adapter.py", "hexashell_agent.py", "graph_retrieval.py", "graph_chunks.py",
-        "rag_tasks.py", "rag_accounting.py", "episode_files.py", "scene_measurements.py")]
+        "rag_tasks.py", "rag_accounting.py", "episode_files.py", "scene_measurements.py", "action_targets.py")]
     paths += [Path(__file__).resolve(), args.bank.resolve() / "execution-index.json"]
     paths += sorted((args.bank.resolve() / "graphs").glob("*.json"))
     paths += sorted((hexa / "tasks/fold_clothes/tools/cloth_view").glob("*.py"))

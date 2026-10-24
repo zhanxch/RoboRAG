@@ -44,6 +44,17 @@ class MCPIntegration(unittest.IsolatedAsyncioTestCase):
                     segments=[dict(delta=row,repeat=24),dict(delta=row,repeat=1)]))
                 self.assertTrue(invalid.is_error)
                 self.assertEqual(memory.submit.call_count,count)
+                memory.state=lambda:dict(step=0,episode_over=False,action_state={
+                    f"{side}_{name}":value for side in ("left","right") for name,value in
+                    (("ee_pose",[0,0,1,1,0,0,0]),("ee_joint_state",[1]))})
+                targeted=await client.call_tool("execute_chunk",dict(subgoal="new measured target",expected_feedback="moved",
+                    targets=[dict(steps=4,left=dict(tcp_xyz=[.185,0,1]))]))
+                self.assertFalse(targeted.is_error)
+                request=memory.submit.call_args.args[0]
+                self.assertEqual(len(request["actions"]),4)
+                self.assertAlmostEqual(request["actions"][0][0],.01)
+                self.assertIn("targets",request["action_encoding"])
+                count=memory.submit.call_count
                 memory.state=lambda:dict(step=500,episode_over=True)
                 ended=await client.call_tool("measure_scene", {})
                 self.assertFalse(ended.is_error)

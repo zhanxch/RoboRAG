@@ -68,6 +68,33 @@ def image_refs(graph, frame):
             for camera in graph["source"]["cameras"]}
 
 
+def select_reference_window(source, windows, section):
+    """Choose measured command-event context within a recorded phase."""
+    if section in ("start", "end"):
+        return windows[0 if section == "start" else -1], {"section": section}
+    if section not in ("close", "open"):
+        raise ValueError("Unknown reference section")
+    import h5py
+    import numpy as np
+    start, end = min(w["start"] for w in windows), max(w["end"] for w in windows)
+    events = []
+    with h5py.File(source, "r") as data:
+        for arm in ARMS:
+            values = np.asarray(data[f"action/{arm}_ee_joint_states"][start:end,0])
+            previous = (float(data[f"action/{arm}_ee_joint_states"][start-1,0]) if start else
+                        float(data[f"state/{arm}_ee_joint_states"][start,0]))
+            before = np.r_[previous,values[:-1]]
+            mask = ((before > .5) & (values <= .5)) if section == "close" else ((before <= .5) & (values > .5))
+            events.extend((start+int(i),arm) for i in np.flatnonzero(mask))
+    if not events:
+        return windows[0], {"section":section,"command_event_found":False,"fallback":"phase_start"}
+    frame, arm = min(events)
+    candidates = [w for w in windows if w["start"] <= frame < w["end"]]
+    selected = min(candidates, key=lambda w:abs((w["start"]+w["end"]-1)/2-frame))
+    return selected, {"section":section,"command_event_found":True,"frame":frame,"arm":arm,
+                      "semantics":"Command crosses 0.5; this is not evidence of a physical grasp or release."}
+
+
 def load_chunk(source, graph, chunk):
     import h5py
     import numpy as np

@@ -79,6 +79,7 @@ def candidate_rows(paths):
                 steps=r["native_control_steps"], steps_complete=r["native_control_steps_complete"],
                 wall_seconds=r["wall_seconds"], agent_wall_seconds=r["agent_wall_seconds"],
                 usage=r["reported_usage"], model=r["model"], effort=r["effort"], directory=r["run"],
+                layout_sha256=config["layout_sha256"],
                 tool_counts=r["tool_counts"], failure=r["failure"],
                 protocol=dict(model=r["model"], effort=r["effort"], controller=config["args"]["controller"],
                     no_rag=config["args"]["no_rag"], prompt=config["prompt_sha256"],
@@ -103,6 +104,8 @@ def compare(reference, candidates, planned):
                         (candidate["seed"],candidate["variant"],candidate["layout"]))
         if candidate["model"] != baseline["model"] or candidate["effort"] != reference["reasoning_effort"]:
             raise ValueError("Matched comparison requires the same model and reasoning effort")
+        if candidate["layout_sha256"] != baseline["layout_sha256"]:
+            raise ValueError("Matching layout IDs have different scene contents")
         pairs.append(dict(case=f"{candidate['variant']}-l{candidate['layout']}", baseline=baseline, candidate=candidate))
     jointly = [p for p in pairs if p["candidate"]["success"] and p["baseline"]["success"]]
     return dict(schema="roborag.fold-comparison.v1", baseline_source=reference["source"],

@@ -41,7 +41,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l0",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l0/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l0/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l0/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l0/_result.json",
+      "layout_sha256": "53de16e28978c71cfaa0620712633a0e07ed9d4bb79cdb63c5a953fa26f1b5ba",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -79,7 +81,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l1",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l1/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l1/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l1/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l1/_result.json",
+      "layout_sha256": "c43d694499bdb86c1ec3b8c6f2362893e0cfbbb5d00921378fc8c6fec2f79583",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -117,7 +121,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l2",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l2/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l2/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l2/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l2/_result.json",
+      "layout_sha256": "064e6a528a0f4042d2fc1ad76441cd2341eb9a5c0592ea776de28a950512138c",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -155,7 +161,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l3",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l3/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l3/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l3/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l3/_result.json",
+      "layout_sha256": "8812671940db961a1c4a43696b138d1656c84707b01337be701263851980c716",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -193,7 +201,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l4",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l4/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l4/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l4/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l4/_result.json",
+      "layout_sha256": "4b7bcf0f0fabcaec33d0352cf2f89971b2af73efa7fbc00149ae3fbe182369de",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -231,7 +241,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l5",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l5/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l5/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l5/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l5/_result.json",
+      "layout_sha256": "f2c7b6d8bb809b032a11bf6cb3d62180dab8e86f95710cbbf82460e5b01ae20d",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -269,7 +281,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l6",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l6/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l6/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l6/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l6/_result.json",
+      "layout_sha256": "db0fac19ae0b64a72c8770fba06c12b681ca560f060bc39003f062ea9e1567bc",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -307,7 +321,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l7",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l7/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l7/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l7/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l7/_result.json",
+      "layout_sha256": "cb602e5db949639f28d5dae862bf3469919526eb08713c4cebe41a32708ef4f3",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -345,7 +361,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l8",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l8/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l8/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l8/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l8/_result.json",
+      "layout_sha256": "02763256fc31272105b9f592e73cf14bfea2b236ab9a861efaa482721f9e122d",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "standard",
@@ -383,7 +401,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l9",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l9/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l9/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/standard-l9/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l9/_result.json",
+      "layout_sha256": "7abc98f33c9141d62f2d0b5e5c032363735563de2dbb38f62f422e20a43eeac7",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -421,7 +441,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l0",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l0/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l0/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l0/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l0/_result.json",
+      "layout_sha256": "91ca045a523167ea32cf84551db921862b49d107995586a853c6b9eff1db10f0",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -459,7 +481,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l1",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l1/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l1/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l1/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l1/_result.json",
+      "layout_sha256": "d6ccfa56ee655613306344c2c4ad493bc54588ff082d961604da322929089658",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -497,7 +521,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l2",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l2/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l2/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l2/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l2/_result.json",
+      "layout_sha256": "cdaab145fbadb25e0b452ae5ece2d384c8fe2201e8decb646db67c08f6723384",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -535,7 +561,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l3",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l3/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l3/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l3/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l3/_result.json",
+      "layout_sha256": "1793bba7894d0a9d760d9074805fc4b74a98f3a536a1acf7eb94b65a16608518",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -573,7 +601,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l4",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l4/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l4/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l4/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l4/_result.json",
+      "layout_sha256": "fa2656d465e9f81480e1affbf7efb63c70a3cfcf412e503c7c63b48d7e184ffb",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -611,7 +641,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l5",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l5/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l5/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l5/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l5/_result.json",
+      "layout_sha256": "d23d32c278a020b3d4836b4e77fd6ba91324296f74c46b363d9a642eb635562a",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -649,7 +681,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l6",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l6/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l6/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l6/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l6/_result.json",
+      "layout_sha256": "13270f18f6d57886f912fb7273d909eb4a307df1dd058e830968496804ca34c4",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -687,7 +721,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l7",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l7/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l7/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l7/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l7/_result.json",
+      "layout_sha256": "8e15e8f3552aeedc2d8eceaba15fb979fb61e5267ce87787e978b3c23df4416a",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -725,7 +761,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l8",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l8/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l8/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l8/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l8/_result.json",
+      "layout_sha256": "ba3b7597d4c8d4c388b696391cd323f4dce9359207108bf4a396b548fd0d88d2",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     },
     {
       "variant": "random",
@@ -763,7 +801,9 @@
         "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
       },
       "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l9",
-      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l9/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l9/_result.json"
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/hexashell-public-calibrated-v2-20261023/random-l9/native/eval_result/RoboDojo/fold_clothes_random/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/random-l9/_result.json",
+      "layout_sha256": "af004d26a4decf40de92b0266ec1485fbdc14e573a5a32ac445fb1c313c1754e",
+      "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8"
     }
   ]
 }

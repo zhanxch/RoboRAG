@@ -22,12 +22,7 @@ from .graph_server import BankStore, frame_bytes
 from .rag_execution import validate_chunk, validate_delta_actions
 
 
-def write_json(path, value):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(".tmp")
-    tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2))
-    tmp.replace(path)
+from .episode_files import write_json
 
 
 class PlanStep(BaseModel):

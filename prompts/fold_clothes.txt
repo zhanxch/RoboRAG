@@ -1,0 +1,7 @@
+Task: Fold the piece of clothing neatly, using the current RGB observations, calibrated cameras and robot proprioception.
+
+Public task completion conditions: fold both sleeves inward close to the opposite chest regions; then fold the hem toward the shoulders so that the hem and shoulder lines align in the table plane. Release the garment and RETURN BOTH ARMS TO THEIR INITIAL POSES. The native task determines completion; an intended fold or successful robot motion is not proof.
+
+Generate your own plan from the current garment shape and historical demonstrations. Bind sleeve ends, chest, hem corners and shoulders to the current garment, not to old world coordinates. Sleeves are generally moved inward before the hem is folded; coordinate both arms for the wide hem if appropriate. A cloth grasp must be verified by visible lift and motion. Avoid dragging fingers through cloth, grasping the table, or allowing a sleeve/hem to slip during transfer. Preserve useful demonstrated wrist orientation, gentle contact, stationary closure, lift and supported release timing while adapting the positions to the live garment. Observe the released shape before deciding on corrections. Reserve steps for withdrawal and return home.
+
+Use the current support surface height and current camera geometry. Do not assume the support height or garment dimensions from another task. Historical measured contact poses provide scale references, but live RGB must establish the current grasp and target locations. Clutter is irrelevant to the folding target unless it obstructs motion.

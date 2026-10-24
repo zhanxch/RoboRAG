@@ -13,6 +13,21 @@ sys.path.insert(0, str(HEXASHELL))
 
 @unittest.skipUnless((HEXASHELL / "hexashell/server/core.py").exists(), "Optional HexaShell checkout required")
 class ChunkContract(unittest.TestCase):
+    def test_last_failed_waypoint_still_exhausts_budget(self):
+        arm = SimpleNamespace(tcp=lambda: np.eye(4))
+        api = SimpleNamespace(step=0, over=False, commands_used=59, arm=lambda side:arm,
+                              move_tcp=lambda *args:2)
+        stopped = []
+        def stop(reason):
+            api.over = True
+            stopped.append(reason)
+        api.stop = stop
+        execute_chunk(api, [{"arm":"right", "xyz":[0,.1,.9]}])
+        self.assertEqual(stopped, ["waypoint_budget"])
+        self.assertEqual(api.commands_used, 60)
+        execute_chunk(api, [{"arm":"right", "xyz":[0,.1,.9]}])
+        self.assertEqual(api.commands_used, 60)
+
     def test_delta_targets_accumulate_from_commands_despite_observed_lag(self):
         import io
         from hexashell.server import geometry

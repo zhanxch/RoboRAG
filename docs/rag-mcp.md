@@ -58,11 +58,25 @@ Codex 的 completed turn 汇总可能包含多个模型请求，不能将其当�
 ```bash
 <policy_python> -m pip install --target .runtime/mcp -r experiments/rag-mcp-requirements.txt
 <policy_python> scripts/run_rag_mcp.py --output runs/my-rag-mcp-stack --layout 0 --controller delta --effort medium
+<policy_python> scripts/run_rag_mcp.py --task fold_clothes --variant standard --layout 0 --effort xhigh --output runs/my-rag-mcp-fold
 ```
 
 MCP 依赖只对 MCP 进程设置 PYTHONPATH，不修改仿真器的依赖。
 模型只看到当前 RGB、本体状态与取出的经验；源码、评分器和物体真值位于模型可读目录之外。
 `--no-rag` 提供相同机器人接口和规划流程但返回空经验，可用于同场景消融。
+
+### 维护与统计
+
+命令行脚本只负责包入口，`rag_runner.py` 管理进程生命周期；`rag_tasks.py` 选择任务及场景变体，
+任务提示与控制协议放在 `prompts/`。新增任务不再改写启动器中的堆叠提示或硬编码场景名。
+`episode_files.py` 统一原子 JSON 写入与中断 JSONL 读取；`rag_accounting.py` 负责回合汇总。
+实际控制步数优先使用原生终态和动作日志计数，不能只累加收到的 MCP 回执。
+中断回合只知道已落盘部分时标为 `lower_bound`，没有计数证据时为 `unknown`；不会把缺失当零。
+正常零动作退出仍保留原生评分，工作流字段单独标为未完成。
+
+叠衣先导使用同一个 delta 控制器及三条 TRAIN 示范；标准/杂物场景共享任务经验，
+布局与原生成功条件保持各自任务定义。叠衣测试和 HexaShell 对照见后续独立实验记录，
+接入支持不代表已经取得成功率提升。
 
 每次运行写入独立目录：
 

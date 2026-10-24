@@ -42,6 +42,9 @@ def execute_chunk(api, waypoints):
     for item in waypoints:
         if api.over:
             break
+        if api.commands_used >= 60:
+            api.stop("waypoint_budget")
+            break
         arm = api.arm(item["arm"])
         feedback = {"requested": item, "step_before": api.step}
         api.commands_used += 1
@@ -65,6 +68,8 @@ def execute_chunk(api, waypoints):
             if code not in (0, 3) or feedback.get("workspace_limited") or feedback.get("error_m", 0) > .015:
                 feedback.update(stopped_tail=True, step_after=api.step)
                 receipts.append(feedback)
+                if api.commands_used >= 60 and not api.over:
+                    api.stop("waypoint_budget")
                 break
         if not api.over and item.get("gripper") is not None:
             api.set_gripper(arm, item["gripper"])

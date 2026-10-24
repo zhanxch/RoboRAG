@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
+.runtime/
 .pytest_cache/
 build/
 dist/
@@ -9,9 +10,11 @@ dist/
 .env.*
 !.env.example
 data/
+/data
 artifacts/
 runs/
 vendor/
+/vendor
 local.runtime.json
 *.sqlite*
 *.npy

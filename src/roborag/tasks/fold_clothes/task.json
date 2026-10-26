@@ -1,0 +1,11 @@
+{
+  "name": "fold_clothes",
+  "display_name": "叠衣",
+  "capabilities": [
+    "cloth_geometry"
+  ],
+  "random_variant": true,
+  "public_instruction": false,
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.delta.txt"
+}

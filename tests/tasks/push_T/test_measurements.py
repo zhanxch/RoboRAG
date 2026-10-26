@@ -6,11 +6,11 @@ from unittest.mock import AsyncMock, patch
 
 from mcp import Client
 
-from roborag.backends.planar import measure_planar
 from roborag.mcp.server import create_server
 from roborag.mcp.session import EpisodeSession as EpisodeMemory
+from roborag.tasks.push_T.measurements import measure_planar
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[3]
 BANK = ROOT / "data/graph-bank/current"
 
 
@@ -98,7 +98,9 @@ class PlanarMeasurementsTests(unittest.TestCase):
                 residual_contact_m=0.014,
             ), 1
 
-        with patch("roborag.backends.planar.geometry_tool", return_value=SimpleNamespace(run=run)):
+        with patch(
+            "roborag.tasks.push_T.measurements.geometry_tool", return_value=SimpleNamespace(run=run)
+        ):
             before, code = measure_planar(api, "/unused", {"command": "planar_check"})
             self.assertEqual(before["plan_fail_reason"], "no_saved_match")
             self.assertEqual(calls, [])
@@ -115,7 +117,7 @@ class PlanarMeasurementsTests(unittest.TestCase):
     def test_unknown_plane_stays_unknown(self):
         api = SimpleNamespace(observe=lambda: {"png": {}, "cameras": {}}, step=0)
         with patch(
-            "roborag.backends.planar.geometry_tool",
+            "roborag.tasks.push_T.measurements.geometry_tool",
             return_value=SimpleNamespace(run=lambda *args: ({"table_z": None, "conf": 0}, 0)),
         ):
             result, _ = measure_planar(api, "/unused", {"command": "table_plane"})
@@ -136,7 +138,7 @@ class PlanarMeasurementsTests(unittest.TestCase):
             transfer_args={"bad": "goal"},
         )
         with patch(
-            "roborag.backends.planar.geometry_tool",
+            "roborag.tasks.push_T.measurements.geometry_tool",
             return_value=SimpleNamespace(run=lambda *args: (invalid, 0)),
         ):
             result, code = measure_planar(api, "/unused", {"command": "planar_match"})

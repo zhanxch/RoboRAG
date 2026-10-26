@@ -1,0 +1,65 @@
+{
+  "schema": "roborag.task-layout-validation.v1",
+  "checked_at": "2026-10-26T04:01:16.618683+00:00",
+  "baseline_commit": "7784edc4886ee3fe37529a21817026519c63f2d7",
+  "native_policy_evaluation": false,
+  "tests": {
+    "command": "PYTHONPATH=src:.runtime/mcp <policy_python> -m unittest discover -s tests -v",
+    "passed": 95,
+    "skipped": 0,
+    "log_sha256": "c917dca612a8d3743d13cc089b01e64e131270b9edbdf1c1e64f6930fad9cf8d"
+  },
+  "checks": {
+    "ruff_check": true,
+    "ruff_format": true,
+    "cli_help_commands": 14,
+    "wheel_build": true,
+    "installed_wheel_task_packages": 11,
+    "installed_wheel_catalog_and_frozen_protocols": true,
+    "doctor": true,
+    "existing_task_protocols_unchanged": 11,
+    "synthetic_task_registration_count": 42,
+    "synthetic_registration_is_not_native_task_completion": true,
+    "task_implementation_modules_moved_unchanged": 4,
+    "case_lists_moved_unchanged": 4,
+    "task_config_and_prompt_files_frozen": 22
+  },
+  "offline_evidence": {
+    "episodes": 100,
+    "artifact_hashes": 900,
+    "bank_hashes": 33,
+    "retrieval_queries": 177,
+    "failures": []
+  },
+  "source_manifest_sha256": "e7c0f0c70b287d18b34c439498443c1b674448dcf2d7c8657dd05e6e56fdfa9f",
+  "initialization_probes": [
+    {
+      "task": "push_T",
+      "complete": true,
+      "scored": false,
+      "model_invoked": false,
+      "policy_action_steps": 0,
+      "wall_seconds": 38.51380452502053,
+      "directory": "runs/task-layout-push-initialization-20261026",
+      "sha256": {
+        "runs/task-layout-push-initialization-20261026/run.json": "e4061fa3c1b80f25e07e7d820738b58e7d7f6c1dd5d8c9037077ec38142ce615",
+        "runs/task-layout-push-initialization-20261026/probe-result.json": "741428926729c0765e045e324b8feef90e02a73d6cf63a5dce44be245b4d6ee4",
+        "runs/task-layout-push-initialization-20261026/initialization-probe.json": "e718f4cabe4db26d205b80b14b4090566d039fd2b47235fce35d31ee924314d0"
+      }
+    },
+    {
+      "task": "fold_clothes",
+      "complete": true,
+      "scored": false,
+      "model_invoked": false,
+      "policy_action_steps": 0,
+      "wall_seconds": 42.72094217909034,
+      "directory": "runs/task-layout-fold-initialization-20261026",
+      "sha256": {
+        "runs/task-layout-fold-initialization-20261026/run.json": "88cb20b97ce852a5a1d078b92fc2b1449ef4f7db3a74bd54c3b440648e470d24",
+        "runs/task-layout-fold-initialization-20261026/probe-result.json": "d28ca0841c5bc03db283ed1deefc92e00ec7b58cbd9af8403bafe0a5dd1f7d90",
+        "runs/task-layout-fold-initialization-20261026/initialization-probe.json": "839f717ff0f3b788032f63ee2f87c4a92539838c0c13ad7e7b4e1289bea36957"
+      }
+    }
+  ]
+}

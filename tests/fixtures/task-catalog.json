@@ -1,0 +1,195 @@
+{
+  "source_commit": "7784edc",
+  "tasks": {
+    "fold_clothes": {
+      "spec": {
+        "name": "fold_clothes",
+        "random_variant": true,
+        "measurement": "cloth",
+        "public_instruction": false,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "26aa5ab01f3a0b78546089a84fdebf04c428ded0f2bb5fbf3945f4e95df8796b",
+      "no_rag_prompt_sha256": "3b3c4a50bc42c8ad6cdba226ccdbf4ad7f222bf8917cd158a2f73dd4b70ae289",
+      "tool_contract_sha256": "e7256693b6839a7938b3b2761660e7bf3be83e06fb7d1f2b0446d573c6ec8146",
+      "simulation_tasks": {
+        "standard": "fold_clothes",
+        "random": "fold_clothes_random"
+      }
+    },
+    "push_T": {
+      "spec": {
+        "name": "push_T",
+        "random_variant": true,
+        "measurement": "planar",
+        "public_instruction": true,
+        "whole_phase_reference": true,
+        "support_robots": false,
+        "ik_joint_increment_rad": 0.25
+      },
+      "prompt_sha256": "665c1f51132203eaeca8d263c99c8d4c4523ec1cab87dc478d8668a35397a282",
+      "no_rag_prompt_sha256": "4a7c086f632e0446097403bf2df9aa4d85b3a349300dd1a1f452d35fb133e9ea",
+      "tool_contract_sha256": "eeca4be908577dc63a13831c77674d2c9c2dae5ac1d04b3dace73ab4d8fa838e",
+      "simulation_tasks": {
+        "standard": "push_T",
+        "random": "push_T_random"
+      }
+    },
+    "stack_blocks": {
+      "spec": {
+        "name": "stack_blocks",
+        "random_variant": true,
+        "measurement": null,
+        "public_instruction": false,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "9fdb9bfa0c7a1bd973b6451b0b3c0d745f892cb78a47abffecda84f567aeadb6",
+      "no_rag_prompt_sha256": "325d52456809bc8cd0259a6d9b437f90c81643af727a63234303640c30f33001",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "stack_blocks",
+        "random": "stack_blocks_random"
+      }
+    },
+    "pour_balls_into_vase": {
+      "spec": {
+        "name": "pour_balls_into_vase",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "9160f6b28c82ec290e3c9b75496283c166caad4212fef932a7e4344f7d197ec1",
+      "no_rag_prompt_sha256": "d4ba3fc9f6fce8fb19b8122bc13abb9b8e23d016dd0f0a11f5ce6b7d5e387617",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "pour_balls_into_vase"
+      }
+    },
+    "deposit_coin": {
+      "spec": {
+        "name": "deposit_coin",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "8473f83a9693a6401f5d3f022b7a84f5b514b7ccf1c057bbc574d07a9004e4fc",
+      "no_rag_prompt_sha256": "53142758776ceb5ddde32df93ccc6550bac90a1776f8100233ec63a4563e1d69",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "deposit_coin"
+      }
+    },
+    "put_bottles_into_dustbin": {
+      "spec": {
+        "name": "put_bottles_into_dustbin",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "2d96409600732faea4262e30783048e947d7bcb8b1ffa5e614e0ec4b15afea72",
+      "no_rag_prompt_sha256": "8350005a37251e2321188e48ac6b2502c61f3e5e493fd7efcb039e509ab57de6",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "put_bottles_into_dustbin"
+      }
+    },
+    "organize_table": {
+      "spec": {
+        "name": "organize_table",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "fcabd4e5a72cb362f121f44dae0c88e85d57ceb8e3e0dc76c930263e6ffcf5ca",
+      "no_rag_prompt_sha256": "b7abc3279f39ae74d8c1e6ae12bdc8b1540a31faf477a0ed95c12a6c3e66c560",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "organize_table"
+      }
+    },
+    "cover_blocks": {
+      "spec": {
+        "name": "cover_blocks",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "22bc5ccc3a8e8d282701db67ce3fc5262af82494026060ff88fd9980bb1dc884",
+      "no_rag_prompt_sha256": "5efe84079a8c702a3304abd593af1257b25fe029e97a3d1b213c0965533bf818",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "cover_blocks"
+      }
+    },
+    "imitate_sorting_sequence": {
+      "spec": {
+        "name": "imitate_sorting_sequence",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": true,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "3f28afa7fa0a48214ecd3a3b192cd72b3a4abdc82e644c72248bfd59c9167ccd",
+      "no_rag_prompt_sha256": "a126dc882698accdf53465aea15bf95275faa43b9f2c21b0967753bf02084797",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "imitate_sorting_sequence"
+      }
+    },
+    "general_pickup": {
+      "spec": {
+        "name": "general_pickup",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "b553fdb9a871cfcfefd3b367a3aa6c912411c1387b7374a66ff367add230d35d",
+      "no_rag_prompt_sha256": "1568d4448fcbcb8b6da466cee10e9f6e39d22f56954e428f49902e2db3a3ad9a",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "general_pickup"
+      }
+    },
+    "pick_from_conveyor_by_image": {
+      "spec": {
+        "name": "pick_from_conveyor_by_image",
+        "random_variant": false,
+        "measurement": null,
+        "public_instruction": true,
+        "whole_phase_reference": false,
+        "support_robots": false,
+        "ik_joint_increment_rad": null
+      },
+      "prompt_sha256": "095876daafa6d0ff5be7a81075703bb0b735584c9f0208c5068271c79a298de1",
+      "no_rag_prompt_sha256": "442d94689fa198c44024b742276418c6cd8b972bd744fb534300936eadb94e5a",
+      "tool_contract_sha256": "d7a5cd6fc33ff7e926b72a4dd1c7e53633da26a0ebbf24ac96f8a484706d6a97",
+      "simulation_tasks": {
+        "standard": "pick_from_conveyor_by_image"
+      }
+    }
+  }
+}

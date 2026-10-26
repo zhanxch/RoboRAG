@@ -30,7 +30,9 @@ export PYTHONPATH="$PWD/src:$PWD/.runtime/mcp"
 
 ## 开发与批量验证
 
-先运行单例，输出必须是尚不存在的新目录：
+先用 `roborag tasks --task fold_clothes --json` 查看任务源码目录、配置和已记录结果。任务成绩注明对应策略提交；注册任务不表示已完成验证。
+
+进入对应的 `src/roborag/tasks/<任务名>/README.md`，按单例 → 开发场景 → 固定套件的顺序推进。输出必须是尚不存在的新目录：
 
 ```bash
 python -m roborag run --task fold_clothes --seed 1 --variant standard --layout 0 \
@@ -42,14 +44,14 @@ python -m roborag run --task fold_clothes --seed 1 --variant standard --layout 0
 固定套件示例：
 
 ```bash
-python -m roborag batch --task push_T --cases-file experiments/push-t-all.json \
+python -m roborag batch --task push_T --cases-file experiments/push_T/all.json \
   --model gpt-6-astra --effort xhigh --parallel 2 --max-wall-seconds 2160 \
   --output runs/push-t-refactor-seed1
 python -m roborag evaluate --task push_T --runs runs/push-t-refactor-seed1 \
-  --cases experiments/push-t-all.json --output results/push-t-refactor-seed1.json
+  --cases experiments/push_T/all.json --output results/push-t-refactor-seed1.json
 ```
 
-fold 使用 `experiments/fold-clothes-all.json`。push_T 的 development、heldout、all 列表分别对应 6、44、50 例。不得将重构后的新回合和旧冻结版本拼接成一份成绩。`--no-rag` 仅提供未来消融运行入口，不表示已有消融结果。
+fold 使用 `experiments/fold_clothes/all.json`。push_T 的 development、heldout、all 列表分别对应 6、44、50 例。不得将重构后的新回合和旧冻结版本拼接成一份成绩。`--no-rag` 仅提供未来消融运行入口，不表示已有消融结果。
 
 批次并发限制为 1 或 2，会记录 GPU 功率、内存和所属进程资源。总 GPU 功率可能包含其他工作负载；并发墙钟不同于每例墙钟之和。
 

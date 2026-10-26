@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 COMMANDS = {
+    "tasks": ("tasks.cli", "List task configurations and selected evaluation evidence"),
     "verify-evidence": (
         "evaluation.audit",
         "Verify selected historical results and replay retrieval",
@@ -39,17 +40,11 @@ def main():
     parser.add_argument(
         "--root", type=Path, help="Repository containing local.runtime.json and data"
     )
-    parser.add_argument("command", choices=[*COMMANDS, "tasks"])
+    parser.add_argument("command", choices=list(COMMANDS))
     parser.add_argument("arguments", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     if args.root:
         os.environ["ROBORAG_ROOT"] = str(args.root.resolve())
-    if args.command == "tasks":
-        from roborag.tasks import TASK_SPECS
-
-        for spec in TASK_SPECS.values():
-            print(f"{spec.name}: {spec.validation}")
-        return
     module, _ = COMMANDS[args.command]
     sys.argv = [f"roborag {args.command}", *args.arguments]
     importlib.import_module(f"roborag.{module}").main()

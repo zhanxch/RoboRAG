@@ -23,7 +23,7 @@ roborag = "roborag.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-roborag = ["resources/prompts/*.txt", "resources/graph-bank/*", "resources/protocol/*.json"]
+roborag = ["tasks/*/task.json", "tasks/*/*.txt", "tasks/*/README.md", "resources/prompts/*.txt", "resources/graph-bank/*", "resources/protocol/*.json"]
 
 [tool.ruff]
 target-version = "py310"

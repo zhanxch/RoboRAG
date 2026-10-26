@@ -1,0 +1,5 @@
+{
+  "name": "organize_table",
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

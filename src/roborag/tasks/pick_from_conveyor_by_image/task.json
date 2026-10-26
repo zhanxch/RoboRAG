@@ -1,0 +1,5 @@
+{
+  "name": "pick_from_conveyor_by_image",
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

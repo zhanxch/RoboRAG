@@ -6,7 +6,8 @@ from pathlib import Path
 from mcp.server import MCPServer
 from mcp.types import ToolAnnotations
 
-from roborag.mcp import cloth, evidence, motion, observations, planar, planning
+from roborag.capabilities import capability
+from roborag.mcp import evidence, motion, observations, planning
 from roborag.mcp.session import EpisodeSession
 from roborag.tasks import task_spec
 
@@ -24,12 +25,15 @@ def create_server(memory):
         ),
     )
     read_only = ToolAnnotations(readOnlyHint=True, openWorldHint=False)
-    if spec.measurement == "planar":
-        planar.register_planar_tool(server, memory, read_only)
+    measurements = [capability(name) for name in spec.capabilities]
+    for measurement in measurements:
+        if measurement.tool_position == "before_evidence":
+            measurement.register_tools(server, memory, read_only)
     evidence.register_tools(server, memory, read_only)
     observations.register_tools(server, memory, read_only)
-    if spec.measurement == "cloth":
-        cloth.register_tools(server, memory, read_only)
+    for measurement in measurements:
+        if measurement.tool_position == "after_observe":
+            measurement.register_tools(server, memory, read_only)
     planning.register_tools(server, memory, read_only)
     motion.register_tools(server, memory, read_only)
     return server

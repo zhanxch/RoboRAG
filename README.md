@@ -4,7 +4,7 @@
 
 RoboRAG 是一个统一的机器人检索增强操作框架。模型观察当前 RGB、相机标定和机器人本体状态，从 TRAIN 示范中检索历史经验，生成当前场景的新计划，再通过短动作段执行并接收反馈。
 
-**当前只维护一套 `roborag` Python 包、一套 delta 控制协议和一个任务注册表。** fold_clothes 与 push_T 共用检索、MCP、动作转换、进程管理和评估代码；任务差异集中在 `TaskSpec`。它复用 HexaShell 的机器人几何与视觉测量能力，以及 RoboICL/RoboDojo 的仿真和原生评价接口；目前不是脱离这些依赖即可运行的独立机器人平台，也尚未完成真机后端验证。
+**当前维护一套 `roborag` Python 包，按任务分目录开发。** 每个任务拥有自己的配置、提示词和专用工具；检索、delta 动作协议、进程管理和评估共用底层实现。它复用 HexaShell 的机器人几何与视觉测量能力，以及 RoboICL/RoboDojo 的仿真和原生评价接口；目前不是脱离这些依赖即可运行的独立机器人平台，也尚未完成真机后端验证。
 
 ## 当前版本与成绩
 
@@ -47,17 +47,22 @@ python -m roborag run --task push_T --seed 1 --variant standard --layout 0 \
 ```text
 src/roborag/
   cli.py / config.py       命令入口与本机路径配置
-  tasks.py                任务能力、提示词选择、随机变体
+  tasks/                  每个任务一个目录：配置、提示词、专用工具和开发说明
+    fold_clothes/         叠衣任务
+    push_T/               推 T 任务
+    registry.py / spec.py 自动发现任务与校验配置
   bank/                   TRAIN 图结构、索引、检索、参考片段与浏览器
   mcp/                    模型工具、当前回合会话和调用审计
   control/                目标到 delta 转换、执行约束与关节归位
-  backends/               RoboDojo 适配、cloth / planar 视觉测量
+  backends/               RoboDojo 仿真与动作派发适配
   runtime/                模型会话、仿真进程、批处理与来源冻结
   evaluation/             原生结果核验、成本统计、配对比较与离线回放
-  resources/              唯一有效的提示词、工具说明和图库页面
+  resources/              公共机器人协议、工具说明和图库页面
 ```
 
-建议从 `tasks.py` → `runtime/episode.py` → `mcp/server.py` → `mcp/evidence.py` / `mcp/motion.py` 阅读。详见 [架构与一次回合的流程](docs/architecture.md)、[图库说明](docs/graph-bank.md) 和 [开发与重构说明](docs/development.md)。
+先从 [fold_clothes](src/roborag/tasks/fold_clothes/README.md) 或 [push_T](src/roborag/tasks/push_T/README.md) 进入具体任务，再读 `runtime/episode.py` → `mcp/server.py` → `mcp/evidence.py` / `mcp/motion.py`。详见 [架构与一次回合的流程](docs/architecture.md)、[图库说明](docs/graph-bank.md) 和 [开发与重构说明](docs/development.md)。
+
+任务测试放在 `tests/tasks/<任务名>/`，固定场景列表放在 `experiments/<任务名>/`。当前注册 11 个任务；扩展到 42 个任务时逐个新增目录与验证记录，不向一个 `task.py` 堆叠逻辑，也不预建未经实现的任务。
 
 ## 历史与证据
 

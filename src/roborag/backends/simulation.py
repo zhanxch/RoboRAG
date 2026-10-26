@@ -51,8 +51,8 @@ def main():
     global_cfg.OBJECTS_PATH = str(assets / "Object/RoboDojo")
     global_cfg.ROBOTS_PATH = str(assets / "Robots")
     app = AppLauncher(args).app
-    from roborag.backends.cloth import measure_scene
     from roborag.backends.robodojo import EpisodeAPI, write_json
+    from roborag.capabilities import measurement_for
     from roborag.control.execution import execute_delta_actions
     from roborag.control.homing import execute_home
     from roborag.tasks import task_spec
@@ -191,14 +191,10 @@ def main():
                 if request.get("finish") == "agent_exit":
                     api.stop("agent_exit")
                     result, code = dict(episode_over=True, step=api.step, reason="agent_exit"), 0
-                elif "measure" in request:
-                    result, code = measure_scene(api, args.hexashell, request["measure"])
-                elif "planar_measure" in request:
-                    if spec.measurement != "planar":
-                        raise ValueError("Planar measurements are only enabled for push_T")
-                    from roborag.backends.planar import measure_planar
-
-                    result, code = measure_planar(api, args.hexashell, request["planar_measure"])
+                elif measurement := measurement_for(request, spec.capabilities):
+                    result, code = measurement.measure(
+                        api, args.hexashell, request[measurement.request_key]
+                    )
                 else:
                     result = (
                         execute_delta_actions(

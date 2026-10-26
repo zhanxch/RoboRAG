@@ -2,7 +2,7 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from roborag.backends.cloth import measure_scene
+from roborag.tasks.fold_clothes.measurements import measure_scene
 
 
 class SceneMeasurementsTests(unittest.TestCase):
@@ -14,7 +14,7 @@ class SceneMeasurementsTests(unittest.TestCase):
             retry_options=["robo home both"],
         )
         with patch(
-            "roborag.backends.cloth.cloth_tool",
+            "roborag.tasks.fold_clothes.measurements.cloth_tool",
             return_value=SimpleNamespace(run=lambda *args: (report, 0)),
         ):
             result, code = measure_scene(

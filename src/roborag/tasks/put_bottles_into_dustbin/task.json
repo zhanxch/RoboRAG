@@ -1,0 +1,6 @@
+{
+  "name": "put_bottles_into_dustbin",
+  "display_name": "瓶子收纳",
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

@@ -1,6 +1,6 @@
 # RoboRAG 架构
 
-RoboRAG 是同一个 Python 包中的分层框架。任务是配置和能力组合，不是复制一套控制程序。当前上线链路为图经验检索 + 持续模型会话 + MCP + RoboDojo；早期文本双记忆和独立视觉检索原型已退出当前代码。
+RoboRAG 是同一个 Python 包中的分层框架。任务按独立目录组织，配置和专用工具归任务所有，运行器与底层协议共享。当前上线链路为图经验检索 + 持续模型会话 + MCP + RoboDojo；早期文本双记忆和独立视觉检索原型已退出当前代码。
 
 ## 一次回合如何运行
 
@@ -30,7 +30,7 @@ flowchart LR
 
 `bank/models.py` 定义历史图及 cue/action/feedback 语义；`chunks.py` 定义动作窗口；`retrieval.py` 做分层检索；`store.py` 管理版本感知缓存与 HDF5 来源读取。`server.py` 仅负责图库 HTTP 展示，不进入策略执行链。
 
-`mcp/server.py` 只负责工具组装。检索、观察、计划、cloth 测量、planar 测量、动作分别在独立模块中。`EpisodeSession` 保存本回合已检索引用、当前计划、锁及文件交换状态；它不是一个自动更新、自动检索的短期经验库。连续回合历史主要在模型会话和审计日志中。
+`mcp/server.py` 只负责工具组装。检索、观察、计划与动作工具位于 `mcp/`；cloth 和 planar 测量工具分别位于 `tasks/fold_clothes/` 与 `tasks/push_T/`，通过 `capabilities.py` 的轻量映射同时接入 MCP 和仿真端。`EpisodeSession` 保存本回合已检索引用、当前计划、锁及文件交换状态；它不是一个自动更新、自动检索的短期经验库。连续回合历史主要在模型会话和审计日志中。
 
 `control/execution.py` 仅依赖 `ActionBackend` 协议，不直接操作原生环境的私有成员。`backends/robodojo.py` 实现具体派发、状态失效和日志写入。以后换后端需要实现这组能力，并重新验证坐标、终止条件和执行反馈；目前不宣称已有真机支持。
 
@@ -40,9 +40,11 @@ flowchart LR
 
 - fold_clothes：专用叠衣提示词，开放 `measure_scene`，读取当前 RGB 的布料几何；沿用 v3 动作行为。
 - push_T：公共任务指令与专用提示词，开放 `measure_planar`；参考增加训练阶段首/中/末状态与图像；启用原生 IK 连续性检查，关节增量上限 0.25 rad。
-- 其他任务保留接入声明，但标记为开发试跑或仅完成接入，不与这两套完整结果混算。`roborag tasks` 显示其验证状态。
+- 其他 9 个任务保留各自的接入配置和提示词；尚未列入当前所选完整套件，不与这两套完整结果混算。`roborag tasks` 从 `results/current.json` 读取已记录策略的成绩与提交号。
 
-上述开关都在 `TaskSpec`，由提示词、MCP 和仿真端共享。
+上述开关在 `tasks/<任务名>/task.json` 中声明，经 `TaskSpec` 校验后由提示词、MCP 和仿真端共享。注册表自动发现任务目录；配置只选择已注册的工具能力，不执行任意 Python 导入。任务的专用实现留在自己的目录，有实际复用需求时再抽取为共享实现。
+
+RoboRAG 的任务目录管理策略与工具，RoboDojo 的任务目录管理原生环境和成功判定。新增本库配置并不会自动实现新的仿真任务；两边必须有对应的任务标识。
 
 ## 与 HexaShell 的边界
 
@@ -56,7 +58,7 @@ push_T 的几何工具只得到 RGB 与标定快照。fold 的旧测量适配器
 
 TCP 到 link6 使用 0.145 m 的工具偏移。目标编译器插值的是 link6 平移及世界旋转，旋转时不保证 TCP 走直线。同一动作段从观测初值累计命令目标；实际跟踪误差超过 0.04 m 时停止剩余行。`return_home` 使用已验证的关节空间归位流程，不开放旧任意 TCP waypoint 控制器。
 
-提示词位于 `resources/prompts/`，工具自然语言说明位于 `resources/protocol/tool-descriptions.json`。说明从 Python 函数缩进中分离，避免格式化代码改变模型输入。黄金协议测试同时比较工具 schema、说明文本、提示词哈希与目标转换结果。
+任务提示词位于 `tasks/<任务名>/prompt.txt`，公共机器人协议位于 `resources/prompts/`，工具自然语言说明位于 `resources/protocol/tool-descriptions.json`。说明从 Python 函数缩进中分离，避免格式化代码改变模型输入。黄金协议测试同时比较工具 schema、说明文本、提示词哈希与目标转换结果。
 
 ## 当前研究能力边界
 

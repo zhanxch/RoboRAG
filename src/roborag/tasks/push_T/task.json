@@ -1,0 +1,11 @@
+{
+  "name": "push_T",
+  "capabilities": [
+    "planar_geometry"
+  ],
+  "random_variant": true,
+  "whole_phase_reference": true,
+  "ik_joint_increment_rad": 0.25,
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

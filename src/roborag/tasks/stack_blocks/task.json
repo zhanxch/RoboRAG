@@ -1,0 +1,7 @@
+{
+  "name": "stack_blocks",
+  "display_name": "积木堆叠",
+  "random_variant": true,
+  "public_instruction": false,
+  "prompt_file": "prompt.txt"
+}

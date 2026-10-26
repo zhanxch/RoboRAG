@@ -1,0 +1,6 @@
+{
+  "name": "deposit_coin",
+  "display_name": "硬币投放",
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

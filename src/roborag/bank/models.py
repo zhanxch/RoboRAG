@@ -13,13 +13,9 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-TASK_NAMES = {
-    "stack_blocks": "积木堆叠",
-    "fold_clothes": "叠衣",
-    "cover_blocks": "覆盖积木",
-    "put_bottles_into_dustbin": "瓶子收纳",
-    "deposit_coin": "硬币投放",
-}
+from roborag.tasks import TASK_SPECS
+
+TASK_NAMES = {name: spec.display_name for name, spec in TASK_SPECS.items()}
 
 EXPERIENCE_SEMANTICS = {
     "role": "recorded_experience",

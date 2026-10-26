@@ -1,0 +1,5 @@
+{
+  "name": "pour_balls_into_vase",
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

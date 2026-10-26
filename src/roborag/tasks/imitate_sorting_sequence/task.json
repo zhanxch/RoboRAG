@@ -1,0 +1,6 @@
+{
+  "name": "imitate_sorting_sequence",
+  "support_robots": true,
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

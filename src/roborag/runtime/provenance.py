@@ -9,6 +9,9 @@ from roborag.config import PROJECT_ROOT, RESOURCE_ROOT, RuntimeConfig
 def protocol_sources(bank, root=PROJECT_ROOT):
     root, bank = Path(root), Path(bank)
     paths = list(RESOURCE_ROOT.parent.rglob("*.py"))
+    paths += [
+        p for p in (RESOURCE_ROOT.parent / "tasks").rglob("*") if p.suffix in (".txt", ".json")
+    ]
     paths += [p for p in RESOURCE_ROOT.rglob("*") if p.suffix in (".txt", ".json")]
     paths += list(bank.glob("*.json")) + list((bank / "graphs").glob("*.json"))
     paths += list((root / "vendor/HexaShell/tasks/fold_clothes/tools/cloth_view").glob("*.py"))

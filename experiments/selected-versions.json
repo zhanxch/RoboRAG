@@ -9,14 +9,14 @@
     "fold_clothes": {
       "policy_commit": "1e9ffa05682fb750bd940938b6b8bd6bf6ac091f",
       "prompt_sha256": "26aa5ab01f3a0b78546089a84fdebf04c428ded0f2bb5fbf3945f4e95df8796b",
-      "cases": "experiments/fold-clothes-all.json",
+      "cases": "experiments/fold_clothes/all.json",
       "selection_reason": "Best completed native suite among evaluated fold candidates",
       "contract": "tests/fixtures/fold-v3-contract.json"
     },
     "push_T": {
       "policy_commit": "62f538d1897820fa112e1fd1d921ea6c1a485163",
       "prompt_sha256": "665c1f51132203eaeca8d263c99c8d4c4523ec1cab87dc478d8668a35397a282",
-      "cases": "experiments/push-t-all.json",
+      "cases": "experiments/push_T/all.json",
       "selection_reason": "Frozen original TRAIN policy: development 6/6 and new scenes 44/44",
       "contract": "tests/fixtures/push-t-contract.json"
     }

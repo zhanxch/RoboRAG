@@ -1,0 +1,5 @@
+{
+  "name": "general_pickup",
+  "prompt_file": "prompt.txt",
+  "protocol_prompt": "robot.basic.delta.txt"
+}

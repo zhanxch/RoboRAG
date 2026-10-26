@@ -1,0 +1,28 @@
+Experimental-design author response — 2026-10-23
+
+Reviewer: independent figures/tables review, paper/reviews/figures.txt.
+Files revised: paper/sections/06a-experiments.tex; this response. No other author's section was edited.
+
+T2.1 — ACCEPT.
+The old row listed several valid baseline families but did not identify the controlled pairs locally. It could be read as comparing sequential historical evidence with a graph plan lacking historical evidence. The table now has three explicit rows:
+(a) historical retrieval access on/off with graph schema, planner, adaptation rules, and execution hierarchy fixed;
+(b) sequence versus graph-governed execution with exactly the same selected node evidence, predicates, typed relations, and evidence references, using lossless relation text for the sequence condition;
+(c) goal-only, observed-state/feedback-only, and full retrieval queries, with their fields defined in the row and all planner observations retained.
+The caption now says each row is a separate contrast and distinguishes exact evidence matching for plan following from intentional evidence-selection changes for query experiments. The 2x2 text already provides the detailed matching protocol and remains consistent.
+
+T2.2 — ACCEPT; distinguish mandatory grounding from planner parameter edits.
+After coordination, the Method II author explicitly defined two skill-exposed planner choices: approach direction in the object's reference frame and precontact clearance distance, each within the skill's declared admissible bounds. These are now the parameter adaptation intervention in Table 2 and the adaptation paragraph. Every condition binds roles, grounds live poses, and checks feasibility. Grounded reuse retains source parameter choices where admissible and fixes topology; parameter adaptation changes those choices with topology fixed; full adaptation additionally changes prerequisites, ordering, and recovery. Infeasible source parameters are rejected rather than executed. The parameter contrast is restricted to skills exposing these choices. Absolute source trajectories are never the execution baseline. This replaces the initial merged-variant revision because Method II now provides an operational distinction.
+
+L10 — ACCEPT.
+Replaced 'causal availability' and the unrelated temporal-causation contrast with the concrete criterion: each annotation must be supported by evidence available at that decision.
+
+L11 — ACCEPT.
+Context measurement now directly states input tokens/images, context-cost curves, resource ceilings, and actual consumption. Removed both rebuttal-style phrases about item counts and padded expenditure. Also changed 'skill arguments' to 'skill argument schemas' in common controls so the wording does not inadvertently prohibit the parameter intervention.
+
+L12 — ACCEPT.
+The factorial description now states that it tests how executors use the same relational information. Removed the repeated final sentence about what linearization cannot establish. Retained the specific interpretation rule distinguishing a joint retrieval/execution interaction from evidence-access benefits.
+
+Global repetition: ACCEPT for the System/Experiments overlap.
+System defines A/B/C access modes and what their contrasts isolate. Experiments now refers to those modes and specifies the fixed planner/bank/controller/evidence, integration records, conformance injections, transport overhead, and transfer measurements.
+
+No rebuttal is necessary. These clarifications strengthen the comparisons without changing the novelty claim or implying empirical findings.

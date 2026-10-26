@@ -1,0 +1,33 @@
+Independent figure-and-caption review
+Date: 2026-10-23
+Scope: the four rendered *-nature.png images and their corresponding captions only; manuscript prose and section files were not read. Project research-positioning instructions were consulted.
+
+Final disposition: PASS after targeted icon revisions; no remaining substantive figure-or-caption issue identified. See the final verification below. The initial review is retained as history.
+
+Initial review (before icon revisions)
+
+Overall: scientifically coherent proposed-method figures. The captions distinguish history, intent and actual execution, describe illustrative data as illustrative, and identify platform integrations and comparisons as proposed. No figure implies a measured performance gain or completed system validation.
+
+Recommended targeted correction
+Figure 3, panel c: the drawer icon is visibly open while the task text describes a closed drawer. The initial closed state is the reason for inserting the opening prerequisite, so it should be represented consistently. Use a closed drawer icon and preferably describe the task as placing a cup inside a drawer that is initially closed. If the icon intentionally depicts a goal state, an explicit label could resolve the issue instead.
+
+Optional consistency improvements
+Figure 2: the record binds item = cup_7, whereas the episode icons show cubes. A generic object glyph is defensible, but cup icons would remove the mismatch.
+Figure 2, panel c: mixed checkmarks and empty circles can resemble a partially satisfied runtime checklist. Uniform bullets would better convey general readiness rules. This is not a scientific blocker because the panel does not claim that a particular phase is ready.
+
+Figure-specific assessment
+1. Experience-bank construction, retrieval, execution feedback, planner revision and separately evaluated curation have coherent arrow directions. The caption explicitly freezes the bank during held-out evaluation. No substantive defect found.
+2. Temporal, recovery and evidence-dependency edges are distinguishable and coherent. The failed attempt remains distinct from the later successful attempt; requested effects are separated from observed outcomes. OR transition choices and AND prerequisites are explained. No substantive defect beyond the optional icon/list consistency points above.
+3. Role rebinding, insertion of an opening prerequisite, verified holding and a bounded recovery loop are coherent. The caption distinguishes failed execution events from new retry instances. Correct the initial-state depiction noted above.
+4. A/B/C modes preserve the intended controls within each backend, separate shared-contract effects from MCP discovery/transport, and retain backend-specific capabilities. The caption clearly marks RoboDojo, LIBERO and the real robot as planned validation targets. No substantive defect found.
+
+No additional text errors or incoherent scientific arrows/predicates were identified at the supplied resolution. Rebuttal is acceptable where the intended visual semantics can be made explicit without changing the method.
+
+Final verification after revisions, 2026-10-23
+The replacement rendered PNGs for Figures 2 and 3 were reopened and visually inspected.
+
+Figure 2: the grasp and placement icons now consistently depict cups, matching item = cup_7. Panel c now uses uniform bullets. The four distinct phase instances, failed outcome, verified holding and placement, times, node record and eligibility wording remain intact. Temporal arrows still connect v1 to v2 to v3 to v4; the dashed recovery arrow still connects v1 to v2; the dotted holding dependency still connects v3 to v4. Both optional improvements are resolved.
+
+Figure 3: panel c now depicts a closed drawer, resolving the initial-state conflict. The unchanged caption and the explicit opening prerequisite are sufficient to convey that this is the initial state; a caption rewrite is unnecessary. The failed branch still leads from Grasp cup to Reobserve + retry, and the retry branch still returns to Grasp cup. The holding transition, approved retry budget, distinct attempt-ID text, predicates and composition inputs remain intact. The recommended correction is resolved.
+
+Figures 1 and 4 retain their original passing assessment. All four figures and their captions pass this independent review as proposed-method illustrations, not experimental evidence. No further correction is requested.

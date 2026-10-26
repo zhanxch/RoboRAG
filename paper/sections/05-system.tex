@@ -1,0 +1,33 @@
+\section{System Framework}
+\label{sec:system}
+
+RoboRAG connects graph planning to robot execution through a common semantic contract. The contract describes what a backend can do, what its observations mean, and what evidence an action returns. We propose adapters for RoboDojo, LIBERO~\cite{libero2023}, and a real robot. This separation allows the same planner to inspect backend capabilities and revise a graph before dispatch. MCP supplies a standard interface for discovering and invoking tools~\cite{mcp2026}; the robot semantics remain defined by RoboRAG and implemented by each adapter.
+
+\subsection{Capabilities, Observations, and Actions}
+
+\paragraph{Capabilities.}
+A versioned capability description identifies the robot, arms, controlled links, tool-center-point transforms, supported skills, sensors, coordinate frames, and units. It also declares motion limits, control periods, and available hold and stop operations. Each skill specifies input types, required observations, and possible outcomes. The adapter derives these declarations from its configuration and implemented functions. An unsupported capability produces a structured rejection that the planner can use to select another skill or revise the plan.
+
+\paragraph{Observations.}
+A snapshot carries an episode identifier, state sequence, camera capture times, calibration version, and state provenance. Fields distinguish measured, estimated, commanded, and unavailable values. For example, a commanded gripper width cannot establish object retention. Poses identify their reference frame, controlled link, orientation convention, and timestamp. Object estimates retain their sensor source and validity interval. Simulation steps, simulation time, and monotonic wall-clock time occupy separate fields. These distinctions let a graph condition refer to evidence with a defined meaning across adapters.
+
+\paragraph{Actions.}
+A motion request specifies an absolute target or bounded segment, its frame, the relevant plan version and phase authorization, required preconditions, and an expiry time. Gripper commands are explicit and separately authorized. The adapter checks state freshness, calibration, numerical validity, supported limits, and feasibility before dispatch. If a backend uses incremental commands, conversion uses one identified starting snapshot; later dispatch windows continue the converted targets. New geometry comes from current observations and the target backend. A retrieved graph contributes phase structure and conditions rather than source-platform coordinates.
+
+\subsection{Execution Receipts and Local Control}
+
+Each accepted request receives an execution identifier. Receipts distinguish acceptance, dispatch, confirmed execution, remaining commands, invalidated commands, and unknown outcomes. They record the executed prefix and the reason for termination. Motion completion establishes only the corresponding execution fact; a phase requiring successful grasp or placement still needs its specified observation evidence. The supervisor uses these receipts to update the execution history $X_t$ and decide whether the active plan $P_t$ can advance.
+
+An episode and request identifier together provide deduplication. Repeating an identical request returns its existing execution record; reusing the identifier with different parameters is rejected. After a communication timeout, the client queries execution state instead of resubmitting motion. An uncertain outcome blocks further dispatch until the adapter reconciles the execution record and obtains the required state evidence. Plan patches must match the current version, so a delayed response cannot restore a cancelled segment.
+
+Servo control, interpolation, tracking checks, and physical protection remain in the native backend. The adapter exposes their supported behavior, including the effect of pause, cancel, and stop on outstanding motion and gripper commands. A cancellation acknowledgment is distinct from evidence that a physical robot has stopped. Local protection must operate independently of language-model inference. We evaluate synchronous simulation and continuous physical execution separately, reporting measured wall-clock timing alongside nominal controller frequency.
+
+Section~\ref{sec:evidence-analysis} describes the existing execution infrastructure and the implementation status of the proposed framework.
+
+\subsection{Separating Interface Reuse from MCP Transport}
+
+Figure~\ref{fig:platform} compares three modes within each backend. Mode A accesses the backend through a specific native driver. Mode B uses the common contract and adapter through direct calls. Mode C exposes that same contract and adapter through MCP. B versus A tests semantic normalization and application reuse; C versus B tests the incremental effects of protocol discovery and transport.
+
+Differences in embodiment, sensing, contact dynamics, and available skills remain explicit in the adapters. Shared access can reduce integration work, while successful experience transfer depends on compatible graph conditions and adaptation to the receiving platform. Section~\ref{sec:experiments} specifies the controlled comparisons and measures porting effort, conformance, timing, and task performance per backend.
+
+% CHAPTER_SUMMARY: A common capability, observation, action, and receipt contract connects graph planning to native execution. Provenance, frames, timing, authorization, and execution evidence preserve graph semantics across adapters. Native servo and protection functions retain local responsibility. Comparing native access, normalized direct access, and the same normalized interface through MCP isolates application reuse from protocol effects across proposed RoboDojo, LIBERO, and real-robot targets.

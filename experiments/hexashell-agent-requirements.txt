@@ -1,0 +1,6 @@
+# Actor-side Python 3.10 packages; separate from the simulator environment.
+numpy==1.26.4
+scipy==1.15.3
+Pillow==12.3.0
+opencv-python-headless==4.11.0.86
+transforms3d==0.4.2

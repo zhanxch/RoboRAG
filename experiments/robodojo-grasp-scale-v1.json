@@ -1,0 +1,1510 @@
+{
+  "schema": "robodojo.grasp.coverage.v1",
+  "generated_at": 1792745614.1073718,
+  "summary": {
+    "base_tasks": 42,
+    "randomized_variants": 12,
+    "total_configs": 54,
+    "eval_layout_files": 8070,
+    "local_unique_train_episodes": 2,
+    "tasks_with_local_train_data": 2,
+    "families": {
+      "rigid_pick_place": 32,
+      "assembly": 4,
+      "articulated_manipulation": 6,
+      "cloth": 2,
+      "dynamic_pickup": 2,
+      "contact_or_pushing": 5,
+      "fluid_transfer": 3
+    },
+    "full_tasks_evaluated_by_this_policy": 0
+  },
+  "tasks": [
+    {
+      "task": "align_blocks",
+      "base_task": "align_blocks",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a set square and three blocks. The robot needs to use the set square to push the blocks until they are aligned in parallel in a straight row.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/align-blocks/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "arrange_largest_number",
+      "base_task": "arrange_largest_number",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are several number tiles on the table and a pad for placement. The robot needs to determine the order that forms the largest possible number, then place the four numbers on the pad from left to right in that order.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/arrange-largest-number/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "arrange_largest_number_random",
+      "base_task": "arrange_largest_number",
+      "variant": true,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are several number tiles on the table and a pad for placement. The robot needs to determine the order that forms the largest possible number, then place the four numbers on the pad from left to right in that order.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/arrange-largest-number/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "build_tower",
+      "base_task": "build_tower",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/build_tower/train/episode_0000000.hdf5",
+        "download_url": "https://github.com/Mosi-AI/RoboICL/releases/download/paper-reference-sources-2026-09-29/build_tower_episode_0000000.hdf5",
+        "repository_revision": "0a709fe7863f6c869a8d141676585a883fce4270",
+        "repository_path": "data/RoboDojo/build_tower/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "d7c3fdf94eceb545f313999716ec0b25e43b6571ff2990aa0986376204e38a12",
+        "size": 198230849,
+        "total_frames": 723
+      },
+      "description": "There are wooden blocks and wooden boards on the table. The robot needs to place each board or block on the supports below it, keep each layer centered over the layer beneath it, and keep all pieces upright.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/build-tower/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "classify_objects",
+      "base_task": "classify_objects",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [
+        {
+          "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/policy_compare/data/roboicl/runtime-data/classify_objects/train/episode_0000000.hdf5",
+          "sha256": "90c6e0651bf87358127aa431ceef08a70b63bf6fa2dc7fc77962cfeb4ea19555",
+          "bytes": 675900439,
+          "split_provenance": "existing local TRAIN directory; source asset identity not present in HDF5"
+        }
+      ],
+      "train_hdf5_count": 1,
+      "locked_reference": {
+        "install_path": "runtime-data/classify_objects/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/classify_objects/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "90c6e0651bf87358127aa431ceef08a70b63bf6fa2dc7fc77962cfeb4ea19555",
+        "size": 675900439,
+        "total_frames": 747
+      },
+      "description": "There are three categories of objects and three baskets. The robot needs to group the objects by category and place each category into a separate basket. Any basket can be used for any category, as long as objects of the same category are placed together.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/classify-objects/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "classify_objects_by_language",
+      "base_task": "classify_objects_by_language",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three baskets and three categories of unseen objects. The robot needs to understand the language instruction, identify the category of each object, and place the objects into the specified baskets from left to right.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/classify-objects-by-language/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "cover_blocks",
+      "base_task": "cover_blocks",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/cover_blocks/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/cover_blocks/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "2fa920f75e3d126c811ea3eb0145325ce504d3d4b2ba08488a61531576bad74a",
+        "total_frames": 555
+      },
+      "description": "There are three covers and three blocks arranged in a random order. The blocks are red, green, and blue. The robot needs to cover the blocks from left to right, remember the color under each cover, and then uncover the blocks in the order of red, green, and blue.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/cover-blocks/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "deposit_coin",
+      "base_task": "deposit_coin",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 60,
+        "2": 60,
+        "0": 60
+      },
+      "eval_layouts_total": 180,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/deposit_coin/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/deposit_coin/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "b9093beb1142f1e15ad38003a82abdc85f96417425193b0b5c7d9128ae90cd29",
+        "size": 172213297,
+        "total_frames": 191
+      },
+      "description": "There is a coin placed on a holder and a coin bank. The robot needs to pick up the coin and accurately insert it into the slot of the coin bank.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/deposit-coin/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "fasten_screws",
+      "base_task": "fasten_screws",
+      "variant": false,
+      "family": "assembly",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/fasten_screws/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/fasten_screws/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "80fb9ddbfa75d72948148c63a88d8cbddbfa127ff50dceb658849b89b1ebec37",
+        "size": 1471383992,
+        "total_frames": 1510
+      },
+      "description": "There are three screws and three nuts on the table. The screws and nuts come from five possible colors: red, blue, gray, yellow, and purple. In each episode, three different colors are selected, and the robot needs to match each screw with the nut of the same color, insert it, and tighten it. The screw positions vary within a small range, while the nut positions vary within a larger range. If a handover is needed, the robot can first place the screw in the middle and then let the other arm pick it up and fasten it.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/fasten-screws/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "fill_egg_holder",
+      "base_task": "fill_egg_holder",
+      "variant": false,
+      "family": "articulated_manipulation",
+      "object_systems": [
+        "Articulation",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 65,
+        "2": 65,
+        "0": 65
+      },
+      "eval_layouts_total": 195,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/fill_egg_holder/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/fill_egg_holder/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "9cab4b8e5d505cd10aeee80df7a9cda564bb8a6646598a5cdee35243e6355d35",
+        "total_frames": 488
+      },
+      "description": "There is a woven basket containing four eggs and an egg holder. The robot needs to pick up the eggs one by one, place all four into the egg holder, and then close the lid.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/fill-egg-holder/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "fill_pen_holder",
+      "base_task": "fill_pen_holder",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/fill_pen_holder/train/episode_0000000.hdf5",
+        "download_url": "https://github.com/Mosi-AI/RoboICL/releases/download/paper-reference-sources-2026-09-29/fill_pen_holder_episode_0000000.hdf5",
+        "repository_revision": "0a709fe7863f6c869a8d141676585a883fce4270",
+        "repository_path": "data/RoboDojo/fill_pen_holder/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "0d33a6cc7258945b60eff9ad4186570c4f4488e2f55bd73ec0df4f8f67494542",
+        "size": 245324592,
+        "total_frames": 934
+      },
+      "description": "There is a pen holder and several pens. The robot needs to grasp the pen holder with one hand, use the other hand to place the pens into the holder one by one, and finally put the filled pen holder back on the table.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/fill-pen-holder/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "fold_clothes",
+      "base_task": "fold_clothes",
+      "variant": false,
+      "family": "cloth",
+      "object_systems": [
+        "Garment"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [
+        {
+          "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/data/roboicl/runtime-data/fold_clothes/train/episode_0000000.hdf5",
+          "sha256": "5a1fbba99a9f13900ec4439ba503674627335e28aeba6840223beb3e17cc93ac",
+          "bytes": 625657616,
+          "split_provenance": "existing local TRAIN directory; source asset identity not present in HDF5"
+        }
+      ],
+      "train_hdf5_count": 1,
+      "locked_reference": null,
+      "description": "There is a piece of clothing. The robot needs to fold it neatly.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/fold-clothes/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "local cloth subskill only",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "fold_clothes_random",
+      "base_task": "fold_clothes",
+      "variant": true,
+      "family": "cloth",
+      "object_systems": [
+        "Clutter",
+        "Garment"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [
+        {
+          "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/data/roboicl/runtime-data/fold_clothes/train/episode_0000000.hdf5",
+          "sha256": "5a1fbba99a9f13900ec4439ba503674627335e28aeba6840223beb3e17cc93ac",
+          "bytes": 625657616,
+          "split_provenance": "existing local TRAIN directory; source asset identity not present in HDF5"
+        }
+      ],
+      "train_hdf5_count": 1,
+      "locked_reference": null,
+      "description": "There is a piece of clothing. The robot needs to fold it neatly.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/fold-clothes/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "general_pickup",
+      "base_task": "general_pickup",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are multiple objects. The robot needs to understand the language instruction, identify the target object, and pick it up.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/general-pickup/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "hang_mugs",
+      "base_task": "hang_mugs",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three mugs and one mug rack. The robot needs to pick up each mug and hang all of them on the rack.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/hang-mugs/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "hang_mugs_random",
+      "base_task": "hang_mugs",
+      "variant": true,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three mugs and one mug rack. The robot needs to pick up each mug and hang all of them on the rack.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/hang-mugs/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "imitate_sorting_sequence",
+      "base_task": "imitate_sorting_sequence",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 65,
+        "2": 65,
+        "0": 65
+      },
+      "eval_layouts_total": 195,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/imitate_sorting_sequence/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/imitate_sorting_sequence/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "9bfff493434772f85765229567a2f45ddd38e1cc9e98034c57a8b65354f62375",
+        "size": 1298699086,
+        "total_frames": 1187
+      },
+      "description": "There are five categories of objects, with five objects on each side. The opposite robot places its objects into the basket on the right side in a certain order. The robot needs to observe and remember this sequence, then place its corresponding objects into the basket in the same order. This is a memory-based imitation task.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/imitate-sorting-sequence/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "insert_key",
+      "base_task": "insert_key",
+      "variant": false,
+      "family": "assembly",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/insert_key/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/insert_key/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "56226333754583c0b86cfb4466e1a5e9a1927d4e8fac2df5028b6e7268183a02",
+        "size": 155048675,
+        "total_frames": 175
+      },
+      "description": "There is a key and a keyhole on the table. The robot needs to pick up the key, hand it over to the other hand for pose adjustment, insert it accurately into the keyhole, and then turn it.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/insert-key/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "insert_tubes",
+      "base_task": "insert_tubes",
+      "variant": false,
+      "family": "assembly",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/insert_tubes/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/insert_tubes/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "a1c9d0dee5eedc6d56e5f88d98642ed4ab50b8f6315255cc8fd8492739256758",
+        "size": 286528607,
+        "total_frames": 319
+      },
+      "description": "There is a tube rack and three tubes. The robot needs to pick up each tube in sequence and insert all tubes into the rack.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/insert-tubes/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "make_kong",
+      "base_task": "make_kong",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 65,
+        "2": 65,
+        "0": 65
+      },
+      "eval_layouts_total": 195,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/make_kong/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/make_kong/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "cf87c6076a8400d7fd308155d423ca1e7ba7793189405aeaabae9e6e24847805",
+        "size": 393301017,
+        "total_frames": 382
+      },
+      "description": "There is a Mahjong setup. The opponent first pushes out a tile. The robot needs to observe the discarded tile, identify the matching tiles on its side, and perform a valid kong action. The setup guarantees that a kong is possible.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/make-kong/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "make_toast",
+      "base_task": "make_toast",
+      "variant": false,
+      "family": "articulated_manipulation",
+      "object_systems": [
+        "Articulation",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 70,
+        "2": 70,
+        "0": 70
+      },
+      "eval_layouts_total": 210,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a basket containing multiple slices of bread and a toaster. The robot needs to pick up two slices one by one, place them into the toaster, and then press the lever down to start toasting.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/make-toast/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "make_toast_random",
+      "base_task": "make_toast",
+      "variant": true,
+      "family": "articulated_manipulation",
+      "object_systems": [
+        "Articulation",
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 45,
+        "2": 45,
+        "0": 45
+      },
+      "eval_layouts_total": 135,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a basket containing multiple slices of bread and a toaster. The robot needs to pick up two slices one by one, place them into the toaster, and then press the lever down to start toasting.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/make-toast/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "match_and_pick_from_conveyor",
+      "base_task": "match_and_pick_from_conveyor",
+      "variant": false,
+      "family": "dynamic_pickup",
+      "object_systems": [
+        "Dynamic",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/match_and_pick_from_conveyor/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/match_and_pick_from_conveyor/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "a6b70eab16746a8ebcef310fc1ecdf61d4191975ab826aa3addd707de3389bd7",
+        "total_frames": 474
+      },
+      "description": "An object first appears on the conveyor and is carried away. The robot needs to remember this object, observe the following objects on the conveyor, and pick the one that matches the first object.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/match-and-pick-from-conveyor/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "organize_table",
+      "base_task": "organize_table",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/organize_table/train/episode_0000000.hdf5",
+        "repository_revision": "16f509f1dd2a10a2ed7312ef0de8dd7db135869b",
+        "repository_path": "data/RoboDojo/organize_table/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "f35041b55aa076456c60da4d217b06c89c700add43ed4804b3b38a210f021145",
+        "size": 778413312,
+        "total_frames": 838
+      },
+      "description": "There are a computer, a keyboard, a mouse, an alarm clock, a cartoon figurine, three miscellaneous items, and a drawer. The robot needs to organize the table by placing the mouse on the mouse pad, pushing the keyboard into the frame, putting the figurine on the stand, placing the alarm clock on top of the drawer, opening the drawer, and putting all remaining miscellaneous items into it.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/organize-table/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "pack_objects_into_box",
+      "base_task": "pack_objects_into_box",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are several objects on the table and a box. The robot needs to pick up all the objects, place them into the box, and ensure that each object is oriented with its front side facing left.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/pack-objects-into-box/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "pack_objects_into_box_random",
+      "base_task": "pack_objects_into_box",
+      "variant": true,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are several objects on the table and a box. The robot needs to pick up all the objects, place them into the box, and ensure that each object is oriented with its front side facing left.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/pack-objects-into-box/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "pick_from_conveyor_by_image",
+      "base_task": "pick_from_conveyor_by_image",
+      "variant": false,
+      "family": "dynamic_pickup",
+      "object_systems": [
+        "Dynamic",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a board displaying an image of the target object, a basket, and a conveyor carrying multiple objects. The robot needs to first lift the basket more than 8 cm, identify the target object on the conveyor based on the image shown on the board, pick up the target object, and place it into the basket.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/pick-from-conveyor-by-image/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "play_Xylophone",
+      "base_task": "play_Xylophone",
+      "variant": false,
+      "family": "contact_or_pushing",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/play_Xylophone/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/play_Xylophone/arx_x5/data/episode_0000001.hdf5",
+        "episode": 0,
+        "repository_episode": 1,
+        "sha256": "de29ee57e57e6ff391a5b5c1f4b7250e4c2c96f5d8abf1579280bdca075b9ea1",
+        "size": 334968193,
+        "total_frames": 306
+      },
+      "description": "There is a xylophone and a mallet. The robot needs to pick up the mallet with one hand and strike all the xylophone keys from left to right.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/play-xylophone/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "play_stacking_toy",
+      "base_task": "play_stacking_toy",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/play_stacking_toy/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/play_stacking_toy/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "c58d9e3deeb16924f0a7f1ac89d4da8fc93ab2961b494a2a1d08b9f916704298",
+        "size": 907635605,
+        "total_frames": 887
+      },
+      "description": "There is a stacking toy with four pegs and four types of pieces. The numbers of pieces in the four types are 4, 3, 2, and 1, and each peg matches one type. The robot needs to place all pieces onto their corresponding pegs correctly.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/play-stacking-toy/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "play_tic_tac_toe",
+      "base_task": "play_tic_tac_toe",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 75,
+        "2": 75,
+        "0": 75
+      },
+      "eval_layouts_total": 225,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/play_tic_tac_toe/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/play_tic_tac_toe/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "324f00cef4db1548e755afdc5977121cd543ecebaf3cc2cdca4e4bc1f1e671f8",
+        "size": 910524041,
+        "total_frames": 883
+      },
+      "description": "There is a 3-by-3 tic-tac-toe board. The robot plays as the first player, while the opponent follows a random strategy. The robot and the opponent take turns placing their marks until the board is filled.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/play-tic-tac-toe/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "plug_in_charger",
+      "base_task": "plug_in_charger",
+      "variant": false,
+      "family": "assembly",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/plug_in_charger/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/plug_in_charger/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "7f16181b1697621037c2ca82c10e8506ec4c0190a615d605e3069cf41d954a6a",
+        "size": 176790008,
+        "total_frames": 195
+      },
+      "description": "There is a charger plug and a power strip. The robot needs to pick up the charger plug and insert it into the power strip.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/plug-in-charger/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "pour_balls_into_vase",
+      "base_task": "pour_balls_into_vase",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/pour_balls_into_vase/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/pour_balls_into_vase/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "def19279bdc74357f827cd0722542b75f8fa2d778543c5acbe3d612b6060c366",
+        "size": 317006855,
+        "total_frames": 355
+      },
+      "description": "There is a cup containing many small balls and a vase. The robot needs to pick up the cup and pour all the balls into the vase.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/pour-balls-into-vase/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "pour_by_language",
+      "base_task": "pour_by_language",
+      "variant": false,
+      "family": "fluid_transfer",
+      "object_systems": [
+        "Fluid",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three colored bottles and three colored bowls on the table. The robot needs to follow the language instruction and pour the liquid from each specified bottle into the corresponding specified bowl.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/pour-by-language/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "pour_liquid_into_cup",
+      "base_task": "pour_liquid_into_cup",
+      "variant": false,
+      "family": "fluid_transfer",
+      "object_systems": [
+        "Fluid",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a bottle containing liquid and a cup. The robot needs to pick up the bottle and pour the liquid into the cup.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/pour-liquid-into-cup/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "pour_liquid_into_cup_random",
+      "base_task": "pour_liquid_into_cup",
+      "variant": true,
+      "family": "fluid_transfer",
+      "object_systems": [
+        "Clutter",
+        "Fluid",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a bottle containing liquid and a cup. The robot needs to pick up the bottle and pour the liquid into the cup.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/pour-liquid-into-cup/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "press_by_number",
+      "base_task": "press_by_number",
+      "variant": false,
+      "family": "contact_or_pushing",
+      "object_systems": [
+        "Articulation"
+      ],
+      "eval_layout_counts": {
+        "1": 65,
+        "2": 65,
+        "0": 65
+      },
+      "eval_layouts_total": 195,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/press_by_number/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/press_by_number/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "2c96ad9ab5ad586f71ca62fed1a4b1f4a3c29fab61307891f7121ac2c4c977b0",
+        "total_frames": 377
+      },
+      "description": "There are two number cards, two red buttons, and one blue confirmation button. The robot needs to read the numbers, press each red button the corresponding number of times, and then press the blue button to confirm. Pressing the blue button ends the task immediately.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/press-by-number/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "push_T",
+      "base_task": "push_T",
+      "variant": false,
+      "family": "contact_or_pushing",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a thin gray T-shaped pad and a T-shaped block. The robot needs to push the T-shaped block until it is precisely aligned with and fitted onto the gray pad.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/push-t/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "push_T_random",
+      "base_task": "push_T",
+      "variant": true,
+      "family": "contact_or_pushing",
+      "object_systems": [
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a thin gray T-shaped pad and a T-shaped block. The robot needs to push the T-shaped block until it is precisely aligned with and fitted onto the gray pad.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/push-t/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "base_task": "put_bottles_into_dustbin",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/put_bottles_into_dustbin/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/put_bottles_into_dustbin/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "e110130f137a2006939c47707ceee2cac489658436823555cce560545d2086b0",
+        "size": 320652074,
+        "total_frames": 362
+      },
+      "description": "There are four bottles on the table, and they may be either standing or lying down. A dustbin is placed beside the table. The robot needs to pick up the bottles and throw them into the dustbin. Because of the shifted table layout, bottles on the right side require a handover between the two hands before being discarded.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/put-bottles-into-dustbin/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "solve_equation",
+      "base_task": "solve_equation",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is an arithmetic equation on the table and a pad for the answer. The equation is missing either a number or an operator. The robot needs to choose the correct missing item from the randomly arranged numbers and operators on the table and place it on the pad to complete the equation.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/solve-equation/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "sort_nesting_dolls_by_size",
+      "base_task": "sort_nesting_dolls_by_size",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are five nesting dolls of different sizes on the table. The robot needs to sort them by size and arrange them in a straight row from left to right, from smallest to largest.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/sort-nesting-dolls-by-size/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "sort_nesting_dolls_by_size_random",
+      "base_task": "sort_nesting_dolls_by_size",
+      "variant": true,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are five nesting dolls of different sizes on the table. The robot needs to sort them by size and arrange them in a straight row from left to right, from smallest to largest.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/sort-nesting-dolls-by-size/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "stack_blocks",
+      "base_task": "stack_blocks",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three blocks with different textures on the table. The robot needs to pick them up and stack them into a stable pile.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/stack-blocks/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "stack_blocks_by_language",
+      "base_task": "stack_blocks_by_language",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are several colored blocks. The robot needs to understand the language instruction and stack the blocks in the specified color order.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/stack-blocks-by-language/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "stack_blocks_random",
+      "base_task": "stack_blocks",
+      "variant": true,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three blocks with different textures on the table. The robot needs to pick them up and stack them into a stable pile.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/stack-blocks/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "stack_bowls",
+      "base_task": "stack_bowls",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three bowls. The robot needs to stack all the bowls together.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/stack-bowls/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "stack_bowls_random",
+      "base_task": "stack_bowls",
+      "variant": true,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are three bowls. The robot needs to stack all the bowls together.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/stack-bowls/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "store_laptop_and_headphones",
+      "base_task": "store_laptop_and_headphones",
+      "variant": false,
+      "family": "articulated_manipulation",
+      "object_systems": [
+        "Articulation",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is an open laptop on a laptop stand, a vertical laptop stand, a pair of headphones, and a headphone stand. The laptop opening angle is random but greater than 30 degrees. The robot needs to first hang the headphones on the headphone stand, then close the laptop, pick it up from the stand, and insert it into the vertical laptop stand.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/store-laptop-and-headphones/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "store_laptop_and_headphones_random",
+      "base_task": "store_laptop_and_headphones",
+      "variant": true,
+      "family": "articulated_manipulation",
+      "object_systems": [
+        "Articulation",
+        "Clutter",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is an open laptop on a laptop stand, a vertical laptop stand, a pair of headphones, and a headphone stand. The laptop opening angle is random but greater than 30 degrees. The robot needs to first hang the headphones on the headphone stand, then close the laptop, pick it up from the stand, and insert it into the vertical laptop stand.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/store-laptop-and-headphones/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "store_tools_in_toolbox",
+      "base_task": "store_tools_in_toolbox",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There are several tools and a toolbox with designated slots. The robot needs to pick up each tool and place it into the corresponding position in the toolbox.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/store-tools-in-toolbox/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "swap_T",
+      "base_task": "swap_T",
+      "variant": false,
+      "family": "contact_or_pushing",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/swap_T/train/episode_0000000.hdf5",
+        "repository_path": "data/RoboDojo/swap_T/arx_x5/data/episode_0000000.hdf5",
+        "episode": 0,
+        "sha256": "8b526ba12e970161bfd5ff758164ff184fb08e0a69d06461c5ad8d93396d1e10",
+        "total_frames": 272
+      },
+      "description": "There are two T-shaped blocks on the table. The robot needs to grasp them with both hands, swap their positions, and place them back so that each block matches the original pose of the other one, including both position and orientation. This is a memory-based task.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/swap-t/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "swap_blocks",
+      "base_task": "swap_blocks",
+      "variant": false,
+      "family": "articulated_manipulation",
+      "object_systems": [
+        "Articulation",
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": {
+        "install_path": "runtime-data/swap_blocks/train/episode_0000001.hdf5",
+        "repository_path": "data/RoboDojo/swap_blocks/arx_x5/data/episode_0000001.hdf5",
+        "episode": 1,
+        "sha256": "025df44e23a377dcb67d758c915421986017c7750ac320f026bd935988d283f3",
+        "size": 414317508,
+        "total_frames": 439
+      },
+      "description": "There are three mats, two blocks placed on two of the mats, and one button. The robot needs to swap the positions of the two blocks by using the empty mat as a temporary place. After each move, the robot must press the button.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/swap-blocks/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "sweep_blocks",
+      "base_task": "sweep_blocks",
+      "variant": false,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 55,
+        "2": 55,
+        "0": 55
+      },
+      "eval_layouts_total": 165,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a broom and a dustpan on the left side, and the blocks are on the right side. The robot needs to pick up the broom, hand it over to the right hand, grasp the dustpan with the left hand, and sweep the blocks into the dustpan.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/sweep-blocks/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    },
+    {
+      "task": "sweep_blocks_random",
+      "base_task": "sweep_blocks",
+      "variant": true,
+      "family": "rigid_pick_place",
+      "object_systems": [
+        "Rigid"
+      ],
+      "eval_layout_counts": {
+        "1": 30,
+        "2": 30,
+        "0": 30
+      },
+      "eval_layouts_total": 90,
+      "train_hdf5": [],
+      "train_hdf5_count": 0,
+      "locked_reference": null,
+      "description": "There is a broom and a dustpan on the left side, and the blocks are on the right side. The robot needs to pick up the broom, hand it over to the right hand, grasp the dustpan with the left hand, and sweep the blocks into the dustpan.",
+      "documentation": "https://robodojo-benchmark.com/doc/sim-tasks/sweep-blocks/",
+      "native_task_source_exists": true,
+      "small_policy_adapter": "not implemented or validated",
+      "full_task_evaluated": false
+    }
+  ],
+  "source_repository": {
+    "repo_id": "RoboDojo-Benchmark/RoboDojo",
+    "revision": "35efbc7dedfdbeeb6e95fb749bd885d73d483e41",
+    "note": "The SHA256 in each row is authoritative; repository_path records the source identity used for retrieval. source.episode is the installed/bundle episode number; source.repository_episode overrides the upstream episode number when they differ."
+  },
+  "interpretation": "Filesystem availability only. Configs, layouts and demonstration files do not imply runtime coverage or policy success.",
+  "observed_dataset_website": "https://huggingface.co/datasets/RoboDojo-Benchmark/RoboDojo",
+  "development_fixture_exclusion": [
+    "fold_clothes / layout 0 / seed 0 was used to derive local development fixtures; do not claim it as an untouched official test"
+  ],
+  "next_stage": {
+    "status": "superseded_by_single_task_focus",
+    "condition": "Complete pilot audit and establish reproducible grasp effectiveness before broad rollout.",
+    "pilot_tasks": [
+      "fold_clothes",
+      "general_pickup",
+      "stack_blocks",
+      "classify_objects",
+      "fill_pen_holder",
+      "hang_mugs"
+    ],
+    "data_curve_demonstrations_per_task": [
+      1,
+      10,
+      50
+    ],
+    "training_seeds": [
+      31001,
+      31002,
+      31003
+    ],
+    "authorized_wall_budget_hours": 72,
+    "compute": "Local NVIDIA RTX 4090",
+    "budget_authorization": "User explicitly permits continuous local execution for up to 72 hours",
+    "splits": "Freeze episode identities and object/layout partitions before fitting. Never train on evaluation rollouts. All checkpoints selected on development data only.",
+    "evaluation": "Paired BC / BC+RL, macro-average by task, per-task and per-layout scores, uncertainty intervals across training seeds, all failures and timeouts retained.",
+    "native_scores": "Native full-task score is separate from local grasp success; use the same high-level controller for both low-level policies.",
+    "unresolved": [
+      "Rigid and contact-task observation/action adapters are not implemented for this cloth policy",
+      "Additional TRAIN sources must be verified and downloaded by pinned revision and content hash",
+      "Separate train simulation layouts and object partitions must be constructed without using test fixtures",
+      "Measure per-task runtime before committing full coverage within a wall budget"
+    ],
+    "current_scope": "fold_clothes local grasp: continue RL on seen conditions; no cross-task expansion",
+    "user_scope_revised_at": 1792749641.843718
+  }
+}

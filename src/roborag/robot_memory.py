@@ -91,7 +91,10 @@ class RetrievalModel(Model):
         raw = Path(os.environ["ROBORAG_CORPUS"]).read_bytes()
         self.corpus_hash = hashlib.sha256(raw).hexdigest()
         self.corpus = json.loads(raw)
-        if self.corpus["horizon"] != self.dialogue_config.predict_horizon:
+        control_profile = os.environ.get("ROBORAG_CONTROL_PROFILE", "standard")
+        self.reference_horizon = int(self.corpus["horizon"])
+        if (self.reference_horizon != self.dialogue_config.predict_horizon
+                and control_profile not in ("continuous_fast", "hybrid", "queued")):
             raise ValueError("Corpus horizon differs from executed action interface")
         if self.corpus["source_split"] != "train" or any(r["split"] != "train" for r in self.corpus["records"]):
             raise ValueError("Only training records are accepted in long-term memory")
@@ -151,7 +154,9 @@ class RetrievalModel(Model):
             return deepcopy(self._train_message_cache[cache_key])
         before, after = record["before"], record["after"]
         call_id = "rag_train_" + record["record_id"].replace(":", "_")
-        commands = plain(self._convert_tensor(record["actions"], before["state"]))
+        # Recorded motor rows are not LIVE sparse waypoints. Bypass controller
+        # mixins so interpolation/queue changes cannot rewrite demonstration time.
+        commands = plain(Model._convert_tensor(self, record["actions"], before["state"]))
         c = self.dialogue_config
         def observation(value):
             content = [{"type": "input_text", "text": json.dumps({"source": "LONG_TERM_TRAIN",

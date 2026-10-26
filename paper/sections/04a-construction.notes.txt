@@ -1,0 +1,95 @@
+METHOD I: INTEGRATION NOTES
+
+Status and basis
+- Read project memory, paper/editorial-contract.txt, docs/architecture.md, docs/control-todo.md, and docs/queued-control.md.
+- This section is proposed method, not an account of implemented graph features. Existing implementation provides independent fixed training and episode memory, provenance/action receipts, and a partial synchronous queue. Root should state overall proposal status once before Method and keep implementation status in the existing-evidence section.
+- No external references needed in this methodological proposal. Do not claim graph construction, subgraph retrieval, or dynamic graphs are independently novel.
+- Main subsection is approximately 1,400 words. It deliberately has more semantic/annotation detail than the compact formulation section; root may merge repeated schema exposition.
+
+Agreed with formulation agent
+- G=(V,E,A), with analogous P_t and X_t.
+- Node is one phase instance. Object roles are typed arguments, never object nodes.
+- Preconditions and mandatory dependencies are AND; incoming alternative transitions are OR. Precedence constrains only activated branches. Recovery is a guarded transition that additionally links a failed phase to its remedy.
+- Predicate truth true/false/unknown is separate from evidence origin and annotation confidence.
+- Historical and current event nodes carry observed outcomes; plan nodes specify intended effect/completion evidence. Rendering must never merge these statuses.
+
+Concrete worked record for the root's figure (illustrative schema, not logged experiment)
+
+{
+  "schema_version": "interaction-graph/0.1",
+  "graph_id": "train-bottle-example",
+  "version": 2,
+  "record_kind": "experience",
+  "source": {"episode": "training-example", "partition": "train"},
+  "roles": {
+    "object": {"type": "bottle", "reference": "obs-12:region-B"},
+    "gripper": {"type": "gripper", "reference": "arm-left"},
+    "destination": {"type": "container", "reference": "obs-12:region-C"}
+  },
+  "nodes": [
+    {
+      "id": "attempt-1", "phase": "grasp", "status": "observed",
+      "interval": {"start": 12, "end": 17, "end_bracket": [16, 17]},
+      "bindings": {"manipulated_object": "object", "acting_gripper": "gripper"},
+      "preconditions": ["visible(object)", "reachable(object,gripper)"],
+      "intended_effect": "held(object,gripper)",
+      "action_ref": "actions/12-17",
+      "outcome": {"predicate": "held(object,gripper)", "value": false,
+        "evidence": ["obs-17", "obs-18"], "origin": "estimated",
+        "procedure": "visual-retention-check", "valid_at": 18},
+      "provenance": {"episode": "training-example", "source_interval": [12, 18]}
+    },
+    {
+      "id": "inspect-1", "phase": "reobserve", "status": "observed",
+      "bindings": {"manipulated_object": "object"},
+      "intended_effect": "fresh_reference(object)",
+      "outcome": {"predicate": "fresh_reference(object)", "value": true,
+        "evidence": ["obs-20:region-B"], "origin": "estimated", "valid_at": 20}
+    },
+    {"id": "attempt-2", "phase": "grasp", "status": "observed",
+      "intended_effect": "held(object,gripper)", "outcome_ref": "check-2"},
+    {"id": "check-2", "phase": "retention_check", "status": "observed",
+      "outcome": {"predicate": "held(object,gripper)", "value": true,
+        "evidence": ["obs-26", "obs-27"], "origin": "estimated"}},
+    {"id": "place-1", "phase": "place", "status": "observed",
+      "intended_effect": "inside(object,destination)"},
+    {"id": "check-3", "phase": "placement_check", "status": "observed",
+      "outcome": {"predicate": "inside(object,destination)", "value": true,
+        "evidence": ["obs-34"], "origin": "estimated"}}
+  ],
+  "edges": [
+    {"from": "attempt-1", "to": "inspect-1", "type": "recovery",
+      "guard": "held(object,gripper)==false", "branch_id": "after-attempt-1"},
+    {"from": "inspect-1", "to": "attempt-2", "type": "dependency",
+      "requires": "fresh_reference(object)==true"},
+    {"from": "inspect-1", "to": "attempt-2", "type": "transition",
+      "guard": "fresh_reference(object)==true"},
+    {"from": "attempt-2", "to": "check-2", "type": "transition",
+      "guard": "execution_receipt(attempt-2)==completed"},
+    {"from": "check-2", "to": "place-1", "type": "transition",
+      "guard": "held(object,gripper)==true"},
+    {"from": "check-2", "to": "place-1", "type": "dependency",
+      "requires": "held(object,gripper)==true"},
+    {"from": "place-1", "to": "check-3", "type": "transition",
+      "guard": "execution_receipt(place-1)==completed"}
+  ]
+}
+
+For the figure, avoid displaying this full JSON. Show failed grasp -> reobserve -> regrasp -> retention check -> place -> placement check. A guarded recovery edge joins failed grasp to reobserve; label its guard explicitly. Separate prospective plan lane from observed event lane, with intended effects visually distinct from true/false/unknown observations. Show the object's role as an attribute label. No object vertex should appear in the phase graph.
+
+The compact example above intentionally abbreviates repeated required fields after attempt-1 and omits chronological precedence edges. It is a figure/serialization design example, not a complete JSON Schema or fully validated machine instance. Root must label it illustrative and not claim schema validation has run.
+
+Construction-specific experiment requests
+- Phase labels and boundary interval agreement on held-out annotated source episodes, plus evidence attribution accuracy and unsupported positive predicate rate. Human adjudication for annotation gold data only; no human oracle during deployment.
+- Prefix replay: whether phase/guard labels can be assigned from observations available at decision time; report unknown decisions separately.
+- Compare event-based segmentation with matched fixed windows, and compare subgraph extraction with and without dependency/recovery closure under the same evidence budget.
+- Evaluate the same bank with graph and matched linearized records. Match evidence and approximate token/image budget so topology, not extra observations, causes differences.
+- Track invalid graph records and annotation/adjudication time; dynamic representation needs construction cost measured.
+
+Open integration decisions
+- Root should state a short initial phase vocabulary (approach, grasp/contact, inspect/verify, transport, place/release, recovery; not mandatory sequence). Reobserve is an observation skill phase, not an unobservable mode.
+- Need an explicit deployment predicate evaluator for RGB + proprioception: bounded supervisor visual checking is proposed, not an existing calibrated perception module. Indicate estimated evidence and report correctness against independent labels.
+- Unknown guard path needs deterministic choice: perform a declared observation phase if available, otherwise hold/escalate. No observation strategy should appear from nowhere when the plan lacks a permitted one.
+- Retrieval root should align closure budget: if closure exceeds budget, select another complete candidate or explicitly return no compatible evidence, rather than truncate the trigger or prerequisite.
+- The graph closure includes required prerequisite/trigger records, not every temporal ancestor. Recursive dependency closure may grow; record size and budget rejection are measurable.
+- Node temporal intervals are symbolic for plans; source times and coordinates should not become current geometric instructions.

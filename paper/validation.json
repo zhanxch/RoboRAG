@@ -1,0 +1,22 @@
+{
+  "missing_sections": [],
+  "duplicate_labels": [],
+  "unresolved_references": [],
+  "unresolved_citations": [],
+  "environment_errors": [],
+  "unclosed_environments": [],
+  "brace_balance": 0,
+  "premature_closing_braces": [],
+  "external_input_commands": [],
+  "figure_asset_errors": [],
+  "polished_figures_required": true,
+  "polished_figure_count": 4,
+  "embedded_tikz_fallbacks": 4,
+  "unrendered_placeholders": [],
+  "reader_math_errors": [],
+  "figures": 4,
+  "tables": 3,
+  "references": 15,
+  "native_latex_compilation": "unverified: app compiler cannot start because its sandbox executable is missing",
+  "readable_pdf": "rendered locally from the same source text via offline HTML/KaTeX and Chromium"
+}

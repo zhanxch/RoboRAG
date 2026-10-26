@@ -1,0 +1,20 @@
+System Framework author notes
+
+Scope and source grounding
+- Read .cursor/rules/roborag-research.mdc, paper/editorial-contract.txt, docs/queued-control.md, docs/control-todo.md, README.md excerpts, and paper/figures/04-platform-comparison.caption.txt.
+- 05-system.tex is a proposed contract and comparison design. Its sole current-implementation paragraph is limited to queue/absolute-target/prefix-accounting/unknown-lock infrastructure documented in queued-control.md. The root evidence section should retain centralized implementation status, including absent complete MCP, Astra/Luna supervision, async control, and physical safety validation.
+- Preserved common notation P_t and X_t; no competing graph schema or extra algorithm novelty was introduced.
+- Reuses figure label fig:platform already present in 04-platform-comparison.tex. Figure modes and caption align exactly: A backend-specific native, B common semantics direct, C same common semantics and adapter via MCP.
+
+Primary-source checks (2026-10-23)
+- https://modelcontextprotocol.io/specification/2026-07-28 opened successfully. It describes standardized connection to external tools and capabilities, JSON-RPC, and discovery/invocation support. Citation key mcp2026 exists in paper/references.tex. The manuscript attributes robot action/receipt semantics to RoboRAG rather than MCP.
+- https://arxiv.org/abs/2306.03310 opened successfully. LIBERO title and authors agree with existing libero2023 reference; it is a robot manipulation lifelong-learning benchmark. No numerical claims borrowed.
+
+Integration decisions
+- Root may rename the evidence section; current text uses a descriptive reference to avoid guessing its final label.
+- The real-robot embodiment remains unspecified and must be selected before protocol preregistration; don't silently imply an existing robot adapter.
+- Performance comparisons must retain identical local controller/observation policy/model configuration within backend. A/B/C ablations concern interface semantics and protocol, not algorithm ablations.
+- Single section is about 800 words and deliberately subordinate to method and experiments. No table is needed because fig:platform carries the comparison design.
+- The section provides application-side change, adapter-work, elapsed integration effort, conformance, RPC overhead, and per-backend task metrics. Exact measurement protocol belongs in Experiments.
+
+Reviewer response: awaiting review; author may accept revisions or rebut requests that would conflate protocol with physics, evidence with intention, or current infrastructure with the proposed full framework.

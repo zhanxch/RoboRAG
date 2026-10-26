@@ -1,0 +1,844 @@
+{
+  "status": "proposal_not_frozen_or_executed",
+  "retrieved_at_utc": "2026-10-25T06:26:08.740756+00:00",
+  "source_data_generated_at": "2026-10-24T00:00:00.000Z",
+  "source_url": "https://robodojo-benchmark.com/leaderboard?bench=sim",
+  "source_asset_url": "https://robodojo-benchmark.com/assets/index-DA5jHulR.js",
+  "source_asset_sha256": "d23d47f0bc1d2c535a107e4d33d5a4524bb7a7eae1d97a0ecaa30260de20fcb9",
+  "metric": "native full-task successRate percentage; NOT progress score",
+  "baseline_models": [
+    "HexaShell-preview",
+    "WorldScape-R²SI",
+    "EmbodiedEvo"
+  ],
+  "scope": "10 base tasks, two per category; 12 configurations including standard/random for both Generalization tasks",
+  "aggregation": "Generalization uses the unweighted mean of standard and random SR. Each base task receives one equal weight. Three-model median is a descriptive selection aid, not a benchmark score.",
+  "limitations": [
+    "Public cross-system baseline comparison, not a controlled causal comparison; model and controller differences remain.",
+    "fold_clothes was selected by user and prior development context, not automatically as a low-SR stratum.",
+    "High and low labels are relative within each pair; Precision higher task is not uniformly high across methods.",
+    "Selection not stratified random sampling; do not extrapolate its average to full RoboDojo.",
+    "Published visualization rollout examples are not evaluation denominators.",
+    "RoboRAG results played no role in selecting the remaining task pairs; previously developed tasks must disclose development layouts."
+  ],
+  "tasks": [
+    {
+      "category": "Generalization",
+      "task": "push_T",
+      "selection_role": "higher_in_pair",
+      "variant_ids": [
+        "push_T",
+        "push_T_random"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 96,
+        "WorldScape-R²SI": 82,
+        "EmbodiedEvo": 86
+      },
+      "success_rate_median_across_three_pct": 86,
+      "reason": "刚体推移与姿态对齐，三基线成功率均较高；覆盖非抓取接触控制。",
+      "task_description": "There is a thin gray T-shaped pad and a T-shaped block. The robot needs to push the T-shaped block until it is precisely aligned with and fitted onto the gray pad."
+    },
+    {
+      "category": "Generalization",
+      "task": "fold_clothes",
+      "selection_role": "challenge_in_pair",
+      "variant_ids": [
+        "fold_clothes",
+        "fold_clothes_random"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 40,
+        "WorldScape-R²SI": 62,
+        "EmbodiedEvo": 82
+      },
+      "success_rate_median_across_three_pct": 62,
+      "reason": "用户指定的可变形物体案例，已有实现基础；在本组选定基线中并非普遍低成功率，不能宣称客观低档。",
+      "task_description": "There is a piece of clothing. The robot needs to fold it neatly."
+    },
+    {
+      "category": "Precision",
+      "task": "pour_balls_into_vase",
+      "selection_role": "higher_in_pair",
+      "variant_ids": [
+        "pour_balls_into_vase"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 80,
+        "WorldScape-R²SI": 42,
+        "EmbodiedEvo": 22
+      },
+      "success_rate_median_across_three_pct": 42,
+      "reason": "在三基线成功率中位数上属于Precision相对高档；检验抓取、倾倒、复位，但不同方法差异较大。",
+      "task_description": "There is a cup containing many small balls and a vase. The robot needs to pick up the cup and pour all the balls into the vase."
+    },
+    {
+      "category": "Precision",
+      "task": "deposit_coin",
+      "selection_role": "challenge_in_pair",
+      "variant_ids": [
+        "deposit_coin"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 16,
+        "WorldScape-R²SI": 0,
+        "EmbodiedEvo": 22
+      },
+      "success_rate_median_across_three_pct": 16,
+      "reason": "小物体抓取与窄槽插入；三基线均偏低，已有经验库和回合记录；难度仅相对于这组基线。",
+      "task_description": "There is a coin placed on a holder and a coin bank. The robot needs to pick up the coin and accurately insert it into the slot of the coin bank."
+    },
+    {
+      "category": "Long-Horizon",
+      "task": "put_bottles_into_dustbin",
+      "selection_role": "higher_in_pair",
+      "variant_ids": [
+        "put_bottles_into_dustbin"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 58,
+        "WorldScape-R²SI": 98,
+        "EmbodiedEvo": 56
+      },
+      "success_rate_median_across_three_pct": 58,
+      "reason": "三基线均超过50%，重复物体处理和必要的双臂交接，已有运行与经验库基础。",
+      "task_description": "There are four bottles on the table, and they may be either standing or lying down. A dustbin is placed beside the table. The robot needs to pick up the bottles and throw them into the dustbin. Because of the shifted table layout, bottles on the right side require a handover between the two hands before being discarded."
+    },
+    {
+      "category": "Long-Horizon",
+      "task": "organize_table",
+      "selection_role": "challenge_in_pair",
+      "variant_ids": [
+        "organize_table"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 0,
+        "WorldScape-R²SI": 22,
+        "EmbodiedEvo": 2
+      },
+      "success_rate_median_across_three_pct": 2,
+      "reason": "三基线均偏低，异质操作和多阶段收纳适合检验阶段规划与完成状态管理。",
+      "task_description": "There are a computer, a keyboard, a mouse, an alarm clock, a cartoon figurine, three miscellaneous items, and a drawer. The robot needs to organize the table by placing the mouse on the mouse pad, pushing the keyboard into the frame, putting the figurine on the stand, placing the alarm clock on top of the drawer, opening the drawer, and putting all remaining miscellaneous items into it."
+    },
+    {
+      "category": "Memory",
+      "task": "cover_blocks",
+      "selection_role": "higher_in_pair",
+      "variant_ids": [
+        "cover_blocks"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 100,
+        "WorldScape-R²SI": 98,
+        "EmbodiedEvo": 84
+      },
+      "success_rate_median_across_three_pct": 98,
+      "reason": "三基线均较高，遮挡后的颜色位置记忆；重点检验保持成功的效率和历史消融。",
+      "task_description": "There are three covers and three blocks arranged in a random order. The blocks are red, green, and blue. The robot needs to cover the blocks from left to right, remember the color under each cover, and then uncover the blocks in the order of red, green, and blue."
+    },
+    {
+      "category": "Memory",
+      "task": "imitate_sorting_sequence",
+      "selection_role": "challenge_in_pair",
+      "variant_ids": [
+        "imitate_sorting_sequence"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 42,
+        "WorldScape-R²SI": 32,
+        "EmbodiedEvo": 60
+      },
+      "success_rate_median_across_three_pct": 42,
+      "reason": "相对较低，多时刻顺序记忆，补充cover_blocks的初始场景记忆。",
+      "task_description": "There are five categories of objects, with five objects on each side. The opposite robot places its objects into the basket on the right side in a certain order. The robot needs to observe and remember this sequence, then place its corresponding objects into the basket in the same order. This is a memory-based imitation task."
+    },
+    {
+      "category": "Open",
+      "task": "general_pickup",
+      "selection_role": "higher_in_pair",
+      "variant_ids": [
+        "general_pickup"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 82,
+        "WorldScape-R²SI": 86,
+        "EmbodiedEvo": 84
+      },
+      "success_rate_median_across_three_pct": 84,
+      "reason": "三基线均较高，语言目标识别与抓取，提供开放任务的基本对照。",
+      "task_description": "There are multiple objects. The robot needs to understand the language instruction, identify the target object, and pick it up."
+    },
+    {
+      "category": "Open",
+      "task": "pick_from_conveyor_by_image",
+      "selection_role": "challenge_in_pair",
+      "variant_ids": [
+        "pick_from_conveyor_by_image"
+      ],
+      "success_rate_pct": {
+        "HexaShell-preview": 28,
+        "WorldScape-R²SI": 0,
+        "EmbodiedEvo": 52
+      },
+      "success_rate_median_across_three_pct": 28,
+      "reason": "相对较低，图像目标匹配与动态抓取；需冻结仿真推进和推理等待协议，区分运动时机与检索瓶颈。",
+      "task_description": "There is a board displaying an image of the target object, a basket, and a conveyor carrying multiple objects. The robot needs to first lift the basket more than 8 cm, identify the target object on the conveyor based on the image shown on the board, pick up the target object, and place it into the basket."
+    }
+  ],
+  "baseline_task_data": {
+    "HexaShell-preview": {
+      "align_blocks": {
+        "score": 78,
+        "successRate": 78
+      },
+      "arrange_largest_number": {
+        "score": 17.8,
+        "successRate": 12
+      },
+      "arrange_largest_number_random": {
+        "score": 42.6,
+        "successRate": 32
+      },
+      "build_tower": {
+        "score": 48,
+        "successRate": 30
+      },
+      "classify_objects": {
+        "score": 85.3,
+        "successRate": 78
+      },
+      "classify_objects_by_language": {
+        "score": 79.4,
+        "successRate": 72
+      },
+      "cover_blocks": {
+        "score": 100,
+        "successRate": 100
+      },
+      "deposit_coin": {
+        "score": 26.4,
+        "successRate": 16
+      },
+      "fasten_screws": {
+        "score": 29.8,
+        "successRate": 18
+      },
+      "fill_egg_holder": {
+        "score": 8.8,
+        "successRate": 0
+      },
+      "fill_pen_holder": {
+        "score": 6.1,
+        "successRate": 0
+      },
+      "fold_clothes": {
+        "score": 64,
+        "successRate": 56
+      },
+      "fold_clothes_random": {
+        "score": 31.2,
+        "successRate": 24
+      },
+      "general_pickup": {
+        "score": 82,
+        "successRate": 82
+      },
+      "hang_mugs": {
+        "score": 22.4,
+        "successRate": 4
+      },
+      "hang_mugs_random": {
+        "score": 15.6,
+        "successRate": 4
+      },
+      "imitate_sorting_sequence": {
+        "score": 63.2,
+        "successRate": 42
+      },
+      "insert_key": {
+        "score": 15,
+        "successRate": 0
+      },
+      "insert_tubes": {
+        "score": 40.8,
+        "successRate": 22
+      },
+      "make_kong": {
+        "score": 2,
+        "successRate": 2
+      },
+      "make_toast": {
+        "score": 3,
+        "successRate": 0
+      },
+      "make_toast_random": {
+        "score": 0,
+        "successRate": 0
+      },
+      "match_and_pick_from_conveyor": {
+        "score": 74,
+        "successRate": 74
+      },
+      "organize_table": {
+        "score": 14,
+        "successRate": 0
+      },
+      "pack_objects_into_box": {
+        "score": 38.4,
+        "successRate": 20
+      },
+      "pack_objects_into_box_random": {
+        "score": 27.8,
+        "successRate": 12
+      },
+      "pick_from_conveyor_by_image": {
+        "score": 28,
+        "successRate": 28
+      },
+      "play_Xylophone": {
+        "score": 58,
+        "successRate": 58
+      },
+      "play_stacking_toy": {
+        "score": 57.6,
+        "successRate": 18
+      },
+      "play_tic_tac_toe": {
+        "score": 99,
+        "successRate": 96
+      },
+      "plug_in_charger": {
+        "score": 32,
+        "successRate": 32
+      },
+      "pour_balls_into_vase": {
+        "score": 80,
+        "successRate": 80
+      },
+      "pour_by_language": {
+        "score": 0,
+        "successRate": 0
+      },
+      "pour_liquid_into_cup": {
+        "score": 4,
+        "successRate": 4
+      },
+      "pour_liquid_into_cup_random": {
+        "score": 0,
+        "successRate": 0
+      },
+      "press_by_number": {
+        "score": 96,
+        "successRate": 96
+      },
+      "push_T": {
+        "score": 100,
+        "successRate": 100
+      },
+      "push_T_random": {
+        "score": 92,
+        "successRate": 92
+      },
+      "put_bottles_into_dustbin": {
+        "score": 70.5,
+        "successRate": 58
+      },
+      "solve_equation": {
+        "score": 86,
+        "successRate": 86
+      },
+      "sort_nesting_dolls_by_size": {
+        "score": 72,
+        "successRate": 72
+      },
+      "sort_nesting_dolls_by_size_random": {
+        "score": 32,
+        "successRate": 32
+      },
+      "stack_blocks": {
+        "score": 89.8,
+        "successRate": 88
+      },
+      "stack_blocks_by_language": {
+        "score": 96.4,
+        "successRate": 96
+      },
+      "stack_blocks_random": {
+        "score": 89.2,
+        "successRate": 88
+      },
+      "stack_bowls": {
+        "score": 92,
+        "successRate": 92
+      },
+      "stack_bowls_random": {
+        "score": 81.8,
+        "successRate": 80
+      },
+      "store_laptop_and_headphones": {
+        "score": 8,
+        "successRate": 0
+      },
+      "store_laptop_and_headphones_random": {
+        "score": 1.6,
+        "successRate": 0
+      },
+      "store_tools_in_toolbox": {
+        "score": 14,
+        "successRate": 0
+      },
+      "swap_T": {
+        "score": 96,
+        "successRate": 96
+      },
+      "swap_blocks": {
+        "score": 78,
+        "successRate": 78
+      },
+      "sweep_blocks": {
+        "score": 8,
+        "successRate": 8
+      },
+      "sweep_blocks_random": {
+        "score": 8,
+        "successRate": 8
+      }
+    },
+    "WorldScape-R²SI": {
+      "align_blocks": {
+        "score": 96,
+        "successRate": 96
+      },
+      "arrange_largest_number": {
+        "score": 77.4,
+        "successRate": 72
+      },
+      "arrange_largest_number_random": {
+        "score": 64.6,
+        "successRate": 52
+      },
+      "build_tower": {
+        "score": 51.6,
+        "successRate": 36
+      },
+      "classify_objects": {
+        "score": 91.9,
+        "successRate": 90
+      },
+      "classify_objects_by_language": {
+        "score": 66.8,
+        "successRate": 58
+      },
+      "cover_blocks": {
+        "score": 98.6,
+        "successRate": 98
+      },
+      "deposit_coin": {
+        "score": 7.6,
+        "successRate": 0
+      },
+      "fasten_screws": {
+        "score": 35.4,
+        "successRate": 14
+      },
+      "fill_egg_holder": {
+        "score": 17.2,
+        "successRate": 2
+      },
+      "fill_pen_holder": {
+        "score": 32.3,
+        "successRate": 8
+      },
+      "fold_clothes": {
+        "score": 68.8,
+        "successRate": 68
+      },
+      "fold_clothes_random": {
+        "score": 62.4,
+        "successRate": 56
+      },
+      "general_pickup": {
+        "score": 86,
+        "successRate": 86
+      },
+      "hang_mugs": {
+        "score": 6.4,
+        "successRate": 0
+      },
+      "hang_mugs_random": {
+        "score": 3.4,
+        "successRate": 0
+      },
+      "imitate_sorting_sequence": {
+        "score": 44.1,
+        "successRate": 32
+      },
+      "insert_key": {
+        "score": 9.9,
+        "successRate": 0
+      },
+      "insert_tubes": {
+        "score": 11.6,
+        "successRate": 2
+      },
+      "make_kong": {
+        "score": 24,
+        "successRate": 24
+      },
+      "make_toast": {
+        "score": 50,
+        "successRate": 44
+      },
+      "make_toast_random": {
+        "score": 25,
+        "successRate": 8
+      },
+      "match_and_pick_from_conveyor": {
+        "score": 78,
+        "successRate": 78
+      },
+      "organize_table": {
+        "score": 61.5,
+        "successRate": 22
+      },
+      "pack_objects_into_box": {
+        "score": 27.4,
+        "successRate": 0
+      },
+      "pack_objects_into_box_random": {
+        "score": 35.6,
+        "successRate": 8
+      },
+      "pick_from_conveyor_by_image": {
+        "score": 0,
+        "successRate": 0
+      },
+      "play_Xylophone": {
+        "score": 10,
+        "successRate": 10
+      },
+      "play_stacking_toy": {
+        "score": 13.2,
+        "successRate": 0
+      },
+      "play_tic_tac_toe": {
+        "score": 72.9,
+        "successRate": 30
+      },
+      "plug_in_charger": {
+        "score": 20,
+        "successRate": 20
+      },
+      "pour_balls_into_vase": {
+        "score": 42,
+        "successRate": 42
+      },
+      "pour_by_language": {
+        "score": 0,
+        "successRate": 0
+      },
+      "pour_liquid_into_cup": {
+        "score": 8,
+        "successRate": 8
+      },
+      "pour_liquid_into_cup_random": {
+        "score": 0,
+        "successRate": 0
+      },
+      "press_by_number": {
+        "score": 80,
+        "successRate": 80
+      },
+      "push_T": {
+        "score": 84,
+        "successRate": 84
+      },
+      "push_T_random": {
+        "score": 80,
+        "successRate": 80
+      },
+      "put_bottles_into_dustbin": {
+        "score": 98.8,
+        "successRate": 98
+      },
+      "solve_equation": {
+        "score": 66,
+        "successRate": 66
+      },
+      "sort_nesting_dolls_by_size": {
+        "score": 16,
+        "successRate": 16
+      },
+      "sort_nesting_dolls_by_size_random": {
+        "score": 0,
+        "successRate": 0
+      },
+      "stack_blocks": {
+        "score": 86.4,
+        "successRate": 84
+      },
+      "stack_blocks_by_language": {
+        "score": 78,
+        "successRate": 74
+      },
+      "stack_blocks_random": {
+        "score": 71.6,
+        "successRate": 68
+      },
+      "stack_bowls": {
+        "score": 79,
+        "successRate": 76
+      },
+      "stack_bowls_random": {
+        "score": 78.4,
+        "successRate": 76
+      },
+      "store_laptop_and_headphones": {
+        "score": 56,
+        "successRate": 32
+      },
+      "store_laptop_and_headphones_random": {
+        "score": 50.4,
+        "successRate": 28
+      },
+      "store_tools_in_toolbox": {
+        "score": 0.5,
+        "successRate": 0
+      },
+      "swap_T": {
+        "score": 20,
+        "successRate": 20
+      },
+      "swap_blocks": {
+        "score": 74,
+        "successRate": 74
+      },
+      "sweep_blocks": {
+        "score": 0,
+        "successRate": 0
+      },
+      "sweep_blocks_random": {
+        "score": 0,
+        "successRate": 0
+      }
+    },
+    "EmbodiedEvo": {
+      "align_blocks": {
+        "score": 98,
+        "successRate": 98
+      },
+      "arrange_largest_number": {
+        "score": 52.6,
+        "successRate": 36
+      },
+      "arrange_largest_number_random": {
+        "score": 44,
+        "successRate": 28
+      },
+      "build_tower": {
+        "score": 9,
+        "successRate": 0
+      },
+      "classify_objects": {
+        "score": 35.5,
+        "successRate": 16
+      },
+      "classify_objects_by_language": {
+        "score": 58,
+        "successRate": 40
+      },
+      "cover_blocks": {
+        "score": 84.6,
+        "successRate": 84
+      },
+      "deposit_coin": {
+        "score": 37.6,
+        "successRate": 22
+      },
+      "fasten_screws": {
+        "score": 55.6,
+        "successRate": 38
+      },
+      "fill_egg_holder": {
+        "score": 15.8,
+        "successRate": 0
+      },
+      "fill_pen_holder": {
+        "score": 0.9,
+        "successRate": 0
+      },
+      "fold_clothes": {
+        "score": 80,
+        "successRate": 76
+      },
+      "fold_clothes_random": {
+        "score": 90.4,
+        "successRate": 88
+      },
+      "general_pickup": {
+        "score": 84,
+        "successRate": 84
+      },
+      "hang_mugs": {
+        "score": 7.4,
+        "successRate": 0
+      },
+      "hang_mugs_random": {
+        "score": 6.8,
+        "successRate": 0
+      },
+      "imitate_sorting_sequence": {
+        "score": 75.8,
+        "successRate": 60
+      },
+      "insert_key": {
+        "score": 15,
+        "successRate": 0
+      },
+      "insert_tubes": {
+        "score": 46,
+        "successRate": 32
+      },
+      "make_kong": {
+        "score": 0,
+        "successRate": 0
+      },
+      "make_toast": {
+        "score": 4,
+        "successRate": 4
+      },
+      "make_toast_random": {
+        "score": 6,
+        "successRate": 4
+      },
+      "match_and_pick_from_conveyor": {
+        "score": 60,
+        "successRate": 60
+      },
+      "organize_table": {
+        "score": 35,
+        "successRate": 2
+      },
+      "pack_objects_into_box": {
+        "score": 10.6,
+        "successRate": 0
+      },
+      "pack_objects_into_box_random": {
+        "score": 17.6,
+        "successRate": 0
+      },
+      "pick_from_conveyor_by_image": {
+        "score": 52,
+        "successRate": 52
+      },
+      "play_Xylophone": {
+        "score": 10,
+        "successRate": 10
+      },
+      "play_stacking_toy": {
+        "score": 12.2,
+        "successRate": 0
+      },
+      "play_tic_tac_toe": {
+        "score": 100,
+        "successRate": 100
+      },
+      "plug_in_charger": {
+        "score": 6,
+        "successRate": 6
+      },
+      "pour_balls_into_vase": {
+        "score": 22,
+        "successRate": 22
+      },
+      "pour_by_language": {
+        "score": 0.4,
+        "successRate": 0
+      },
+      "pour_liquid_into_cup": {
+        "score": 20,
+        "successRate": 20
+      },
+      "pour_liquid_into_cup_random": {
+        "score": 32,
+        "successRate": 32
+      },
+      "press_by_number": {
+        "score": 88,
+        "successRate": 88
+      },
+      "push_T": {
+        "score": 84,
+        "successRate": 84
+      },
+      "push_T_random": {
+        "score": 88,
+        "successRate": 88
+      },
+      "put_bottles_into_dustbin": {
+        "score": 71.2,
+        "successRate": 56
+      },
+      "solve_equation": {
+        "score": 70,
+        "successRate": 70
+      },
+      "sort_nesting_dolls_by_size": {
+        "score": 20,
+        "successRate": 20
+      },
+      "sort_nesting_dolls_by_size_random": {
+        "score": 8,
+        "successRate": 8
+      },
+      "stack_blocks": {
+        "score": 68.8,
+        "successRate": 64
+      },
+      "stack_blocks_by_language": {
+        "score": 51.6,
+        "successRate": 50
+      },
+      "stack_blocks_random": {
+        "score": 75.6,
+        "successRate": 72
+      },
+      "stack_bowls": {
+        "score": 60.8,
+        "successRate": 56
+      },
+      "stack_bowls_random": {
+        "score": 59,
+        "successRate": 56
+      },
+      "store_laptop_and_headphones": {
+        "score": 2.4,
+        "successRate": 0
+      },
+      "store_laptop_and_headphones_random": {
+        "score": 3.2,
+        "successRate": 0
+      },
+      "store_tools_in_toolbox": {
+        "score": 0.5,
+        "successRate": 0
+      },
+      "swap_T": {
+        "score": 88,
+        "successRate": 88
+      },
+      "swap_blocks": {
+        "score": 80,
+        "successRate": 80
+      },
+      "sweep_blocks": {
+        "score": 4,
+        "successRate": 4
+      },
+      "sweep_blocks_random": {
+        "score": 0,
+        "successRate": 0
+      }
+    }
+  }
+}

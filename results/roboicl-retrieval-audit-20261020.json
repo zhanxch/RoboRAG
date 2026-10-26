@@ -1,0 +1,2122 @@
+{
+  "scope": "Recorded retrieval boundaries and measured usage, not task success or causal retrieval quality",
+  "short_history_check": "Past selected starts and completed latest transition; unit tests separately cover full temporal isolation",
+  "cache_note": "Provider-reported cached input divided by input tokens, weighted over completed responses",
+  "runs": [
+    {
+      "run": "cover_blocks-l2",
+      "logged_selection_queries": 28,
+      "distinct_long_term_selections": 15,
+      "queries_retrieving_beyond_latest_k": 15,
+      "boundary_violations": [],
+      "completed_model_calls": 28,
+      "attempted_call_directories": 28,
+      "known_total_tokens": 3041165,
+      "weighted_input_cache_hit_fraction": 0.06461203264946899,
+      "mean_completed_call_seconds": 98.48786860628545,
+      "max_supplied_images": 48,
+      "calls": [
+        {
+          "call": "call-0001",
+          "images": 25,
+          "wall_seconds": 141.04376558103831,
+          "input_tokens": 74376,
+          "output_tokens": 3586,
+          "total_tokens": 77962,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0002",
+          "images": 26,
+          "wall_seconds": 127.80386382900178,
+          "input_tokens": 77397,
+          "output_tokens": 3413,
+          "total_tokens": 80810,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0003",
+          "images": 27,
+          "wall_seconds": 141.77669090998825,
+          "input_tokens": 80336,
+          "output_tokens": 3733,
+          "total_tokens": 84069,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0004",
+          "images": 28,
+          "wall_seconds": 90.95478322199779,
+          "input_tokens": 83069,
+          "output_tokens": 2253,
+          "total_tokens": 85322,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0005",
+          "images": 29,
+          "wall_seconds": 68.50995756703196,
+          "input_tokens": 85878,
+          "output_tokens": 1596,
+          "total_tokens": 87474,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0006",
+          "images": 30,
+          "wall_seconds": 64.96867236599792,
+          "input_tokens": 88615,
+          "output_tokens": 1572,
+          "total_tokens": 90187,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0007",
+          "images": 31,
+          "wall_seconds": 201.3029073610087,
+          "input_tokens": 91385,
+          "output_tokens": 1244,
+          "total_tokens": 92629,
+          "cached_input_tokens": 91264
+        },
+        {
+          "call": "call-0008",
+          "images": 32,
+          "wall_seconds": 58.63332379399799,
+          "input_tokens": 94076,
+          "output_tokens": 1278,
+          "total_tokens": 95354,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0009",
+          "images": 33,
+          "wall_seconds": 50.38368778699078,
+          "input_tokens": 96797,
+          "output_tokens": 897,
+          "total_tokens": 97694,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0010",
+          "images": 34,
+          "wall_seconds": 108.80015991500113,
+          "input_tokens": 99647,
+          "output_tokens": 2892,
+          "total_tokens": 102539,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0011",
+          "images": 35,
+          "wall_seconds": 141.18050866900012,
+          "input_tokens": 102877,
+          "output_tokens": 3744,
+          "total_tokens": 106621,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0012",
+          "images": 36,
+          "wall_seconds": 95.80294491996756,
+          "input_tokens": 105621,
+          "output_tokens": 2627,
+          "total_tokens": 108248,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0013",
+          "images": 37,
+          "wall_seconds": 56.3595957760117,
+          "input_tokens": 108612,
+          "output_tokens": 1504,
+          "total_tokens": 110116,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0014",
+          "images": 38,
+          "wall_seconds": 43.827659645001404,
+          "input_tokens": 110558,
+          "output_tokens": 857,
+          "total_tokens": 111415,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0015",
+          "images": 39,
+          "wall_seconds": 50.82219154702034,
+          "input_tokens": 112196,
+          "output_tokens": 938,
+          "total_tokens": 113134,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0016",
+          "images": 40,
+          "wall_seconds": 80.32460844999878,
+          "input_tokens": 114047,
+          "output_tokens": 1323,
+          "total_tokens": 115370,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0017",
+          "images": 41,
+          "wall_seconds": 93.8383211029577,
+          "input_tokens": 115320,
+          "output_tokens": 1583,
+          "total_tokens": 116903,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0018",
+          "images": 41,
+          "wall_seconds": 80.49422405601945,
+          "input_tokens": 115091,
+          "output_tokens": 1550,
+          "total_tokens": 116641,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0019",
+          "images": 41,
+          "wall_seconds": 76.06462567398557,
+          "input_tokens": 115063,
+          "output_tokens": 1295,
+          "total_tokens": 116358,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0020",
+          "images": 44,
+          "wall_seconds": 89.7439345610328,
+          "input_tokens": 120204,
+          "output_tokens": 1298,
+          "total_tokens": 121502,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0021",
+          "images": 44,
+          "wall_seconds": 103.31062012695475,
+          "input_tokens": 120162,
+          "output_tokens": 2075,
+          "total_tokens": 122237,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0022",
+          "images": 44,
+          "wall_seconds": 87.05149730696576,
+          "input_tokens": 120202,
+          "output_tokens": 1782,
+          "total_tokens": 121984,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0023",
+          "images": 44,
+          "wall_seconds": 61.97432810702594,
+          "input_tokens": 120322,
+          "output_tokens": 903,
+          "total_tokens": 121225,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0024",
+          "images": 46,
+          "wall_seconds": 82.72042026900453,
+          "input_tokens": 123537,
+          "output_tokens": 1378,
+          "total_tokens": 124915,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0025",
+          "images": 47,
+          "wall_seconds": 101.56969955202658,
+          "input_tokens": 126279,
+          "output_tokens": 2351,
+          "total_tokens": 128630,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0026",
+          "images": 48,
+          "wall_seconds": 135.49207480996847,
+          "input_tokens": 127013,
+          "output_tokens": 3729,
+          "total_tokens": 130742,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0027",
+          "images": 47,
+          "wall_seconds": 174.2747842700337,
+          "input_tokens": 126342,
+          "output_tokens": 4524,
+          "total_tokens": 130866,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0028",
+          "images": 47,
+          "wall_seconds": 148.6304698009626,
+          "input_tokens": 126466,
+          "output_tokens": 3752,
+          "total_tokens": 130218,
+          "cached_input_tokens": 8448
+        }
+      ]
+    },
+    {
+      "run": "cover_blocks-l3",
+      "logged_selection_queries": 29,
+      "distinct_long_term_selections": 18,
+      "queries_retrieving_beyond_latest_k": 15,
+      "boundary_violations": [],
+      "completed_model_calls": 29,
+      "attempted_call_directories": 29,
+      "known_total_tokens": 3162108,
+      "weighted_input_cache_hit_fraction": 0.05452394490551571,
+      "mean_completed_call_seconds": 86.48500868583154,
+      "max_supplied_images": 48,
+      "calls": [
+        {
+          "call": "call-0001",
+          "images": 25,
+          "wall_seconds": 126.64303537999513,
+          "input_tokens": 74376,
+          "output_tokens": 3346,
+          "total_tokens": 77722,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0002",
+          "images": 26,
+          "wall_seconds": 141.39324490504805,
+          "input_tokens": 77324,
+          "output_tokens": 3699,
+          "total_tokens": 81023,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0003",
+          "images": 27,
+          "wall_seconds": 150.5656967460527,
+          "input_tokens": 80344,
+          "output_tokens": 4159,
+          "total_tokens": 84503,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0004",
+          "images": 28,
+          "wall_seconds": 84.72486844600644,
+          "input_tokens": 83155,
+          "output_tokens": 2077,
+          "total_tokens": 85232,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0005",
+          "images": 29,
+          "wall_seconds": 147.4707168790046,
+          "input_tokens": 85886,
+          "output_tokens": 3817,
+          "total_tokens": 89703,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0006",
+          "images": 30,
+          "wall_seconds": 88.17556632502237,
+          "input_tokens": 88720,
+          "output_tokens": 2009,
+          "total_tokens": 90729,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0007",
+          "images": 31,
+          "wall_seconds": 85.68116330896737,
+          "input_tokens": 91353,
+          "output_tokens": 1909,
+          "total_tokens": 93262,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0008",
+          "images": 32,
+          "wall_seconds": 97.09221990098013,
+          "input_tokens": 94162,
+          "output_tokens": 2507,
+          "total_tokens": 96669,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0009",
+          "images": 33,
+          "wall_seconds": 48.84548079298111,
+          "input_tokens": 96796,
+          "output_tokens": 886,
+          "total_tokens": 97682,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0010",
+          "images": 34,
+          "wall_seconds": 48.34239666501526,
+          "input_tokens": 99510,
+          "output_tokens": 1037,
+          "total_tokens": 100547,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0011",
+          "images": 35,
+          "wall_seconds": 34.52465025696438,
+          "input_tokens": 102241,
+          "output_tokens": 894,
+          "total_tokens": 103135,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0012",
+          "images": 36,
+          "wall_seconds": 145.3142268130323,
+          "input_tokens": 105045,
+          "output_tokens": 3930,
+          "total_tokens": 108975,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0013",
+          "images": 37,
+          "wall_seconds": 122.6142474070075,
+          "input_tokens": 108266,
+          "output_tokens": 3406,
+          "total_tokens": 111672,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0014",
+          "images": 38,
+          "wall_seconds": 73.08704198204214,
+          "input_tokens": 109826,
+          "output_tokens": 2095,
+          "total_tokens": 111921,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0015",
+          "images": 39,
+          "wall_seconds": 35.86633729794994,
+          "input_tokens": 111823,
+          "output_tokens": 799,
+          "total_tokens": 112622,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0016",
+          "images": 40,
+          "wall_seconds": 59.93269627803238,
+          "input_tokens": 113559,
+          "output_tokens": 1477,
+          "total_tokens": 115036,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0017",
+          "images": 41,
+          "wall_seconds": 82.59112457698211,
+          "input_tokens": 115131,
+          "output_tokens": 1909,
+          "total_tokens": 117040,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0018",
+          "images": 42,
+          "wall_seconds": 76.58571245701751,
+          "input_tokens": 116818,
+          "output_tokens": 1912,
+          "total_tokens": 118730,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0019",
+          "images": 42,
+          "wall_seconds": 52.60433067701524,
+          "input_tokens": 116546,
+          "output_tokens": 1027,
+          "total_tokens": 117573,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0020",
+          "images": 42,
+          "wall_seconds": 59.16511212399928,
+          "input_tokens": 116739,
+          "output_tokens": 1345,
+          "total_tokens": 118084,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0021",
+          "images": 44,
+          "wall_seconds": 57.3705417229794,
+          "input_tokens": 119984,
+          "output_tokens": 1346,
+          "total_tokens": 121330,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0022",
+          "images": 43,
+          "wall_seconds": 64.42652872699546,
+          "input_tokens": 118340,
+          "output_tokens": 1609,
+          "total_tokens": 119949,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0023",
+          "images": 44,
+          "wall_seconds": 67.49241228203755,
+          "input_tokens": 120204,
+          "output_tokens": 1679,
+          "total_tokens": 121883,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0024",
+          "images": 45,
+          "wall_seconds": 56.99986690102378,
+          "input_tokens": 122440,
+          "output_tokens": 1401,
+          "total_tokens": 123841,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0025",
+          "images": 47,
+          "wall_seconds": 49.401987891993485,
+          "input_tokens": 125553,
+          "output_tokens": 1037,
+          "total_tokens": 126590,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0026",
+          "images": 47,
+          "wall_seconds": 64.19745345500996,
+          "input_tokens": 125544,
+          "output_tokens": 1562,
+          "total_tokens": 127106,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0027",
+          "images": 47,
+          "wall_seconds": 85.62576235301094,
+          "input_tokens": 125540,
+          "output_tokens": 2260,
+          "total_tokens": 127800,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0028",
+          "images": 48,
+          "wall_seconds": 167.38971021398902,
+          "input_tokens": 127388,
+          "output_tokens": 4489,
+          "total_tokens": 131877,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0029",
+          "images": 47,
+          "wall_seconds": 133.9411191229592,
+          "input_tokens": 126209,
+          "output_tokens": 3663,
+          "total_tokens": 129872,
+          "cached_input_tokens": 8448
+        }
+      ]
+    },
+    {
+      "run": "deposit_coin-l2",
+      "logged_selection_queries": 39,
+      "distinct_long_term_selections": 13,
+      "queries_retrieving_beyond_latest_k": 25,
+      "boundary_violations": [],
+      "completed_model_calls": 39,
+      "attempted_call_directories": 39,
+      "known_total_tokens": 3875947,
+      "weighted_input_cache_hit_fraction": 0.08756741913780305,
+      "mean_completed_call_seconds": 96.51760983666948,
+      "max_supplied_images": 48,
+      "calls": [
+        {
+          "call": "call-0001",
+          "images": 25,
+          "wall_seconds": 115.84969597298186,
+          "input_tokens": 64524,
+          "output_tokens": 2596,
+          "total_tokens": 67120,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0002",
+          "images": 26,
+          "wall_seconds": 80.7723595330026,
+          "input_tokens": 66851,
+          "output_tokens": 1915,
+          "total_tokens": 68766,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0003",
+          "images": 27,
+          "wall_seconds": 111.73869521298911,
+          "input_tokens": 69182,
+          "output_tokens": 2811,
+          "total_tokens": 71993,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0004",
+          "images": 28,
+          "wall_seconds": 89.46181016601622,
+          "input_tokens": 71497,
+          "output_tokens": 2410,
+          "total_tokens": 73907,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0005",
+          "images": 29,
+          "wall_seconds": 154.14235656603705,
+          "input_tokens": 73792,
+          "output_tokens": 3778,
+          "total_tokens": 77570,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0006",
+          "images": 30,
+          "wall_seconds": 124.199869389995,
+          "input_tokens": 76118,
+          "output_tokens": 2637,
+          "total_tokens": 78755,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0007",
+          "images": 31,
+          "wall_seconds": 206.22554470103933,
+          "input_tokens": 78395,
+          "output_tokens": 1241,
+          "total_tokens": 79636,
+          "cached_input_tokens": 78208
+        },
+        {
+          "call": "call-0008",
+          "images": 32,
+          "wall_seconds": 52.0368472149712,
+          "input_tokens": 80666,
+          "output_tokens": 944,
+          "total_tokens": 81610,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0009",
+          "images": 33,
+          "wall_seconds": 47.64234086102806,
+          "input_tokens": 82926,
+          "output_tokens": 856,
+          "total_tokens": 83782,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0010",
+          "images": 34,
+          "wall_seconds": 93.894914849021,
+          "input_tokens": 85162,
+          "output_tokens": 2193,
+          "total_tokens": 87355,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0011",
+          "images": 35,
+          "wall_seconds": 69.73153011896648,
+          "input_tokens": 87471,
+          "output_tokens": 1413,
+          "total_tokens": 88884,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0012",
+          "images": 36,
+          "wall_seconds": 64.63552116602659,
+          "input_tokens": 89751,
+          "output_tokens": 1170,
+          "total_tokens": 90921,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0013",
+          "images": 37,
+          "wall_seconds": 78.89683483500266,
+          "input_tokens": 92042,
+          "output_tokens": 1630,
+          "total_tokens": 93672,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0014",
+          "images": 38,
+          "wall_seconds": 77.02323682099814,
+          "input_tokens": 93763,
+          "output_tokens": 1815,
+          "total_tokens": 95578,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0015",
+          "images": 39,
+          "wall_seconds": 85.01901339902543,
+          "input_tokens": 95523,
+          "output_tokens": 1582,
+          "total_tokens": 97105,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0016",
+          "images": 40,
+          "wall_seconds": 81.47875299100997,
+          "input_tokens": 97332,
+          "output_tokens": 1395,
+          "total_tokens": 98727,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0017",
+          "images": 41,
+          "wall_seconds": 80.25024713994935,
+          "input_tokens": 99165,
+          "output_tokens": 1141,
+          "total_tokens": 100306,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0018",
+          "images": 42,
+          "wall_seconds": 78.37165511102648,
+          "input_tokens": 100940,
+          "output_tokens": 1270,
+          "total_tokens": 102210,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0019",
+          "images": 42,
+          "wall_seconds": 101.75805177201983,
+          "input_tokens": 101043,
+          "output_tokens": 2022,
+          "total_tokens": 103065,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0020",
+          "images": 44,
+          "wall_seconds": 64.3252546809963,
+          "input_tokens": 104450,
+          "output_tokens": 783,
+          "total_tokens": 105233,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0021",
+          "images": 44,
+          "wall_seconds": 58.16545068699634,
+          "input_tokens": 104497,
+          "output_tokens": 642,
+          "total_tokens": 105139,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0022",
+          "images": 46,
+          "wall_seconds": 54.302546772989444,
+          "input_tokens": 107761,
+          "output_tokens": 720,
+          "total_tokens": 108481,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0023",
+          "images": 46,
+          "wall_seconds": 52.252998884010594,
+          "input_tokens": 107839,
+          "output_tokens": 822,
+          "total_tokens": 108661,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0024",
+          "images": 48,
+          "wall_seconds": 83.74518436001381,
+          "input_tokens": 111231,
+          "output_tokens": 1732,
+          "total_tokens": 112963,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0025",
+          "images": 47,
+          "wall_seconds": 133.5292477790499,
+          "input_tokens": 109811,
+          "output_tokens": 2598,
+          "total_tokens": 112409,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0026",
+          "images": 47,
+          "wall_seconds": 134.92308423103532,
+          "input_tokens": 110064,
+          "output_tokens": 2881,
+          "total_tokens": 112945,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0027",
+          "images": 48,
+          "wall_seconds": 119.12411632301519,
+          "input_tokens": 111839,
+          "output_tokens": 2638,
+          "total_tokens": 114477,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0028",
+          "images": 47,
+          "wall_seconds": 129.1689667579485,
+          "input_tokens": 110127,
+          "output_tokens": 2944,
+          "total_tokens": 113071,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0029",
+          "images": 47,
+          "wall_seconds": 193.43979799898807,
+          "input_tokens": 110282,
+          "output_tokens": 3923,
+          "total_tokens": 114205,
+          "cached_input_tokens": 110080
+        },
+        {
+          "call": "call-0030",
+          "images": 47,
+          "wall_seconds": 181.23617078497773,
+          "input_tokens": 110399,
+          "output_tokens": 3993,
+          "total_tokens": 114392,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0031",
+          "images": 47,
+          "wall_seconds": 81.44287849601824,
+          "input_tokens": 111500,
+          "output_tokens": 1447,
+          "total_tokens": 112947,
+          "cached_input_tokens": 9472
+        },
+        {
+          "call": "call-0032",
+          "images": 47,
+          "wall_seconds": 96.45588833699003,
+          "input_tokens": 110505,
+          "output_tokens": 1954,
+          "total_tokens": 112459,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0033",
+          "images": 47,
+          "wall_seconds": 76.76440759300021,
+          "input_tokens": 110532,
+          "output_tokens": 685,
+          "total_tokens": 111217,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0034",
+          "images": 47,
+          "wall_seconds": 53.19722679298138,
+          "input_tokens": 110593,
+          "output_tokens": 750,
+          "total_tokens": 111343,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0035",
+          "images": 47,
+          "wall_seconds": 47.45429134101141,
+          "input_tokens": 110615,
+          "output_tokens": 904,
+          "total_tokens": 111519,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0036",
+          "images": 47,
+          "wall_seconds": 92.23986082698684,
+          "input_tokens": 110658,
+          "output_tokens": 2114,
+          "total_tokens": 112772,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0037",
+          "images": 47,
+          "wall_seconds": 95.2438178259763,
+          "input_tokens": 110894,
+          "output_tokens": 2332,
+          "total_tokens": 113226,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0038",
+          "images": 47,
+          "wall_seconds": 96.38234328298131,
+          "input_tokens": 111067,
+          "output_tokens": 2307,
+          "total_tokens": 113374,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0039",
+          "images": 47,
+          "wall_seconds": 127.66397205303656,
+          "input_tokens": 111155,
+          "output_tokens": 2997,
+          "total_tokens": 114152,
+          "cached_input_tokens": 0
+        }
+      ]
+    },
+    {
+      "run": "deposit_coin-l3",
+      "logged_selection_queries": 41,
+      "distinct_long_term_selections": 11,
+      "queries_retrieving_beyond_latest_k": 28,
+      "boundary_violations": [],
+      "completed_model_calls": 41,
+      "attempted_call_directories": 41,
+      "known_total_tokens": 4108648,
+      "weighted_input_cache_hit_fraction": 0.07151557282272787,
+      "mean_completed_call_seconds": 103.2149707850526,
+      "max_supplied_images": 47,
+      "calls": [
+        {
+          "call": "call-0001",
+          "images": 25,
+          "wall_seconds": 90.48807901900727,
+          "input_tokens": 64522,
+          "output_tokens": 2026,
+          "total_tokens": 66548,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0002",
+          "images": 26,
+          "wall_seconds": 84.46537342603551,
+          "input_tokens": 66851,
+          "output_tokens": 2151,
+          "total_tokens": 69002,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0003",
+          "images": 27,
+          "wall_seconds": 88.526921813027,
+          "input_tokens": 69160,
+          "output_tokens": 2364,
+          "total_tokens": 71524,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0004",
+          "images": 28,
+          "wall_seconds": 103.41213464998873,
+          "input_tokens": 71472,
+          "output_tokens": 2804,
+          "total_tokens": 74276,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0005",
+          "images": 29,
+          "wall_seconds": 124.8434326389688,
+          "input_tokens": 73799,
+          "output_tokens": 3857,
+          "total_tokens": 77656,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0006",
+          "images": 30,
+          "wall_seconds": 116.0900014769868,
+          "input_tokens": 76078,
+          "output_tokens": 2834,
+          "total_tokens": 78912,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0007",
+          "images": 31,
+          "wall_seconds": 52.14666373596992,
+          "input_tokens": 78384,
+          "output_tokens": 1009,
+          "total_tokens": 79393,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0008",
+          "images": 32,
+          "wall_seconds": 37.36401271802606,
+          "input_tokens": 80645,
+          "output_tokens": 651,
+          "total_tokens": 81296,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0009",
+          "images": 33,
+          "wall_seconds": 42.24932281504152,
+          "input_tokens": 82902,
+          "output_tokens": 718,
+          "total_tokens": 83620,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0010",
+          "images": 34,
+          "wall_seconds": 127.5757663170225,
+          "input_tokens": 85161,
+          "output_tokens": 2497,
+          "total_tokens": 87658,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0011",
+          "images": 35,
+          "wall_seconds": 81.70057025103597,
+          "input_tokens": 87480,
+          "output_tokens": 1739,
+          "total_tokens": 89219,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0012",
+          "images": 36,
+          "wall_seconds": 85.55753259896301,
+          "input_tokens": 89778,
+          "output_tokens": 1955,
+          "total_tokens": 91733,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0013",
+          "images": 37,
+          "wall_seconds": 86.23287839000113,
+          "input_tokens": 92068,
+          "output_tokens": 1876,
+          "total_tokens": 93944,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0014",
+          "images": 38,
+          "wall_seconds": 80.05127392004943,
+          "input_tokens": 93845,
+          "output_tokens": 1876,
+          "total_tokens": 95721,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0015",
+          "images": 39,
+          "wall_seconds": 106.49741739599267,
+          "input_tokens": 95596,
+          "output_tokens": 1780,
+          "total_tokens": 97376,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0016",
+          "images": 40,
+          "wall_seconds": 75.63958247000119,
+          "input_tokens": 98645,
+          "output_tokens": 1893,
+          "total_tokens": 100538,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0017",
+          "images": 41,
+          "wall_seconds": 135.32335832202807,
+          "input_tokens": 99427,
+          "output_tokens": 3185,
+          "total_tokens": 102612,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0018",
+          "images": 42,
+          "wall_seconds": 66.30342188902432,
+          "input_tokens": 101248,
+          "output_tokens": 965,
+          "total_tokens": 102213,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0019",
+          "images": 43,
+          "wall_seconds": 68.22133164003026,
+          "input_tokens": 102961,
+          "output_tokens": 628,
+          "total_tokens": 103589,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0020",
+          "images": 43,
+          "wall_seconds": 67.5987773790257,
+          "input_tokens": 102975,
+          "output_tokens": 695,
+          "total_tokens": 103670,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0021",
+          "images": 44,
+          "wall_seconds": 128.91280554397963,
+          "input_tokens": 104341,
+          "output_tokens": 3034,
+          "total_tokens": 107375,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0022",
+          "images": 43,
+          "wall_seconds": 128.89532130595762,
+          "input_tokens": 102773,
+          "output_tokens": 2390,
+          "total_tokens": 105163,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0023",
+          "images": 44,
+          "wall_seconds": 169.40027030801866,
+          "input_tokens": 104459,
+          "output_tokens": 4617,
+          "total_tokens": 109076,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0024",
+          "images": 44,
+          "wall_seconds": 81.85560169699602,
+          "input_tokens": 105192,
+          "output_tokens": 1494,
+          "total_tokens": 106686,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0025",
+          "images": 46,
+          "wall_seconds": 144.98317510198103,
+          "input_tokens": 108891,
+          "output_tokens": 2382,
+          "total_tokens": 111273,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0026",
+          "images": 47,
+          "wall_seconds": 240.2309020269895,
+          "input_tokens": 111767,
+          "output_tokens": 2872,
+          "total_tokens": 114639,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0027",
+          "images": 47,
+          "wall_seconds": 119.50296332902508,
+          "input_tokens": 110033,
+          "output_tokens": 3277,
+          "total_tokens": 113310,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0028",
+          "images": 47,
+          "wall_seconds": 109.38367252796888,
+          "input_tokens": 111022,
+          "output_tokens": 2864,
+          "total_tokens": 113886,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0029",
+          "images": 47,
+          "wall_seconds": 128.18058390397346,
+          "input_tokens": 110267,
+          "output_tokens": 3244,
+          "total_tokens": 113511,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0030",
+          "images": 47,
+          "wall_seconds": 176.59301274298923,
+          "input_tokens": 111056,
+          "output_tokens": 4811,
+          "total_tokens": 115867,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0031",
+          "images": 47,
+          "wall_seconds": 153.2639880939969,
+          "input_tokens": 110411,
+          "output_tokens": 4038,
+          "total_tokens": 114449,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0032",
+          "images": 47,
+          "wall_seconds": 95.94419552601175,
+          "input_tokens": 111238,
+          "output_tokens": 2189,
+          "total_tokens": 113427,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0033",
+          "images": 47,
+          "wall_seconds": 145.6985949590453,
+          "input_tokens": 111289,
+          "output_tokens": 3806,
+          "total_tokens": 115095,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0034",
+          "images": 47,
+          "wall_seconds": 129.20831116498448,
+          "input_tokens": 111310,
+          "output_tokens": 3176,
+          "total_tokens": 114486,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0035",
+          "images": 47,
+          "wall_seconds": 47.704743704991415,
+          "input_tokens": 111397,
+          "output_tokens": 687,
+          "total_tokens": 112084,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0036",
+          "images": 47,
+          "wall_seconds": 94.62696126796072,
+          "input_tokens": 111458,
+          "output_tokens": 1984,
+          "total_tokens": 113442,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0037",
+          "images": 47,
+          "wall_seconds": 91.27698257903103,
+          "input_tokens": 110663,
+          "output_tokens": 1818,
+          "total_tokens": 112481,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0038",
+          "images": 47,
+          "wall_seconds": 78.4456293680123,
+          "input_tokens": 110837,
+          "output_tokens": 1778,
+          "total_tokens": 112615,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0039",
+          "images": 47,
+          "wall_seconds": 115.04865736298962,
+          "input_tokens": 111565,
+          "output_tokens": 1301,
+          "total_tokens": 112866,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0040",
+          "images": 47,
+          "wall_seconds": 48.7311389290262,
+          "input_tokens": 111627,
+          "output_tokens": 883,
+          "total_tokens": 112510,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0041",
+          "images": 47,
+          "wall_seconds": 83.6384378770017,
+          "input_tokens": 111763,
+          "output_tokens": 2144,
+          "total_tokens": 113907,
+          "cached_input_tokens": 0
+        }
+      ]
+    },
+    {
+      "run": "put_bottles_into_dustbin-l2",
+      "logged_selection_queries": 72,
+      "distinct_long_term_selections": 19,
+      "queries_retrieving_beyond_latest_k": 59,
+      "boundary_violations": [],
+      "completed_model_calls": 72,
+      "attempted_call_directories": 72,
+      "known_total_tokens": 8212711,
+      "weighted_input_cache_hit_fraction": 0.06395570281239633,
+      "mean_completed_call_seconds": 94.59842933509046,
+      "max_supplied_images": 49,
+      "calls": [
+        {
+          "call": "call-0001",
+          "images": 25,
+          "wall_seconds": 116.04735695401905,
+          "input_tokens": 69263,
+          "output_tokens": 2649,
+          "total_tokens": 71912,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0002",
+          "images": 26,
+          "wall_seconds": 121.71235911495751,
+          "input_tokens": 71856,
+          "output_tokens": 3042,
+          "total_tokens": 74898,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0003",
+          "images": 27,
+          "wall_seconds": 168.31188740598736,
+          "input_tokens": 74452,
+          "output_tokens": 4033,
+          "total_tokens": 78485,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0004",
+          "images": 28,
+          "wall_seconds": 106.92464623099659,
+          "input_tokens": 76990,
+          "output_tokens": 2458,
+          "total_tokens": 79448,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0005",
+          "images": 29,
+          "wall_seconds": 63.289394328021444,
+          "input_tokens": 79500,
+          "output_tokens": 1504,
+          "total_tokens": 81004,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0006",
+          "images": 30,
+          "wall_seconds": 57.36220167897409,
+          "input_tokens": 82005,
+          "output_tokens": 1268,
+          "total_tokens": 83273,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0007",
+          "images": 31,
+          "wall_seconds": 89.58312463498442,
+          "input_tokens": 84550,
+          "output_tokens": 2284,
+          "total_tokens": 86834,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0008",
+          "images": 32,
+          "wall_seconds": 110.92299486603588,
+          "input_tokens": 87081,
+          "output_tokens": 2918,
+          "total_tokens": 89999,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0009",
+          "images": 33,
+          "wall_seconds": 98.66898461797973,
+          "input_tokens": 89652,
+          "output_tokens": 2527,
+          "total_tokens": 92179,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0010",
+          "images": 34,
+          "wall_seconds": 150.9036975679919,
+          "input_tokens": 92251,
+          "output_tokens": 4080,
+          "total_tokens": 96331,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0011",
+          "images": 35,
+          "wall_seconds": 134.42144435999217,
+          "input_tokens": 94847,
+          "output_tokens": 3416,
+          "total_tokens": 98263,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0012",
+          "images": 36,
+          "wall_seconds": 114.46928515197942,
+          "input_tokens": 97451,
+          "output_tokens": 2941,
+          "total_tokens": 100392,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0013",
+          "images": 37,
+          "wall_seconds": 53.65660734398989,
+          "input_tokens": 99944,
+          "output_tokens": 905,
+          "total_tokens": 100849,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0014",
+          "images": 38,
+          "wall_seconds": 102.57187444198644,
+          "input_tokens": 101690,
+          "output_tokens": 2487,
+          "total_tokens": 104177,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0015",
+          "images": 39,
+          "wall_seconds": 75.86933593498543,
+          "input_tokens": 103363,
+          "output_tokens": 1779,
+          "total_tokens": 105142,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0016",
+          "images": 39,
+          "wall_seconds": 47.495821739023086,
+          "input_tokens": 103314,
+          "output_tokens": 978,
+          "total_tokens": 104292,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0017",
+          "images": 41,
+          "wall_seconds": 116.4486714269733,
+          "input_tokens": 106837,
+          "output_tokens": 2806,
+          "total_tokens": 109643,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0018",
+          "images": 41,
+          "wall_seconds": 94.63255312200636,
+          "input_tokens": 106859,
+          "output_tokens": 2445,
+          "total_tokens": 109304,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0019",
+          "images": 41,
+          "wall_seconds": 126.3385081460001,
+          "input_tokens": 107095,
+          "output_tokens": 2972,
+          "total_tokens": 110067,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0020",
+          "images": 42,
+          "wall_seconds": 84.337319216982,
+          "input_tokens": 108794,
+          "output_tokens": 1987,
+          "total_tokens": 110781,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0021",
+          "images": 42,
+          "wall_seconds": 111.04715898499126,
+          "input_tokens": 108936,
+          "output_tokens": 2668,
+          "total_tokens": 111604,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0022",
+          "images": 44,
+          "wall_seconds": 48.24757058999967,
+          "input_tokens": 112156,
+          "output_tokens": 879,
+          "total_tokens": 113035,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0023",
+          "images": 44,
+          "wall_seconds": 91.48920457501663,
+          "input_tokens": 112235,
+          "output_tokens": 2565,
+          "total_tokens": 114800,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0024",
+          "images": 46,
+          "wall_seconds": 112.39895252598217,
+          "input_tokens": 115602,
+          "output_tokens": 2557,
+          "total_tokens": 118159,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0025",
+          "images": 47,
+          "wall_seconds": 147.99670889298432,
+          "input_tokens": 117508,
+          "output_tokens": 3669,
+          "total_tokens": 121177,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0026",
+          "images": 47,
+          "wall_seconds": 144.3627531650127,
+          "input_tokens": 117372,
+          "output_tokens": 3731,
+          "total_tokens": 121103,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0027",
+          "images": 47,
+          "wall_seconds": 132.01681357901543,
+          "input_tokens": 117520,
+          "output_tokens": 3177,
+          "total_tokens": 120697,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0028",
+          "images": 48,
+          "wall_seconds": 94.90559393400326,
+          "input_tokens": 119314,
+          "output_tokens": 2070,
+          "total_tokens": 121384,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0029",
+          "images": 47,
+          "wall_seconds": 64.22174427297432,
+          "input_tokens": 117604,
+          "output_tokens": 1403,
+          "total_tokens": 119007,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0030",
+          "images": 48,
+          "wall_seconds": 62.6198380329879,
+          "input_tokens": 119218,
+          "output_tokens": 1399,
+          "total_tokens": 120617,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0031",
+          "images": 48,
+          "wall_seconds": 66.44012212398229,
+          "input_tokens": 119440,
+          "output_tokens": 1490,
+          "total_tokens": 120930,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0032",
+          "images": 48,
+          "wall_seconds": 102.05921865900746,
+          "input_tokens": 119497,
+          "output_tokens": 2620,
+          "total_tokens": 122117,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0033",
+          "images": 48,
+          "wall_seconds": 89.23524623800768,
+          "input_tokens": 119540,
+          "output_tokens": 2175,
+          "total_tokens": 121715,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0034",
+          "images": 47,
+          "wall_seconds": 125.57866399595514,
+          "input_tokens": 117804,
+          "output_tokens": 3308,
+          "total_tokens": 121112,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0035",
+          "images": 47,
+          "wall_seconds": 112.05060484894784,
+          "input_tokens": 118134,
+          "output_tokens": 3229,
+          "total_tokens": 121363,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0036",
+          "images": 47,
+          "wall_seconds": 112.78029608097859,
+          "input_tokens": 118437,
+          "output_tokens": 2992,
+          "total_tokens": 121429,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0037",
+          "images": 47,
+          "wall_seconds": 119.94224172300892,
+          "input_tokens": 118716,
+          "output_tokens": 3076,
+          "total_tokens": 121792,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0038",
+          "images": 47,
+          "wall_seconds": 119.95005255599972,
+          "input_tokens": 118837,
+          "output_tokens": 3132,
+          "total_tokens": 121969,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0039",
+          "images": 47,
+          "wall_seconds": 110.04604477295652,
+          "input_tokens": 118666,
+          "output_tokens": 2432,
+          "total_tokens": 121098,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0040",
+          "images": 48,
+          "wall_seconds": 115.03365535201738,
+          "input_tokens": 120561,
+          "output_tokens": 2791,
+          "total_tokens": 123352,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0041",
+          "images": 47,
+          "wall_seconds": 115.39603246498154,
+          "input_tokens": 118927,
+          "output_tokens": 2775,
+          "total_tokens": 121702,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0042",
+          "images": 47,
+          "wall_seconds": 105.42081641103141,
+          "input_tokens": 118858,
+          "output_tokens": 2217,
+          "total_tokens": 121075,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0043",
+          "images": 48,
+          "wall_seconds": 103.44652520603267,
+          "input_tokens": 120492,
+          "output_tokens": 2990,
+          "total_tokens": 123482,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0044",
+          "images": 48,
+          "wall_seconds": 96.63083806395298,
+          "input_tokens": 120489,
+          "output_tokens": 2434,
+          "total_tokens": 122923,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0045",
+          "images": 48,
+          "wall_seconds": 120.8666047709994,
+          "input_tokens": 120582,
+          "output_tokens": 3184,
+          "total_tokens": 123766,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0046",
+          "images": 49,
+          "wall_seconds": 108.35353432397824,
+          "input_tokens": 122275,
+          "output_tokens": 2648,
+          "total_tokens": 124923,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0047",
+          "images": 48,
+          "wall_seconds": 166.65049243700923,
+          "input_tokens": 120661,
+          "output_tokens": 3523,
+          "total_tokens": 124184,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0048",
+          "images": 48,
+          "wall_seconds": 103.5051717319875,
+          "input_tokens": 120782,
+          "output_tokens": 2196,
+          "total_tokens": 122978,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0049",
+          "images": 48,
+          "wall_seconds": 109.2686333929887,
+          "input_tokens": 121013,
+          "output_tokens": 2461,
+          "total_tokens": 123474,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0050",
+          "images": 48,
+          "wall_seconds": 111.72203343000729,
+          "input_tokens": 122109,
+          "output_tokens": 2256,
+          "total_tokens": 124365,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0051",
+          "images": 48,
+          "wall_seconds": 119.51440485497005,
+          "input_tokens": 121079,
+          "output_tokens": 2510,
+          "total_tokens": 123589,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0052",
+          "images": 49,
+          "wall_seconds": 164.48363421403337,
+          "input_tokens": 122762,
+          "output_tokens": 3448,
+          "total_tokens": 126210,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0053",
+          "images": 48,
+          "wall_seconds": 112.9715937099536,
+          "input_tokens": 121278,
+          "output_tokens": 2152,
+          "total_tokens": 123430,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0054",
+          "images": 48,
+          "wall_seconds": 102.65519063698594,
+          "input_tokens": 121567,
+          "output_tokens": 1954,
+          "total_tokens": 123521,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0055",
+          "images": 47,
+          "wall_seconds": 179.95692252804292,
+          "input_tokens": 120217,
+          "output_tokens": 2176,
+          "total_tokens": 122393,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0056",
+          "images": 47,
+          "wall_seconds": 172.53479010501178,
+          "input_tokens": 121778,
+          "output_tokens": 2208,
+          "total_tokens": 123986,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0057",
+          "images": 47,
+          "wall_seconds": 74.55972643295536,
+          "input_tokens": 120813,
+          "output_tokens": 1667,
+          "total_tokens": 122480,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0058",
+          "images": 47,
+          "wall_seconds": 43.276372721011285,
+          "input_tokens": 120851,
+          "output_tokens": 677,
+          "total_tokens": 121528,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0059",
+          "images": 47,
+          "wall_seconds": 42.67648960603401,
+          "input_tokens": 120633,
+          "output_tokens": 775,
+          "total_tokens": 121408,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0060",
+          "images": 47,
+          "wall_seconds": 39.17080290900776,
+          "input_tokens": 120866,
+          "output_tokens": 710,
+          "total_tokens": 121576,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0061",
+          "images": 47,
+          "wall_seconds": 46.041395076958,
+          "input_tokens": 120862,
+          "output_tokens": 767,
+          "total_tokens": 121629,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0062",
+          "images": 47,
+          "wall_seconds": 37.780047118954826,
+          "input_tokens": 121057,
+          "output_tokens": 670,
+          "total_tokens": 121727,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0063",
+          "images": 47,
+          "wall_seconds": 40.426330348011106,
+          "input_tokens": 121039,
+          "output_tokens": 854,
+          "total_tokens": 121893,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0064",
+          "images": 47,
+          "wall_seconds": 46.05175226001302,
+          "input_tokens": 121200,
+          "output_tokens": 815,
+          "total_tokens": 122015,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0065",
+          "images": 47,
+          "wall_seconds": 39.990442009991966,
+          "input_tokens": 121193,
+          "output_tokens": 796,
+          "total_tokens": 121989,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0066",
+          "images": 47,
+          "wall_seconds": 36.773747358005494,
+          "input_tokens": 121175,
+          "output_tokens": 619,
+          "total_tokens": 121794,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0067",
+          "images": 47,
+          "wall_seconds": 40.07193767896388,
+          "input_tokens": 121187,
+          "output_tokens": 737,
+          "total_tokens": 121924,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0068",
+          "images": 47,
+          "wall_seconds": 39.69261088897474,
+          "input_tokens": 121175,
+          "output_tokens": 754,
+          "total_tokens": 121929,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0069",
+          "images": 47,
+          "wall_seconds": 55.512889878009446,
+          "input_tokens": 121390,
+          "output_tokens": 1237,
+          "total_tokens": 122627,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0070",
+          "images": 47,
+          "wall_seconds": 40.63655538397143,
+          "input_tokens": 121369,
+          "output_tokens": 654,
+          "total_tokens": 122023,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0071",
+          "images": 47,
+          "wall_seconds": 37.43346124200616,
+          "input_tokens": 121517,
+          "output_tokens": 665,
+          "total_tokens": 122182,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0072",
+          "images": 47,
+          "wall_seconds": 41.22457974398276,
+          "input_tokens": 121490,
+          "output_tokens": 763,
+          "total_tokens": 122253,
+          "cached_input_tokens": 8448
+        }
+      ]
+    },
+    {
+      "run": "put_bottles_into_dustbin-l3",
+      "logged_selection_queries": 16,
+      "distinct_long_term_selections": 10,
+      "queries_retrieving_beyond_latest_k": 3,
+      "boundary_violations": [],
+      "completed_model_calls": 16,
+      "attempted_call_directories": 16,
+      "known_total_tokens": 1449513,
+      "weighted_input_cache_hit_fraction": 0.07800930792878696,
+      "mean_completed_call_seconds": 105.29843130537847,
+      "max_supplied_images": 39,
+      "calls": [
+        {
+          "call": "call-0001",
+          "images": 25,
+          "wall_seconds": 93.0299931090558,
+          "input_tokens": 69263,
+          "output_tokens": 2438,
+          "total_tokens": 71701,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0002",
+          "images": 26,
+          "wall_seconds": 134.66743747296277,
+          "input_tokens": 71838,
+          "output_tokens": 3845,
+          "total_tokens": 75683,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0003",
+          "images": 27,
+          "wall_seconds": 149.05642527499003,
+          "input_tokens": 74394,
+          "output_tokens": 4015,
+          "total_tokens": 78409,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0004",
+          "images": 28,
+          "wall_seconds": 140.88031967100687,
+          "input_tokens": 76930,
+          "output_tokens": 3587,
+          "total_tokens": 80517,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0005",
+          "images": 29,
+          "wall_seconds": 78.24915286904434,
+          "input_tokens": 79424,
+          "output_tokens": 1597,
+          "total_tokens": 81021,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0006",
+          "images": 30,
+          "wall_seconds": 76.5230311890482,
+          "input_tokens": 81944,
+          "output_tokens": 1984,
+          "total_tokens": 83928,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0007",
+          "images": 31,
+          "wall_seconds": 67.6796622609836,
+          "input_tokens": 84472,
+          "output_tokens": 1564,
+          "total_tokens": 86036,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0008",
+          "images": 32,
+          "wall_seconds": 104.734257856966,
+          "input_tokens": 86974,
+          "output_tokens": 2679,
+          "total_tokens": 89653,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0009",
+          "images": 33,
+          "wall_seconds": 134.4352170730126,
+          "input_tokens": 89579,
+          "output_tokens": 3363,
+          "total_tokens": 92942,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0010",
+          "images": 34,
+          "wall_seconds": 147.64953784900717,
+          "input_tokens": 92158,
+          "output_tokens": 3759,
+          "total_tokens": 95917,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0011",
+          "images": 35,
+          "wall_seconds": 143.97245729301358,
+          "input_tokens": 94810,
+          "output_tokens": 3613,
+          "total_tokens": 98423,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0012",
+          "images": 36,
+          "wall_seconds": 108.90812732896302,
+          "input_tokens": 97463,
+          "output_tokens": 2711,
+          "total_tokens": 100174,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0013",
+          "images": 37,
+          "wall_seconds": 58.42192190600326,
+          "input_tokens": 99967,
+          "output_tokens": 1184,
+          "total_tokens": 101151,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0014",
+          "images": 38,
+          "wall_seconds": 63.56951135199051,
+          "input_tokens": 101753,
+          "output_tokens": 1237,
+          "total_tokens": 102990,
+          "cached_input_tokens": 8448
+        },
+        {
+          "call": "call-0015",
+          "images": 39,
+          "wall_seconds": 129.01172198198037,
+          "input_tokens": 103478,
+          "output_tokens": 3076,
+          "total_tokens": 106554,
+          "cached_input_tokens": 0
+        },
+        {
+          "call": "call-0016",
+          "images": 39,
+          "wall_seconds": 53.98612639802741,
+          "input_tokens": 103385,
+          "output_tokens": 1029,
+          "total_tokens": 104414,
+          "cached_input_tokens": 8448
+        }
+      ]
+    }
+  ]
+}

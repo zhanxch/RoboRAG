@@ -1,0 +1,523 @@
+{
+  "schema": "cloth-grasp.benchmark.v1",
+  "frozen_at": 1792743123.3910363,
+  "demo_sha256": "5a1fbba99a9f13900ec4439ba503674627335e28aeba6840223beb3e17cc93ac",
+  "cases": [
+    {
+      "id": "c001",
+      "task": "fold_clothes",
+      "subtask": "left_sleeve",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800001,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c002",
+      "task": "fold_clothes",
+      "subtask": "left_sleeve",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800002,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c003",
+      "task": "fold_clothes",
+      "subtask": "left_sleeve",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800003,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c004",
+      "task": "fold_clothes",
+      "subtask": "right_sleeve",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800004,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c005",
+      "task": "fold_clothes",
+      "subtask": "right_sleeve",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800005,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c006",
+      "task": "fold_clothes",
+      "subtask": "right_sleeve",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800006,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c007",
+      "task": "fold_clothes",
+      "subtask": "left_hem",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800007,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c008",
+      "task": "fold_clothes",
+      "subtask": "left_hem",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800008,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c009",
+      "task": "fold_clothes",
+      "subtask": "left_hem",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800009,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c010",
+      "task": "fold_clothes",
+      "subtask": "right_hem",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800010,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c011",
+      "task": "fold_clothes",
+      "subtask": "right_hem",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800011,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c012",
+      "task": "fold_clothes",
+      "subtask": "right_hem",
+      "garment": 9,
+      "distribution": "seen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800012,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c013",
+      "task": "fold_clothes",
+      "subtask": "left_sleeve",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800013,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c014",
+      "task": "fold_clothes",
+      "subtask": "left_sleeve",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800014,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c015",
+      "task": "fold_clothes",
+      "subtask": "left_sleeve",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800015,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c016",
+      "task": "fold_clothes",
+      "subtask": "right_sleeve",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800016,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c017",
+      "task": "fold_clothes",
+      "subtask": "right_sleeve",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800017,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c018",
+      "task": "fold_clothes",
+      "subtask": "right_sleeve",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800018,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c019",
+      "task": "fold_clothes",
+      "subtask": "left_hem",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800019,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c020",
+      "task": "fold_clothes",
+      "subtask": "left_hem",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800020,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c021",
+      "task": "fold_clothes",
+      "subtask": "left_hem",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800021,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c022",
+      "task": "fold_clothes",
+      "subtask": "right_hem",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "center",
+      "tcp_offset_m": [
+        0.0,
+        0.0,
+        0.065
+      ],
+      "seed": 800022,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c023",
+      "task": "fold_clothes",
+      "subtask": "right_hem",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "diagonal",
+      "tcp_offset_m": [
+        0.02,
+        -0.02,
+        0.065
+      ],
+      "seed": 800023,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    },
+    {
+      "id": "c024",
+      "task": "fold_clothes",
+      "subtask": "right_hem",
+      "garment": 4,
+      "distribution": "unseen_garment",
+      "position": "high_opposite",
+      "tcp_offset_m": [
+        -0.02,
+        0.02,
+        0.09
+      ],
+      "seed": 800024,
+      "garment_position": [
+        0.0,
+        -0.12,
+        0.8441
+      ],
+      "garment_yaw_deg": 0.0
+    }
+  ],
+  "policies": [
+    "bc",
+    "rl"
+  ],
+  "training": {
+    "seed": 3042,
+    "garment": 9,
+    "episodes": 20,
+    "warmup": 12,
+    "demo_retarget_episodes": 8,
+    "geometry_teacher_episodes": 4,
+    "world_holdout_episode_numbers": [
+      5,
+      6
+    ],
+    "bc_steps": 1600,
+    "world_window": 8,
+    "imagination_horizon": 16,
+    "policy_updates_per_round": 5,
+    "bc_weight": 20.0,
+    "binary_gripper": true
+  },
+  "criterion": {
+    "lift_m": 0.08,
+    "max_target_tcp_gap_m": 0.055,
+    "closed_command_max": 0.35,
+    "final_consecutive_steps": 10,
+    "horizon": 80,
+    "control_hz": 25
+  },
+  "selection": "Fixed final training update; no selection or tuning on benchmark outcomes.",
+  "comparisons": "Paired BC initialization versus final RL on the same 24 cases; both frozen.",
+  "invalid_case_policy": "Unreachable pregrasp is a recorded failure, never silently removed; infrastructure errors halt the run.",
+  "scope": "One parent task, four local subtasks; not four independent RoboDojo tasks. Privileged particle geometry, fixed orientation, no full-fold or real-robot claim.",
+  "provenance": "Development scene fixture cloned with explicitly fixed garment pose. This is a custom local benchmark, not the official RoboDojo score.",
+  "sha256": "c7642f738bc0a206e20007004acc4ba1cc689ca78fe9e5e2df235cf21eb83be6"
+}

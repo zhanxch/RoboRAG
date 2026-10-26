@@ -1,0 +1,89 @@
+RoboRAG: Interaction-Aware Retrieval-Augmented Manipulation
+Restricted logic-review packet: only titles, headings, author summaries, diagram/table captions and figures.
+No empirical conclusion; this is an English research design draft.
+
+SOURCE: 00-abstract.tex
+RoboRAG proposes a shared phase-graph schema connecting episode annotation, versioned graph-bank retrieval, task-conditioned plan adaptation, and delegated execution. Matched evidence, representation, adaptation, execution, and interface comparisons test the specific hypothesis that preserving phase conditions and observed outcomes improves experience use. This is a design-stage manuscript; existing pilots concern a predecessor chunk-memory controller.
+
+SOURCE: 01-introduction.tex
+Introduction
+RoboRAG asks whether retaining phase conditions, observed outcomes, and recovery relations across experience construction, retrieval/adaptation, and delegated execution improves manipulation of unseen task compositions. A cup-in-closed-drawer example motivates a shared schema whose historical, planned, and executed graphs retain distinct evidence meanings. Two method components build and use the graph bank; matched experiments test the representation, while the cross-backend common contract and MCP comparison support systems validation.
+
+SOURCE: 02-related.tex
+Related Work
+Retrieval units and memory organization.
+Experience and in-context robot learning.
+Scene graphs, procedural graphs, and task graphs.
+Grounded planning and delegated execution.
+Research position.
+Prior work establishes graph retrieval, procedural reuse, task-graph execution, and selective replanning. RoboRAG studies an evidence-grounded phase graph shared across annotation, retrieval/adaptation, and delegated execution; matched evidence and controller comparisons must establish its value.
+
+SOURCE: 03-formulation.tex
+Problem Formulation
+A shared graph schema.
+Order, dependencies, and branches.
+Time, revision, and the graph bank.
+Objective.
+A versioned graph RAG bank connects historical experience G, prospective plans P_t, and observed execution X_t through one phase-instance schema. Typed edges distinguish temporal constraints, factual prerequisites, alternative guarded transitions, and recovery. Readiness combines mandatory prerequisites with alternative activation, while observed evidence determines completion. Unseen task composition remains bounded by backend skills; retrieval, adaptation, and hierarchical execution aim to improve verified success under cost budgets without evaluation leakage.
+
+SOURCE: 04a-construction.tex
+Constructing a Bank of Interaction Graphs
+From recordings to phase intervals.
+A common node and evidence schema.
+Edges describe order, conditions, and recovery.
+Validation and agent-readable serialization.
+Whole-graph and subgraph indices.
+Versioned updates.
+The proposed annotation pipeline converts source episodes into evidence-linked interaction-phase graphs. Typed conditions, branch semantics, recovery links, stable identities, and validated serialization connect historical experience to prospective plans without treating intended effects as observed outcomes. Whole-graph and dependency-complete subgraph indices preserve the context needed to adapt failures and recoveries; bank updates remain versioned and separate from current-episode execution.
+
+SOURCE: 04b-use.tex
+Retrieving, Adapting, and Following Interaction Graphs
+A schema-grounded initial plan.
+Searching graphs and local experience.
+Adapting a retrieved procedure.
+Checking the plan before use.
+Delegated plan following.
+Evidence, receipts, and revisions.
+Memory during execution.
+Execution procedure.
+A schema-grounded planner drafts unseen-task graphs, retrieves whole procedures and local evidence, aligns roles/conditions/typed structure, and makes explicit bounded edits. Validation distinguishes AND prerequisites from OR branch activation. A smaller supervisor follows approved phases and recovery branches, while a deterministic gateway enforces requests and local controllers execute skills; structural changes return to the planner. Receipt-backed evidence determines progress, revisions retain lineage, failed attempts remain in X, and frozen-bank evaluation separates online adaptation from cross-episode accumulation.
+
+SOURCE: 05-system.tex
+System Framework
+Capabilities, Observations, and Actions
+Capabilities.
+Observations.
+Actions.
+Execution Receipts and Local Control
+Separating Interface Reuse from MCP Transport
+A common capability, observation, action, and receipt contract connects graph planning to native execution. Provenance, frames, timing, authorization, and execution evidence preserve graph semantics across adapters. Native servo and protection functions retain local responsibility. Comparing native access, normalized direct access, and the same normalized interface through MCP isolates application reuse from protocol effects across proposed RoboDojo, LIBERO, and real-robot targets.
+
+SOURCE: 06a-experiments.tex
+Experimental Design and Existing Evidence
+Data Partitions and Task Families
+Graph Construction and Retrieval Quality
+Matched Manipulation Comparisons
+Testing the shared representation.
+Adaptation and recovery.
+Success, evidence, and cost.
+Accumulation and Cross-Backend Evaluation
+Evaluation first tests whether phase graphs can be constructed reliably without future-information leakage, then tests bank-relative generalization under frozen memory. Matched comparisons isolate retrieval, structural adaptation, relation use, and delegated execution; a retrieval-by-execution factorial tests complementary use of the shared schema rather than only the combined system. Independent task success audits observable completion judgments, while paired perturbations and complete cost accounting prevent selective recovery or efficiency claims. Chronological accumulation and native/direct/MCP platform studies remain separate from the main algorithm evaluation.
+
+SOURCE: 06b-evidence.tex
+Existing Evidence and Planned Analysis
+Completed foundations.
+Historical task outcomes.
+Tracing the proposed mechanism.
+Existing RoboDojo evidence is limited to a historical chunk-retrieval controller: two stack pairs have equal success and inconsistent cost differences; the incomplete external comparison ties all five completed public scores. Proposed graph mechanisms require new evaluation. Independent event annotations, complete phase traces, and a controlled alignment intervention will connect graph quality to observed task outcomes while separating verifier completion from native success.
+
+SOURCE: 07-discussion.tex
+Discussion: Deployment, Extensions, and Expected Findings
+A staged path to deployment.
+Reusable procedures with inspectable evidence.
+Growing the experience library.
+Uncertain branches and multiple resources.
+Findings that would support the method.
+Deployment proceeds from existing memory and queue infrastructure through annotation, graph retrieval/adaptation, delegated execution, and backend adapters. Practical value comes from reusable procedures whose applicability and observed effects can be inspected. Scoped extensions concern library admission, uncertainty-driven observation, and multi-arm resource contracts. Desired findings are conditional: matched representation tests must establish structural value, held-out compositions must establish adaptation value, delegation must maintain independent success at lower cost, and systems tests must separate semantic reuse from MCP effects. No empirical conclusion is asserted.
+
+Diagram/table packet: /home/zxc/文档/ChatGPT/RoboRAG/paper/figures-and-captions.pdf
+All extracted figure-review pages are under paper/review-inputs/figure-page-*.png.

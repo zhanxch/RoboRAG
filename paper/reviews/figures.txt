@@ -1,0 +1,60 @@
+INDEPENDENT FIGURE/TABLE REVIEW
+Reviewer scope: standalone comprehension from each graphic/table and its own caption only.
+Severity scale: HIGH = materially misleading or uninterpretable; MEDIUM = substantive ambiguity that prevents assessing a stated comparison; NONE = no substantive change requested.
+
+INPUTS ACTUALLY READ
+- Visually inspected all seven rendered pages, using view_image:
+  /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/figure-page-1.png
+  /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/figure-page-2.png
+  /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/figure-page-3.png
+  /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/figure-page-4.png
+  /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/figure-page-5.png
+  /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/figure-page-6.png
+  /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/figure-page-7.png
+- Each page contains the corresponding figure or table and its caption; these were the only substantive inputs read.
+- Did not read manuscript prose, paper/sections, main TeX, the editorial contract, research/writing notes, the logic packet, or any other reviewer report. Did not read the HTML/PDF packet or separate caption text files, since the rendered captions were legible.
+- No figure, caption, table, or manuscript file was edited.
+
+OVERALL ASSESSMENT
+The four figures are independently understandable at the inspected rendering size. Node labels, arrowheads, and captions are legible. The figures distinguish proposed method, illustrative graph records, and planned validation from completed implementation or measured results. No high-severity issue was found. Required clarifications concern Table2's actual controlled contrasts and Table3's definition of fixed context. Table1 is adequate as a design-level claim-to-test map.
+
+Fig1 — Severity: NONE. No substantive change requested.
+The two stages separate bank construction from an unseen task. The bank, intended plan P, and observed execution X have distinguishable roles, and the caption defines their relationship. The arrows consistently convey bank-to-retrieval, plan-to-execution, execution evidence, status feedback, and planner revision. The dashed curation path is explicitly outside held-out evaluation, which prevents interpreting it as test-time contamination or a proven online-learning mechanism. The method-only status is explicit. The caption supplies enough meaning for otherwise compact labels such as supervisor and local executor.
+
+Fig2 — Severity: NONE. No substantive change requested.
+The figure explicitly identifies boxes as phase instances, with distinct IDs, intervals in seconds, and observed outcomes. Solid temporal arrows, a dashed recovery edge, and a dotted dependency edge are distinguished in the caption; their directions agree with the narrated failed grasp, reobservation, successful second attempt, and placement. The example record separates intended effect from observed outcome and includes source and evidence identifiers. The readiness box explains branch selection versus conjunctive prerequisites and the treatment of unknown conditions. OR alternatives need not be expanded in this observed-path example because the caption explains that the displayed graph is a recorded sequence. The invented times/evidence IDs are explicitly illustrative.
+
+Fig3 — Severity: NONE. No substantive change requested.
+Both source subgraphs and the unseen target composition are identified, their inputs visibly converge on alignment/editing/validation, and the resulting plan has an understandable order and holding guard. Recovery arrows return from reobservation to a grasp attempt. The caption and the recovery box make clear that the loop denotes an approved plan branch and that a subsequent execution attempt receives a distinct ID; it does not overwrite the failed observation. The caption explicitly disclaims implementation or task-solving evidence. Failures outside the selected grasp example are outside this schematic's stated scope and need not be added for standalone comprehension.
+
+Fig4 — Severity: NONE. No substantive change requested.
+Modes A, B, and C identify native signatures, a shared contract through direct calls, and the same contract/adapter through MCP. The fixed factors, within-backend comparisons, and different interpretations of B versus A and C versus B are explicit. The caption makes the backend names planned targets, states that each backend is evaluated separately, and prevents equating a shared interface with identical physical capabilities. This is a proposed comparison schematic rather than a results plot, so measured units or numerical deltas are not needed here.
+
+Table1 — Severity: NONE. No substantive change requested at this summary level.
+The caption identifies proposed contributions and evaluation commitments. Each row links a contribution to an intervention/readout and possible contrary evidence. Independent assessment of task success is stated. Read alongside its own caption, the table functions as a claim-to-test map, not as an executable experimental protocol or numeric results table; operational thresholds and complete metric definitions can live in the eventual protocol. It does not imply empirical support merely by listing the tests.
+
+Table2 — Severity: MEDIUM. Two substantive clarifications requested.
+
+T2.1 — The memory/representation row does not specify which controlled comparisons are actually intended.
+Evidence visible in the table: the variants include "Sequential interaction evidence with a sequence plan," "graph plan without retrieval," and "instruction-only, state-only, and full graph retrieval." The interpretation says to separate historical evidence access, plan structure, and query information, while the caption says individual comparisons vary only the listed mechanism. However, the variants do not say whether instruction-only/state-only refer to retrieval queries, retrieved content, or planner observations, nor do they identify the matched contrast for each factor. In particular, sequence evidence with a sequence plan versus a graph plan without retrieval would change both evidence access and plan structure if compared directly.
+Why it matters: a standalone reader cannot determine which contrast would support an effect of graph representation rather than access to history or query information. The general promise of matched source corpus does not establish matched evidence supplied to the planner.
+Concrete fix: split this row into explicit pairwise contrasts, or add compact factor columns for history access, plan representation, and retrieval-query information. Define instruction-only and state-only locally. For a representation-only contrast, state that both conditions receive the same node evidence and predicates/relations (with their encoding varied); for a retrieval-access contrast, hold plan representation fixed. Do not imply that every pair in the current list is controlled.
+
+T2.2 — The first two adaptation variants are not distinguishable under the stated common control.
+Evidence visible in the table: variants are "Role rebinding only" and "rebinding plus current-scene parameters," but the interpretation states that every executable variant grounds current geometry and checks capabilities.
+Why it matters: current-scene parameter grounding sounds like the same operation required of both variants. Without a division of responsibility, the reader cannot identify the treatment added by the second condition or know whether the first condition is an invalid transfer baseline.
+Concrete fix: name the parameters that vary and the grounding that is common to every condition. For example, if correct, specify that the local executor supplies identical mandatory live-pose/feasibility grounding in all conditions, while the second condition additionally adapts named planner-level parameters such as approach choice, clearance, or grasp strategy. Use the actual intended variables, not these examples unless accurate. If no additional parameter intervention exists, merge the two variants. Preserve the useful prohibition on replaying incompatible absolute trajectories.
+
+Other Table2 rows: relations/feedback distinguish information removal from lossless text encoding; the hierarchy controls identify shared controllers, plans, branches, and escalation budgets; the prior-work-inspired status is appropriately qualified. No additional mandatory issue found. Bracketed references need not supply operational definitions for the stated mechanism-level summary.
+
+Table3 — Severity: MEDIUM. Clarify the historical comparison condition.
+
+T3.1 — "Fixed context" has no standalone operational definition.
+Evidence visible in the table/caption: dual-memory retrieval selects up to eight training and four current-episode chunks, while fixed context is only named. The same corpus, controller source, harness, and model are listed, but the fixed condition's actual content, selection rule, and size/budget are not specified.
+Why it matters: the two conditions are the principal independent variable of this measured pilot. The reader cannot tell whether the fixed context contains training examples, current-episode history, both, or neither, or whether changing context quantity accompanies changing selection. This limits interpretation even though the table correctly makes no general graph-method claim.
+Concrete fix: add one concise definition of the fixed condition's content and how it was chosen, and state whether prompt/context budgets were matched. If they were not matched, state that explicitly as a descriptive pilot limitation. Include the fixed chunk/token count if available; do not invent it. If the historical configuration cannot be recovered, say so and narrow the comparison to the recorded conditions.
+
+Otherwise Table3 is clear: each row is one rollout; the two layouts give two paired comparisons; progress is explicitly a native score out of 100, completion is a separate native flag, steps are executed simulator actions, and calls are completed model requests. Development versus validation status is stated. The opposite directions of the action/call differences are acknowledged. No success-rate denominator, uncertainty interval, or significance claim is being implied by this four-row descriptive table, so adding such statistics is not requested.
+
+AUTHOR RESPONSE / ADJUDICATION
+These findings concern only what the isolated pages communicate. An explanation elsewhere in the manuscript cannot resolve the standalone ambiguity unless the essential definition is also added to the corresponding table or caption. Authors may rebut an identified ambiguity by pointing to wording already present on the inspected page; the lead editor should adjudicate. This reviewer did not inspect any possible implementation evidence.

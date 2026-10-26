@@ -1,0 +1,19 @@
+Owner: formulation agent.
+
+Section includes its own section heading and labels sec:formulation, eq:readiness, eq:objective. It uses only ordinary LaTeX and amsmath.
+
+Integration decisions:
+1. Shared graph notation G=(V,E,A), where A is the attribute map; P_t and X_t use the same schema but different evidential roles. Method I should expand fields without redefining node ontology.
+2. Readiness separates AND for mandatory prerequisite predicates from OR for alternative incoming activation edges. Precedence orders activated phases only and does not activate an unselected branch. Branch-specific requirements belong in guards; do not require both success and recovery branch nodes at a merge.
+3. Recovery links carry activation guards and count alongside conditional transitions for activation. If Method I instead represents recovery as an annotation on a transition, retain equivalent semantics throughout and update this paragraph.
+4. Completion predicates require available evidence; unknown observations cannot satisfy guards. The completion condition in each phase may be stricter than a tool's successful-return receipt.
+5. B^(k) is the versioned historical graph bank. Retrieval can address complete graphs and subgraphs. X_t remains outside the frozen bank in the main held-out evaluation; accumulation requires its own chronological protocol.
+6. A plan may contain bounded retry templates, whereas actual attempts always receive fresh event IDs. Only realized temporal edges are necessarily forward in time; the whole plan graph need not be a DAG.
+7. The objective is a design target, not an implemented optimizer or empirical result. C is a vector of measured costs with configured budgets, not a claimed calibrated utility function.
+8. No external factual claims or references are needed for this formal definition.
+
+Open interface detail for root/method writer: specify whether episode completion can be verified entirely from deployment observations on each backend. Benchmark-provided oracle success can be reported separately, but must not silently serve as the deployed supervisor's completion signal.
+
+Review policy: reviewers may request changes; semantic alterations must preserve shared schema and decision rules. Authors can rebut before root adjudication.
+
+Author revision response (receipt/effect distinction): Accepted. Changed the transition source requirement from an ambiguous terminal outcome to terminal execution status. A terminal receipt may activate an observation phase while the intended effect remains unknown; later manipulation still requires verified prerequisites. This avoids deadlock when verification itself is a graph phase. Added an explicit evaluator-only oracle rule, resolving the open interface concern above. The deployed verifier uses available evidence; benchmark oracle labels cannot feed control predicates. Net prose addition is approximately 34 words, within the requested 60-word limit. Notation remains G=(V,E,A).

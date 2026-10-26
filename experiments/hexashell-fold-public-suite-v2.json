@@ -1,0 +1,79 @@
+{
+  "schema": "roborag.hexashell-public-suite.v2",
+  "created_at": "2026-10-23T15:56:39.774073+00:00",
+  "task": "fold_clothes",
+  "seed": 0,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "xhigh",
+  "native_persistent_codex": true,
+  "parallel": 2,
+  "public_scope": {
+    "development": {
+      "standard": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "random": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "new_layouts": {
+      "standard": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "random": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    }
+  },
+  "trials_per_case": 1,
+  "frozen_hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8",
+  "scoring": "Original native RoboDojo checker, success and progress, no model-text scoring",
+  "cost_accounting": {
+    "model": "Native CLI reported cumulative turn usage, including cached input. Unknown on missing terminal reports.",
+    "local": "Per-run wait/getrusage plus 5-second GPU board power/memory/utilization and process RSS sampling.",
+    "billing": "Existing login: actual per-experiment money charge unavailable; do not equate API token prices to subscription billing.",
+    "orchestrator": "Goal meter recorded separately; no assumption that summing it with actor usage equals a provider invoice."
+  },
+  "limitations": [
+    "Author official 50 episodes use an unpublished hidden seed; public suite is a separate published comparison.",
+    "Executor reconstructed from public contract.",
+    "Private container, exact CLI version and model snapshot unavailable."
+  ],
+  "checkpoint_policy": "One episode per case, no optimizer, no outcome-dependent retries or prompt/tool changes. Full corrected 20-case protocol frozen before launch.",
+  "primary_batch": "runs/hexashell-public-calibrated-v2-20261023",
+  "cases_file": "experiments/hexashell-public-v2-cases.json",
+  "planned_episodes": 20,
+  "calibration_correction": {
+    "problem": "SDK get_intrinsics_matrix uses head vertical USD aperture not used by square-pixel RTX projection.",
+    "old_head_fy": 336.4643249511719,
+    "rendered_head_fy": 288.1325378417969,
+    "evidence": "runs/hexashell-camera-calibration-20261023-r4/calibration.json",
+    "evidence_sha256": "343bce44b88f5c8cf7c92847ac9319d3f065c0cb18f6a9656ab359f71340403e",
+    "old_mean_projection_error_pixels": 8.976610084040274,
+    "corrected_mean_projection_error_pixels": 0.7080733053846165,
+    "policy_used_in_validation": false,
+    "benchmark_truth_exposed_to_policy": false
+  },
+  "superseded_pre_calibration_batches": [
+    "runs/hexashell-public-standard-v1-20261023",
+    "runs/hexashell-public-remaining-v1-20261023"
+  ],
+  "superseded_completed_episodes": 9,
+  "superseded_policy": "Preserve all raw evidence, scores and costs, including the successful case. Do not pool with corrected primary evaluation."
+}

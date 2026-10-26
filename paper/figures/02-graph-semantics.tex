@@ -1,0 +1,24 @@
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[x=1pt,y=1pt,>=stealth]
+\path[use as bounding box] (0,0) rectangle (1000,420);
+\node[draw=black!65,fill=black!3,line width=1.3pt,minimum width=165pt,minimum height=80pt,text width=153pt,inner sep=4pt,align=center,font=\sffamily\fontsize{14}{18}\selectfont] (g1) at (102.5,290.0) {v1: grasp attempt\\[0, 2] s\\outcome: failed};
+\node[draw=black!65,fill=black!3,line width=1.3pt,minimum width=165pt,minimum height=80pt,text width=153pt,inner sep=4pt,align=center,font=\sffamily\fontsize{14}{18}\selectfont] (observe) at (322.5,290.0) {v2: reobserve\\[2, 3] s\\new object pose};
+\node[draw=black!65,fill=blue!7,line width=1.3pt,minimum width=165pt,minimum height=80pt,text width=153pt,inner sep=4pt,align=center,font=\sffamily\fontsize{14}{18}\selectfont] (g2) at (542.5,290.0) {v3: grasp attempt\\[3, 5] s\\holding verified};
+\node[draw=black!65,fill=black!3,line width=1.3pt,minimum width=205pt,minimum height=80pt,text width=193pt,inner sep=4pt,align=center,font=\sffamily\fontsize{14}{18}\selectfont] (place) at (862.5,290.0) {v4: place\\[5, 7] s\\placement verified};
+\node[draw=black!65,fill=black!3,line width=1.3pt,minimum width=600pt,minimum height=155pt,text width=588pt,inner sep=4pt,align=center,font=\sffamily\fontsize{15}{18}\selectfont] (record) at (320.0,92.5) {Example record for v1\\role: grasp(item)     binding: item = cup\_7\\precondition: reachable(item)\\intended effect: holding(item)\\observed outcome: failed; evidence = frames\_18\_21\\source: TRAIN episode\_12; interval = [0, 2] s};
+\node[draw=black!65,fill=black!3,line width=1.3pt,minimum width=285pt,minimum height=155pt,text width=273pt,inner sep=4pt,align=center,font=\sffamily\fontsize{15}{18}\selectfont] (guard) at (822.5,92.5) {Ready to start a phase?\\An eligible branch is selected (OR)\\AND every prerequisite is true\\AND resources are available\\Unknown condition: observe first\\Requested effect is not completion};
+\draw[->,line width=1.7pt] (185,290) -- (240,290);
+\draw[->,line width=1.7pt] (405,290) -- (460,290);
+\draw[->,line width=1.7pt] (625,290) -- (760,290);
+\node[fill=white,inner sep=2pt,font=\sffamily\fontsize{12}{14}\selectfont] at (665,309) {temporal};
+\draw[->,line width=1.7pt,dashed] (103,330) -- (103,375) -- (322,375) -- (322,330);
+\node[fill=white,inner sep=2pt,font=\sffamily\fontsize{12}{14}\selectfont] at (280,393) {recovery: failure to reobservation};
+\draw[->,line width=1.7pt,dotted] (543,250) -- (543,215) -- (862,215) -- (862,250);
+\node[fill=white,inner sep=2pt,font=\sffamily\fontsize{12}{14}\selectfont] at (701,203) {dependency: holding(item) = true};
+\node[anchor=base west,font=\sffamily\fontsize{14}{18}\selectfont] at (20,408) {ILLUSTRATIVE OBSERVED GRAPH: FOUR DISTINCT PHASE INSTANCES};
+\end{tikzpicture}}
+\caption{An interaction graph records phase instances and the evidence connecting them. In this illustrative recorded episode, a grasp attempt fails; reobservation and a second attempt precede placement. Each box is a phase instance, not an object. Solid arrows show the observed temporal order. The dashed recovery link connects the failed attempt to reobservation; the second grasp uses the newly grounded target. The dotted dependency states that placement requires verified holding evidence from the second grasp. Alternative success and failure guards are transition choices (OR), whereas prerequisites must all hold (AND). The node record separates the requested effect from its observed outcome. A plan may contain bounded retry logic; recorded attempts have distinct IDs and times. Times and evidence IDs in this example illustrate the schema and are not measured experimental data.}
+\label{fig:semantics}
+\end{figure*}

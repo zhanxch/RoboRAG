@@ -1,0 +1,26 @@
+METHOD II AUTHOR RESPONSE — 2026-10-23
+
+Language item 7 — ACCEPT.
+Changed the heading to "An initial plan under the shared schema" and the fallback procedure to "planning under the same schema." Removed "schema-grounded" from the chapter summary. Scene/geometry grounding retains its precise physical meaning.
+
+Language item 8 — ACCEPT.
+Split the five-edit semicolon list into short sentences. Replaced "reobservation-and-retry branch" with a branch that observes the scene again and retries the grasp. Preserved source provenance and explicit retry limits.
+
+Global repetition: edge semantics — ACCEPT WITH OPERATIONAL RULES RETAINED.
+Replaced the repeated AND/OR derivation with a reference to the formulation's readiness semantics. Kept the validator's actual checks: reachable prerequisite producers, branch exclusivity/priority, executable ordering, unknown-condition dispatch blocking, and finite retries. These define behavior rather than repeat the conceptual taxonomy.
+
+Global repetition: bank lifecycle — ACCEPT.
+Reduced the memory paragraph to current-X context updates and references to the construction update mechanism and experimental protocols. Removed the repeated frozen-bank/accumulation explanation.
+
+Global repetition: evidence status — PARTIAL ACCEPTANCE.
+Removed a repeated statement that historical success cannot establish current conditions and shortened the motivating prose. Retained receipt resolution, effect verification, and the exception allowing receipt-guarded observation before effect verification. Removing these rules would leave the action-to-verification transition underspecified. Retained authority boundaries, failure preservation, and outstanding-action resolution because they govern plan following.
+
+Figure review T2.2 — ACCEPT; COORDINATED WITH EXPERIMENT AUTHOR.
+The original edit list combined mandatory grounding with parameter adaptation. Method II now separates them:
+1. Every executable variant transforms approved parameters through live object poses and passes the same feasibility checks.
+2. Where exposed by the skill, optional planner edits change approach direction in the object's reference frame and precontact clearance distance within declared admissible bounds, preserving phase roles and topology.
+3. Structural adaptation can alter prerequisites, supported phase sequences, or recovery branches.
+The supervisor may refresh geometry but preserves approved direction/clearance choices. Changing those choices requires a versioned planner edit. Infeasible retained source parameters are rejected before dispatch. The experiment author confirmed the corresponding three-level comparison: grounded reuse, parameter adaptation, full structural adaptation.
+
+Technical integration.
+Preserved root's added closing equation environment. Changes are limited to 04b-use.tex, its integration notes, and this response. No experiments or implementation changes were made. No unresolved reviewer objection remains for this subsection.

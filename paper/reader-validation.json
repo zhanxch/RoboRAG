@@ -1,0 +1,41 @@
+{
+  "math_fragments": 72,
+  "math_errors": [],
+  "references": 15,
+  "figures": 4,
+  "tables": 3,
+  "figure_assets": [
+    {
+      "label": "fig:overview",
+      "kind": "generated_png",
+      "path": "figures/nature/01-overview-nature.png",
+      "sha256": "9bdc553dffbbd5721108984cbf752a5c5dee97a5737bd84cf191d2fc78b2f7f6",
+      "width": 1860,
+      "height": 845
+    },
+    {
+      "label": "fig:semantics",
+      "kind": "generated_png",
+      "path": "figures/nature/02-graph-semantics-nature.png",
+      "sha256": "6d46aeb14eb21fa7c7ee541c88673b032839f6584bfcbb2b1346e2bf1d393c70",
+      "width": 1862,
+      "height": 845
+    },
+    {
+      "label": "fig:adaptation",
+      "kind": "generated_png",
+      "path": "figures/nature/03-plan-adaptation-nature.png",
+      "sha256": "91582e76bff9964c8eb8f7a502e5a2760537ff99423f9f03da413ed59e744ec1",
+      "width": 1859,
+      "height": 846
+    },
+    {
+      "label": "fig:platform",
+      "kind": "generated_png",
+      "path": "figures/nature/04-platform-comparison-nature.png",
+      "sha256": "6fe7178d7111ad4f5a0508f3ce88efce9946ae9d7092bdb964d61df38993e544",
+      "width": 1860,
+      "height": 846
+    }
+  ]
+}

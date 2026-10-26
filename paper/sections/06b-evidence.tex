@@ -1,0 +1,40 @@
+\subsection{Existing Evidence and Planned Analysis}
+\label{sec:evidence-analysis}
+
+\paragraph{Completed foundations.}
+The available robot-task results concern a predecessor of the proposed method: chunk-based retrieval from a frozen demonstration bank and the current episode history. This dual-memory controller has been evaluated on RoboDojo. An execution queue now also records request identities, expands actions, and checks execution receipts; deterministic tests and mock-model integration cover its bookkeeping. Graph construction, graph retrieval and adaptation, hierarchical graph following, and the proposed three-platform MCP comparison remain to be implemented and evaluated. The queued configuration has no completed native task result. We summarize the relevant historical evidence below to establish the starting point for the proposed experiments.
+
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lllrcrr}
+\toprule
+Layout & Evaluation role & Historical condition & Progress & Task success & Steps & Model calls \\
+\midrule
+0 & Development & Fixed context & 100 & Yes & 240 & 24 \\
+0 & Development & Dual-memory retrieval & 100 & Yes & 195 & 20 \\
+1 & Validation & Fixed context & 100 & Yes & 237 & 24 \\
+1 & Validation & Dual-memory retrieval & 100 & Yes & 302 & 31 \\
+\bottomrule
+\end{tabular}
+\caption{Historical \texttt{stack\_blocks} pilot on RoboDojo, before the proposed graph method. Each row is one rollout on the indicated standard layout, giving two paired comparisons. Progress is the native score out of 100; task success is the separate native completion flag. Steps count executed simulator actions, and calls count completed model requests. Both conditions used GPT-6-Astra with medium reasoning and the same frozen corpus, controller source, and harness. Fixed context used eight training chunks sampled uniformly by index from one demonstration selected by initial-scene similarity, plus the latest four completed live chunks when available. Dual-memory retrieval selected chunks adaptively from the same demonstration and live history, always retaining the latest completed live chunk. Both conditions retained current observations and compressed summaries of omitted live intervals. Chunk quotas were matched at eight training and four live chunks; token consumption was not matched. Layout 0 was used for development; layout 1 was declared for validation before execution. Both conditions succeeded on both layouts, with opposite directions of the step and call differences across layouts.}
+\label{tab:historical-pilot}
+\end{table*}
+
+\paragraph{Historical task outcomes.}
+Table~\ref{tab:historical-pilot} contains four completed rollouts. Retrieval used fewer steps and model calls on the development layout and more on the validation layout. Thus, these two pairs show neither a success-rate gain nor a consistent efficiency advantage. In the validation retrieval rollout, the controller recovered from an unstable placement and retrieved an earlier placement interval outside a latest-four-chunk window. The trace establishes access to older experience; its contribution to recovery requires a controlled intervention.
+
+An earlier \texttt{deposit\_coin} development pair scored 20 for fixed context and 0 for the initial dual-memory selector, with neither rollout succeeding. Each reached the native 300-step limit. The source scene placed the coin and bank differently from the live scene, and the selector repeatedly retrieved insertion examples during grasp attempts. This observation motivates testing phase and role alignment separately. A revised deposit attempt was interrupted by the experimenter after 110 observed steps and has no final native score.
+
+A subsequent comparison used public RoboICL results for matched task layouts. Five of nine planned rollouts completed: \texttt{cover\_blocks} layouts 2 and 3 scored 100, \texttt{deposit\_coin} layouts 2 and 3 scored 100, and \texttt{put\_bottles\_into\_dustbin} layout 2 scored 40. Four completed tasks succeeded, and all five progress scores tied their public counterparts. One rollout was interrupted and three were unstarted. The completed subset therefore has no advantage over the matched public scores. Its different model transport and incomplete coverage also prevent a controlled attribution to retrieval or an aggregate claim for the nine-rollout plan.
+
+\paragraph{Tracing the proposed mechanism.}
+The graph evaluation will retain the input observations, source episode identifiers, bank version, retrieved candidates, role alignments, plan edits, supervisor decisions, and execution receipts at each phase. Independent reference annotations will mark phase boundaries, object roles, transition conditions, and observed outcomes. These annotations will be produced without access to the tested model's explanations. Ambiguous visual events will retain an uncertain label rather than receiving a completion label from the plan itself.
+
+Analysis will follow the path from evidence to action. Construction errors include missed boundaries or unsupported transitions. Retrieval errors include missing compatible experience among the returned candidates. Alignment errors bind a valid source role to the wrong current object or condition. Adaptation errors retain an invalid dependency or omit a required phase. Supervision errors advance a plan without sufficient evidence or fail to request repair after a violated condition. Multiple errors can coexist; traces will record both their first occurrence and their downstream effects, avoiding a forced single-cause label.
+
+To test one causal explanation, we will replay predefined simulator states with the same bank and retrieved graph, replacing only the proposed role alignment with an independently annotated alignment. Paired continuations will share the controller, model settings, and action budget. This intervention measures the effect of correcting alignment at those states; it does not estimate the performance of an annotation-assisted deployment system.
+
+The planned result displays will connect construction quality, retrieval relevance, valid plan edits, and recovery outcomes to task performance and cost. A phase trace will show the retrieved source, edited plan, observed feedback, and resulting transition on a common timeline. Completion accepted by the observation-based verifier will be audited against independent event annotations. Native benchmark success will be reported separately, including disagreements with the verifier. These measures distinguish task completion, false completion judgments, and the cost of plan correction.
+
+% CHAPTER_SUMMARY: Existing RoboDojo evidence is limited to a historical chunk-retrieval controller: two stack pairs have equal success and inconsistent cost differences; the incomplete external comparison ties all five completed public scores. Proposed graph mechanisms require new evaluation. Independent event annotations, complete phase traces, and a controlled alignment intervention will connect graph quality to observed task outcomes while separating verifier completion from native success.

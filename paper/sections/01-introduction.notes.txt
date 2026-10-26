@@ -1,0 +1,15 @@
+Introduction integration notes — 2026-10-23
+
+Read project memory, editorial contract, and the existing Related Work, Problem Formulation, both Method parts, and System Framework. The introduction owns only 01-introduction.tex and this notes file.
+
+The chapter uses the canonical title and the recurrent cup-into-closed-drawer composition. The single-gripper ordering is explicit: open drawer, release handle, then grasp cup. Source object-transfer and drawer-opening procedures supply reusable phase patterns; source absolute geometry is not reused.
+
+The central claim is a research hypothesis about preserving phase conditions, feedback, and recovery relations across selection, adaptation, and plan following. The introduction does not claim that a shared schema, graph retrieval, a model hierarchy, or MCP is independently novel. Its three contributions describe method and evaluation design without fabricated performance gains.
+
+Existing verified citation keys used: mtp2025, hpkg2025, ntg2019, gavel2026. Primary-source details were read in 02-related.notes.txt; the descriptions here stay within those verified claims. Figure reference: fig:overview. No new bibliography entries or macros are required.
+
+Root integration: put the clear draft-status sentence in the abstract or the consolidated evidence section as planned. The introduction describes an introduced framework and evaluation design without repeatedly stating that implementation/results are pending. Preserve the proposed status of all three platform targets in System/Evidence. The term 'native controllers' denotes local execution responsibility, not a claim that every target adapter already exists.
+
+Contribution 3 intentionally combines evaluation and portability support rather than claiming a third algorithmic innovation. If experimental protocol evolves, revise its final paragraph to keep the intro's tests aligned. The largest explanatory allocation remains the two method parts, followed by experiment logic.
+
+Review readiness: wording reviewer can assess this full chapter; figures-only reviewer receives only actual figure/caption assets; logic reviewer can receive the chapter heading and CHAPTER_SUMMARY, without full prose. Author will examine severe reviewer concerns and may rebut unsupported changes.

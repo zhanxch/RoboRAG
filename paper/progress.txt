@@ -1,0 +1,4 @@
+Completed: English manuscript, author responses, independent reviews, root adjudication, and four Nature-style imagegen figures with targeted corrections and independent recheck.
+Readable PDF: 15 pages; 4 figures; 3 tables; 15 references. Native LaTeX compilation remains unverified due to app runtime startup failure; PDF rendered through offline HTML from the same content.
+Exact image model unverified: built-in image_gen returns no model identifier.
+No graph-method experiments were run.

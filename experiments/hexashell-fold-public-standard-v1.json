@@ -1,0 +1,46 @@
+{
+  "schema": "roborag.hexashell-public-standard.v1",
+  "created_at_utc": "2026-10-23",
+  "purpose": "Frozen-tool native persistent Codex reproduction on all five public standard development layouts; independent episodes run with concurrency two.",
+  "task": "fold_clothes",
+  "variant": "standard",
+  "seed": 0,
+  "layouts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "trials_per_layout": 1,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "xhigh",
+  "cli_version": "codex-cli 0.155.0-alpha.16.3",
+  "hexashell_commit": "d1a2a24dc4c528a652b359fd689398530ef941d8",
+  "parallel": 2,
+  "step_limit": 500,
+  "command_limit": 60,
+  "actor_python_requirements": "experiments/hexashell-agent-requirements.txt",
+  "rag_enabled": false,
+  "checkpoint_policy": "No retries, tool edits, or prompt changes after batch start. Retain infrastructure-incomplete episodes separately.",
+  "pilot": {
+    "directory": "runs/hexashell-native-batch-20261023",
+    "layouts": [
+      0,
+      1
+    ],
+    "scores": [
+      20,
+      100
+    ],
+    "excluded_from_primary": true,
+    "reason": "Pilot actor shell lacked Python numerical packages; kept separately, not pooled with the fixed environment."
+  },
+  "limitations": [
+    "Public development layouts, not the official hidden seed.",
+    "Unpublished server and executor reconstructed.",
+    "CLI version and service snapshot cannot be matched to author.",
+    "No serial control; concurrent throughput cannot establish a causal speedup factor."
+  ],
+  "command": "python scripts/run_hexashell_batch.py --layouts 0,1,2,3,4 --parallel 2 --output runs/hexashell-public-standard-v1-20261023"
+}

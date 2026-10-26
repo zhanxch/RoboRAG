@@ -1,0 +1,59 @@
+{
+  "note": "Website trace decisionCount is not guaranteed to include API retries; not equivalent to billable API calls. No token or wall-time comparison inferred.",
+  "rows": [
+    {
+      "task": "cover_blocks",
+      "layout": 2,
+      "recorded_decisions": 26,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/cover_blocks/layout-02.json"
+    },
+    {
+      "task": "cover_blocks",
+      "layout": 3,
+      "recorded_decisions": 21,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/cover_blocks/layout-03.json"
+    },
+    {
+      "task": "cover_blocks",
+      "layout": 4,
+      "recorded_decisions": 25,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/cover_blocks/layout-04.json"
+    },
+    {
+      "task": "deposit_coin",
+      "layout": 2,
+      "recorded_decisions": 39,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/deposit_coin/layout-02.json"
+    },
+    {
+      "task": "deposit_coin",
+      "layout": 3,
+      "recorded_decisions": 37,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/deposit_coin/layout-03.json"
+    },
+    {
+      "task": "deposit_coin",
+      "layout": 4,
+      "recorded_decisions": 44,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/deposit_coin/layout-04.json"
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "layout": 2,
+      "recorded_decisions": 73,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/put_bottles_into_dustbin/layout-02.json"
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "layout": 3,
+      "recorded_decisions": 61,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/put_bottles_into_dustbin/layout-03.json"
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "layout": 4,
+      "recorded_decisions": 73,
+      "source": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/put_bottles_into_dustbin/layout-04.json"
+    }
+  ]
+}

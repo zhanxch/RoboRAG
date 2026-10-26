@@ -1,0 +1,26 @@
+{
+  "roborag-draft.tex": {
+    "bytes": 98805,
+    "sha256": "df9f873748f62a6c01885be5306bdda5c00fb2887ab058d34ab4898e61c85a21"
+  },
+  "roborag-draft.html": {
+    "bytes": 7919528,
+    "sha256": "627400d3553f4bb8e2cc0ba68a7d97752db88230a95d336337f48ffc6e8f2871"
+  },
+  "roborag-draft.pdf": {
+    "bytes": 5481988,
+    "sha256": "01eb46b3050c555b5f58f9450426729aad5a1f0e61cdfffa0c0355e769abed7a"
+  },
+  "review-summary.txt": {
+    "bytes": 4478,
+    "sha256": "90014dd47eada498b68b3aa81da3dde955e0eb7d8761a67882e3acd9eef73697"
+  },
+  "roborag-nature-figures.zip": {
+    "bytes": 5010874,
+    "sha256": "faf516ced2ae8128152248da7bff41f32c5bb539665669fb69c524758b0de63e"
+  },
+  "figures/nature/provenance.json": {
+    "bytes": 2674,
+    "sha256": "bb004d6e7cc07b0a0f95613b2d1a0092d0073aaf3de27d19c14b47306cc05a7c"
+  }
+}

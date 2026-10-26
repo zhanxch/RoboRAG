@@ -1,0 +1,15 @@
+CONSTRUCTION AUTHOR RESPONSE
+
+Language item 5 — Accepted.
+Replaced the nominal-boundary sentence with the proposed direct explanation: the nominal boundary supports indexing, while its bracket preserves timing uncertainty.
+
+Language item 6 — Accepted.
+Removed the closing hidden-semantics comparison. The paragraph ends with the concrete rule that the structured record and compact rendering use the same fields and free-text summaries cannot change guards.
+
+Global edge-semantics repetition — Accepted.
+Replaced two paragraphs rederiving precedence, dependencies, branching, and unknown-guard behavior with a reference to Eq. (readiness) and the annotation fields needed to encode that rule. Retained the branch identifier field and the complete bottle example, including failed grasp, re-observation, regrasp, retention checking, placement, and finite retry unrolling.
+
+Receipt/effect consistency — Checked, no additional rule added.
+The schema distinguishes controller receipts from intended-effect evidence. Its concrete grasp example first establishes a false held predicate through visual evidence. Its occluded-retention case uses inspection. Neither requires every intended effect to be known before an observation phase can be activated. The formulation remains authoritative for terminal-receipt activation.
+
+Files revised: paper/sections/04a-construction.tex only, plus this response record. Evidence fields, provenance, uncertainty handling, graph indices, and update mechanisms are unchanged. No rebuttal or unresolved issue.

@@ -1,0 +1,10 @@
+00-abstract.tex: 180 lexical tokens (includes LaTeX commands).
+01-introduction.tex: 738 lexical tokens (includes LaTeX commands).
+02-related.tex: 695 lexical tokens (includes LaTeX commands).
+03-formulation.tex: 742 lexical tokens (includes LaTeX commands).
+04a-construction.tex: 1169 lexical tokens (includes LaTeX commands).
+04b-use.tex: 1631 lexical tokens (includes LaTeX commands).
+05-system.tex: 696 lexical tokens (includes LaTeX commands).
+06a-experiments.tex: 1852 lexical tokens (includes LaTeX commands).
+06b-evidence.tex: 876 lexical tokens (includes LaTeX commands).
+07-discussion.tex: 698 lexical tokens (includes LaTeX commands).

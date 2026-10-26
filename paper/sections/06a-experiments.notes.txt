@@ -1,0 +1,25 @@
+Experimental design integration notes — 2026-10-23
+
+Owned deliverables: 06a-experiments.tex and this note. Read project memory, editorial contract, Related Work, Formulation, both Method subsections, and System Framework. No experiments were run and no new result is implied.
+
+The section creates the main Experimental Design and Existing Evidence heading and sec:experiments label. The separate evidence author's subsection should follow it without another section heading.
+
+Tables are experimental commitments rather than empty result placeholders. tab:claim-tests maps proposed contributions to tests and contrary evidence. tab:comparison-design defines interventions and shared conditions. Both captions can stand alone. Main factorial and its matching qualification are in prose because a bare four-cell success table would imply unavailable results.
+
+References use already-verified keys hpkg2025, mtp2025, gavel2026 from Related Work. These are explicitly labeled matched adaptations, not claimed reproductions. LIBERO citation already appears in System/Related Work and need not be repeated here.
+
+Important design choices:
+1. No-retrieval cannot receive the same retrieved examples as retrieval. Shared source corpus means equal experimental data access; exact matched payloads are reserved for encoding/execution comparisons.
+2. In the 2x2, retrieval changes selected evidence by definition. Candidate universe, available node information, payload schema, and packing ceilings are fixed; execution pairs share exact retrieved payloads within each retrieval condition. A fixed-candidate replay isolates execution. Do not simplify this to 'all four cells use identical evidence.'
+3. A lossless text rendering retains graph information. It compares encoding or use, whereas removal of dependency/recovery/outcome records tests information. Do not describe linearization as deleting graph structure.
+4. A smaller supervisor versus high-level-only is confounded by model capacity. The same-model constrained-supervisor condition is essential; control is kept identical. Realized later plans may diverge through observed outcomes even with identical initial plans and escalation policies.
+5. Main success is judged externally. Method uses an observable verifier for control; native task oracle stays evaluator-only. Real-robot rubric, adjudication reliability, and whether reference evidence can resolve occluded outcomes need to be specified before data collection.
+6. Final success is an intention-to-evaluate measure over all assigned trials. The recovery-only experiment uses a common perturbed state, not each method's own failures.
+7. Numerical trial counts, minimum meaningful differences, simulator perturbation magnitudes, and effect tolerances must be fixed from development data before held-out runs. They are deliberately not invented in this design draft.
+8. Annotation reference construction includes independent raters, pre-adjudication agreement and cost. For outcome uncertainty, a reference may itself be unknown; report unresolvable reference cases rather than force truth labels.
+9. The sections assume supported skill libraries can be held fixed within a backend. They do not assume identical skill quality, physics, or outcomes across RoboDojo/LIBERO/real robot.
+10. Parent should prioritize the graph factorial, composition/adaptation, construction quality, and hierarchy audit when scheduling experiments. Chronological accumulation and the full three-backend study can follow the frozen-bank core, without claiming completed MCP portability.
+
+Potential reviewer discussion: A non-positive interaction does not prove the shared schema useless. The factorial's four cell effects and confidence intervals permit narrower conclusions (retrieval benefit or execution benefit independently). Wording keeps positive interaction as supporting evidence, not a necessary mathematical definition of novelty. A severe deficit in the lossless sequence comparison would undermine any claim that graph enforcement is helpful, even if the overall system beats no retrieval.
+
+Review revision: accepted T2.1/T2.2 and L10-L12. Memory access, plan following, and query features are separate controlled contrasts in the table, with lossless matched evidence stated locally. Following coordination with Method II, the parameter-only variant now changes skill-exposed approach direction and precontact clearance distance within declared bounds, while all variants share live-pose grounding and feasibility. Source-topology reuse and full structural editing remain distinct. A/B/C definitions stay in System; Experiments keeps controls/metrics with a cross-reference. Response is paper/reviews/response-experiments.txt.

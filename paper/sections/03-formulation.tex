@@ -1,0 +1,39 @@
+\section{Problem Formulation}
+\label{sec:formulation}
+
+We consider manipulation tasks specified by a goal $g$, an initial observation $o_0$, and a backend capability description $c$. The latter lists available observations, executable skills, argument types, and operating constraints. At decision step $t$, the system observes history $h_t=(o_0,a_0,f_0,\ldots,o_t)$, where $a_i$ is a skill request and $f_i$ its execution feedback. Observations and feedback may be incomplete. The task is to construct and follow a plan using this history and a bank of prior interaction graphs. Unseen tasks use supported skills in new task structures or object configurations. Section~\ref{sec:experiments} defines this novelty relative to the experimental bank and tuning data.
+
+\paragraph{A shared graph schema.}
+An interaction graph is $G=(V,E,A)$, with phase-instance nodes $V$, typed edges $E$, and an attribute map $A$. A phase is an interval of interaction organized around a local subgoal and a completion condition. Its node records the phase role, object-role bindings, an observed or symbolic interval, preconditions, intended effect, skill reference, feedback, and provenance. Object relations are predicates attached to nodes, rather than a second class of graph vertices. A node's intended effect is distinct from evidence that the effect occurred.
+
+We use this schema for three different records: a historical experience graph $G$, a prospective plan $P_t$, and the current execution graph $X_t$. Historical nodes summarize recorded attempts, including failures. Plan nodes specify intended attempts and their conditions. Execution nodes record attempts made in the current episode. Thus, generating a plan node never establishes its completion in $X_t$.
+
+\paragraph{Order, dependencies, and branches.}
+A precedence edge constrains the order of two activated phases. A dependency edge names a prerequisite predicate that its source phase produces or verifies and its target requires. Such a relation is an annotation or a planning requirement; temporal order alone does not establish causation. A conditional transition enables a successor when its source reaches a terminal execution status and its guard is verified. A terminal receipt can activate an observation phase while the intended effect remains unknown. Later manipulation still requires verified prerequisites. A recovery link associates a failed attempt with a remedial phase and carries an activation guard. Precedence edges do not activate phases. When branches are alternatives, only the selected branch contributes ordering constraints.
+
+Let $\operatorname{ver}(q,h_t)\in\{1,0,?\}$ denote whether available evidence verifies predicate $q$, refutes it, or leaves it unresolved. A node $v$ is ready when
+\begin{equation}
+\begin{split}
+\operatorname{ready}(v,h_t)={}&
+\operatorname{pre}(v,h_t)\ \land\ \operatorname{dep}(v,h_t)\\
+&\land\ \operatorname{activate}(v,h_t)\ \land\ \operatorname{order}(v,X_t).
+\end{split}
+\label{eq:readiness}
+\end{equation}
+Here, $\operatorname{pre}$ requires verified preconditions, $\operatorname{dep}$ requires all mandatory prerequisite predicates, and $\operatorname{activate}$ holds for a designated entry node or at least one fired incoming transition or recovery link. Alternative incoming branches therefore use OR; mandatory dependencies use AND. The order term enforces precedence within activated branches. Concurrent ready nodes must also satisfy backend resource constraints. Unknown conditions do not count as true: they can trigger observation or planning revision. Completion likewise requires observed evidence for the node's completion predicate. A model's declaration of success is insufficient.
+
+\paragraph{Time, revision, and the graph bank.}
+Temporal structure includes observed intervals and precedence constraints, rather than only a list of phase labels. Dynamic structure means that annotation, new feedback, or plan revision can change attributes and topology. Versions retain node identities and provenance, with explicit lineage for splits or replacements. A plan may contain bounded retry logic; execution unrolls each attempt into a fresh event node. Consequently, realized temporal edges point forward in time even when a plan revisits a phase role.
+
+The versioned RAG bank $\mathcal B^{(k)}$ stores historical graphs, their source episodes, and indexes for whole graphs and phase-centered subgraphs. Retrieval selects compatible experience; adaptation binds roles and revises parameters or topology using $h_t$ and $c$. The current execution graph remains separate from the frozen training bank during held-out evaluation. Cross-episode accumulation uses a separate chronological protocol.
+
+\paragraph{Objective.}
+The complete policy $\pi$ comprises planning, supervision, and local execution. It seeks evidence-verified task success under resource budgets:
+\begin{equation}
+\max_{\pi}\ \mathbb E\!\left[\mathbf 1\{\operatorname{ver}(g,h_T)=1\}\right],
+\qquad \mathbf C(\pi)\preceq\mathbf b,
+\label{eq:objective}
+\end{equation}
+where $\mathbf C$ records context consumption, model calls, execution time, and action attempts. Every dispatched skill must satisfy $c$. Phase estimates at deployment use observable history; reference annotations are reserved for construction and evaluation. Benchmark success oracles are evaluator-only and never supply control predicates.
+
+% CHAPTER_SUMMARY: A versioned graph RAG bank connects historical experience G, prospective plans P_t, and observed execution X_t through one phase-instance schema. Typed edges distinguish temporal constraints, factual prerequisites, alternative guarded transitions, and recovery. Readiness combines mandatory prerequisites with alternative activation, while observed evidence determines completion. Unseen task composition remains bounded by backend skills; retrieval, adaptation, and hierarchical execution aim to improve verified success under cost budgets without evaluation leakage.

@@ -1,0 +1,9 @@
+Introduction author response — 2026-10-23
+
+Language review item 2: ACCEPT.
+Deleted the sentence beginning “This shared interpretation carries the context...” It restated the claimed benefit without identifying an additional operation. The construction and plan-use paragraphs provide the concrete explanation.
+
+Global repetition of historical experience / prospective plan / actual execution: ACCEPT.
+Replaced the full three-record explanation in the Introduction with one motivating sentence: “A shared phase-graph schema connects historical experience, plans, and execution, while current evidence determines whether planned effects occurred.” Problem Formulation retains the authoritative definitions. The introduction still states the research hypothesis explicitly and preserves the requirement for current evidence.
+
+No rebuttal required. The opening motivation, cup-into-closed-drawer example, attribution to MTP, HP-KG, Neural Task Graphs and GAVEL, and both method components remain intact. Only 01-introduction.tex was changed; this response file records the review decision.

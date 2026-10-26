@@ -1,0 +1,129 @@
+{
+  "schema": "roborag.evaluation-plan.v1",
+  "id": "roboicl-public-3task-20261020",
+  "created_at_utc": "2026-10-20T08:35:51.379865+00:00",
+  "roborag_commit": "79cbc94336fbff1d6e93b2e6a14255f5a36490aa",
+  "selection_rule": "One task from each demonstration-supported category; layouts 2,3,4 fixed before launching. No selection based on RoboRAG outcomes. Existing stack task is absent from the public main panel.",
+  "tasks": [
+    {
+      "task": "cover_blocks",
+      "category": "Memory",
+      "corpus": "data/corpora/cover_blocks/roboicl-eval-1shot.json",
+      "source_episode": 0,
+      "source_sha256": "2fa920f75e3d126c811ea3eb0145325ce504d3d4b2ba08488a61531576bad74a",
+      "bank_chunks": 34,
+      "horizon": 15
+    },
+    {
+      "task": "deposit_coin",
+      "category": "Precision",
+      "corpus": "data/corpora/deposit_coin/roboicl-eval-1shot.json",
+      "source_episode": 0,
+      "source_sha256": "b9093beb1142f1e15ad38003a82abdc85f96417425193b0b5c7d9128ae90cd29",
+      "bank_chunks": 38,
+      "horizon": 5
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "category": "Long-Horizon",
+      "corpus": "data/corpora/put_bottles_into_dustbin/roboicl-eval-1shot.json",
+      "source_episode": 0,
+      "source_sha256": "e110130f137a2006939c47707ceee2cac489658436823555cce560545d2086b0",
+      "bank_chunks": 37,
+      "horizon": 10
+    }
+  ],
+  "layouts": [
+    2,
+    3,
+    4
+  ],
+  "seed": 0,
+  "variant": "standard",
+  "mode": "dual",
+  "effort": "xhigh",
+  "long_k": 12,
+  "short_k": 12,
+  "shots": 1,
+  "selector": "scene-phase-transition-v3",
+  "model": "gpt-6-astra",
+  "native_step_limits": true,
+  "max_calls": 0,
+  "baseline": "results/roboicl-public-baseline.json",
+  "output_root": "runs/roboicl-public-3task-20261020-r4",
+  "report": "results/roboicl-public-comparison-20261020.json",
+  "frozen_files": {
+    "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+    "src/roborag/robodojo_policy.py": "987497ef49737e584118cda4c6ec450e307e3ca1c52e246212c183131dc4026a",
+    "src/roborag/memory.py": "698653293df1ee710086cd1cd2d5e02beda69cec46785fff147d799c45401308",
+    "src/roborag/__init__.py": "9c1209b76965c67132f160422642d52c9456e7c86dbb7bdb3e1158f68ab77583",
+    "src/roborag/demo.py": "fb3175289bff206a6302892059bc53ca9b1a314c3ead803bbcfaa9eb8601c1ab",
+    "src/roborag/schema.py": "3b741853b4c1134bf939665ce4aa718e0ac698a1273ee09a5cc8c019d7f0ac16",
+    "src/roborag/retrieval.py": "d7fcd1920fa7d1d43820f83b0183d3ae062fb61b57a9ed0f5bd57fd2657966da",
+    "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365",
+    "src/roborag/transports/codex_cli.py": "6e6d541a09273392bf717c7c69f4a776752b136a7f326fc477da03df6488f505",
+    "src/roborag/transports/responses_bridge.py": "40ccdc6e044ff6768a66cc78f2920b73458404d7d6c0f279cb0ae0f126c8d505",
+    "src/roborag/transports/__init__.py": "256cddee3d9ea5afd76357cc23b1b81d240b07b54fa75537373dce4aa75f09ae",
+    "scripts/run_episode.py": "b75c9c47228e7fa4f282327538d37330246a7a4d298e67806c440d181174330e",
+    "scripts/build_visual_bank.py": "0939d03dae78f4edc47ba740d6af2257d0f0d59906ff011b411896c2a585aa26",
+    "results/roboicl-public-baseline.json": "d06ad0f30a902104428a8f572aa6249a3e1728371903a034ac9293d720eb7332",
+    "vendor/RoboICL/configs/shared_harness.json": "16c9c68419a68f3d0df516cd9e70498c63fb7b8c75d7030a041f7f130d447138",
+    "vendor/RoboICL/configs/adaptive_horizons.json": "88fe65c3af1370766099bd276b7eeb94578d6dd81055aa829a35d8e5b7e688fa",
+    "vendor/RoboICL/configs/protocols/one_shot_j12_b12.json": "427f5cbeab9f80b796e2eda954b42491c345c062d63900114bdd7595f5a936d9",
+    "vendor/RoboICL/configs/references/one_shot_j12_b12.json": "2d7a9870f5b0eadaddd2171aacce3c732058fda33fd5717265e1605df608c111",
+    "data/corpora/cover_blocks/roboicl-eval-1shot.json": "3e0c84a588ff77319904cdd7ac5b28c174868c03db731840ea6e943b30212aa9",
+    "vendor/RoboICL/configs/tasks/cover_blocks.json": "a79020ce1075b9b520dc2036b705b1dcf37b630810d57316a20e886563e14aba",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/cover_blocks_2.json": "928d04a3aca4af63c2ef66ecef79836a355579b8f06d2891af759e9de92e4e41",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/cover_blocks_3.json": "10a84eed03be80f3ba31bca0cf07c96f34a7143b0670ba0262957add36a1161c",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/cover_blocks_4.json": "928d04a3aca4af63c2ef66ecef79836a355579b8f06d2891af759e9de92e4e41",
+    "data/corpora/deposit_coin/roboicl-eval-1shot.json": "1a4ab4a110f63add919b16298d38aa213369ad7cd7ef7b2109ac4f763f61d01f",
+    "vendor/RoboICL/configs/tasks/deposit_coin.json": "3cb666d55ca103d44271cde82b2c8f33e0708baebe51e0329c6c80f968189d94",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/deposit_coin_2.json": "cead76f03f6c425eae5bb486a210a346d1d1e6f681774d78b363098393485b2e",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/deposit_coin_3.json": "d86c143d04dad41b4770be22527305df478e17838c7224c656b56677d75c7549",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/deposit_coin_4.json": "6b17a2d69fae69ccefc6ff40715bbb5f1953dc48d80ea5c0f25861107b4a480d",
+    "data/corpora/put_bottles_into_dustbin/roboicl-eval-1shot.json": "31d2e92116d9bba2c834c3cf8fbf52a203504b703100bde2798700451f6578a3",
+    "vendor/RoboICL/configs/tasks/put_bottles_into_dustbin.json": "f47317bbebecb2060d8d3c29c821f49efe38611f0eea97709650b45c1c1a98da",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/put_bottles_into_dustbin_2.json": "7110decf67ccb6d77942719bf2f79d567c5d1d080413d2c713d3b41e691c11fe",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/put_bottles_into_dustbin_3.json": "659a6fc1bffc692e8e61d07544d1c5145a3c17e8d8e75fc4af543b1a9fba41f5",
+    "data/Assets/Eval_Layout/RoboDojo/arx_x5/0/put_bottles_into_dustbin_4.json": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695",
+    "scripts/evaluate_roboicl_suite.py": "d4e006133be8538bdcc9cf4ee134bbd40366539e85dc27dffa6e728918fdcd72",
+    "scripts/import_roboicl_baseline.py": "f1429c62b0a6135ae9e8656608d4465c6f8d85b0e595f2a9b771622bdbadc8e4"
+  },
+  "limitations": [
+    "Three tasks and three layouts per task are a pilot, not the 30-task benchmark.",
+    "Current selector is frozen; evaluation configuration uses the published one-shot source and 12+12 block allocation, instead of the older 3-demo 8+4 medium pilot.",
+    "Account CLI transport differs from the published direct/relay API and does not expose an immutable provider model snapshot.",
+    "Same block counts and image cap do not imply identical token costs or serializer text.",
+    "Nine layout files match the frozen asset revision; full transitive asset-tree identity is not certified.",
+    "Public results are an external baseline, not a local controlled causal ablation.",
+    "No Open tasks: the current zero mode delegates to upstream and would not evaluate dual retrieval.",
+    "All first completed attempts count; infrastructure interruptions are excluded, preserved, and never converted to zero scores.",
+    "Task means and the overall panel mean are reported separately; the full-panel aggregate is withheld until all nine episodes complete.",
+    "Two simulators may share the GPU; wall times are not a matched latency comparison."
+  ],
+  "revision": 4,
+  "transport_environment": {
+    "HTTP_PROXY": "http://127.0.0.1:7897",
+    "HTTPS_PROXY": "http://127.0.0.1:7897",
+    "ALL_PROXY": "http://127.0.0.1:7897",
+    "NO_PROXY": "127.0.0.1,localhost"
+  },
+  "excluded_infrastructure_attempts": [
+    {
+      "path": "runs/roboicl-public-3task-20261020/cover_blocks-l2",
+      "reason": "Direct TLS handshake failure before any executed robot action; restarted with existing local proxy and updated startup notice recognition.",
+      "initial_plan": "runs/roboicl-public-3task-20261020/frozen-plan.json"
+    },
+    {
+      "path": "runs/roboicl-public-3task-20261020-r2/cover_blocks-l2",
+      "reason": "A complete model response following TLS retries was rejected by transport validation. No accepted action; transport-only validator fix.",
+      "initial_plan": "runs/roboicl-public-3task-20261020-r2/frozen-plan.json"
+    },
+    {
+      "path": "runs/roboicl-public-3task-20261020-r3",
+      "reason": "System proxy feature startup warning rejected complete decisions. Exact observed warning now recognized only before the turn. Archived decisions revalidated offline; not replayed into the simulator and not scored.",
+      "initial_plan": "runs/roboicl-public-3task-20261020-r3/frozen-plan.json"
+    }
+  ],
+  "workers": 2
+}

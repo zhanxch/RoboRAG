@@ -1,0 +1,15 @@
+System Framework response to language review
+
+Item 9 — Accepted.
+Replaced the negative claim about nominal frequency with the reviewer's direct reporting statement: synchronous simulation and continuous physical execution are evaluated separately, with measured wall-clock timing reported alongside nominal controller frequency. Retained the distinction between a cancellation acknowledgment and evidence that a physical robot has stopped because it determines execution behavior.
+
+Global repetition: interface normalization and MCP — Accepted.
+System retains the authoritative definitions of modes A, B, and C and their interpretations. Removed its repeated list of fixed experimental controls and detailed measurement checklist. The final paragraph now explains the portability/transfer relationship and refers to Sec. experiments for the controlled comparisons and measurement protocol. Backend differences remain explicit.
+
+Global repetition: implementation status — Accepted.
+Replaced the repeated list of existing queue foundations with a reference to Sec. evidence-analysis, which now holds the authoritative implementation-status account.
+
+Global repetition: historical graphs, plans, and execution — No additional cut needed in this section.
+The receipt paragraph does not redefine the three graph records. It names the concrete new operation: receipts update X_t and inform advancement of P_t. Retained the requirement for phase-specific observation evidence, as the review explicitly requests.
+
+Files changed: paper/sections/05-system.tex and this response file only. No rebuttal required.

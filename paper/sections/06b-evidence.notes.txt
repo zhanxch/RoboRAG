@@ -1,0 +1,43 @@
+Owner: evidence subagent. Scope: Existing Evidence and Planned Analysis subsection.
+Status: English draft ready for language, standalone table/caption, and high-level logic review. Authors may rebut review comments.
+
+Files read before drafting:
+- .cursor/rules/roborag-research.mdc
+- paper/editorial-contract.txt
+- docs/results.md
+- docs/roboicl-evaluation.md
+- docs/queued-control.md
+
+Machine-readable provenance checked by Python 3 JSON extraction:
+1. results/pilot-current.json: seven trial entries, including two initial deposit runs, one revised interrupted deposit run, and four completed stack runs.
+   - stack-fixed-l0-v3: development layout 0, native_completed, native score 100, success=true, latest_observed_step=240, completed_model_calls=24, known_total_tokens=1506661.
+   - stack-dual-l0-v3: development layout 0, native_completed, native score 100, success=true, latest_observed_step=195, completed_model_calls=20, known_total_tokens=1289773.
+   - stack-fixed-l1-v3: validation layout 1, native_completed, native score 100, success=true, latest_observed_step=237, completed_model_calls=24, known_total_tokens=1509991.
+   - stack-dual-l1-v3: validation layout 1, native_completed, native score 100, success=true, latest_observed_step=302, completed_model_calls=31, known_total_tokens=2048690.
+   - All four stack entries: gpt-6-astra, medium; scene-phase-transition-v3; long_k=8, short_k=4; corpus_sha256=1e51e175a3f43eb67e3bf6e3cb86dcb2f50736967c693f7cb9dc51b0b1cee0f1.
+   - deposit-fixed-l0-v2: development layout 0, native_completed, native score 20, success=false, 300 latest observed steps, 60 completed calls.
+   - deposit-dual-l0-v1: development layout 0, native_completed, native score 0, success=false, 300 latest observed steps, 60 completed calls.
+   - deposit-dual-l0-v3: interrupted_by_experimenter, no native result/score, 110 latest observed steps, 22 completed calls.
+2. results/deposit-v1-development.json: root scope says one development layout, one rollout per condition; two trials. Deposit outcomes cross-checked in pilot-current.json, which incorporates both.
+3. results/roboicl-public-comparison-20261020.json: complete=false, planned_episodes=9, completed_episodes=5; episodes array has five native_completed, one interrupted_by_experimenter, three not_run entries.
+   - cover_blocks layouts 2 and 3: progress 100 / 100, success true / true, public progress 100 / 100, differences 0 / 0.
+   - deposit_coin layouts 2 and 3: progress 100 / 100, success true / true, public progress 100 / 100, differences 0 / 0.
+   - put_bottles_into_dustbin layout 2: progress 40, success false, public progress 40, difference 0.
+   - put_bottles_into_dustbin layout 3: interrupted, no native score; all task layout-4 entries are not_run.
+   - Four of the five completed rollouts succeeded. No score assigned to interrupted/unstarted runs. No nine-episode aggregate reported.
+
+Interpretive provenance:
+- docs/results.md provides the validation older-memory retrieval observation and the source/live geometry mismatch in initial deposit. Neither is treated as causal proof.
+- docs/results.md states matching stack corpus, retrieval-controller source, and harness hashes. The git commits themselves differ, so caption deliberately says matching controller source rather than matching git revision.
+- docs/roboicl-evaluation.md specifies account/CLI transport versus reference paper API, absence of immutable service model snapshot, and incomplete external comparison status.
+- docs/queued-control.md states deterministic and mock-model integration verification but no completed native queued task result, no Astra/Luna supervisor, no structured phase authorization. Proposed graph hierarchy is not claimed implemented.
+
+Integration decisions:
+- Table uses only the homogeneous four stack rollouts to avoid combining unlike historical configurations. Deposit negatives and the incomplete external comparison remain in prose.
+- There are FOUR stack rollouts forming TWO paired comparisons, not four paired comparisons.
+- Existing method called historical dual-memory or chunk-based retrieval to prevent confusing it with the proposed graph RoboRAG method.
+- One planned counterfactual replay is specified: independently annotated role alignment intervention at predefined simulator states. No invented outcomes or fake empty numeric result tables.
+- Outcome verification distinguishes deployable observation-based verifier from independent annotation and native benchmark evaluator; no oracle phase labels given to deployed agent.
+- No claims from cloth RL, Sol trials, or unrelated later runs included.
+- No external citations added; related-work author owns primary-source bibliography. RoboICL reference can be attached by root using its verified existing key.
+- Native steps are represented in manifests as latest_observed_step; docs/results.md explicitly interprets stack values as executed steps.

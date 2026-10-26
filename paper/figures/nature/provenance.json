@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-23",
+  "requested_style": "Nature-style scientific figures",
+  "requested_model": "GPT-image2",
+  "generation_mode": "built-in image_gen",
+  "model_verification": "The built-in interface exposes no model selector and returns no model identifier; exact model is unverified.",
+  "scientific_scope": "Visual editing of four proposed-method/system diagrams. No experimental results were added. Original captions and manuscript body were preserved.",
+  "review": "Independent figure/caption-only review passed after targeted icon corrections.",
+  "initial_prompts": "prompts.json",
+  "correction_prompts": "correction-prompts.json",
+  "assets": [
+    {
+      "name": "01-overview",
+      "file": "01-overview-nature.png",
+      "generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-652d05f0-1e9b-471a-9fa4-3b2bd69ae32a.png",
+      "initial_generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-652d05f0-1e9b-471a-9fa4-3b2bd69ae32a.png",
+      "sha256": "9bdc553dffbbd5721108984cbf752a5c5dee97a5737bd84cf191d2fc78b2f7f6",
+      "bytes": 1322692
+    },
+    {
+      "name": "02-graph-semantics",
+      "file": "02-graph-semantics-nature.png",
+      "generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-af6798d5-e6ec-4c6a-8f12-4624c569d5f1.png",
+      "initial_generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-f0899ffc-9066-407d-9418-7eb517de36cd.png",
+      "sha256": "6d46aeb14eb21fa7c7ee541c88673b032839f6584bfcbb2b1346e2bf1d393c70",
+      "bytes": 1404766
+    },
+    {
+      "name": "03-plan-adaptation",
+      "file": "03-plan-adaptation-nature.png",
+      "generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-6917c987-432b-405f-b438-be0e7509fd70.png",
+      "initial_generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-ef071b7e-2814-44bc-b3b6-59174f011e1b.png",
+      "sha256": "91582e76bff9964c8eb8f7a502e5a2760537ff99423f9f03da413ed59e744ec1",
+      "bytes": 1679627
+    },
+    {
+      "name": "04-platform-comparison",
+      "file": "04-platform-comparison-nature.png",
+      "generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-24361cb8-d583-46dd-853f-bb64486e1472.png",
+      "initial_generated_source": "/home/zxc/.codex/generated_images/01a168f9-9e71-7281-94a2-6e37a395d429/exec-24361cb8-d583-46dd-853f-bb64486e1472.png",
+      "sha256": "6fe7178d7111ad4f5a0508f3ce88efce9946ae9d7092bdb964d61df38993e544",
+      "bytes": 1401196
+    }
+  ]
+}

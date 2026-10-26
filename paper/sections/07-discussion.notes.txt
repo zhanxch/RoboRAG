@@ -1,0 +1,18 @@
+Discussion and abstract integration notes — 2026-10-23
+
+Owned files: paper/sections/07-discussion.tex, paper/sections/00-abstract.tex, and this notes file.
+Read the project memory, editorial contract, all existing section prose and author notes, including Section 06a after its draft arrived. Discussion terminology follows its relation-aware-retrieval by graph-governed-execution experiment. Equal retrieved payloads apply within each execution pair, not across rankers that select different evidence.
+
+Discussion covers staged implementability, inspectable procedure reuse, annotation/maintenance cost, chronological library growth, observation selection under uncertain guards, and multi-arm resource contracts as a scoped future extension. It contains no experimental conclusion, autonomous self-improvement claim, unsupported safety guarantee, or fabricated score.
+
+Conditional findings distinguish:
+- Structural value from equal-evidence sequence execution and the two-by-two relation-use comparison. A lossless rendering retains relational information; equal performance would limit the claim for explicit graph enforcement, not establish that the information is useless.
+- Generalization/adaptation value from familiar-task retrieval gains and unadapted reuse.
+- Delegation savings from lower cost achieved by silently losing task or completion reliability.
+- Semantic-wrapper reuse from incremental MCP benefits, without attributing task success to transport alone.
+
+No new factual literature claims or citation keys were needed. The prose draws on the method and experiment design in this manuscript. Root should retain the compact implementation-status paragraph in Section 06b and the one status sentence in the abstract; repeating status caveats throughout Discussion is unnecessary.
+
+Abstract is intended to sit inside the root's title block or immediately after it; it already includes the abstract environment. It names GPT by role, without assuming Astra must execute every action. Main novelty candidate is preserving phase conditions and observed outcome evidence through the full construction/retrieval/adaptation/execution process, rather than graph use alone.
+
+Review stance: concrete semantic inconsistency or overclaiming should be corrected. Requests to turn each paragraph into a disclaimer or to assert an unsupported expected improvement should be rebutted. Root adjudicates final changes.

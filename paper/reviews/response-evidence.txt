@@ -1,0 +1,28 @@
+AUTHOR RESPONSE — Existing Evidence and Planned Analysis
+Owner: evidence author. All changes limited to paper/sections/06b-evidence.tex and this response record.
+
+T3.1 (figure/table-only review): ACCEPT.
+The isolated caption did not define the fixed condition. Added its training content and selection rule, its recent-history rule, the shared context components, and matched chunk quotas with unmatched token consumption. The fixed condition uses eight training chunks sampled uniformly by index from one initially scene-selected demonstration, plus the latest four completed live chunks when available. Dual retrieval selects adaptively from the same source and live history and retains the latest completed live interval. Both retain current observations and compressed omitted-history summaries. No equal-token claim added.
+
+Verification from frozen implementation and historical records, not an inference from current code:
+- experiments/stack-v3-validation-plan.json records long_k=8, short_k=4, the frozen policy SHA256, and limitation "same chunk quotas, not exactly matched token consumption".
+- For all four stack rows in results/pilot-current.json, extracted src/roborag/robot_memory.py using git show at each trial's recorded roborag_commit. Its computed SHA256 equals the trial's recorded hash and frozen-plan hash: d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558.
+- Historical commits checked: d164bec49f516903ce6f23899e88355cfb8761c2 (dual development); 3a61c0bd82375bc2e89912a9f297a10438d53edb (fixed development and dual validation); 5e5cac2f3e3c34ca550714701b73298421e2e62b (fixed validation).
+- Frozen robot_memory.py lines 121–140: initial-scene source selection, then source fixed for live episode.
+- Lines 180–190: fixed selection is rounded np.linspace indices into sorted valid record starts; dual uses phase-adjusted rankings, diversity, and start/end anchors.
+- Lines 214–225: eligible history ends at or before current step; latest completed interval reserved; fixed uses the preceding short_k-1 most recent records. Hence four latest completed chunks when enough exist, not four earlier chunks plus the latest.
+- Lines 51–75 and 225–226: omitted live intervals retain compressed execution summaries; live/current observation material is rendered for both conditions.
+- Structured extraction of historical retrieval.jsonl confirmed 24/24 fixed requests and 20/31 dual requests on development/validation. Every request selected eight training chunks; live counts range 0–4 as history becomes available.
+- Both fixed runs used the same stable start indices [20, 40, 70, 100, 150, 180, 230, 255], sampled by valid-record index rather than uniform wall time.
+- All four runs selected source SHA256 32b3dbeeaca73706baaa1a55a873103d94b306334ca7a59a08808d324b5e044c. Fixed logs:
+  runs/stack-fixed-l0-v3/policy/99e175b97d9b422e85bee0ae5aec7919/retrieval.jsonl
+  runs/stack-fixed-l1-v3/policy/9f95365f8b5340269830b611c04494dd/retrieval.jsonl
+- Caption adds operational rules, not every step index, to remain readable and self-contained.
+
+L13 (language review, item 13): ACCEPT.
+Removed "It is a planned diagnostic, with no outcome assumed here." The paragraph still starts "we will replay" and retains the estimand: the effect of correcting alignment at selected states, not the deployment performance of an annotation-assisted system.
+
+L14 (language review, item 14): ACCEPT.
+Replaced the rhetorical last sentence with "These measures distinguish task completion, false completion judgments, and the cost of plan correction." Independent annotations and separate native benchmark success reporting remain explicit.
+
+Historical task scores, counts, interruptions, and comparisons are unchanged. No new experiment or outcome claimed. No rebuttal was needed for these comments.

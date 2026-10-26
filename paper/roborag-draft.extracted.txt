@@ -1,0 +1,1104 @@
+        RoboRAG: Interaction-Aware Retrieval-Augmented
+                        Manipulation
+                                        English research design draft · October 23, 2026
+
+                                                                      interactions become reusable experience, how should that
+                          Abstract                                    experience change a new plan, and how should the robot
+Robot manipulation requires experience that explains which            determine whether the plan is being fulfilled?
+interaction phase is active, what an action achieved, and             Retrieval and structured planning offer substantial
+which decision its feedback supports. We propose RoboRAG,             foundations for answering these questions. Memory Transfer
+a framework that carries this information from recorded               Planning retrieves and adapts successful planner code for
+episodes into plans for unseen task compositions. Its central         new manipulation tasks [5]. HP-KG constructs hierarchical
+hypothesis is that preserving phase conditions and observed           procedural knowledge and retrieves relevant subgraphs for
+outcomes throughout this process improves experience                  planning [8]. Neural Task Graphs connects demonstration-
+selection and plan following. An annotation pipeline                  derived      task   graphs      to   observation-conditioned
+constructs temporal interaction graphs with phase-instance            execution [9], while GAVEL uses a graph world model to
+nodes and typed edges for prerequisites, conditional                  validate and repair plans [13]. These results motivate a more
+transitions, and recovery. A versioned bank supports                  specific research question: can preserving the relations
+retrieval of complete procedures and local subgraphs. A               among phase conditions, attempted actions, observed
+GPT planner creates an initial plan under the shared                  outcomes, and subsequent choices improve how experience
+schema, then uses retrieved experience to revise its object           is selected and used throughout manipulation?
+bindings, parameters, and structure. A lower-cost supervisor
+follows approved phases and recovery branches; a gateway              We introduce RoboRAG: Interaction-Aware Retrieval-
+and local controllers check and execute its requests. The             Augmented Manipulation, a framework organized around
+evaluation compares graph and sequence methods with                   this question (Fig. 1). Its central hypothesis is that explicit
+matched evidence, tests adaptation and delegated execution,           conditions and feedback links make retrieved experience
+and separates interface reuse from MCP transport across               more applicable to the current decision and make plan
+proposed simulation and physical backends. This design-               progress easier to verify. A shared phase-graph schema
+stage manuscript specifies the method and evaluation                  connects historical experience, plans, and execution, while
+protocol; available pilots concern an earlier chunk-based             current evidence determines whether planned effects
+memory controller.                                                    occurred.
+                                                                      The first method component constructs the graph bank
+1. Introduction                                                       through an annotation pipeline. It segments timestamped
+                                                                      interactions into phases, assigns object roles and local
+A robot can encounter the same task description at several
+                                                                      objectives, and links actions to feedback and evidence.
+stages of an interaction, each requiring a different next
+                                                                      Nodes represent phase instances; typed edges express
+decision. To place a cup in a drawer, it may first need to
+                                                                      precedence, prerequisites, conditional transitions, and
+open the drawer, recover from a failed grasp, or verify that
+                                                                      recovery. The resulting graph preserves the timing of
+the cup was released inside. Relevant experience depends on
+                                                                      attempts and the reason a continuation became relevant.
+the current phase and on what previous actions actually
+                                                                      Structured records support validation, while compact
+achieved. A record of successful placement is useful only if
+                                                                      descriptions expose the same semantics to a language model.
+its prerequisites can be satisfied in the present scene. A
+                                                                      Whole-graph and phase-centered indexes allow retrieval of
+failed attempt can be equally useful when its feedback
+                                                                      either a complete procedure or a smaller pattern with the
+explains why a different observation or action was needed.
+                                                                      conditions needed to interpret it. Graph versions retain the
+Consider a robot with experience transferring objects and             provenance of corrections and additions.
+opening drawers, but no recorded episode of placing a cup
+                                                                      The second component retrieves, adapts, and follows these
+into a closed drawer. Solving this new composition requires
+                                                                      graphs. A GPT planner constructs a provisional graph for an
+more than matching the instruction to a familiar task. For a
+                                                                      unseen task using a declared schema and backend
+single-gripper robot, drawer opening and handle release
+                                                                      capabilities. Retrieval finds compatible procedures and local
+must precede the cup grasp. The transfer procedure must
+                                                                      experience; adaptation aligns roles, grounds parameters, and
+bind its object and destination roles to the current cup and
+                                                                      edits dependencies or recovery branches. In the drawer
+drawer, and ground motion parameters from current
+                                                                      example, opening experience supplies the missing
+observations. If the grasp fails, the robot must identify which
+                                                                      prerequisite for the transfer plan. A lower-cost supervisor
+condition remains unmet and follow an appropriate recovery.
+                                                                      then selects eligible phases and approved recovery steps. A
+This example connects three questions: how should recorded
+                                                                      deterministic gateway checks requests, and native
+
+
+                                                                  1
+controllers execute skills. Structural revisions return to the               3. An evaluation design that isolates the value of these
+planner. This hierarchy makes the plan an operational                           relations through matched evidence and execution
+contract with observable completion conditions and gives                        comparisons, together with a common application
+routine execution a defined path without repeated high-level                    contract for studying portability across RoboDojo,
+planning.                                                                       LIBERO, and a real robot.
+The manuscript develops three contributions:                                The evaluation asks whether graph structure improves
+                                                                            decisions beyond linearized versions of the same evidence,
+ 1. An interaction-graph construction and indexing method
+                                                                            whether adaptation supports unseen compositions, and
+    that retains phase boundaries, conditions, observed
+                                                                            whether delegated execution preserves task performance
+    feedback, and recovery relations in reusable experience.
+                                                                            while reducing high-level calls. A separate systems
+ 2. A graph retrieval, adaptation, and execution method that                comparison distinguishes backend normalization from MCP
+    carries those relations into plans for unseen task                      transport. Together, these tests connect the proposed
+    compositions and uses current evidence to govern                        representation to observable planning, recovery, execution,
+    delegated plan following.                                               and integration outcomes.
+
+
+
+
+Figure 1. Proposed RoboRAG workflow. Training episodes are segmented and checked to form a versioned bank B of experience graphs G. A
+new goal, current observation and backend capabilities produce a draft plan P . Retrieved graphs or subgraphs supply phase structure, conditions
+and recovery evidence; alignment and validation produce an adapted plan. A supervisor follows approved phases through a local executor, while
+the planner handles structural revisions. Actual receipts and observations extend the execution graph X . The three graphs share a schema, but
+history, intent and observed execution retain distinct status. The training bank stays fixed during held-out evaluation; the dashed return path is
+used only by a separately evaluated curation process. This is a method diagram, not an experimental result.
+
+                                                                            RoboRAG therefore treats the graph bank as part of the
+2. Related Work                                                             method. It stores episode graphs and indexes phase-centered
+                                                                            subgraphs with evidence references, capability requirements,
+Retrieval units and memory organization.                                    and versions. Retrieval must select experience that is
+Retrieval-augmented generation conditions a language                        applicable to the current decision, while retaining the
+model on an external information store [1]. The contents and                information needed to assess that applicability.
+retrieval unit of that store matter as much as the search
+                                                                            Experience and in-context robot learning.
+algorithm. G-Retriever retrieves connected portions of
+textual graphs for question answering [2]. Its formulation                  RoboICL distinguishes demonstration context from the
+illustrates how retrieval can preserve relations that                       robot's accumulated interaction memory. Both use
+independent text chunks omit. For manipulation, the                         observation, action, receipt, and subsequent observation
+corresponding design question is which parts of an                          records; anchored memory retains selected earlier
+interaction should remain connected: a prerequisite, an                     interactions [3]. MemER learns to select task-relevant
+attempted action, its observed outcome, and a subsequent                    historical keyframes and uses them to produce instructions
+correction may jointly explain when an experience is useful.                for a lower-level policy [4]. These approaches motivate
+                                                                            retaining useful history within a limited context budget.
+
+
+                                                                        2
+Memory Transfer Planning (MTP) is especially relevant to             interfaces, including when to continue, acquire another
+experience reuse across tasks: it stores successful planner          observation, repair a local plan, or request high-level
+code, retrieves examples through instruction similarity,             replanning.
+adapts them to the target environment, and uses the adapted
+                                                                     Research position.
+examples when replanning after failure [5]. RoboRAG
+examines a different retrieval unit: a phase together with its       The proposed contribution is a shared representation linking
+conditions, feedback, dependencies, and recovery links. Its          episode annotation, graph-bank retrieval, task-conditioned
+bank includes observed failed attempts as well as successful         adaptation, and observed execution. Its evaluation should
+continuations, allowing a query to distinguish experiences           compare HP-KG-style procedural retrieval, MTP-style reuse
+that share a goal but require different next actions.                and adaptation, graph-based verification such as GAVEL,
+                                                                     and linearized versions of the same evidence, with
+Scene graphs, procedural graphs, and task graphs.                    compatible information and controller access. These
+These graph families encode different information.                   comparisons test the value of preserving phase, feedback,
+EmbodiedRAG retrieves task-relevant subgraphs from a                 and dependency relations across the full experience-to-
+changing three-dimensional scene representation [6].                 action process.
+SafeMem accumulates objects and their relations in a
+semantic graph and uses this memory to assess action                 3. Problem Formulation
+risks [7]. Such representations describe the environment. In
+RoboRAG, a node instead denotes an interaction-phase                 We consider manipulation tasks specified by a goal g , an
+instance. Object relations appear as conditions or                   initial observation o0 , and a backend capability description c.
+                                                                                              ​
+
+
+
+
+observations attached to that instance; edges describe               The latter lists available observations, executable skills,
+temporal order, dependencies, conditional transitions, or            argument types, and operating constraints. At decision step t,
+recovery. This distinction makes explicit whether a record           the system observes history ht = (o0 , a0 , f0 , … , ot ), where
+                                                                                                      ​       ​   ​       ​       ​
+
+
+
+
+describes what exists, what was attempted, or what should            ai is a skill request and fi its execution feedback.
+                                                                       ​                                  ​
+
+
+
+
+happen next.                                                         Observations and feedback may be incomplete. The task is
+                                                                     to construct and follow a plan using this history and a bank
+Procedural and task graphs are closer precedents. HP-KG
+                                                                     of prior interaction graphs. Unseen tasks use supported skills
+constructs a hierarchy of tasks, steps, and actions with an
+                                                                     in new task structures or object configurations. Section 6
+automated multi-agent pipeline. It retrieves procedure nodes
+and associated subgraphs, then converts them into text for           defines this novelty relative to the experimental bank and
+                                                                     tuning data.
+language-model planning [8]. Neural Task Graphs infer a
+compositional graph from a demonstration and execute it by           A shared graph schema.
+locating the current node and choosing transitions from              An interaction graph is G = (V , E, A), with phase-instance
+visual observations [9]. RoboRAG's proposed distinction is
+                                                                     nodes V , typed edges E , and an attribute map A. A phase is
+the use of recorded phase outcomes and their evidence
+                                                                     an interval of interaction organized around a local subgoal
+throughout graph construction, retrieval, adaptation, and
+                                                                     and a completion condition. Its node records the phase role,
+execution monitoring. Temporal order alone does not
+                                                                     object-role bindings, an observed or symbolic interval,
+establish a prerequisite or a recovery rule; the annotation
+                                                                     preconditions, intended effect, skill reference, feedback, and
+procedure must preserve that distinction when converting an
+                                                                     provenance. Object relations are predicates attached to
+episode into reusable experience.
+                                                                     nodes, rather than a second class of graph vertices. A node's
+Grounded planning and delegated execution.                           intended effect is distinct from evidence that the effect
+SayCan combines language-model task reasoning with skill             occurred.
+affordances [10]. Inner Monologue feeds environmental                We use this schema for three different records: a historical
+observations and success feedback into subsequent                    experience graph G, a prospective plan Pt , and the current
+                                                                                                                      ​
+
+
+
+
+planning [11]. Code as Policies expresses robot behavior             execution graph Xt . Historical nodes summarize recorded
+                                                                                          ​
+
+
+
+
+through programs that call perception and control APIs,              attempts, including failures. Plan nodes specify intended
+including feedback loops [12]. GAVEL provides a                      attempts and their conditions. Execution nodes record
+particularly close execution comparison: a graph world               attempts made in the current episode. Thus, generating a
+model validates candidate plans, repairs errors implied by its       plan node never establishes its completion in Xt .       ​
+
+
+
+
+action semantics, and returns unresolved violations to the
+language model [13]. These methods provide foundations               Order, dependencies, and branches.
+for hierarchical execution and selective language-model              A precedence edge constrains the order of two activated
+invocation. RoboRAG assigns plan construction and                    phases. A dependency edge names a prerequisite predicate
+substantial revision to a high-level planner, routine phase          that its source phase produces or verifies and its target
+supervision to a smaller model, and bounded motion                   requires. Such a relation is an annotation or a planning
+execution to local controllers. The question is whether              requirement; temporal order alone does not establish
+retrieved phase evidence improves decisions at these                 causation. A conditional transition enables a successor when
+
+
+                                                                 3
+its source reaches a terminal execution status and its guard is                 history; reference annotations are reserved for construction
+verified. A terminal receipt can activate an observation phase                  and evaluation. Benchmark success oracles are evaluator-
+while the intended effect remains unknown. Later                                only and never supply control predicates.
+manipulation still requires verified prerequisites. A recovery
+link associates a failed attempt with a remedial phase and                      4. Method
+carries an activation guard. Precedence edges do not activate
+phases. When branches are alternatives, only the selected                       4.1. Constructing a Bank of Interaction Graphs
+branch contributes ordering constraints.
+                                                                                An experience should explain both what the robot attempted
+Let ver(q, ht ) ∈ {1, 0, ?} denote whether available evidence
+                 ​                                                              and what its feedback justified doing next. We therefore
+verifies predicate q , refutes it, or leaves it unresolved. A                   construct graphs from recorded interactions before building
+node v is ready when                                                            retrieval indices. A graph node represents one interaction
+                                                                                phase, such as approaching an object, attempting a grasp,
+      ready(v, ht ) = pre(v, ht ) ∧ dep(v, ht )
+                                                                                inspecting the result, or placing an object. Objects are
+                                        ​          ​
+
+
+
+
+                                                                      (1)
+                             ∧ activate(v, ht ) ∧ order(v, Xt ).
+                         ​                                        ​
+
+
+
+
+                                             ​                ​
+
+
+
+
+                                                                                arguments of phase predicates, not another type of node.
+Here, pre requires verified preconditions, dep requires all                     This choice makes the graph describe a decision process
+mandatory prerequisite predicates, and activate holds for a                     whose structure can be reused as a plan.
+designated entry node or at least one fired incoming                            From recordings to phase intervals.
+transition or recovery link. Alternative incoming branches
+                                                                                The input episode τ contains a task description, timestamped
+therefore use OR; mandatory dependencies use AND. The
+                                                                                observations, proposed and executed actions, and controller
+order term enforces precedence within activated branches.
+                                                                                receipts. We first split source episodes into data partitions,
+Concurrent ready nodes must also satisfy backend resource
+                                                                                then annotate each episode within its partition. Records
+constraints. Unknown conditions do not count as true: they
+                                                                                retain their sensor, coordinate-frame, action-interface, and
+can trigger observation or planning revision. Completion
+                                                                                source versions. A missing measurement remains
+likewise requires observed evidence for the node's
+                                                                                unavailable; for example, a commanded gripper closure does
+completion predicate. A model's declaration of success is
+                                                                                not supply measured contact or object retention.
+insufficient.
+                                                                                The proposed annotation pipeline has three passes. First, it
+Time, revision, and the graph bank.                                             proposes boundaries at changes in commanded skill or target
+Temporal structure includes observed intervals and                              role, gripper events, execution rejection or interruption, and
+precedence constraints, rather than only a list of phase                        observable changes relevant to the task. Second, a
+labels. Dynamic structure means that annotation, new                            constrained annotator groups these candidates into intervals
+feedback, or plan revision can change attributes and                            and assigns phase labels from a declared vocabulary. Its
+topology. Versions retain node identities and provenance,                       input includes the surrounding images, action receipts, and
+with explicit lineage for splits or replacements. A plan may                    candidate event descriptions. Each interval has one
+contain bounded retry logic; execution unrolls each attempt                     immediate objective and a consistent action or observation
+into a fresh event node. Consequently, realized temporal                        role. Free-space movement towards one target may span
+edges point forward in time even when a plan revisits a                         many controller steps; a failed grasp followed by a new
+phase role.                                                                     inspection creates separate phases because both the objective
+The versioned RAG bank B(k) stores historical graphs, their                     and the required evidence change. Labels outside the
+source episodes, and indexes for whole graphs and phase-                        vocabulary are returned for vocabulary revision rather than
+centered subgraphs. Retrieval selects compatible experience;                    silently introduced.
+adaptation binds roles and revises parameters or topology                       Third, validation checks the proposed intervals against their
+using ht and c. The current execution graph remains separate
+        ​
+
+                                                                                evidence. If a change is only localized between two
+from the frozen training bank during held-out evaluation.                       observations, its boundary is stored as a bracket [b−    +
+                                                                                                                                    i , bi ] . A
+                                                                                                                                        ​   ​
+
+
+
+
+Cross-episode accumulation uses a separate chronological                        nominal boundary supports indexing, while the stored
+protocol.                                                                       bracket preserves timing uncertainty. Ambiguous
+Objective.                                                                      neighboring phases can remain a combined interval until the
+                                                                                evidence supports a split. A second annotation pass flags
+The complete policy π comprises planning, supervision, and                      disagreements in phase identity, target association, or
+local execution. It seeks evidence-verified task success                        outcome.       Human      adjudication   resolves    selected
+under resource budgets:                                                         disagreements in the training annotations, with the decision
+            max E[1{ver(g, hT ) = 1}] ,
+                     ​              ​            C(π) ⪯ b,            (2)       and supporting records retained. At deployment, the agent
+             π
+                                                                                uses the available observation history to estimate its phase.
+where C records context consumption, model calls,                               Prefix replay during annotation checks whether a label is
+execution time, and action attempts. Every dispatched skill                     already supported at the time it would be used; otherwise
+must satisfy c. Phase estimates at deployment use observable                    that prefix is labeled uncertain.
+
+
+                                                                            4
+A common node and evidence schema.                                     template specifies a finite attempt budget. Execution unrolls
+For G = (V , E, A), the attribute map A assigns each node              it into distinct event nodes, so repeated attempts preserve
+an identifier, phase label, semantic object-role bindings,             their individual actions, feedback, and costs.
+interval, preconditions, intended effect, action or skill              Validation and agent-readable serialization.
+reference, evidence references, outcome, and provenance.
+                                                                       The stored representation uses a versioned JSON schema
+For example, a grasp phase binds the roles
+                                                                       and a predicate dictionary. A validator checks role types,
+manipulated_object and acting_gripper. Its intended
+                                                                       referenced evidence, interval consistency, edge endpoints,
+effect is held(object, gripper). Whether that effect
+                                                                       branch identifiers, and finite retry budgets. It also checks
+occurred is a separate field supported by observation
+                                                                       that a claimed observed effect has a valid evidence reference
+references. A place phase uses the same object role and adds
+                                                                       and that dependencies can be satisfied along an eligible
+destination; its completion requires evidence about the
+                                                                       route. Prospective geometry may remain unresolved, but an
+object relative to that destination.
+                                                                       executable action must name its current grounded target and
+Predicates have typed arguments and a three-valued                     required capability.
+evidence state, ver(p, ht ) ∈ {1, 0, ?}, as defined in Sec. 3.
+                                                                       For model input, a deterministic renderer presents each
+                         ​
+
+
+
+
+Each evaluation names its observation or receipt, evaluation
+                                                                       selected node as a short record: role and objective, entry
+procedure, timestamp, and validity conditions. A visual
+                                                                       condition, permitted skill, completion evidence, observed
+interpretation is marked as estimated, while an execution
+                                                                       outcome if any, and eligible successors. A worked record
+receipt establishes only the controller facts it reports.
+                                                                       shows how unknown differs from failure. Both the compact
+Unresolved contradictions produce unknown. An annotator's
+                                                                       description and the structured record come from the same
+confidence is stored separately from predicate truth and is
+                                                                       fields; free-text summaries cannot change the edge guards.
+not treated as a calibrated probability. These fields let a
+model read why a phase succeeded or failed without                     Whole-graph and subgraph indices.
+confusing a requested action with its outcome.                         Each whole graph is indexed by task relation, role types,
+The same schema also represents prospective nodes in Pt        ​
+                                                                       phase sequence, available capabilities, and entry-state
+and realized nodes in Xt . A prospective node specifies a
+                             ​
+                                                                       features. A second index stores phase-centered subgraphs. A
+completion predicate and the evidence needed to check it; it           seed contains a phase and its adjacent transitions; its closure
+has no observed completion value. When executed, it creates            adds the dependency and recovery-trigger records needed to
+a new event node linked to its plan-node identifier and plan           interpret those transitions. Thus, retrieving a regrasp
+version. Historical evidence stays attached to its source              preserves the preceding failure and the observation that
+episode when the node is retrieved. It cannot certify a                made a new attempt reasonable. Each index entry points to
+predicate in the current scene.                                        immutable graph, node, and media identifiers. Search
+                                                                       descriptors represent conditions at the subgraph entry, while
+Encoding transitions and recovery.                                     the payload retains later outcomes for comparison and
+Edge records instantiate the readiness rule in Eq. 1. Each             adaptation. This separates a queryable situation from the
+transition or recovery edge records its guard and supporting           result of the historical response.
+evidence; each dependency names the required predicate.
+                                                                       Versioned updates.
+Mutually exclusive outgoing alternatives share a branch
+identifier, and at most one can be selected.                           Annotation corrections create a new graph version with
+                                                                       stable surviving node identifiers and explicit replacements
+Consider putting a bottle in a bin. The first grasp attempt            for split or merged phases. Only affected descriptors,
+ends with images showing the bottle still on the table after           subgraph closures, and index entries are rebuilt. During
+the gripper moves away. Its effect held is false under the             execution, completed or interrupted events extend Xt ; plan
+                                                                                                                               ​
+
+
+
+
+declared visual check. A recovery link guarded by that failed          patches create new versions of Pt . Neither operation
+                                                                                                                ​
+
+
+
+
+effect activates re-observation, which establishes a fresh             modifies the frozen training bank used in the main
+bottle reference. A second grasp depends on that reference.            evaluation. Cross-episode accumulation instead runs an
+Once retention is verified, the plan can activate placement            offline admission step that validates evidence, checks
+and then check that the bottle is inside the bin. The recovery         partitions, removes duplicates, and publishes a new bank
+link preserves the relation between the first failed attempt           snapshot. The resulting bank preserves both useful
+and re-observation; the successful second attempt does not             successful procedures and the conditions that motivated
+overwrite the failure. If retention is occluded, the graph             recovery.
+takes an inspection step instead of assigning success. A retry
+
+
+
+
+                                                                   5
+Figure 2. An interaction graph records phase instances and the evidence connecting them. In this illustrative recorded episode, a grasp attempt
+fails; reobservation and a second attempt precede placement. Each box is a phase instance, not an object. Solid arrows show the observed
+temporal order. The dashed recovery link connects the failed attempt to reobservation; the second grasp uses the newly grounded target. The
+dotted dependency states that placement requires verified holding evidence from the second grasp. Alternative success and failure guards are
+transition choices (OR), whereas prerequisites must all hold (AND). The node record separates the requested effect from its observed outcome. A
+plan may contain bounded retry logic; recorded attempts have distinct IDs and times. Times and evidence IDs in this example illustrate the
+schema and are not measured experimental data.
+
+                                                                          requires an observation phase or clarification through the
+4.2. Retrieving, Adapting, and Following                                  task interface. Dispatch requires grounded coordinates and
+Interaction Graphs                                                        bindings. This provisional graph guides search without
+The second part of RoboRAG turns stored experience into a                 fixing the final phase sequence.
+plan for the current task. A shared schema makes each                     Searching graphs and local experience.
+retrieved phase interpretable as a conditional procedure:
+                                                                          A retrieval query combines the goal, estimated current
+what it requires, what it attempts, what evidence would
+                                                                          phase, observed predicates, unresolved prerequisites, and
+establish completion, and which continuation its outcome
+                                                                          available skills:
+permits. The proposed execution hierarchy separates
+changes to this procedure from routine decisions within it.                                       qt = (g, z^t , Ft , Ut , c, Pt− ),
+                                                                                                    ​          ​    ​       ​    ​
+                                                                                                                                           (3)
+
+An initial plan under the shared schema.                                  where z^t can be unknown, Ft contains evidence-backed
+                                                                                     ​                                  ​
+
+
+
+
+The planner receives the goal g , current observations,                   current facts, and Ut contains missing conditions. The phase
+                                                                                                        ​
+
+
+
+
+capability description c, and a compact graph specification.              estimate uses ht , not reference segmentation labels. At
+                                                                                              ​
+
+
+
+
+The specification defines every field and edge type, provides             episode start, the goal and provisional graph dominate the
+one annotated example, and pairs each skill with its                      query. After a failed attempt, its phase, feedback, and unmet
+argument schema and observable completion conditions.                     effect specify the local search context.
+The planner generates a structured record. Each node                      Two indexes supply candidates under a shared retrieval
+contains a symbolic phase role, typed object variables,                   budget. Whole-graph search finds procedures with related
+preconditions, a skill reference, intended effects, and an                goals and compatible phase structure. Phase-centered search
+evidence requirement. A short explanation accompanies each                finds smaller patterns around an unmet prerequisite, failure,
+node for inspection, while execution reads the structured                 or intended effect. A candidate retains its boundary
+fields. Object variables must bind to observable entities or              conditions and supporting evidence. If its dependency
+remain explicitly unresolved.                                             closure exceeds the budget, search chooses another complete
+The first output is a provisional graph Pt− . It identifies
+                                                    ​
+                                                                          candidate or returns no compatible evidence. Capability
+possible phases and missing information before retrieval. A               filtering rejects procedures whose required skills have
+schema checker returns errors at specific node or edge                    neither a supported implementation nor an explicitly
+identifiers; the planner receives these errors for a bounded              declared replacement. Source trajectories provide context,
+                                                                          while current observations determine execution geometry.
+correction pass. Missing geometry can remain symbolic
+until perception supplies it. An unresolved object identity
+
+
+                                                                      6
+A reranker searches for a type-consistent role mapping M                             Checking the plan before use.
+and a partial node alignment between a candidate H and the                           Validation checks schema types, object bindings, skill
+provisional plan. Its score is                                                       support, predicate references, resource conflicts, and graph
+     s(H, qt ) = max{wg sg + wr sr (M ) + wf sf (M )
+            ​        ​         ​   ​           ​   ​           ​   ​
+                                                                                     structure under the readiness semantics of Sec. 3. Every
+                 M
+                                                                           (4)       intended terminal goal must have a supported path from an
+                             + we se (M ) + wo so (M ) − λd(M )},
+                         ​                                             ​
+
+
+
+
+                                       ​   ​           ​   ​
+
+
+
+
+                                                                                     entry node. All mandatory dependency predicates need an
+                                                                                     evidence source or a reachable producing phase. The
+where the terms measure goal similarity, role compatibility,
+                                                                                     validator requires exclusive branch guards or a declared
+condition compatibility, preservation of typed edges, and
+                                                                                     priority when alternatives can fire together. Activated
+relevance of recorded outcomes. The penalty d estimates
+                                                                                     dependencies and temporal constraints must admit an
+required edits and context cost. Role compatibility includes
+                                                                                     execution order, and unresolved preconditions block
+functional and physical constraints: a movable item and an
+                                                                                     dispatch. Retry links require a finite budget and generate
+articulated receptacle cannot be interchanged because their
+                                                                                     fresh execution instances.
+names are similar. Conditions receive separate treatment
+when already verified, achievable through a supported                                A successful structural check does not predict physical
+prerequisite, unresolved, or contradicted. Unresolved                                success. It establishes that the procedure is interpretable and
+conditions incur uncertainty; contradictions reject the                              that its next authorized step can be checked against current
+alignment unless an explicit action can change them. Edge                            evidence. Validation errors return to the planner as a
+matching rewards compatible local structure without                                  bounded repair request. If no compatible candidate passes
+requiring the target to duplicate a complete source graph.                           retrieval thresholds, planning continues from g , ht , and c
+                                                                                                                                            ​
+
+
+
+
+Weights, retrieval count, and acceptance thresholds are                              using the same schema. If adaptation fails validation, the
+selected on development tasks and fixed for held-out                                 planner can discard the retrieved procedure and construct a
+evaluation.                                                                          fresh graph. Exhausted repair budgets or an unsupported
+                                                                                     task produce an explicit unresolved outcome rather than a
+Adapting a retrieved procedure.
+                                                                                     forced action.
+The planner receives a small set of scored candidates,
+alignment proposals, and their evidence references. It returns                       Delegated plan following.
+a graph plus an explicit edit list. It can rebind object roles,                      The hierarchy has three roles. The high-level planner
+revise skill parameters within declared bounds, or insert a                          constructs or structurally revises Pt ; Astra is a candidate
+                                                                                                                            ​
+
+
+
+
+prerequisite. It can also replace an unavailable phase with a                        implementation. A lower-cost supervisor, for example Luna,
+supported sequence that has the required effect, or add a                            reads the active phase neighborhood, recent feedback, and
+recovery branch with an activation condition and retry limit.                        evidence references. It can select ready phases, choose an
+Edits can combine compatible subgraphs. Each copied or                               already approved conditional branch, request a listed
+changed node retains source provenance, and newly                                    observation, and invoke an approved recovery step. It cannot
+proposed nodes are labeled as such.                                                  add nodes, change object identities, relax completion
+Parameter adaptation is separate from mandatory geometric                            conditions, or extend a recovery budget. A deterministic
+grounding. All executable plans use current object poses and                         execution gateway validates each request and sends its skill
+the same feasibility checks. Where a skill exposes these                             and bounded arguments to the backend's local controller.
+                                                                                     Servo control remains local.
+choices, the planner can additionally change the approach
+direction in the object's reference frame and the precontact                         Parameter updates have a narrow authority boundary. A
+clearance distance within the skill's admissible bounds.                             supervisor may request re-estimation of a pose through an
+These edits preserve the phase role and graph topology.                              approved perception skill, and the grounding module may
+Live-pose grounding transforms the approved parameters                               refresh geometry within the active node's workspace and
+into current execution coordinates; it is required even when                         tolerance. It preserves the approved approach direction and
+the planner retains the source parameter choices. Infeasible                         clearance choices; changing either requires a versioned
+retained parameters are rejected before dispatch.                                    planner edit. A changed target role, unsupported grasp
+                                                                                     strategy, violated resource constraint, or adjustment outside
+Figure 3 illustrates a held-out composition: placing a cup
+into a closed drawer. Transfer experience provides grasp,                            those bounds also requires planner revision. The planner
+move, and place phases. Drawer-opening experience                                    handles conflicting evidence, repeated unresolved
+supplies a missing prerequisite. Adaptation binds the item                           conditions, and exhausted recovery branches. Routine
+                                                                                     successful receipts remain with the supervisor.
+role to the current cup, inserts opening and handle release
+before the cup grasp for a single-gripper robot, and grounds                         Evidence, receipts, and revisions.
+motion parameters from the current scene. A recorded failed
+                                                                                     Each dispatch carries the plan version, node identifier,
+grasp can supply a branch that observes the scene again and
+                                                                                     attempt identifier, and an idempotent request identifier. The
+retries the grasp. Its retry count and admissible parameter                          gateway rejects stale versions and unauthorized arguments.
+adjustments are specified before execution.                                          An accepted request is pending until its terminal receipt
+
+
+                                                                                 7
+arrives; acknowledgment is not phase completion. A receipt-                   evaluates fixed-bank execution                 and      cross-episode
+guarded observation transition may then activate a                            accumulation separately.
+verification phase while the action's intended effect remains
+                                                                              Execution procedure.
+unknown. Task progress requires evidence for that effect,
+and subsequent manipulation remains blocked until its                         The following procedure summarizes the planning and
+prerequisites hold. Predicate evaluators use allowed sensor                   supervision loop; all budgets are declared before a run.
+observations or backend feedback and return evidence                           1. Construct and schema-check P − from (g, h0 , c).    ​
+
+
+
+
+references with true, false, or unknown. A visual evaluator                       Retrieve whole graphs and phase subgraphs, align
+uses fixed acceptance rules checked on development data;                          candidates, and propose an edited plan.
+unsupported or ambiguous judgments remain unknown.
+                                                                               2. Validate the plan. Repair within budget, fall back to
+Benchmark success oracles are accessible only to the
+evaluator and never supply control predicates.                                    planning under the same schema if retrieval is
+                                                                                  unsuitable, or stop with an unresolved outcome.
+Every actual attempt appends an event to Xt , including
+                                                                               3. Evaluate active predicates from available evidence. If the
+                                                          ​
+
+
+
+
+failed and interrupted attempts. Recovery creates a new                           goal is verified, finish; if required evidence is missing,
+event linked to the failed event; it cannot overwrite that
+                                                                                  take an authorized observation step or escalate.
+failure. Plan edits increment the version, preserve unchanged
+node identifiers, and record replacement lineage. Revisions                    4. Let the supervisor select a ready, resource-compatible
+activate only after outstanding requests finish or cancellation                   phase or an approved recovery branch. The gateway
+is confirmed, preventing a new plan from treating an                              checks version, authority, and arguments before dispatch.
+unresolved action as absent. Evidence-dependent readiness                      5. Resolve the receipt, append the attempt and evidence to
+is recomputed after each terminal event or relevant                               X , and update predicates. Continue the approved plan
+observation. Cached retrieval results are reconsidered when                       when its conditions hold.
+the active phase, condition signature, plan structure, or                      6. On a structural mismatch or exhausted local recovery,
+capability description changes.                                                   retrieve again and ask the planner for a versioned
+Memory during execution.                                                          revision. Stop when the task, action, observation, or
+                                                                                  revision budget is exhausted.
+The current execution graph updates the context for
+subsequent queries and plan revisions. Bank admission
+follows the versioned update procedure in Sec. 4.1; Sec. 6
+
+
+
+
+Figure 3. Illustrative retrieval and adaptation for a new task: place a cup in a closed drawer. Two training subgraphs provide object transfer and
+drawer opening; the target composition is held out from the experience bank. Object roles are rebound to current observations, the open-drawer
+phase is inserted as a prerequisite, and current geometry supplies the action parameters. The adapted plan also incorporates an authorized
+recovery branch from historical failure evidence. The supervisor checks predicates and follows the approved branch; structural changes go to the
+planner. A failed grasp appends a failed event to X and creates a distinct retry instance, rather than relabeling the failed action as successful. The
+example explains graph composition and revision; it makes no claim that this task has been implemented or solved.
+
+
+
+
+                                                                          8
+                                                                        5.2. Execution Receipts and Local Control
+5. System Framework                                                     Each accepted request receives an execution identifier.
+                                                                        Receipts distinguish acceptance, dispatch, confirmed
+RoboRAG connects graph planning to robot execution
+                                                                        execution, remaining commands, invalidated commands,
+through a common semantic contract. The contract describes
+                                                                        and unknown outcomes. They record the executed prefix
+what a backend can do, what its observations mean, and
+                                                                        and the reason for termination. Motion completion
+what evidence an action returns. We propose adapters for
+                                                                        establishes only the corresponding execution fact; a phase
+RoboDojo, LIBERO [14], and a real robot. This separation
+                                                                        requiring successful grasp or placement still needs its
+allows the same planner to inspect backend capabilities and
+                                                                        specified observation evidence. The supervisor uses these
+revise a graph before dispatch. MCP supplies a standard
+                                                                        receipts to update the execution history Xt and decide
+interface for discovering and invoking tools [15]; the robot
+                                                                                                                         ​
+
+
+
+
+semantics remain defined by RoboRAG and implemented by                  whether the active plan Pt can advance.
+                                                                                                   ​
+
+
+
+
+each adapter.                                                           An episode and request identifier together provide
+                                                                        deduplication. Repeating an identical request returns its
+5.1. Capabilities, Observations, and Actions                            existing execution record; reusing the identifier with
+Capabilities.                                                           different parameters is rejected. After a communication
+                                                                        timeout, the client queries execution state instead of
+A versioned capability description identifies the robot, arms,
+                                                                        resubmitting motion. An uncertain outcome blocks further
+controlled links, tool-center-point transforms, supported
+                                                                        dispatch until the adapter reconciles the execution record
+skills, sensors, coordinate frames, and units. It also declares
+                                                                        and obtains the required state evidence. Plan patches must
+motion limits, control periods, and available hold and stop
+                                                                        match the current version, so a delayed response cannot
+operations. Each skill specifies input types, required
+                                                                        restore a cancelled segment.
+observations, and possible outcomes. The adapter derives
+these declarations from its configuration and implemented               Servo control, interpolation, tracking checks, and physical
+functions. An unsupported capability produces a structured              protection remain in the native backend. The adapter
+rejection that the planner can use to select another skill or           exposes their supported behavior, including the effect of
+revise the plan.                                                        pause, cancel, and stop on outstanding motion and gripper
+                                                                        commands. A cancellation acknowledgment is distinct from
+Observations.
+                                                                        evidence that a physical robot has stopped. Local protection
+A snapshot carries an episode identifier, state sequence,               must operate independently of language-model inference.
+camera capture times, calibration version, and state                    We evaluate synchronous simulation and continuous
+provenance. Fields distinguish measured, estimated,                     physical execution separately, reporting measured wall-clock
+commanded, and unavailable values. For example, a                       timing alongside nominal controller frequency.
+commanded gripper width cannot establish object retention.
+Poses identify their reference frame, controlled link,                  Section 6.5 describes the existing execution infrastructure
+orientation convention, and timestamp. Object estimates                 and the implementation status of the proposed framework.
+retain their sensor source and validity interval. Simulation
+                                                                        5.3. Separating Interface Reuse from MCP
+steps, simulation time, and monotonic wall-clock time
+occupy separate fields. These distinctions let a graph                  Transport
+condition refer to evidence with a defined meaning across               Figure 4 compares three modes within each backend. Mode
+adapters.                                                               A accesses the backend through a specific native driver.
+                                                                        Mode B uses the common contract and adapter through
+Actions.
+                                                                        direct calls. Mode C exposes that same contract and adapter
+A motion request specifies an absolute target or bounded                through MCP. B versus A tests semantic normalization and
+segment, its frame, the relevant plan version and phase                 application reuse; C versus B tests the incremental effects of
+authorization, required preconditions, and an expiry time.              protocol discovery and transport.
+Gripper commands are explicit and separately authorized.
+The adapter checks state freshness, calibration, numerical              Differences in embodiment, sensing, contact dynamics, and
+validity, supported limits, and feasibility before dispatch. If a       available skills remain explicit in the adapters. Shared access
+backend uses incremental commands, conversion uses one                  can reduce integration work, while successful experience
+identified starting snapshot; later dispatch windows continue           transfer depends on compatible graph conditions and
+the converted targets. New geometry comes from current                  adaptation to the receiving platform. Section 6 specifies the
+observations and the target backend. A retrieved graph                  controlled comparisons and measures porting effort,
+contributes phase structure and conditions rather than                  conformance, timing, and task performance per backend.
+source-platform coordinates.
+
+
+
+
+                                                                    9
+Figure 4. Proposed interface comparison on RoboDojo, LIBERO and a real robot. Within each backend, all three modes use the same planner,
+graph bank, observations, task instances and local controller. Mode A uses a backend-specific native driver. Mode B routes calls through the
+proposed common capability, observation, action and receipt contract. Mode C exposes exactly the same contract and adapter through MCP. B
+versus A tests semantic normalization and reuse; C versus B tests the incremental effect of protocol discovery and transport, including its
+overhead. The three backend names denote planned validation targets, not completed integrations. A shared contract does not make backend
+physics or capabilities identical.
+
+                                                                         connects each proposed contribution to a test that could
+6. Experimental Design and Existing                                      reject it. The main comparisons use a frozen graph bank. A
+                                                                         separate study measures experience accumulation, and a
+Evidence                                                                 systems study isolates interface normalization from MCP
+The evaluation asks whether preserving phase, condition,                 transport. The following protocol defines the planned
+and feedback relations across construction, retrieval,                   experiments; existing evidence is reported separately.
+adaptation, and execution improves manipulation. Table 1
+Table 1. Tests of RoboRAG's proposed contributions. Each row specifies an intervention and an observable result that would weaken the
+corresponding claim. Task success is assessed independently of the model's completion judgments. These are evaluation commitments, not
+experimental results.
+
+ Proposed            Controlled test and primary readout                               Evidence against the claim
+ contribution
+
+ Reusable phase      Annotate held-out recordings; measure boundary, role, relation,   Frequent unsupported conditions, unreliable
+ evidence            and outcome accuracy against adjudicated references, including    recovery links, or prohibitive correction effort.
+                     prefix-only replay.
+
+ Shared graph        Cross relation-aware retrieval with graph-governed execution;     Relation-blind ranking and sequence execution
+ structure           compare success and violated prerequisites under matched          perform comparably within a predeclared
+                     evidence access.                                                  meaningful-effect range.
+
+ Task-conditioned    Compare grounded reuse, planner parameter edits, and full         Structural edits add failures or show no benefit
+ adaptation          structural edits on held-out compositions and capability-         where prerequisites or ordering must change.
+                     compatible shifts.
+
+ Delegated plan      Compare high-level-only following, a same-model supervisor,       Cost savings require a practically important loss of
+ following           and a smaller supervisor on the same local controller.            task success or increased false completion.
+
+ Portable            Compare native, normalized direct, and normalized MCP access The shared interface requires substantial planner
+ integration         within each backend; measure conformance, integration work,  changes, or MCP adds overhead without useful
+                     and overhead.                                                integration benefits.
+
+
+
+
+                                                                    10
+                                                                     pipeline's labels; disagreements are adjudicated separately.
+6.1. Data Partitions and Task Families                               Boundary precision and recall use one-to-one matching at
+Source episodes are partitioned before annotation or index           declared time tolerances, with interval overlap reported for
+construction. Training episodes supply the bank and schema           phase spans. Phase labels, object-role bindings, and outcome
+examples; development episodes determine annotation rules,           labels are evaluated separately. Typed-edge precision and
+retrieval weights, thresholds, prompts, and budgets. Held-           recall require both correctly matched endpoints and a correct
+out episodes are used once after these choices are fixed.            relation or guard. Agreement is reported before adjudication,
+Grouping by source recording, task template, and near-               together with annotation time, correction time, and the
+duplicate scene prevents adjacent clips or paraphrases from          fraction requiring human review.
+crossing partitions. All methods receive the same training           Offline annotation can inspect an entire episode, but a
+recordings, skill library, observations, and backend                 deployment-time phase or condition estimate must be
+capabilities. Test outcomes, reference phase labels, and             justified by its prefix. Prefix replay therefore masks later
+benchmark success predicates remain unavailable to                   frames and receipts, and measures unsupported true/false
+planning and retrieval.                                              assertions, appropriate unknown judgments, and detection
+We report distinct task families. Familiar-task tests change         delay. Later evidence may explain an earlier failure without
+the initial state while retaining a seen task structure.             becoming information available to the earlier decision. This
+Composition tests combine supported phases into a                    test checks whether each annotation was supported by the
+dependency or recovery structure absent from the bank; the           evidence available at that decision.
+bank may contain its individual skills and component                 Retrieval evaluation uses held-out decision states with
+procedures. Object tests change role-compatible instances or         independently judged compatible and incompatible
+categories while preserving the required skill set. Layout           candidates. Readouts include condition and capability
+tests vary poses, occlusion, or spatial relations. Combined          compatibility, prerequisite coverage, recovery relevance, and
+shifts form a separate, harder group rather than being               ranking quality. Relevance is not defined by sharing the task
+merged with single shifts. For each task, an explicit                name or by eventual source success. These measurements
+structural comparison records what is absent from the bank.          diagnose retrieval, while closed-loop task success
+“Unseen'' consequently means unseen in the experimental              determines whether useful-looking matches improve
+bank and tuning data; it makes no claim about a pretrained           decisions.
+model's unknown training corpus.
+Simulation uses paired initial states, object placements, and        6.3. Matched Manipulation Comparisons
+perturbation schedules across methods. Physical trials               Table 2 specifies the main comparisons. Prompt templates,
+randomize method order and block comparisons by task and             model versions, low-level controllers, skill argument
+setup session. Task counts and repetitions are fixed using           schemas, context ceilings, action limits, and repair limits are
+development variability and a declared minimum                       fixed across the relevant pairs. Budgets cover all planning,
+meaningful difference. Results report per-family success,            retrieval, validation, supervision, and retry calls. We
+paired differences, and confidence intervals clustered by            measure packed context in input tokens and images and
+task; repeated seeds do not substitute for diverse tasks.            report context-cost curves alongside the fixed-ceiling
+                                                                     comparison. Methods may stop early; we report their actual
+6.2. Graph Construction and Retrieval Quality                        consumption.
+Two annotators independently label a stratified recording
+sample containing successful actions, failed attempts,
+recovery, and ambiguous observations. They are blind to the
+
+
+
+
+                                                                11
+Table 2. Matched comparison families for the proposed manipulation experiments. Each row defines a separate contrast. All variants use the
+same source corpus, planner observations, available skills, local controller, and declared resource ceilings. Exact retrieved evidence is shared for
+the plan-following contrast; the history-access and query contrasts intentionally vary evidence access or selection. Prior-work-inspired variants
+adapt mechanisms to this interface and are not exact reproductions.
+
+ Comparison                 Variants                                                Controlled interpretation
+
+ Historical                 Graph planning without historical retrieval versus      Keep the graph schema, planner, adaptation rules, and execution
+ evidence                   graph planning with historical retrieval.               hierarchy fixed; vary access to retrieved training episodes.
+
+ Plan following             Sequence-plan execution versus graph-governed           Supply exactly the same selected node evidence, predicates, typed
+                            execution, both with retrieval.                         relations, and evidence references; sequence input renders these
+                                                                                    relations losslessly as text.
+
+ Retrieval query            Goal text only; current observed predicates and         Restrict only the retrieval query. Every planner retains the same
+                            feedback only; full query including goal, phase         goal and observation history; candidate bank, capability filter,
+                            estimate, prerequisites, and provisional graph.         ranker, and budget stay fixed.
+
+ Adaptation                 Grounded reuse; planner edits to approach               All bind roles, ground live poses, and check feasibility. Parameter
+                            direction and precontact clearance distance with        edits use skill-declared bounds. Structural edits change
+                            fixed topology; full structural edits.                  prerequisites, order, or recovery. Infeasible source parameters are
+                                                                                    rejected.
+
+ Relations and              Remove dependency, recovery, or outcome         Distinguish removed information from a lossless text rendering
+ feedback                   information separately; compare whole-graph and that retains every predicate, typed relation, and evidence reference.
+                            phase-centered retrieval.
+
+ Execution                  High-level model at every phase; same high-level        Retain identical controllers, initial plans, available observations,
+ hierarchy                  model as a constrained supervisor; smaller              approved branches, and escalation budgets; separate hierarchy
+                            constrained supervisor.                                 effects from model capacity.
+
+ Closest                    HP-KG-inspired procedural retrieval; MTP-               Implement explicitly labeled matched variants with shared
+ procedural                 inspired instruction retrieval and adaptation;          evidence and controller access; document retained mechanisms
+ mechanisms                 GAVEL-inspired checking and repair.                     and necessary departures [8, 5, 13].
+
+
+                                                                                    improvement over no retrieval would support only the
+Testing the shared representation.
+                                                                                    narrower value of experience access. Separate relation-
+A two-by-two experiment crosses relation-aware retrieval                            removal ablations identify which information matters.
+ranking with graph-governed execution. The alternative
+ranker receives the same candidate node fields but omits                            Adaptation and recovery.
+typed edges from its score. The alternative executor follows                        Grounded reuse binds roles and obtains live poses through
+a sequence plan with feedback-driven replanning and                                 the same grounding and feasibility checks as every variant.
+receives a lossless textual rendering of the same retrieved                         It retains source topology and source choices of approach
+conditions, relations, and outcomes. Thus, it retains the                           direction and precontact clearance where admissible.
+information needed to reason about prerequisites, while the                         Parameter adaptation lets the planner revise these two
+graph executor also enforces them through explicit readiness                        choices within skill-declared bounds while preserving
+and branch rules. This comparison tests how each executor                           topology. Full adaptation additionally permits prerequisite,
+uses the same relational information.                                               ordering, and recovery edits. The parameter contrast uses
+                                                                                    skills exposing those choices; infeasible source parameters
+The candidate pool, node payload schema, and packing
+                                                                                    are rejected in every condition. Held-out compositions
+budget stay fixed. Ranking can change the selected
+                                                                                    require identifiable structural edits, such as opening a
+evidence, so each execution pair receives exactly the same
+                                                                                    receptacle before placement or changing order for a single
+selected payload within its retrieval condition. Additional
+                                                                                    gripper. We measure edit validity, unsupported edits,
+fixed-candidate replay isolates execution from selection. For
+                                                                                    prerequisite violations, and final success, rather than
+success rates Sre , where r, e ∈ {0, 1} enable relation-aware
+                                                                                    rewarding similarity to a reference graph when several valid
+                    ​
+
+
+
+
+ranking and graph-governed execution, we estimate
+                                                                                    plans exist.
+                 Δjoint = (S11 − S10 ) − (S01 − S00 ).                  (5)
+                                                                                    Preselected perturbations include displaced objects, blocked
+                        ​          ​      ​        ​      ​
+
+
+
+
+Its uncertainty, the four cell means, and task-level failure                        approaches, failed grasp outcomes, and missing
+categories are reported together. A positive interaction would                      observations. Methods receive the same perturbation
+support complementary use of relations; an isolated                                 opportunities and severity. End-to-end success uses every
+                                                                                    assigned trial, including runs that fail before the
+
+
+                                                                               12
+perturbation. A complementary recovery test starts every                    For RoboDojo, LIBERO, and a real robot, we evaluate the
+method from the same recorded perturbed state. Comparing                    three access modes defined in Sec. 5. Within each backend,
+only the naturally failed episodes of each method would                     these modes hold the planner, bank, controller, and evidence
+confound recovery ability with different failure populations.               fixed. Integration records distinguish application-side
+                                                                            changes      from     adapter    engineering     and    report
+Success, evidence, and cost.
+                                                                            implementation time with developer experience and reuse
+Primary success comes from backend task predicates hidden                   order. Conformance tests inject stale observations,
+from the agent, or independent physical-trial adjudication                  unsupported capabilities, duplicate requests, lost receipts,
+under a fixed rubric. Deployed completion predicates are                    and delayed plan versions. Transport overhead and task
+audited against this reference for false positives, false                   success are reported per backend. Cross-backend graph
+negatives, unknown outcomes, and premature transitions.                     transfer is tested only on tasks with compatible skills and
+We also report task progress, phase completion supported by                 role predicates, using target-scene grounding. Interface
+evidence, invalid dispatches, recovery success, escalations,                portability and transfer success are separate outcomes.
+and budget exhaustion. Cost includes input/output tokens,
+image inputs, calls by model, retrieval time, wall-clock                    6.5. Existing Evidence and Planned Analysis
+latency, and action attempts, including rejected, interrupted,
+failed, and retried requests. Inference, transport, and                     Completed foundations.
+physical execution time are separated.                                      The available robot-task results concern a predecessor of the
+                                                                            proposed method: chunk-based retrieval from a frozen
+6.4. Accumulation and Cross-Backend Evaluation                              demonstration bank and the current episode history. This
+The frozen-bank study permits updates to Pt and Xt but​         ​
+                                                                            dual-memory controller has been evaluated on RoboDojo.
+never adds test episodes to B. A separate chronological                     An execution queue now also records request identities,
+stream compares a frozen bank with validated accumulation                   expands actions, and checks execution receipts;
+from completed earlier episodes. Both conditions start from                 deterministic tests and mock-model integration cover its
+the same bank; each decision logs its bank version. Multiple                bookkeeping. Graph construction, graph retrieval and
+task orders, duplicate controls, and matched storage or                     adaptation, hierarchical graph following, and the proposed
+context budgets expose order effects. A fixed held-out probe                three-platform MCP comparison remain to be implemented
+set is never admitted to the bank. Measurements include                     and evaluated. The queued configuration has no completed
+success over experience, annotation overhead, retrieval cost,               native task result. We summarize the relevant historical
+and performance losses caused by erroneous admitted                         evidence below to establish the starting point for the
+records.                                                                    proposed experiments.
+
+Table 3. Historical stack_blocks pilot on RoboDojo, before the proposed graph method. Each row is one rollout on the indicated standard
+layout, giving two paired comparisons. Progress is the native score out of 100; task success is the separate native completion flag. Steps count
+executed simulator actions, and calls count completed model requests. Both conditions used GPT-6-Astra with medium reasoning and the same
+frozen corpus, controller source, and harness. Fixed context used eight training chunks sampled uniformly by index from one demonstration
+selected by initial-scene similarity, plus the latest four completed live chunks when available. Dual-memory retrieval selected chunks adaptively
+from the same demonstration and live history, always retaining the latest completed live chunk. Both conditions retained current observations
+and compressed summaries of omitted live intervals. Chunk quotas were matched at eight training and four live chunks; token consumption was
+not matched. Layout 0 was used for development; layout 1 was declared for validation before execution. Both conditions succeeded on both
+layouts, with opposite directions of the step and call differences across layouts.
+
+ Layout       Evaluation role            Historical condition               Progress        Task success          Steps      Model calls
+
+ 0            Development                Fixed context                      100             Yes                   240        24
+
+ 0            Development                Dual-memory retrieval              100             Yes                   195        20
+
+ 1            Validation                 Fixed context                      100             Yes                   237        24
+
+ 1            Validation                 Dual-memory retrieval              100             Yes                   302        31
+
+
+                                                                            earlier placement interval outside a latest-four-chunk
+Historical task outcomes.
+                                                                            window. The trace establishes access to older experience; its
+Table 3 contains four completed rollouts. Retrieval used                    contribution to recovery requires a controlled intervention.
+fewer steps and model calls on the development layout and
+more on the validation layout. Thus, these two pairs show                   An earlier deposit_coin development pair scored 20 for
+neither a success-rate gain nor a consistent efficiency                     fixed context and 0 for the initial dual-memory selector, with
+advantage. In the validation retrieval rollout, the controller              neither rollout succeeding. Each reached the native 300-step
+recovered from an unstable placement and retrieved an                       limit. The source scene placed the coin and bank differently
+
+
+                                                                       13
+from the live scene, and the selector repeatedly retrieved            against independent event annotations. Native benchmark
+insertion examples during grasp attempts. This observation            success will be reported separately, including disagreements
+motivates testing phase and role alignment separately. A              with the verifier. These measures distinguish task
+revised deposit attempt was interrupted by the experimenter           completion, false completion judgments, and the cost of plan
+after 110 observed steps and has no final native score.               correction.
+A subsequent comparison used public RoboICL results for
+matched task layouts. Five of nine planned rollouts                   7. Discussion: Deployment, Extensions, and
+completed: cover_blocks layouts 2 and 3 scored 100,                   Expected Findings
+deposit_coin layouts 2 and 3 scored 100, and
+put_bottles_into_dustbin layout 2 scored 40. Four                     A staged path to deployment.
+completed tasks succeeded, and all five progress scores tied          The proposed method can be developed in stages that make
+their public counterparts. One rollout was interrupted and            its intermediate behavior inspectable. The existing
+three were unstarted. The completed subset therefore has no           demonstration and episode memory banks supply source
+advantage over the matched public scores. Its different               records, while the execution queue supplies request
+model transport and incomplete coverage also prevent a                identities and receipts. The first stage adds phase annotation,
+controlled attribution to retrieval or an aggregate claim for         evidence references, graph validation, and deterministic
+the nine-rollout plan.                                                serialization. Offline prefix replay can then test whether the
+                                                                      recorded conditions were observable when a decision was
+Tracing the proposed mechanism.                                       made. The second stage adds graph retrieval and adaptation,
+The graph evaluation will retain the input observations,              evaluated first as plan generation with the controller held
+source episode identifiers, bank version, retrieved                   fixed. The third introduces delegated execution, using
+candidates, role alignments, plan edits, supervisor decisions,        recorded traces to check supervisor authority before robot
+and execution receipts at each phase. Independent reference           trials. Finally, backend adapters expose the common contract
+annotations will mark phase boundaries, object roles,                 for the cross-platform comparison. Each stage has a
+transition conditions, and observed outcomes. These                   measurable output: valid records, applicable retrievals,
+annotations will be produced without access to the tested             justified edits, correctly authorized actions, or conforming
+model's explanations. Ambiguous visual events will retain             interfaces.
+an uncertain label rather than receiving a completion label
+from the plan itself.                                                 This sequence also identifies where engineering effort may
+                                                                      dominate. Phase boundaries and predicates must be detailed
+Analysis will follow the path from evidence to action.                enough to distinguish decisions but stable enough to
+Construction errors include missed boundaries or                      annotate consistently. An overly fine vocabulary increases
+unsupported transitions. Retrieval errors include missing             annotation and retrieval cost; an overly coarse one can
+compatible experience among the returned candidates.                  merge a failed action with the inspection that explains its
+Alignment errors bind a valid source role to the wrong                recovery. A useful initial deployment can therefore restrict
+current object or condition. Adaptation errors retain an              the skill vocabulary and object roles while retaining explicit
+invalid dependency or omit a required phase. Supervision              uncertainty.    Expanding     coverage      should     follow
+errors advance a plan without sufficient evidence or fail to          demonstrated annotation agreement and reliable predicate
+request repair after a violated condition. Multiple errors can        evaluation. The cost of creating and maintaining the bank
+coexist; traces will record both their first occurrence and           belongs in the assessment of practical value, alongside
+their downstream effects, avoiding a forced single-cause              inference and execution cost.
+label.
+                                                                      Reusable procedures with inspectable evidence.
+To test one causal explanation, we will replay predefined
+                                                                      The main deployment value would be the ability to inspect
+simulator states with the same bank and retrieved graph,
+                                                                      why a prior interaction applies to a new decision. A retrieved
+replacing only the proposed role alignment with an
+                                                                      recovery includes its triggering failure, the observation that
+independently annotated alignment. Paired continuations
+                                                                      followed, and the conditions required for another attempt. A
+will share the controller, model settings, and action budget.
+                                                                      plan edit records which source supported it, while the
+This intervention measures the effect of correcting
+                                                                      execution trace records whether its anticipated effect
+alignment at those states; it does not estimate the
+                                                                      occurred. This chain could support diagnosis, correction, and
+performance of an annotation-assisted deployment system.
+                                                                      reuse across tasks without rereading entire episodes. For
+The planned result displays will connect construction                 example, a failed drawer-transfer attempt can be traced to a
+quality, retrieval relevance, valid plan edits, and recovery          missing opening prerequisite, a wrong object binding, or a
+outcomes to task performance and cost. A phase trace will             false completion judgment. Trace readability and attribution
+show the retrieved source, edited plan, observed feedback,            correctness would measure this diagnostic value alongside
+and resulting transition on a common timeline. Completion             task performance.
+accepted by the observation-based verifier will be audited
+
+
+                                                                 14
+Growing the experience library.                                           Retriever: Retrieval-Augmented Generation for Textual Graph
+                                                                          Understanding and Question Answering. In NeurIPS, 2024.
+Longer deployments raise a selection problem as well as a                 https://arxiv.org/abs/2402.07630.
+storage problem. Repeated successful episodes may add
+little coverage, whereas an uncommon failure can reveal a               3. Fangcheng Liu, Yeqing Shen, Anda Cheng, Weishi Mi, Chao Tang,
+                                                                           Chenyuan Liu, Yushun Xiang, Tingguang Li, Yong-Lu Li, and
+missing condition or recovery branch. A future admission
+                                                                           Yehui Tang. RoboICL: Embodied In-Context Learning with GPT-
+policy could prioritize new role configurations, previously                6 Astra. arXiv:2609.34261, 2026.
+unsupported transitions, and corrected predicate evaluations.              https://arxiv.org/abs/2609.34261.
+Duplicate detection and source-level versioning would keep
+                                                                        4. Ajay Sridhar, Jennifer Pan, Satvik Sharma, and Chelsea Finn.
+similar traces from dominating retrieval. Contradictory                    MemER: Scaling Up Memory for Robot Control via Experience
+outcomes should retain their conditions and provenance until               Retrieval. In ICLR, 2026. https://jen-pan.github.io/memer/.
+the difference can be explained. The chronological
+                                                                        5. Tomoyuki Kagaya, Subramanian Lakshmi, Yuxuan Lou, Thong
+evaluation can measure whether these admission policies                    Jing Yuan, Jayashree Karlekar, Sugiri Pranata, Natsuki Murakami,
+add coverage while retaining competence on earlier tasks.                  Akira Kinose, and Yang You. Memory Transfer Planning: LLM-
+                                                                           driven Context-Aware Code Adaptation for Robot Manipulation.
+Uncertain branches and multiple resources.                                 arXiv:2509.24160, 2025. https://arxiv.org/abs/2509.24160.
+The current three-valued conditions provide a direct
+                                                                        6. Meghan Booker, Grayson Byrd, Bethany Kemp, Aurora Schmidt,
+response to incomplete observations: acquire permitted                     and Corban Rivera. EmbodiedRAG: Dynamic 3D Scene Graph
+evidence or request revision. A useful extension is to choose              Retrieval for Efficient and Scalable Robot Task Planning.
+observations according to which unresolved branch they can                 arXiv:2410.23968, 2024. https://arxiv.org/abs/2410.23968.
+distinguish, accounting for their time and motion cost. This            7. Siyuan Li, Taiyan Lang, Aoqi Yan, Jia Yu, Feifan Liu, Yihan Du,
+requires calibrated evaluation of the observations and should              Yu Zheng, Xun Wang, and Peng Liu. Safe Task Planning with
+be tested against the simpler fixed inspection policy. Multi-              Long-Term Graph Memory for Embodied Agents.
+arm operation is another scoped extension. Parallel graph                  arXiv:2609.08444, 2026. https://arxiv.org/abs/2609.08444.
+phases would need explicit ownership of arms, grippers,                 8. Jiacong Zhou, Jiaxu Miao, Xianyun Wang, and Jun Yu. Enhancing
+shared workspaces, and transferred objects. Resource                       LLM Planning for Robotics Manipulation through Hierarchical
+contracts could state when these become available, while                   Procedural Knowledge Graphs. In NeurIPS, 2025.
+local controllers handle synchronized motion. Deploying                    https://proceedings.neurips.cc/paper_files/paper/2025/hash/b9431
+these phases requires backend support for coordinated                      0e1c7ecb79f1a24adc757f1b89b-Abstract-Conference.html.
+motion and contact control.                                             9. De-An Huang, Suraj Nair, Danfei Xu, Yuke Zhu, Animesh Garg,
+                                                                           Li Fei-Fei, Silvio Savarese, and Juan Carlos Niebles. Neural Task
+Findings that would support the method.                                    Graphs: Generalizing to Unseen Tasks From a Single Video
+The hoped-for finding is that preserving phase conditions                  Demonstration. In CVPR, 2019.
+                                                                           https://openaccess.thecvf.com/content_CVPR_2019/html/Huang_
+and outcome evidence helps robots reuse procedures across
+                                                                           Neural_Task_Graphs_Generalizing_to_Unseen_Tasks_From_a_Si
+task compositions. The matched sequence comparison and                     ngle_CVPR_2019_paper.html.
+retrieval-by-execution experiment would locate this benefit
+                                                                       10. Michael Ahn et al. Do As I Can, Not As I Say: Grounding
+in retrieval, adaptation, or execution. Equal sequence
+                                                                           Language in Robotic Affordances. arXiv:2204.01691, 2022.
+performance would weaken the case for explicit graph                       https://arxiv.org/abs/2204.01691.
+enforcement; no gain from structural edits on held-out
+compositions would weaken the case for adaptation. These               11. Wenlong Huang et al. Inner Monologue: Embodied Reasoning
+                                                                           through Planning with Language Models. arXiv:2207.05608,
+outcomes would favor a simpler representation or adaptation                2022. https://arxiv.org/abs/2207.05608.
+procedure. Delegation would have practical value if it
+reduced total cost while maintaining independently                     12. Jacky Liang, Wenlong Huang, Fei Xia, Peng Xu, Karol Hausman,
+                                                                           Brian Ichter, Pete Florence, and Andy Zeng. Code as Policies:
+measured task success and completion reliability. The
+                                                                           Language Model Programs for Embodied Control.
+systems study would establish how much application code                    arXiv:2209.07753, 2022. https://arxiv.org/abs/2209.07753.
+can be reused, how reliably adapters preserve the contract,
+                                                                       13. Ruiyang Wang, Hao-Lun Hsu, Swarajh Mehta, Jiwoo Kim, Zhihao
+and whether MCP's integration benefits justify its overhead.
+                                                                           Dou, and Miroslav Pajic. GAVEL: Graph World Models for
+Such findings would guide investment in the graph bank,                    Verified and Efficient Long-Horizon LLM Task Planning.
+execution hierarchy, and backend support according to their                arXiv:2609.19315, 2026. https://arxiv.org/abs/2609.19315.
+demonstrated contribution to reliable manipulation.
+                                                                       14. Bo Liu, Yifeng Zhu, Chongkai Gao, Yihao Feng, Qiang Liu, Yuke
+                                                                           Zhu, and Peter Stone. LIBERO: Benchmarking Knowledge
+References                                                                 Transfer for Lifelong Robot Learning. arXiv:2306.03310, 2023.
+                                                                           https://arxiv.org/abs/2306.03310.
+ 1. Patrick Lewis et al. Retrieval-Augmented Generation for
+    Knowledge-Intensive NLP Tasks. In NeurIPS, 2020.                   15. Model Context Protocol contributors. Model Context Protocol
+    https://arxiv.org/abs/2005.11401.                                      Specification, revision 2026-07-28. 2026.
+                                                                           https://modelcontextprotocol.io/specification/2026-07-28.
+ 2. Xiaoxin He, Yijun Tian, Yifei Sun, Nitesh V. Chawla, Thomas
+    Laurent, Yann LeCun, Xavier Bresson, and Bryan Hooi. G-
+
+
+
+
+                                                                  15
+

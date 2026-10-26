@@ -1,0 +1,345 @@
+{
+  "scope": "Local retrieval examples, not a held-out benchmark or robot success evaluation",
+  "index": {
+    "graphs": 9,
+    "phases": 78,
+    "chunks": 567
+  },
+  "checks": [
+    {
+      "query": {
+        "name": "initial_plan",
+        "mode": "plan",
+        "task": "stack_blocks",
+        "goal": "把三个积木堆起来",
+        "observation": "三块积木分散在桌面上，双爪空闲"
+      },
+      "legacy_top3": [
+        {
+          "graph_id": "stack_blocks-0003",
+          "node_id": "p01",
+          "title": "左爪靠近深色块"
+        },
+        {
+          "graph_id": "stack_blocks-0001",
+          "node_id": "p01",
+          "title": "右爪靠近白色块"
+        },
+        {
+          "graph_id": "stack_blocks-0002",
+          "node_id": "p01",
+          "title": "左爪靠近木纹块"
+        }
+      ],
+      "optimized": {
+        "mode": "plan",
+        "results": [
+          {
+            "graph_id": "stack_blocks-0001",
+            "task_name": "积木堆叠",
+            "title": "双臂交替搭建白底、黑中、木纹顶的三块塔",
+            "score": 1.0,
+            "reasons": [
+              "目标 / 阶段文本匹配",
+              "执行前情境匹配"
+            ],
+            "node_id": null,
+            "start_frame": 0,
+            "initial_cue": "三块分散在桌面上，黑色块在左侧，白色块与木纹块在右侧；双爪起初远离物块。",
+            "episode_trace": [
+              {
+                "id": "p01",
+                "recorded_step": "右爪靠近白色块"
+              },
+              {
+                "id": "p02",
+                "recorded_step": "夹住白色块并移向中央"
+              },
+              {
+                "id": "p03",
+                "recorded_step": "放下白色底座并让出空间"
+              },
+              {
+                "id": "p04",
+                "recorded_step": "左爪对准并夹住黑色块"
+              },
+              {
+                "id": "p05",
+                "recorded_step": "将黑色块移到白色底座上方"
+              },
+              {
+                "id": "p06",
+                "recorded_step": "释放黑色块形成两层堆叠"
+              },
+              {
+                "id": "p07",
+                "recorded_step": "右爪抓取木纹块"
+              },
+              {
+                "id": "p08",
+                "recorded_step": "搬运木纹块并对齐塔顶"
+              },
+              {
+                "id": "p09",
+                "recorded_step": "释放顶块并退出堆叠区"
+              }
+            ],
+            "reported_outcome": "最终画面中白色块在底部、黑色块居中、木纹块在顶部，三块保持堆叠，双爪均已远离。",
+            "included_in_context": true
+          },
+          {
+            "graph_id": "stack_blocks-0003",
+            "task_name": "积木堆叠",
+            "title": "左臂摆好深色底块，右臂依次叠上白块与木纹块",
+            "score": 0.9766,
+            "reasons": [
+              "目标 / 阶段文本匹配",
+              "执行前情境匹配"
+            ],
+            "node_id": null,
+            "start_frame": 0,
+            "initial_cue": "三块分散在桌面上，深色块位于左侧，白色块靠中间，木纹块在右侧；双爪尚未持物。",
+            "episode_trace": [
+              {
+                "id": "p01",
+                "recorded_step": "左爪靠近深色块"
+              },
+              {
+                "id": "p02",
+                "recorded_step": "左爪夹住并搬运深色块"
+              },
+              {
+                "id": "p03",
+                "recorded_step": "释放底块并交接操作空间"
+              },
+              {
+                "id": "p04",
+                "recorded_step": "右爪抓取白色块"
+              },
+              {
+                "id": "p05",
+                "recorded_step": "把白色块移到底块上方"
+              },
+              {
+                "id": "p06",
+                "recorded_step": "松开白色块并转向木纹块"
+              },
+              {
+                "id": "p07",
+                "recorded_step": "右爪夹取木纹块"
+              },
+              {
+                "id": "p08",
+                "recorded_step": "搬运木纹块并对准顶层"
+              },
+              {
+                "id": "p09",
+                "recorded_step": "释放顶块并撤回右臂"
+              }
+            ],
+            "reported_outcome": "夹爪移开后，可见深色块在底部、白色块在中间、木纹块在顶部，三块保持堆叠至示范结束。",
+            "included_in_context": true
+          }
+        ],
+        "model_context": "{\"purpose\":\"evidence_for_gpt_planning\",\"current\":{\"task\":\"stack_blocks\",\"goal\":\"把三个积木堆起来\",\"observation\":\"三块积木分散在桌面上，双爪空闲\",\"stage\":\"\"},\"use\":\"Generate a NEW plan or action chunk from the current goal, images and robot state. Use these historical records as examples/evidence and cite source IDs when adopting them. Recorded order is not a required dependency. Ground objects and coordinates in current observations; respect current controller limits. Historical feedback is not a live result and may occur after the short action window. Do not replay reference action rows directly.\",\"memories\":[{\"source\":\"stack_blocks-0001\",\"historical_initial_scene\":\"三块分散在桌面上，黑色块在左侧，白色块与木纹块在右侧；双爪起初远离物块。\",\"episode_trace\":[{\"id\":\"p01\",\"recorded_step\":\"右爪靠近白色块\"},{\"id\":\"p02\",\"recorded_step\":\"夹住白色块并移向中央\"},{\"id\":\"p03\",\"recorded_step\":\"放下白色底座并让出空间\"},{\"id\":\"p04\",\"recorded_step\":\"左爪对准并夹住黑色块\"},{\"id\":\"p05\",\"recorded_step\":\"将黑色块移到白色底座上方\"},{\"id\":\"p06\",\"recorded_step\":\"释放黑色块形成两层堆叠\"},{\"id\":\"p07\",\"recorded_step\":\"右爪抓取木纹块\"},{\"id\":\"p08\",\"recorded_step\":\"搬运木纹块并对齐塔顶\"},{\"id\":\"p09\",\"recorded_step\":\"释放顶块并退出堆叠区\"}],\"historical_reported_outcome\":\"最终画面中白色块在底部、黑色块居中、木纹块在顶部，三块保持堆叠，双爪均已远离。\",\"evidence_status\":\"automatically extracted demonstration description; not independently verified\",\"initial_image\":\"/api/frame?id=stack_blocks-0001&frame=0&camera=cam_head\"},{\"source\":\"stack_blocks-0003\",\"historical_initial_scene\":\"三块分散在桌面上，深色块位于左侧，白色块靠中间，木纹块在右侧；双爪尚未持物。\",\"episode_trace\":[{\"id\":\"p01\",\"recorded_step\":\"左爪靠近深色块\"},{\"id\":\"p02\",\"recorded_step\":\"左爪夹住并搬运深色块\"},{\"id\":\"p03\",\"recorded_step\":\"释放底块并交接操作空间\"},{\"id\":\"p04\",\"recorded_step\":\"右爪抓取白色块\"},{\"id\":\"p05\",\"recorded_step\":\"把白色块移到底块上方\"},{\"id\":\"p06\",\"recorded_step\":\"松开白色块并转向木纹块\"},{\"id\":\"p07\",\"recorded_step\":\"右爪夹取木纹块\"},{\"id\":\"p08\",\"recorded_step\":\"搬运木纹块并对准顶层\"},{\"id\":\"p09\",\"recorded_step\":\"释放顶块并撤回右臂\"}],\"historical_reported_outcome\":\"夹爪移开后，可见深色块在底部、白色块在中间、木纹块在顶部，三块保持堆叠至示范结束。\",\"evidence_status\":\"automatically extracted demonstration description; not independently verified\",\"initial_image\":\"/api/frame?id=stack_blocks-0003&frame=0&camera=cam_head\"}]}",
+        "warnings": [],
+        "diagnostics": {
+          "method": "field BM25 + explicit conditions + optional start-state distance + diversity",
+          "candidate_count": 6,
+          "retrieved": 2,
+          "packed": 2,
+          "context_chars": 2064,
+          "context_budget_chars": 6000,
+          "context_bytes": 2758,
+          "online_model_calls": 0,
+          "elapsed_ms": 1.67,
+          "score_meaning": "uncalibrated ranking score, not success probability"
+        }
+      }
+    },
+    {
+      "query": {
+        "name": "white_on_black",
+        "mode": "action",
+        "task": "stack_blocks",
+        "goal": "把白色块放到黑色底块上",
+        "observation": "右爪夹着白色块，黑色底块已摆在中央",
+        "arm": "right",
+        "held_object": "白色块",
+        "target_object": "黑色底块"
+      },
+      "legacy_top3": [
+        {
+          "graph_id": "stack_blocks-0003",
+          "node_id": "p05",
+          "title": "把白色块移到底块上方"
+        },
+        {
+          "graph_id": "stack_blocks-0001",
+          "node_id": "p03",
+          "title": "放下白色底座并让出空间"
+        },
+        {
+          "graph_id": "stack_blocks-0003",
+          "node_id": "p04",
+          "title": "右爪抓取白色块"
+        }
+      ],
+      "optimized": {
+        "mode": "action",
+        "results": [
+          {
+            "graph_id": "stack_blocks-0003",
+            "task_name": "积木堆叠",
+            "title": "把白色块移到底块上方",
+            "score": 2.15,
+            "reasons": [
+              "目标 / 阶段文本匹配",
+              "执行前情境匹配",
+              "当前持物与经验持物一致",
+              "目标支撑物与经验一致",
+              "未提供可比本体状态，动作窗口取阶段起点"
+            ],
+            "node_id": "p05",
+            "start_frame": 125,
+            "cue": "右爪夹着白色块，中央深色块上方可用于堆叠。",
+            "action": "右臂抬起白色块并向深色块移动，将白色块对准底块上方后缓慢下降。",
+            "feedback": "白色块已来到深色块上方，夹爪仍围住块体；两块接触处受遮挡。",
+            "chunk": {
+              "id": "stack_blocks-0003:p05:125:135",
+              "url": "/api/chunk?id=stack_blocks-0003%3Ap05%3A125%3A135",
+              "interval": [
+                125,
+                135
+              ],
+              "frequency": 25.0,
+              "action_space": "dual-arx-x5/link6/ee_delta/world/m/rotvec-rad/25hz"
+            },
+            "included_in_context": true
+          }
+        ],
+        "model_context": "{\"purpose\":\"evidence_for_gpt_action_generation\",\"current\":{\"task\":\"stack_blocks\",\"goal\":\"把白色块放到黑色底块上\",\"observation\":\"右爪夹着白色块，黑色底块已摆在中央\",\"stage\":\"\",\"held_object\":\"白色\",\"arm\":\"right\",\"target_object\":\"黑色\"},\"use\":\"Generate a NEW plan or action chunk from the current goal, images and robot state. Use these historical records as examples/evidence and cite source IDs when adopting them. Recorded order is not a required dependency. Ground objects and coordinates in current observations; respect current controller limits. Historical feedback is not a live result and may occur after the short action window. Do not replay reference action rows directly.\",\"memories\":[{\"source\":\"stack_blocks-0003:p05\",\"historical_before\":\"右爪夹着白色块，中央深色块上方可用于堆叠。\",\"subgoal\":\"把白色块移到底块上方\",\"demonstrated_operation\":\"右臂抬起白色块并向深色块移动，将白色块对准底块上方后缓慢下降。\",\"historical_phase_feedback\":\"白色块已来到深色块上方，夹爪仍围住块体；两块接触处受遮挡。\",\"previous\":{\"id\":\"p04\",\"title\":\"右爪抓取白色块\"},\"next\":{\"id\":\"p06\",\"title\":\"松开白色块并转向木纹块\"},\"action_reference\":{\"id\":\"stack_blocks-0003:p05:125:135\",\"url\":\"/api/chunk?id=stack_blocks-0003%3Ap05%3A125%3A135\",\"interval\":[125,135],\"frequency\":25.0,\"action_space\":\"dual-arx-x5/link6/ee_delta/world/m/rotvec-rad/25hz\"},\"evidence_status\":\"phase text is automatically extracted; numerical transition and images are source recordings\"}]}",
+        "warnings": [],
+        "diagnostics": {
+          "method": "field BM25 + explicit conditions + optional start-state distance + diversity",
+          "candidate_count": 1,
+          "retrieved": 1,
+          "packed": 1,
+          "context_chars": 1304,
+          "context_budget_chars": 6000,
+          "context_bytes": 1586,
+          "online_model_calls": 0,
+          "elapsed_ms": 0.24,
+          "score_meaning": "uncalibrated ranking score, not success probability"
+        }
+      }
+    },
+    {
+      "query": {
+        "name": "failure_not_covered",
+        "mode": "action",
+        "task": "stack_blocks",
+        "goal": "重新抓取积木",
+        "observation": "抓取失败，积木仍然在桌面上"
+      },
+      "legacy_top3": [
+        {
+          "graph_id": "stack_blocks-0002",
+          "node_id": "p01",
+          "title": "左爪靠近木纹块"
+        },
+        {
+          "graph_id": "stack_blocks-0000",
+          "node_id": "p01",
+          "title": "右手靠近紫色块"
+        },
+        {
+          "graph_id": "stack_blocks-0001",
+          "node_id": "p07",
+          "title": "右爪抓取木纹块"
+        }
+      ],
+      "optimized": {
+        "mode": "action",
+        "results": [],
+        "model_context": "{\"purpose\":\"evidence_for_gpt_action_generation\",\"current\":{\"task\":\"stack_blocks\",\"goal\":\"重新抓取积木\",\"observation\":\"抓取失败，积木仍然在桌面上\",\"stage\":\"\"},\"use\":\"Generate a NEW plan or action chunk from the current goal, images and robot state. Use these historical records as examples/evidence and cite source IDs when adopting them. Recorded order is not a required dependency. Ground objects and coordinates in current observations; respect current controller limits. Historical feedback is not a live result and may occur after the short action window. Do not replay reference action rows directly.\",\"memories\":[]}",
+        "warnings": [
+          "库中没有匹配的失败前置情境；未把普通成功示范当作恢复经验。"
+        ],
+        "diagnostics": {
+          "method": "field BM25 + explicit conditions + optional start-state distance + diversity",
+          "candidate_count": 0,
+          "retrieved": 0,
+          "packed": 0,
+          "context_chars": 602,
+          "context_budget_chars": 6000,
+          "context_bytes": 640,
+          "online_model_calls": 0,
+          "elapsed_ms": 0.1,
+          "score_meaning": "uncalibrated ranking score, not success probability"
+        }
+      }
+    },
+    {
+      "query": {
+        "name": "white_on_black",
+        "mode": "action",
+        "task": "stack_blocks",
+        "goal": "把白色块放到黑色底块上",
+        "observation": "右爪夹着白色块，黑色底块已摆在中央",
+        "arm": "right",
+        "held_object": "白色块",
+        "target_object": "黑色底块",
+        "include_actions": true
+      },
+      "optimized": {
+        "mode": "action",
+        "results": [
+          {
+            "graph_id": "stack_blocks-0003",
+            "task_name": "积木堆叠",
+            "title": "把白色块移到底块上方",
+            "score": 2.15,
+            "reasons": [
+              "目标 / 阶段文本匹配",
+              "执行前情境匹配",
+              "当前持物与经验持物一致",
+              "目标支撑物与经验一致",
+              "未提供可比本体状态，动作窗口取阶段起点"
+            ],
+            "node_id": "p05",
+            "start_frame": 125,
+            "cue": "右爪夹着白色块，中央深色块上方可用于堆叠。",
+            "action": "右臂抬起白色块并向深色块移动，将白色块对准底块上方后缓慢下降。",
+            "feedback": "白色块已来到深色块上方，夹爪仍围住块体；两块接触处受遮挡。",
+            "chunk": {
+              "id": "stack_blocks-0003:p05:125:135",
+              "url": "/api/chunk?id=stack_blocks-0003%3Ap05%3A125%3A135",
+              "interval": [
+                125,
+                135
+              ],
+              "frequency": 25.0,
+              "action_space": "dual-arx-x5/link6/ee_delta/world/m/rotvec-rad/25hz"
+            },
+            "included_in_context": true
+          }
+        ],
+        "model_context": "{\"purpose\":\"evidence_for_gpt_action_generation\",\"current\":{\"task\":\"stack_blocks\",\"goal\":\"把白色块放到黑色底块上\",\"observation\":\"右爪夹着白色块，黑色底块已摆在中央\",\"stage\":\"\",\"held_object\":\"白色\",\"arm\":\"right\",\"target_object\":\"黑色\"},\"use\":\"Generate a NEW plan or action chunk from the current goal, images and robot state. Use these historical records as examples/evidence and cite source IDs when adopting them. Recorded order is not a required dependency. Ground objects and coordinates in current observations; respect current controller limits. Historical feedback is not a live result and may occur after the short action window. Do not replay reference action rows directly.\",\"memories\":[{\"source\":\"stack_blocks-0003:p05\",\"historical_before\":\"右爪夹着白色块，中央深色块上方可用于堆叠。\",\"subgoal\":\"把白色块移到底块上方\",\"demonstrated_operation\":\"右臂抬起白色块并向深色块移动，将白色块对准底块上方后缓慢下降。\",\"historical_phase_feedback\":\"白色块已来到深色块上方，夹爪仍围住块体；两块接触处受遮挡。\",\"previous\":{\"id\":\"p04\",\"title\":\"右爪抓取白色块\"},\"next\":{\"id\":\"p06\",\"title\":\"松开白色块并转向木纹块\"},\"action_reference\":{\"id\":\"stack_blocks-0003:p05:125:135\",\"url\":\"/api/chunk?id=stack_blocks-0003%3Ap05%3A125%3A135\",\"interval\":[125,135],\"frequency\":25.0,\"action_space\":\"dual-arx-x5/link6/ee_delta/world/m/rotvec-rad/25hz\"},\"evidence_status\":\"phase text is automatically extracted; numerical transition and images are source recordings\",\"transition\":{\"id\":\"stack_blocks-0003:p05:125:135\",\"graph_id\":\"stack_blocks-0003\",\"node_id\":\"p05\",\"source_sha256\":\"f08121cabeb10e92d1af7c2da14fff3353b709b746da36e89bf0e1f6bf6c7623\",\"interval\":[125,135],\"frequency\":25.0,\"action_space\":\"dual-arx-x5/link6/ee_delta/world/m/rotvec-rad/25hz\",\"duration_s\":0.4,\"columns\":[\"left_dx_m\",\"left_dy_m\",\"left_dz_m\",\"left_rx_rad\",\"left_ry_rad\",\"left_rz_rad\",\"left_gripper_target\",\"right_dx_m\",\"right_dy_m\",\"right_dz_m\",\"right_rx_rad\",\"right_ry_rad\",\"right_rz_rad\",\"right_gripper_target\"],\"before\":{\"frame\":125,\"state\":{\"left_ee_pose\":[-0.299499,-0.352295,0.921632,0.707116,-0.000372,6.2e-05,0.707097],\"left_ee_joint_state\":[1.0],\"right_ee_pose\":[0.135997,-0.071241,0.925511,0.4998,-0.500147,0.500087,0.499965],\"right_ee_joint_state\":[0.298714]},\"images\":{\"cam_head\":\"/api/frame?id=stack_blocks-0003&frame=125&camera=cam_head\",\"cam_left_wrist\":\"/api/frame?id=stack_blocks-0003&frame=125&camera=cam_left_wrist\",\"cam_right_wrist\":\"/api/frame?id=stack_blocks-0003&frame=125&camera=cam_right_wrist\"}},\"actions\":[[2.9e-05,-0.0,-0.0,6e-06,3e-06,-0.000301,1.0,7.4e-05,4.1e-05,0.0,3.8e-05,8e-06,-0.000302,0.298714],[-0.0,-0.0,-0.0,5e-06,3e-06,1e-06,1.0,-4e-05,-9e-06,-0.0,3.8e-05,-1e-05,1.5e-05,0.298714],[-0.0,-0.0,-0.0,4e-06,2e-06,1e-06,1.0,-0.000209,-0.000109,5.6e-05,-0.000187,-0.000134,-0.000265,0.298714],[-0.0,-0.0,-0.0,3e-06,2e-06,1e-06,1.0,-0.00561,-0.002977,0.002536,-0.001281,-0.001008,-0.001216,0.298714],[-0.0,-0.0,-0.0,3e-06,1e-06,1e-06,1.0,-0.012766,-0.007204,0.006299,-0.000927,-0.000896,-0.00074,0.298714],[-0.0,-0.0,-0.0,2e-06,1e-06,0.0,1.0,-0.017665,-0.011212,0.009183,-0.000527,-0.000764,-0.000327,0.298714],[-0.0,-0.0,-0.0,2e-06,1e-06,0.0,1.0,-0.020233,-0.014897,0.011158,-0.000178,-0.000628,-7e-06,0.298714],[-0.0,-0.0,-0.0,1e-06,1e-06,0.0,1.0,-0.020617,-0.017884,0.012226,0.000115,-0.000459,0.000248,0.298714],[-0.0,-0.0,-0.0,1e-06,1e-06,0.0,1.0,-0.019146,-0.019665,0.012377,0.000316,-0.000273,0.000456,0.299591],[-0.0,-0.0,-0.0,1e-06,1e-06,0.0,1.0,-0.016277,-0.019747,0.011594,0.000409,-9.6e-05,0.000621,0.301826]],\"after\":{\"frame\":135,\"state\":{\"left_ee_pose\":[-0.299499,-0.352296,0.92163,0.707114,-0.000357,5.8e-05,0.7071],\"left_ee_joint_state\":[1.0],\"right_ee_pose\":[0.023421,-0.164989,0.990942,0.500624,-0.50145,0.499871,0.498049],\"right_ee_joint_state\":[0.301826]},\"images\":{\"cam_head\":\"/api/frame?id=stack_blocks-0003&frame=135&camera=cam_head\",\"cam_left_wrist\":\"/api/frame?id=stack_blocks-0003&frame=135&camera=cam_left_wrist\",\"cam_right_wrist\":\"/api/frame?id=stack_blocks-0003&frame=135&camera=cam_right_wrist\"}},\"measured_summary\":{\"left\":{\"observed_xyz_change_m\":[0.0,-1e-06,-2e-06],\"max_command_translation_m\":2.9e-05,\"gripper_command_start_end\":[1.0,1.0]},\"right\":{\"observed_xyz_change_m\":[-0.112576,-0.093748,0.065431],\"max_command_translation_m\":0.030108,\"gripper_command_start_end\":[0.298714,0.301826]}},\"semantics\":\"Recorded reference, not an executable plan for the current scene. First delta is from observed start pose; later deltas are from previous command target. Poses: xyz+wxyz; rotations: world-frame rotvec radians. Gripper state is command-side, not grasp/contact evidence.\",\"task_success\":null}}]}",
+        "warnings": [],
+        "diagnostics": {
+          "method": "field BM25 + explicit conditions + optional start-state distance + diversity",
+          "candidate_count": 1,
+          "retrieved": 1,
+          "packed": 1,
+          "context_chars": 4476,
+          "context_budget_chars": 6000,
+          "context_bytes": 4758,
+          "online_model_calls": 0,
+          "elapsed_ms": 136.89,
+          "score_meaning": "uncalibrated ranking score, not success probability"
+        }
+      }
+    }
+  ]
+}

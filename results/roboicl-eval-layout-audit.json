@@ -1,0 +1,61 @@
+{
+  "repository": "RoboDojo-Benchmark/RoboDojo",
+  "revision": "0a709fe7863f6c869a8d141676585a883fce4270",
+  "scope": "nine selected layout files only; not complete assets",
+  "files": [
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/cover_blocks_2.json",
+      "remote_sha256": "928d04a3aca4af63c2ef66ecef79836a355579b8f06d2891af759e9de92e4e41",
+      "local_sha256": "928d04a3aca4af63c2ef66ecef79836a355579b8f06d2891af759e9de92e4e41",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/cover_blocks_3.json",
+      "remote_sha256": "10a84eed03be80f3ba31bca0cf07c96f34a7143b0670ba0262957add36a1161c",
+      "local_sha256": "10a84eed03be80f3ba31bca0cf07c96f34a7143b0670ba0262957add36a1161c",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/cover_blocks_4.json",
+      "remote_sha256": "928d04a3aca4af63c2ef66ecef79836a355579b8f06d2891af759e9de92e4e41",
+      "local_sha256": "928d04a3aca4af63c2ef66ecef79836a355579b8f06d2891af759e9de92e4e41",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/deposit_coin_2.json",
+      "remote_sha256": "cead76f03f6c425eae5bb486a210a346d1d1e6f681774d78b363098393485b2e",
+      "local_sha256": "cead76f03f6c425eae5bb486a210a346d1d1e6f681774d78b363098393485b2e",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/deposit_coin_3.json",
+      "remote_sha256": "d86c143d04dad41b4770be22527305df478e17838c7224c656b56677d75c7549",
+      "local_sha256": "d86c143d04dad41b4770be22527305df478e17838c7224c656b56677d75c7549",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/deposit_coin_4.json",
+      "remote_sha256": "6b17a2d69fae69ccefc6ff40715bbb5f1953dc48d80ea5c0f25861107b4a480d",
+      "local_sha256": "6b17a2d69fae69ccefc6ff40715bbb5f1953dc48d80ea5c0f25861107b4a480d",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/put_bottles_into_dustbin_2.json",
+      "remote_sha256": "7110decf67ccb6d77942719bf2f79d567c5d1d080413d2c713d3b41e691c11fe",
+      "local_sha256": "7110decf67ccb6d77942719bf2f79d567c5d1d080413d2c713d3b41e691c11fe",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/put_bottles_into_dustbin_3.json",
+      "remote_sha256": "659a6fc1bffc692e8e61d07544d1c5145a3c17e8d8e75fc4af543b1a9fba41f5",
+      "local_sha256": "659a6fc1bffc692e8e61d07544d1c5145a3c17e8d8e75fc4af543b1a9fba41f5",
+      "match": true
+    },
+    {
+      "path": "Assets/Eval_Layout/RoboDojo/arx_x5/0/put_bottles_into_dustbin_4.json",
+      "remote_sha256": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695",
+      "local_sha256": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695",
+      "match": true
+    }
+  ]
+}

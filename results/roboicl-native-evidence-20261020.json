@@ -1,0 +1,621 @@
+{
+  "scope": "Small pilot; development and validation must be reported separately",
+  "trials": [
+    {
+      "summary": {
+        "run": "cover_blocks-l2",
+        "mode": "dual",
+        "task": "cover_blocks",
+        "evaluation_role": "validation",
+        "layout": 2,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "runs/roboicl-public-3task-20261020-r4/cover_blocks-l2/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l2/_result.json",
+        "completed_model_calls": 28,
+        "attempted_model_calls": 28,
+        "known_total_tokens": 3041165,
+        "calls_without_usage": 0,
+        "latest_observed_step": 398,
+        "latest_decision_step": 396,
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 2885.980003570963
+        },
+        "manual_stop": null
+      },
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "long_k": 12,
+      "short_k": 12,
+      "selector": "scene-phase-transition-v3",
+      "corpus_sha256": "3e0c84a588ff77319904cdd7ac5b28c174868c03db731840ea6e943b30212aa9",
+      "selected_source_sha256": "2fa920f75e3d126c811ea3eb0145325ce504d3d4b2ba08488a61531576bad74a",
+      "layout_sha256": "928d04a3aca4af63c2ef66ecef79836a355579b8f06d2891af759e9de92e4e41",
+      "roborag_commit": "79cbc94336fbff1d6e93b2e6a14255f5a36490aa",
+      "source_sha256": {
+        "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+        "src/roborag/robodojo_policy.py": "987497ef49737e584118cda4c6ec450e307e3ca1c52e246212c183131dc4026a",
+        "src/roborag/memory.py": "698653293df1ee710086cd1cd2d5e02beda69cec46785fff147d799c45401308",
+        "src/roborag/__init__.py": "9c1209b76965c67132f160422642d52c9456e7c86dbb7bdb3e1158f68ab77583",
+        "src/roborag/demo.py": "fb3175289bff206a6302892059bc53ca9b1a314c3ead803bbcfaa9eb8601c1ab",
+        "src/roborag/schema.py": "3b741853b4c1134bf939665ce4aa718e0ac698a1273ee09a5cc8c019d7f0ac16",
+        "src/roborag/retrieval.py": "d7fcd1920fa7d1d43820f83b0183d3ae062fb61b57a9ed0f5bd57fd2657966da",
+        "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365",
+        "src/roborag/transports/codex_cli.py": "6e6d541a09273392bf717c7c69f4a776752b136a7f326fc477da03df6488f505",
+        "src/roborag/transports/responses_bridge.py": "40ccdc6e044ff6768a66cc78f2920b73458404d7d6c0f279cb0ae0f126c8d505",
+        "src/roborag/transports/__init__.py": "256cddee3d9ea5afd76357cc23b1b81d240b07b54fa75537373dce4aa75f09ae",
+        "scripts/fetch_demonstrations.py": "3d2d68a2227ac6375c51a81fb8c6b343314fa5abfe27e12406b2295648681616",
+        "scripts/build_visual_bank.py": "0939d03dae78f4edc47ba740d6af2257d0f0d59906ff011b411896c2a585aa26",
+        "scripts/evaluate_roboicl_suite.py": "d4e006133be8538bdcc9cf4ee134bbd40366539e85dc27dffa6e728918fdcd72",
+        "scripts/export_evidence.py": "27af88da0fcc662d3c4d0d8bc5022a954d556f5eaf3f13a4e9f160f0dabb55c2",
+        "scripts/import_roboicl_baseline.py": "f1429c62b0a6135ae9e8656608d4465c6f8d85b0e595f2a9b771622bdbadc8e4",
+        "scripts/summarize_runs.py": "8807519850cf7b812f2aa33e455efdd16f6d2c645098f97fce08e81d1af4573c",
+        "scripts/run_episode.py": "b75c9c47228e7fa4f282327538d37330246a7a4d298e67806c440d181174330e",
+        "scripts/build_corpus.py": "5f2429ebf19385bc547f7e7d7aeb4149ff9d136bd7ab7fc3bb378b1d057403fd"
+      },
+      "source_hash_note": "Recorded by launcher",
+      "upstream_dependencies": {
+        "schema": "roboicl.upstream.v2",
+        "packages": [
+          {
+            "name": "RoboDojo",
+            "path": "third_party/RoboDojo",
+            "commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942"
+          },
+          {
+            "name": "XPolicyLab",
+            "path": "third_party/XPolicyLab",
+            "commit": "fa431ecd893ee706883e64fe5fe1464ec8cd928d"
+          },
+          {
+            "name": "IsaacLab",
+            "path": "third_party/IsaacLab",
+            "commit": "afca7b09d60d8beb9c1cb28b43066499940b969b"
+          },
+          {
+            "name": "cuRobo",
+            "path": "third_party/curobo",
+            "commit": "895c6517243f8cb091c73c018c8167192d39599a"
+          }
+        ]
+      },
+      "roboicl_commit": "07d6e1c5387710e2de9240724b0015bbf0c95c6e",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit",
+      "native_result": {
+        "success_rate": 1.0,
+        "eval_time": 1,
+        "score": 100.0,
+        "details": {
+          "0": {
+            "layout_id": 2,
+            "success": true,
+            "score": 1.0
+          }
+        }
+      },
+      "native_result_sha256": "cc6468b7f7528bd52d7561d2f877115ef92241bd4a3fd3868f48e41f5da17fd0",
+      "videos": [
+        "runs/roboicl-public-3task-20261020-r4/cover_blocks-l2/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l2/episode_0000000_cam_left_wrist_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/cover_blocks-l2/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l2/episode_0000000_cam_head_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/cover_blocks-l2/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l2/episode_0000000_cam_right_wrist_success.mp4"
+      ]
+    },
+    {
+      "summary": {
+        "run": "cover_blocks-l3",
+        "mode": "dual",
+        "task": "cover_blocks",
+        "evaluation_role": "validation",
+        "layout": 3,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "runs/roboicl-public-3task-20261020-r4/cover_blocks-l3/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l3/_result.json",
+        "completed_model_calls": 29,
+        "attempted_model_calls": 29,
+        "known_total_tokens": 3162108,
+        "calls_without_usage": 0,
+        "latest_observed_step": 424,
+        "latest_decision_step": 414,
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 2620.3579869819805
+        },
+        "manual_stop": null
+      },
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "long_k": 12,
+      "short_k": 12,
+      "selector": "scene-phase-transition-v3",
+      "corpus_sha256": "3e0c84a588ff77319904cdd7ac5b28c174868c03db731840ea6e943b30212aa9",
+      "selected_source_sha256": "2fa920f75e3d126c811ea3eb0145325ce504d3d4b2ba08488a61531576bad74a",
+      "layout_sha256": "10a84eed03be80f3ba31bca0cf07c96f34a7143b0670ba0262957add36a1161c",
+      "roborag_commit": "79cbc94336fbff1d6e93b2e6a14255f5a36490aa",
+      "source_sha256": {
+        "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+        "src/roborag/robodojo_policy.py": "987497ef49737e584118cda4c6ec450e307e3ca1c52e246212c183131dc4026a",
+        "src/roborag/memory.py": "698653293df1ee710086cd1cd2d5e02beda69cec46785fff147d799c45401308",
+        "src/roborag/__init__.py": "9c1209b76965c67132f160422642d52c9456e7c86dbb7bdb3e1158f68ab77583",
+        "src/roborag/demo.py": "fb3175289bff206a6302892059bc53ca9b1a314c3ead803bbcfaa9eb8601c1ab",
+        "src/roborag/schema.py": "3b741853b4c1134bf939665ce4aa718e0ac698a1273ee09a5cc8c019d7f0ac16",
+        "src/roborag/retrieval.py": "d7fcd1920fa7d1d43820f83b0183d3ae062fb61b57a9ed0f5bd57fd2657966da",
+        "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365",
+        "src/roborag/transports/codex_cli.py": "6e6d541a09273392bf717c7c69f4a776752b136a7f326fc477da03df6488f505",
+        "src/roborag/transports/responses_bridge.py": "40ccdc6e044ff6768a66cc78f2920b73458404d7d6c0f279cb0ae0f126c8d505",
+        "src/roborag/transports/__init__.py": "256cddee3d9ea5afd76357cc23b1b81d240b07b54fa75537373dce4aa75f09ae",
+        "scripts/fetch_demonstrations.py": "3d2d68a2227ac6375c51a81fb8c6b343314fa5abfe27e12406b2295648681616",
+        "scripts/render_evaluation_canvas.py": "2303bb53c9e33c445494e99d9b056cb5dbb26716774ad9fe0a4ff534a1f55493",
+        "scripts/build_visual_bank.py": "0939d03dae78f4edc47ba740d6af2257d0f0d59906ff011b411896c2a585aa26",
+        "scripts/evaluate_roboicl_suite.py": "d4e006133be8538bdcc9cf4ee134bbd40366539e85dc27dffa6e728918fdcd72",
+        "scripts/audit_suite_retrieval.py": "5ed2edae15c1700d7bac980ff9ad9a642c4344a8111d4d2ac6b86eabf34f1ed9",
+        "scripts/export_evidence.py": "27af88da0fcc662d3c4d0d8bc5022a954d556f5eaf3f13a4e9f160f0dabb55c2",
+        "scripts/import_roboicl_baseline.py": "f1429c62b0a6135ae9e8656608d4465c6f8d85b0e595f2a9b771622bdbadc8e4",
+        "scripts/summarize_runs.py": "8807519850cf7b812f2aa33e455efdd16f6d2c645098f97fce08e81d1af4573c",
+        "scripts/run_episode.py": "b75c9c47228e7fa4f282327538d37330246a7a4d298e67806c440d181174330e",
+        "scripts/build_corpus.py": "5f2429ebf19385bc547f7e7d7aeb4149ff9d136bd7ab7fc3bb378b1d057403fd"
+      },
+      "source_hash_note": "Recorded by launcher",
+      "upstream_dependencies": {
+        "schema": "roboicl.upstream.v2",
+        "packages": [
+          {
+            "name": "RoboDojo",
+            "path": "third_party/RoboDojo",
+            "commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942"
+          },
+          {
+            "name": "XPolicyLab",
+            "path": "third_party/XPolicyLab",
+            "commit": "fa431ecd893ee706883e64fe5fe1464ec8cd928d"
+          },
+          {
+            "name": "IsaacLab",
+            "path": "third_party/IsaacLab",
+            "commit": "afca7b09d60d8beb9c1cb28b43066499940b969b"
+          },
+          {
+            "name": "cuRobo",
+            "path": "third_party/curobo",
+            "commit": "895c6517243f8cb091c73c018c8167192d39599a"
+          }
+        ]
+      },
+      "roboicl_commit": "07d6e1c5387710e2de9240724b0015bbf0c95c6e",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit",
+      "native_result": {
+        "success_rate": 1.0,
+        "eval_time": 1,
+        "score": 100.0,
+        "details": {
+          "0": {
+            "layout_id": 3,
+            "success": true,
+            "score": 1.0
+          }
+        }
+      },
+      "native_result_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+      "videos": [
+        "runs/roboicl-public-3task-20261020-r4/cover_blocks-l3/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l3/episode_0000000_cam_left_wrist_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/cover_blocks-l3/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l3/episode_0000000_cam_head_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/cover_blocks-l3/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l3/episode_0000000_cam_right_wrist_success.mp4"
+      ]
+    },
+    {
+      "summary": {
+        "run": "deposit_coin-l2",
+        "mode": "dual",
+        "task": "deposit_coin",
+        "evaluation_role": "validation",
+        "layout": 2,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "runs/roboicl-public-3task-20261020-r4/deposit_coin-l2/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l2/_result.json",
+        "completed_model_calls": 39,
+        "attempted_model_calls": 39,
+        "known_total_tokens": 3875947,
+        "calls_without_usage": 0,
+        "latest_observed_step": 191,
+        "latest_decision_step": 189,
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 3861.9384472329984
+        },
+        "manual_stop": null
+      },
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "long_k": 12,
+      "short_k": 12,
+      "selector": "scene-phase-transition-v3",
+      "corpus_sha256": "1a4ab4a110f63add919b16298d38aa213369ad7cd7ef7b2109ac4f763f61d01f",
+      "selected_source_sha256": "b9093beb1142f1e15ad38003a82abdc85f96417425193b0b5c7d9128ae90cd29",
+      "layout_sha256": "cead76f03f6c425eae5bb486a210a346d1d1e6f681774d78b363098393485b2e",
+      "roborag_commit": "79cbc94336fbff1d6e93b2e6a14255f5a36490aa",
+      "source_sha256": {
+        "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+        "src/roborag/robodojo_policy.py": "987497ef49737e584118cda4c6ec450e307e3ca1c52e246212c183131dc4026a",
+        "src/roborag/memory.py": "698653293df1ee710086cd1cd2d5e02beda69cec46785fff147d799c45401308",
+        "src/roborag/__init__.py": "9c1209b76965c67132f160422642d52c9456e7c86dbb7bdb3e1158f68ab77583",
+        "src/roborag/demo.py": "fb3175289bff206a6302892059bc53ca9b1a314c3ead803bbcfaa9eb8601c1ab",
+        "src/roborag/schema.py": "3b741853b4c1134bf939665ce4aa718e0ac698a1273ee09a5cc8c019d7f0ac16",
+        "src/roborag/retrieval.py": "d7fcd1920fa7d1d43820f83b0183d3ae062fb61b57a9ed0f5bd57fd2657966da",
+        "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365",
+        "src/roborag/transports/codex_cli.py": "6e6d541a09273392bf717c7c69f4a776752b136a7f326fc477da03df6488f505",
+        "src/roborag/transports/responses_bridge.py": "40ccdc6e044ff6768a66cc78f2920b73458404d7d6c0f279cb0ae0f126c8d505",
+        "src/roborag/transports/__init__.py": "256cddee3d9ea5afd76357cc23b1b81d240b07b54fa75537373dce4aa75f09ae",
+        "scripts/fetch_demonstrations.py": "3d2d68a2227ac6375c51a81fb8c6b343314fa5abfe27e12406b2295648681616",
+        "scripts/build_visual_bank.py": "0939d03dae78f4edc47ba740d6af2257d0f0d59906ff011b411896c2a585aa26",
+        "scripts/evaluate_roboicl_suite.py": "d4e006133be8538bdcc9cf4ee134bbd40366539e85dc27dffa6e728918fdcd72",
+        "scripts/export_evidence.py": "27af88da0fcc662d3c4d0d8bc5022a954d556f5eaf3f13a4e9f160f0dabb55c2",
+        "scripts/import_roboicl_baseline.py": "f1429c62b0a6135ae9e8656608d4465c6f8d85b0e595f2a9b771622bdbadc8e4",
+        "scripts/summarize_runs.py": "8807519850cf7b812f2aa33e455efdd16f6d2c645098f97fce08e81d1af4573c",
+        "scripts/run_episode.py": "b75c9c47228e7fa4f282327538d37330246a7a4d298e67806c440d181174330e",
+        "scripts/build_corpus.py": "5f2429ebf19385bc547f7e7d7aeb4149ff9d136bd7ab7fc3bb378b1d057403fd"
+      },
+      "source_hash_note": "Recorded by launcher",
+      "upstream_dependencies": {
+        "schema": "roboicl.upstream.v2",
+        "packages": [
+          {
+            "name": "RoboDojo",
+            "path": "third_party/RoboDojo",
+            "commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942"
+          },
+          {
+            "name": "XPolicyLab",
+            "path": "third_party/XPolicyLab",
+            "commit": "fa431ecd893ee706883e64fe5fe1464ec8cd928d"
+          },
+          {
+            "name": "IsaacLab",
+            "path": "third_party/IsaacLab",
+            "commit": "afca7b09d60d8beb9c1cb28b43066499940b969b"
+          },
+          {
+            "name": "cuRobo",
+            "path": "third_party/curobo",
+            "commit": "895c6517243f8cb091c73c018c8167192d39599a"
+          }
+        ]
+      },
+      "roboicl_commit": "07d6e1c5387710e2de9240724b0015bbf0c95c6e",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit",
+      "native_result": {
+        "success_rate": 1.0,
+        "eval_time": 1,
+        "score": 100.0,
+        "details": {
+          "0": {
+            "layout_id": 2,
+            "success": true,
+            "score": 1.0
+          }
+        }
+      },
+      "native_result_sha256": "cc6468b7f7528bd52d7561d2f877115ef92241bd4a3fd3868f48e41f5da17fd0",
+      "videos": [
+        "runs/roboicl-public-3task-20261020-r4/deposit_coin-l2/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l2/episode_0000000_cam_left_wrist_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/deposit_coin-l2/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l2/episode_0000000_cam_head_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/deposit_coin-l2/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l2/episode_0000000_cam_right_wrist_success.mp4"
+      ]
+    },
+    {
+      "summary": {
+        "run": "deposit_coin-l3",
+        "mode": "dual",
+        "task": "deposit_coin",
+        "evaluation_role": "validation",
+        "layout": 3,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "runs/roboicl-public-3task-20261020-r4/deposit_coin-l3/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l3/_result.json",
+        "completed_model_calls": 41,
+        "attempted_model_calls": 41,
+        "known_total_tokens": 4108648,
+        "calls_without_usage": 0,
+        "latest_observed_step": 194,
+        "latest_decision_step": 193,
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 4320.650832582032
+        },
+        "manual_stop": null
+      },
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "long_k": 12,
+      "short_k": 12,
+      "selector": "scene-phase-transition-v3",
+      "corpus_sha256": "1a4ab4a110f63add919b16298d38aa213369ad7cd7ef7b2109ac4f763f61d01f",
+      "selected_source_sha256": "b9093beb1142f1e15ad38003a82abdc85f96417425193b0b5c7d9128ae90cd29",
+      "layout_sha256": "d86c143d04dad41b4770be22527305df478e17838c7224c656b56677d75c7549",
+      "roborag_commit": "79cbc94336fbff1d6e93b2e6a14255f5a36490aa",
+      "source_sha256": {
+        "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+        "src/roborag/robodojo_policy.py": "987497ef49737e584118cda4c6ec450e307e3ca1c52e246212c183131dc4026a",
+        "src/roborag/memory.py": "698653293df1ee710086cd1cd2d5e02beda69cec46785fff147d799c45401308",
+        "src/roborag/__init__.py": "9c1209b76965c67132f160422642d52c9456e7c86dbb7bdb3e1158f68ab77583",
+        "src/roborag/demo.py": "fb3175289bff206a6302892059bc53ca9b1a314c3ead803bbcfaa9eb8601c1ab",
+        "src/roborag/schema.py": "3b741853b4c1134bf939665ce4aa718e0ac698a1273ee09a5cc8c019d7f0ac16",
+        "src/roborag/retrieval.py": "d7fcd1920fa7d1d43820f83b0183d3ae062fb61b57a9ed0f5bd57fd2657966da",
+        "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365",
+        "src/roborag/transports/codex_cli.py": "6e6d541a09273392bf717c7c69f4a776752b136a7f326fc477da03df6488f505",
+        "src/roborag/transports/responses_bridge.py": "40ccdc6e044ff6768a66cc78f2920b73458404d7d6c0f279cb0ae0f126c8d505",
+        "src/roborag/transports/__init__.py": "256cddee3d9ea5afd76357cc23b1b81d240b07b54fa75537373dce4aa75f09ae",
+        "scripts/fetch_demonstrations.py": "3d2d68a2227ac6375c51a81fb8c6b343314fa5abfe27e12406b2295648681616",
+        "scripts/render_evaluation_canvas.py": "2303bb53c9e33c445494e99d9b056cb5dbb26716774ad9fe0a4ff534a1f55493",
+        "scripts/build_visual_bank.py": "0939d03dae78f4edc47ba740d6af2257d0f0d59906ff011b411896c2a585aa26",
+        "scripts/evaluate_roboicl_suite.py": "d4e006133be8538bdcc9cf4ee134bbd40366539e85dc27dffa6e728918fdcd72",
+        "scripts/audit_suite_retrieval.py": "5ed2edae15c1700d7bac980ff9ad9a642c4344a8111d4d2ac6b86eabf34f1ed9",
+        "scripts/export_evidence.py": "27af88da0fcc662d3c4d0d8bc5022a954d556f5eaf3f13a4e9f160f0dabb55c2",
+        "scripts/import_roboicl_baseline.py": "f1429c62b0a6135ae9e8656608d4465c6f8d85b0e595f2a9b771622bdbadc8e4",
+        "scripts/summarize_runs.py": "8807519850cf7b812f2aa33e455efdd16f6d2c645098f97fce08e81d1af4573c",
+        "scripts/run_episode.py": "b75c9c47228e7fa4f282327538d37330246a7a4d298e67806c440d181174330e",
+        "scripts/build_corpus.py": "5f2429ebf19385bc547f7e7d7aeb4149ff9d136bd7ab7fc3bb378b1d057403fd"
+      },
+      "source_hash_note": "Recorded by launcher",
+      "upstream_dependencies": {
+        "schema": "roboicl.upstream.v2",
+        "packages": [
+          {
+            "name": "RoboDojo",
+            "path": "third_party/RoboDojo",
+            "commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942"
+          },
+          {
+            "name": "XPolicyLab",
+            "path": "third_party/XPolicyLab",
+            "commit": "fa431ecd893ee706883e64fe5fe1464ec8cd928d"
+          },
+          {
+            "name": "IsaacLab",
+            "path": "third_party/IsaacLab",
+            "commit": "afca7b09d60d8beb9c1cb28b43066499940b969b"
+          },
+          {
+            "name": "cuRobo",
+            "path": "third_party/curobo",
+            "commit": "895c6517243f8cb091c73c018c8167192d39599a"
+          }
+        ]
+      },
+      "roboicl_commit": "07d6e1c5387710e2de9240724b0015bbf0c95c6e",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit",
+      "native_result": {
+        "success_rate": 1.0,
+        "eval_time": 1,
+        "score": 100.0,
+        "details": {
+          "0": {
+            "layout_id": 3,
+            "success": true,
+            "score": 1.0
+          }
+        }
+      },
+      "native_result_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+      "videos": [
+        "runs/roboicl-public-3task-20261020-r4/deposit_coin-l3/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l3/episode_0000000_cam_left_wrist_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/deposit_coin-l3/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l3/episode_0000000_cam_head_success.mp4",
+        "runs/roboicl-public-3task-20261020-r4/deposit_coin-l3/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l3/episode_0000000_cam_right_wrist_success.mp4"
+      ]
+    },
+    {
+      "summary": {
+        "run": "put_bottles_into_dustbin-l2",
+        "mode": "dual",
+        "task": "put_bottles_into_dustbin",
+        "evaluation_role": "validation",
+        "layout": 2,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 40.0,
+        "success_rate": 0.0,
+        "native_result": "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l2/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l2/_result.json",
+        "completed_model_calls": 72,
+        "attempted_model_calls": 72,
+        "known_total_tokens": 8212711,
+        "calls_without_usage": 0,
+        "latest_observed_step": 700,
+        "latest_decision_step": 690,
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 6993.251277549018
+        },
+        "manual_stop": null
+      },
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "long_k": 12,
+      "short_k": 12,
+      "selector": "scene-phase-transition-v3",
+      "corpus_sha256": "31d2e92116d9bba2c834c3cf8fbf52a203504b703100bde2798700451f6578a3",
+      "selected_source_sha256": "e110130f137a2006939c47707ceee2cac489658436823555cce560545d2086b0",
+      "layout_sha256": "7110decf67ccb6d77942719bf2f79d567c5d1d080413d2c713d3b41e691c11fe",
+      "roborag_commit": "79cbc94336fbff1d6e93b2e6a14255f5a36490aa",
+      "source_sha256": {
+        "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+        "src/roborag/robodojo_policy.py": "987497ef49737e584118cda4c6ec450e307e3ca1c52e246212c183131dc4026a",
+        "src/roborag/memory.py": "698653293df1ee710086cd1cd2d5e02beda69cec46785fff147d799c45401308",
+        "src/roborag/__init__.py": "9c1209b76965c67132f160422642d52c9456e7c86dbb7bdb3e1158f68ab77583",
+        "src/roborag/demo.py": "fb3175289bff206a6302892059bc53ca9b1a314c3ead803bbcfaa9eb8601c1ab",
+        "src/roborag/schema.py": "3b741853b4c1134bf939665ce4aa718e0ac698a1273ee09a5cc8c019d7f0ac16",
+        "src/roborag/retrieval.py": "d7fcd1920fa7d1d43820f83b0183d3ae062fb61b57a9ed0f5bd57fd2657966da",
+        "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365",
+        "src/roborag/transports/codex_cli.py": "6e6d541a09273392bf717c7c69f4a776752b136a7f326fc477da03df6488f505",
+        "src/roborag/transports/responses_bridge.py": "40ccdc6e044ff6768a66cc78f2920b73458404d7d6c0f279cb0ae0f126c8d505",
+        "src/roborag/transports/__init__.py": "256cddee3d9ea5afd76357cc23b1b81d240b07b54fa75537373dce4aa75f09ae",
+        "scripts/fetch_demonstrations.py": "3d2d68a2227ac6375c51a81fb8c6b343314fa5abfe27e12406b2295648681616",
+        "scripts/render_evaluation_canvas.py": "2303bb53c9e33c445494e99d9b056cb5dbb26716774ad9fe0a4ff534a1f55493",
+        "scripts/build_visual_bank.py": "0939d03dae78f4edc47ba740d6af2257d0f0d59906ff011b411896c2a585aa26",
+        "scripts/evaluate_roboicl_suite.py": "d4e006133be8538bdcc9cf4ee134bbd40366539e85dc27dffa6e728918fdcd72",
+        "scripts/audit_suite_retrieval.py": "5ed2edae15c1700d7bac980ff9ad9a642c4344a8111d4d2ac6b86eabf34f1ed9",
+        "scripts/export_evidence.py": "27af88da0fcc662d3c4d0d8bc5022a954d556f5eaf3f13a4e9f160f0dabb55c2",
+        "scripts/import_roboicl_baseline.py": "f1429c62b0a6135ae9e8656608d4465c6f8d85b0e595f2a9b771622bdbadc8e4",
+        "scripts/summarize_runs.py": "8807519850cf7b812f2aa33e455efdd16f6d2c645098f97fce08e81d1af4573c",
+        "scripts/run_episode.py": "b75c9c47228e7fa4f282327538d37330246a7a4d298e67806c440d181174330e",
+        "scripts/build_corpus.py": "5f2429ebf19385bc547f7e7d7aeb4149ff9d136bd7ab7fc3bb378b1d057403fd"
+      },
+      "source_hash_note": "Recorded by launcher",
+      "upstream_dependencies": {
+        "schema": "roboicl.upstream.v2",
+        "packages": [
+          {
+            "name": "RoboDojo",
+            "path": "third_party/RoboDojo",
+            "commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942"
+          },
+          {
+            "name": "XPolicyLab",
+            "path": "third_party/XPolicyLab",
+            "commit": "fa431ecd893ee706883e64fe5fe1464ec8cd928d"
+          },
+          {
+            "name": "IsaacLab",
+            "path": "third_party/IsaacLab",
+            "commit": "afca7b09d60d8beb9c1cb28b43066499940b969b"
+          },
+          {
+            "name": "cuRobo",
+            "path": "third_party/curobo",
+            "commit": "895c6517243f8cb091c73c018c8167192d39599a"
+          }
+        ]
+      },
+      "roboicl_commit": "07d6e1c5387710e2de9240724b0015bbf0c95c6e",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit",
+      "native_result": {
+        "success_rate": 0.0,
+        "eval_time": 1,
+        "score": 40.0,
+        "details": {
+          "0": {
+            "layout_id": 2,
+            "success": false,
+            "score": 0.4
+          }
+        }
+      },
+      "native_result_sha256": "8cc6b52bec70a207cc20f1cf620220df6450f4598671f15eee1f78e1e1cfb96e",
+      "videos": [
+        "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l2/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l2/episode_0000000_cam_left_wrist_fail.mp4",
+        "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l2/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l2/episode_0000000_cam_head_fail.mp4",
+        "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l2/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l2/episode_0000000_cam_right_wrist_fail.mp4"
+      ]
+    },
+    {
+      "summary": {
+        "run": "put_bottles_into_dustbin-l3",
+        "mode": "dual",
+        "task": "put_bottles_into_dustbin",
+        "evaluation_role": "validation",
+        "layout": 3,
+        "status": "interrupted_by_experimenter",
+        "valid_native_episode": false,
+        "score_0_100": null,
+        "success_rate": null,
+        "native_result": null,
+        "completed_model_calls": 16,
+        "attempted_model_calls": 16,
+        "known_total_tokens": 1449513,
+        "calls_without_usage": 0,
+        "latest_observed_step": 150,
+        "latest_decision_step": 150,
+        "exit": {
+          "returncode": null,
+          "wall_seconds": 1740.2768373339786,
+          "failure_kind": "infrastructure",
+          "error": "signal 15"
+        },
+        "manual_stop": {
+          "stopped_at_utc": "2026-10-20T12:06:38.366824+00:00",
+          "requested_by": "user",
+          "reason": "User explicitly requested stopping all remaining experiments immediately.",
+          "score_policy": "Interrupted episode excluded; do not score as failure or zero."
+        }
+      },
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "long_k": 12,
+      "short_k": 12,
+      "selector": "scene-phase-transition-v3",
+      "corpus_sha256": "31d2e92116d9bba2c834c3cf8fbf52a203504b703100bde2798700451f6578a3",
+      "selected_source_sha256": "e110130f137a2006939c47707ceee2cac489658436823555cce560545d2086b0",
+      "layout_sha256": "659a6fc1bffc692e8e61d07544d1c5145a3c17e8d8e75fc4af543b1a9fba41f5",
+      "roborag_commit": "79cbc94336fbff1d6e93b2e6a14255f5a36490aa",
+      "source_sha256": {
+        "src/roborag/robot_memory.py": "d95ce363d656d8f4546e19966c78c3a60252dbf9d3221b3ab8c96e0953163558",
+        "src/roborag/robodojo_policy.py": "987497ef49737e584118cda4c6ec450e307e3ca1c52e246212c183131dc4026a",
+        "src/roborag/memory.py": "698653293df1ee710086cd1cd2d5e02beda69cec46785fff147d799c45401308",
+        "src/roborag/__init__.py": "9c1209b76965c67132f160422642d52c9456e7c86dbb7bdb3e1158f68ab77583",
+        "src/roborag/demo.py": "fb3175289bff206a6302892059bc53ca9b1a314c3ead803bbcfaa9eb8601c1ab",
+        "src/roborag/schema.py": "3b741853b4c1134bf939665ce4aa718e0ac698a1273ee09a5cc8c019d7f0ac16",
+        "src/roborag/retrieval.py": "d7fcd1920fa7d1d43820f83b0183d3ae062fb61b57a9ed0f5bd57fd2657966da",
+        "src/roborag/vision.py": "fe7f21db7920cb0f0f5e06222a55106947c6ed483f9cb192cf4e126377692365",
+        "src/roborag/transports/codex_cli.py": "6e6d541a09273392bf717c7c69f4a776752b136a7f326fc477da03df6488f505",
+        "src/roborag/transports/responses_bridge.py": "40ccdc6e044ff6768a66cc78f2920b73458404d7d6c0f279cb0ae0f126c8d505",
+        "src/roborag/transports/__init__.py": "256cddee3d9ea5afd76357cc23b1b81d240b07b54fa75537373dce4aa75f09ae",
+        "scripts/fetch_demonstrations.py": "3d2d68a2227ac6375c51a81fb8c6b343314fa5abfe27e12406b2295648681616",
+        "scripts/render_evaluation_canvas.py": "2303bb53c9e33c445494e99d9b056cb5dbb26716774ad9fe0a4ff534a1f55493",
+        "scripts/build_visual_bank.py": "0939d03dae78f4edc47ba740d6af2257d0f0d59906ff011b411896c2a585aa26",
+        "scripts/evaluate_roboicl_suite.py": "d4e006133be8538bdcc9cf4ee134bbd40366539e85dc27dffa6e728918fdcd72",
+        "scripts/audit_suite_retrieval.py": "5ed2edae15c1700d7bac980ff9ad9a642c4344a8111d4d2ac6b86eabf34f1ed9",
+        "scripts/export_evidence.py": "27af88da0fcc662d3c4d0d8bc5022a954d556f5eaf3f13a4e9f160f0dabb55c2",
+        "scripts/import_roboicl_baseline.py": "f1429c62b0a6135ae9e8656608d4465c6f8d85b0e595f2a9b771622bdbadc8e4",
+        "scripts/summarize_runs.py": "8807519850cf7b812f2aa33e455efdd16f6d2c645098f97fce08e81d1af4573c",
+        "scripts/run_episode.py": "b75c9c47228e7fa4f282327538d37330246a7a4d298e67806c440d181174330e",
+        "scripts/build_corpus.py": "5f2429ebf19385bc547f7e7d7aeb4149ff9d136bd7ab7fc3bb378b1d057403fd"
+      },
+      "source_hash_note": "Recorded by launcher",
+      "upstream_dependencies": {
+        "schema": "roboicl.upstream.v2",
+        "packages": [
+          {
+            "name": "RoboDojo",
+            "path": "third_party/RoboDojo",
+            "commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942"
+          },
+          {
+            "name": "XPolicyLab",
+            "path": "third_party/XPolicyLab",
+            "commit": "fa431ecd893ee706883e64fe5fe1464ec8cd928d"
+          },
+          {
+            "name": "IsaacLab",
+            "path": "third_party/IsaacLab",
+            "commit": "afca7b09d60d8beb9c1cb28b43066499940b969b"
+          },
+          {
+            "name": "cuRobo",
+            "path": "third_party/curobo",
+            "commit": "895c6517243f8cb091c73c018c8167192d39599a"
+          }
+        ]
+      },
+      "roboicl_commit": "07d6e1c5387710e2de9240724b0015bbf0c95c6e",
+      "transport": "Codex-account adaptation, not original paper API",
+      "asset_audit": "reused local assets; not a new complete official-revision audit",
+      "native_result": null,
+      "native_result_sha256": null,
+      "videos": [
+        "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l3/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l3/_stream/env0_cam_left_wrist.tmp.mp4",
+        "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l3/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l3/_stream/env0_cam_head.tmp.mp4",
+        "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l3/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l3/_stream/env0_cam_right_wrist.tmp.mp4"
+      ]
+    }
+  ]
+}

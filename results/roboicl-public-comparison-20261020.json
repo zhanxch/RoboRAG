@@ -1,0 +1,364 @@
+{
+  "schema": "roborag.public-comparison.v1",
+  "suite_id": "roboicl-public-3task-20261020",
+  "updated_at_utc": "2026-10-20T12:06:49.424936+00:00",
+  "complete": false,
+  "planned_episodes": 9,
+  "completed_episodes": 5,
+  "comparison_kind": "external public baseline; not a controlled causal ablation",
+  "excluded_infrastructure_attempts": [
+    {
+      "path": "runs/roboicl-public-3task-20261020/cover_blocks-l2",
+      "reason": "Direct TLS handshake failure before any executed robot action; restarted with existing local proxy and updated startup notice recognition.",
+      "initial_plan": "runs/roboicl-public-3task-20261020/frozen-plan.json"
+    },
+    {
+      "path": "runs/roboicl-public-3task-20261020-r2/cover_blocks-l2",
+      "reason": "A complete model response following TLS retries was rejected by transport validation. No accepted action; transport-only validator fix.",
+      "initial_plan": "runs/roboicl-public-3task-20261020-r2/frozen-plan.json"
+    },
+    {
+      "path": "runs/roboicl-public-3task-20261020-r3",
+      "reason": "System proxy feature startup warning rejected complete decisions. Exact observed warning now recognized only before the turn. Archived decisions revalidated offline; not replayed into the simulator and not scored.",
+      "initial_plan": "runs/roboicl-public-3task-20261020-r3/frozen-plan.json"
+    }
+  ],
+  "public_task_references": [
+    {
+      "task": "cover_blocks",
+      "published_all_layouts_progress_mean": 100.0,
+      "published_full_episode_count": 20,
+      "selected_layout_progress_mean": 100.0
+    },
+    {
+      "task": "deposit_coin",
+      "published_all_layouts_progress_mean": 78.0,
+      "published_full_episode_count": 50,
+      "selected_layout_progress_mean": 100.0
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "published_all_layouts_progress_mean": 62.5,
+      "published_full_episode_count": 20,
+      "selected_layout_progress_mean": 55.0
+    }
+  ],
+  "limitations": [
+    "Three tasks and three layouts per task are a pilot, not the 30-task benchmark.",
+    "Current selector is frozen; evaluation configuration uses the published one-shot source and 12+12 block allocation, instead of the older 3-demo 8+4 medium pilot.",
+    "Account CLI transport differs from the published direct/relay API and does not expose an immutable provider model snapshot.",
+    "Same block counts and image cap do not imply identical token costs or serializer text.",
+    "Nine layout files match the frozen asset revision; full transitive asset-tree identity is not certified.",
+    "Public results are an external baseline, not a local controlled causal ablation.",
+    "No Open tasks: the current zero mode delegates to upstream and would not evaluate dual retrieval.",
+    "All first completed attempts count; infrastructure interruptions are excluded, preserved, and never converted to zero scores.",
+    "Task means and the overall panel mean are reported separately; the full-panel aggregate is withheld until all nine episodes complete.",
+    "Two simulators may share the GPU; wall times are not a matched latency comparison."
+  ],
+  "task_summaries": {
+    "cover_blocks": {
+      "completed_episodes": 2,
+      "roborag_progress_mean": 100.0,
+      "public_same_layout_progress_mean": 100.0,
+      "paired_difference_mean": 0.0,
+      "roborag_success_rate": 1,
+      "public_same_layout_success_rate": 1,
+      "roborag_progress_range": [
+        100.0,
+        100.0
+      ],
+      "model_calls": 57,
+      "known_total_tokens": 6203273
+    },
+    "deposit_coin": {
+      "completed_episodes": 2,
+      "roborag_progress_mean": 100.0,
+      "public_same_layout_progress_mean": 100.0,
+      "paired_difference_mean": 0.0,
+      "roborag_success_rate": 1,
+      "public_same_layout_success_rate": 1,
+      "roborag_progress_range": [
+        100.0,
+        100.0
+      ],
+      "model_calls": 80,
+      "known_total_tokens": 7984595
+    },
+    "put_bottles_into_dustbin": {
+      "completed_episodes": 1,
+      "roborag_progress_mean": 40.0,
+      "public_same_layout_progress_mean": 40.0,
+      "paired_difference_mean": 0.0,
+      "roborag_success_rate": 0,
+      "public_same_layout_success_rate": 0,
+      "roborag_progress_range": [
+        40.0,
+        40.0
+      ],
+      "model_calls": 72,
+      "known_total_tokens": 8212711
+    }
+  },
+  "overall_complete_suite_only": null,
+  "episodes": [
+    {
+      "task": "cover_blocks",
+      "category": "Memory",
+      "layout": 2,
+      "status": "native_completed",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/cover_blocks-l2",
+      "public_progress": 100.0,
+      "public_success": true,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/cover_blocks/layout-02.json",
+      "evidence": {
+        "run": "cover_blocks-l2",
+        "mode": "dual",
+        "task": "cover_blocks",
+        "evaluation_role": "validation",
+        "layout": 2,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/roboicl-public-3task-20261020-r4/cover_blocks-l2/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l2/_result.json",
+        "completed_model_calls": 28,
+        "attempted_model_calls": 28,
+        "known_total_tokens": 3041165,
+        "calls_without_usage": 0,
+        "latest_observed_step": 398,
+        "latest_decision_step": 396,
+        "latest_intent_not_verified_outcome": "All three blocks appear uncovered, with covers placed in front. Finish returning the open left arm to origin using small continuous increments, hold the right arm at home, and settle. Verify final arm positions and cup stability from the next observation.",
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 2885.980003570963
+        },
+        "manual_stop": null
+      },
+      "roborag_progress": 100.0,
+      "roborag_success": true,
+      "difference": 0.0
+    },
+    {
+      "task": "cover_blocks",
+      "category": "Memory",
+      "layout": 3,
+      "status": "native_completed",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/cover_blocks-l3",
+      "public_progress": 100.0,
+      "public_success": true,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/cover_blocks/layout-03.json",
+      "evidence": {
+        "run": "cover_blocks-l3",
+        "mode": "dual",
+        "task": "cover_blocks",
+        "evaluation_role": "validation",
+        "layout": 3,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/roboicl-public-3task-20261020-r4/cover_blocks-l3/native/eval_result/RoboDojo/cover_blocks/RoboICL/arx_x5/0_action_type=ee/cover_blocks-l3/_result.json",
+        "completed_model_calls": 29,
+        "attempted_model_calls": 29,
+        "known_total_tokens": 3162108,
+        "calls_without_usage": 0,
+        "latest_observed_step": 424,
+        "latest_decision_step": 414,
+        "latest_intent_not_verified_outcome": "The blocks appear exposed and the released covers upright. Return the left arm toward its starting pose and settle the right arm at origin, keeping both grippers open and preserving elbow-up continuity. Verify final tracking and episode completion next.",
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 2620.3579869819805
+        },
+        "manual_stop": null
+      },
+      "roborag_progress": 100.0,
+      "roborag_success": true,
+      "difference": 0.0
+    },
+    {
+      "task": "cover_blocks",
+      "category": "Memory",
+      "layout": 4,
+      "status": "not_run",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/cover_blocks-l4",
+      "public_progress": 100.0,
+      "public_success": true,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/cover_blocks/layout-04.json",
+      "evidence": null
+    },
+    {
+      "task": "deposit_coin",
+      "category": "Precision",
+      "layout": 2,
+      "status": "native_completed",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/deposit_coin-l2",
+      "public_progress": 100.0,
+      "public_success": true,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/deposit_coin/layout-02.json",
+      "evidence": {
+        "run": "deposit_coin-l2",
+        "mode": "dual",
+        "task": "deposit_coin",
+        "evaluation_role": "validation",
+        "layout": 2,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/roboicl-public-3task-20261020-r4/deposit_coin-l2/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l2/_result.json",
+        "completed_model_calls": 39,
+        "attempted_model_calls": 39,
+        "known_total_tokens": 3875947,
+        "calls_without_usage": 0,
+        "latest_observed_step": 191,
+        "latest_decision_step": 189,
+        "latest_intent_not_verified_outcome": "Return the open left arm to its observed starting pose with tapering translation and rotation, and correct the right arm's small origin offset. The coin is no longer visible; completion remains unverified.",
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 3861.9384472329984
+        },
+        "manual_stop": null
+      },
+      "roborag_progress": 100.0,
+      "roborag_success": true,
+      "difference": 0.0
+    },
+    {
+      "task": "deposit_coin",
+      "category": "Precision",
+      "layout": 3,
+      "status": "native_completed",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/deposit_coin-l3",
+      "public_progress": 100.0,
+      "public_success": true,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/deposit_coin/layout-03.json",
+      "evidence": {
+        "run": "deposit_coin-l3",
+        "mode": "dual",
+        "task": "deposit_coin",
+        "evaluation_role": "validation",
+        "layout": 3,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 100.0,
+        "success_rate": 1.0,
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/roboicl-public-3task-20261020-r4/deposit_coin-l3/native/eval_result/RoboDojo/deposit_coin/RoboICL/arx_x5/0_action_type=ee/deposit_coin-l3/_result.json",
+        "completed_model_calls": 41,
+        "attempted_model_calls": 41,
+        "known_total_tokens": 4108648,
+        "calls_without_usage": 0,
+        "latest_observed_step": 194,
+        "latest_decision_step": 193,
+        "latest_intent_not_verified_outcome": "Return the open right arm toward its initial pose with continuous elbow-up motion and correct slight left-arm home drift. Insertion remains visually inferred from the coin's disappearance after release.",
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 4320.650832582032
+        },
+        "manual_stop": null
+      },
+      "roborag_progress": 100.0,
+      "roborag_success": true,
+      "difference": 0.0
+    },
+    {
+      "task": "deposit_coin",
+      "category": "Precision",
+      "layout": 4,
+      "status": "not_run",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/deposit_coin-l4",
+      "public_progress": 100.0,
+      "public_success": true,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/deposit_coin/layout-04.json",
+      "evidence": null
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "category": "Long-Horizon",
+      "layout": 2,
+      "status": "native_completed",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l2",
+      "public_progress": 40.0,
+      "public_success": false,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/put_bottles_into_dustbin/layout-02.json",
+      "evidence": {
+        "run": "put_bottles_into_dustbin-l2",
+        "mode": "dual",
+        "task": "put_bottles_into_dustbin",
+        "evaluation_role": "validation",
+        "layout": 2,
+        "status": "native_completed",
+        "valid_native_episode": true,
+        "score_0_100": 40.0,
+        "success_rate": 0.0,
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l2/native/eval_result/RoboDojo/put_bottles_into_dustbin/RoboICL/arx_x5/0_action_type=ee/put_bottles_into_dustbin-l2/_result.json",
+        "completed_model_calls": 72,
+        "attempted_model_calls": 72,
+        "known_total_tokens": 8212711,
+        "calls_without_usage": 0,
+        "latest_observed_step": 700,
+        "latest_decision_step": 690,
+        "latest_intent_not_verified_outcome": "Hold both arms near origin with grippers open after repeated interrupted retrieval attempts. The green bottle last seen on the floor remains unrecovered and out of view; the task is incomplete and the episode remains active.",
+        "exit": {
+          "returncode": 0,
+          "wall_seconds": 6993.251277549018
+        },
+        "manual_stop": null
+      },
+      "roborag_progress": 40.0,
+      "roborag_success": false,
+      "difference": 0.0
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "category": "Long-Horizon",
+      "layout": 3,
+      "status": "interrupted_by_experimenter",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l3",
+      "public_progress": 100.0,
+      "public_success": true,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/put_bottles_into_dustbin/layout-03.json",
+      "evidence": {
+        "run": "put_bottles_into_dustbin-l3",
+        "mode": "dual",
+        "task": "put_bottles_into_dustbin",
+        "evaluation_role": "validation",
+        "layout": 3,
+        "status": "interrupted_by_experimenter",
+        "valid_native_episode": false,
+        "score_0_100": null,
+        "success_rate": null,
+        "native_result": null,
+        "completed_model_calls": 16,
+        "attempted_model_calls": 16,
+        "known_total_tokens": 1449513,
+        "calls_without_usage": 0,
+        "latest_observed_step": 150,
+        "latest_decision_step": 150,
+        "latest_intent_not_verified_outcome": "The pale-yellow bottle appears retained over the bin. Move slightly farther inside the opening, open the left gripper, and hold for the drop. Keep the right arm stationary; verify placement from the next observation.",
+        "exit": {
+          "returncode": null,
+          "wall_seconds": 1740.2768373339786,
+          "failure_kind": "infrastructure",
+          "error": "signal 15"
+        },
+        "manual_stop": {
+          "stopped_at_utc": "2026-10-20T12:06:38.366824+00:00",
+          "requested_by": "user",
+          "reason": "User explicitly requested stopping all remaining experiments immediately.",
+          "score_policy": "Interrupted episode excluded; do not score as failure or zero."
+        }
+      }
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "category": "Long-Horizon",
+      "layout": 4,
+      "status": "not_run",
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l4",
+      "public_progress": 25.0,
+      "public_success": false,
+      "public_trace_url": "https://mosi-ai.github.io/RoboICL-GPT6-Astra.github.io/assets/data/benchmark-traces/put_bottles_into_dustbin/layout-04.json",
+      "evidence": null
+    }
+  ]
+}

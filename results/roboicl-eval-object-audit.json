@@ -1,0 +1,310 @@
+{
+  "scope": "Direct files of all Rigid/Geometry objects selected by the nine layouts. Does not certify room, materials, generated robot USD or all transitive references.",
+  "repository": "RoboDojo-Benchmark/RoboDojo",
+  "revision": "0a709fe7863f6c869a8d141676585a883fce4270",
+  "checked_files": 43,
+  "matches": 43,
+  "files": [
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/camera_stand/00000/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "981392df89e5a45a28c0240ef0cb289b778550ec7ad49e98419a813865bb3d30",
+      "actual": "981392df89e5a45a28c0240ef0cb289b778550ec7ad49e98419a813865bb3d30"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/camera_stand/00000/object.usd",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "6c4b9ec4cd325f6e47d862b87e7dddbe9adc5e9a5aa0f04224c47d0f16a600a8",
+      "actual": "6c4b9ec4cd325f6e47d862b87e7dddbe9adc5e9a5aa0f04224c47d0f16a600a8"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/dustbin/00000/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "01d418242bbcb0dc22049e0b905f87d38893d29ce33570c0b9aabec38037d0b2",
+      "actual": "01d418242bbcb0dc22049e0b905f87d38893d29ce33570c0b9aabec38037d0b2"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/dustbin/00000/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "41295bf8b6fc831e21f10aac32697c5009dd317ed10fa4629b854c0765de0a5e",
+      "actual": "41295bf8b6fc831e21f10aac32697c5009dd317ed10fa4629b854c0765de0a5e"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/dustbin/00000/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "74810fdf0cf1f000732cbcdc304676b7294ac606cad364880426430eb2abd0b2",
+      "actual": "74810fdf0cf1f000732cbcdc304676b7294ac606cad364880426430eb2abd0b2"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/piggy_bank/00000/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "ef09fef134af0e01e3f1bea2b388ce7393e60eb5adb69a80496d61f23a1701e5",
+      "actual": "ef09fef134af0e01e3f1bea2b388ce7393e60eb5adb69a80496d61f23a1701e5"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/piggy_bank/00000/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "4961469bd9b9e6e9478e521ac094af13ce5827ebaedf311cad16ceec556b2b23",
+      "actual": "4961469bd9b9e6e9478e521ac094af13ce5827ebaedf311cad16ceec556b2b23"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/vertical_coin_stand/00000/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "4eda447a2fca356864b743f0637c33689241734f5f4ca395ed7249ea24203b2c",
+      "actual": "4eda447a2fca356864b743f0637c33689241734f5f4ca395ed7249ea24203b2c"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/vertical_coin_stand/00000/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "31d918bc1405a5e4fd420b58dfe8a9087929825032ca7775728b24d4ad5bbdb0",
+      "actual": "31d918bc1405a5e4fd420b58dfe8a9087929825032ca7775728b24d4ad5bbdb0"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Geometry/vertical_coin_stand/00000/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "2a05b14c0654972c2ab5df5b8374a418ff10d7fd6529329558b0f80e43b49666",
+      "actual": "2a05b14c0654972c2ab5df5b8374a418ff10d7fd6529329558b0f80e43b49666"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00002/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "a654ca8b558632d888c1152fc7692f36f0d61c07ed5b51c8c35da7b4a866050e",
+      "actual": "a654ca8b558632d888c1152fc7692f36f0d61c07ed5b51c8c35da7b4a866050e"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00002/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "4330cd08f46bdf328c3bffa94e217a3185a57506664358787613515c69f7c9cc",
+      "actual": "4330cd08f46bdf328c3bffa94e217a3185a57506664358787613515c69f7c9cc"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00002/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "f826b43ecd2035b86af53181711f73cf5a08d7d8c8339e466d0a7d47edc2241e",
+      "actual": "f826b43ecd2035b86af53181711f73cf5a08d7d8c8339e466d0a7d47edc2241e"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00005/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "872ae599a447ed5bdebae9cd0529d3c8ce6c1522916c2919587ce916dc1ecd37",
+      "actual": "872ae599a447ed5bdebae9cd0529d3c8ce6c1522916c2919587ce916dc1ecd37"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00005/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "04add3df2e5f5359b034ddaf27098ab974dcab577657fd220fe74b9923b5e6e0",
+      "actual": "04add3df2e5f5359b034ddaf27098ab974dcab577657fd220fe74b9923b5e6e0"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00005/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "063da52c617716a1a27010e462e4e7aa29abd8fb2d931465c61f7b0c97874e58",
+      "actual": "063da52c617716a1a27010e462e4e7aa29abd8fb2d931465c61f7b0c97874e58"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00022/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "7874db0dad281128ffa1e1350dfc946e65d58f5e21ba106f31423fe8ff253912",
+      "actual": "7874db0dad281128ffa1e1350dfc946e65d58f5e21ba106f31423fe8ff253912"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00022/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "421aba4cfe465eec17c9fa6064d9b099afa841b6a10f5fab9f6c10a777b496ef",
+      "actual": "421aba4cfe465eec17c9fa6064d9b099afa841b6a10f5fab9f6c10a777b496ef"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00022/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "f353f09b4ff29b86385eaa09a32f2ccfe37d32c08dc3a3836efc1ed4107b1eb4",
+      "actual": "f353f09b4ff29b86385eaa09a32f2ccfe37d32c08dc3a3836efc1ed4107b1eb4"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00025/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "af9debef5583516aa0dab3b4b8fac2f7f4814053f9eedf8bd6126acaeac73778",
+      "actual": "af9debef5583516aa0dab3b4b8fac2f7f4814053f9eedf8bd6126acaeac73778"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00025/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "7a9ab0555f8f30caba6e97d147540e6cf0f48027b934724f996e1bcffe0173dd",
+      "actual": "7a9ab0555f8f30caba6e97d147540e6cf0f48027b934724f996e1bcffe0173dd"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00025/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "3a85f2de30fc3dc68684d03520abb8efc220225c9f271dfd32d79e9be5adf9d5",
+      "actual": "3a85f2de30fc3dc68684d03520abb8efc220225c9f271dfd32d79e9be5adf9d5"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00050/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "aba63b924043477ddab3e0d48fd90b715cdc4abc50ced364e28691f89a7fe112",
+      "actual": "aba63b924043477ddab3e0d48fd90b715cdc4abc50ced364e28691f89a7fe112"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00050/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "9e9144fa52a31c225770da306cf76a1a196cccb3469ce5a79a336d54c0f5dd2e",
+      "actual": "9e9144fa52a31c225770da306cf76a1a196cccb3469ce5a79a336d54c0f5dd2e"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00050/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "bc8b7897b7aebee90498b3cfdd632f908c1b087aaf65ab1b0ca33942544e60d9",
+      "actual": "bc8b7897b7aebee90498b3cfdd632f908c1b087aaf65ab1b0ca33942544e60d9"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00055/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "9aeeff51b0639ab233a49162e3846598c425e744743072824ecaf040f74c0a9d",
+      "actual": "9aeeff51b0639ab233a49162e3846598c425e744743072824ecaf040f74c0a9d"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00055/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "1d5b08cc40ea1c05eabae98924c0dde061ea183a89379a31fb631746e4984135",
+      "actual": "1d5b08cc40ea1c05eabae98924c0dde061ea183a89379a31fb631746e4984135"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/bottle/00055/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "5c2f62fa09c548723ccd5a0b2ce8ec2d367fb2872f824a03c79da8bacd3779b9",
+      "actual": "5c2f62fa09c548723ccd5a0b2ce8ec2d367fb2872f824a03c79da8bacd3779b9"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/coin/00000/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "f750edf5f73e672dd07e3889d62f9e244f9226385eac8dfc8951ccbe7b3a1622",
+      "actual": "f750edf5f73e672dd07e3889d62f9e244f9226385eac8dfc8951ccbe7b3a1622"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/coin/00000/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "d88a65b435aae1019b376a6fafde7bf6e0bc97151032bcce985ee6b3bc887c9f",
+      "actual": "d88a65b435aae1019b376a6fafde7bf6e0bc97151032bcce985ee6b3bc887c9f"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/coin/00000/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "4934dc1e932d5bc8db4bb0c7877cbc04c523fdaed4da4442446299caecebc866",
+      "actual": "4934dc1e932d5bc8db4bb0c7877cbc04c523fdaed4da4442446299caecebc866"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00004/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "ca08d13d8726cb4a424b724cead92f2c0a25588d57a6edf9191cc24b665146dc",
+      "actual": "ca08d13d8726cb4a424b724cead92f2c0a25588d57a6edf9191cc24b665146dc"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00004/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "1422d5df6ec99dc6aecbaa102b297a3b6747a0fa04a8a9238507f2bd5850520a",
+      "actual": "1422d5df6ec99dc6aecbaa102b297a3b6747a0fa04a8a9238507f2bd5850520a"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00004/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "5de13bc5a5ba93f1bf1a69d70206ec921c384a24a2b582877a3334b53f048be9",
+      "actual": "5de13bc5a5ba93f1bf1a69d70206ec921c384a24a2b582877a3334b53f048be9"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00005/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "70a8e99e79016037775496687d74bbf3e2b9ddc8aa51dd6a23c5a621ec821d40",
+      "actual": "70a8e99e79016037775496687d74bbf3e2b9ddc8aa51dd6a23c5a621ec821d40"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00005/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "7dc944bb39dfbe7e360b82b7c243b0d087735456f28a8b8ba7dca2b7134a16ba",
+      "actual": "7dc944bb39dfbe7e360b82b7c243b0d087735456f28a8b8ba7dca2b7134a16ba"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00005/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "cd04c29d3f4bac5caa33266ea400e71b0bacbba4761260dc4fc61f82966b1c7d",
+      "actual": "cd04c29d3f4bac5caa33266ea400e71b0bacbba4761260dc4fc61f82966b1c7d"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00006/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "c00e5a40d343a747f7b69001ff0b30cbb4e71858ec641b275973fc56e8bb851b",
+      "actual": "c00e5a40d343a747f7b69001ff0b30cbb4e71858ec641b275973fc56e8bb851b"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00006/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "e27c6e3011dbf5897fa63f2cacab5a369b8733cb1f7c2ebfefcd18592dbb4497",
+      "actual": "e27c6e3011dbf5897fa63f2cacab5a369b8733cb1f7c2ebfefcd18592dbb4497"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cube/00006/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "60b612d503c93ed0b24e83d64242040d35394d29ad0d4329b3bd072724bcc01c",
+      "actual": "60b612d503c93ed0b24e83d64242040d35394d29ad0d4329b3bd072724bcc01c"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cup/00001/description.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "dc24d9dcb8ed23a86844cd3622f428d3c271bf11188445664d1751f9a6292f32",
+      "actual": "dc24d9dcb8ed23a86844cd3622f428d3c271bf11188445664d1751f9a6292f32"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cup/00001/metadata.json",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "d7dd85a2bc84ee0d9705776bd83c10c6aca53cd58b5b4e5474397d4bec940a37",
+      "actual": "d7dd85a2bc84ee0d9705776bd83c10c6aca53cd58b5b4e5474397d4bec940a37"
+    },
+    {
+      "path": "Assets/Object/RoboDojo/Rigid/cup/00001/object.usdz",
+      "status": "match",
+      "hash_kind": "sha256",
+      "expected": "ccee68b7e35e05728db3c4d9b95920b6b7ebe7f22159c9dcbfce63098accf52b",
+      "actual": "ccee68b7e35e05728db3c4d9b95920b6b7ebe7f22159c9dcbfce63098accf52b"
+    }
+  ]
+}

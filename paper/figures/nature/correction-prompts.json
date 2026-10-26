@@ -1,0 +1,10 @@
+[
+  {
+    "name": "02-graph-semantics",
+    "prompt": "Use case: precise-object-edit. Edit this finished Nature-style RoboRAG scientific figure. Make ONLY two small visual-semantic corrections; preserve the canvas size, layout, all English text, all node IDs, times, edges, line styles, colors, typography and arrow directions exactly. (1) In panel a, replace the three tiny cube/block object icons near the robot grippers in v1, v3 and v4 with tiny recognizable cup icons, because panel b binds item = cup_7. Depict an unheld cup in failed v1, held cup in verified v3, and cup resting on a surface in v4. Do not alter robot pose/layout unnecessarily. (2) In panel c 'Ready to start a phase?', replace ALL five leading circle/checkmark icons with the SAME small neutral solid navy bullet dot. There must be no checkmarks, empty checkboxes or mixed completion indicators; these five lines are general rules, not a snapshot of satisfied/unsatisfied conditions. Retain every word including OR, AND, unknown-condition rule and requested-effect rule. Pure white background, crisp publication-quality output. Do not add or remove any other content."
+  },
+  {
+    "name": "03-plan-adaptation",
+    "prompt": "Use case: precise-object-edit. Edit this finished Nature-style RoboRAG scientific figure with exactly ONE tiny correction. In the TOP RIGHT input panel c labeled UNSEEN composition, replace the currently open drawer illustration with a CLOSED drawer illustration (front flush with housing, handle visible). It represents the initial scene for the task 'put cup in closed drawer'. Keep the adjacent cup icon and right-pointing task arrow unchanged. All other drawer icons MUST stay as currently shown: top middle training opening sequence stays closed->open; bottom left Open drawer icon stays open; bottom right Place cup stays open with cup. Preserve every English word, all mathematical predicates, all graph nodes and arrows including dashed failed/retry loop, every other illustration, typography, color palette, canvas size, layout and margins exactly. No additional changes, no caption, no new text."
+  }
+]

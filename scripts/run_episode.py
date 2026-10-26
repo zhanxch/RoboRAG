@@ -14,6 +14,7 @@ import time
 from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 
 def write(path, value):
@@ -57,8 +58,13 @@ def main():
     parser.add_argument("--variant", choices=("standard", "random"), default="standard")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--role", choices=("development", "validation"), default="development")
-    parser.add_argument("--mode", choices=("zero", "fixed", "dual", "long_only"), default="dual")
-    parser.add_argument("--effort", default="medium")
+    parser.add_argument("--mode", choices=("zero", "fixed", "dual", "long_only"), default=None,
+                        help="Defaults to zero for queued, dual for existing profiles")
+    parser.add_argument("--profile", choices=("standard", "continuous_fast", "hybrid", "queued"), default="standard",
+                        help="queued retains whole bottle-disposal segments across bounded dispatch windows")
+    parser.add_argument("--effort", default=None,
+                        help="Defaults to xhigh for queued, medium for existing profiles")
+    parser.add_argument("--model", default="gpt-6-astra", help="Model passed to the policy and inference transport")
     parser.add_argument("--long-k", type=int, default=6)
     parser.add_argument("--short-k", type=int, default=4)
     parser.add_argument("--max-calls", type=int, default=0, help="0 uses the native task limit; otherwise 1..80 decision rounds")
@@ -67,6 +73,12 @@ def main():
     parser.add_argument("--capture-only", action="store_true")
     parser.add_argument("--allow-shared-gpu", action="store_true", help="Record overlap with another pilot; wall times are not comparable")
     args = parser.parse_args()
+    if args.mode is None:
+        args.mode = "zero" if args.profile == "queued" else "dual"
+    if args.effort is None:
+        args.effort = "xhigh" if args.profile == "queued" else "medium"
+    if args.profile in ("continuous_fast", "hybrid", "queued") and args.task != "put_bottles_into_dustbin":
+        parser.error(f"{args.profile} currently supports only --task put_bottles_into_dustbin")
     runtime = json.loads((ROOT / "local.runtime.json").read_text())
     code = Path(runtime["upstream"])
     sys.path.insert(0, str(code))
@@ -90,8 +102,6 @@ def main():
         if free < 11000:
             raise RuntimeError(f"Insufficient free GPU memory for a second simulator: {free} MiB")
     out = args.output.resolve()
-    out.mkdir(parents=True, exist_ok=False)
-    transport_port, policy_port = free_port(), free_port()
     config = json.loads((code / "configs/shared_harness.json").read_text())
     task_config = load_task(args.task)
     config.update(task_config.get("harness_overrides", {}))
@@ -104,6 +114,17 @@ def main():
                   reasoning_effort=args.effort, preserve_reasoning=False, rolling_history_cache=False,
                   cache_mode="omit", max_turns=args.max_calls or None, max_seconds=7200,
                   request_timeout_s=600, max_transport_attempts=2)
+    from roborag.control_profiles import apply_control_profile
+    reference_horizon = (
+        int(json.loads(corpus.read_text(encoding="utf-8"))["horizon"])
+        if args.mode != "zero" and corpus.is_file() else horizon
+    )
+    profile_metadata = apply_control_profile(
+        config, args.profile, task=args.task, reference_horizon=reference_horizon)
+    profile_metadata["reasoning_effort"] = args.effort
+    config["reasoning_effort"] = args.effort
+    out.mkdir(parents=True, exist_ok=False)
+    transport_port, policy_port = free_port(), free_port()
     write(out / "harness.json", config)
     from roboicl.policy.dialogue_policy import load_config
     load_config(out / "harness.json")
@@ -117,6 +138,7 @@ def main():
                     ASTRA_API_KEY="local-loopback-no-api-credential", ASTRA_TRACKING_GUARD="1",
                     ASTRA_VALIDATE_RGB="1", ASTRA_NETWORK_MODE="direct", ASTRA_STREAM="0",
                     ASTRA_RETRIEVABLE_HISTORY="0", ROBORAG_MODE=args.mode,
+                    ROBORAG_CONTROL_PROFILE=args.profile,
                     ROBORAG_CORPUS=str(corpus), ROBORAG_LONG_K=str(args.long_k),
                     ROBORAG_SHORT_K=str(args.short_k), OMP_NUM_THREADS="4")
     base_env.pop("ASTRA_DEMO_MANIFEST", None)
@@ -124,10 +146,20 @@ def main():
     sim_env = dict(base_env, PYTHONPATH=os.pathsep.join(python_paths("sim")),
                    LD_PRELOAD=str(Path(runtime["sim_library"]) / "libstdc++.so.6"),
                    LD_LIBRARY_PATH=runtime["sim_library"])
+    if args.profile == "queued":
+        # Upstream rollout counts get_action windows; the policy counts actual
+        # model turns. A queued segment can need several windows for one turn.
+        # Keep the model budget in the policy, and the native step limit in sim.
+        sim_config = dict(config, max_turns=None)
+        write(out / "sim-harness.json", sim_config)
+        load_config(out / "sim-harness.json")
+        sim_env["ASTRA_HARNESS_CONFIG"] = str(out / "sim-harness.json")
+        profile_metadata["model_turn_budget_owner"] = "policy"
     transport = [runtime["policy_python"], "-m", "roborag.transports.responses_bridge",
                  "--port", str(transport_port), "--output", str(out / "decisions")]
     policy = [runtime["policy_python"], "-u", "-m", "roborag.robodojo_policy", "--port", str(policy_port),
-              "--task", task, "--seed", str(args.seed), "--reasoning-effort", args.effort]
+              "--task", task, "--seed", str(args.seed), "--reasoning-effort", args.effort,
+              "--model", args.model]
     simulator = [runtime["sim_python"], "-u", "-m", "roboicl.robodojo", "--task", task,
                  "--seed", str(args.seed), "--layout", str(args.layout), "--data-root", str(ROOT / "data"),
                  "--results-root", str(out / "native"), "--port", str(policy_port), "--enable_cameras", "--headless",
@@ -139,11 +171,14 @@ def main():
         "roborag_commit": subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(),
         "roborag_worktree_changes": subprocess.check_output(["git", "-C", str(ROOT), "status", "--porcelain"], text=True).splitlines(),
         "arguments": {k: str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
+        "control_profile": profile_metadata,
+        "harness_files": {"policy": str(out / "harness.json"),
+                          "simulator": sim_env["ASTRA_HARNESS_CONFIG"]},
         "dependencies": pinned, "roboicl_commit": subprocess.check_output(["git", "-C", str(code), "rev-parse", "HEAD"], text=True).strip(),
         "layout": str(layout), "layout_sha256": hashlib.sha256(layout.read_bytes()).hexdigest(),
         "assets": runtime["assets"], "asset_audit": "reused local assets; not a new complete official-revision audit",
         "commands": {"transport": transport, "policy": policy, "simulator": simulator},
-        "model": "gpt-6-astra", "transport": "Codex-account adaptation, not original paper API",
+        "model": args.model, "transport": "Codex-account adaptation, not original paper API",
         "evaluation_role": args.role, "capture_only": args.capture_only,
         "overlapping_compute_pids_at_launch": busy.splitlines(),
         "source_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()

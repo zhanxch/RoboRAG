@@ -1,0 +1,257 @@
+{
+  "schema": "graspnet.robodojo.preflight.v1",
+  "generated_at": "2026-10-23T11:58:41.743113+00:00",
+  "scope": "Installed-environment and source-contract preflight; NOT a grasp-success or model-latency benchmark.",
+  "python": {
+    "executable": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/astra_robodojo/.venv/bin/python",
+    "version": "3.11.16"
+  },
+  "runtime": {
+    "modules": {
+      "torch": {
+        "import_ok": true,
+        "version": "2.7.0+cu128"
+      },
+      "numpy": {
+        "import_ok": true,
+        "version": "1.26.0"
+      },
+      "open3d": {
+        "import_ok": true,
+        "version": "0.20.0"
+      },
+      "graspnetAPI": {
+        "import_ok": false,
+        "error": "ModuleNotFoundError: No module named 'graspnetAPI'"
+      },
+      "pointnet2_utils": {
+        "import_ok": false,
+        "error": "ModuleNotFoundError: No module named 'pointnet2_utils'"
+      },
+      "knn_pytorch": {
+        "import_ok": false,
+        "error": "ModuleNotFoundError: No module named 'knn_pytorch'"
+      },
+      "MinkowskiEngine": {
+        "import_ok": false,
+        "error": "ModuleNotFoundError: No module named 'MinkowskiEngine'"
+      },
+      "gsnet": {
+        "import_ok": false,
+        "error": "ModuleNotFoundError: No module named 'gsnet'"
+      }
+    },
+    "nvcc_on_path": null,
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4090"
+  },
+  "robodojo": {
+    "revision": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942",
+    "files": [
+      {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/vendor/RoboICL/third_party/RoboDojo/env_cfg/arx_x5.yml",
+        "sha256": "7691350159fdeca92fd1b0b2da36913464ccdea3f3251eefb0176aa51db0807f"
+      },
+      {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/vendor/RoboICL/third_party/RoboDojo/env_cfg/camera/camera_config.yml",
+        "sha256": "c1752170da855e735beba27fddbf78dad16f2395e4ef8b24e9827a768e616a62"
+      },
+      {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/vendor/RoboICL/third_party/RoboDojo/env/observation_manager/obs_manager.py",
+        "sha256": "771d6cda443b591f3e7850b901a06b4e653a2feefcbabd23608042377fe9be4b"
+      },
+      {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/vendor/RoboICL/third_party/RoboDojo/env/camera_manager/camera_manager.py",
+        "sha256": "1a4250cb3bdc7305fe362a7c6b113f57e6f3e9e4983b69bd61e2c84e8e995471"
+      }
+    ],
+    "default_observation": {
+      "collect_freq": 25,
+      "robot": {
+        "joint_states": true,
+        "world_ee_state": true
+      },
+      "vision": {
+        "approximate_depth": false,
+        "depth": false,
+        "intrinsic_matrix": false,
+        "extrinsic_matrix": false,
+        "shape": true
+      }
+    },
+    "configured_annotators": {
+      "common": {
+        "enabled": true,
+        "rgb_capture": {
+          "type": "rgb",
+          "device": "cpu"
+        }
+      },
+      "cam_head": {
+        "enabled": true,
+        "rgb_capture": {
+          "type": "rgb",
+          "device": "cpu"
+        }
+      },
+      "cam_left_wrist": {
+        "enabled": true,
+        "rgb_capture": {
+          "type": "rgb",
+          "device": "cpu"
+        }
+      },
+      "cam_right_wrist": {
+        "enabled": true,
+        "rgb_capture": {
+          "type": "rgb",
+          "device": "cpu"
+        }
+      }
+    }
+  },
+  "observation_contract": {
+    "kind": "actual_get_obs_method_with_synthetic_sensor_fixtures",
+    "real_rendering_tested": false,
+    "cases": [
+      {
+        "case": "rgb_only_default",
+        "passed": true,
+        "fields": [
+          "color",
+          "shape"
+        ],
+        "depth_present": false
+      },
+      {
+        "case": "export_flags_without_depth_annotator",
+        "passed": true,
+        "fields": [
+          "color",
+          "extrinsic_matrix",
+          "intrinsic_matrix",
+          "shape"
+        ],
+        "depth_present": false
+      },
+      {
+        "case": "depth_annotator_and_export_flags",
+        "passed": true,
+        "fields": [
+          "color",
+          "depth",
+          "extrinsic_matrix",
+          "intrinsic_matrix",
+          "shape"
+        ],
+        "depth_present": true
+      }
+    ],
+    "all_passed": true
+  },
+  "recorded_sample": {
+    "path": "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/stack_blocks/train/episode_0000000.hdf5",
+    "frequency_hz": 25,
+    "cameras": {
+      "cam_head": {
+        "colors": {
+          "shape": [
+            267
+          ],
+          "dtype": "|S91252"
+        },
+        "extrinsic_matrix": {
+          "shape": [
+            267,
+            4,
+            4
+          ],
+          "dtype": "float64"
+        },
+        "intrinsic_matrix": {
+          "shape": [
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "shape": {
+          "shape": [
+            3
+          ],
+          "dtype": "int64"
+        }
+      },
+      "cam_left_wrist": {
+        "colors": {
+          "shape": [
+            267
+          ],
+          "dtype": "|S79490"
+        },
+        "extrinsic_matrix": {
+          "shape": [
+            267,
+            4,
+            4
+          ],
+          "dtype": "float64"
+        },
+        "intrinsic_matrix": {
+          "shape": [
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "shape": {
+          "shape": [
+            3
+          ],
+          "dtype": "int64"
+        }
+      },
+      "cam_right_wrist": {
+        "colors": {
+          "shape": [
+            267
+          ],
+          "dtype": "|S75685"
+        },
+        "extrinsic_matrix": {
+          "shape": [
+            267,
+            4,
+            4
+          ],
+          "dtype": "float64"
+        },
+        "intrinsic_matrix": {
+          "shape": [
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "shape": {
+          "shape": [
+            3
+          ],
+          "dtype": "int64"
+        }
+      }
+    },
+    "depth_available": false
+  },
+  "neural_inference_executed": false,
+  "physical_trials": 0,
+  "model_latency_ms": null,
+  "grasp_success_rate": null,
+  "notes": [
+    "graspnetAPI is a dataset/pose/evaluation toolbox; an independent detector and checkpoint are required.",
+    "Import failures apply to this interpreter and its sys.path, not all possible environments.",
+    "nvcc_on_path=null means unavailable on PATH; it is not a full filesystem CUDA toolkit audit.",
+    "Only the named recorded HDF5 is inspected; no inference about all dataset episodes.",
+    "Synthetic contract tests validate field plumbing, not rendered depth, camera calibration, grasp geometry, IK, or physics."
+  ]
+}

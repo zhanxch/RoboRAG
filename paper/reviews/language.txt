@@ -1,0 +1,101 @@
+LANGUAGE REVIEW — RoboRAG
+
+Scope: prose in paper/sections/*.tex only. No manuscript changes made. This review concerns readability, defensive framing, coined compounds, and repetition; it does not assess scientific validity or figures. Line numbers refer to the reviewed source; quoted phrases identify passages if lines move.
+
+Overall priority: remove anticipatory rebuttals and centralize repeated methodological qualifications. Preserve the explicit design-stage status, the factual limits of the completed pilots, and operational rules that distinguish historical evidence from current completion. Most sentences are already manageable; the larger burden comes from successive paragraphs restating the same limits.
+
+00-abstract.tex
+
+1. Line 2, architecture sequence from “A versioned graph bank supports retrieval” through “native controllers enforce action constraints.”
+   Why: four successive sentences enumerate components before stating the research question; “schema-conforming,” “capabilities,” and “adapts its parameters and structure” add density.
+   Suggested wording: “A versioned bank supports retrieval of complete procedures and local subgraphs. A GPT planner creates an initial plan under the shared schema, then aligns retrieved experience with current object roles and capabilities to revise its parameters and structure. A lower-cost supervisor follows approved phases and recovery branches; a gateway and local controllers check and execute its requests.”
+   Keep the design-stage/pilot sentence. It provides essential status information, unlike the removable rebuttals below.
+
+01-introduction.tex
+
+2. Line 10, “This shared interpretation carries the context that justified a past decision into both adaptation and supervision.”
+   Why: abstract wording restates the preceding distinction without adding an operation or example. The paragraph already explains historical, planned, and executed records clearly.
+   Suggested edit: cut this final sentence. The next two paragraphs supply the construction, adaptation, and supervision operations.
+
+02-related.tex
+
+3. Lines 8, 13, and 16: “Thus, retrieving and adapting prior procedures is established practice”; “These works already connect structured procedures”; “rather than stand-alone novelty claims.”
+   Why: three explicit defenses of appropriate attribution interrupt an otherwise clear account of prior work. The cited descriptions already credit the relevant mechanisms.
+   Suggested edit: cut the first two sentences containing those phrases. Replace the third sentence with “These methods provide foundations for hierarchical execution and selective language-model invocation.” Retain the subsequent explanation of what RoboRAG proposes to test; do not imply that the inherited mechanisms are new.
+
+03-formulation.tex
+
+4. Line 4, “An unseen task can combine ...; it does not imply that the backend can execute an unavailable skill.”
+   Why: the second clause answers an unlikely objection. The same scope can be stated directly.
+   Suggested wording: “An unseen task combines supported skills, objects, or dependencies in a new way.” If “new way” is intended to cover only experimental novelty, retain the precise bank-relative definition in the experiment section.
+
+04a-construction.tex
+
+5. Line 11, “The serializer also records a nominal boundary for indexing; it does not turn that choice into an exact event time.”
+   Why: the sentence personifies serialization and states its meaning through a denial.
+   Suggested wording: “A nominal boundary supports indexing, while the stored bracket preserves timing uncertainty.” This retains the substantive uncertainty requirement.
+
+6. Line 31, “This makes graph interpretation an explicit interface rather than a request to infer hidden semantics from prose.”
+   Why: “hidden semantics” is vague and the comparison sounds defensive. The preceding sentence already establishes the actual rule: both renderings use the same fields and summaries cannot change guards.
+   Suggested edit: cut the sentence. If a closing sentence is needed, use “The renderer therefore preserves the conditions used by execution.”
+
+04b-use.tex
+
+7. Lines 6 and 58, “schema-grounded initial plan” / “schema-grounded planning.”
+   Why: “grounded” elsewhere concerns scene observations and geometry. Here it means adherence to a data schema; the compound blurs those meanings.
+   Suggested wording: heading “An initial plan under the shared schema”; step 2 “fall back to planning under the same schema.” Use “schema validation” when referring specifically to the check.
+
+8. Line 32, “Five edit types cover the intended adaptation: ...”
+   Why: the long semicolon list mixes short operations with long conditional replacements and makes the reader hold all five in memory.
+   Suggested wording: “The planner can rebind object roles, ground parameters from current observations, or insert a prerequisite. It can also replace an unavailable phase with a supported sequence that has the required effect, or add a recovery branch with an activation condition and a retry limit.” Keep provenance in the following sentence.
+
+05-system.tex
+
+9. Line 23, “a nominal action frequency does not establish wall-clock real-time operation.”
+   Why: this ends a useful account of local control with another rebuttal. The actual reporting distinction is clearer in positive form.
+   Suggested wording: “We evaluate synchronous simulation and continuous physical execution separately, reporting measured wall-clock timing alongside nominal controller frequency.” Retain the earlier distinction between cancellation acknowledgment and confirmed physical stopping; it governs behavior and is not an empty defense.
+
+06a-experiments.tex
+
+10. Line 36, “This test checks the causal availability of annotations rather than treating temporal adjacency as proof of causation.”
+    Why: “causal availability” is obscure. The sentence also shifts from whether future evidence was available to whether adjacent events are causally related, which makes the paragraph harder to follow.
+    Suggested wording: “This test checks whether each annotation was supported by the evidence available at that decision.” Keep the edge/causation distinction in the graph-definition section.
+
+11. Line 42, “Retrieved item count is not a token budget” and “actual consumption is reported rather than padded to equality.”
+    Why: both phrases frame sensible measurement choices as rebuttals.
+    Suggested wording: “We measure packed context in input tokens and images and report context-cost curves alongside the fixed-ceiling comparison. Methods may stop early; we report their actual consumption.” This retains matched ceilings without implying matched expenditure.
+
+12. Lines 63 and 69, “not a comparison against an uninformed policy” and “cannot establish that relational information is unnecessary.”
+    Why: the first is the strongest unnecessary defensive phrase in the experiments section. The second repeats the explanation that the sequence baseline retains relations, which has just been made explicitly.
+    Suggested edit: replace the last sentence of line 63 with “This comparison tests how each executor uses the same relational information.” Cut the final sentence of line 69. Keep the sentence distinguishing the interpretation of a positive interaction from an improvement over no retrieval; that is a concrete analysis rule.
+
+06b-evidence.tex
+
+13. Line 36, “It is a planned diagnostic, with no outcome assumed here.”
+    Why: the paragraph already begins “we will replay,” and the section distinguishes existing evidence from planned analysis. “With no outcome assumed here” sounds like a response to a reviewer and adds no protocol detail.
+    Suggested edit: cut the sentence. Retain the preceding limitation that the intervention estimates the effect of correcting alignment at selected states; it defines the estimand.
+
+14. Line 38, “whether a method finishes the task, merely appears to finish it, or spends additional computation correcting its own plan.”
+    Why: the three-part rhetorical ending repeats the previous sentences and “merely appears” implies a motive or appearance rather than a measurable discrepancy.
+    Suggested wording: “These measures distinguish task completion, false completion judgments, and the cost of plan correction.”
+
+07-discussion.tex
+
+15. Lines 18–21, “Findings that would support the method,” followed by several “If ...” and “would not establish ...” clauses.
+    Why: the passage repeats the claim-test table and earlier controlled interpretations. It makes the Discussion close with a sequence of anticipated objections instead of the practical meaning of the findings.
+    Suggested consolidation: “The experiments will identify where preserving phase conditions and outcome evidence improves decisions: retrieval, adaptation, or execution. The matched sequence comparison tests the value of explicit graph enforcement, and held-out compositions test the value of structural edits. Delegation is useful if it lowers cost while preserving independently measured task success and completion reliability. The systems comparison separately measures application reuse and MCP overhead. These results will guide which parts of RoboRAG merit further development.”
+    Keep conditional language. The proposal has no graph-method results yet; this edit shortens the interpretation rather than asserting success.
+
+GLOBAL REPETITIONS TO CENTRALIZE
+
+• Historical evidence, prospective plans, and observed execution: define the three records fully in 03-formulation.tex, retain one brief motivating sentence in the Introduction, and retain the concrete node-field example in 04a-construction.tex. The full distinction recurs in the Abstract, Introduction, Related Work research-position paragraph, Formulation, construction schema, and execution receipts. Elsewhere, refer to G, P_t, and X_t and explain only the new operation. Do not delete the rule that current predicates need current evidence.
+
+• Edge semantics: AND dependencies, OR incoming activation, precedence, and unknown guards recur in 03-formulation.tex:12–23, 04a-construction.tex:22–24, and 04b-use.tex:37. Keep the authoritative semantics with the readiness equation, the bottle recovery example in construction, and the list of validation checks in graph use. The latter two locations need not rederive the full logic.
+
+• Frozen-bank evaluation versus accumulation: explained in 03-formulation.tex:28, 04a-construction.tex:37, 04b-use.tex:52, and 06a-experiments.tex:79. Keep the update mechanism in construction and the full evaluation protocol in experiments. A brief cross-reference can replace the restated protocol elsewhere.
+
+• Interface normalization versus MCP transport: the A/B/C modes and controls recur in 05-system.tex:29–31 and 06a-experiments.tex:81; attribution limits recur again in 07-discussion.tex:21. Let the system section define modes and adapter behavior. Let experiments specify controlled variables and measurements by referring to those modes. Keep only their practical interpretation in Discussion.
+
+• Evidence status versus defensive prose: retain the abstract's design-stage statement, 06b-evidence.tex:5 implementation status, the completed-pilot counts and limits, and operational safeguards such as unknown outcomes blocking dispatch. Centralizing these factual qualifications is preferable to deleting them. The cuts recommended above target repeated or rhetorical defenses, not genuine uncertainty.
+
+Terminology: use established terms such as phase, predicate, dependency, recovery branch, schema, and execution receipt consistently. Avoid introducing extra labels for ordinary combinations. “Schema-grounded” is the clearest candidate for replacement. “Reobservation-and-retry branch” (04b-use.tex:34) can simply be “a branch that observes the scene again and retries the grasp”; this is optional and lower priority than the fifteen edits above.

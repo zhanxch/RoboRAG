@@ -1,0 +1,57 @@
+{
+  "verified_at": "2026-10-23T16:49:20.808633+00:00",
+  "public_evaluation_complete": true,
+  "planned_cases": 20,
+  "native_scored_cases": 20,
+  "successful_cases": 8,
+  "retained_action_records": 8907,
+  "archived_actor_workspaces": 20,
+  "all_runner_processes_terminal": true,
+  "source_and_protocol_checks": {
+    "manifests_checked": 20,
+    "source_files_checked": 440,
+    "source_hashes_identical": true,
+    "layout_hashes_verified": true,
+    "dependency_versions_identical": true,
+    "model_effort_seed_transport_and_budgets_verified": true,
+    "prompt_sha256": [
+      "9cd2b8a74140e07aa705be1d91593f07bcd97175a2e9bd6bb820b3a58eab50ef"
+    ],
+    "manual_sha256": [
+      "f46a63950dcbca57539dfcf23d67cf96472a430e2cab315d81938a67dfaacf10"
+    ],
+    "completed_action_logs_complete": true
+  },
+  "csv_usage_matches_json": true,
+  "complete_terminal_actor_usage": true,
+  "observed_maximum_concurrency": 2,
+  "upstream": {
+    "HexaShell": {
+      "path": "vendor/HexaShell",
+      "commit": "d1a2a24dc4c528a652b359fd689398530ef941d8",
+      "worktree_clean": true
+    },
+    "RoboDojo": {
+      "path": "vendor/RoboICL/third_party/RoboDojo",
+      "commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942",
+      "worktree_clean": true
+    }
+  },
+  "native_task_source_sha256": {
+    "vendor/RoboICL/third_party/RoboDojo/task/RoboDojo/tasks/fold_clothes.py": "ecea9c287d0579605330168e6f36734704fb14a6b1e5dec82b6f2ee3a56ec20a",
+    "vendor/RoboICL/third_party/RoboDojo/task/RoboDojo/tasks/fold_clothes_random.py": "9e40abe3f7201a8c13961edc1ca8075260c315584d3d6b93fa1df966d13d1e88"
+  },
+  "protocol_sha256": "f987b1532d73fda62fde22cec21cc4e5d1c45892df02fbe6d9dc14c749172cb5",
+  "protocol_saved_before_batch": true,
+  "independent_calibration_evidence_verified": true,
+  "isolation_smoke_evidence": "runs/hexashell-native-session-smoke-20261023-r6/agent-events.jsonl",
+  "figure_sha256": {
+    "results/hexashell-public-v2-20261023-comparison.png": "a4069ece2e46bff9c991d62a67ed330e0b2300d42ef33eae084514302030c3ff",
+    "results/hexashell-public-v2-20261023-comparison.pdf": "721157234615e728cfcc6ea4f8c19efeddee7f72f03f196057c9ecc1ec56acdf",
+    "results/hexashell-public-v2-20261023-timeline.png": "656493bb264e3f9a2bd67890ece4781f68d1b5e88af16d0b28c1c611de649a3e",
+    "results/hexashell-public-v2-20261023-timeline.pdf": "e34fef08e6e0ac342cf435b938acad63232e10ebfd69f2b15a718326c9ce945d"
+  },
+  "scope": "Completed public seed-0 layouts 0-9, standard and clutter, final frozen public prompt; does not claim the unpublished hidden-seed official 50 episodes or identical historical development prompts.",
+  "actual_billed_money_available": false,
+  "early_actor_launches_with_missing_usage": 2
+}

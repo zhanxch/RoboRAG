@@ -1,0 +1,17 @@
+RoboRAG first-draft editorial record
+
+Scope: English manuscript, approximate CVPR two-column layout; logical completeness before page/citation polish.
+Nine writing roles: Introduction; Related Work; Formulation; Graph construction; Graph use; System; Experiments; Existing evidence; Discussion+Abstract.
+All nine completed first-pass drafts.
+
+Independent reviews
+1. Language reviewer read section prose only and supplied 15 targeted edits plus repetition clusters.
+2. Figure reviewer read only seven rendered pages containing four diagrams and three tables/captions. No manuscript prose. Three medium issues: explicit controlled contrasts; parameter-adaptation definition; fixed-context pilot definition.
+3. Logic reviewer read only headings, chapter summaries, figures/captions and rough word counts. No detailed manuscript prose. No fatal/severe issue found within that scope.
+
+Root adjudication before author response
+- Accept the table clarity requests as useful. Preserve valid current-scene grounding in all baselines.
+- Accept plain-language revisions while retaining operational unknown/evidence rules and actual evidence status.
+- Return feedback to source authors, who may accept, partially accept or rebut.
+- Root fixed one technical source issue: missing end of alignment-score equation.
+- Native LaTeX compiler startup failed because app sandbox executable was missing, before source compilation. A self-contained TeX remains the editable master. Offline HTML/KaTeX plus headless Chrome produces the readable PDF from the same sources.

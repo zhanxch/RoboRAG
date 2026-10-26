@@ -1,0 +1,67 @@
+\subsection{Retrieving, Adapting, and Following Interaction Graphs}
+\label{sec:graph-use}
+
+The second part of RoboRAG turns stored experience into a plan for the current task. A shared schema makes each retrieved phase interpretable as a conditional procedure: what it requires, what it attempts, what evidence would establish completion, and which continuation its outcome permits. The proposed execution hierarchy separates changes to this procedure from routine decisions within it.
+
+\paragraph{An initial plan under the shared schema.}
+The planner receives the goal $g$, current observations, capability description $c$, and a compact graph specification. The specification defines every field and edge type, provides one annotated example, and pairs each skill with its argument schema and observable completion conditions. The planner generates a structured record. Each node contains a symbolic phase role, typed object variables, preconditions, a skill reference, intended effects, and an evidence requirement. A short explanation accompanies each node for inspection, while execution reads the structured fields. Object variables must bind to observable entities or remain explicitly unresolved.
+
+The first output is a provisional graph $P_t^{-}$. It identifies possible phases and missing information before retrieval. A schema checker returns errors at specific node or edge identifiers; the planner receives these errors for a bounded correction pass. Missing geometry can remain symbolic until perception supplies it. An unresolved object identity requires an observation phase or clarification through the task interface. Dispatch requires grounded coordinates and bindings. This provisional graph guides search without fixing the final phase sequence.
+
+\paragraph{Searching graphs and local experience.}
+A retrieval query combines the goal, estimated current phase, observed predicates, unresolved prerequisites, and available skills:
+\begin{equation}
+q_t=(g,\hat z_t,\mathcal F_t,\mathcal U_t,c,P_t^{-}),
+\label{eq:graph-query}
+\end{equation}
+where $\hat z_t$ can be unknown, $\mathcal F_t$ contains evidence-backed current facts, and $\mathcal U_t$ contains missing conditions. The phase estimate uses $h_t$, not reference segmentation labels. At episode start, the goal and provisional graph dominate the query. After a failed attempt, its phase, feedback, and unmet effect specify the local search context.
+
+Two indexes supply candidates under a shared retrieval budget. Whole-graph search finds procedures with related goals and compatible phase structure. Phase-centered search finds smaller patterns around an unmet prerequisite, failure, or intended effect. A candidate retains its boundary conditions and supporting evidence. If its dependency closure exceeds the budget, search chooses another complete candidate or returns no compatible evidence. Capability filtering rejects procedures whose required skills have neither a supported implementation nor an explicitly declared replacement. Source trajectories provide context, while current observations determine execution geometry.
+
+A reranker searches for a type-consistent role mapping $M$ and a partial node alignment between a candidate $H$ and the provisional plan. Its score is
+\begin{equation}
+\begin{split}
+s(H,q_t)=\max_M\{&w_g s_g+w_r s_r(M)+w_f s_f(M)\\
+                &+w_e s_e(M)+w_o s_o(M)-\lambda d(M)\},
+\end{split}
+\label{eq:alignment-score}
+\end{equation}
+where the terms measure goal similarity, role compatibility, condition compatibility, preservation of typed edges, and relevance of recorded outcomes. The penalty $d$ estimates required edits and context cost. Role compatibility includes functional and physical constraints: a movable item and an articulated receptacle cannot be interchanged because their names are similar. Conditions receive separate treatment when already verified, achievable through a supported prerequisite, unresolved, or contradicted. Unresolved conditions incur uncertainty; contradictions reject the alignment unless an explicit action can change them. Edge matching rewards compatible local structure without requiring the target to duplicate a complete source graph. Weights, retrieval count, and acceptance thresholds are selected on development tasks and fixed for held-out evaluation.
+
+\paragraph{Adapting a retrieved procedure.}
+The planner receives a small set of scored candidates, alignment proposals, and their evidence references. It returns a graph plus an explicit edit list. It can rebind object roles, revise skill parameters within declared bounds, or insert a prerequisite. It can also replace an unavailable phase with a supported sequence that has the required effect, or add a recovery branch with an activation condition and retry limit. Edits can combine compatible subgraphs. Each copied or changed node retains source provenance, and newly proposed nodes are labeled as such.
+
+Parameter adaptation is separate from mandatory geometric grounding. All executable plans use current object poses and the same feasibility checks. Where a skill exposes these choices, the planner can additionally change the approach direction in the object's reference frame and the precontact clearance distance within the skill's admissible bounds. These edits preserve the phase role and graph topology. Live-pose grounding transforms the approved parameters into current execution coordinates; it is required even when the planner retains the source parameter choices. Infeasible retained parameters are rejected before dispatch.
+
+Figure~\ref{fig:adaptation} illustrates a held-out composition: placing a cup into a closed drawer. Transfer experience provides grasp, move, and place phases. Drawer-opening experience supplies a missing prerequisite. Adaptation binds the item role to the current cup, inserts opening and handle release before the cup grasp for a single-gripper robot, and grounds motion parameters from the current scene. A recorded failed grasp can supply a branch that observes the scene again and retries the grasp. Its retry count and admissible parameter adjustments are specified before execution.
+
+\paragraph{Checking the plan before use.}
+Validation checks schema types, object bindings, skill support, predicate references, resource conflicts, and graph structure under the readiness semantics of Sec.~\ref{sec:formulation}. Every intended terminal goal must have a supported path from an entry node. All mandatory dependency predicates need an evidence source or a reachable producing phase. The validator requires exclusive branch guards or a declared priority when alternatives can fire together. Activated dependencies and temporal constraints must admit an execution order, and unresolved preconditions block dispatch. Retry links require a finite budget and generate fresh execution instances.
+
+A successful structural check does not predict physical success. It establishes that the procedure is interpretable and that its next authorized step can be checked against current evidence. Validation errors return to the planner as a bounded repair request. If no compatible candidate passes retrieval thresholds, planning continues from $g$, $h_t$, and $c$ using the same schema. If adaptation fails validation, the planner can discard the retrieved procedure and construct a fresh graph. Exhausted repair budgets or an unsupported task produce an explicit unresolved outcome rather than a forced action.
+
+\paragraph{Delegated plan following.}
+The hierarchy has three roles. The high-level planner constructs or structurally revises $P_t$; Astra is a candidate implementation. A lower-cost supervisor, for example Luna, reads the active phase neighborhood, recent feedback, and evidence references. It can select ready phases, choose an already approved conditional branch, request a listed observation, and invoke an approved recovery step. It cannot add nodes, change object identities, relax completion conditions, or extend a recovery budget. A deterministic execution gateway validates each request and sends its skill and bounded arguments to the backend's local controller. Servo control remains local.
+
+Parameter updates have a narrow authority boundary. A supervisor may request re-estimation of a pose through an approved perception skill, and the grounding module may refresh geometry within the active node's workspace and tolerance. It preserves the approved approach direction and clearance choices; changing either requires a versioned planner edit. A changed target role, unsupported grasp strategy, violated resource constraint, or adjustment outside those bounds also requires planner revision. The planner handles conflicting evidence, repeated unresolved conditions, and exhausted recovery branches. Routine successful receipts remain with the supervisor.
+
+\paragraph{Evidence, receipts, and revisions.}
+Each dispatch carries the plan version, node identifier, attempt identifier, and an idempotent request identifier. The gateway rejects stale versions and unauthorized arguments. An accepted request is pending until its terminal receipt arrives; acknowledgment is not phase completion. A receipt-guarded observation transition may then activate a verification phase while the action's intended effect remains unknown. Task progress requires evidence for that effect, and subsequent manipulation remains blocked until its prerequisites hold. Predicate evaluators use allowed sensor observations or backend feedback and return evidence references with true, false, or unknown. A visual evaluator uses fixed acceptance rules checked on development data; unsupported or ambiguous judgments remain unknown. Benchmark success oracles are accessible only to the evaluator and never supply control predicates.
+
+Every actual attempt appends an event to $X_t$, including failed and interrupted attempts. Recovery creates a new event linked to the failed event; it cannot overwrite that failure. Plan edits increment the version, preserve unchanged node identifiers, and record replacement lineage. Revisions activate only after outstanding requests finish or cancellation is confirmed, preventing a new plan from treating an unresolved action as absent. Evidence-dependent readiness is recomputed after each terminal event or relevant observation. Cached retrieval results are reconsidered when the active phase, condition signature, plan structure, or capability description changes.
+
+\paragraph{Memory during execution.}
+The current execution graph updates the context for subsequent queries and plan revisions. Bank admission follows the versioned update procedure in Sec.~\ref{sec:construction}; Sec.~\ref{sec:experiments} evaluates fixed-bank execution and cross-episode accumulation separately.
+
+\paragraph{Execution procedure.}
+The following procedure summarizes the planning and supervision loop; all budgets are declared before a run.
+\begin{enumerate}
+\item Construct and schema-check $P^{-}$ from $(g,h_0,c)$. Retrieve whole graphs and phase subgraphs, align candidates, and propose an edited plan.
+\item Validate the plan. Repair within budget, fall back to planning under the same schema if retrieval is unsuitable, or stop with an unresolved outcome.
+\item Evaluate active predicates from available evidence. If the goal is verified, finish; if required evidence is missing, take an authorized observation step or escalate.
+\item Let the supervisor select a ready, resource-compatible phase or an approved recovery branch. The gateway checks version, authority, and arguments before dispatch.
+\item Resolve the receipt, append the attempt and evidence to $X$, and update predicates. Continue the approved plan when its conditions hold.
+\item On a structural mismatch or exhausted local recovery, retrieve again and ask the planner for a versioned revision. Stop when the task, action, observation, or revision budget is exhausted.
+\end{enumerate}
+
+% CHAPTER_SUMMARY: A planner drafts unseen-task graphs under the shared schema, retrieves whole procedures and local evidence, aligns roles/conditions/typed structure, and makes explicit parameter or structural edits. Mandatory live-pose grounding is common to every executable plan. A smaller supervisor follows approved phases and recovery branches, while a deterministic gateway enforces requests and local controllers execute skills; parameter choices and structural changes return to the planner. Receipt-backed evidence determines progress, revisions retain lineage, and failed attempts remain in X.

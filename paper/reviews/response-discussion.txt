@@ -1,0 +1,16 @@
+Discussion and abstract author response — 2026-10-23
+
+Reviewed paper/reviews/language.txt, items 1 and 15 and relevant global repetitions. Edited only 00-abstract.tex and 07-discussion.tex; this file records the response. No new empirical claim was introduced.
+
+Item 1 — ACCEPT.
+Moved the central hypothesis ahead of the architecture description. Replaced “schema-conforming” with “under the shared schema,” shortened the planning operation, and made the final execution sentence name concrete operations: the gateway and controllers check and execute requests. Removed the abstract's full historical/planned/executed-record distinction because Formulation defines it and the abstract already identifies observed outcomes as the retained evidence. Preserved the design-stage/pilot sentence.
+
+Item 15 — PARTIALLY ACCEPT.
+Replaced the two final expected-findings paragraphs with one shorter paragraph. Removed repeated A/B/C attribution limits, familiar-task caveats, and the extra supervisor failure diagnosis. The revised passage emphasizes practical interpretation: where benefits arise, whether delegation preserves independently measured success at lower total cost, and which integration benefits justify MCP overhead.
+
+Retained one concise pair of counter-outcomes: equal sequence performance weakens explicit graph-enforcement claims, and absent gains from edits on held-out compositions weaken adaptation claims. The user explicitly requested hoped-for conclusions, while the assignment calls for concrete findings that could weaken the novelty candidate. Omitting both would leave only positive expectations. The retained outcomes also lead to a practical consequence—favoring a simpler representation or adaptation procedure—rather than a succession of anticipatory rebuttals. Root should adjudicate this partial acceptance.
+
+Global repetitions — ACCEPT WITH TARGETED CUTS.
+Removed the repeated chronological-bank access rule from Discussion; the paragraph now states what admission policies should achieve. Replaced the negative graph-concurrency qualification with a direct backend requirement. Shortened the evidence-attribution qualification into a positive diagnostic measurement statement. Retained the concrete recovery/provenance example because it explains deployment value rather than redefining G, P, and X.
+
+No rebuttal of the review's central readability finding. No changes were needed for figure or severe logic issues according to the parent's review summary.

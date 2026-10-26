@@ -1,0 +1,22 @@
+INDEPENDENT FIGURE/TABLE REVIEW — NARROW RECHECK
+
+Inputs actually read for this recheck:
+- /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/revised-figure-page-6.png
+- /home/zxc/文档/ChatGPT/RoboRAG/paper/review-inputs/revised-figure-page-7.png
+Both pages were visually inspected with view_image, including each table's own caption. No manuscript prose, author response, source, or additional packet was read. Unchanged figures and Table1 were not re-reviewed. No table or manuscript edits were made.
+
+VERDICT
+All three previously identified ambiguities are resolved at the intended standalone table-and-caption level. No newly introduced severe ambiguity was found. No further mandatory change is requested within this recheck's scope.
+
+T2.1 — Controlled contrasts: RESOLVED. Remaining severity: NONE.
+Table2 now separates historical evidence, plan following, and retrieval query into distinct rows. The history contrast holds graph schema, planner, adaptation rules, and hierarchy fixed. The plan-following contrast supplies exactly the same node evidence, predicates, typed relations, and evidence references, with relations rendered losslessly for the sequence condition. The query row explicitly defines goal-only, observed-predicates/feedback-only, and full queries while holding planner goal/observation access, candidate bank, filter, ranker, and budget fixed. The caption further distinguishes shared exact evidence in the plan-following comparison from intentional evidence-access/selection changes in the other comparisons. A standalone reader can now identify the changed factor and the common controls.
+
+T2.2 — Mandatory grounding versus optional parameters: RESOLVED. Remaining severity: NONE.
+The adaptation row names grounded reuse, planner edits to approach direction and precontact clearance distance with fixed topology, and structural edits. Its control column requires all conditions to bind roles, ground live poses, and check feasibility, while bounding optional parameter edits and defining structural changes as prerequisites, order, or recovery. This supplies the previously missing distinction between universally required execution grounding and an additional planner intervention. It also explicitly rejects infeasible source parameters. No need to infer this distinction from manuscript prose remains.
+
+T3.1 — Fixed-context definition: RESOLVED. Remaining severity: NONE.
+The Table3 caption now defines the fixed training selection (eight chunks sampled uniformly by index from one demonstration selected by initial-scene similarity) and the live context (the latest four completed live chunks when available). It states how adaptive dual-memory selection differs, describes shared current observations and compressed omitted-history summaries, and distinguishes matched chunk quotas from unmatched token consumption. Thus the independent variable and the budget limitation are visible on the page. The table still identifies one rollout per row, the historical/pre-graph status, and opposite directions of the step/call differences across layouts; the clarification does not turn this descriptive pilot into a general performance claim.
+
+Rendering check: Both revised tables and captions are legible at the supplied page size, and no clipping, overlap, or missing row was apparent.
+
+This verdict concerns standalone communication only. It does not independently verify implementation, provenance, or the historical configuration described by the authors.

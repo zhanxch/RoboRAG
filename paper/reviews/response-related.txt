@@ -1,0 +1,11 @@
+Related Work author response — 2026-10-23
+
+Language review item 3: ACCEPT.
+Removed the sentences “Thus, retrieving and adapting prior procedures is established practice” and “These works already connect structured procedures to planning or execution.” Replaced the stand-alone novelty disclaimer with the recommended positive account of the foundations for hierarchical execution and selective model invocation. The adjacent cited descriptions of MTP, HP-KG, Neural Task Graphs, and GAVEL remain intact, including the concrete operations they contribute. RoboRAG's proposed distinction is retained.
+
+Global repetition, historical graphs / plans / execution graphs: ACCEPT.
+Removed the three-record restatement from Research position so the full definitions can remain in Problem Formulation. Shortened the ending to the required comparison families and the relations the evaluation should test. Also removed the repeated negative statement about gains over no retrieval; the evaluation section owns that interpretation.
+
+Scope judgment: retained the brief temporal-order-versus-prerequisite distinction beside the comparison with procedural graphs. It explains the specific annotation problem rather than asserting priority. No new claims of absence in prior work, first/only claims, or empirical RoboRAG results were introduced.
+
+References and source URLs are unchanged. Figure and final-logic reviews requested no changes to this section. No rebuttal was necessary.

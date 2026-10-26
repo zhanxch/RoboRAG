@@ -1,0 +1,87 @@
+\section{Experimental Design and Existing Evidence}
+\label{sec:experiments}
+
+The evaluation asks whether preserving phase, condition, and feedback relations across construction, retrieval, adaptation, and execution improves manipulation. Table~\ref{tab:claim-tests} connects each proposed contribution to a test that could reject it. The main comparisons use a frozen graph bank. A separate study measures experience accumulation, and a systems study isolates interface normalization from MCP transport. The following protocol defines the planned experiments; existing evidence is reported separately.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Tests of RoboRAG's proposed contributions. Each row specifies an intervention and an observable result that would weaken the corresponding claim. Task success is assessed independently of the model's completion judgments. These are evaluation commitments, not experimental results.}
+\label{tab:claim-tests}
+\begin{tabularx}{\textwidth}{@{}p{0.19\textwidth}XX@{}}
+\toprule
+Proposed contribution & Controlled test and primary readout & Evidence against the claim \\
+\midrule
+Reusable phase evidence & Annotate held-out recordings; measure boundary, role, relation, and outcome accuracy against adjudicated references, including prefix-only replay. & Frequent unsupported conditions, unreliable recovery links, or prohibitive correction effort. \\
+Shared graph structure & Cross relation-aware retrieval with graph-governed execution; compare success and violated prerequisites under matched evidence access. & Relation-blind ranking and sequence execution perform comparably within a predeclared meaningful-effect range. \\
+Task-conditioned adaptation & Compare grounded reuse, planner parameter edits, and full structural edits on held-out compositions and capability-compatible shifts. & Structural edits add failures or show no benefit where prerequisites or ordering must change. \\
+Delegated plan following & Compare high-level-only following, a same-model supervisor, and a smaller supervisor on the same local controller. & Cost savings require a practically important loss of task success or increased false completion. \\
+Portable integration & Compare native, normalized direct, and normalized MCP access within each backend; measure conformance, integration work, and overhead. & The shared interface requires substantial planner changes, or MCP adds overhead without useful integration benefits. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Data Partitions and Task Families}
+
+Source episodes are partitioned before annotation or index construction. Training episodes supply the bank and schema examples; development episodes determine annotation rules, retrieval weights, thresholds, prompts, and budgets. Held-out episodes are used once after these choices are fixed. Grouping by source recording, task template, and near-duplicate scene prevents adjacent clips or paraphrases from crossing partitions. All methods receive the same training recordings, skill library, observations, and backend capabilities. Test outcomes, reference phase labels, and benchmark success predicates remain unavailable to planning and retrieval.
+
+We report distinct task families. Familiar-task tests change the initial state while retaining a seen task structure. Composition tests combine supported phases into a dependency or recovery structure absent from the bank; the bank may contain its individual skills and component procedures. Object tests change role-compatible instances or categories while preserving the required skill set. Layout tests vary poses, occlusion, or spatial relations. Combined shifts form a separate, harder group rather than being merged with single shifts. For each task, an explicit structural comparison records what is absent from the bank. ``Unseen'' consequently means unseen in the experimental bank and tuning data; it makes no claim about a pretrained model's unknown training corpus.
+
+Simulation uses paired initial states, object placements, and perturbation schedules across methods. Physical trials randomize method order and block comparisons by task and setup session. Task counts and repetitions are fixed using development variability and a declared minimum meaningful difference. Results report per-family success, paired differences, and confidence intervals clustered by task; repeated seeds do not substitute for diverse tasks.
+
+\subsection{Graph Construction and Retrieval Quality}
+
+Two annotators independently label a stratified recording sample containing successful actions, failed attempts, recovery, and ambiguous observations. They are blind to the pipeline's labels; disagreements are adjudicated separately. Boundary precision and recall use one-to-one matching at declared time tolerances, with interval overlap reported for phase spans. Phase labels, object-role bindings, and outcome labels are evaluated separately. Typed-edge precision and recall require both correctly matched endpoints and a correct relation or guard. Agreement is reported before adjudication, together with annotation time, correction time, and the fraction requiring human review.
+
+Offline annotation can inspect an entire episode, but a deployment-time phase or condition estimate must be justified by its prefix. Prefix replay therefore masks later frames and receipts, and measures unsupported true/false assertions, appropriate unknown judgments, and detection delay. Later evidence may explain an earlier failure without becoming information available to the earlier decision. This test checks whether each annotation was supported by the evidence available at that decision.
+
+Retrieval evaluation uses held-out decision states with independently judged compatible and incompatible candidates. Readouts include condition and capability compatibility, prerequisite coverage, recovery relevance, and ranking quality. Relevance is not defined by sharing the task name or by eventual source success. These measurements diagnose retrieval, while closed-loop task success determines whether useful-looking matches improve decisions.
+
+\subsection{Matched Manipulation Comparisons}
+
+Table~\ref{tab:comparison-design} specifies the main comparisons. Prompt templates, model versions, low-level controllers, skill argument schemas, context ceilings, action limits, and repair limits are fixed across the relevant pairs. Budgets cover all planning, retrieval, validation, supervision, and retry calls. We measure packed context in input tokens and images and report context-cost curves alongside the fixed-ceiling comparison. Methods may stop early; we report their actual consumption.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Matched comparison families for the proposed manipulation experiments. Each row defines a separate contrast. All variants use the same source corpus, planner observations, available skills, local controller, and declared resource ceilings. Exact retrieved evidence is shared for the plan-following contrast; the history-access and query contrasts intentionally vary evidence access or selection. Prior-work-inspired variants adapt mechanisms to this interface and are not exact reproductions.}
+\label{tab:comparison-design}
+\begin{tabularx}{\textwidth}{@{}p{0.19\textwidth}XX@{}}
+\toprule
+Comparison & Variants & Controlled interpretation \\
+\midrule
+Historical evidence & Graph planning without historical retrieval versus graph planning with historical retrieval. & Keep the graph schema, planner, adaptation rules, and execution hierarchy fixed; vary access to retrieved training episodes. \\
+Plan following & Sequence-plan execution versus graph-governed execution, both with retrieval. & Supply exactly the same selected node evidence, predicates, typed relations, and evidence references; sequence input renders these relations losslessly as text. \\
+Retrieval query & Goal text only; current observed predicates and feedback only; full query including goal, phase estimate, prerequisites, and provisional graph. & Restrict only the retrieval query. Every planner retains the same goal and observation history; candidate bank, capability filter, ranker, and budget stay fixed. \\
+Adaptation & Grounded reuse; planner edits to approach direction and precontact clearance distance with fixed topology; full structural edits. & All bind roles, ground live poses, and check feasibility. Parameter edits use skill-declared bounds. Structural edits change prerequisites, order, or recovery. Infeasible source parameters are rejected. \\
+Relations and feedback & Remove dependency, recovery, or outcome information separately; compare whole-graph and phase-centered retrieval. & Distinguish removed information from a lossless text rendering that retains every predicate, typed relation, and evidence reference. \\
+Execution hierarchy & High-level model at every phase; same high-level model as a constrained supervisor; smaller constrained supervisor. & Retain identical controllers, initial plans, available observations, approved branches, and escalation budgets; separate hierarchy effects from model capacity. \\
+Closest procedural mechanisms & HP-KG-inspired procedural retrieval; MTP-inspired instruction retrieval and adaptation; GAVEL-inspired checking and repair. & Implement explicitly labeled matched variants with shared evidence and controller access; document retained mechanisms and necessary departures~\cite{hpkg2025,mtp2025,gavel2026}. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\paragraph{Testing the shared representation.}
+A two-by-two experiment crosses relation-aware retrieval ranking with graph-governed execution. The alternative ranker receives the same candidate node fields but omits typed edges from its score. The alternative executor follows a sequence plan with feedback-driven replanning and receives a lossless textual rendering of the same retrieved conditions, relations, and outcomes. Thus, it retains the information needed to reason about prerequisites, while the graph executor also enforces them through explicit readiness and branch rules. This comparison tests how each executor uses the same relational information.
+
+The candidate pool, node payload schema, and packing budget stay fixed. Ranking can change the selected evidence, so each execution pair receives exactly the same selected payload within its retrieval condition. Additional fixed-candidate replay isolates execution from selection. For success rates $S_{re}$, where $r,e\in\{0,1\}$ enable relation-aware ranking and graph-governed execution, we estimate
+\begin{equation}
+\Delta_{\mathrm{joint}}=(S_{11}-S_{10})-(S_{01}-S_{00}).
+\end{equation}
+Its uncertainty, the four cell means, and task-level failure categories are reported together. A positive interaction would support complementary use of relations; an isolated improvement over no retrieval would support only the narrower value of experience access. Separate relation-removal ablations identify which information matters.
+
+\paragraph{Adaptation and recovery.}
+Grounded reuse binds roles and obtains live poses through the same grounding and feasibility checks as every variant. It retains source topology and source choices of approach direction and precontact clearance where admissible. Parameter adaptation lets the planner revise these two choices within skill-declared bounds while preserving topology. Full adaptation additionally permits prerequisite, ordering, and recovery edits. The parameter contrast uses skills exposing those choices; infeasible source parameters are rejected in every condition. Held-out compositions require identifiable structural edits, such as opening a receptacle before placement or changing order for a single gripper. We measure edit validity, unsupported edits, prerequisite violations, and final success, rather than rewarding similarity to a reference graph when several valid plans exist.
+
+Preselected perturbations include displaced objects, blocked approaches, failed grasp outcomes, and missing observations. Methods receive the same perturbation opportunities and severity. End-to-end success uses every assigned trial, including runs that fail before the perturbation. A complementary recovery test starts every method from the same recorded perturbed state. Comparing only the naturally failed episodes of each method would confound recovery ability with different failure populations.
+
+\paragraph{Success, evidence, and cost.}
+Primary success comes from backend task predicates hidden from the agent, or independent physical-trial adjudication under a fixed rubric. Deployed completion predicates are audited against this reference for false positives, false negatives, unknown outcomes, and premature transitions. We also report task progress, phase completion supported by evidence, invalid dispatches, recovery success, escalations, and budget exhaustion. Cost includes input/output tokens, image inputs, calls by model, retrieval time, wall-clock latency, and action attempts, including rejected, interrupted, failed, and retried requests. Inference, transport, and physical execution time are separated.
+
+\subsection{Accumulation and Cross-Backend Evaluation}
+
+The frozen-bank study permits updates to $P_t$ and $X_t$ but never adds test episodes to $\mathcal B$. A separate chronological stream compares a frozen bank with validated accumulation from completed earlier episodes. Both conditions start from the same bank; each decision logs its bank version. Multiple task orders, duplicate controls, and matched storage or context budgets expose order effects. A fixed held-out probe set is never admitted to the bank. Measurements include success over experience, annotation overhead, retrieval cost, and performance losses caused by erroneous admitted records.
+
+For RoboDojo, LIBERO, and a real robot, we evaluate the three access modes defined in Sec.~\ref{sec:system}. Within each backend, these modes hold the planner, bank, controller, and evidence fixed. Integration records distinguish application-side changes from adapter engineering and report implementation time with developer experience and reuse order. Conformance tests inject stale observations, unsupported capabilities, duplicate requests, lost receipts, and delayed plan versions. Transport overhead and task success are reported per backend. Cross-backend graph transfer is tested only on tasks with compatible skills and role predicates, using target-scene grounding. Interface portability and transfer success are separate outcomes.
+
+% CHAPTER_SUMMARY: Evaluation first tests whether phase graphs can be constructed reliably without future-information leakage, then tests bank-relative generalization under frozen memory. Matched comparisons isolate retrieval, structural adaptation, relation use, and delegated execution; a retrieval-by-execution factorial tests complementary use of the shared schema rather than only the combined system. Independent task success audits observable completion judgments, while paired perturbations and complete cost accounting prevent selective recovery or efficiency claims. Chronological accumulation and native/direct/MCP platform studies remain separate from the main algorithm evaluation.

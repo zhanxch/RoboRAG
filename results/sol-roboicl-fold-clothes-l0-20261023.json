@@ -1,0 +1,1717 @@
+{
+  "schema": "roborag.model-comparison-result.v1",
+  "generated_at_utc": "2026-10-23T07:27:47.529123+00:00",
+  "task": "fold_clothes",
+  "layout": 0,
+  "seed": 0,
+  "protocol": "RoboICL official dialogue policy, frozen local one-shot TRAIN reference, no RoboRAG retrieval",
+  "baseline": {
+    "run_directory": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/runs/roboicl-standard-l0-attempt1",
+    "status": "native_completed",
+    "valid_native_episode": true,
+    "native_score_0_100": 100.0,
+    "native_success": true,
+    "native_result": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/runs/roboicl-standard-l0-attempt1/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261015_170427_289923_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/_result.json",
+    "native_result_sha256": "117b7aac5c033705b64fc53e97b00912e1fec4f50cff9869aee75b750b3529a6",
+    "executed_control_steps": 247,
+    "attempted_model_calls": 25,
+    "completed_model_calls": 25,
+    "accepted_decisions": 25,
+    "rejected_action_tensors": 0,
+    "controller_rejections": 0,
+    "controller_guard_attempts": 247,
+    "controller_rejection_scope": "Recorded IK continuity guards: accepted=false; missing log means unknown.",
+    "action_rejections": [],
+    "action_rejection_costs": [],
+    "transport_reconnects": 0,
+    "latest_execution_note_not_verified_outcome": "Continue returning both open grippers toward origin, gradually lowering and turning the wrists toward neutral. Preserve elbow-up continuity and arm separation. The garment is released; final fold alignment remains uncertain.",
+    "known_total_tokens": 2198783,
+    "known_input_tokens": 2140492,
+    "known_output_tokens": 58291,
+    "total_tokens": 2198783,
+    "cached_input_tokens": 66304,
+    "known_cached_input_tokens": 66304,
+    "calls_without_complete_cache_usage": 0,
+    "calls_without_usage": 0,
+    "all_attempt_wall_seconds": 3076.710210321966,
+    "completed_call_wall_seconds": 3076.710210321966,
+    "completed_call_mean_seconds": 123.06840841287864,
+    "completed_call_median_seconds": 125.96036253799684,
+    "model_configuration_matches": true,
+    "calls": [
+      {
+        "call": "call-0001",
+        "completed": true,
+        "action_call_ids": [
+          "act_1"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 69493,
+        "known_output_tokens": 1815,
+        "known_total_tokens": 71308,
+        "wall_seconds": 125.96036253799684,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0002",
+        "completed": true,
+        "action_call_ids": [
+          "act_2"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 72145,
+        "known_output_tokens": 3417,
+        "known_total_tokens": 75562,
+        "wall_seconds": 149.25671511299151,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0003",
+        "completed": true,
+        "action_call_ids": [
+          "act_3"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 74789,
+        "known_output_tokens": 1951,
+        "known_total_tokens": 76740,
+        "wall_seconds": 109.71791977700195,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0004",
+        "completed": true,
+        "action_call_ids": [
+          "act_4"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 76407,
+        "known_output_tokens": 866,
+        "known_total_tokens": 77273,
+        "wall_seconds": 62.60722215099668,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0005",
+        "completed": true,
+        "action_call_ids": [
+          "act_5"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 76434,
+        "known_output_tokens": 1174,
+        "known_total_tokens": 77608,
+        "wall_seconds": 86.51039623300312,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0006",
+        "completed": true,
+        "action_call_ids": [
+          "act_6"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 76595,
+        "known_output_tokens": 2739,
+        "known_total_tokens": 79334,
+        "wall_seconds": 135.8052849270025,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0007",
+        "completed": true,
+        "action_call_ids": [
+          "act_7"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 79168,
+        "known_output_tokens": 1732,
+        "known_total_tokens": 80900,
+        "wall_seconds": 97.55558374599786,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0008",
+        "completed": true,
+        "action_call_ids": [
+          "act_8"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 80853,
+        "known_output_tokens": 3571,
+        "known_total_tokens": 84424,
+        "wall_seconds": 160.34497313499742,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0009",
+        "completed": true,
+        "action_call_ids": [
+          "act_9"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 9472,
+        "known_input_tokens": 81030,
+        "known_output_tokens": 3199,
+        "known_total_tokens": 84229,
+        "wall_seconds": 155.19399084500037,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0010",
+        "completed": true,
+        "action_call_ids": [
+          "act_10"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 81217,
+        "known_output_tokens": 2527,
+        "known_total_tokens": 83744,
+        "wall_seconds": 127.50011516798986,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0011",
+        "completed": true,
+        "action_call_ids": [
+          "act_11"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 83920,
+        "known_output_tokens": 3695,
+        "known_total_tokens": 87615,
+        "wall_seconds": 164.7106685559993,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0012",
+        "completed": true,
+        "action_call_ids": [
+          "act_12"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 85622,
+        "known_output_tokens": 1028,
+        "known_total_tokens": 86650,
+        "wall_seconds": 77.45968899001309,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0013",
+        "completed": true,
+        "action_call_ids": [
+          "act_13"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 9472,
+        "known_input_tokens": 85478,
+        "known_output_tokens": 1302,
+        "known_total_tokens": 86780,
+        "wall_seconds": 76.79897189399344,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0014",
+        "completed": true,
+        "action_call_ids": [
+          "act_14"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 85658,
+        "known_output_tokens": 2034,
+        "known_total_tokens": 87692,
+        "wall_seconds": 117.34199143799196,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0015",
+        "completed": true,
+        "action_call_ids": [
+          "act_15"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 88232,
+        "known_output_tokens": 1963,
+        "known_total_tokens": 90195,
+        "wall_seconds": 108.31477154300956,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0016",
+        "completed": true,
+        "action_call_ids": [
+          "act_16"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 9472,
+        "known_input_tokens": 89897,
+        "known_output_tokens": 2617,
+        "known_total_tokens": 92514,
+        "wall_seconds": 137.7407396280032,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0017",
+        "completed": true,
+        "action_call_ids": [
+          "act_17"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 9472,
+        "known_input_tokens": 90108,
+        "known_output_tokens": 3003,
+        "known_total_tokens": 93111,
+        "wall_seconds": 140.49908597899775,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0018",
+        "completed": true,
+        "action_call_ids": [
+          "act_18"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 90309,
+        "known_output_tokens": 3818,
+        "known_total_tokens": 94127,
+        "wall_seconds": 190.59147514899087,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0019",
+        "completed": true,
+        "action_call_ids": [
+          "act_19"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 92904,
+        "known_output_tokens": 1923,
+        "known_total_tokens": 94827,
+        "wall_seconds": 110.11769931200251,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0020",
+        "completed": true,
+        "action_call_ids": [
+          "act_20"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 9472,
+        "known_input_tokens": 94507,
+        "known_output_tokens": 1530,
+        "known_total_tokens": 96037,
+        "wall_seconds": 79.63698662699608,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0021",
+        "completed": true,
+        "action_call_ids": [
+          "act_21"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 9472,
+        "known_input_tokens": 94692,
+        "known_output_tokens": 3520,
+        "known_total_tokens": 98212,
+        "wall_seconds": 176.76043503299297,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0022",
+        "completed": true,
+        "action_call_ids": [
+          "act_22"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 94926,
+        "known_output_tokens": 3686,
+        "known_total_tokens": 98612,
+        "wall_seconds": 186.575717351996,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0023",
+        "completed": true,
+        "action_call_ids": [
+          "act_23"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 97653,
+        "known_output_tokens": 758,
+        "known_total_tokens": 98411,
+        "wall_seconds": 59.05176377200405,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0024",
+        "completed": true,
+        "action_call_ids": [
+          "act_24"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 9472,
+        "known_input_tokens": 99116,
+        "known_output_tokens": 2020,
+        "known_total_tokens": 101136,
+        "wall_seconds": 108.41560322498844,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0025",
+        "completed": true,
+        "action_call_ids": [
+          "act_25"
+        ],
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "command_model": "gpt-6-astra",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 99339,
+        "known_output_tokens": 2403,
+        "known_total_tokens": 101742,
+        "wall_seconds": 132.2420481910085,
+        "transport_reconnects": 0
+      }
+    ],
+    "videos": [
+      {
+        "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/runs/roboicl-standard-l0-attempt1/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261015_170427_289923_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/episode_0000000_cam_head_success.mp4",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "25/1",
+        "duration": "9.920000",
+        "nb_frames": "248",
+        "full_decode_passed": true
+      },
+      {
+        "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/runs/roboicl-standard-l0-attempt1/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261015_170427_289923_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/episode_0000000_cam_left_wrist_success.mp4",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "25/1",
+        "duration": "9.920000",
+        "nb_frames": "248",
+        "full_decode_passed": true
+      },
+      {
+        "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/runs/roboicl-standard-l0-attempt1/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261015_170427_289923_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/episode_0000000_cam_right_wrist_success.mp4",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "25/1",
+        "duration": "9.920000",
+        "nb_frames": "248",
+        "full_decode_passed": true
+      }
+    ],
+    "exit": {
+      "returncode": 0,
+      "wall_seconds": 3190.439947101986
+    }
+  },
+  "trial": {
+    "run_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023",
+    "status": "native_completed",
+    "valid_native_episode": true,
+    "native_score_0_100": 20.0,
+    "native_success": false,
+    "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261023_143624_081688_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/_result.json",
+    "native_result_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706",
+    "executed_control_steps": 500,
+    "attempted_model_calls": 51,
+    "completed_model_calls": 51,
+    "accepted_decisions": 50,
+    "rejected_action_tensors": 1,
+    "controller_rejections": 0,
+    "controller_guard_attempts": 500,
+    "controller_rejection_scope": "Recorded IK continuity guards: accepted=false; missing log means unknown.",
+    "action_rejections": [
+      {
+        "turn": 5,
+        "call_id": "act_5",
+        "executed": false,
+        "executed_steps": 0,
+        "observation_step": 40,
+        "error": "invalid_action_tensor",
+        "detail": "actions[6].right: translation L2=0.00000000m (limit 0.03m), rotation L2=1.00000000rad (limit 0.15rad); bounds are norms, not per-axis limits",
+        "recovery": "No motion occurred. Correct the tensor from the SAME latest observation; do not compensate for unexecuted motion.",
+        "correction_allowed": true
+      }
+    ],
+    "action_rejection_costs": [
+      {
+        "rejection": {
+          "turn": 5,
+          "call_id": "act_5",
+          "executed": false,
+          "executed_steps": 0,
+          "observation_step": 40,
+          "error": "invalid_action_tensor",
+          "detail": "actions[6].right: translation L2=0.00000000m (limit 0.03m), rotation L2=1.00000000rad (limit 0.15rad); bounds are norms, not per-axis limits",
+          "recovery": "No motion occurred. Correct the tensor from the SAME latest observation; do not compensate for unexecuted motion.",
+          "correction_allowed": true
+        },
+        "rejected_model_call": {
+          "call": "call-0005",
+          "completed": true,
+          "action_call_ids": [
+            "act_5"
+          ],
+          "model": "gpt-6-sol",
+          "effort": "xhigh",
+          "command_model": "gpt-6-sol",
+          "command_effort": "xhigh",
+          "usage_recorded": true,
+          "usage_complete": true,
+          "cached_input_tokens": 0,
+          "known_input_tokens": 75955,
+          "known_output_tokens": 715,
+          "known_total_tokens": 76670,
+          "wall_seconds": 28.573416058090515,
+          "transport_reconnects": 0
+        }
+      }
+    ],
+    "transport_reconnects": 0,
+    "latest_execution_note_not_verified_outcome": "The hem stayed flat during the last lift. Reopen, move both grippers slightly toward and down onto its edges, then close; check retention before lifting.",
+    "known_total_tokens": 5054227,
+    "known_input_tokens": 4975757,
+    "known_output_tokens": 78470,
+    "total_tokens": 5054227,
+    "cached_input_tokens": 331520,
+    "known_cached_input_tokens": 331520,
+    "calls_without_complete_cache_usage": 0,
+    "calls_without_usage": 0,
+    "all_attempt_wall_seconds": 2760.5293091369094,
+    "completed_call_wall_seconds": 2760.5293091369094,
+    "completed_call_mean_seconds": 54.12802566935117,
+    "completed_call_median_seconds": 53.19767080806196,
+    "model_configuration_matches": true,
+    "calls": [
+      {
+        "call": "call-0001",
+        "completed": true,
+        "action_call_ids": [
+          "act_1"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 68841,
+        "known_output_tokens": 1194,
+        "known_total_tokens": 70035,
+        "wall_seconds": 44.213551662978716,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0002",
+        "completed": true,
+        "action_call_ids": [
+          "act_2"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 71472,
+        "known_output_tokens": 2373,
+        "known_total_tokens": 73845,
+        "wall_seconds": 67.04443706199527,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0003",
+        "completed": true,
+        "action_call_ids": [
+          "act_3"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 74080,
+        "known_output_tokens": 1894,
+        "known_total_tokens": 75974,
+        "wall_seconds": 55.94576073798817,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0004",
+        "completed": true,
+        "action_call_ids": [
+          "act_4"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 75842,
+        "known_output_tokens": 800,
+        "known_total_tokens": 76642,
+        "wall_seconds": 30.414040607982315,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0005",
+        "completed": true,
+        "action_call_ids": [
+          "act_5"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 75955,
+        "known_output_tokens": 715,
+        "known_total_tokens": 76670,
+        "wall_seconds": 28.573416058090515,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0006",
+        "completed": true,
+        "action_call_ids": [
+          "act_6"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 76579,
+        "known_output_tokens": 526,
+        "known_total_tokens": 77105,
+        "wall_seconds": 31.980727461050265,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0007",
+        "completed": true,
+        "action_call_ids": [
+          "act_7"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 76449,
+        "known_output_tokens": 1383,
+        "known_total_tokens": 77832,
+        "wall_seconds": 44.31442455097567,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0008",
+        "completed": true,
+        "action_call_ids": [
+          "act_8"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 79004,
+        "known_output_tokens": 1611,
+        "known_total_tokens": 80615,
+        "wall_seconds": 57.053740050061606,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0009",
+        "completed": true,
+        "action_call_ids": [
+          "act_9"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 80704,
+        "known_output_tokens": 1209,
+        "known_total_tokens": 81913,
+        "wall_seconds": 38.29154655302409,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0010",
+        "completed": true,
+        "action_call_ids": [
+          "act_10"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 80789,
+        "known_output_tokens": 567,
+        "known_total_tokens": 81356,
+        "wall_seconds": 30.637015260988846,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0011",
+        "completed": true,
+        "action_call_ids": [
+          "act_11"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 80792,
+        "known_output_tokens": 2656,
+        "known_total_tokens": 83448,
+        "wall_seconds": 80.46448664506897,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0012",
+        "completed": true,
+        "action_call_ids": [
+          "act_12"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 83458,
+        "known_output_tokens": 1933,
+        "known_total_tokens": 85391,
+        "wall_seconds": 63.687966110999696,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0013",
+        "completed": true,
+        "action_call_ids": [
+          "act_13"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 85007,
+        "known_output_tokens": 1655,
+        "known_total_tokens": 86662,
+        "wall_seconds": 53.19767080806196,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0014",
+        "completed": true,
+        "action_call_ids": [
+          "act_14"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 85083,
+        "known_output_tokens": 1257,
+        "known_total_tokens": 86340,
+        "wall_seconds": 45.623361004982144,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0015",
+        "completed": true,
+        "action_call_ids": [
+          "act_15"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 85096,
+        "known_output_tokens": 1281,
+        "known_total_tokens": 86377,
+        "wall_seconds": 47.74820025404915,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0016",
+        "completed": true,
+        "action_call_ids": [
+          "act_16"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 87620,
+        "known_output_tokens": 1171,
+        "known_total_tokens": 88791,
+        "wall_seconds": 45.31652457988821,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0017",
+        "completed": true,
+        "action_call_ids": [
+          "act_17"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 89320,
+        "known_output_tokens": 1738,
+        "known_total_tokens": 91058,
+        "wall_seconds": 58.01887903991155,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0018",
+        "completed": true,
+        "action_call_ids": [
+          "act_18"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 89378,
+        "known_output_tokens": 1799,
+        "known_total_tokens": 91177,
+        "wall_seconds": 60.78028608299792,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0019",
+        "completed": true,
+        "action_call_ids": [
+          "act_19"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 89420,
+        "known_output_tokens": 642,
+        "known_total_tokens": 90062,
+        "wall_seconds": 28.121223006979562,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0020",
+        "completed": true,
+        "action_call_ids": [
+          "act_20"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 91850,
+        "known_output_tokens": 2582,
+        "known_total_tokens": 94432,
+        "wall_seconds": 80.54576259991154,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0021",
+        "completed": true,
+        "action_call_ids": [
+          "act_21"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 93771,
+        "known_output_tokens": 2104,
+        "known_total_tokens": 95875,
+        "wall_seconds": 66.0825409720419,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0022",
+        "completed": true,
+        "action_call_ids": [
+          "act_22"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 93835,
+        "known_output_tokens": 835,
+        "known_total_tokens": 94670,
+        "wall_seconds": 34.73866948403884,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0023",
+        "completed": true,
+        "action_call_ids": [
+          "act_23"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 93782,
+        "known_output_tokens": 944,
+        "known_total_tokens": 94726,
+        "wall_seconds": 36.644960424047895,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0024",
+        "completed": true,
+        "action_call_ids": [
+          "act_24"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 96232,
+        "known_output_tokens": 1439,
+        "known_total_tokens": 97671,
+        "wall_seconds": 51.83463927800767,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0025",
+        "completed": true,
+        "action_call_ids": [
+          "act_25"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 98031,
+        "known_output_tokens": 1741,
+        "known_total_tokens": 99772,
+        "wall_seconds": 60.1119070649147,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0026",
+        "completed": true,
+        "action_call_ids": [
+          "act_26"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 98086,
+        "known_output_tokens": 728,
+        "known_total_tokens": 98814,
+        "wall_seconds": 37.94102408201434,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0027",
+        "completed": true,
+        "action_call_ids": [
+          "act_27"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 98080,
+        "known_output_tokens": 1961,
+        "known_total_tokens": 100041,
+        "wall_seconds": 62.112462218967266,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0028",
+        "completed": true,
+        "action_call_ids": [
+          "act_28"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 100727,
+        "known_output_tokens": 1964,
+        "known_total_tokens": 102691,
+        "wall_seconds": 72.24484195304103,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0029",
+        "completed": true,
+        "action_call_ids": [
+          "act_29"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 102458,
+        "known_output_tokens": 1513,
+        "known_total_tokens": 103971,
+        "wall_seconds": 43.1949063380016,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0030",
+        "completed": true,
+        "action_call_ids": [
+          "act_30"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 102641,
+        "known_output_tokens": 2636,
+        "known_total_tokens": 105277,
+        "wall_seconds": 78.9849912399659,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0031",
+        "completed": true,
+        "action_call_ids": [
+          "act_31"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 102846,
+        "known_output_tokens": 489,
+        "known_total_tokens": 103335,
+        "wall_seconds": 29.336655672988854,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0032",
+        "completed": true,
+        "action_call_ids": [
+          "act_32"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 102507,
+        "known_output_tokens": 2485,
+        "known_total_tokens": 104992,
+        "wall_seconds": 68.69617842696607,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0033",
+        "completed": true,
+        "action_call_ids": [
+          "act_33"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 105267,
+        "known_output_tokens": 2943,
+        "known_total_tokens": 108210,
+        "wall_seconds": 79.70258675795048,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0034",
+        "completed": true,
+        "action_call_ids": [
+          "act_34"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 106808,
+        "known_output_tokens": 2690,
+        "known_total_tokens": 109498,
+        "wall_seconds": 83.42354683601297,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0035",
+        "completed": true,
+        "action_call_ids": [
+          "act_35"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 106834,
+        "known_output_tokens": 1894,
+        "known_total_tokens": 108728,
+        "wall_seconds": 64.87360786600038,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0036",
+        "completed": true,
+        "action_call_ids": [
+          "act_36"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 106851,
+        "known_output_tokens": 1173,
+        "known_total_tokens": 108024,
+        "wall_seconds": 51.12329459702596,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0037",
+        "completed": true,
+        "action_call_ids": [
+          "act_37"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 109323,
+        "known_output_tokens": 728,
+        "known_total_tokens": 110051,
+        "wall_seconds": 32.1194607130019,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0038",
+        "completed": true,
+        "action_call_ids": [
+          "act_38"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 111002,
+        "known_output_tokens": 1032,
+        "known_total_tokens": 112034,
+        "wall_seconds": 39.697408161940984,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0039",
+        "completed": true,
+        "action_call_ids": [
+          "act_39"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 111148,
+        "known_output_tokens": 2270,
+        "known_total_tokens": 113418,
+        "wall_seconds": 78.72062977205496,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0040",
+        "completed": true,
+        "action_call_ids": [
+          "act_40"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 111240,
+        "known_output_tokens": 536,
+        "known_total_tokens": 111776,
+        "wall_seconds": 37.135024716029875,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0041",
+        "completed": true,
+        "action_call_ids": [
+          "act_41"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 113702,
+        "known_output_tokens": 2462,
+        "known_total_tokens": 116164,
+        "wall_seconds": 80.20351224497426,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0042",
+        "completed": true,
+        "action_call_ids": [
+          "act_42"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 115423,
+        "known_output_tokens": 1505,
+        "known_total_tokens": 116928,
+        "wall_seconds": 62.13496530195698,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0043",
+        "completed": true,
+        "action_call_ids": [
+          "act_43"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 115553,
+        "known_output_tokens": 872,
+        "known_total_tokens": 116425,
+        "wall_seconds": 43.31546980398707,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0044",
+        "completed": true,
+        "action_call_ids": [
+          "act_44"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 115544,
+        "known_output_tokens": 770,
+        "known_total_tokens": 116314,
+        "wall_seconds": 39.963222944992594,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0045",
+        "completed": true,
+        "action_call_ids": [
+          "act_45"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 118004,
+        "known_output_tokens": 2191,
+        "known_total_tokens": 120195,
+        "wall_seconds": 70.49401855899487,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0046",
+        "completed": true,
+        "action_call_ids": [
+          "act_46"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 119765,
+        "known_output_tokens": 706,
+        "known_total_tokens": 120471,
+        "wall_seconds": 36.074291237979196,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0047",
+        "completed": true,
+        "action_call_ids": [
+          "act_47"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 119757,
+        "known_output_tokens": 2421,
+        "known_total_tokens": 122178,
+        "wall_seconds": 80.5396033290308,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0048",
+        "completed": true,
+        "action_call_ids": [
+          "act_48"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 119856,
+        "known_output_tokens": 1173,
+        "known_total_tokens": 121029,
+        "wall_seconds": 57.222650054027326,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0049",
+        "completed": true,
+        "action_call_ids": [
+          "act_49"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 0,
+        "known_input_tokens": 119928,
+        "known_output_tokens": 2191,
+        "known_total_tokens": 122119,
+        "wall_seconds": 69.96890078298748,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0050",
+        "completed": true,
+        "action_call_ids": [
+          "act_50"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 120013,
+        "known_output_tokens": 1079,
+        "known_total_tokens": 121092,
+        "wall_seconds": 45.18599783000536,
+        "transport_reconnects": 0
+      },
+      {
+        "call": "call-0051",
+        "completed": true,
+        "action_call_ids": [
+          "act_51"
+        ],
+        "model": "gpt-6-sol",
+        "effort": "xhigh",
+        "command_model": "gpt-6-sol",
+        "command_effort": "xhigh",
+        "usage_recorded": true,
+        "usage_complete": true,
+        "cached_input_tokens": 8960,
+        "known_input_tokens": 120004,
+        "known_output_tokens": 2009,
+        "known_total_tokens": 122013,
+        "wall_seconds": 74.73432033497375,
+        "transport_reconnects": 0
+      }
+    ],
+    "videos": [
+      {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261023_143624_081688_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/episode_0000000_cam_head_fail.mp4",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "25/1",
+        "duration": "20.040000",
+        "nb_frames": "501",
+        "full_decode_passed": true
+      },
+      {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261023_143624_081688_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/episode_0000000_cam_left_wrist_fail.mp4",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "25/1",
+        "duration": "20.040000",
+        "nb_frames": "501",
+        "full_decode_passed": true
+      },
+      {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261023_143624_081688_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/episode_0000000_cam_right_wrist_fail.mp4",
+        "width": 640,
+        "height": 480,
+        "r_frame_rate": "25/1",
+        "duration": "20.040000",
+        "nb_frames": "501",
+        "full_decode_passed": true
+      }
+    ],
+    "exit": {
+      "returncode": 0,
+      "wall_seconds": 2950.34097682999,
+      "valid_native_episode": true,
+      "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261023_143624_081688_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/_result.json"
+    }
+  },
+  "complete": true,
+  "initial_context_comparison": {
+    "baseline": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/fold_clothes_compare/runs/roboicl-standard-l0-attempt1/decisions/call-0001",
+    "trial": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/decisions/call-0001",
+    "first_prompt_text_identical": true,
+    "first_tool_schema_identical": true,
+    "first_serialized_input_identical": true,
+    "image_count_baseline": 25,
+    "image_count_trial": 25,
+    "differing_attachment_indices_1based": [
+      25
+    ],
+    "interpretation": "All 24 frozen TRAIN attachments match; only initial LIVE rendering differs.",
+    "live_rgb_mean_absolute_pixel_difference_0_255": 0.9824117476851851,
+    "live_rgb_shape": [
+      480,
+      1920,
+      3
+    ]
+  },
+  "offline_audit": {
+    "native_outcome_source": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/upstream-results/eval_result/RoboDojo/fold_clothes/RoboICL/arx_x5/0_action_type=ee/20261023_143624_081688_fold_clothes_1shot_s0_standard_l0_reasoning-xhigh_outdefault_pred10_exec10_livek12_taskdoc-robodojo-public-2026-09-23/_result.json",
+    "visible_final_state_zh": "最终头部画面可见袖子区域向内折，衣服下半部仍朝桌前展开，双夹爪停在衣摆附近。此为终止后的视觉描述，不逐项复算内部评分条件。",
+    "model_intents_not_completion_evidence": true,
+    "native_scoring_never_fed_back_into_policy": true,
+    "process_cleanup_verified": true,
+    "remaining_gpu_processes": [
+      {
+        "pid": 517957,
+        "application": "ComfyUI",
+        "used_memory_mib": 536
+      }
+    ],
+    "rejected_response_call": "call-0005",
+    "corrected_response_call": "call-0006",
+    "corrected_executed_interval": [
+      40,
+      50
+    ],
+    "corrected_call_metrics": {
+      "call": "call-0006",
+      "completed": true,
+      "action_call_ids": [
+        "act_6"
+      ],
+      "model": "gpt-6-sol",
+      "effort": "xhigh",
+      "command_model": "gpt-6-sol",
+      "command_effort": "xhigh",
+      "usage_recorded": true,
+      "usage_complete": true,
+      "cached_input_tokens": 0,
+      "known_input_tokens": 76579,
+      "known_output_tokens": 526,
+      "known_total_tokens": 77105,
+      "wall_seconds": 31.980727461050265,
+      "transport_reconnects": 0
+    },
+    "artifacts": {
+      "final-head.png": {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/final-head.png",
+        "sha256": "1059ec324f1ff3db2e2e369498721543106099ebec37085981ea8a7525cc0740"
+      },
+      "astra-final-head.png": {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/astra-final-head.png",
+        "sha256": "90188f1d5fa6ddbfcd56a1fcea46d1094319e002e69ee97c3a1983be43c66a6c"
+      },
+      "three_cameras.mp4": {
+        "path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/sol-roboicl-fold-clothes-l0-20261023/three_cameras.mp4",
+        "sha256": "c588ebc97820b39643df1e7d8983baac0f54030acf976abf09acaa7561bcfd53"
+      }
+    }
+  },
+  "frozen_source_changes": [],
+  "limitations": [
+    "Selected because Astra previously succeeded; this single case is a smoke test, not a success rate estimate.",
+    "Fold-clothes reference is a local extension using official deterministic builder; absent from published frozen reference manifest.",
+    "CLI serialized role history, no encrypted reasoning replay; not official direct API reproduction.",
+    "Historical baseline and current trial use different dates/provider snapshots; current run shares GPU with idle ComfyUI."
+  ]
+}

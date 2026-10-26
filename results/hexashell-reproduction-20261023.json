@@ -1,0 +1,621 @@
+{
+  "schema": "roborag.hexashell-reproduction-results.v1",
+  "created_at": "2026-10-23T15:22:12.923469+00:00",
+  "protocol": "experiments/hexashell-fold-public-standard-v1.json",
+  "research_role": "External-method reproduction; no RoboRAG retrieval enabled and no evidence for its proposed contributions.",
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "transport": "One persistent native Codex CLI session per episode; native shell/image/history/compaction",
+  "complete": true,
+  "scored_episodes": 5,
+  "infrastructure_incomplete": 0,
+  "successful_episodes": 0,
+  "success_rate": 0.0,
+  "mean_progress": 12.0,
+  "batch_wall_seconds": 932.5305892420001,
+  "parallel": 2,
+  "gpu_peak_total_used_mib": 19058,
+  "max_simultaneous_active_runners": 2,
+  "measured_serial_speedup": null,
+  "source_hashes_identical_across_primary_episodes": true,
+  "source_sha256": {
+    "src/roborag/hexashell_adapter.py": "0c1b6c5250d498e553783662285c277806560b64182c7d217edd2d3587109491",
+    "src/roborag/hexashell_sim.py": "d95d3d30314882b5b6f76789be5e528d117a478d2129e5ffdefba0c716f45575",
+    "scripts/run_hexashell_fold.py": "898baf3fabbdcbbc9919587710540c795ccacfc9bf0307c0b7e88034f66202d6",
+    "src/roborag/hexashell_agent.py": "f49d1e4d2bcd05e6b513816ae6ae749fa3ae24c4b64989b12a940bdfeadcd9fc",
+    "src/roborag/transports/codex_cli.py": "a8a16aa1b7d645ccb22fff41ea737221afcc5d1394ceaf1fcb65ab1361e8d99e",
+    "vendor/HexaShell/hexashell/__init__.py": "e0d9b980c58c27931b163207127ea52c5b866ec8995569be66bf22a9ce0e519e",
+    "vendor/HexaShell/hexashell/server/geometry.py": "4dc75130689d8c6b57d17f4515247e14a6d6b4d8de29b26e30ff8a7609080482",
+    "vendor/HexaShell/hexashell/server/motion.py": "53e38bc43331d86a5909a69810129411cb5d8700d9c920f672c6fe8a7fcdbf7f",
+    "vendor/HexaShell/hexashell/server/core.py": "3962aa660509ed7a949b3df64f6a028fe1fb40d2ce644f0f15ed7cd978f7b61f",
+    "vendor/HexaShell/hexashell/server/__init__.py": "923a0e515a8c1db19759b877325f9d29d482d7ce676262966d7c96c5315832d4",
+    "vendor/HexaShell/tasks/fold_clothes/tools/crease_transfer/tool.py": "5af77e329047aa3f308e2c07ea1918149ed24752acbb30051e07f375bda92ba6",
+    "vendor/HexaShell/tasks/fold_clothes/tools/panel_cycle/rgb_geometry.py": "2f4da3bdf0ee034901569a32f2f2ca5ceabc6a360c20b83cf1f2aa08eb91c012",
+    "vendor/HexaShell/tasks/fold_clothes/tools/panel_cycle/tool.py": "991a5a69a1171e35a457c3389ad96ebac6bfaaaeb7418820c1d8f8f69c7e7c78",
+    "vendor/HexaShell/tasks/fold_clothes/tools/cloth_view/patch_plane.py": "f198d81b2988edd62a5cf346d1ab9174e3908c4d40add3d39103d4f2444fc271",
+    "vendor/HexaShell/tasks/fold_clothes/tools/cloth_view/sparse_plane.py": "32a5c7fa65f836f169e5927ec109666aa1e70f5674a951678d80c828a8230625",
+    "vendor/HexaShell/tasks/fold_clothes/tools/cloth_view/surface_plane.py": "54a85dde4aa3e6fb11b5a8a87557f830253b36b78e0b72dff381c47a1803a329",
+    "vendor/HexaShell/tasks/fold_clothes/tools/cloth_view/masked_plane.py": "9670afbae9ec87fd16a1e553884c8c303cfdf2597eb1418f00089ea036347f65",
+    "vendor/HexaShell/tasks/fold_clothes/tools/cloth_view/tool.py": "7ecefde3d01b32c34a763753a7f36b8214fe653db708df2e489743a76f26bc10",
+    "vendor/HexaShell/tasks/fold_clothes/tools/surface_outline/tool.py": "f0841bb17c15b44acc5df7e886bd9dbddec2de9a62d38a2d6cd715acb2b50e6c",
+    "vendor/HexaShell/tasks/fold_clothes/tools/view_reacquire/tool.py": "8d84d68d8e38b75750a33f780032fc4b3452e797215cac99cffcd04fbb14a7f0",
+    "vendor/HexaShell/tools/table_plane/tool.py": "7bc30fb191d304433a4db46c6d3cd671fc03608a61ff430050a7104d458cbff4"
+  },
+  "episodes": [
+    {
+      "layout": 0,
+      "success": false,
+      "progress": 0.0,
+      "steps": 446,
+      "budgeted_commands": 24,
+      "stop_reason": "done",
+      "wall_seconds": 514.9200085849734,
+      "agent_wall_seconds": 471.88248435698915,
+      "usage": {
+        "input_tokens": 668429,
+        "cached_input_tokens": 626560,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 6039,
+        "reasoning_output_tokens": 3012
+      },
+      "native_result": "runs/hexashell-public-standard-v1-20261023/standard-l0/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l0/_result.json",
+      "native_sha256": "99b780f4e1842dfa81b413ccd2e5302e5827cc349fea4edf978e1bd847986ed3",
+      "run_manifest": "runs/hexashell-public-standard-v1-20261023/standard-l0/run.json",
+      "commands": "runs/hexashell-public-standard-v1-20261023/standard-l0/commands.jsonl",
+      "head_video": "runs/hexashell-public-standard-v1-20261023/standard-l0/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l0/episode_0000000_cam_head_fail.mp4",
+      "final_frame": "runs/hexashell-public-standard-v1-20261023/standard-l0/obs/head.png",
+      "action_log": {
+        "records": 446,
+        "expected_steps": 446,
+        "complete": true,
+        "missing_tail_steps": 0
+      },
+      "observed_command_failures": [
+        {
+          "command": [
+            "robo",
+            "surface_transfer",
+            "right",
+            "--sx",
+            "0.2935",
+            "--sy",
+            "-0.1322",
+            "--tx",
+            "-0.0605",
+            "--ty",
+            "-0.1405",
+            "--z",
+            "0.745",
+            "--park",
+            "home"
+          ],
+          "reason": "requested_height_below_support",
+          "stage": "support_height_check",
+          "step": 22
+        }
+      ]
+    },
+    {
+      "layout": 1,
+      "success": false,
+      "progress": 20.0,
+      "steps": 485,
+      "budgeted_commands": 6,
+      "stop_reason": "done",
+      "wall_seconds": 218.86248975200579,
+      "agent_wall_seconds": 180.42536620504688,
+      "usage": {
+        "input_tokens": 507675,
+        "cached_input_tokens": 434304,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1967,
+        "reasoning_output_tokens": 729
+      },
+      "native_result": "runs/hexashell-public-standard-v1-20261023/standard-l1/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l1/_result.json",
+      "native_sha256": "d53ae8ccb0fbb98e2ad9476043d4ee1f608451fd3c8197df10b2961ccdb82cb9",
+      "run_manifest": "runs/hexashell-public-standard-v1-20261023/standard-l1/run.json",
+      "commands": "runs/hexashell-public-standard-v1-20261023/standard-l1/commands.jsonl",
+      "head_video": "runs/hexashell-public-standard-v1-20261023/standard-l1/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l1/episode_0000000_cam_head_fail.mp4",
+      "final_frame": "runs/hexashell-public-standard-v1-20261023/standard-l1/obs/head.png",
+      "action_log": {
+        "records": 485,
+        "expected_steps": 485,
+        "complete": true,
+        "missing_tail_steps": 0
+      },
+      "observed_command_failures": []
+    },
+    {
+      "layout": 2,
+      "success": false,
+      "progress": 20.0,
+      "steps": 493,
+      "budgeted_commands": 7,
+      "stop_reason": "done",
+      "wall_seconds": 344.2273344900459,
+      "agent_wall_seconds": 300.5836124239722,
+      "usage": {
+        "input_tokens": 616184,
+        "cached_input_tokens": 557952,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4297,
+        "reasoning_output_tokens": 2781
+      },
+      "native_result": "runs/hexashell-public-standard-v1-20261023/standard-l2/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l2/_result.json",
+      "native_sha256": "21d1dcbb952b7e18b33725102335366b6c2eae4ede8e3d094b0e09b2da545bbe",
+      "run_manifest": "runs/hexashell-public-standard-v1-20261023/standard-l2/run.json",
+      "commands": "runs/hexashell-public-standard-v1-20261023/standard-l2/commands.jsonl",
+      "head_video": "runs/hexashell-public-standard-v1-20261023/standard-l2/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l2/episode_0000000_cam_head_fail.mp4",
+      "final_frame": "runs/hexashell-public-standard-v1-20261023/standard-l2/obs/head.png",
+      "action_log": {
+        "records": 493,
+        "expected_steps": 493,
+        "complete": true,
+        "missing_tail_steps": 0
+      },
+      "observed_command_failures": [
+        {
+          "command": [
+            "robo",
+            "edge_transfer",
+            "--lsx",
+            "-0.1742",
+            "--lsy",
+            "-0.185",
+            "--rsx",
+            "0.0487",
+            "--rsy",
+            "-0.2758",
+            "--ltx",
+            "-0.061",
+            "--lty",
+            "0.031",
+            "--rtx",
+            "0.139",
+            "--rty",
+            "-0.021",
+            "--z",
+            "0.7706"
+          ],
+          "reason": "invalid_arguments",
+          "stage": null,
+          "step": 240
+        }
+      ]
+    },
+    {
+      "layout": 3,
+      "success": false,
+      "progress": 0.0,
+      "steps": 412,
+      "budgeted_commands": 5,
+      "stop_reason": "native_environment",
+      "wall_seconds": 272.5491168120643,
+      "agent_wall_seconds": 232.10700837196782,
+      "usage": {
+        "input_tokens": 604891,
+        "cached_input_tokens": 560128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2726,
+        "reasoning_output_tokens": 1257
+      },
+      "native_result": "runs/hexashell-public-standard-v1-20261023/standard-l3/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l3/_result.json",
+      "native_sha256": "e953b1c725f5dcc1b342774f0f89e01409eec6a9814f5fd19c5b4b5b4affc1ef",
+      "run_manifest": "runs/hexashell-public-standard-v1-20261023/standard-l3/run.json",
+      "commands": "runs/hexashell-public-standard-v1-20261023/standard-l3/commands.jsonl",
+      "head_video": "runs/hexashell-public-standard-v1-20261023/standard-l3/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l3/episode_0000000_cam_head_fail.mp4",
+      "final_frame": "runs/hexashell-public-standard-v1-20261023/standard-l3/obs/head.png",
+      "action_log": {
+        "records": 399,
+        "expected_steps": 412,
+        "complete": false,
+        "missing_tail_steps": 13
+      },
+      "observed_command_failures": [
+        {
+          "command": [
+            "robo",
+            "surface_transfer",
+            "left",
+            "--sx",
+            "-0.2831",
+            "--sy",
+            "-0.1771",
+            "--tx",
+            "0.0596",
+            "--ty",
+            "-0.0844",
+            "--z",
+            "0.760",
+            "--approach",
+            "down",
+            "--park",
+            "home"
+          ],
+          "reason": "target_not_reached",
+          "stage": "contact",
+          "step": 39
+        },
+        {
+          "command": [
+            "robo",
+            "surface_transfer",
+            "left",
+            "--sx",
+            "-0.2562",
+            "--sy",
+            "-0.205",
+            "--tx",
+            "0.0596",
+            "--ty",
+            "-0.0844",
+            "--z",
+            "0.7706",
+            "--approach",
+            "down45",
+            "--park",
+            "home"
+          ],
+          "reason": "contact_not_reached",
+          "stage": "contact",
+          "step": 78
+        },
+        {
+          "command": [
+            "robo",
+            "edge_transfer",
+            "--lsx",
+            "-0.121",
+            "--lsy",
+            "-0.216",
+            "--rsx",
+            "0.143",
+            "--rsy",
+            "-0.174",
+            "--ltx",
+            "-0.161",
+            "--lty",
+            "0.034",
+            "--rtx",
+            "0.103",
+            "--rty",
+            "0.076",
+            "--z",
+            "0.779"
+          ],
+          "reason": "episode_over",
+          "stage": "park",
+          "step": 412
+        }
+      ]
+    },
+    {
+      "layout": 4,
+      "success": false,
+      "progress": 20.0,
+      "steps": 474,
+      "budgeted_commands": 8,
+      "stop_reason": "done",
+      "wall_seconds": 315.0148650439223,
+      "agent_wall_seconds": 273.5724137671059,
+      "usage": {
+        "input_tokens": 811610,
+        "cached_input_tokens": 762752,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3700,
+        "reasoning_output_tokens": 1609
+      },
+      "native_result": "runs/hexashell-public-standard-v1-20261023/standard-l4/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l4/_result.json",
+      "native_sha256": "16162c622da06a98c5ec192fdb21fd65a65da2a69786381522b094e8c9e5b372",
+      "run_manifest": "runs/hexashell-public-standard-v1-20261023/standard-l4/run.json",
+      "commands": "runs/hexashell-public-standard-v1-20261023/standard-l4/commands.jsonl",
+      "head_video": "runs/hexashell-public-standard-v1-20261023/standard-l4/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l4/episode_0000000_cam_head_fail.mp4",
+      "final_frame": "runs/hexashell-public-standard-v1-20261023/standard-l4/obs/head.png",
+      "action_log": {
+        "records": 474,
+        "expected_steps": 474,
+        "complete": true,
+        "missing_tail_steps": 0
+      },
+      "observed_command_failures": [
+        {
+          "command": [
+            "robo",
+            "cloth_landmarks"
+          ],
+          "reason": "cloth_not_found",
+          "stage": null,
+          "step": 0
+        },
+        {
+          "command": [
+            "robo",
+            "surface_transfer",
+            "left",
+            "--sx",
+            "-0.2271",
+            "--sy",
+            "-0.2743",
+            "--tx",
+            "0.0686",
+            "--ty",
+            "-0.1699",
+            "--z",
+            "0.755",
+            "--approach",
+            "down",
+            "--park",
+            "home"
+          ],
+          "reason": "target_not_reached",
+          "stage": "contact",
+          "step": 37
+        },
+        {
+          "command": [
+            "robo",
+            "surface_transfer",
+            "left",
+            "--sx",
+            "-0.2105",
+            "--sy",
+            "-0.2861",
+            "--tx",
+            "0.0686",
+            "--ty",
+            "-0.1699",
+            "--z",
+            "0.775",
+            "--approach",
+            "down45",
+            "--park",
+            "home"
+          ],
+          "reason": "contact_not_reached",
+          "stage": "contact",
+          "step": 66
+        }
+      ]
+    }
+  ],
+  "author_public_standard": {
+    "success": 4,
+    "episodes": 5,
+    "progress_score": 84.0,
+    "per_layout": [
+      {
+        "layout": 0,
+        "success": true,
+        "progress": 100.0,
+        "end_reason": "auto_success"
+      },
+      {
+        "layout": 1,
+        "success": true,
+        "progress": 100.0,
+        "end_reason": "auto_success"
+      },
+      {
+        "layout": 2,
+        "success": true,
+        "progress": 100.0,
+        "end_reason": "auto_success"
+      },
+      {
+        "layout": 3,
+        "success": false,
+        "progress": 20.0,
+        "end_reason": "done"
+      },
+      {
+        "layout": 4,
+        "success": true,
+        "progress": 100.0,
+        "end_reason": "auto_success"
+      }
+    ],
+    "source": "https://github.com/HexaFuture/HexaShell/blob/main/results/dev_layout_retests.json"
+  },
+  "pilot_excluded_from_primary": {
+    "reason": "Actor Python numerical packages absent; environment changed before primary protocol. No pooling.",
+    "episodes": [
+      {
+        "layout": 0,
+        "success": false,
+        "progress": 20.0,
+        "steps": 456,
+        "budgeted_commands": 26,
+        "stop_reason": "done",
+        "wall_seconds": 595.7614817520371,
+        "agent_wall_seconds": 552.1163842940005,
+        "usage": {
+          "input_tokens": 770013,
+          "cached_input_tokens": 729856,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7430,
+          "reasoning_output_tokens": 3928
+        },
+        "native_result": "runs/hexashell-native-batch-20261023/standard-l0/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l0/_result.json",
+        "native_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706",
+        "run_manifest": "runs/hexashell-native-batch-20261023/standard-l0/run.json",
+        "commands": "runs/hexashell-native-batch-20261023/standard-l0/commands.jsonl",
+        "head_video": "runs/hexashell-native-batch-20261023/standard-l0/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l0/episode_0000000_cam_head_fail.mp4",
+        "final_frame": "runs/hexashell-native-batch-20261023/standard-l0/obs/head.png",
+        "action_log": {
+          "records": 456,
+          "expected_steps": 456,
+          "complete": true,
+          "missing_tail_steps": 0
+        },
+        "observed_command_failures": [
+          {
+            "command": [
+              "robo",
+              "surface_transfer",
+              "left",
+              "--sx",
+              "-0.2816",
+              "--sy",
+              "-0.2464",
+              "--tx",
+              "0.0827",
+              "--ty",
+              "-0.1181",
+              "--z",
+              "0.745",
+              "--approach",
+              "down45",
+              "--park",
+              "home"
+            ],
+            "reason": "requested_height_below_support",
+            "stage": "support_height_check",
+            "step": 0
+          }
+        ]
+      },
+      {
+        "layout": 1,
+        "success": true,
+        "progress": 100.0,
+        "steps": 387,
+        "budgeted_commands": 5,
+        "stop_reason": "native_environment",
+        "wall_seconds": 280.28242662898265,
+        "agent_wall_seconds": 233.83968657103833,
+        "usage": {
+          "input_tokens": 564362,
+          "cached_input_tokens": 526848,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2520,
+          "reasoning_output_tokens": 1122
+        },
+        "native_result": "runs/hexashell-native-batch-20261023/standard-l1/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l1/_result.json",
+        "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+        "run_manifest": "runs/hexashell-native-batch-20261023/standard-l1/run.json",
+        "commands": "runs/hexashell-native-batch-20261023/standard-l1/commands.jsonl",
+        "head_video": "runs/hexashell-native-batch-20261023/standard-l1/native/eval_result/RoboDojo/fold_clothes/HexaShellReconstruction/arx_x5/0_frozen_rgb_tools/standard-l1/episode_0000000_cam_head_success.mp4",
+        "final_frame": "runs/hexashell-native-batch-20261023/standard-l1/obs/head.png",
+        "action_log": {
+          "records": 369,
+          "expected_steps": 387,
+          "complete": false,
+          "missing_tail_steps": 18
+        },
+        "observed_command_failures": [
+          {
+            "command": [
+              "robo",
+              "surface_transfer",
+              "left",
+              "--sx",
+              "-0.2822",
+              "--sy",
+              "-0.1477",
+              "--tx",
+              "0.0589",
+              "--ty",
+              "-0.1212",
+              "--z",
+              "0.755",
+              "--approach",
+              "down",
+              "--park",
+              "home"
+            ],
+            "reason": "target_not_reached",
+            "stage": "contact",
+            "step": 40
+          },
+          {
+            "command": [
+              "robo",
+              "surface_transfer",
+              "left",
+              "--sx",
+              "-0.279",
+              "--sy",
+              "-0.163",
+              "--tx",
+              "0.0604",
+              "--ty",
+              "-0.1201",
+              "--z",
+              "0.755",
+              "--approach",
+              "down45",
+              "--park",
+              "home"
+            ],
+            "reason": "target_not_reached",
+            "stage": "contact",
+            "step": 75
+          },
+          {
+            "command": [
+              "robo",
+              "edge_transfer",
+              "--lsx",
+              "-0.124",
+              "--lsy",
+              "-0.2099",
+              "--rsx",
+              "0.1005",
+              "--rsy",
+              "-0.2204",
+              "--ltx",
+              "-0.1051",
+              "--lty",
+              "0.0057",
+              "--rtx",
+              "0.1194",
+              "--rty",
+              "-0.0048",
+              "--z",
+              "0.780"
+            ],
+            "reason": "episode_over",
+            "stage": "park",
+            "step": 387
+          }
+        ]
+      }
+    ]
+  },
+  "preview": {
+    "path": "runs/hexashell-reproduction-preview-20261023/pilot-layout1-observations.mp4",
+    "label": "Pilot layout 1: captured observations shown at one frame per second; not continuous motion or real-time footage.",
+    "native_score": 100,
+    "source_frames": 12,
+    "preview_seconds": 12.0
+  },
+  "post_batch_logging_fix": {
+    "description": "Automatic termination could leave a partial trajectory in the action log buffer. Future runs flush each action and explicitly close the log; prior artifacts are unchanged.",
+    "affected": [
+      {
+        "batch": "primary",
+        "layout": 3,
+        "missing_tail_steps": 13
+      },
+      {
+        "batch": "pilot",
+        "layout": 1,
+        "missing_tail_steps": 18
+      }
+    ],
+    "validation": "Eight adapter contract tests pass, including early-stop log visibility."
+  },
+  "limitations": [
+    "Did not match the author public-standard 4/5 result.",
+    "Public development layouts, not the official hidden seed.",
+    "Server/executor reconstructed; author runtime and model snapshot unavailable.",
+    "No matched serial control, so no causal speedup multiplier.",
+    "Native MP4 files contain sparse captured observations at 25 FPS, not every physics step.",
+    "Model final text is not evidence of success: primary layout 3 claimed completion but native score is zero.",
+    "Some automatic-stop action logs have missing tail records; native scores and command receipts are intact."
+  ],
+  "evaluation_validity": "pre_calibration_diagnostic",
+  "superseded_by_protocol": "experiments/hexashell-fold-public-suite-v2.json",
+  "supersession_reason": "Independent synthetic RGB markers proved a mismatch between SDK vertical focal length and actual RTX square-pixel projection. All old scores and costs are retained.",
+  "reclassified_at": "2026-10-23T15:58:51.607941+00:00"
+}

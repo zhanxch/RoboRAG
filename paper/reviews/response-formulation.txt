@@ -1,0 +1,10 @@
+FORMULATION AUTHOR RESPONSE
+
+Language review, item 4 — ACCEPT.
+Replaced the defensive unavailable-skill clause with a direct scope statement: unseen tasks use supported skills in new task structures or object configurations. Added a short cross-reference to the experimental bank and tuning-data definition. This preserves the distinction between task novelty and access to executable skills without anticipating an objection.
+
+Earlier author revision, execution receipt versus intended effect — ACCEPT.
+A conditional transition now requires terminal execution status and its own verified guard. A terminal receipt can therefore activate an observation phase while the preceding intended effect remains unknown. Subsequent manipulation still requires verified prerequisite predicates. Benchmark success oracles are explicitly evaluator-only and never supply control predicates. This separates action termination, effect verification, and independent benchmark scoring, and prevents a verification-phase deadlock.
+
+Formal semantics retained.
+Problem Formulation remains the authoritative definition of G=(V,E,A), the distinct G/P_t/X_t records, mandatory dependencies combined with AND, alternative activation combined with OR, and precedence over activated branches. No changes to those semantics were requested by the final language review. The final logic review reported no severe issue requiring a formulation revision.

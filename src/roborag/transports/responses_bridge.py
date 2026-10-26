@@ -23,6 +23,7 @@ class Handler(BaseHTTPRequestHandler):
             # The model sees exact upstream instructions, role history and RGB.
             model_input = {key: payload[key] for key in ("instructions", "tools", "input")}
             action, usage = infer(model_input, tools[0]["parameters"], folder,
+                model=payload.get("model", "gpt-6-astra"),
                 effort=payload.get("reasoning", {}).get("effort", "xhigh"))
             response = {"id": f"codex_local_{self.server.calls}", "status": "completed",
                 "output": [{"type": "function_call", "name": "act",

@@ -1,0 +1,36 @@
+Method II integration notes — 2026-10-23
+
+Owned files: paper/sections/04b-use.tex and this notes file.
+The subsection is a proposed operational design; no claims of existing implementation or performance. It uses formulation notation and root's Figure 3 cup-in-closed-drawer example.
+
+Mechanism decisions made concrete:
+- GPT receives a field/edge schema, capability skill signatures, an annotated example, and bounded checker feedback. Structured fields drive execution; explanations support inspection.
+- P^- is a query skeleton, not a fixed template. Dual retrieval operates over complete graphs and phase-centered subgraphs with retained boundary prerequisites.
+- Alignment score separates goal, roles, current/achievable/unknown/contradicted conditions, typed local topology, and recorded outcomes, with edit/context cost. Exact weights/thresholds are experimental hyperparameters, fixed from development tasks.
+- Five edits: rebind roles, ground geometry, insert prerequisites, replace unsupported phases with declared supported equivalents, import bounded recovery. Capability filter allows only declared replacements; arbitrary imagined replacements are not admissible.
+- Validation handles mandatory AND and alternative OR, branch priorities, prerequisite producers, resource constraints, finite retry budgets, and ordering. Structural validity does not imply physical feasibility/success.
+- Supervisor authority is limited to approved phases, branches, observation/recovery, and bounded re-grounding. Planner controls role, topology, strategy, condition, and budget changes. Gateway rejects stale versions; local controller owns servo behavior.
+- Receipt resolution and predicate evidence are separate: receipt acknowledgment never means completion. Benchmark oracle is excluded from control. Evaluation must state actual runtime predicate evaluators and their accuracy/calibration.
+- Current execution X retains failed events; attempts have fresh IDs; plan revisions preserve unchanged IDs and record lineage. Only publish revised plan after in-flight execution resolves or cancellation is confirmed.
+- Main bank frozen; current X available online; cross-episode graph/index update only in separate accumulation protocol.
+
+Outstanding integration points:
+1. Graph construction author should use corresponding field names and expose evidence requirements and predicate evaluator references if not already present. Node schema should support symbolic fields and unresolved status before grounding.
+2. The figure depicts a recovery loop at the template level. Caption/prose must explain attempts unroll in X; failed instances are retained. Figure's open-drawer stage should include handle release before single-gripper grasp.
+3. Query score equation is a design, not a trained/validated metric. Experiment author should cover reranker/condition/outcome cues and matched retrieval cost if practical; do not claim unique algorithmic novelty for this score.
+4. Existing literature positioning belongs in Related Work. This subsection adds no new citations and makes no claim that graphs, retrieval/adaptation, or model hierarchy alone are new.
+5. Existing implementation audit belongs in root's status paragraph. Astra/Luna are prototype role assignments, not reported integrated system.
+6. If text must shorten, the six-step loop can move to a boxed algorithm or appendix, but retain authority/receipt/retry semantics in main prose.
+
+Author review stance:
+Concede concrete semantic contradictions and unsupported claims; rebut reviews that require a generic disclaimer per paragraph or remove mechanisms necessary for executable graph semantics. Root adjudicates reviews.
+
+Post-coordination clarification:
+- A completed controller receipt can activate an explicitly permitted observation/verification phase while the action effect remains unknown. Progress through manipulation dependencies still requires effect evidence. This avoids deadlock when checking an action is represented as a separate node, as in Method I's attempt-2 -> check-2 example.
+- Runtime visual predicate acceptance uses development-checked rules; source annotator confidence remains separate and is not silently treated as a calibrated runtime probability.
+- Over-budget dependency closure returns another complete candidate or no compatible evidence, never a silently truncated record.
+
+Review revision:
+- Accepted language items 7/8; now "under the shared schema," short edit sentences, fewer repeated semantic/protocol explanations.
+- Figure review T2.2 resolved with experiment author: mandatory current-pose grounding/feasibility in all variants; optional planner parameter edits choose skill-exposed approach direction in object frame and precontact clearance distance within admissible bounds; structural edits separate. Supervisor re-grounding preserves approved direction/clearance choices. Planner changes are versioned. Retained infeasible parameters fail before dispatch.
+- Full adjudication response: paper/reviews/response-graph-use.txt.

@@ -1,0 +1,89 @@
+Related Work verification and integration notes — 2026-10-23
+
+Read the project memory and editorial contract. Related Work is 674 whitespace-delimited words after language review, with five compact thematic paragraphs. No empirical RoboRAG claim is made. The graph bank belongs in Related Work and in Problem Formulation: its retrieval units, contents, versions, and evidence access determine what inference can use.
+
+Citation keys and primary sources (all checked in this session):
+
+rag2020 — Patrick Lewis et al., Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks, NeurIPS 2020.
+https://arxiv.org/abs/2005.11401
+https://papers.nips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html
+Supports combining a pretrained generator and an external retrieved information store. No performance numbers reused.
+
+gretriever2024 — Xiaoxin He et al., G-Retriever: Retrieval-Augmented Generation for Textual Graph Understanding and Question Answering, NeurIPS 2024.
+https://arxiv.org/abs/2402.07630
+https://github.com/XiaoxinHe/G-Retriever
+Supports text-attributed graph retrieval and connected subgraphs, formulated using a prize-collecting Steiner tree. Official repository verifies NeurIPS 2024 venue. No assertion that this is a robot execution method.
+
+roboicl2026 — Fangcheng Liu et al., RoboICL: Embodied In-Context Learning with GPT-6 Astra, arXiv, 2026.
+https://arxiv.org/abs/2609.34261
+https://arxiv.org/html/2609.34261v1
+Supports separate demonstration/current interaction contexts, shared observation-action-receipt-observation records, bounded anchored memory, and optional gated action reuse. The local repository uses this external baseline; the present citation does not claim RoboRAG graph-method results.
+
+memer2026 — Ajay Sridhar, Jennifer Pan, Satvik Sharma, Chelsea Finn, MemER: Scaling Up Memory for Robot Control via Experience Retrieval.
+https://arxiv.org/abs/2510.20328
+https://jen-pan.github.io/memer/
+Paper was posted in 2025; authors' project page explicitly lists ICLR 2026. Supports selecting historical keyframes in a learned high-level policy, producing instructions for a low-level VLA. Distinguish retrieved within-episode memory from an episodic graph bank across tasks.
+
+mtp2025 — Tomoyuki Kagaya et al., Memory Transfer Planning: LLM-driven Context-Aware Code Adaptation for Robot Manipulation, arXiv 2025.
+https://arxiv.org/abs/2509.24160
+https://arxiv.org/html/2509.24160v1
+Sections III-C and III-D verify that only successful planner-level code enters memory, query ranking uses instruction-embedding cosine similarity, retrieved code is adapted to the target environment, and failed code plus adapted examples guide replanning. It evaluates RLBench/CALVIN/physical robot. Crucial nearest precedent for draft -> retrieve -> adapt; that sequence alone cannot be RoboRAG novelty.
+
+embodiedrag2024 — Meghan Booker, Grayson Byrd, Bethany Kemp, Aurora Schmidt, Corban Rivera, EmbodiedRAG: Dynamic 3D Scene Graph Retrieval for Efficient and Scalable Robot Task Planning, arXiv 2024.
+https://arxiv.org/abs/2410.23968
+Supports scene-subgraph retrieval that updates with environment changes/task relevance. Nodes describe scene entities; RoboRAG phase-instance nodes are a different semantic unit. Do not claim dynamic graph retrieval itself novel.
+
+safemem2026 — Siyuan Li et al., Safe Task Planning with Long-Term Graph Memory for Embodied Agents, arXiv 2026 (arXiv comments list CoRL 2026).
+https://arxiv.org/abs/2609.08444
+Supports long-term object/relation graph memory and risk-conditioned replanning. Only broad positive design description used, not a claim that all failure history is absent.
+
+hpkg2025 — Jiacong Zhou, Jiaxu Miao, Xianyun Wang, Jun Yu, Enhancing LLM Planning for Robotics Manipulation through Hierarchical Procedural Knowledge Graphs, NeurIPS 2025.
+https://proceedings.neurips.cc/paper_files/paper/2025/hash/b94310e1c7ecb79f1a24adc757f1b89b-Abstract-Conference.html
+https://proceedings.neurips.cc/paper_files/paper/2025/file/b94310e1c7ecb79f1a24adc757f1b89b-Paper-Conference.pdf
+https://openreview.net/pdf/46ff7c53a48a15dc3fd5f9022062622e9c136c9d.pdf
+Publisher abstract verifies task/step/action hierarchy and automated construction. Indexed primary section 3.3 verifies procedure-subgraph retrieval and conversion to text. Direct full-PDF follow-up fetch failed; do not infer absence of provenance or failure links from inspected sections.
+
+ntg2019 — De-An Huang et al., Neural Task Graphs: Generalizing to Unseen Tasks From a Single Video Demonstration, CVPR 2019.
+https://openaccess.thecvf.com/content_CVPR_2019/html/Huang_Neural_Task_Graphs_Generalizing_to_Unseen_Tasks_From_a_Single_CVPR_2019_paper.html
+https://ai.stanford.edu/~yukez/papers/cvpr2019huang.pdf
+Verifies graph generation from demonstrations and observation-based node localization/edge transitions. Section 4 defines conjugate task graph: actions as nodes, state/preconditions implicit in edges. This directly precludes novelty claims that a single graph can connect demonstration and execution for the first time.
+
+saycan2022 — Michael Ahn et al., Do As I Can, Not As I Say: Grounding Language in Robotic Affordances, arXiv 2022.
+https://arxiv.org/abs/2204.01691
+Supports combining language-model planning with pretrained skill value functions/affordances.
+
+innermonologue2022 — Wenlong Huang et al., Inner Monologue: Embodied Reasoning through Planning with Language Models, arXiv 2022.
+https://arxiv.org/abs/2207.05608
+Supports environmental, success, and scene feedback for closed-loop language planning.
+
+codepolicies2022 — Jacky Liang et al., Code as Policies: Language Model Programs for Embodied Control, arXiv 2022.
+https://arxiv.org/abs/2209.07753
+Supports composing perception/control APIs, feedback loops, hierarchical code generation. The original preprint year is used; latest arXiv revision is 2023.
+
+gavel2026 — Ruiyang Wang et al., GAVEL: Graph World Models for Verified and Efficient Long-Horizon LLM Task Planning, arXiv 2026.
+https://arxiv.org/abs/2609.19315
+https://arxiv.org/html/2609.19315v1
+Sections IV-A, IV-D, IV-E support graph model validation, model-implied repairs, bounded return of unresolved failures to the LLM, and updates of object-location beliefs after execution. This precludes claiming selective high-level calls/graph validation themselves as novel. Do not treat its whole world model as an episode-retrieval baseline without implementing an explicitly labeled matched variant.
+
+libero2023 — Bo Liu et al., LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning, arXiv 2023.
+https://arxiv.org/abs/2306.03310
+Bibliography added for system/experimental writers. Verifies names, title and declarative/procedural transfer benchmark. No claim RoboRAG supports it today.
+
+mcp2026 — Model Context Protocol contributors, Model Context Protocol Specification, 2026-07-28 revision.
+https://modelcontextprotocol.io/specification/2026-07-28
+Bibliography added for system writer. Current spec uses JSON-RPC 2.0, tool/resource interfaces, progress/cancellation/error reporting. System writer should verify details at the exact revision and not import older lifecycle/session rules from memory.
+
+Suggested compact comparison table attributes for root (positive descriptions, no unsupported crosses):
+HP-KG: memory/representation = task-step-action procedure hierarchy; evidence use = generated/verified procedural knowledge; retrieved object = procedure nodes and lower-level subgraphs rendered as text; operation = augment LLM planning.
+MTP: memory/representation = successful planner code with instruction/environment; retrieval = instruction similarity; adaptation/execution = environment-conditioned code adaptation and replanning after failure.
+Neural Task Graphs: representation = demonstration-derived conjugate task graph; operation = visual node localization and edge selection for graph execution.
+GAVEL: representation = graph world model with action semantics and object-location beliefs; operation = plan validation, model-derived repair, selective LLM replanning.
+RoboRAG (proposed): representation = phase instances with explicit observed feedback/evidence and typed links; retrieval = episode graphs/phase subgraphs; operation = role/topology adaptation, phase supervision, local execution, evidence-linked logging. Label this row proposed, not established.
+
+Novelty and integration cautions:
+1. No first/only claim has been substantiated. The defensible candidate is the specific shared evidence-grounded phase schema and the experimentally attributable value of retaining its relations across stages.
+2. A list of three separate established mechanisms does not itself establish novelty. Method/experiments need a causal test of the shared schema, with same-evidence linearization, retrieval/feedback ablations, and matched hierarchy/controller comparisons.
+3. The Research position comparison sentence denotes comparable variants with matched interface access, not an unsupported promise to reproduce all published systems exactly; root may phrase the evaluation section accordingly.
+4. Keep scenes (objects and relations) distinct from phase graphs (events and transitions); shared object roles do not make the two graph types interchangeable.
+5. Main frozen-bank evaluation and chronological accumulation must remain separate, with bank versions explicit.
+6. Primary-source summaries are short (each well below 200 words in the chapter). If root adds a comparison table, count the same-source text across prose, table, notes and bibliography together; avoid expanding any one source excessively.

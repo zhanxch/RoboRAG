@@ -1,0 +1,255 @@
+{
+  "protocol": "experiments/hexashell-fold-public-suite-v2.json",
+  "local": {
+    "development/standard": {
+      "executions": 5,
+      "scored_episodes": 5,
+      "successful_episodes": 2,
+      "success_rate": 0.4,
+      "mean_progress": 52.0,
+      "known_token_lower_bounds": {
+        "input_tokens": 2571969,
+        "cached_input_tokens": 2366976,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 11317,
+        "reasoning_output_tokens": 4801
+      },
+      "native_cli_executions": 5,
+      "actor_executions_without_terminal_usage": 0,
+      "live_actor_executions_awaiting_usage": 0,
+      "invocation_count_note": "Counts CLI executions, including startup failures; does not imply the same number of model requests.",
+      "sum_episode_wall_seconds": 1103.517662868835,
+      "wall_measurement_missing_count": 0,
+      "known_child_cpu_seconds": 849.5409860000001,
+      "cpu_measurement_missing_count": 0,
+      "logical_artifact_bytes": 69760930,
+      "summed_wall_note": "Sum of per-execution residence times; overlapping episodes are counted separately. Use batch_wall_seconds for elapsed batch time.",
+      "actual_billed_usd": null
+    },
+    "development/random": {
+      "executions": 5,
+      "scored_episodes": 5,
+      "successful_episodes": 3,
+      "success_rate": 0.6,
+      "mean_progress": 68.0,
+      "known_token_lower_bounds": {
+        "input_tokens": 2955097,
+        "cached_input_tokens": 2731648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14243,
+        "reasoning_output_tokens": 6238
+      },
+      "native_cli_executions": 5,
+      "actor_executions_without_terminal_usage": 0,
+      "live_actor_executions_awaiting_usage": 0,
+      "invocation_count_note": "Counts CLI executions, including startup failures; does not imply the same number of model requests.",
+      "sum_episode_wall_seconds": 1441.8080242929282,
+      "wall_measurement_missing_count": 0,
+      "known_child_cpu_seconds": 1178.83227,
+      "cpu_measurement_missing_count": 0,
+      "logical_artifact_bytes": 88065659,
+      "summed_wall_note": "Sum of per-execution residence times; overlapping episodes are counted separately. Use batch_wall_seconds for elapsed batch time.",
+      "actual_billed_usd": null
+    },
+    "new_layouts/standard": {
+      "executions": 5,
+      "scored_episodes": 5,
+      "successful_episodes": 3,
+      "success_rate": 0.6,
+      "mean_progress": 68.0,
+      "known_token_lower_bounds": {
+        "input_tokens": 2229816,
+        "cached_input_tokens": 2049408,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 11611,
+        "reasoning_output_tokens": 5472
+      },
+      "native_cli_executions": 5,
+      "actor_executions_without_terminal_usage": 0,
+      "live_actor_executions_awaiting_usage": 0,
+      "invocation_count_note": "Counts CLI executions, including startup failures; does not imply the same number of model requests.",
+      "sum_episode_wall_seconds": 1087.619340761099,
+      "wall_measurement_missing_count": 0,
+      "known_child_cpu_seconds": 823.1333609999999,
+      "cpu_measurement_missing_count": 0,
+      "logical_artifact_bytes": 68288520,
+      "summed_wall_note": "Sum of per-execution residence times; overlapping episodes are counted separately. Use batch_wall_seconds for elapsed batch time.",
+      "actual_billed_usd": null
+    },
+    "new_layouts/random": {
+      "executions": 5,
+      "scored_episodes": 5,
+      "successful_episodes": 0,
+      "success_rate": 0.0,
+      "mean_progress": 16.0,
+      "known_token_lower_bounds": {
+        "input_tokens": 3783315,
+        "cached_input_tokens": 3534464,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 23345,
+        "reasoning_output_tokens": 11580
+      },
+      "native_cli_executions": 5,
+      "actor_executions_without_terminal_usage": 0,
+      "live_actor_executions_awaiting_usage": 0,
+      "invocation_count_note": "Counts CLI executions, including startup failures; does not imply the same number of model requests.",
+      "sum_episode_wall_seconds": 1819.8950525280088,
+      "wall_measurement_missing_count": 0,
+      "known_child_cpu_seconds": 1127.63022,
+      "cpu_measurement_missing_count": 0,
+      "logical_artifact_bytes": 127422820,
+      "summed_wall_note": "Sum of per-execution residence times; overlapping episodes are counted separately. Use batch_wall_seconds for elapsed batch time.",
+      "actual_billed_usd": null
+    }
+  },
+  "author": {
+    "development/standard": {
+      "episodes": 5,
+      "successful_episodes": 4,
+      "mean_progress": 84.0,
+      "comparison_note": "Same public layout IDs, but author development scores predate recipes and notes; local runs use the final public prompt."
+    },
+    "development/random": {
+      "episodes": 5,
+      "successful_episodes": 2,
+      "mean_progress": 52.0,
+      "comparison_note": "Same public layout IDs, but author development scores predate recipes and notes; local runs use the final public prompt."
+    },
+    "new_layouts/standard": {
+      "episodes": 5,
+      "successful_episodes": 4,
+      "mean_progress": 84.0,
+      "comparison_note": "Same public seed-0 new layouts, frozen tools and recipe/notes condition; private executor and model snapshot unavailable."
+    },
+    "new_layouts/random": {
+      "episodes": 5,
+      "successful_episodes": 1,
+      "mean_progress": 36.0,
+      "comparison_note": "Same public seed-0 new layouts, frozen tools and recipe/notes condition; private executor and model snapshot unavailable."
+    }
+  },
+  "timeline": [
+    {
+      "variant": "standard",
+      "layout": 0,
+      "started_epoch": 1792771014.8765192,
+      "ended_epoch": 1792771274.8322134
+    },
+    {
+      "variant": "random",
+      "layout": 0,
+      "started_epoch": 1792771061.5963163,
+      "ended_epoch": 1792771552.2950897
+    },
+    {
+      "variant": "standard",
+      "layout": 1,
+      "started_epoch": 1792771274.8327441,
+      "ended_epoch": 1792771483.0647025
+    },
+    {
+      "variant": "random",
+      "layout": 1,
+      "started_epoch": 1792771483.065246,
+      "ended_epoch": 1792771712.6983438
+    },
+    {
+      "variant": "standard",
+      "layout": 2,
+      "started_epoch": 1792771552.2956822,
+      "ended_epoch": 1792771825.0498054
+    },
+    {
+      "variant": "random",
+      "layout": 2,
+      "started_epoch": 1792771712.6989448,
+      "ended_epoch": 1792771931.2553031
+    },
+    {
+      "variant": "standard",
+      "layout": 3,
+      "started_epoch": 1792771825.0514526,
+      "ended_epoch": 1792771990.55324
+    },
+    {
+      "variant": "random",
+      "layout": 3,
+      "started_epoch": 1792771931.2558615,
+      "ended_epoch": 1792772177.9310222
+    },
+    {
+      "variant": "standard",
+      "layout": 4,
+      "started_epoch": 1792771990.553974,
+      "ended_epoch": 1792772199.3569713
+    },
+    {
+      "variant": "random",
+      "layout": 4,
+      "started_epoch": 1792772177.9316425,
+      "ended_epoch": 1792772444.7686803
+    },
+    {
+      "variant": "standard",
+      "layout": 5,
+      "started_epoch": 1792772225.3248532,
+      "ended_epoch": 1792772476.834293
+    },
+    {
+      "variant": "random",
+      "layout": 5,
+      "started_epoch": 1792772444.7690744,
+      "ended_epoch": 1792772857.1677895
+    },
+    {
+      "variant": "standard",
+      "layout": 6,
+      "started_epoch": 1792772498.4271748,
+      "ended_epoch": 1792772684.5226142
+    },
+    {
+      "variant": "random",
+      "layout": 6,
+      "started_epoch": 1792772684.5231063,
+      "ended_epoch": 1792772925.092232
+    },
+    {
+      "variant": "standard",
+      "layout": 7,
+      "started_epoch": 1792772857.1683435,
+      "ended_epoch": 1792773080.6437533
+    },
+    {
+      "variant": "random",
+      "layout": 7,
+      "started_epoch": 1792772925.0934467,
+      "ended_epoch": 1792773251.9779706
+    },
+    {
+      "variant": "standard",
+      "layout": 8,
+      "started_epoch": 1792773080.644384,
+      "ended_epoch": 1792773325.7535586
+    },
+    {
+      "variant": "random",
+      "layout": 8,
+      "started_epoch": 1792773251.9785461,
+      "ended_epoch": 1792773706.9325964
+    },
+    {
+      "variant": "standard",
+      "layout": 9,
+      "started_epoch": 1792773325.7544725,
+      "ended_epoch": 1792773519.5228434
+    },
+    {
+      "variant": "random",
+      "layout": 9,
+      "started_epoch": 1792773519.5234976,
+      "ended_epoch": 1792773919.951657
+    }
+  ],
+  "batch_wall_seconds": 2905.2717959049623,
+  "note": "One trial per layout. Development reference predates recipes/notes; local uses final prompt. Reconstructed executor; hidden-seed official evaluation is a separate protocol."
+}

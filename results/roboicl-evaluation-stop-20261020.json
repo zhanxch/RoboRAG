@@ -1,0 +1,30 @@
+{
+  "status": "stopped_by_user",
+  "stopped_at_utc": "2026-10-20T12:08:05.833932+00:00",
+  "reason": "User requested immediate stop of all experiments.",
+  "planned_episodes": 9,
+  "completed_episodes": 5,
+  "interrupted_episodes": [
+    {
+      "task": "put_bottles_into_dustbin",
+      "layout": 3,
+      "run_directory": "runs/roboicl-public-3task-20261020-r4/put_bottles_into_dustbin-l3"
+    }
+  ],
+  "not_run_episodes": [
+    {
+      "task": "cover_blocks",
+      "layout": 4
+    },
+    {
+      "task": "deposit_coin",
+      "layout": 4
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "layout": 4
+    }
+  ],
+  "experiment_processes_stopped": true,
+  "full_suite_aggregate_reported": false
+}

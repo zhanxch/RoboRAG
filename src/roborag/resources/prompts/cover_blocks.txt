@@ -1,0 +1,9 @@
+Task: There are three covers and three blocks arranged in a random order. The blocks are red, green, and blue. The robot needs to cover the blocks from left to right, remember the color under each cover, and then uncover the blocks in the order of red, green, and blue.
+
+Public task completion conditions:
+- All three blocks are covered by cups from left to right.
+- After all blocks are covered, the red block is uncovered first while the green and blue blocks remain covered.
+- The red and green blocks are uncovered in order while the blue block remains covered.
+- All three blocks are first covered from left to right, then uncovered in red, green, and blue order; cup orientation remains valid and the robot returns to origin.
+
+Use the native public task_instruction in the current observation to identify the live target or language condition. Generate your own plan from current RGB, calibration, proprioception and retrieved TRAIN evidence. Historical object positions, identities and event sequences are examples, not current targets. The native task determines completion; model text or successful motion does not establish task success.

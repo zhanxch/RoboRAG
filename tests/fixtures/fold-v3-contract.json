@@ -1,0 +1,813 @@
+{
+  "task": "fold_clothes",
+  "source_commit": "1e9ffa0",
+  "tools": [
+    {
+      "name": "retrieve_evidence",
+      "description": "Retrieve 1-2 cited examples from recorded demonstrations, not a new plan.\n\n        Describe the CURRENT visible scene. Use once before planning; query again only\n        for an information gap/recovery. Text uses Chinese labels; Chinese queries work best.\n        Raw action arrays/images stay behind read_action_reference to keep context small.\n        ",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "title": "Goal",
+            "type": "string"
+          },
+          "observation": {
+            "title": "Observation",
+            "type": "string"
+          },
+          "mode": {
+            "default": "plan",
+            "enum": [
+              "plan",
+              "action"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "arm": {
+            "default": "",
+            "title": "Arm",
+            "type": "string"
+          },
+          "held_object": {
+            "default": "",
+            "title": "Held Object",
+            "type": "string"
+          },
+          "target_object": {
+            "default": "",
+            "title": "Target Object",
+            "type": "string"
+          }
+        },
+        "required": [
+          "goal",
+          "observation"
+        ],
+        "title": "retrieve_evidenceArguments"
+      },
+      "output_schema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "retrieve_evidenceOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "read_only_hint": true,
+        "open_world_hint": false
+      }
+    },
+    {
+      "name": "read_action_reference",
+      "description": "Expand graph_id:phase_id from a retrieved graph into historical before/action/after evidence.\n\n        Recorded actions are world link6 deltas. When the live controller uses that same\n        interface, learn their scale/orientation/gripper timing, but adapt to CURRENT images.\n        An absolute TCP controller requires a coordinate conversion; never blindly replay rows.\n        Images are explicitly historical and must not replace current feedback.\n        section=end selects the final window of a phase, useful for release/withdrawal.\n        section=close/open selects a window around the first gripper command crossing\n        0.5 in this phase. Use close for grasp posture; phase starts can be far away.\n        If no such event exists, the response explicitly falls back to phase start.\n        Default summaries include displacement/gripper timing; raw arrays are optional.\n        ",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "include_actions": {
+            "default": false,
+            "title": "Include Actions",
+            "type": "boolean"
+          },
+          "images": {
+            "default": true,
+            "title": "Images",
+            "type": "boolean"
+          },
+          "section": {
+            "default": "start",
+            "enum": [
+              "start",
+              "end",
+              "close",
+              "open"
+            ],
+            "title": "Section",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source"
+        ],
+        "title": "read_action_referenceArguments"
+      },
+      "annotations": {
+        "read_only_hint": true,
+        "open_world_hint": false
+      }
+    },
+    {
+      "name": "observe",
+      "description": "Current RGB and measured fingertip TCP state; no simulation step or object ground truth.\n\n        Set calibration=true initially for camera ray/plane calculations. World z is height in meters.\n        Reuse fixed head calibration; moving wrist extrinsics need refreshing after movement.\n        ",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "cameras": {
+            "default": [
+              "head"
+            ],
+            "items": {
+              "enum": [
+                "head",
+                "wrist_l",
+                "wrist_r"
+              ],
+              "type": "string"
+            },
+            "title": "Cameras",
+            "type": "array"
+          },
+          "calibration": {
+            "default": false,
+            "title": "Calibration",
+            "type": "boolean"
+          }
+        },
+        "title": "observeArguments"
+      },
+      "annotations": {
+        "read_only_hint": true,
+        "open_world_hint": false
+      }
+    },
+    {
+      "name": "measure_scene",
+      "description": "Current RGB geometry: cloth boundary, measured plane and interior grasp points.\n\n            No motion or action steps. Use once initially before writing your plan.\n            Optional u,v seed selects cloth; outline supplies ordered visible boundary pixels\n            when color segmentation misses patterned cloth. table_xy projects one pixel\n            using the measured plane. Check plan_ok, uncertainty and outline against RGB.\n            Points describe the visible silhouette, not layer identity, grasp or task success.\n            Fold targets, motion and completion decisions remain yours.\n            ",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "default": "cloth_landmarks",
+            "enum": [
+              "cloth_landmarks",
+              "table_xy"
+            ],
+            "title": "Command",
+            "type": "string"
+          },
+          "u": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "U"
+          },
+          "v": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "V"
+          },
+          "outline": {
+            "anyOf": [
+              {
+                "items": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Outline"
+          }
+        },
+        "title": "measure_sceneArguments"
+      },
+      "annotations": {
+        "read_only_hint": true,
+        "open_world_hint": false
+      }
+    },
+    {
+      "name": "record_plan",
+      "description": "Record YOUR new plan based on current scene + retrieved evidence, before movement.\n\n        Explain what is reused, skipped or changed from examples. Cite adopted source IDs;\n        steps can differ from historical graph nodes. Call again only if your plan changes.\n        ",
+      "input_schema": {
+        "type": "object",
+        "$defs": {
+          "PlanStep": {
+            "properties": {
+              "subgoal": {
+                "title": "Subgoal",
+                "type": "string"
+              },
+              "current_objects": {
+                "title": "Current Objects",
+                "type": "string"
+              },
+              "completion_observation": {
+                "title": "Completion Observation",
+                "type": "string"
+              },
+              "evidence_refs": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Evidence Refs",
+                "type": "array"
+              }
+            },
+            "required": [
+              "subgoal",
+              "current_objects",
+              "completion_observation"
+            ],
+            "title": "PlanStep",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "current_scene": {
+            "title": "Current Scene",
+            "type": "string"
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/$defs/PlanStep"
+            },
+            "title": "Steps",
+            "type": "array"
+          },
+          "adaptation": {
+            "title": "Adaptation",
+            "type": "string"
+          }
+        },
+        "required": [
+          "current_scene",
+          "steps",
+          "adaptation"
+        ],
+        "title": "record_planArguments"
+      }
+    },
+    {
+      "name": "execute_chunk",
+      "description": "Submit 1-24 NEW action rows in the SAME format as historical action references.\n\n            Each row: [L dx,dy,dz,rx,ry,rz,gripper, R dx,dy,dz,rx,ry,rz,gripper].\n            EE=link6, not TCP. World translation meters, WORLD ROTVEC radians (not Euler).\n            Start from current action_state EE poses. Accumulate subsequent rows from\n            PREVIOUS REQUESTED targets. Gripper 0=closed/1=open, held per row. 25Hz.\n            Per-arm limits per row: translation norm<=0.035m; rotation norm<=0.35rad.\n            Prefer segments=[{delta:[14 numbers],repeat:N},...] for repeated rows.\n            Segments expand EXACTLY to actions, with <=24 total rows; do not supply both.\n            To avoid calculating deltas, use targets=[{steps:N,left:{tcp_xyz:[x,y,z],\n            quaternion_wxyz:[w,x,y,z],gripper:0},right:{...}},...]. Select ONLY one\n            of actions, segments, targets. Omitted arms/fields hold previous targets.\n            Targets linearly interpolate LINK6 translation and world rotation to the\n            requested fingertip endpoints (local +X 0.145m); this is not straight TCP\n            motion during rotation. Gripper applies from the segment's first row.\n            Total steps<=24; same delta limits. No IK/grasp/fold planner is added.\n            Both arms execute together. Large measured tracking error (>4cm) stops tail.\n            No implicit grasp verification. Inspect returned RGB and revise from new state.\n            When the object is released and fingers clear, return_home=true returns\n            both arms to their initial joint poses, satisfying the task's final requirement.\n            ",
+      "input_schema": {
+        "type": "object",
+        "$defs": {
+          "ArmTarget": {
+            "properties": {
+              "tcp_xyz": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "number"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Tcp Xyz"
+              },
+              "quaternion_wxyz": {
+                "anyOf": [
+                  {
+                    "items": {
+                      "type": "number"
+                    },
+                    "type": "array"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Quaternion Wxyz"
+              },
+              "gripper": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Gripper"
+              }
+            },
+            "title": "ArmTarget",
+            "type": "object"
+          },
+          "DeltaSegment": {
+            "properties": {
+              "delta": {
+                "items": {
+                  "type": "number"
+                },
+                "title": "Delta",
+                "type": "array"
+              },
+              "repeat": {
+                "maximum": 24,
+                "minimum": 1,
+                "title": "Repeat",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "delta",
+              "repeat"
+            ],
+            "title": "DeltaSegment",
+            "type": "object"
+          },
+          "TargetSegment": {
+            "properties": {
+              "steps": {
+                "maximum": 24,
+                "minimum": 1,
+                "title": "Steps",
+                "type": "integer"
+              },
+              "left": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/ArmTarget"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              },
+              "right": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/ArmTarget"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null
+              }
+            },
+            "required": [
+              "steps"
+            ],
+            "title": "TargetSegment",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "subgoal": {
+            "title": "Subgoal",
+            "type": "string"
+          },
+          "expected_feedback": {
+            "title": "Expected Feedback",
+            "type": "string"
+          },
+          "actions": {
+            "anyOf": [
+              {
+                "items": {
+                  "items": {
+                    "type": "number"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Actions"
+          },
+          "segments": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/DeltaSegment"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Segments"
+          },
+          "targets": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/$defs/TargetSegment"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Targets"
+          },
+          "return_home": {
+            "default": false,
+            "title": "Return Home",
+            "type": "boolean"
+          },
+          "cameras": {
+            "default": [
+              "head",
+              "wrist_r"
+            ],
+            "items": {
+              "enum": [
+                "head",
+                "wrist_l",
+                "wrist_r"
+              ],
+              "type": "string"
+            },
+            "title": "Cameras",
+            "type": "array"
+          }
+        },
+        "required": [
+          "subgoal",
+          "expected_feedback"
+        ],
+        "title": "execute_delta_chunkArguments"
+      }
+    }
+  ],
+  "prompt_sha256": "26aa5ab01f3a0b78546089a84fdebf04c428ded0f2bb5fbf3945f4e95df8796b",
+  "target_examples": [
+    {
+      "state": {
+        "left_ee_pose": [
+          0.0,
+          0.0,
+          0.8,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "left_ee_joint_state": [
+          1.0
+        ],
+        "right_ee_pose": [
+          0.0,
+          0.0,
+          0.8,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right_ee_joint_state": [
+          1.0
+        ]
+      },
+      "segments": [
+        {
+          "steps": 4,
+          "right": {
+            "tcp_xyz": [
+              0.185,
+              0.02,
+              0.8
+            ],
+            "gripper": 0
+          }
+        }
+      ],
+      "actions": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.010000000000000002,
+          0.005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.010000000000000002,
+          0.005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.010000000000000002,
+          0.005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.010000000000000002,
+          0.005,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0
+        ]
+      ]
+    },
+    {
+      "state": {
+        "left_ee_pose": [
+          0.0,
+          0.0,
+          0.8,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "left_ee_joint_state": [
+          1.0
+        ],
+        "right_ee_pose": [
+          0.0,
+          0.0,
+          0.8,
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "right_ee_joint_state": [
+          1.0
+        ]
+      },
+      "segments": [
+        {
+          "steps": 8,
+          "left": {
+            "tcp_xyz": [
+              0.17,
+              0.03,
+              0.85
+            ],
+            "quaternion_wxyz": [
+              0.9950041653,
+              0,
+              0,
+              0.0998334166
+            ]
+          }
+        },
+        {
+          "steps": 3,
+          "left": {
+            "gripper": 0
+          }
+        }
+      ],
+      "actions": [
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0034862932762761353,
+          0.00014911838107282537,
+          0.006249999999999992,
+          0.0,
+          0.0,
+          0.024999999987803015,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ]
+}

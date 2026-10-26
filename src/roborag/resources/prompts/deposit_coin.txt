@@ -1,0 +1,7 @@
+Task: There is a coin placed on a holder and a coin bank. The robot needs to pick up the coin and accurately insert it into the slot of the coin bank.
+
+Public task completion conditions:
+- The coin is lifted at least 8 cm.
+- The coin bounding box is inside the coin bank slot region, and the robot returns to origin.
+
+Use the native public task_instruction in the current observation to identify the live target or language condition. Generate your own plan from current RGB, calibration, proprioception and retrieved TRAIN evidence. Historical object positions, identities and event sequences are examples, not current targets. The native task determines completion; model text or successful motion does not establish task success.

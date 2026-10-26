@@ -1,0 +1,7 @@
+{
+  "episodes": 100,
+  "artifact_hashes": 900,
+  "bank_hashes": 33,
+  "retrieval_queries": 177,
+  "failures": []
+}

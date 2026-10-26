@@ -4,12 +4,36 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "roborag"
-version = "0.1.0"
-description = "Dual-memory retrieval prototype for robot in-context learning"
+version = "0.2.0"
+description = "RoboRAG: Interaction-Aware Retrieval-Augmented Manipulation"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "h5py>=3.10,<4", "Pillow>=10,<13"]
+
+[project.optional-dependencies]
+# Tool schemas are part of the frozen model-facing protocol.
+mcp = ["mcp==2.3.0", "pydantic>=2.12,<3"]
+runtime = ["mcp==2.3.0", "pydantic>=2.12,<3", "psutil>=5.9,<8"]
+dev = ["mcp==2.3.0", "pydantic>=2.12,<3", "psutil>=5.9,<8", "ruff==0.16.9"]
+
+[project.scripts]
+roborag = "roborag.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+roborag = ["resources/prompts/*.txt", "resources/graph-bank/*", "resources/protocol/*.json"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+# The simulator and compatibility launchers must configure imports first.
+"src/roborag/backends/simulation.py" = ["E402"]
+"scripts/*.py" = ["E402"]
+"tests/test_hexashell_adapter.py" = ["E402"]

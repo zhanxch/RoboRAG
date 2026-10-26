@@ -1,0 +1,6 @@
+Task: There is a cup containing many small balls and a vase. The robot needs to pick up the cup and pour all the balls into the vase.
+
+Public task completion conditions:
+- All seven balls are inside the vase, the cup is upright, and the robot returns to origin.
+
+Use the native public task_instruction in the current observation to identify the live target or language condition. Generate your own plan from current RGB, calibration, proprioception and retrieved TRAIN evidence. Historical object positions, identities and event sequences are examples, not current targets. The native task determines completion; model text or successful motion does not establish task success.

@@ -1,11 +1,7 @@
-"""RoboRAG: separate persistent experience and episode-local retrieval."""
+"""RoboRAG: Interaction-Aware Retrieval-Augmented Manipulation.
 
-from .memory import EpisodeMemory, LongTermMemory, build_long_term
-from .retrieval import retrieve_context
-from .schema import Context, Experience, Query
+The public entry point is ``python -m roborag``. Importing this package does
+not start the simulator, load a model, or connect to any external service.
+"""
 
-__all__ = [
-    "Context", "EpisodeMemory", "Experience", "LongTermMemory", "Query",
-    "build_long_term", "retrieve_context",
-]
-
+__version__ = "0.2.0"

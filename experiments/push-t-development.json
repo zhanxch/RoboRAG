@@ -1,0 +1,32 @@
+[
+  {
+    "seed": 1,
+    "variant": "standard",
+    "layout": 0
+  },
+  {
+    "seed": 1,
+    "variant": "random",
+    "layout": 0
+  },
+  {
+    "seed": 1,
+    "variant": "standard",
+    "layout": 1
+  },
+  {
+    "seed": 1,
+    "variant": "random",
+    "layout": 1
+  },
+  {
+    "seed": 1,
+    "variant": "standard",
+    "layout": 2
+  },
+  {
+    "seed": 1,
+    "variant": "random",
+    "layout": 2
+  }
+]

@@ -19,3 +19,19 @@ local.runtime.json
 *.pt
 *.pth
 *.mp4
+
+# Local experiments, frozen checkouts and generated paper media are evidence, not active code.
+work/
+.runtime/
+.ruff_cache/
+paper/*.html
+paper/*.pdf
+paper/*.png
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/figures/**/*.png
+paper/figures/**/*.pdf
+paper/assets/
+paper/review-inputs/
+paper/*.zip

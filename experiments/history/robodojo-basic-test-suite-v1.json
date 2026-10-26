@@ -1,0 +1,184 @@
+{
+  "schema": "roborag.task-suite.v1",
+  "suite_id": "robodojo-basic-v1",
+  "name": "基础版测试名单",
+  "version": 1,
+  "confirmed_on": "2026-10-25",
+  "status": "task_roster_frozen",
+  "confirmation": "用户确认：那就先固定这十个任务叫基础版测试名单吧",
+  "benchmark": "RoboDojo simulation",
+  "base_task_count": 10,
+  "configuration_count": 12,
+  "tasks_per_category": 2,
+  "categories": [
+    "Generalization",
+    "Precision",
+    "Long-Horizon",
+    "Memory",
+    "Open"
+  ],
+  "aggregation": {
+    "variant_results": "Report standard and random separately for each Generalization base task.",
+    "generalization_base_task": "Equal-weight mean of standard and random; each pair counts as one base task.",
+    "category_subset": "Equal-weight mean of the two selected base tasks.",
+    "suite": "Equal-weight mean of the ten base tasks; equivalent to equal-weight mean of the five two-task category subsets.",
+    "scope": "Selected ten-task subset only, not full RoboDojo or complete-category performance."
+  },
+  "selection_evidence": {
+    "path": "results/robodojo-ten-task-proposal-20261025.json",
+    "sha256": "22d229e386f372edcd5a65b6721a6a8ac870e5a1bb890ac00e726be8d52e5f0c",
+    "source_data_generated_at": "2026-10-24T00:00:00.000Z",
+    "source_url": "https://robodojo-benchmark.com/leaderboard?bench=sim",
+    "baseline_models": [
+      "HexaShell-preview",
+      "WorldScape-R²SI",
+      "EmbodiedEvo"
+    ],
+    "metric": "native full-task successRate percentage; NOT progress score",
+    "interpretation": "Higher/challenge roles are relative within each pair. fold_clothes is a user-selected deformable-object case, not a universally low-success task."
+  },
+  "tasks": [
+    {
+      "category": "Generalization",
+      "task": "push_T",
+      "selection_role": "higher_in_pair",
+      "configurations": [
+        {
+          "task_id": "push_T",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "push_T_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "fold_clothes",
+      "selection_role": "challenge_in_pair",
+      "configurations": [
+        {
+          "task_id": "fold_clothes",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "fold_clothes_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Precision",
+      "task": "pour_balls_into_vase",
+      "selection_role": "higher_in_pair",
+      "configurations": [
+        {
+          "task_id": "pour_balls_into_vase",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    },
+    {
+      "category": "Precision",
+      "task": "deposit_coin",
+      "selection_role": "challenge_in_pair",
+      "configurations": [
+        {
+          "task_id": "deposit_coin",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    },
+    {
+      "category": "Long-Horizon",
+      "task": "put_bottles_into_dustbin",
+      "selection_role": "higher_in_pair",
+      "configurations": [
+        {
+          "task_id": "put_bottles_into_dustbin",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    },
+    {
+      "category": "Long-Horizon",
+      "task": "organize_table",
+      "selection_role": "challenge_in_pair",
+      "configurations": [
+        {
+          "task_id": "organize_table",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    },
+    {
+      "category": "Memory",
+      "task": "cover_blocks",
+      "selection_role": "higher_in_pair",
+      "configurations": [
+        {
+          "task_id": "cover_blocks",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    },
+    {
+      "category": "Memory",
+      "task": "imitate_sorting_sequence",
+      "selection_role": "challenge_in_pair",
+      "configurations": [
+        {
+          "task_id": "imitate_sorting_sequence",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    },
+    {
+      "category": "Open",
+      "task": "general_pickup",
+      "selection_role": "higher_in_pair",
+      "configurations": [
+        {
+          "task_id": "general_pickup",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    },
+    {
+      "category": "Open",
+      "task": "pick_from_conveyor_by_image",
+      "selection_role": "challenge_in_pair",
+      "configurations": [
+        {
+          "task_id": "pick_from_conveyor_by_image",
+          "variant": "standard",
+          "within_task_weight": 1.0
+        }
+      ]
+    }
+  ],
+  "evaluation_protocol": {
+    "status": "not_yet_frozen",
+    "pending": [
+      "layout and seed identities",
+      "repetitions",
+      "model and controller versions",
+      "demonstration and retrieval-bank access",
+      "step and inference budgets",
+      "comparison methods and ablations"
+    ],
+    "development_exclusion": "Previously tuned layouts must be disclosed and separated from untouched evaluation layouts."
+  }
+}

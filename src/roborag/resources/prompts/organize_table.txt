@@ -1,0 +1,9 @@
+Task: There are a computer, a keyboard, a mouse, an alarm clock, a cartoon figurine, three miscellaneous items, and a drawer. The robot needs to organize the table by placing the mouse on the mouse pad, pushing the keyboard into the frame, putting the figurine on the stand, placing the alarm clock on top of the drawer, opening the drawer, and putting all remaining miscellaneous items into it.
+
+Public task completion conditions:
+- Any one target item is organized correctly: mouse on mouse pad, keyboard in the frame, figurine on its stand, or alarm clock on the drawer, with the gripper open.
+- Any two target items are organized correctly.
+- Any three target items are organized correctly.
+- All four target items are organized correctly and the robot returns to origin.
+
+Use the native public task_instruction in the current observation to identify the live target or language condition. Generate your own plan from current RGB, calibration, proprioception and retrieved TRAIN evidence. Historical object positions, identities and event sequences are examples, not current targets. The native task determines completion; model text or successful motion does not establish task success.

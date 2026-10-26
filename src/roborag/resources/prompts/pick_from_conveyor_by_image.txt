@@ -1,0 +1,6 @@
+Task: There is a board displaying an image of the target object, a basket, and a conveyor carrying multiple objects. The robot needs to first lift the basket more than 8 cm, identify the target object on the conveyor based on the image shown on the board, pick up the target object, and place it into the basket.
+
+Public task completion conditions:
+- The image-specified target object is in the basket and lifted at least 8 cm.
+
+Use the native public task_instruction in the current observation to identify the live target or language condition. Generate your own plan from current RGB, calibration, proprioception and retrieved TRAIN evidence. Historical object positions, identities and event sequences are examples, not current targets. The native task determines completion; model text or successful motion does not establish task success.

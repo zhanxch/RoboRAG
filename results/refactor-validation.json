@@ -1,0 +1,71 @@
+{
+  "schema": "roborag.refactor-validation.v1",
+  "checked_at": "2026-10-26T03:16:30.019984+00:00",
+  "snapshot_commit": "866f7f2",
+  "native_policy_evaluation": false,
+  "tests": {
+    "command": "PYTHONPATH=src:.runtime/mcp <policy_python> -m unittest discover -s tests -v",
+    "passed": 84,
+    "skipped": 0,
+    "log_sha256": "45f33978b039f83815cff269c0dd3ba31b361b21db214ad8d1ab35ae2c146d83"
+  },
+  "checks": {
+    "ruff_check": true,
+    "ruff_format": true,
+    "compileall": true,
+    "cli_help_commands": 13,
+    "wheel_build": true,
+    "installed_wheel_frozen_protocols": true,
+    "doctor": true,
+    "historical_results_unchanged": 24,
+    "historical_manifests_unchanged": 12,
+    "local_mcp_independent_of_frozen_worktrees": true
+  },
+  "offline_evidence": {
+    "episodes": 100,
+    "artifact_hashes": 900,
+    "bank_hashes": 33,
+    "retrieval_queries": 177,
+    "failures": []
+  },
+  "environment": {
+    "numpy": "1.26.0",
+    "scipy": "1.15.3",
+    "h5py": "3.16.0",
+    "Pillow": "12.3.0",
+    "mcp": "2.3.0",
+    "pydantic": "2.14.1",
+    "psutil": "5.9.8",
+    "ruff": "0.16.9"
+  },
+  "initialization_probes": [
+    {
+      "task": "push_T",
+      "complete": true,
+      "scored": false,
+      "model_invoked": false,
+      "policy_action_steps": 0,
+      "wall_seconds": 45.87886498204898,
+      "directory": "runs/refactor-push-initialization-20261026",
+      "sha256": {
+        "runs/refactor-push-initialization-20261026/run.json": "d60920771c5411ad55a61768ab3d60c9ba3702549034ec1fc0186dd41d739b5e",
+        "runs/refactor-push-initialization-20261026/probe-result.json": "becbb268723708491d2ff21b2a742c1a9e6fe00f7cd2dfe9c1372613cfe263f4",
+        "runs/refactor-push-initialization-20261026/initialization-probe.json": "e718f4cabe4db26d205b80b14b4090566d039fd2b47235fce35d31ee924314d0"
+      }
+    },
+    {
+      "task": "fold_clothes",
+      "complete": true,
+      "scored": false,
+      "model_invoked": false,
+      "policy_action_steps": 0,
+      "wall_seconds": 46.76030737499241,
+      "directory": "runs/refactor-fold-initialization-20261026",
+      "sha256": {
+        "runs/refactor-fold-initialization-20261026/run.json": "16a661cd7450e23cdf26be504adf86a40cf9d967070d0e62ce9170f78e2b6f6f",
+        "runs/refactor-fold-initialization-20261026/probe-result.json": "8de66924b4899e4b935f2377b9b0d2b798c2d306b57c3533625af125a7fc610c",
+        "runs/refactor-fold-initialization-20261026/initialization-probe.json": "839f717ff0f3b788032f63ee2f87c4a92539838c0c13ad7e7b4e1289bea36957"
+      }
+    }
+  ]
+}

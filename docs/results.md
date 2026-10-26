@@ -1,87 +1,35 @@
-# Pilot results
+# 当前结果与版本选择
 
-## Stack-blocks pilot
+截至 2026-10-26，两个任务均有 seed 1、标准/随机各 25 例、每例一次的冻结原生记录。成功由 RoboDojo 评价器给出；几何检查通过或模型自述完成不算成功。模型为 `gpt-6-astra`，reasoning effort 为 `xhigh`。
 
-The frozen `scene-phase-transition-v3` RoboRAG controller completed
-`stack_blocks`, standard layout 0, with native **100/100 and success=true**.
-It used 195 executed steps out of the native 550-step limit and 20 model calls.
-The long-term bank contained three published training episodes and 58 valid
-chunks. Each decision selected up to eight training chunks and four live chunks,
-with compressed execution summaries retained separately.
+## fold_clothes
 
-The matched fixed-context control also succeeded on layout 0, scoring 100/100
-in 240 steps and 24 model calls. Observed token totals were 1,289,773 for RoboRAG
-and 1,506,661 for fixed context. This one development pair shows fewer calls for
-RoboRAG, not a statistically established efficiency or success-rate advantage.
+保留 v3 `1e9ffa05682fb750bd940938b6b8bd6bf6ac091f`：**37/50（74%）**，标准 19/25，随机 18/25。平均进度 78.4，平均控制步数 389.48，每例平均墙钟 474.04 秒。
 
-With the controller and bank frozen, RoboRAG also succeeded on predeclared
-validation layout 1: **100/100, success=true, 302 steps and 31 calls** (2,048,690
-observed tokens). A placement became unstable around steps 110–130; the policy
-regrasped the wood block and completed the stack. At step 160, short-term retrieval
-included the earlier placement interval 110–120, outside a latest-four-chunk
-window, while retaining the latest interval 150–160. This verifies retrieval of
-older relevant experience but does not by itself establish a causal contribution
-to recovery. The fixed-context validation control also scored **100/100 with
-success=true**, in **237 steps and 24 calls** (1,509,991 observed tokens).
+两项候选保留历史结果但不进入默认实现：C1 compact text 为 30/50、431.14 步、511.66 秒；observation-reuse 为 35/50、405.12 步、628.19 秒。这里按已观察结果选择工程基线，不能将单次随机模型回合的差异因果归于某项微优化，也不能宣称统计显著优势。
 
-Both methods therefore succeeded in both selected layouts. RoboRAG used fewer
-steps/calls in development (195/20 versus 240/24), but more in validation
-(302/31 versus 237/24). These observations show neither a success-rate gain nor
-a consistent efficiency advantage for retrieval. The result is a working
-dual-memory control pilot, not evidence that this selector outperforms fixed
-demonstrations. The four trials share identical frozen corpus, retrieval-controller
-source and harness hashes; their per-method context selection differs as intended.
+v3 的 13 例失败中，6 例达到 500 步，7 例提前结束。49/50 回合出现过非终止状态下丢弃动作尾部，合计 138 次；成功例也出现，不能直接当作失败原因。后续应针对接触、跟踪偏差和结束条件分别分析。
 
-Thus RoboRAG has two completed successful pilot rollouts: one development layout
-and one layout not used for this project's tuning. They are not two independent
-held-out trials and do not constitute a benchmark-wide result.
-The [validation plan](../experiments/stack-v3-validation-plan.json)
-was recorded before inspecting or executing layout 1. Native evidence is in
-[the current pilot manifest](../results/pilot-current.json).
+## push_T
 
-The revised deposit-coin development attempt was deliberately stopped after
-110 observed steps, following repeated failed grasp attempts, to reallocate GPU
-resources to the successful task's controls and validation. It has **no final
-native score**, is recorded as an experimenter interruption, and is retained in
-the evidence manifest. No online evaluation trajectory was added to the frozen
-training bank.
+保留 `62f538d1897820fa112e1fd1d921ea6c1a485163`：**50/50（100%）**，标准和随机各 25/25。分为开发复核 6/6 和该阶段新增场景 44/44。平均控制步数 314.26，每例平均墙钟 516.89 秒，中位数 297 步，范围 165–574 步，上限 600。
 
-All pilot simulator and model-server processes have exited. The current repository
-passes 23 software regression tests, covering memory boundaries, evidence
-classification and cancellation cleanup. These tests are separate from the native
-robot-task outcomes above.
+记录中有 86 次 IK 派发前拒绝，其中 85 次后续出现被接受的 IK 动作；另一次随后通过关节空间归位并成功。这个统计说明流程恢复继续执行，不证明接触恢复效果或安全收益。
 
-## First deposit-coin development pair, 2026-10-16
+此版本同时含提示、几何测量、参考上下文和 IK 检查的改动。验证使用原始 TRAIN 图库，不是 interaction-enriched 图库；no-RAG 与新图库的原生消融尚未完成。因此不能把 50/50 归因于 RAG，更不能等同于跨 seed 的总体成功率或 HexaShell 隐藏评测成绩。
 
-The fixed-context control scored **20/100**, with no full success. The first
-dual-memory selector scored **0/100**, also with no full success. Each condition
-contains one completed rollout on the same development layout 0. These results
-do **not** establish a retrieval benefit; the initial selector performed worse
-on this pair.
+## 用量口径
 
-Both conditions used `gpt-6-astra`, medium reasoning, the same account-based
-transport, the same single demonstration source, six training chunks, four
-live chunks, and RoboDojo's unchanged 300-step limit. Native results and hashes
-are preserved in [the evidence manifest](../results/deposit-v1-development.json).
-The score of 20 means the lifting threshold was reached, not that the coin was
-deposited. Videos and complete logs are in the manifest's local artifact directories.
+fold v3 的 input / cached input / output / reasoning output 分别为 93,614,914 / 89,768,064 / 542,667 / 205,340；uncached input 为 3,846,850。
 
-RGB review showed that the selected training example had the bank and coin on
-opposite sides to the live scene. Absolute end-effector similarity repeatedly
-retrieved the source's late insertion phase during live grasp attempts. Both
-controllers knocked the coin onto the table and spent much of the episode
-trying to recover it. A separate implementation review found that omitted live
-intervals lost their textual execution summaries.
+push_T 对应 77,863,979 / 74,452,608 / 448,194 / 152,510；uncached input 为 3,411,371。缓存输入是输入总量的子集，reasoning 是输出总量的子集。实际账单及模型 API 请求次数未知，不能用工具调用次数代替。
 
-The subsequent development revision adds initial scene selection from a multi-demo
-bank, an observation-based source-phase cursor, preserved compressed execution
-summaries, and an explicit TRAIN→TEST calibration boundary. The stack success
-above does not isolate the contribution of each change. Comparisons must use matching bank, model,
-context quotas and code revision. Layouts used for tuning remain development
-data even if a later rollout succeeds on them.
+## 证据与重构验证
 
-Limits: one rollout per condition/layout; no uncertainty estimate or broad
-generalization claim; the [28-file asset subset audit](../results/asset-scope-audit.json)
-passed, but the complete asset tree was not newly certified; transport differs from the paper API; concurrent wall
-times are not a matched latency measurement. Capture tests and incomplete
-startup attempts are excluded from scored trials.
+[current.json](../results/current.json) 保存指标和候选比较；[selected-evidence.json](../results/selected-evidence.json) 保存所选 100 回合的目录、原生结果及其他文件哈希，并记录原始报告来源。原始冻结源码与日志保留在本机 `work/`，没有被本次整理修改。
+
+[refactor-evidence-check.json](../results/refactor-evidence-check.json) 的离线核验覆盖 100 回合、900 个回合文件哈希、33 个图库文件，以及 177 次历史检索请求。新检索代码返回的模型上下文与日志逐字一致，成功/进度、控制步数和 token 统计保持一致。
+
+黄金协议测试来自 fold v3 和 push_T 冻结工作树，比较提示词哈希、MCP 工具顺序/说明/schema 和目标到动作的数值转换。它们验证重构的兼容边界，**不能替代新版本的原生全套仿真**。当前 refactor 尚无新的原生成功率。
+
+本次另外完成两个任务各一次原生初始化检查，均成功启动并读取观测，策略动作数为 0，没有模型调用，不计分。84 项测试无跳过地通过，静态检查、13 个子命令帮助入口、wheel 安装及安装后协议检查均通过。验证记录见 [refactor-validation.json](../results/refactor-validation.json)。

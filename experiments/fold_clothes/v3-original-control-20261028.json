@@ -1,0 +1,43 @@
+{
+  "schema": "roborag.original-v3-contemporaneous-control.v1",
+  "registered_at": "2026-10-27T20:28:54.354497+00:00",
+  "purpose": "Diagnose the 35/50 fresh-v3 refactor result against untouched original v3 under the current local environment. No candidate tuning or selection.",
+  "original_commit": "1e9ffa05682fb750bd940938b6b8bd6bf6ac091f",
+  "workspace": "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline",
+  "cases_file": "experiments/fold_clothes/v3-clean-cases.json",
+  "cases_sha256": "42b0934fd39ed957f88676e6ac8aa87acc5a018c19faa234490a3827bc1e0521",
+  "cases_count": 50,
+  "conditions": {
+    "parallel": 2,
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "task": "fold_clothes",
+    "controller": "delta",
+    "bank": "/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-fold-bank-20261024",
+    "no_rag": false,
+    "max_wall_seconds": 1800.0
+  },
+  "seed": 1,
+  "native_max_control_steps": 500,
+  "baseline": "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50",
+  "refactor_run": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027",
+  "refactor_commit": "b2d5686c87ab49cb8d713bc75abb1341b02ff95c",
+  "refactor_result": {
+    "scored": 50,
+    "successes": 35,
+    "acceptance_passed": false
+  },
+  "output": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028",
+  "driver": "experiments/fold_clothes/run_original_v3_control.py",
+  "driver_scope": "Reuse the validated seed-aware batch scheduler with its worker root set to the untouched original checkout. Only scheduling and explicit seed forwarding use the new batch code. Workers, prompts, MCP server, action compilation, simulator and retrieval run from original 1e9ffa0. Capture and verify per-episode original source hashes.",
+  "attempt_policy": "One new diagnostic attempt per declared original-v3 case. No retries, replacements, selective reruns or score-based early stopping. Historical 37/50 and refactor 35/50 remain immutable separate cohorts.",
+  "stopping": "Complete all50 unless user requests stop or infrastructure/source-integrity condition prevents valid execution. Preserve scored failures, timeouts and unscored attempts.",
+  "analysis": [
+    "Require all50 unique attempts with explicit scored/unscored status and preserved trajectories.",
+    "Compare to refactor35 and historical original37 using same layout/seed/model/effort/controller/bank/wall conditions.",
+    "Report paired gains/losses and all-attempt plus jointly-successful costs, including connection delays.",
+    "This is a sequential current-environment control, not randomized concurrent treatment; provider/network and rendering differences remain possible.",
+    "Do not retroactively change the refactor37/50 acceptance threshold. Control results do not replace or turn its failed gate into a pass.",
+    "Repair policy only when concrete evidence identifies a causal implementation or input difference; otherwise report unresolved reproducibility rather than invent another architecture."
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "transport": [
+    {
+      "observed_at": "2026-10-27T16:42:45.528462+00:00",
+      "affected_cases": [
+        "seed1-standard-l4",
+        "seed1-random-l4"
+      ],
+      "first_synchronized_retry_at": "2026-10-27T16:41:23.607622Z",
+      "evidence": "Both agent-stderr.log files report stream disconnected before completion / peer closed connection without TLS close_notify; retrying sampling request 1/5. Earlier model-list refresh also timed out.",
+      "action": "Preserve original live sessions and registered wall budget; no case restart or policy edit.",
+      "final_effect": "pending; include delay and any terminal failure in full-suite report"
+    },
+    {
+      "observed_at": "2026-10-27T16:43:39Z",
+      "event": "execution_resumed_in_original_sessions",
+      "cases": [
+        {
+          "case": "seed1-standard-l4",
+          "pid": 2962638,
+          "step": 279
+        },
+        {
+          "case": "seed1-random-l4",
+          "pid": 2964730,
+          "step": 54
+        }
+      ],
+      "note": "Fresh native motion receipts after the synchronized stream disconnect. Registered wall budgets unchanged; retain elapsed delay in all-attempt cost."
+    },
+    {
+      "observed_at": "2026-10-27T16:49:48.688942+00:00",
+      "event": "affected_cases_completed",
+      "cases": [
+        {
+          "case": "seed1-standard-l4",
+          "success": true,
+          "wall_seconds": 998.1488928471226,
+          "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e"
+        },
+        {
+          "case": "seed1-random-l4",
+          "success": true,
+          "wall_seconds": 844.1451830829028,
+          "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e"
+        }
+      ],
+      "note": "Both original attempts completed within the unchanged 1800-second budget; elapsed costs retain the network interruption."
+    },
+    {
+      "observed_at": "2026-10-27T17:45:01.127065+00:00",
+      "incident": "transport-2",
+      "affected_cases": [
+        "seed1-random-l9",
+        "seed1-standard-l10"
+      ],
+      "evidence": "Around 17:42–17:44 UTC: random-l9 reached 5/5 websocket retries (TLS EOF, websocket closed, broken pipe), then the original CLI switched to HTTP; standard-l10 retried after TLS connection closure and resumed.",
+      "action": "Preserve original sessions, 1800-second budgets and source freeze. No episode retry or replacement.",
+      "final_effect": "pending; retain elapsed cost and report affected attempts"
+    },
+    {
+      "observed_at": "2026-10-27T17:46:41.217713+00:00",
+      "incident": "transport-2",
+      "event": "affected_cases_completed",
+      "cases": [
+        {
+          "case": "seed1-standard-l10",
+          "success": false,
+          "native_score": 20.0,
+          "control_steps": 244,
+          "wall_seconds": 691.6285771189723,
+          "native_sha256": "27b1a4d0f48fe6690a9a03d5c22f711ddeda389f18f3e0d9495e7375d2843c8a",
+          "original_success": true
+        },
+        {
+          "case": "seed1-random-l9",
+          "success": true,
+          "native_score": 100.0,
+          "control_steps": 360,
+          "wall_seconds": 892.9196682870388,
+          "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+          "original_success": true
+        }
+      ],
+      "note": "Original attempts completed with verified native results within the unchanged wall budget. Preserve all elapsed delay; no claim that the network caused or did not cause the native failure."
+    },
+    {
+      "observed_at": "2026-10-27T19:52:57.574025+00:00",
+      "incident": 3,
+      "kind": "synchronized-websocket-and-http-connection-failures",
+      "cases": [
+        {
+          "case": "seed1-standard-l22",
+          "stderr": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l22/agent-stderr.log",
+          "first_transport_error_at": "2026-10-27T19:37:02.046286Z",
+          "last_transport_error_at": "2026-10-27T19:41:08.901353Z",
+          "transport_log_lines": 17,
+          "http_fallback_at": [
+            "2026-10-27T19:37:33.612497Z"
+          ],
+          "native_result": {
+            "complete": true,
+            "score": 100.0,
+            "wall_seconds": 949.7209955609869,
+            "steps": 349
+          }
+        },
+        {
+          "case": "seed1-random-l22",
+          "stderr": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l22/agent-stderr.log",
+          "first_transport_error_at": "2026-10-27T19:37:31.488944Z",
+          "last_transport_error_at": "2026-10-27T19:41:47.633052Z",
+          "transport_log_lines": 18,
+          "http_fallback_at": [
+            "2026-10-27T19:38:12.513815Z"
+          ],
+          "native_result": null
+        }
+      ],
+      "current_state": "Both original sessions subsequently returned observations/actions; standard22 already has a terminal scored result.",
+      "handling": "Original CLI performed transport retries/fallback. No episode restart, replacement, source edit or budget extension.",
+      "interpretation": "Keep all elapsed cost and results. Transport logs establish connection failures but do not establish their causal effect on task success."
+    },
+    {
+      "observed_at": "2026-10-27T19:55:35.089524+00:00",
+      "incident": 3,
+      "kind": "affected-episodes-completed",
+      "cases": [
+        {
+          "case": "seed1-standard-l22",
+          "complete": true,
+          "score": 100.0,
+          "success": true,
+          "steps": 349,
+          "wall_seconds": 949.7209955609869,
+          "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d"
+        },
+        {
+          "case": "seed1-random-l22",
+          "complete": true,
+          "score": 100.0,
+          "success": true,
+          "steps": 426,
+          "wall_seconds": 1106.8841115750838,
+          "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d"
+        }
+      ],
+      "handling": "Both original sessions completed within the original 1800-second budget. All observed connection delays and costs remain included; no episode restart or replacement."
+    }
+  ],
+  "latency": [
+    {
+      "observed_at": "2026-10-27T18:42:37.133903+00:00",
+      "case": "seed1-random-l15",
+      "kind": "initial-model-response-delay",
+      "pid": 3009264,
+      "live": true,
+      "agent_started_at": "2026-10-27T18:37:15Z",
+      "mcp_calls_present": false,
+      "progress_present": false,
+      "cause": "unknown; startup warnings alone do not establish a network or policy failure",
+      "action": "Preserve original session, elapsed cost and 1800-second wall budget; no restart or replacement."
+    },
+    {
+      "observed_at": "2026-10-27T18:52:38.103595+00:00",
+      "case": "seed1-random-l15",
+      "kind": "initial-model-response-delay-episode-completed",
+      "complete": true,
+      "score": 20.0,
+      "success": false,
+      "control_steps": 500,
+      "wall_seconds": 944.7396925420035,
+      "native_sha256": "9b87605d2d267413b3ea822cacb059333c051332f6a1dfe705b2e9abddfa1a47",
+      "interpretation": "The same initial session subsequently returned observations/actions and a native scored result. Initial wait remains in elapsed cost; no restart, replacement, or budget extension. Cause of the delay and causal effect on task outcome are not established."
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+{
+  "schema": "roborag.v3-clean-final-audit.v1",
+  "completed_at": "2026-10-27T20:22:58.518082+00:00",
+  "candidate_commit": "b2d5686c87ab49cb8d713bc75abb1341b02ff95c",
+  "base_commit": "1e9ffa05682fb750bd940938b6b8bd6bf6ac091f",
+  "native_suite": {
+    "planned": 50,
+    "unique_attempted": 50,
+    "scored": 50,
+    "successes": 35,
+    "failures": 15,
+    "unscored": 0,
+    "retries_or_replacements": 0,
+    "complete": true
+  },
+  "acceptance": {
+    "threshold": 37,
+    "passed": false,
+    "deficit": 2,
+    "interpretation": "Prespecified engineering recovery criterion failed. Full completion and software fidelity do not imply recovered native outcome equivalence."
+  },
+  "paired": {
+    "counts": {
+      "gain": 9,
+      "both_success": 26,
+      "loss": 11,
+      "both_failure": 4
+    },
+    "cases": [
+      {
+        "case": "seed1-random-l0",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-random-l1",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l10",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-random-l11",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-random-l12",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-random-l13",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-random-l14",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l15",
+        "baseline_success": false,
+        "candidate_success": false,
+        "outcome": "both_failure"
+      },
+      {
+        "case": "seed1-random-l16",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l17",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l18",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l19",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-random-l2",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-random-l20",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l21",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-random-l22",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l23",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-random-l24",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l3",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-random-l4",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l5",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-random-l6",
+        "baseline_success": false,
+        "candidate_success": false,
+        "outcome": "both_failure"
+      },
+      {
+        "case": "seed1-random-l7",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-random-l8",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-random-l9",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l0",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l1",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l10",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-standard-l11",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l12",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l13",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l14",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-standard-l15",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l16",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l17",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-standard-l18",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l19",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l2",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-standard-l20",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-standard-l21",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l22",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l23",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l24",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-standard-l3",
+        "baseline_success": false,
+        "candidate_success": false,
+        "outcome": "both_failure"
+      },
+      {
+        "case": "seed1-standard-l4",
+        "baseline_success": false,
+        "candidate_success": true,
+        "outcome": "gain"
+      },
+      {
+        "case": "seed1-standard-l5",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l6",
+        "baseline_success": true,
+        "candidate_success": false,
+        "outcome": "loss"
+      },
+      {
+        "case": "seed1-standard-l7",
+        "baseline_success": false,
+        "candidate_success": false,
+        "outcome": "both_failure"
+      },
+      {
+        "case": "seed1-standard-l8",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      },
+      {
+        "case": "seed1-standard-l9",
+        "baseline_success": true,
+        "candidate_success": true,
+        "outcome": "both_success"
+      }
+    ]
+  },
+  "tool_responses": {
+    "baseline": {
+      "successful": {
+        "observe": 50,
+        "measure_scene": 182,
+        "retrieve_evidence": 53,
+        "record_plan": 78,
+        "read_action_reference": 241,
+        "execute_chunk": 1313
+      },
+      "failed": {
+        "retrieve_evidence": 46,
+        "execute_chunk": 6
+      }
+    },
+    "candidate": {
+      "successful": {
+        "observe": 50,
+        "measure_scene": 152,
+        "retrieve_evidence": 54,
+        "record_plan": 82,
+        "read_action_reference": 230,
+        "execute_chunk": 1243
+      },
+      "failed": {
+        "retrieve_evidence": 41,
+        "execute_chunk": 5
+      }
+    }
+  },
+  "checks": {
+    "native_result_hashes": 50,
+    "original_conditions_matched": 50,
+    "per_episode_source_files_verified": 2000,
+    "protocol_sha256": "79611da3cd876bf6f76609431b10027291ea3578aea037377768536da481ff8e",
+    "cases_sha256": "42b0934fd39ed957f88676e6ac8aa87acc5a018c19faa234490a3827bc1e0521",
+    "source_freeze": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027.freeze.json",
+    "monitor_finished": true
+  },
+  "evidence": {
+    "evaluation": "results/v3-clean-fold-20261027.json",
+    "completed": "results/v3-clean-completed-audit-20261027.json",
+    "inputs": "results/v3-clean-input-audit-20261027.json",
+    "visual_replay": "results/v3-clean-visual-history-20261027.json",
+    "incidents": "results/v3-clean-runtime-incidents-20261027.json",
+    "prelaunch_software": "results/v3-clean-software-20261027.json"
+  },
+  "limits": [
+    "Known fixed benchmark, one attempt per case; not unseen heldout or statistical equivalence.",
+    "Seed fixes scene selection, not a recorded deterministic model-output stream.",
+    "Same initial state JSON and launch parameters; initial RGB pixels are not identical.",
+    "Historical provider snapshot and CLI executable bytes unavailable; no causal attribution to module extraction, pixels, or network.",
+    "All attempted costs retained; cached input is included in total input and reasoning is included in output. Actual billed USD unknown."
+  ]
+}

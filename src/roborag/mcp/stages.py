@@ -27,13 +27,13 @@ def register_tools(server, memory, read_only):
 
     @server.tool(
         annotations=read_only,
-        description="Prepare one SOP stage before planning or look ahead without changing the active phase. Returns stage guidance and relevant historical examples. Reuse applicable references; use reason=gap/state_change/exception only for a concrete need to refresh retrieval. Historical results are not current facts. No motion or replanning.",
+        description="Prepare one SOP stage before planning or look ahead without changing the active phase. Returns stage guidance and relevant historical examples. Reuse applicable references; use reason=gap/state_change/exception only for a concrete need to refresh retrieval. Use arm=both for a bimanual interaction; it applies no single-arm filter. Historical results are not current facts. No motion or replanning.",
     )
     def prepare_stage(
         sop_stage: str,
         observation: str = "",
         goal: str = "",
-        arm: str = "",
+        arm: Literal["", "left", "right", "both"] = "",
         held_object: str = "",
         target_object: str = "",
         reason: Literal["preview", "entry", "gap", "state_change", "exception"] = "preview",

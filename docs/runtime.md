@@ -83,3 +83,14 @@ python -m roborag run --task push_T --seed 1 --variant standard --layout 0 \
 每个新回合另存 `sop-index.json`、`gpt-plan.json`、不可覆盖的 `plan-versions/`、`episode-ledger.jsonl`、`execution-state.json` 和当前观测快照。SOP 和新代码进入来源哈希；图库或原提示词与 SOP 声明版本不符时拒绝运行，需发布新 SOP/索引并重新验证。不要通过修改冻结文件来消除版本错误。
 
 开发与正式比较预算、场景和采用门槛见 [阶段式协议](../experiments/staged_v1/protocol.json)。旧的 122 例成绩只属于旧路径；新路径必须单独报告原生成功、未完成、缓存与成本。持久状态用于同一回合的模型上下文恢复，不意味着支持崩溃后从任意仿真中点恢复动力学。
+
+阶段式回合使用独立审计入口，可读取本轮基线索引中的原始回合：
+
+```bash
+python -m roborag evaluate-staged --task push_T --runs runs/your-frozen-push-suite \
+  --cases experiments/staged_v1/push_T-regression.json \
+  --baseline results/staged-baseline-audit-20261027.json \
+  --output results/your-staged-push-report.json
+```
+
+该命令同时检查原生证据、SOP/图库版本、计划修订、动作归属和阶段证据；报告保存缺失、失败与未完成，不筛选最佳重试。退出码 0 表示报告成功写出，采用判断应读取 `gate`，不能把命令成功当作效果通过。开发单例可指定自己的单例 cases 文件并省略 `--baseline`，此时没有无回归结论。

@@ -241,6 +241,11 @@ class StageLibrary:
         self.validate_version()
         if stage_id not in self.stages:
             raise ValueError(f"Unknown SOP stage: {stage_id}")
+        if arm not in ("", "left", "right", "both"):
+            raise ValueError("arm must be left, right, both or empty")
+        # Bimanual interaction uses its stage/current-scene terms, not a
+        # single-arm filter. Cache identity follows that effective query.
+        effective_arm = "" if arm == "both" else arm
         stage = self.stages[stage_id]
 
         def normalize(value):
@@ -252,7 +257,7 @@ class StageLibrary:
             "goal": normalize(goal) or stage["query"],
             "observation": normalize(observation),
             "stage": stage["query"],
-            "arm": arm,
+            "arm": effective_arm,
             "held_object": held_object,
             "target_object": target_object,
             "k": 2,
@@ -264,7 +269,6 @@ class StageLibrary:
             self._hits += 1
             result = copy.deepcopy(self._cache[key])
         else:
-            self._misses += 1
             allowed = set(stage["experience_refs"])
             original = self._retriever.index
             index = original | {
@@ -326,6 +330,7 @@ class StageLibrary:
                 "match allows a reasoned attempt or an explicit blocked/unknown result. "
                 "Preparing or looking ahead does not revise the persistent plan.",
             }
+            self._misses += 1
             self._cache[key] = copy.deepcopy(result)
         result["diagnostics"].update(
             {
@@ -334,6 +339,8 @@ class StageLibrary:
                 "cache_misses": self._misses,
                 "refresh_requested": bool(refresh),
                 "search_performed": not hit,
+                "requested_arm": arm,
+                "effective_arm": effective_arm,
                 "known_refs_reused": sorted(set(known_refs) & set(result["allowed_refs"])),
                 "validity": "Cache identity is not evidence that current scene conditions still hold",
             }

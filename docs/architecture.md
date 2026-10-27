@@ -16,6 +16,26 @@ RoboRAG 是同一个 Python 包中的分层框架。任务按独立目录组织�
 
 `execution_status` 和工作区 `episode-context.json` 供模型在历史压缩后恢复计划与阶段，不重开模型会话。控制器、几何测量、TCP 到 delta 转换、短动作段和 IK 连续性检查继续共用旧路径。阶段层不会把历史坐标转换成当前目标，也不会在线回写长期 RAG。
 
+```mermaid
+flowchart LR
+    Rules[有来源与版本的 SOP 规则] --> Prepare[阶段准备与按需检索]
+    History[冻结历史图和示例片段] --> Prepare
+    Current[当前 RGB 与测量] --> Plan[一次建立的 graph plan]
+    Prepare --> Plan
+    Plan --> Stage[当前计划阶段]
+    Prepare --> Stage
+    Stage --> Action[短动作段与控制器]
+    Action --> Feedback[当前观测与动作回执]
+    Feedback --> Check[效果判断 met / unmet / unknown]
+    Check --> Ledger[独立执行记录与阶段进度]
+    Ledger --> Stage
+    Feedback --> Invalid[有证据的计划失效事件]
+    Invalid --> Patch[受影响节点的局部修订]
+    Patch --> Plan
+```
+
+图中的反馈默认只更新执行记录。阶段切换、几何微调和新参考的采用不经过计划修订路径；历史示例不能直接进入当前事实记录。原生成功判定留在离线评价链路中。
+
 ## 一次回合如何运行
 
 1. `runtime/episode.py` 读取 `RuntimeConfig`、`TaskSpec` 和提示词，记录布局、源码、图库和提示词哈希，启动仿真子进程与 MCP 服务。

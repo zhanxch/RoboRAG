@@ -255,6 +255,35 @@ class StageExperienceTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Source bank changed"):
             library.prepare("controlled_pour", observation="左手持杯")
 
+    def test_bimanual_query_reuses_unfiltered_cache_and_invalid_arm_is_not_a_search(self):
+        library = self.library("fold_clothes")
+        for phase in library._retriever.index["phases"]:
+            phase["arms"] = ["right" if phase["graph_id"].endswith("0001") else "left"]
+        with patch("roborag.experience.library.GraphRetriever.retrieve") as retrieve:
+            with self.assertRaisesRegex(ValueError, "left, right, both or empty"):
+                library.prepare("fold_hem", arm="invalid")
+            retrieve.assert_not_called()
+        both = library.prepare("fold_hem", observation="双手提起下摆", arm="both")
+        self.assertEqual(both["diagnostics"]["requested_arm"], "both")
+        self.assertEqual(both["diagnostics"]["effective_arm"], "")
+        self.assertEqual(both["diagnostics"]["candidate_count"], 6)
+        self.assertEqual(both["diagnostics"]["cache_misses"], 1)
+        self.assertTrue(both["historical_examples"])
+        unfiltered = library.prepare("fold_hem", observation="双手提起下摆", arm="")
+        self.assertTrue(unfiltered["diagnostics"]["cache_hit"])
+        self.assertFalse(unfiltered["diagnostics"]["search_performed"])
+        self.assertEqual(unfiltered["diagnostics"]["requested_arm"], "")
+        self.assertEqual(unfiltered["historical_examples"], both["historical_examples"])
+        with self.assertRaisesRegex(ValueError, "left, right, both or empty"):
+            library.prepare("fold_hem", observation="双手提起下摆", arm="invalid")
+        repeated = library.prepare("fold_hem", observation="双手提起下摆", arm="both")
+        self.assertEqual(repeated["diagnostics"]["cache_misses"], 1)
+        self.assertEqual(repeated["diagnostics"]["cache_hits"], 2)
+        left = library.prepare("fold_hem", observation="双手提起下摆", arm="left")
+        right = library.prepare("fold_hem", observation="双手提起下摆", arm="right")
+        self.assertEqual(left["diagnostics"]["candidate_count"], 4)
+        self.assertEqual(right["diagnostics"]["candidate_count"], 2)
+
     def test_prompt_and_bank_mismatch_require_a_new_version(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

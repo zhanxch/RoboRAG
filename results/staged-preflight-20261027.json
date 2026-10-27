@@ -17,5 +17,12 @@
   "git_diff_check": "passed",
   "native_validation": "not yet run; no performance claim",
   "task_prompts": "legacy unchanged; staged SOP exact-source coverage verified",
-  "scope": "offline state/protocol/geometry/retrieval/audit tests; not native task success"
+  "scope": "offline state/protocol/geometry/retrieval/audit tests; not native task success",
+  "candidate_commit": "43f8941",
+  "wheel": {
+    "path": "/tmp/roborag-staged-wheel-20261027/roborag-0.2.0-py3-none-any.whl",
+    "sha256": "a382bc8f39eb89f01e2126c679c30791ef501d018aced1c2745a7b022cf1c691",
+    "installed_into": "/tmp/roborag-staged-installed-20261027",
+    "verified": "All three installed SOPs load without the repository bank; staged and control prompts packaged; import came from target install"
+  }
 }

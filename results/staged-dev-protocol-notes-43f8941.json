@@ -1,0 +1,324 @@
+{
+  "schema": "roborag.staged-development-protocol-notes.v1",
+  "candidate_commit": "43f8941",
+  "observed_at": "2026-10-27T03:34:36.880044+00:00",
+  "evidence_scope": "Read-only public policy tool calls, episode ledger and agent events; no native private state or success oracle inspected.",
+  "runs": {
+    "fold_clothes": {
+      "path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/fold_clothes",
+      "sources": [
+        "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/fold_clothes/mcp-calls.jsonl",
+        "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/fold_clothes/episode-ledger.jsonl",
+        "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/fold_clothes/agent-events.jsonl",
+        "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/fold_clothes/execution-state.json"
+      ],
+      "observed_counts": {
+        "successful_mcp_calls": 54,
+        "ledger_events": 149,
+        "agent_events": 121,
+        "started_mcp_calls": 55,
+        "successful_explicit_prepare_calls": 3,
+        "successful_stage_preparation_events": 4,
+        "stage_entries": 5,
+        "entries_reusing_context": 4,
+        "plan_created_events": 1,
+        "plan_revision_events": 0,
+        "submitted_actions": 32,
+        "received_actions": 32,
+        "unknown_action_response_events": 0
+      },
+      "tool_errors": [
+        {
+          "event_item_id": "item_6",
+          "tool": "prepare_stage",
+          "arguments": {
+            "sop_stage": "fold_hem",
+            "arm": "both",
+            "target_object": "两侧下摆",
+            "observation": "当前衣服未折叠，预览双手下摆折向肩线。下摆内缩点左(-0.1544,-0.2209)、右(0.045,-0.3008)，肩侧左(-0.0552,0.0421)、右(0.1579,-0.042)。",
+            "goal": "了解双手下摆抓取、抬起、向肩线对齐规则",
+            "reason": "preview"
+          },
+          "message": "Error executing tool prepare_stage: arm must be left, right or empty"
+        }
+      ],
+      "successful_stage_preparations": [
+        {
+          "ledger_event_id": "event-00004",
+          "sop_stage": "measure_bind",
+          "reason": "preview",
+          "diagnostics": {
+            "cache_hit": false,
+            "search_performed": true,
+            "cache_hits": 0,
+            "cache_misses": 1,
+            "known_refs_reused": []
+          },
+          "allowed_reference_count": 0
+        },
+        {
+          "ledger_event_id": "event-00005",
+          "sop_stage": "fold_sleeve",
+          "reason": "preview",
+          "diagnostics": {
+            "cache_hit": false,
+            "search_performed": true,
+            "cache_hits": 0,
+            "cache_misses": 2,
+            "known_refs_reused": []
+          },
+          "allowed_reference_count": 6
+        },
+        {
+          "ledger_event_id": "event-00006",
+          "sop_stage": "fold_hem",
+          "reason": "preview",
+          "diagnostics": {
+            "cache_hit": false,
+            "search_performed": true,
+            "cache_hits": 0,
+            "cache_misses": 4,
+            "known_refs_reused": []
+          },
+          "allowed_reference_count": 6
+        },
+        {
+          "ledger_event_id": "event-00143",
+          "sop_stage": "release_inspect_home",
+          "reason": "entry",
+          "diagnostics": {
+            "cache_hit": false,
+            "search_performed": true,
+            "cache_hits": 0,
+            "cache_misses": 5,
+            "known_refs_reused": [
+              "fold_clothes-0000:p07"
+            ]
+          },
+          "allowed_reference_count": 4
+        }
+      ],
+      "stage_entries": [
+        {
+          "ledger_event_id": "event-00008",
+          "stage_id": "bind",
+          "plan_version": 1,
+          "session_reuse": true
+        },
+        {
+          "ledger_event_id": "event-00010",
+          "stage_id": "sleeve_left",
+          "plan_version": 1,
+          "session_reuse": true
+        },
+        {
+          "ledger_event_id": "event-00044",
+          "stage_id": "sleeve_right",
+          "plan_version": 1,
+          "session_reuse": true
+        },
+        {
+          "ledger_event_id": "event-00109",
+          "stage_id": "hem",
+          "plan_version": 1,
+          "session_reuse": true
+        },
+        {
+          "ledger_event_id": "event-00144",
+          "stage_id": "restore",
+          "plan_version": 1,
+          "session_reuse": false
+        }
+      ],
+      "observed_protocol_friction": [
+        {
+          "issue": "prepare_stage arm schema accepts unrestricted string but retriever rejects both",
+          "failed_agent_event_item_id": "item_6",
+          "recovery_agent_event_item_id": "item_9",
+          "observed_response": "arm must be left, right or empty",
+          "observed_recovery": "The agent omitted arm and the fold_hem preparation succeeded.",
+          "accounting_note": "Failed preparation is present in agent-events but absent from successful-call audit/ledger; cache_misses includes the rejected attempt.",
+          "effect_on_run": "One observed extra failed tool call; native outcome and causal task-performance impact not assessed."
+        }
+      ],
+      "limitations": [
+        "This review covers the completed public policy tool-call episode, not a native task-success assessment.",
+        "Source references and current evidence attribution are checked structurally, not for visual semantic correctness.",
+        "The online restore stage remains blocked based on public home-position evidence; this model assessment is kept separate from native task success."
+      ],
+      "review_status": "complete_public_policy_episode_review",
+      "final_public_execution_state": {
+        "plan_version": 1,
+        "active_stage": "restore",
+        "stage_statuses": {
+          "bind": "complete",
+          "sleeve_left": "complete",
+          "sleeve_right": "complete",
+          "hem": "complete",
+          "restore": "blocked"
+        },
+        "last_action_id": "action-00032",
+        "in_flight": null
+      },
+      "compound_evidence_assessments": [
+        {
+          "ledger_event_id": "event-00009",
+          "stage_id": "bind",
+          "plan_version": 1,
+          "decision": "complete",
+          "checks": [
+            {
+              "effect": "Current garment outline, inset grasp points and support height are supported by RGB with uncertainty recorded.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00001",
+                "measurement-00002"
+              ],
+              "observation": "Pink garment complete outline agrees with head RGB; both cuffs, hem corners and shoulder sides identifiable. Table z 0.7649, garment plane 0.7699, uncertainty 0.01m; image-area gripper warning retained."
+            }
+          ]
+        },
+        {
+          "ledger_event_id": "event-00043",
+          "stage_id": "sleeve_left",
+          "plan_version": 1,
+          "decision": "complete",
+          "checks": [
+            {
+              "effect": "Left sleeve visibly follows a small lift before transfer.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00006",
+                "observation-00010"
+              ],
+              "observation": "At step28 cuff rose with pinched fingers and sleeve tented; step75 shows fold remains after release and withdrawal."
+            },
+            {
+              "effect": "Released left sleeve remains inward near the opposite right chest.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00010"
+              ],
+              "observation": "Clear head RGB shows left sleeve no longer extends left; cuff lies diagonally across upper body near right chest. Fingers are open and withdrawn."
+            }
+          ]
+        },
+        {
+          "ledger_event_id": "event-00061",
+          "stage_id": "sleeve_right",
+          "plan_version": 1,
+          "decision": "continue",
+          "checks": [
+            {
+              "effect": "Right sleeve visibly follows a small lift before transfer.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00013",
+                "observation-00014"
+              ],
+              "observation": "Step101 cuff lifted and tented at fingers; step119 now shows distal right sleeve again extended, suggesting loss during transit."
+            },
+            {
+              "effect": "Released right sleeve remains inward near the opposite left chest.",
+              "status": "unmet",
+              "evidence_ids": [
+                "observation-00014"
+              ],
+              "observation": "Head RGB still shows sleeve extending to lower right. Transit also interrupted at 4.8cm tracking error; cannot treat cuff as held or fold as complete."
+            }
+          ]
+        },
+        {
+          "ledger_event_id": "event-00108",
+          "stage_id": "sleeve_right",
+          "plan_version": 1,
+          "decision": "complete",
+          "checks": [
+            {
+              "effect": "Right sleeve visibly follows a small lift before transfer.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00023",
+                "observation-00024",
+                "observation-00027"
+              ],
+              "observation": "Recovered central cuff grasp visibly gathered fabric during lift and retained it in the halfway transfer; final view confirms cuff transported inward."
+            },
+            {
+              "effect": "Released right sleeve remains inward near the opposite left chest.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00027"
+              ],
+              "observation": "Right sleeve no longer extends down-right; released cuff and sleeve lie across upper body toward left chest, with both arms clear."
+            }
+          ]
+        },
+        {
+          "ledger_event_id": "event-00142",
+          "stage_id": "hem",
+          "plan_version": 1,
+          "decision": "complete",
+          "checks": [
+            {
+              "effect": "Both hem regions visibly follow small lifts without slipping.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00030",
+                "observation-00031",
+                "observation-00035"
+              ],
+              "observation": "Both wrists show cloth pinched through small lift and forward lift; final released garment occupies approximately half its initial body length."
+            },
+            {
+              "effect": "Released hem lies near and parallel to the shoulder line in the table plane.",
+              "status": "met",
+              "evidence_ids": [
+                "observation-00033",
+                "observation-00035"
+              ],
+              "observation": "Both held corners reached the measured shoulder-side targets, and clear released RGB shows hem edge adjacent to shoulder/neck edge with the same slant. Residual wrinkles remain; this supports approximate visual alignment, not native success."
+            }
+          ]
+        }
+      ],
+      "final_stage_assessment": {
+        "ledger_event_id": "event-00149",
+        "stage_id": "restore",
+        "decision": "blocked",
+        "checks": [
+          {
+            "effect": "Garment is released and both fingers are clear of it.",
+            "status": "met",
+            "evidence_ids": [
+              "observation-00036"
+            ],
+            "observation": "Final head RGB shows compact folded garment resting independently on table; both grippers open and clear."
+          },
+          {
+            "effect": "Both arms are at their initial poses.",
+            "status": "unmet",
+            "evidence_ids": [
+              "observation-00036"
+            ],
+            "observation": "Left arm matches initial pose. Episode ended during right return: maximum right home joint error is 0.274494rad, with wrist orientation still offset from initial. Right TCP is close to home but exact bilateral restoration is unsupported."
+          }
+        ],
+        "rationale": "episode_over=true at step425 ended robot execution during right home motion. No native success verdict is available, and terminal status alone does not prove task completion."
+      },
+      "action_attribution_observations": {
+        "all_submitted_actions_have_current_phase_and_version": true,
+        "received_ids_equal_submitted_ids": true,
+        "all_received_actions_cite_observation": true
+      },
+      "reported_usage": {
+        "input_tokens": 2567853,
+        "cached_input_tokens": 2440704,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12079,
+        "reasoning_output_tokens": 3865
+      },
+      "reported_cached_input_fraction": 0.9504843151068227
+    }
+  }
+}

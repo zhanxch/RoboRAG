@@ -1,0 +1,291 @@
+{
+  "schema": "roborag.offline-first-decision-example.v1",
+  "observed_at": "2026-10-27T20:50:19.230254+00:00",
+  "case": "seed1-standard-l0",
+  "scope": "A single completed case illustrates decision divergence in three separate cohorts; not a failure-cause attribution. No model/simulator calls or changes.",
+  "rows": [
+    {
+      "cohort": "historical_original",
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l0",
+      "calls_sha256": "9c62bb41a53c47d4ae6e4fd6482bad2908e260fff3af274e1a5642e2173f4a93",
+      "first_successful_retrieval_request": {
+        "mode": "plan",
+        "task": "fold_clothes",
+        "goal": "折叠衣服：左右袖子折向对侧胸部，衣摆折向肩膀，释放后双臂回初始姿态。",
+        "observation": "粉红色长袖上衣平铺在木桌上，衣领在远端，衣摆在近端，左袖向左伸展，右袖向右下伸展，双手空闲。",
+        "arm": "",
+        "held_object": "",
+        "target_object": "",
+        "k": 2,
+        "max_context_chars": 6000
+      },
+      "retrieved_graph_ids": [
+        "fold_clothes-0002",
+        "fold_clothes-0000"
+      ],
+      "first_measurement_grasp": {
+        "lower_corner_L": {
+          "xy": [
+            -0.1544,
+            -0.2209
+          ],
+          "uv": [
+            241,
+            294
+          ]
+        },
+        "lower_corner_R": {
+          "xy": [
+            0.045,
+            -0.3008
+          ],
+          "uv": [
+            345,
+            337
+          ]
+        },
+        "end_L": {
+          "xy": [
+            -0.2861,
+            -0.0948
+          ],
+          "uv": [
+            188,
+            238
+          ]
+        },
+        "end_R": {
+          "xy": [
+            0.2278,
+            -0.3051
+          ],
+          "uv": [
+            447,
+            339
+          ]
+        }
+      },
+      "first_measurement_table_z": 0.7649,
+      "plan_evidence_refs": [
+        "fold_clothes-0002:p01",
+        "fold_clothes-0002:p02",
+        "fold_clothes-0002:p03",
+        "fold_clothes-0002:p04",
+        "fold_clothes-0002:p05",
+        "fold_clothes-0002:p06",
+        "fold_clothes-0002:p07",
+        "fold_clothes-0002:p08"
+      ],
+      "first_action_rows": 16,
+      "first_action_row": [
+        0.0008526988966236423,
+        0.015747348639088086,
+        0.0030246159542148335,
+        -0.08668074918405239,
+        0.05053699482488726,
+        -0.04853904134218877,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "cohort": "v3_clean_refactor",
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l0",
+      "calls_sha256": "68d27a573a7dbe6376065e0789d7cf5c4599ac6d8c29437d30f0fcd98370880b",
+      "first_successful_retrieval_request": {
+        "mode": "plan",
+        "task": "fold_clothes",
+        "goal": "双袖向内折到对侧胸部，再把衣摆折向肩部并对齐，松开衣服，双臂回初始位。",
+        "observation": "桌面上粉色长袖衣服平铺，左袖向左伸出，右袖向右下伸出，领口朝上，衣摆朝下，衣身略向左倾斜，双手未抓衣服。",
+        "arm": "",
+        "held_object": "",
+        "target_object": "",
+        "k": 2,
+        "max_context_chars": 6000
+      },
+      "retrieved_graph_ids": [
+        "fold_clothes-0002",
+        "fold_clothes-0000"
+      ],
+      "first_measurement_grasp": {
+        "lower_corner_L": {
+          "xy": [
+            -0.1544,
+            -0.2209
+          ],
+          "uv": [
+            241,
+            294
+          ]
+        },
+        "lower_corner_R": {
+          "xy": [
+            0.045,
+            -0.3008
+          ],
+          "uv": [
+            345,
+            337
+          ]
+        },
+        "end_L": {
+          "xy": [
+            -0.2861,
+            -0.0948
+          ],
+          "uv": [
+            188,
+            238
+          ]
+        },
+        "end_R": {
+          "xy": [
+            0.2278,
+            -0.3051
+          ],
+          "uv": [
+            447,
+            339
+          ]
+        }
+      },
+      "first_measurement_table_z": 0.7649,
+      "plan_evidence_refs": [
+        "fold_clothes-0002:p01",
+        "fold_clothes-0002:p02",
+        "fold_clothes-0002:p03",
+        "fold_clothes-0002:p04",
+        "fold_clothes-0002:p05",
+        "fold_clothes-0002:p06",
+        "fold_clothes-0002:p07",
+        "fold_clothes-0002:p08"
+      ],
+      "first_action_rows": 16,
+      "first_action_row": [
+        0.0008526988966236423,
+        0.015747348639088086,
+        0.003649615954214834,
+        -0.08668074918405239,
+        0.05053699482488726,
+        -0.04853904134218877,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "cohort": "current_original_control",
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l0",
+      "calls_sha256": "2dc4b2fc8e3ba0ebd1875a8a82be4120091cf22262297cfb46f1253cc330285a",
+      "first_successful_retrieval_request": {
+        "mode": "plan",
+        "task": "fold_clothes",
+        "goal": "将两只袖子向胸前折叠，再将下摆折到肩部，放开并回初始位置",
+        "observation": "桌面上粉色长袖衣服平铺，领口朝前，下摆靠近机器人，左袖向左，右袖斜向右下。双手空闲。",
+        "arm": "",
+        "held_object": "",
+        "target_object": "长袖衣服",
+        "k": 2,
+        "max_context_chars": 6000
+      },
+      "retrieved_graph_ids": [
+        "fold_clothes-0002",
+        "fold_clothes-0001"
+      ],
+      "first_measurement_grasp": {
+        "lower_corner_L": {
+          "xy": [
+            -0.1544,
+            -0.2209
+          ],
+          "uv": [
+            241,
+            294
+          ]
+        },
+        "lower_corner_R": {
+          "xy": [
+            0.045,
+            -0.3008
+          ],
+          "uv": [
+            345,
+            337
+          ]
+        },
+        "end_L": {
+          "xy": [
+            -0.2861,
+            -0.0948
+          ],
+          "uv": [
+            188,
+            238
+          ]
+        },
+        "end_R": {
+          "xy": [
+            0.2278,
+            -0.3051
+          ],
+          "uv": [
+            447,
+            339
+          ]
+        }
+      },
+      "first_measurement_table_z": 0.7649,
+      "plan_evidence_refs": [
+        "fold_clothes-0002:p01",
+        "fold_clothes-0002:p02",
+        "fold_clothes-0002:p03",
+        "fold_clothes-0002:p04",
+        "fold_clothes-0002:p05",
+        "fold_clothes-0002:p06",
+        "fold_clothes-0002:p07",
+        "fold_clothes-0002:p08"
+      ],
+      "first_action_rows": 14,
+      "first_action_row": [
+        0.0009745130247127341,
+        0.017996969873243528,
+        0.003099561090531238,
+        -0.09906371335320273,
+        0.057756565514156866,
+        -0.055473190105358595,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "findings": {
+    "same_measured_grasp_points": true,
+    "same_primary_retrieved_graph": true,
+    "same_plan_evidence_refs": true,
+    "retrieval_queries_identical": false,
+    "first_actions_identical": false
+  },
+  "limits": [
+    "Initial RGB images are not byte-identical.",
+    "Measured grasp points being equal does not imply all observations and measurement fields are equal.",
+    "Generated query and secondary retrieved example differ; their causal contribution to failure is untested.",
+    "Do not force historical actions or reference selection into an active control based on this example."
+  ]
+}

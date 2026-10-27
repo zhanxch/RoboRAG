@@ -68,6 +68,7 @@
 - [历史参考文本及图像回放](../results/v3-clean-visual-history-20261027.json)
 - [网络和延迟记录](../results/v3-clean-runtime-incidents-20261027.json)
 - [原生评分逻辑与当前运行依赖补充记录](../results/v3-runtime-observation-20261028.json)（对照运行期间观测，不是历史环境快照）
+- [standard 0 首次决策的三组记录](../results/v3-first-decision-example-20261028.json)（测得抓取点和主要示范相同，生成的检索请求及首段动作不同；单例差异，不作失败因果归因）
 - [登记协议](../experiments/fold_clothes/v3-clean-20261027.json)
 - [原生轨迹目录](../runs/v3-clean-fold-20261027)
 - [重构说明与使用方式](v3-clean-refactor.md)

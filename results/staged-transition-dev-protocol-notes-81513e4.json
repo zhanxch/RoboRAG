@@ -1,0 +1,280 @@
+{
+  "schema": "roborag.staged-transition-protocol-notes.v1",
+  "candidate_commit": "81513e4",
+  "task": "pour_balls_into_vase",
+  "layout": 1,
+  "seed": 1,
+  "observed_at": "2026-10-27T04:23:51.397588+00:00",
+  "scope": "Bounded read-only review of the recorded dispatch guard lifecycle, one local plan revision, recovery execution and terminal claims. Public online logs and existing summary only; no private native state or reserved regression cases inspected; no source edits or native jobs.",
+  "run_path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase",
+  "evidence_paths": {
+    "episode-ledger.jsonl": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase/episode-ledger.jsonl",
+    "agent-events.jsonl": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase/agent-events.jsonl",
+    "commands.jsonl": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase/commands.jsonl",
+    "mcp-calls.jsonl": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase/mcp-calls.jsonl",
+    "plan-versions/v001.json": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase/plan-versions/v001.json",
+    "plan-versions/v002.json": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase/plan-versions/v002.json",
+    "execution-state.json": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase/execution-state.json"
+  },
+  "counts": {
+    "initial_plans": 1,
+    "revisions": 1,
+    "submitted_actions": 39,
+    "received_actions": 39,
+    "native_motion_command_records": 39,
+    "rejected_transitions": 1,
+    "blocked_action_attempts": 1,
+    "resolved_transitions": 1
+  },
+  "guard": {
+    "assessment_error": {
+      "agent_item": "item_50",
+      "agent_events_lines": [
+        95,
+        96
+      ],
+      "error": "Effect evidence predates this stage's current visit",
+      "details": "align entered at step161; assessment cited current observation-00018(step197) together with observation-00005 and measurement-00007(step54). The old citations were rejected."
+    },
+    "rejection": {
+      "id": "event-00073",
+      "role": "CURRENT_EXECUTION_RECORD",
+      "kind": "stage_transition_rejected",
+      "plan_version": 1,
+      "stage_id": "align",
+      "attempted_stage_id": "pour",
+      "requested_reason": "entry",
+      "current_observation": "",
+      "error": "Complete this phase's explicit dependencies first",
+      "observed_at_step": 197,
+      "dispatch_gate": {
+        "target_stage_id": "pour",
+        "from_stage_id": "align",
+        "rejected_event_id": "event-00073",
+        "observed_at_step": 197,
+        "error": "Complete this phase's explicit dependencies first"
+      }
+    },
+    "blocked_attempt": {
+      "agent_item": "item_52",
+      "agent_events_lines": [
+        99,
+        100
+      ],
+      "ledger": {
+        "id": "event-00074",
+        "role": "CURRENT_EXECUTION_RECORD",
+        "kind": "action_dispatch_blocked",
+        "plan_version": 1,
+        "stage_id": "align",
+        "subgoal": "Begin outward left roll to 30 degrees while maintaining lip over oval opening.",
+        "expected_feedback": "Cup remains attached, balls retained, rim and fingers clear of vase.",
+        "dispatch_gate": {
+          "target_stage_id": "pour",
+          "from_stage_id": "align",
+          "rejected_event_id": "event-00073",
+          "observed_at_step": 197,
+          "error": "Complete this phase's explicit dependencies first"
+        },
+        "observed_at_step": 197
+      },
+      "requested_rows": 16,
+      "requested_operation": "Right arm outward roll to 30 degrees, keeping cup held."
+    },
+    "dispatch_boundary_checks": {
+      "no_action_submitted_between_rejection_and_resolution": true,
+      "blocked_attempt_allocated_no_action_id": true,
+      "blocked_subgoal_not_in_commands": true,
+      "all_command_action_ids_match_submitted_ledger_in_order": true,
+      "all_receipts_match_native_command_results": true,
+      "adjacent_native_command_lines": [
+        19,
+        20
+      ],
+      "before": "action-00015, align, step181->197, ledger event-00069/event-00071",
+      "after": "action-00016, pour, step197->213, ledger event-00080/event-00082; dispatch followed resolution, corrected assessment and successful pour entry",
+      "interpretation": "The failed roll was stopped before a native command record or action allocation; the same geometric target was only executed after the phase protocol recovered."
+    },
+    "resolution": {
+      "id": "event-00077",
+      "role": "CURRENT_EXECUTION_RECORD",
+      "kind": "stage_transition_resolved",
+      "plan_version": 1,
+      "stage_id": "align",
+      "resolution": "resumed_current",
+      "rejected_event_id": "event-00073",
+      "target_stage_id": "pour",
+      "entered_stage_id": "align",
+      "from_stage_id": "align",
+      "observation_id": "observation-00018",
+      "observed_at_step": 197,
+      "requested_reason": "exception",
+      "current_observation": "Current observation-00018 at step197 shows cup held upright over right portion of vase; previous transition rejected because assessment cited measurement from before stage. Resume existing alignment without movement, then assess with current visit evidence."
+    },
+    "resolution_evidence": {
+      "id": "observation-00018",
+      "recorded_event": "event-00070",
+      "presented_event": "event-00072",
+      "step": 197,
+      "presented_cameras": [
+        "head",
+        "wrist_r"
+      ],
+      "latest_presented_at_resolution": true,
+      "new_observe_required": false
+    },
+    "preserved_state": {
+      "active_stage_during_rejection_and_resolution": "align",
+      "plan_version": 1,
+      "original_align_entered_at_step": 161,
+      "resumed_align_entered_at_step": 161,
+      "plan_revision_for_guard_recovery": false
+    },
+    "subsequent_protocol": [
+      "event-00078: corrected align assessment, current observation-00018 only",
+      "event-00079: enter pour at unchanged step197",
+      "event-00080: action-00016 attributed to pour"
+    ],
+    "conclusion": "The instrumented guard exercised both rejection and real attempted-action blocking, then explicit same-stage recovery with live evidence. No unresolved gate remains."
+  },
+  "local_revision": {
+    "ledger": {
+      "id": "event-00136",
+      "role": "CURRENT_EXECUTION_RECORD",
+      "kind": "plan_revised",
+      "plan_version": 2,
+      "stage_id": "restore",
+      "previous_version": 1,
+      "revision": {
+        "event": {
+          "kind": "sop_inapplicable",
+          "description": "After cup restoration, current RGB reveals a spilled ball at head pixel(295,198); pouring-only strategy did not satisfy all-seven-inside.",
+          "evidence_ids": [
+            "observation-00031"
+          ]
+        },
+        "rationale": "Add one bounded current-geometry ball-recovery interaction. Preserve completed cup stages and keep home independent of uncertain recovery success. Generic stationary closure/small-lift guidance applies; cup-rim-specific rules do not apply to spilled ball.",
+        "affected_phase_ids": [
+          "recover_ball"
+        ]
+      }
+    },
+    "version_link": [
+      1,
+      2
+    ],
+    "trigger_evidence": {
+      "id": "observation-00031",
+      "step": 451,
+      "recorded_event": "event-00132",
+      "presented_event": "event-00134",
+      "observation_claim": "After cup release and arm withdrawal, a distinct ball became visible on the table; all-seven-inside no longer supported."
+    },
+    "added_phase": {
+      "id": "recover_ball",
+      "sop_stage": "acquire_upright_cup",
+      "goal": "Inspect the spilled ball and attempt left-hand precision pickup, lift and drop over vase if attachment is supported; stop for home reserve if infeasible.",
+      "object_bindings": {
+        "ball": "visible brown ball left/back of vase near head(295,198), RGB ray/table estimate[-.05885,.01479,.770]",
+        "arm": "left",
+        "vase": "current turquoise oval-opening vase"
+      },
+      "depends_on": [
+        "restore"
+      ],
+      "expected_effects": [
+        "The spilled ball pickup attempt is inspected with current RGB.",
+        "Any supported held ball is released over the vase, or a recovery blocker is recorded."
+      ],
+      "experience": []
+    },
+    "all_original_phase_definitions_unchanged": true,
+    "completed_before_revision": [
+      "measure",
+      "grasp",
+      "align",
+      "pour",
+      "restore"
+    ],
+    "completed_phase_assessments_preserved": true,
+    "home_dependency_preserved": [
+      "restore"
+    ],
+    "branch_execution": "recover_ball was explicitly selected after restore; home remained available even if bounded recovery proved infeasible.",
+    "limitation": "Recovery reuses acquire_upright_cup for generic stationary closure and small-lift verification; the revision explicitly states cup-rim-specific requirements do not apply. This is one observed model-directed recovery, not validation of a dedicated ball-recovery SOP."
+  },
+  "recovery_and_terminal": {
+    "recovery_actions": [
+      "action-00029",
+      "action-00030",
+      "action-00031",
+      "action-00032",
+      "action-00033",
+      "action-00034",
+      "action-00035",
+      "action-00036",
+      "action-00037"
+    ],
+    "recovery_assessment_event": "event-00173",
+    "recovery_evidence": [
+      "observation-00035",
+      "observation-00036",
+      "observation-00038",
+      "observation-00039"
+    ],
+    "observed_claim": "Current RGB was described as showing stationary pickup, ball following a 40mm lift, held transit, then release over the inner opening. Recovery phase marked complete while exact total inside remained uncounted.",
+    "last_action": {
+      "id": "action-00039",
+      "ledger_event": "event-00182",
+      "command_line": 43,
+      "submitted_waypoints": 2,
+      "executed_waypoints": 1,
+      "step_before": 554,
+      "step_after": 571,
+      "episode_over": true,
+      "reported_left_home_error_rad": 0.6613693833351135
+    },
+    "terminal_assessment": {
+      "id": "event-00184",
+      "role": "CURRENT_EXECUTION_RECORD",
+      "kind": "stage_assessed",
+      "plan_version": 2,
+      "stage_id": "home",
+      "checks": [
+        {
+          "effect": "Fingers are clear of cup and vase and both arms are at origin.",
+          "status": "unmet",
+          "evidence_ids": [
+            "observation-00040",
+            "observation-00041"
+          ],
+          "observation": "Both fingers clear, cup upright, no visible spilled ball. return_home submitted both arms but episode ended at step571 after only left-home waypoint; left home joint error .661369rad and right arm remains at clearance pose. Neither measured state supports both arms at origin. All-seven-inside remains uncounted from RGB; episode_over is not used as success evidence."
+        }
+      ],
+      "decision": "blocked",
+      "rationale": "Episode ended during native return_home execution, so remaining home movement cannot be completed within this episode. Upright cup and recovered visible spill supported; full task completion not established.",
+      "experience_adaptations": []
+    },
+    "terminal_execution_state": {
+      "plan_version": 2,
+      "active_stage": "home",
+      "dispatch_gate": null,
+      "in_flight": null,
+      "task_success": "unknown: native evaluation is separate and unavailable to this policy"
+    },
+    "native_result_reference": "/home/zxc/文档/ChatGPT/RoboRAG/results/staged-transition-dev-pour-81513e4.json",
+    "native_result_from_existing_summary": {
+      "successes": 1,
+      "scored": 1,
+      "steps": 571,
+      "wall_seconds": 1049.7565818559378
+    },
+    "distinction": "Native summary success is separate from model claims: online home remained blocked/unmet and native task success remained unknown to the policy; episode_over was not accepted as proof of all-seven capture or both arms at origin."
+  },
+  "limited_conclusions": [
+    "No guard lifecycle or local-revision history defect found in this bounded review.",
+    "The original rejected-switch then stale-owned movement failure was prevented in this real development episode.",
+    "Evidence IDs/timing and explicit model claims are auditable; this review does not independently prove every visual alignment or ball-count judgment.",
+    "One development scene supports this exercised repair path, not a general no-regression conclusion."
+  ]
+}

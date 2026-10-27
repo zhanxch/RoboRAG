@@ -1,0 +1,25 @@
+{
+  "schema": "roborag.staged-preflight.v1",
+  "candidate_commit": "81513e440aaba1081d0dad47e03d033d8538cb05",
+  "tests": {
+    "count": 142,
+    "passed": true,
+    "skipped": 0,
+    "wall_seconds": 2.32,
+    "log": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-preflight-20261027/unittest-transition-guard.log",
+    "sha256": "01a309a194b7d02e799f718427174691d0a39107088a312143961e446dd0e977"
+  },
+  "ruff_check": "passed",
+  "ruff_format": {
+    "passed": true,
+    "files": 132
+  },
+  "git_diff_check": "passed",
+  "scope": "Dispatch guard regression, evidence-bound recovery, offline lifecycle audit, legacy contract and existing task tests. Native performance is separate.",
+  "wheel": {
+    "path": "/tmp/roborag-staged-wheel-81513e4/roborag-0.2.0-py3-none-any.whl",
+    "sha256": "a03e1ae9a381b09ece1c4b2e64902a9d3cdaf601fc5db9a3cfc33da9b983aa66",
+    "installed_into": "/tmp/roborag-staged-installed-81513e4",
+    "verified": "Imported package from target installation outside repository; all three SOPs and staged/control prompts available; StagedEpisode includes dispatch guard."
+  }
+}

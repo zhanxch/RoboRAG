@@ -1,0 +1,91 @@
+{
+  "schema": "roborag.staged-full-evaluation.v1",
+  "registered_at": "2026-10-27T06:46:24.761992+00:00",
+  "user_request": "Silently complete full native tests, fold50/push50/pour25; save trajectories, all outcomes and costs.",
+  "candidate_commit": "26ec7e0",
+  "last_policy_change": "ccedc5f",
+  "workspace": "/home/zxc/文档/ChatGPT/RoboRAG/work/staged-v1-full-ccedc5f-20261027",
+  "output": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-full-ccedc5f-20261027",
+  "architecture": "staged-v1",
+  "cases": {
+    "fold_clothes": {
+      "file": "experiments/fold_clothes/all.json",
+      "count": 50
+    },
+    "push_T": {
+      "file": "experiments/push_T/all.json",
+      "count": 50
+    },
+    "pour_balls_into_vase": {
+      "file": "experiments/pour_balls_into_vase/all.json",
+      "count": 25
+    }
+  },
+  "conditions": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "seed": 1,
+    "controller": "delta",
+    "rag": true,
+    "bank": "data/graph-bank/current",
+    "native_step_limits": {
+      "fold_clothes": 500,
+      "push_T": 600,
+      "pour_balls_into_vase": 600
+    },
+    "wall_seconds": {
+      "fold_clothes": 2160,
+      "push_T": 2160,
+      "pour_balls_into_vase": 3600
+    },
+    "workers": {
+      "fold_clothes": 2,
+      "push_T": 2,
+      "pour_balls_into_vase": 1
+    },
+    "queue_order": [
+      "fold_clothes",
+      "push_T",
+      "pour_balls_into_vase"
+    ],
+    "max_global_active": 2,
+    "online_context": "Existing persistent native CLI session and native compaction; staged execution_status/episode-context available. No topology change."
+  },
+  "attempt_policy": "One attempt per declared case on this frozen revision. Never replace failure/timeout/unscored or select best retries. No online source/prompt/bank tuning. Source change stops launch. Infrastructure failures remain in evidence; any justified extra attempt must be separately labeled, never replace the original.",
+  "stopping": "Run all125 regardless of scored task failures; stop only for resource/infrastructure or integrity conditions that would invalidate further execution. Preserve unfinished/failed attempts and explain any shortfall.",
+  "baseline": {
+    "fold_clothes": "results/refactor-fold-20261026.json",
+    "push_T": "results/refactor-push-t-20261026.json",
+    "pour_balls_into_vase": "results/pour-balls-rim-v3-heldout-20261026.json",
+    "pour_scope": "All25 current trials reported. Legacy formal comparison uses standard3–24 (22). Legacy development0–2 reported separately; layout0 timed out unscored under2160s, not a scored failure or3600s matched trial. Do not merge prior12 staged cases or developmental versions into this candidate."
+  },
+  "analysis": {
+    "completion": "All declared125 attempted once; every attempt and its scored/unscored/timeout status included. Missing evidence is not a pass. Verify native files, source/prompt/bank hashes, stage/action receipts and trajectory inventory.",
+    "effect": "Report per-task success counts, 95% Wilson descriptive intervals, and matched success/loss/gain counts. Report exact paired discordance test when meaningful; small samples or nonsignificance do not prove equality. This is broader evaluation, not the old four-case all-baseline-successes-must-survive gate. No automatic default promotion.",
+    "cost": "Report all-attempt and jointly-successful matched control steps, episode wall time, total input/cached/uncached input, output/reasoning, stage retrieval/context reuse and plan revisions. Timing uncontrolled across historical runs; billing/API request count unknown. No cherry-picked success-only headline without all-attempt outcomes.",
+    "independence": "Known fixed historical benchmark cases, not a new unseen holdout. Both initial12 regression cases and previously inspected development cases remain identified. Inspect only metadata/results/resource status during execution; analyze trajectories after all125 attempts finish."
+  },
+  "artifacts": [
+    "freeze.json",
+    "batch.json",
+    "status.json",
+    "resources.jsonl",
+    "run.json",
+    "result.json",
+    "native _result.json",
+    "agent-events.jsonl",
+    "agent-prompt.txt",
+    "mcp-calls.jsonl",
+    "mcp-server.log",
+    "observations RGB/state",
+    "stage-observations",
+    "episode-ledger.jsonl",
+    "execution-state.json",
+    "gpt-plan.json",
+    "plan-versions",
+    "inbox/outbox receipts",
+    "native trajectory artifacts when produced"
+  ],
+  "workspace_note": "Managed worktree creation returned Git is unavailable; fallback detached git worktree used. Existing frozen runs/worktrees and the unrelated dashboard are preserved.",
+  "default_architecture": "legacy"
+}

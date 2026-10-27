@@ -4,9 +4,11 @@ import asyncio
 import copy
 import json
 import tempfile
+import threading
 import unittest
+from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from pathlib import Path
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, patch
 
 from mcp import Client
 from PIL import Image
@@ -107,6 +109,97 @@ class StagedExecutionTests(unittest.IsolatedAsyncioTestCase):
 
     def finish(self, stage_id):
         self.execution.assess(stage_id, [self.check()], "complete", "visible condition", [])
+
+    def test_concurrent_preparation_and_receipt_cannot_publish_stale_state(self):
+        writing, release, measuring = threading.Event(), threading.Event(), threading.Event()
+        original_write = write_json
+
+        def pause_first_state_write(path, state):
+            if Path(path).name == "execution-state.json" and not writing.is_set():
+                writing.set()
+                if not release.wait(5):
+                    raise TimeoutError("test did not release writer")
+            original_write(path, state)
+
+        receipt = {"result": {"plan_ok": True}}
+
+        def receive():
+            measuring.set()
+            self.execution.measurement({"measure": {}}, receipt, {"step": 1})
+
+        with patch("roborag.execution.episode.write_json", pause_first_state_write):
+            with ThreadPoolExecutor(2) as pool:
+                prepared = pool.submit(self.execution.prepare, "fold_sleeve")
+                try:
+                    self.assertTrue(writing.wait(5))
+                    measured = pool.submit(receive)
+                    self.assertTrue(measuring.wait(5))
+                    with self.assertRaises(TimeoutError):
+                        measured.result(timeout=0.05)
+                finally:
+                    release.set()
+                prepared.result(timeout=5)
+                measured.result(timeout=5)
+        saved = json.loads((self.path / "execution-state.json").read_text())
+        recovered = json.loads((self.path / "episode-context.json").read_text())
+        self.assertEqual(saved, recovered)
+        self.assertEqual(saved, self.execution.status())
+        self.assertEqual(saved["recent_evidence"][-1]["id"], receipt["result"]["evidence_id"])
+
+    def test_status_is_a_snapshot_not_a_mutable_view(self):
+        self.plan()
+        entered = self.execution.enter("fold", "", "entry")
+        snapshot = self.execution.status()
+        self.finish("fold")
+        self.assertEqual(snapshot["stages"][0]["execution"]["status"], "active")
+        snapshot["object_bindings"]["cloth"] = "different object"
+        entered["phase"]["goal"] = "different goal"
+        self.assertEqual(self.execution.plan["object_bindings"]["cloth"], "striped cloth")
+        self.assertEqual(self.execution.plan["phases"][0]["goal"], "Fold the current sleeve inward")
+
+    async def test_parallel_mcp_preparation_and_measurements_keep_complete_ledger(self):
+        async def submit(request):
+            await asyncio.sleep(0)
+            receipt = {"result": {"plan_ok": True, "measured_at_step": 1}}
+            self.execution.measurement(request, receipt, {"step": 1})
+            return receipt
+
+        self.memory.submit = submit
+        async with Client(create_server(self.memory)) as client:
+            calls = []
+            for _ in range(12):
+                calls.extend(
+                    [
+                        client.call_tool("prepare_stage", {"sop_stage": "fold_sleeve"}),
+                        client.call_tool("measure_scene", {}),
+                        client.call_tool("observe", {"cameras": ["head"]}),
+                        client.call_tool("execution_status", {}),
+                    ]
+                )
+            results = await asyncio.gather(*calls)
+        self.assertTrue(all(not result.is_error for result in results))
+        events = [
+            json.loads(line)
+            for line in (self.path / "episode-ledger.jsonl").read_text().splitlines()
+        ]
+        self.assertEqual(
+            [e["id"] for e in events], [f"event-{i:05d}" for i in range(1, len(events) + 1)]
+        )
+        for kind in ("stage_prepared", "measurement_recorded"):
+            self.assertEqual(sum(e["kind"] == kind for e in events), 12)
+        evidence = [
+            e["evidence"]["id"]
+            for e in events
+            if e["kind"] in ("observation_recorded", "measurement_recorded")
+        ]
+        self.assertEqual(len(evidence), len(set(evidence)))
+        self.assertEqual(
+            json.loads((self.path / "execution-state.json").read_text()), self.execution.status()
+        )
+        self.assertEqual(
+            (self.path / "execution-state.json").read_bytes(),
+            (self.path / "episode-context.json").read_bytes(),
+        )
 
     def test_prepare_then_enter_reuses_context_and_does_not_plan_again(self):
         self.plan([phase(), phase("other_sleeve")])

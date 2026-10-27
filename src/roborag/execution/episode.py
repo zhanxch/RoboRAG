@@ -11,14 +11,32 @@ import copy
 import hashlib
 import json
 import shutil
+import threading
+from functools import wraps
 from pathlib import Path
 
 from roborag.io import write_json
 
 
+def synchronized(method):
+    """One state transaction, including nested evidence and persistence calls.
+
+    Sync MCP tools run in worker threads while native receipts arrive on the
+    event loop. Never hold this lock over an await or a simulator response wait.
+    """
+
+    @wraps(method)
+    def call(self, *args, **kwargs):
+        with self.lock:
+            return method(self, *args, **kwargs)
+
+    return call
+
+
 class StagedEpisode:
     def __init__(self, memory):
         self.memory = memory
+        self.lock = threading.RLock()
         self.plan = None
         self.active = None
         self.progress = {}
@@ -35,6 +53,7 @@ class StagedEpisode:
         self._library = None
 
     @property
+    @synchronized
     def library(self):
         if self._library is None:
             from roborag.experience import StageLibrary
@@ -42,6 +61,7 @@ class StagedEpisode:
             self._library = StageLibrary(self.memory.bank, self.memory.task)
         return self._library
 
+    @synchronized
     def event(self, kind, **details):
         self.events += 1
         record = dict(
@@ -57,31 +77,36 @@ class StagedEpisode:
             stream.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + "\n")
         return record["id"]
 
+    @synchronized
     def status(self):
         phases = self.plan["phases"] if self.plan else []
-        return dict(
-            role="CURRENT_EXECUTION_STATE",
-            architecture="staged-v1",
-            plan_version=self.plan["version"] if self.plan else None,
-            sop_version=self.plan["sop_version"] if self.plan else None,
-            current_scene=self.plan["current_scene"] if self.plan else None,
-            object_bindings=self.plan["object_bindings"] if self.plan else {},
-            active_stage=self.active,
-            stages=[dict(**p, execution=self.progress[p["id"]]) for p in phases],
-            last_observation=self.last_observation,
-            recent_evidence=list(self.evidence.values())[-8:],
-            last_action=self.last_action,
-            in_flight=self.in_flight,
-            dispatch_gate=copy.deepcopy(self.dispatch_gate),
-            task_success="unknown: native evaluation is separate and unavailable to this policy",
-            recovery_file="episode-context.json",
+        return copy.deepcopy(
+            dict(
+                role="CURRENT_EXECUTION_STATE",
+                architecture="staged-v1",
+                plan_version=self.plan["version"] if self.plan else None,
+                sop_version=self.plan["sop_version"] if self.plan else None,
+                current_scene=self.plan["current_scene"] if self.plan else None,
+                object_bindings=self.plan["object_bindings"] if self.plan else {},
+                active_stage=self.active,
+                stages=[dict(**p, execution=self.progress[p["id"]]) for p in phases],
+                last_observation=self.last_observation,
+                recent_evidence=list(self.evidence.values())[-8:],
+                last_action=self.last_action,
+                in_flight=self.in_flight,
+                dispatch_gate=copy.deepcopy(self.dispatch_gate),
+                task_success="unknown: native evaluation is separate and unavailable to this policy",
+                recovery_file="episode-context.json",
+            )
         )
 
+    @synchronized
     def persist(self):
         state = self.status()
         write_json(self.memory.output / "execution-state.json", state)
         write_json(self.memory.workspace / "episode-context.json", state)
 
+    @synchronized
     def bootstrap(self):
         result = self.library.bootstrap()
         self.sop_seen = True
@@ -90,6 +115,7 @@ class StagedEpisode:
         self.persist()
         return result
 
+    @synchronized
     def prepare(
         self,
         sop_stage,
@@ -177,6 +203,7 @@ class StagedEpisode:
         write_json(self.memory.output / "gpt-plan.json", self.plan)
         self.persist()
 
+    @synchronized
     def record_plan(self, current_scene, object_bindings, phases, adaptation, sop_version):
         self._idle()
         if self.plan is not None:
@@ -232,6 +259,7 @@ class StagedEpisode:
             if after_step is not None and evidence["step"] < after_step:
                 raise ValueError("Effect evidence predates this stage's current visit")
 
+    @synchronized
     def revise(self, revision_of, event, replace_phases, remove_phase_ids, rationale):
         self._idle()
         if self.plan is None or revision_of != self.plan["version"]:
@@ -282,6 +310,7 @@ class StagedEpisode:
             "affected_phase_ids": sorted(affected),
         }
 
+    @synchronized
     def enter(self, stage_id, observation, reason):
         try:
             return self._enter(stage_id, observation, reason)
@@ -409,9 +438,13 @@ class StagedEpisode:
             )
         self.persist()
         return dict(
-            stage_id=stage_id, plan_version=self.plan["version"], phase=phase, context=context
+            stage_id=stage_id,
+            plan_version=self.plan["version"],
+            phase=copy.deepcopy(phase),
+            context=context,
         )
 
+    @synchronized
     def assess(self, stage_id, checks, decision, rationale, experience):
         self._idle()
         phase = self._phase(stage_id)
@@ -473,11 +506,12 @@ class StagedEpisode:
         self.persist()
         return dict(
             stage_id=stage_id,
-            execution=progress,
+            execution=copy.deepcopy(progress),
             plan_version=self.plan["version"],
             task_success="unknown; stage completion is a model claim, not native success",
         )
 
+    @synchronized
     def observation(self, state, cameras, snapshot=None):
         if self.last_observation is not None:
             previous = self.evidence[self.last_observation]
@@ -521,6 +555,7 @@ class StagedEpisode:
         self.persist()
         return evidence_id
 
+    @synchronized
     def measurement(self, request, receipt, state, snapshot=None):
         observation_id = self.observation(state, [], snapshot)
         evidence_id = f"measurement-{len(self.evidence) + 1:05d}"
@@ -539,6 +574,7 @@ class StagedEpisode:
         receipt["result"]["observation_id"] = observation_id
         self.persist()
 
+    @synchronized
     def start_action(self, request):
         self._idle()
         if self.dispatch_gate is not None:
@@ -574,6 +610,7 @@ class StagedEpisode:
         self.persist()
         return self.in_flight
 
+    @synchronized
     def finish_action(self, action_id, request, receipt, state):
         observation_id = self.observation(state, [])
         self.last_action = dict(
@@ -590,6 +627,7 @@ class StagedEpisode:
         self.in_flight = None
         self.persist()
 
+    @synchronized
     def fail_action(self, action_id, error):
         self.event("action_response_unknown", action_id=action_id, error=str(error))
         self.last_action = dict(

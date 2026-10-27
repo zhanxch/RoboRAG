@@ -7,6 +7,7 @@ import asyncio
 import base64
 import json
 import time
+from contextlib import nullcontext
 from pathlib import Path
 
 from mcp.server.mcpserver.exceptions import ToolError
@@ -61,46 +62,49 @@ class EpisodeSession:
         return json.loads((self.workspace / "obs/state.json").read_text())
 
     def observation(self, cameras, *, calibration=False, receipt=None):
-        unresolved_response = bool(
-            self.execution
-            and (self.execution.last_action or {}).get("id") == self.execution.in_flight
-            and (self.execution.last_action or {}).get("receipt_status") == "unknown"
-        )
-        if self.execution and self.execution.in_flight is not None and not unresolved_response:
-            raise ToolError("Wait for the pending action before reading a coherent observation")
-        state = self.state()
-        evidence_id = self.execution.observation(state, cameras) if self.execution else None
-        if not calibration:
-            state.pop("cameras", None)
-        else:
-            state["cameras"] = {c: state["cameras"][c] for c in cameras}
-        packet = {"current_observation": state}
-        if self.execution:
-            packet["observation_id"] = evidence_id
-            packet["stage_execution"] = dict(
-                plan_version=self.plan["version"] if self.plan else None,
-                stage_id=self.execution.active,
-                latest_action_id=(self.execution.last_action or {}).get("id"),
-                latest_action_stage_id=(self.execution.last_action or {}).get("stage_id"),
-                effect_status="unknown until assessed against current evidence",
+        # Keep the evidence ID, phase attribution and returned images in one
+        # synchronous transaction; native waits use the separate asyncio lock.
+        with self.execution.lock if self.execution else nullcontext():
+            unresolved_response = bool(
+                self.execution
+                and (self.execution.last_action or {}).get("id") == self.execution.in_flight
+                and (self.execution.last_action or {}).get("receipt_status") == "unknown"
             )
-        if receipt is not None:
-            packet["execution"] = receipt
-        content = [TextContent(type="text", text=json.dumps(packet, separators=(",", ":")))]
-        for camera in cameras:
-            if camera not in ("head", "wrist_l", "wrist_r"):
-                raise ToolError("Unknown camera")
-            content += [
-                TextContent(type="text", text=f"CURRENT {camera}, step {state['step']}"),
-                ImageContent(
-                    type="image",
-                    mimeType="image/png",
-                    data=base64.b64encode(
-                        (self.workspace / f"obs/{camera}.png").read_bytes()
-                    ).decode(),
-                ),
-            ]
-        return CallToolResult(content=content)
+            if self.execution and self.execution.in_flight is not None and not unresolved_response:
+                raise ToolError("Wait for the pending action before reading a coherent observation")
+            state = self.state()
+            evidence_id = self.execution.observation(state, cameras) if self.execution else None
+            if not calibration:
+                state.pop("cameras", None)
+            else:
+                state["cameras"] = {c: state["cameras"][c] for c in cameras}
+            packet = {"current_observation": state}
+            if self.execution:
+                packet["observation_id"] = evidence_id
+                packet["stage_execution"] = dict(
+                    plan_version=self.plan["version"] if self.plan else None,
+                    stage_id=self.execution.active,
+                    latest_action_id=(self.execution.last_action or {}).get("id"),
+                    latest_action_stage_id=(self.execution.last_action or {}).get("stage_id"),
+                    effect_status="unknown until assessed against current evidence",
+                )
+            if receipt is not None:
+                packet["execution"] = receipt
+            content = [TextContent(type="text", text=json.dumps(packet, separators=(",", ":")))]
+            for camera in cameras:
+                if camera not in ("head", "wrist_l", "wrist_r"):
+                    raise ToolError("Unknown camera")
+                content += [
+                    TextContent(type="text", text=f"CURRENT {camera}, step {state['step']}"),
+                    ImageContent(
+                        type="image",
+                        mimeType="image/png",
+                        data=base64.b64encode(
+                            (self.workspace / f"obs/{camera}.png").read_bytes()
+                        ).decode(),
+                    ),
+                ]
+            return CallToolResult(content=content)
 
     async def submit(self, request):
         name = f"{time.time_ns():020d}.json"

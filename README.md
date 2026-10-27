@@ -49,6 +49,8 @@ python -m roborag run --task push_T --seed 1 --variant standard --layout 0 \
 
 新结构不继承上面的旧版成绩；验收条件与固定比较范围在实验前登记于 [验证协议](experiments/staged_v1/protocol.json)，开发与各批次正式结果见 [冻结验证](docs/staged-validation.md)。实现关系见 [架构](docs/architecture.md)、[SOP 与经验](docs/stage-experience.md)，运行入口见 [运行指南](docs/runtime.md)。
 
+冻结候选 `81513e4` 的 12 例原生配对回归已全部评分：fold **2/4**（基线 2/4，但丢失一个原成功场景）、push **4/4**（基线 4/4）、pour **3/4**（基线 4/4）。整体效果门槛未通过，不能替换 legacy 默认，也没有全面降本结论。[证据索引](results/staged-final-validation-20261027.json)保留版本、逐例哈希、失败与成本。随后 `ccedc5f` 修复真实并发状态保存问题，147 项测试通过；该修复未重新运行原生回归，不继承冻结候选成绩。
+
 ## 代码阅读顺序
 
 ```text

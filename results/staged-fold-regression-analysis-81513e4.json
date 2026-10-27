@@ -1,0 +1,407 @@
+{
+  "schema": "roborag.staged-fold-regression-analysis.v1",
+  "candidate_commit": "81513e4",
+  "analyzed_at": "2026-10-27T06:26:53.736975+00:00",
+  "scope": "Bounded offline analysis after all 12 registered cases completed. Primary paired standard layout4; other fold pairs used only as supporting context. No source/protocol changes, native jobs or online-policy truth injection. Existing raw failures preserved.",
+  "summary": {
+    "paired_gate_passed": false,
+    "promote_candidate": false,
+    "primary_regression": "standard4: legacy success 100/365 steps -> staged failure 20/414 steps",
+    "software_or_prompt_migration_defect_established": false,
+    "guard_caused_primary_failure": false,
+    "most_supported_interpretation": "A physical execution/geometry and visual-assessment regression: repeated right-cuff acquisition failures changed the cloth configuration; the later hem fold used a different wrist/target span and was judged complete from a compact outline without a demonstrated final layer correspondence. The saved records cannot isolate a single causal parameter or reveal which hidden hem predicate failed.",
+    "urgent_source_fix_identified": false
+  },
+  "paired_results": [
+    {
+      "variant": "random",
+      "layout": 3,
+      "seed": 1,
+      "baseline": {
+        "success": false,
+        "progress": 20.0,
+        "steps": 267,
+        "wall_seconds": 660.2868710239418,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l3"
+      },
+      "candidate": {
+        "success": false,
+        "progress": 20.0,
+        "steps": 454,
+        "wall_seconds": 738.6279151581693,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-random-l3"
+      }
+    },
+    {
+      "variant": "random",
+      "layout": 4,
+      "seed": 1,
+      "baseline": {
+        "success": true,
+        "progress": 100.0,
+        "steps": 448,
+        "wall_seconds": 804.6130559970625,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l4"
+      },
+      "candidate": {
+        "success": true,
+        "progress": 100.0,
+        "steps": 401,
+        "wall_seconds": 591.5572232459672,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-random-l4"
+      }
+    },
+    {
+      "variant": "standard",
+      "layout": 3,
+      "seed": 1,
+      "baseline": {
+        "success": false,
+        "progress": 20.0,
+        "steps": 413,
+        "wall_seconds": 808.4786249169847,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l3"
+      },
+      "candidate": {
+        "success": true,
+        "progress": 100.0,
+        "steps": 322,
+        "wall_seconds": 506.7483056290075,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l3"
+      }
+    },
+    {
+      "variant": "standard",
+      "layout": 4,
+      "seed": 1,
+      "baseline": {
+        "success": true,
+        "progress": 100.0,
+        "steps": 365,
+        "wall_seconds": 610.1152794469381,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4"
+      },
+      "candidate": {
+        "success": false,
+        "progress": 20.0,
+        "steps": 414,
+        "wall_seconds": 675.7569010879379,
+        "directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4"
+      }
+    }
+  ],
+  "evidence_roots": {
+    "primary_candidate": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4",
+    "primary_baseline": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4",
+    "paired_report": "/home/zxc/文档/ChatGPT/RoboRAG/results/staged-regression-fold_clothes-81513e4.json"
+  },
+  "primary_timeline": [
+    {
+      "stage": "initial geometry",
+      "candidate_steps": [
+        0,
+        0
+      ],
+      "baseline_steps": [
+        0,
+        0
+      ],
+      "evidence": "commands.jsonl line1 in both runs",
+      "finding": "Same table/cloth height and sleeve/hem/shoulder landmark coordinates. Both initially selected right cuff [0.2173,-0.2791]. Initial measurement mismatch does not explain this pair."
+    },
+    {
+      "stage": "left sleeve",
+      "candidate_steps": [
+        0,
+        79
+      ],
+      "baseline_steps": [
+        0,
+        79
+      ],
+      "candidate_evidence": [
+        "commands.jsonl:2-9",
+        "episode-ledger.jsonl:event-00042"
+      ],
+      "baseline_evidence": [
+        "commands.jsonl:2-8"
+      ],
+      "finding": "Both completed left fold, encountered an interrupted upward withdrawal, and corrected from measured pose. Candidate used TRAIN0002 left wrist; baseline TRAIN0000. Both kept released sleeve inward."
+    },
+    {
+      "stage": "initial right sleeve attempt",
+      "candidate_steps": [
+        79,
+        156
+      ],
+      "baseline_steps": [
+        79,
+        130
+      ],
+      "candidate_evidence": [
+        "commands.jsonl:10-15",
+        "episode-ledger.jsonl:event-00069"
+      ],
+      "baseline_evidence": [
+        "commands.jsonl:9-13"
+      ],
+      "finding": "Both initial cuff acquisitions failed retention. Candidate interpreted the initial lift as held, sent a full cross-body transfer, released and withdrew before recognizing the outward sleeve. Legacy used a short inward retention test before any full transfer and recognized failure earlier."
+    },
+    {
+      "stage": "right sleeve recovery",
+      "candidate_steps": [
+        156,
+        320
+      ],
+      "baseline_steps": [
+        130,
+        232
+      ],
+      "candidate_evidence": [
+        "commands.jsonl:16-28",
+        "episode-ledger.jsonl:event-00119"
+      ],
+      "baseline_evidence": [
+        "commands.jsonl:14-23"
+      ],
+      "finding": "Legacy cleared occlusion, used RGB-picked table_xy point [0.1958,-0.2874], stationary close10 rows and a verified lift. Candidate tried refreshed inset minus20mm at [0.2026,-0.272] with close5 rows, a leveled wrist with close10, then changed to the previously expanded left-grasp quaternion on the right arm with close8. Final candidate transfer was split and visibly retained. Recovery remained within the same stage; no guard or replanning blocked it."
+    },
+    {
+      "stage": "hem geometry and fold",
+      "candidate_steps": [
+        320,
+        399
+      ],
+      "baseline_steps": [
+        232,
+        316
+      ],
+      "candidate_evidence": [
+        "commands.jsonl:29-35",
+        "episode-ledger.jsonl:event-00147"
+      ],
+      "baseline_evidence": [
+        "commands.jsonl:24-30"
+      ],
+      "finding": "Both refreshed changed silhouettes, performed dual lift verification, moved a panel onto upper torso, opened and withdrew. Candidate used wider current hem grasps and wider placement endpoints, while retaining the original shoulder direction. It marked both hem effects met despite noting that wrinkles limit precise layer alignment; baseline produced a visibly narrower rectangular stack."
+    },
+    {
+      "stage": "native terminal checkpoint",
+      "candidate_steps": [
+        399,
+        414
+      ],
+      "baseline_steps": [
+        316,
+        365
+      ],
+      "candidate_evidence": [
+        "commands.jsonl:36",
+        "episode_end.json",
+        "episode-ledger.jsonl:event-00154"
+      ],
+      "baseline_evidence": [
+        "commands.jsonl:31",
+        "episode_end.json"
+      ],
+      "finding": "Both episodes ended during return_home, before the 500-step native limit. Candidate executed one of two home waypoints and was scored20; baseline executed both waypoints partially and was scored100. Incomplete exact home posture is an online limitation in both and is not by itself an explanation of the result difference."
+    }
+  ],
+  "experience_and_instruction_migration": {
+    "all_original_prompt_paragraphs_delivered_verbatim": true,
+    "p02_strategy_before_plan": {
+      "first_prepare_mcp_line": 4,
+      "graph_plan_mcp_line": 7,
+      "text_includes": [
+        "preserve demonstrated wrist orientation, gentle contact, stationary closure, lift and supported release timing",
+        "visible lift and motion verify cloth grasp",
+        "observe released shape before corrections",
+        "reserve steps for withdrawal/home"
+      ]
+    },
+    "hem_strategy_delivered_before_motion": {
+      "prepare_mcp_line": 45,
+      "enter_mcp_line": 47,
+      "first_hem_motion_mcp_line": 48,
+      "rule": "Original p02 unchanged"
+    },
+    "candidate_reference_expansions": [
+      {
+        "line": 6,
+        "source": "fold_clothes-0002:p01",
+        "section": "close",
+        "images": true
+      },
+      {
+        "line": 22,
+        "source": "fold_clothes-0001:p04",
+        "section": "close",
+        "images": false
+      },
+      {
+        "line": 46,
+        "source": "fold_clothes-0002:p06",
+        "section": "close",
+        "images": false
+      }
+    ],
+    "baseline_reference_difference": "Legacy selected TRAIN0000 and expanded hem p07 with images. The staged query/ranking and model selections were different; that is an architecture-induced context difference, but this single pair does not establish a bad index mapping or that a specific demonstration is superior.",
+    "timing_difference": "Initial candidate right close4 versus baseline7 rows; recovery closes5/10/8 versus baseline10. All commands separate stationary closure from translation. Actual gripper command0 is not proof of retention. Timing, location, wrist and cloth state changed together, so no isolated timing-causality claim.",
+    "assessment_limitation": "The public alignment requirement remained in the initial prompt and graph expected effects. The new SOP completion phrase approaches shoulder line is less exact than the global alignment condition, but standard4 graph still demanded near and parallel. An explicit prompt omission/contradiction causing this failure was not demonstrated."
+  },
+  "hem_geometry_comparison": {
+    "candidate_current_grasps": [
+      [
+        -0.1443,
+        -0.2893
+      ],
+      [
+        0.0632,
+        -0.3336
+      ]
+    ],
+    "baseline_current_grasps": [
+      [
+        -0.1434,
+        -0.2866
+      ],
+      [
+        0.0265,
+        -0.3254
+      ]
+    ],
+    "candidate_placement": [
+      [
+        -0.081,
+        -0.044,
+        0.789
+      ],
+      [
+        0.124,
+        -0.1,
+        0.789
+      ]
+    ],
+    "baseline_placement": [
+      [
+        -0.07,
+        -0.045,
+        0.784
+      ],
+      [
+        0.1,
+        -0.084,
+        0.784
+      ]
+    ],
+    "candidate_refreshed_silhouette_upper_sides": [
+      [
+        -0.1063,
+        -0.0393
+      ],
+      [
+        0.0817,
+        -0.0338
+      ]
+    ],
+    "candidate_original_shoulder_bindings": [
+      [
+        -0.0687,
+        -0.0227
+      ],
+      [
+        0.1356,
+        -0.0816
+      ]
+    ],
+    "interpretation": "The refreshed mask and original bound shoulder line differ after cloth moved. A partially folded mask cannot establish the true shoulder layer either, so using its upper sides blindly would also be invalid. Candidate used the original target direction with current hem grasps; whether that target remained applicable was not independently established. Visible grasp retention does not prove final hem-to-shoulder alignment.",
+    "inspection": "Viewed both candidate hem-lift wrist images at step350, midpoint head at362, placement head/wrists at380, cleared head399; cloth was visibly gathered/held and later formed a compact layered stack. Viewed paired baseline post-sleeve232, hem-placement293, clearance316 and final365. No per-vertex truth was saved, so exact final layer offsets cannot be reconstructed from these views."
+  },
+  "visual_evidence_paths": [
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/028_step320/head.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/031_step350/wrist_l.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/031_step350/wrist_r.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/032_step362/head.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/033_step380/head.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/033_step380/wrist_l.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/033_step380/wrist_r.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/fold_clothes/seed1-standard-l4/observations/035_step399/head.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4/observations/023_step232/head.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4/observations/028_step293/head.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4/observations/030_step316/head.png",
+    "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4/observations/031_step365/head.png"
+  ],
+  "guard_and_supporting_pairs": {
+    "primary_standard4": {
+      "rejected_transitions": 0,
+      "blocked_dispatches": 0,
+      "tool_errors": 0,
+      "plans": 1,
+      "revisions": 0,
+      "interpretation": "Cannot attribute primary regression to dispatch guard or stage transition restrictions."
+    },
+    "other_candidate_lifecycles": {
+      "seed1-random-l3": {
+        "rejected_transitions": [
+          "event-00161"
+        ],
+        "blocked_actions": [
+          "event-00162"
+        ],
+        "resolved_transitions": [
+          "event-00165"
+        ],
+        "plan_revisions": 0
+      },
+      "seed1-standard-l3": {
+        "rejected_transitions": [
+          "event-00112"
+        ],
+        "blocked_actions": [
+          "event-00113"
+        ],
+        "resolved_transitions": [
+          "event-00116"
+        ],
+        "plan_revisions": 0
+      },
+      "seed1-random-l4": {
+        "rejected_transitions": [
+          "event-00133"
+        ],
+        "blocked_actions": [],
+        "resolved_transitions": [
+          "event-00137"
+        ],
+        "plan_revisions": 0
+      }
+    },
+    "random3": "Both versions scored20. Candidate hem snagged on open fingers during withdrawal, visibly lifting again (step338->351); same-stage recovery freed it by381, but layer alignment stayed unknown. After one rejected transition/blocked attempted home, marking hem blocked permitted restore and full home454. Legacy also failed after hem reach/orientation difficulty and release. This is supporting evidence of a general cloth release/alignment challenge, not a new staged-only defect.",
+    "standard3": "Candidate preserved unknown hem alignment and native succeeded; guard friction resolved by assess blocked then restore. It does not compensate for standard4 regression.",
+    "random4": "Both succeeded; candidate noticed a visible short/skewed right hem and made a current-scene local correction before preserving unknown final exact alignment. Guard rejection caused no motion and resolved before restoration.",
+    "friction": "Three of four staged fold cases attempted restore after assess decision continue with unknown alignment; existing protocol required blocked first. All resolved without additional physical steps at the transition. This is recurrent usability friction worth a future small clarity improvement, not a proven reason for the fold failure or a deadlock."
+  },
+  "offline_native_interpretation": {
+    "source": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/policy_compare/upstream/RoboICL/third_party/RoboDojo/task/RoboDojo/tasks/fold_clothes.py",
+    "source_lines": {
+      "step_limit": 10,
+      "terminal_check_and_home_queries": [
+        105,
+        121
+      ],
+      "score_milestones": [
+        181,
+        189
+      ]
+    },
+    "finding": "Native source has release/fold score milestones and home-triggered checks/queries; score20 is consistent with sleeve milestone without full fold credit. Native termination during homing before500 is not evidence of a time-limit failure. Available result files report aggregate score/success only; no failed-predicate or cloth-point telemetry was retained, so a precise geometric native failure cause is unresolved.",
+    "boundary": "These evaluator details were used only after all registered cases completed, to interpret results; no thresholds or private positions were added to prompts, plans or online code."
+  },
+  "repair_judgment": {
+    "immediate_required_source_patch": false,
+    "default": "Keep legacy default and retain the failed registered gate; do not replace baseline on equal aggregate2/4.",
+    "worth_additional_general_development": "Potentially useful in a separate bounded development cycle: stronger current-view cuff retention checks before long transfer; preserve/revalidate cloth target correspondence after recovery moves; make met versus unknown hem evidence explicit; clarify blocked-to-restoration transition. Existing guidance already asks for much of this, so adding repeated prose is not proven beneficial.",
+    "avoid": "Do not hard-code the successful baseline coordinates, native tolerances, a preferred demonstration for layout4, or re-run held-out cases until a favorable outcome. Do not force all ambiguous hem checks to met just to enter home.",
+    "causal_limit": "One matched sample changes retrieved demonstrations, model choices, wrist/timing/targets and evolving cloth state together. It establishes a regression requiring failed promotion, not a causal proof of one architecture component. No confident narrow fix emerged that warrants another immediate candidate solely from this pair."
+  }
+}

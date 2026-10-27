@@ -1,0 +1,591 @@
+{
+  "schema": "roborag.staged-pour-regression-analysis.v1",
+  "created_at": "2026-10-27T06:29:52.750812+00:00",
+  "scope": {
+    "task": "pour_balls_into_vase",
+    "candidate_commit": "81513e4",
+    "candidate_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5",
+    "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5",
+    "paired_case": {
+      "seed": 1,
+      "variant": "standard",
+      "layout": 5,
+      "layout_sha256": "943a36fdf06fb1f41f7a7071e2c604812d5908e66cdb7e6686be822a82371daf"
+    },
+    "authorization": "Offline analysis after all 12 formal cases completed at 2026-10-27T06:21:58.994966+00:00. No source/protocol edits, native reruns, or hidden-state policy changes.",
+    "limits": "One failed candidate/previously successful baseline pair supports a descriptive failure chain, not a causal attribution to architecture or a guaranteed fix. No new held-out data remain unexposed in this inspected pair."
+  },
+  "headline": {
+    "conclusion": "The candidate spent 267 of 600 control steps restoring/attempting handover after the cup looked empty. Home began at step 558; left completed at 599 and right received only one step. The final right end-effector fails the native origin condition. The evidence does not show that an unknown ball-capture judgment blocked recovery or that a critical original pouring rule was omitted.",
+    "candidate_pour_suite": {
+      "successes": 3,
+      "cases": 4,
+      "successful_layouts": [
+        3,
+        4,
+        6
+      ],
+      "failed_layout": 5
+    },
+    "native_pair": {
+      "baseline_success": true,
+      "baseline_control_steps": 419,
+      "candidate_success": false,
+      "candidate_control_steps": 600
+    },
+    "definite_separate_software_defect": "Concurrent persist writes share execution-state.json.tmp; one initial prepare_stage failed, recovered at step 0. Reported immediately and fixed separately by parent in ccedc5f. This fix does not inherit frozen815 native scores and is not evidence that the race caused the 600-step manipulation failure."
+  },
+  "outcome_evidence": {
+    "native_result_authority": "Native score reports overall success/failure, no saved per-ball final condition breakdown.",
+    "observed_cup": "At observation-00029 (step 291), active wrist shows empty visible cup interior; at observations-00049/00050 (steps 550/558), cup is released upright and remains supported after withdrawal.",
+    "ball_capture": "Unknown: empty cup and no visible exposed-table spills do not establish all seven balls inside an occluded vase. No actual dropped-ball count is asserted.",
+    "home_receipt": {
+      "request": {
+        "subgoal": "Return both arms to origin after releasing upright cup and clearing fingers.",
+        "expected_feedback": "Both arms at initial poses, cup remains upright, vase stationary; inspect scene for any visible unmet condition.",
+        "chunk": [
+          {
+            "arm": "left",
+            "home": true,
+            "gripper": 1
+          },
+          {
+            "arm": "right",
+            "home": true,
+            "gripper": 1
+          }
+        ],
+        "execution_context": {
+          "action_id": "action-00043",
+          "stage_id": "home",
+          "plan_version": 3
+        }
+      },
+      "result": {
+        "waypoints": [
+          {
+            "requested": {
+              "arm": "left",
+              "home": true,
+              "gripper": 1
+            },
+            "step_before": 558,
+            "home_joint_error_rad": 0.0013932343572377983,
+            "gripper_command": 1,
+            "step_after": 599
+          },
+          {
+            "requested": {
+              "arm": "right",
+              "home": true,
+              "gripper": 1
+            },
+            "step_before": 599,
+            "home_joint_error_rad": 1.5701826810836803,
+            "step_after": 600
+          }
+        ],
+        "submitted_waypoints": 2,
+        "executed_waypoints": 2,
+        "action_steps": 42,
+        "step": 600,
+        "episode_over": true
+      },
+      "exit_code": 0,
+      "step_before": 558,
+      "step_after": 600,
+      "wall_seconds": 3.0413351329043508,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/observations/051_step600"
+    },
+    "native_home_check_offline_only": {
+      "task_source": "task/RoboDojo/tasks/pour_balls_into_vase.py:19-31",
+      "predicate_source": "env/reward_manager/reward_manager.py:829; env/reward_manager/func_parser.py:1631-1645",
+      "condition": "For each target robot, each absolute end-effector position component differs from origin by at most 0.15 m and quaternion rotation distance is at most 20 degrees. These offline evaluator tolerances were not added to online policy.",
+      "candidate_final_right_ee_position_delta_m": [
+        0.0058196187019348145,
+        0.2339072898030281,
+        0.19461804628372192
+      ],
+      "candidate_final_right_rotation_distance_degrees": 73.89507579030546,
+      "conclusion": "Right origin predicate definitely unmet independently of unknown ball capture; rotation alone exceeds the native threshold.",
+      "baseline_caveat": "Baseline native success occurs at step 419 after only six left-home steps, with left home_joint_error_rad=1.0575 and before dispatching right home. Exact joint zero is stricter than native end-effector tolerance, so joint error alone is not the native score criterion."
+    }
+  },
+  "control_step_accounting": {
+    "source": "episode-ledger.jsonl action_received receipts; rejected suffix rows are not executed control steps.",
+    "by_plan_stage": {
+      "measure": {
+        "received_actions": 2,
+        "executed_control_steps": 32,
+        "discarded_rows": 0
+      },
+      "grasp": {
+        "received_actions": 6,
+        "executed_control_steps": 73,
+        "discarded_rows": 5
+      },
+      "align": {
+        "received_actions": 4,
+        "executed_control_steps": 54,
+        "discarded_rows": 0
+      },
+      "pour": {
+        "received_actions": 8,
+        "executed_control_steps": 132,
+        "discarded_rows": 4
+      },
+      "restore": {
+        "received_actions": 15,
+        "executed_control_steps": 169,
+        "discarded_rows": 49
+      },
+      "restore_handover": {
+        "received_actions": 7,
+        "executed_control_steps": 98,
+        "discarded_rows": 4
+      },
+      "home": {
+        "received_actions": 1,
+        "executed_control_steps": 42,
+        "discarded_rows": 0
+      }
+    },
+    "post_pour_restore_and_handover_steps": 267,
+    "post_pour_restore_and_handover_fraction_of_budget": 0.445,
+    "remaining_steps_at_home_entry": 42,
+    "baseline_manual_phase_alignment": {
+      "measurement_and_viewing": [
+        0,
+        29
+      ],
+      "right_grasp": [
+        29,
+        73
+      ],
+      "carry_and_observer_positioning": [
+        73,
+        152
+      ],
+      "pour": [
+        152,
+        270
+      ],
+      "restore_place_release_withdraw": [
+        270,
+        413
+      ],
+      "home_until_native_success": [
+        413,
+        419
+      ]
+    },
+    "candidate_minus_baseline": {
+      "steps_before_first_pour_stage": 7,
+      "pour_duration_steps": 14,
+      "post_pour_restore_release_withdraw_steps": 124,
+      "final_home_segment_steps": 36,
+      "total_steps": 181
+    },
+    "interpretation": "The biggest observed additional control segment is restoration plus failed handover (+124 steps). Final home durations are censored by native success/budget end and are not equivalent complete homing costs."
+  },
+  "candidate_timeline": [
+    {
+      "steps": [
+        0,
+        32
+      ],
+      "stage": "measure",
+      "evidence": [
+        "mcp-calls.jsonl:3",
+        "mcp-calls.jsonl:5",
+        "episode-ledger.jsonl:event-00024"
+      ],
+      "detail": "Two observation-motion chunks obtain full cup and vase rim views. Valid cup fit at step16 and vase fit at32; rejected fits are not used as targets. Plans select left direct side grasp and inspect outward pouring before closure."
+    },
+    {
+      "steps": [
+        32,
+        105
+      ],
+      "stage": "grasp",
+      "evidence": [
+        "mcp-calls.jsonl:23-28",
+        "episode-ledger.jsonl:event-00056"
+      ],
+      "detail": "Level-wrist low approach hits IK twice; hand moves above then down using demonstrated slight-downward quaternion. Stationary close and short lift verify the upright cup follows left hand. Assessment initially references a pre-stage measurement and is rejected; resubmission with current-stage observations succeeds without additional manipulation."
+    },
+    {
+      "steps": [
+        105,
+        159
+      ],
+      "stage": "align",
+      "evidence": [
+        "episode-ledger.jsonl:event-00075"
+      ],
+      "detail": "Cup carried toward vase; empty right hand moved to inspect cup/vase alignment. Current head/wrist and measured rim geometry used, not reference coordinates."
+    },
+    {
+      "steps": [
+        159,
+        187
+      ],
+      "stage": "pour",
+      "evidence": [
+        "mcp-calls.jsonl:40",
+        "episode-ledger.jsonl:event-00086"
+      ],
+      "detail": "World+Y roll reaches about33 degrees before IK continuity rejection. Reversed to upright, seven balls still visible. Model adapts same stage to current local+X roll rather than replanning the whole task."
+    },
+    {
+      "steps": [
+        187,
+        291
+      ],
+      "stage": "pour",
+      "evidence": [
+        "episode-ledger.jsonl:event-00111",
+        "stage-observations/observation-00029/wrist_l.png"
+      ],
+      "detail": "Local-axis stages45/75/90/105 degrees with holds; observed flow and empty cup at291. Assessment explicitly preserves all-seven-inside as unknown and permits restore/home independently."
+    },
+    {
+      "steps": [
+        291,
+        406
+      ],
+      "stage": "restore",
+      "evidence": [
+        "mcp-calls.jsonl:49",
+        "mcp-calls.jsonl:52-58",
+        "episode-ledger.jsonl:event-00150"
+      ],
+      "detail": "Reverse tilt to upright by333. Multiple lower/carry/extend moves hit left shoulder/reach limits; measured-pose recovery retains cup. A failed zero-row move at394 consumes no control step. At406 model adds conditional handover after repeated failure."
+    },
+    {
+      "steps": [
+        406,
+        504
+      ],
+      "stage": "restore_handover",
+      "evidence": [
+        "mcp-calls.jsonl:60",
+        "episode-ledger.jsonl:event-00152",
+        "episode-ledger.jsonl:event-00183",
+        "stage-observations/observation-00044/wrist_r.png"
+      ],
+      "detail": "Seven actions attempt right receiving grasp. Receiver stays below cup base and contact displaces giver; model never declares supported transfer and retains left grasp. Blocked handover is abandoned by a local revision, not forced to completion."
+    },
+    {
+      "steps": [
+        504,
+        558
+      ],
+      "stage": "restore",
+      "evidence": [
+        "episode-ledger.jsonl:event-00184",
+        "episode-ledger.jsonl:event-00210",
+        "stage-observations/observation-00050/head.png"
+      ],
+      "detail": "Separate hands, use left high-wrist/downward approach, lower and release cup at550, withdraw to558. This succeeds without transfer."
+    },
+    {
+      "steps": [
+        558,
+        600
+      ],
+      "stage": "home",
+      "evidence": [
+        "commands.jsonl:51",
+        "episode-ledger.jsonl:event-00217",
+        "stage-observations/observation-00051/head.png"
+      ],
+      "detail": "Sequential home spends41 steps on left and one on right before budget limit. Both-home recorded unmet, task success not claimed."
+    }
+  ],
+  "experience_selection_and_adaptation": {
+    "candidate_initial_expansions": [
+      {
+        "call_line": 7,
+        "source": "pour_balls_into_vase-0002:p05",
+        "section": "start",
+        "purpose": "Actual outward pouring plus start/middle/end phase_context."
+      },
+      {
+        "call_line": 8,
+        "source": "pour_balls_into_vase-0001:p02",
+        "section": "close",
+        "purpose": "Grasp comparison; top-down example leads to optional handover."
+      },
+      {
+        "call_line": 9,
+        "source": "pour_balls_into_vase-0002:p02",
+        "section": "close",
+        "purpose": "Side-held upright reference. No command crossing event; model does not treat it as contact proof."
+      },
+      {
+        "call_line": 10,
+        "source": "pour_balls_into_vase-0002:p04",
+        "section": "start",
+        "purpose": "Pre-pour held context, not causal dependency."
+      }
+    ],
+    "candidate_adaptation": "Left direct side grip initially selected; after approach IK changes wrist attitude, actual held quaternion becomes approximately [0.7623,-0.0647,0.0899,0.6376]. Initial world+Y pour rejected; adapted current local+X approach-axis roll with coupled low-rim translation works to observed empty cup. Source used as historical operation, current rim fits and feedback determine coordinates.",
+    "handover_reference": {
+      "source": "pour_balls_into_vase-0001:p04",
+      "call_line": 60,
+      "section": "close",
+      "window_event_found": false,
+      "adopted": "Right receives before left release; verify live supported grasp.",
+      "adapted": "Approach current cup from+X, closing alongY below left finger contact.",
+      "actual": "Receiving grasp never verified; correctly retained giver. General geometry/approach failure, not using wrong transfer direction."
+    },
+    "baseline_difference": "Baseline chooses right direct side grip from the other side, expands upright restore reference0001:p07 before initial plan alongside pouring0001:p06, and uses mostly negative localX roll. It returns cup to table without handover. Candidate left/right/attitude choice and later restoration view/retrieval timing differ, so one pair cannot isolate the architecture or any individual reference as cause.",
+    "phase_match_check": "Selected controlled_pour reference0002:p05 is outward pouring, not restore. No evidence of broad pour-query inversion into upright restoration."
+  },
+  "sop_migration_and_execution_checks": {
+    "critical_rule_delivery": [
+      {
+        "call": "initial agent-prompt.txt",
+        "rules": "Task success requirements, measurement globals, reserve steps for final posture, optional handover risk and time."
+      },
+      {
+        "call": "mcp-calls.jsonl:3 at step0",
+        "rules": [
+          "p03.b03",
+          "p03.b04"
+        ],
+        "meaning": "Measurement validity and full-pour grasp/lookahead before contact."
+      },
+      {
+        "call": "mcp-calls.jsonl:5 at step0",
+        "rules": [
+          "p03.b04",
+          "p03.b06",
+          "p03.b07",
+          "p03.b08"
+        ],
+        "meaning": "Actual grasp-relative axis, low lip/outflow, incremental tilt/holds, IK recovery."
+      },
+      {
+        "call": "mcp-calls.jsonl:31 at step105",
+        "rules": [
+          "p03.b05",
+          "p03.b06",
+          "p03.b08"
+        ],
+        "meaning": "Upright carry offset and rim-vs-lip distinction before transit/pour."
+      },
+      {
+        "call": "mcp-calls.jsonl:49 at step291",
+        "rules": [
+          "p03.b08",
+          "p03.b09"
+        ],
+        "meaning": "Reverse supported tilt, upright placement/support before release, reserve home budget."
+      },
+      {
+        "call": "mcp-calls.jsonl:59 at step406",
+        "rules": [
+          "p03.b01",
+          "p03.b04",
+          "p03.b08"
+        ],
+        "meaning": "Conditional handover risk, verified new grasp, recovery."
+      }
+    ],
+    "migration_conclusion": "No concrete original operation-rule omission, contradictory outward/restore requirement, or late first delivery of required tilt guidance found. Restore-specific rule delivered at restoration entry; global budget reminder already initial. Different progressive exposure may affect model choices, but that is a hypothesis, not a deterministic migration defect.",
+    "unknown_effects": "event-00111 explicitly says capture unknown but restoration required independently. Initial restore depends on verified grasp, not proving all seven; local revisions also allow abandonment of failed handover. Unknown capture did not gate motion.",
+    "persistent_plan": "One initial graph plan; revisions only after restoration reach failure and then failed receiving grasp. Routine actions/feedback/axis correction do not automatically replan.",
+    "guard_interactions": "Initial grasp assessment includes too-old measurement00007; enter align then execute are rejected until corrected current-stage assessment. At406 first revision includes old observation IDs; retry with current observation00037 succeeds, then handover begins. These validation attempts add calls/context but no physical control steps; guard prevents stale/invalid dispatch.",
+    "remaining_design_question": "The all-evidence-current-visit rule rejects useful prior contextual measurements when mixed with fresh effect evidence. A future distinction between contextual evidence and effect proof could reduce friction, but this investigation does not change that guard or claim it caused failure."
+  },
+  "separate_deterministic_software_defect": {
+    "type": "concurrent fixed-temp atomic-save race",
+    "status": "Parent reports separate fix commit ccedc5f: unique temporary files, synchronized StagedEpisode transactions, observation packaging and returned snapshots. Parent verified 147 tests and a 48-call concurrent MCP check; this subagent did not rerun those checks. Frozen815 outcomes are unchanged and no native effectiveness is claimed for the fix.",
+    "concurrency_evidence": [
+      {
+        "agent_events_line": 10,
+        "type": "item.started",
+        "item": "item_5",
+        "tool": "measure_rim"
+      },
+      {
+        "agent_events_line": 11,
+        "type": "item.started",
+        "item": "item_6",
+        "tool": "prepare_stage",
+        "stage": "measure_and_choose_grasp"
+      },
+      {
+        "agent_events_line": 12,
+        "type": "item.started",
+        "item": "item_7",
+        "tool": "prepare_stage",
+        "stage": "controlled_pour"
+      },
+      {
+        "agent_events_line": 13,
+        "type": "item.completed",
+        "item": "item_7",
+        "status": "failed"
+      },
+      {
+        "agent_events_line": 14,
+        "type": "item.completed",
+        "item": "item_6",
+        "status": "completed"
+      },
+      {
+        "agent_events_line": 15,
+        "type": "item.completed",
+        "item": "item_5",
+        "status": "completed"
+      },
+      {
+        "agent_events_line": 18,
+        "type": "item.started",
+        "item": "item_9",
+        "tool": "prepare_stage",
+        "stage": "controlled_pour"
+      },
+      {
+        "agent_events_line": 19,
+        "type": "item.completed",
+        "item": "item_9",
+        "status": "completed"
+      }
+    ],
+    "stack_evidence": "mcp-server.log:120-171: execution.prepare -> persist -> write_json(execution-state.json) -> temporary.replace(path) raises FileNotFoundError for execution-state.json.tmp. Frozen src/roborag/io.py uses a fixed .tmp suffix.",
+    "durable_record_note": "stage_prepared event-00004 exists for failed-return attempt; retry creates event-00006. Failed calls are absent from successful mcp-calls audit counts but present in agent-events/server log.",
+    "failure_relation": "Recovered before first control action at simulation step0. It adds preparation/retry overhead and deserves deterministic repair; no evidence connects it to wrong grasp choice or the later 600-step physical budget exhaustion."
+  },
+  "bounded_follow_up_judgment": {
+    "must_fix": "Concurrent persistence temp-file collision is a definite general software bug, fixed separately by parent in ccedc5f. Preserve frozen815 run evidence and do not relabel its score or assume new-version effectiveness.",
+    "no_immediate_policy_patch": "Do not hardcode right-arm choice, this layout positions, evaluator thresholds, or hidden ball state from this single pair. No further native run or policy tuning performed.",
+    "worth_future_registered_work": [
+      "Before selecting a grasp, consider the full grasp/pour/return/release lifecycle and current kinematic feasibility, with short current-state checks and a restoration/home reserve. Candidate inspected full pour but did not establish feasible low return.",
+      "Use measured remaining control budget and actual arm travel to bound optional recovery/handover attempts, while retaining supported grasp. Failed handover used98 steps; later same-arm high-wrist placement worked in54 steps. This is an observation, not proof the same recovery would have worked earlier.",
+      "Consider typed contextual evidence versus effect evidence to avoid rejecting prior valid measurements alongside fresh stage observations, while retaining action-stage attribution and freshness requirements."
+    ],
+    "delivery_recommendation": "Keep legacy default under failed effectiveness gate; present staged candidate as implemented and structurally validated but not demonstrated non-regressing on this scope. Stop unregistered optional tuning now; any future behavior change needs a new frozen version and newly registered comparison."
+  },
+  "evidence_manifest": [
+    {
+      "path": "results/staged-regression-pour_balls_into_vase-81513e4.json",
+      "sha256": "cfd81a7c5dc0f9052aa2e39cb806543c42458afadec401996ae71380cc1d0a2f"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/agent-events.jsonl",
+      "sha256": "cf13eecac0dd2cb2a4251ad2523db6c8db571aa0f3f2ddf1505e042635adcb5d"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/episode-ledger.jsonl",
+      "sha256": "a53a218550b94dbc8ec88158f13ef5b3c072d4be5a630afe8bd239cf6e412040"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/mcp-calls.jsonl",
+      "sha256": "56a0b0b85ec0fb23edec23315587e327d16d1c836b4cf786867bf67a6f67f918"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/mcp-server.log",
+      "sha256": "e2a603d862bba80a399df064ba5afb134018bda41ecedb0f2ea04762e53fc17f"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/commands.jsonl",
+      "sha256": "09eb9cc1639ea97338e626b51b18a792541c973f03a4130a667bc3304dfea4d0"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/ik-continuity.jsonl",
+      "sha256": "d29630d4c1b67443de6b67913717411a36495b586c74f8ac15aff2ce4795fc75"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/agent-prompt.txt",
+      "sha256": "9ada1788665a1c17b930a3f85e790c084c01f1e40159daa0310dbba32278ef7a"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/result.json",
+      "sha256": "b985ffacd342ed958728786f342309b293c956d5e2b3b043cb635d74f97703c9"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/sop-index.json",
+      "sha256": "4bd0979f565c70ab6dfc693a0a41de77cb87ebf0c564ab08120b5d11ae4b4bc0"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/plan-versions/v001.json",
+      "sha256": "69057fd54ed650cd98ace51423918356a47111ada00d5faa8b2c363b251ea10a"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/plan-versions/v002.json",
+      "sha256": "4eb5b8b7cac79ce284222c25d701178d14dbed456b48b29a4fd2883c9d654296"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/plan-versions/v003.json",
+      "sha256": "20001a392352b635b38bd2e582d5922e9e77539b1244e0f25a4338ba0cba77d3"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/stage-observations/observation-00001/state.json",
+      "sha256": "650bab1a56af108cbcebaa467b6cbd15d964b4b295d0fa19fef754598111ad6d"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/stage-observations/observation-00029/wrist_l.png",
+      "sha256": "60e05b8be1ce916491fd63490a0217aea3f71763ad03b62d492901cacee93977"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/stage-observations/observation-00044/wrist_r.png",
+      "sha256": "c8e0ab5bea9c544d05dc1cc37780f0c74c77ea3c126950ec2f783888e2abbd2f"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/stage-observations/observation-00050/head.png",
+      "sha256": "54691da45d8ea90720131ce76c69b4c85345b547d07adc69b780d0f4097b8685"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/stage-observations/observation-00051/head.png",
+      "sha256": "a41693df215130e5cc238fea282f567d02f217147643e821a1935ed08bcd14f5"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/obs/state.json",
+      "sha256": "6d4b3f05e6f9313412f17e7d98335f7b28148da7187e57c658e3e0a41c737d9d"
+    },
+    {
+      "path": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5/commands.jsonl",
+      "sha256": "e20169c01af16badf6b7819094e65296386d1716bf1181dfd89ace421d5f1f78"
+    },
+    {
+      "path": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5/mcp-calls.jsonl",
+      "sha256": "6985f2088b6748cc764c96a652e3fc82f1f6d972fa6a500a58d5bb2d2edee6d0"
+    },
+    {
+      "path": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5/result.json",
+      "sha256": "fd1a52f2ae7491cb2e83f08220818790d1ea966ff87aaee0447514fe0da12c6b"
+    },
+    {
+      "path": "work/staged-v1-candidate-81513e4/src/roborag/io.py",
+      "sha256": "7c06cf99c46f38fee0ef699d331aaf03ab9d73ed3d3033aacb9c155a8d3b497c"
+    },
+    {
+      "path": "work/staged-v1-candidate-81513e4/src/roborag/tasks/pour_balls_into_vase/sop.json",
+      "sha256": "554d74f98994e239f12644382fca020f03b50f55f9cbf4a35cda95f99a95a09d"
+    },
+    {
+      "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/policy_compare/upstream/RoboICL/third_party/RoboDojo/task/RoboDojo/tasks/pour_balls_into_vase.py",
+      "sha256": "eae388b93ec196c401f76bbab3b0119cb2164f90bece0225d4fb925d3f2b73ab"
+    },
+    {
+      "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/policy_compare/upstream/RoboICL/third_party/RoboDojo/env/reward_manager/reward_manager.py",
+      "sha256": "bc56efd3aaa861b4b38960dc4fb7778a9b4da9cf131f815ac3170300dd233a41"
+    },
+    {
+      "path": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/policy_compare/upstream/RoboICL/third_party/RoboDojo/env/reward_manager/func_parser.py",
+      "sha256": "eb928a05c3eb6bae429a922c59e64272c2c3851c22d779143d45627e47b3a504"
+    },
+    {
+      "path": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l5/_result.json",
+      "sha256": "f0a315db3bb5acdc0177bae9a8df1e5b1db26ce14b043f95539d60bf66a931a4"
+    },
+    {
+      "path": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l5/_result.json",
+      "sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5"
+    }
+  ]
+}

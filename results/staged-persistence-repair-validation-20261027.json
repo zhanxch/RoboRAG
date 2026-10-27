@@ -1,0 +1,87 @@
+{
+  "schema": "roborag.staged-persistence-repair-validation.v1",
+  "created_at": "2026-10-27T06:30:21.707877+00:00",
+  "source_commit": "ccedc5f4ad86c279fa1899cf9fb65b6e312c1443",
+  "frozen_native_candidate_commit": "81513e440aaba1081d0dad47e03d033d8538cb05",
+  "scope": "Post-regression general concurrency repair; no new native scores and no inherited effectiveness claim. Legacy remains default.",
+  "observed_defect": {
+    "run": "runs/staged-v1-regression-81513e4-20261027/pour_balls_into_vase/seed1-standard-l5",
+    "log": "mcp-server.log",
+    "description": "Synchronous prepare tool and asynchronous measurement callback concurrently persisted execution-state.json.tmp; replace raised FileNotFoundError. Shared in-memory state and event/evidence counters also lacked transaction serialization. The model retried and continued; this is not established as the 600-step failure cause."
+  },
+  "changes": [
+    "Unique same-directory temporary JSON files, atomic replace and error cleanup; invalid serialization preserves previous document.",
+    "Reentrant lock around staged synchronous state transactions, including evidence, counters and both recovery snapshots; never held across await/native response waits.",
+    "Coherent observation packet and detached status/enter/assessment snapshots. Native asyncio exchange lock, legacy tool scheduling, prompts, SOP, graphs, geometry and controller policy unchanged."
+  ],
+  "frozen_source_comparison": {
+    "files": 149,
+    "unchanged": 146,
+    "changed": [
+      {
+        "path": "src/roborag/execution/episode.py",
+        "frozen_sha256": "9d70ced76c97cf5965538d93dede512f05f2a561b729be3ba09321dc80f03d15",
+        "repair_sha256": "46718ba37a5e43ba0d168f7b0bcbeab3c0a81da61cf6463246cc6f15230fbefd"
+      },
+      {
+        "path": "src/roborag/io.py",
+        "frozen_sha256": "7c06cf99c46f38fee0ef699d331aaf03ab9d73ed3d3033aacb9c155a8d3b497c",
+        "repair_sha256": "602ba478075d2b49caaa1522614f87f3cc8318786148d31886f6e33088145864"
+      },
+      {
+        "path": "src/roborag/mcp/session.py",
+        "frozen_sha256": "c00a97b229573cd89fd702faf2133d65d09b7d5cfca197c189e7564a432af660",
+        "repair_sha256": "6a8e80b4ccd4de903c83dc1ce411c470af37963dbcd5378d6c4e37d590205497"
+      }
+    ]
+  },
+  "validation": {
+    "tests_passed": 147,
+    "tests_skipped": 0,
+    "new_regression_tests": 5,
+    "parallel_mcp_tools": {
+      "calls": 48,
+      "prepare": 12,
+      "measure": 12,
+      "observe": 12,
+      "execution_status": 12,
+      "errors": 0,
+      "native_response": "Synthetic measurement callback; real in-process MCP transport. No simulator effectiveness claim."
+    },
+    "negative_controls_against_81513e4": {
+      "tests": 3,
+      "errors": 1,
+      "failures": 2,
+      "expected": "All three deliberately fail on the frozen implementation: temporary-file collision, overlapping state transaction, mutable returned snapshot."
+    },
+    "ruff_check": "passed",
+    "ruff_format": "133 files formatted",
+    "diff_check": "passed"
+  },
+  "raw_evidence": [
+    {
+      "path": "runs/staged-persistence-repair-20261027/tests.log",
+      "sha256": "7bcbbba7b97715ca991b1c6d6c73d88b79a5541c6d6de3163206c42d970654e6"
+    },
+    {
+      "path": "runs/staged-persistence-repair-20261027/frozen-815-regression-controls.log",
+      "sha256": "5f1234961feba71aa2ecd70405ab5fbd094b1d1dec33ffa84dc7237b8837e6cf"
+    }
+  ],
+  "test_sources": [
+    {
+      "path": "tests/test_io.py",
+      "sha256": "ab84c84df9e1c5a884218677f2f10548be7b0e43c04f2545a38d5f94102c06db"
+    },
+    {
+      "path": "tests/test_staged_execution.py",
+      "sha256": "e41630a01ce24a598e1e4f14d25cfbced4b8b1b15fee47b717c75ec1d438c1ae"
+    }
+  ],
+  "limits": [
+    "No post-repair native rerun; 12 scored native cases belong exclusively to 81513e4.",
+    "Thread lock protects one MCP session process, not multiple servers writing a shared episode directory; each episode must have its own output/workspace.",
+    "Atomic individual files are not a multi-file crash transaction; process restart and simulator-state resumption remain unsupported.",
+    "Known fold and pour effectiveness failures remain unresolved; this repair neither erases those failures nor permits default promotion."
+  ]
+}

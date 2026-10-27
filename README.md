@@ -1,89 +1,55 @@
 # RoboRAG: Interaction-Aware Retrieval-Augmented Manipulation
 
-当前分支 `refactor/v3-clean` **直接从原始 fold v3 提交 `1e9ffa0` 开始重构**。本轮仅拆分原版 MCP 文件并增加独立日志监控，沿用原版 `record_plan` 与动作执行，不引入阶段式执行架构。对齐方法、监控入口和测试边界见 [v3 重构说明](docs/v3-clean-refactor.md)。以下保留原始版本的研究背景和历史实现说明，不表示本轮采用双库或新增阶段策略。
+当前分支 `refactor/v3-clean` **直接从原始 fold v3 提交 `1e9ffa0` 开始重构**。模型观察现场，检索历史示范，记录自己的计划，再生成短动作段并查看反馈。本轮拆分原版 MCP 文件、补充来源记录和批次 seed 透传，并增加独立的只读交互监控。
 
-**面向交互阶段与经验的检索增强机器人操作**
+**本版完整 fold_clothes 测试为 35/50，未达到预先登记的历史 v3 37/50 验收线。** 原版在当前环境下的另一轮固定 50 例诊断对照仍在运行，两轮结果单独保留。源码一致性检查通过不等于效果恢复，详见[验证结果](docs/v3-clean-validation-20261027.md)。
 
-RoboRAG 研究如何根据当前交互阶段，存储、检索并使用历史交互经验，以改善 Agent 的后续决策。
-经验表示与更新、阶段感知的检索与使用、跨后端验证是拟贡献；MCP 是支撑接口，不单独宣称算法创新。
-当前实现与实验结果分别记录，研究目标不代表已经证明的收益。
+## 当前执行方式
 
-## 经验图库与 GPT 规划
+原版已经通过 `record_plan` 记录 `current_scene`、`steps` 和 `adaptation`。模型依据当前观察决定下一步；历史 graph 提供参考，不强制当前计划按示范节点执行。保留原版动作、参考图像、提示词和控制器，没有移植阶段 SOP、graph plan、阶段准入或阶段驱动执行。
 
-[交互经验图库](docs/graph-bank.md) 提供真实示范 graph、阶段、动作前后证据和浏览前端。
-graph 记录历史，`next` 是示范顺序；GPT 根据当前初始图像、任务要求和少量检索参考生成新 plan，
-再生成当前场景的新 action chunk，二者不需要与历史节点一一对应。
+独立监控读取已有计划、动作意图与反馈，显示当前交互。它不调用模型、不向模型提供上下文、不控制机器人。模型写下的“抓住”“完成”只是声明，任务成败以原生评价为准。接口与验证边界见[v3 重构说明](docs/v3-clean-refactor.md)。
 
-[MCP 接入](docs/rag-mcp.md) 已跑通“检索 → GPT 新 plan → 分段执行”。标准积木 layout 0 开发回合
-取得原生 **100 分、success=true**，179 个原生控制步、18 次动作段调用，缓存输入占比约 92.1%。
-该回合使用与示范一致的 14 维 link6 增量动作；此前失败尝试也保留在报告中。
-这验证了流程可运行，不证明 RAG 相对无 RAG 的成功率或成本优势。
+## 运行 fold_clothes
 
-下述双库方法与配对结果是此前保留的实现和实验，与此次 MCP 开发回合分开记录。
+在本分支的工作目录中，使用 `local.runtime.json` 指定的策略 Python 环境。原生运行需要现有 RoboDojo/Isaac Sim、资产、HexaShell、MCP 依赖及已登录的策略 CLI；配置入口见[MCP 运行说明](docs/rag-mcp.md#运行)和[依赖配置](docs/runtime.md#local-setup)。这里的 `python` 指策略解释器。
 
-## Motivation
-
-ICL 使模型能够通过输入中的示例适应任务，推理时无需更新参数。随着可用示例增加，如何选择上下文成为重要问题：模型每次能读到的经验有限，而经验与当前问题的相关性会影响其价值。检索为从更大的经验集合中选择上下文提供了一条路径。
-
-机器人将这一问题带入连续决策。历史示范提供可迁移的操作经验，当前执行产生的观察、动作和反馈则揭示现场状态及刚刚发生的错误。RoboRAG 因此分别管理两种经验：
-
-- **长期 RAG 库**：执行前从训练集示范及经过筛选的历史轨迹构建，跨 episode 复用；一次评测中固定版本、只读。
-- **短期 RAG 库**：每次 episode 从空库开始，随执行写入已观察到的交互；检索本次任务中的相关经历，episode 结束时关闭。
-
-研究问题是：**在固定上下文预算下，分别检索长期经验和短期交互，能否改善机器人对新场景的适应、长程任务执行和失败恢复？** 这是待验证的假设。
-
-研究背景及来源见 [motivation](docs/motivation.md)，工程设计见 [architecture](docs/architecture.md)，验证路径见 [experiments](docs/experiments.md)。
-
-## Pilot status
-
-真实 RoboDojo `stack_blocks` 已在开发布局 0 和冻结后验证布局 1 均取得 **100/100、完整成功**，分别用 195/302 步、20/31 次模型调用。相同配置的固定上下文对照也都成功，分别用 240/237 步、24/24 次调用。本轮打通了流程，未显示稳定的检索增益；这是两个布局的小规模试点。完整结果和投币试验中的负面结果均保留在 [results](docs/results.md)。
-
-## Current scope
-
-当前版本包含双库核心与真实 RoboDojo 执行接入：
-
-- 离线 JSON 快照构建与加载；长期库只接收训练集中的示范或整理后的经验。
-- episode 独立的短期内存库、只检索截至当前时刻可见的历史、关闭后清空。
-- 机器人及动作接口匹配、两路独立检索配额、最新交互保留。
-- 公开 HDF5 训练轨迹下载、固定版本及 SHA256 校验、视觉与动作片段入库。
-- 冻结 ResNet-18 多视角特征、本体状态检索；多示范库先按初始画面空间特征选轨迹，再检索片段。
-- RoboDojo 相机、动作控制、模型调用、原生评分和可审计检索日志。
-- `zero`、`fixed`、`long_only`、`dual` 四种比较模式；固定选段和双库检索使用相同模型与片段配额。
-
-纯 Python 核心保留词项检索，用于验证隔离和时序约束；真实机器人接入使用视觉检索。上下文配额以片段数计，并受上游图像上限约束；这不等于严格相同的 token 消耗。当前完成了小规模试点，**不将模型的“已抓住”等意图文字当作成功，不将相机测试或中断回合计入成绩**。已完成结果见 [results](docs/results.md)，过程见 [工作记录](docs/progress.md)。
-
-## Run locally
-
-Python 3.10+，核心示例只依赖标准库。在仓库根目录运行：
+先将 `--bank` 替换为已有的 fold TRAIN 图库路径。输出目录必须是新的；以下命令会启动仿真并调用模型：
 
 ```bash
-PYTHONPATH=src python3 -m roborag.demo
-PYTHONPATH=src python3 -m unittest discover -s tests -v
+python scripts/run_rag_mcp.py --task fold_clothes \
+  --seed 1 --variant standard --layout 0 --controller delta \
+  --model gpt-6-astra --effort xhigh --max-wall-seconds 1800 \
+  --bank /path/to/fold-clothes-bank --output runs/fold-single
 ```
 
-demo 在临时目录构建长期库，模拟一次插入失败后的检索，打印两路检索结果，再关闭本次短期库。所有数据、动作和机器人标识均为合成示例，不连接硬件或模型服务。
-
-真实 RoboDojo 环境与模型传输配置见 [runtime](docs/runtime.md)。配置完成后，用策略 Python 环境运行：
+在另一终端查看运行中的交互，或去掉 `--follow` 读取已有轨迹快照：
 
 ```bash
-python scripts/fetch_demonstrations.py --task stack_blocks --episodes 0,1,2
-python scripts/build_visual_bank.py --manifest data/runtime-data/stack_blocks/train/sources-0-1-2.json --output data/corpora/stack_blocks/v2.json
-python scripts/run_episode.py --task stack_blocks --mode dual --layout 0 --long-k 8 --short-k 4 --effort medium --corpus data/corpora/stack_blocks/v2.json --output runs/stack-dual-l0
-python scripts/summarize_runs.py --output runs/summary.json
+PYTHONPATH=src python -m roborag.interaction_monitor runs/fold-single --follow
 ```
 
-## Repository
+关闭监控不影响策略。每例保留 `run.json`、`gpt-plan.json`、`mcp-calls.jsonl`、`commands.jsonl`、图像和模型用量。取得原生评分后写入 `result.json`；异常退出保留 `exit.json`，缺失评分不会当作零分或成功。
 
-```text
-docs/                 动机、双库设计与实验计划
-src/roborag/schema.py  经验记录、当前查询与上下文结构
-src/roborag/memory.py  长期快照与 episode 短期库
-src/roborag/retrieval.py  两路检索与上下文组装
-src/roborag/demo.py    合成案例
-src/roborag/robot_memory.py  真实视觉片段检索与上下文组装
-src/roborag/vision.py  多视角与初始场景编码
-scripts/              数据入库、仿真启动和结果汇总
-tests/                隔离、时序与检索边界验证
+## 代码与验证入口
+
+- `src/roborag/rag_runner.py`：启动模型、MCP 和仿真进程，保存回合结果及来源。
+- `src/roborag/mcp/`：从原版 `rag_mcp.py` 移出的会话、观察、检索、计划与动作工具；旧导入入口保留。
+- `src/roborag/interaction_monitor.py`：独立读取交互日志。
+- `prompts/`：沿用原版任务提示和动作协议。
+- `experiments/fold_clothes/`：预先登记的条件与固定场景。
+- `tests/fixtures/v3-contract.json`：移动代码前捕获的原版契约，不能从新实现重生成来通过测试。
+
+已有本机 MCP 依赖安装在 `.runtime/mcp` 时，可运行离线检查：
+
+```bash
+PYTHONPATH=src:.runtime/mcp python -m unittest discover -s tests -v
 ```
 
-机器人接入复用 RoboICL 的观测/动作协议、IK 与 RoboDojo 适配器；项目动机从 ICL 与检索展开，工程依赖来源在 [runtime](docs/runtime.md) 中明确记录。大型轨迹、图像、索引、运行日志和凭据均不纳入 Git。
+这些检查覆盖工具定义、提示词、移动定义及核心文件一致性、seed 透传和监控行为，不调用模型或仿真。原生测试、参考文本和图像回放的证据统一见[验证结果](docs/v3-clean-validation-20261027.md)。
+
+## 研究背景与历史实现
+
+项目复用 HexaShell 的几何与视觉测量，以及 RoboICL/RoboDojo 的仿真和原生评价接口。检索对成功率或成本的独立贡献尚未通过消融验证；当前结果也不代表真机验证。
+
+[研究动机](docs/motivation.md)、[早期双库设计](docs/architecture.md)、[经验图库](docs/graph-bank.md)和[历史试验](docs/results.md)保留此前研究内容。早期双库原型及其结果与当前 v3 MCP 路径分别记录。大型轨迹、图像、图库和本机配置不纳入 Git。

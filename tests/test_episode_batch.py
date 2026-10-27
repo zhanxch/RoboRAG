@@ -12,6 +12,17 @@ from roborag import episode_batch
 
 
 class EpisodeBatchTests(unittest.TestCase):
+    def test_seeded_cases_keep_the_registered_seed_and_reject_duplicates(self):
+        self.assertEqual(episode_batch.normalize_cases([dict(variant="standard", layout=0)], 1),
+                         [dict(variant="standard", layout=0, seed=1)])
+        cases = [dict(variant="random", layout=0, seed=1), dict(variant="random", layout=0, seed=2)]
+        self.assertEqual(episode_batch.normalize_cases(cases), cases)
+        with self.assertRaisesRegex(ValueError, "duplicate"):
+            episode_batch.normalize_cases([cases[0], cases[0]])
+        for seed in (True, -1, "1"):
+            with self.assertRaises(ValueError):
+                episode_batch.normalize_cases([dict(variant="standard", layout=0, seed=seed)])
+
     def test_active_process_is_not_reported_finished_before_receipt_exists(self):
         sleep=time.sleep
         with tempfile.TemporaryDirectory() as temp:

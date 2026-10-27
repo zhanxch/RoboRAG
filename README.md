@@ -1,5 +1,7 @@
 # RoboRAG: Interaction-Aware Retrieval-Augmented Manipulation
 
+当前分支 `refactor/v3-clean` **直接从原始 fold v3 提交 `1e9ffa0` 开始重构**。本轮仅拆分原版 MCP 文件并增加独立日志监控，沿用原版 `record_plan` 与动作执行，不引入阶段式执行架构。对齐方法、监控入口和测试边界见 [v3 重构说明](docs/v3-clean-refactor.md)。以下保留原始版本的研究背景和历史实现说明，不表示本轮采用双库或新增阶段策略。
+
 **面向交互阶段与经验的检索增强机器人操作**
 
 RoboRAG 研究如何根据当前交互阶段，存储、检索并使用历史交互经验，以改善 Agent 的后续决策。

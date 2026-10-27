@@ -1,0 +1,361 @@
+{
+  "schema": "roborag.v3-history-replay.v1",
+  "source_commit": "1e9ffa05682fb750bd940938b6b8bd6bf6ac091f",
+  "baseline": "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50",
+  "passed": true,
+  "cases": [
+    {
+      "case": "seed1-random-l0",
+      "native_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-random-l1",
+      "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 5
+    },
+    {
+      "case": "seed1-random-l10",
+      "native_sha256": "362097c722449728e0294af1d7ce9ab51d85cbcd1b8a9f35c3c425320ede9b6a",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 5
+    },
+    {
+      "case": "seed1-random-l11",
+      "native_sha256": "ca7098523fb70ced5242a7968ec532d81adea112985fd90562a0d0f06de36776",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-random-l12",
+      "native_sha256": "34960f3b1f9cfe0884ff1356e3ff890febcc4dab731f230c8adfcb1cceb61e78",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-random-l13",
+      "native_sha256": "13b1079b646db550d54c76ae498e32c531a767c88f9147c9cf7aee17982a34bd",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-random-l14",
+      "native_sha256": "bc39ec9c577a01cbf37d599656e4048b66a01cf73c6dd0b860f0b42aee379d80",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-random-l15",
+      "native_sha256": "79ec03ddae0d1160214fc8ebabdfd0929a0390314c37255275234fc4cdc47870",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 7
+    },
+    {
+      "case": "seed1-random-l16",
+      "native_sha256": "2ed2c1d65535064cc242e519fd876d834920106809190ee89a7305170edb84ae",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 5
+    },
+    {
+      "case": "seed1-random-l17",
+      "native_sha256": "665a8d51e96dd69593c59397ad78fffecc357909170b69ce1c417aae7d71c6cf",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 7
+    },
+    {
+      "case": "seed1-random-l18",
+      "native_sha256": "60078173b45acc9943a05a2da7f49d0148e8b62d5a5321fc658cc7e3634ee41b",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-random-l19",
+      "native_sha256": "425247d599acbd30dbedf50a805a7e5a87fa4702a5950b57b6de4cf48e6f4a0b",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 2,
+      "read_action_reference": 5
+    },
+    {
+      "case": "seed1-random-l2",
+      "native_sha256": "21d1dcbb952b7e18b33725102335366b6c2eae4ede8e3d094b0e09b2da545bbe",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-random-l20",
+      "native_sha256": "56db59c75454944d882ef1c5117519f8d76431576f9f2a90e66a3b31a9cea2be",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-random-l21",
+      "native_sha256": "b2a537f7c1c3bdbb0e3adf933c4c260648d7876175be4aac1f7b86b9cd05398a",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-random-l22",
+      "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 2,
+      "read_action_reference": 8
+    },
+    {
+      "case": "seed1-random-l23",
+      "native_sha256": "195b05fd00819b01099166e71cf4c65a5257de40103a8a7f0e5f96100f614028",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-random-l24",
+      "native_sha256": "6df02cc60901c6463022478208a8d470e44097e690d51958c41c92647f94ddd9",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 7
+    },
+    {
+      "case": "seed1-random-l3",
+      "native_sha256": "b66f531b6551e52f2d07215a9daa18c75f5b2c39c8da3deab13f40f522c7facc",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-random-l4",
+      "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-random-l5",
+      "native_sha256": "8d58de40493367e0eb90d51b679cf434dcdcfe9f27d58ab52ae5e68661a9b5dd",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-random-l6",
+      "native_sha256": "3738c7205a9fc025d44cacdd806219107c6312f00ee08a7b86223bd62700b47a",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-random-l7",
+      "native_sha256": "0a6c48e1585d26c3ecfe9911fcb4e59335ae6b75a143789a651b0185fbb61144",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-random-l8",
+      "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-random-l9",
+      "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-standard-l0",
+      "native_sha256": "117b7aac5c033705b64fc53e97b00912e1fec4f50cff9869aee75b750b3529a6",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l1",
+      "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 5
+    },
+    {
+      "case": "seed1-standard-l10",
+      "native_sha256": "362097c722449728e0294af1d7ce9ab51d85cbcd1b8a9f35c3c425320ede9b6a",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l11",
+      "native_sha256": "ca7098523fb70ced5242a7968ec532d81adea112985fd90562a0d0f06de36776",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l12",
+      "native_sha256": "34960f3b1f9cfe0884ff1356e3ff890febcc4dab731f230c8adfcb1cceb61e78",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l13",
+      "native_sha256": "13b1079b646db550d54c76ae498e32c531a767c88f9147c9cf7aee17982a34bd",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l14",
+      "native_sha256": "bc39ec9c577a01cbf37d599656e4048b66a01cf73c6dd0b860f0b42aee379d80",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l15",
+      "native_sha256": "c05f0ced10f4402b26683d761ebeedc814fd73127e0317cc7cbb1ca60f2dec12",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-standard-l16",
+      "native_sha256": "2ed2c1d65535064cc242e519fd876d834920106809190ee89a7305170edb84ae",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-standard-l17",
+      "native_sha256": "fc47acf9ad8c3889cdb306c06b2dde09917adee01fdaba1e6f9bdcb07a208b16",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 2,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-standard-l18",
+      "native_sha256": "60078173b45acc9943a05a2da7f49d0148e8b62d5a5321fc658cc7e3634ee41b",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l19",
+      "native_sha256": "22e688bdbfc97f01d5c0f947210df8136e6a85b19a201b7a7f0f5733e6eff976",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-standard-l2",
+      "native_sha256": "21d1dcbb952b7e18b33725102335366b6c2eae4ede8e3d094b0e09b2da545bbe",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 7
+    },
+    {
+      "case": "seed1-standard-l20",
+      "native_sha256": "56db59c75454944d882ef1c5117519f8d76431576f9f2a90e66a3b31a9cea2be",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-standard-l21",
+      "native_sha256": "b2a537f7c1c3bdbb0e3adf933c4c260648d7876175be4aac1f7b86b9cd05398a",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 7
+    },
+    {
+      "case": "seed1-standard-l22",
+      "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-standard-l23",
+      "native_sha256": "195b05fd00819b01099166e71cf4c65a5257de40103a8a7f0e5f96100f614028",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-standard-l24",
+      "native_sha256": "acd57b0c6fbca93853c61677f14fca3ed40c8ba25b1f796bcb40bdc5f96c9b12",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 5
+    },
+    {
+      "case": "seed1-standard-l3",
+      "native_sha256": "b66f531b6551e52f2d07215a9daa18c75f5b2c39c8da3deab13f40f522c7facc",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l4",
+      "native_sha256": "16162c622da06a98c5ec192fdb21fd65a65da2a69786381522b094e8c9e5b372",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l5",
+      "native_sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 3
+    },
+    {
+      "case": "seed1-standard-l6",
+      "native_sha256": "0d4366d03be196625243688d60cdd43a116e7150f009b1d930401dd64dcbd215",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 4
+    },
+    {
+      "case": "seed1-standard-l7",
+      "native_sha256": "d22fd198bf5675844f47b4c72e68dcc1d9eb05807736c35e0f1af3d27004b813",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 7
+    },
+    {
+      "case": "seed1-standard-l8",
+      "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    },
+    {
+      "case": "seed1-standard-l9",
+      "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+      "bank_files_verified": 13,
+      "retrieve_evidence": 1,
+      "read_action_reference": 6
+    }
+  ],
+  "retrieval_responses": 53,
+  "reference_responses": 241,
+  "scope": "Model-visible evidence text replayed exactly; no model or robot movement. This does not establish new native success rate."
+}

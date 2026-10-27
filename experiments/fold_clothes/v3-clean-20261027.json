@@ -1,0 +1,37 @@
+{
+  "schema": "roborag.v3-clean-validation.v1",
+  "registered_at": "2026-10-27",
+  "base_commit": "1e9ffa05682fb750bd940938b6b8bd6bf6ac091f",
+  "implementation": "MCP source extraction only; observer reads existing logs in a separate process. No stage-driven execution.",
+  "candidate_commit": "Resolved and frozen in freeze.json before launch.",
+  "cases_file": "experiments/fold_clothes/v3-clean-cases.json",
+  "cases_sha256": "42b0934fd39ed957f88676e6ac8aa87acc5a018c19faa234490a3827bc1e0521",
+  "cases_count": 50,
+  "conditions": {
+    "parallel": 2,
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "task": "fold_clothes",
+    "controller": "delta",
+    "bank": "/home/zxc/文档/ChatGPT/RoboRAG-rag-mcp-execution/runs/rag-fold-bank-20261024",
+    "no_rag": false,
+    "max_wall_seconds": 1800.0
+  },
+  "seed": 1,
+  "native_max_control_steps": 500,
+  "baseline": "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50",
+  "baseline_successes": 37,
+  "output": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027",
+  "attempt_policy": "One attempt per case; no retries or replacement of failures. Freeze all policy sources and bank throughout. Stop only at user request or infrastructure/integrity problem.",
+  "acceptance": {
+    "complete_scored_cases": 50,
+    "successes_at_least": 37,
+    "all_source_integrity_checks": true,
+    "interpretation": "Engineering recovery criterion; not a statistical equivalence claim. Report paired cases and all-attempt costs; known benchmark, not unseen heldout."
+  },
+  "preflight": {
+    "frozen_contract": "tests/fixtures/v3-contract.json",
+    "history_replay": "results/v3-clean-history-replay-20261027.json"
+  },
+  "monitoring": "Separate read-only interaction_monitor process; it never enters the agent workspace or model context."
+}

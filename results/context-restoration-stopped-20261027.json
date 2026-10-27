@@ -1,0 +1,71 @@
+{
+  "schema": "roborag.user-stopped-experiment.v1",
+  "reason": "用户要求停止阶段式方案，改为从原始 v3 提交重新重构。",
+  "policy_commit": "92b0072b08baa44781cd842ba4b75980ad52070a",
+  "complete": false,
+  "registered_cases": 50,
+  "completed_cases": [
+    {
+      "case": "seed1-standard-l0",
+      "complete": true,
+      "success": false,
+      "score": 20.0,
+      "result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/fold-context-restoration-full-20261027/fold_clothes/seed1-standard-l0/result.json",
+      "sha256": "54006a7e026710d51e7191b52daa837594f64e4583664743aa5bd2070f939886",
+      "native_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706"
+    },
+    {
+      "case": "seed1-random-l0",
+      "complete": true,
+      "success": false,
+      "score": 0.0,
+      "result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/fold-context-restoration-full-20261027/fold_clothes/seed1-random-l0/result.json",
+      "sha256": "c6c84d1ea62ed4833a8ead68802c28a4868fc14b1aeed91f70e35a8be4495f55",
+      "native_sha256": "99b780f4e1842dfa81b413ccd2e5302e5827cc349fea4edf978e1bd847986ed3"
+    },
+    {
+      "case": "seed1-standard-l1",
+      "complete": true,
+      "success": false,
+      "score": 20.0,
+      "result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/fold-context-restoration-full-20261027/fold_clothes/seed1-standard-l1/result.json",
+      "sha256": "fa1e4d0008c227ddfbfd1f4f0dfce537abdd6a7b2a7e194c0dd7f55bd20a0e6c",
+      "native_sha256": "d53ae8ccb0fbb98e2ad9476043d4ee1f608451fd3c8197df10b2961ccdb82cb9"
+    },
+    {
+      "case": "seed1-random-l1",
+      "complete": true,
+      "success": true,
+      "score": 100.0,
+      "result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/fold-context-restoration-full-20261027/fold_clothes/seed1-random-l1/result.json",
+      "sha256": "5038960c5619e59100c14feb03345a3acb5ba934a3e450c13856c60733a0f80c",
+      "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509"
+    },
+    {
+      "case": "seed1-standard-l2",
+      "complete": true,
+      "success": false,
+      "score": 20.0,
+      "result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/fold-context-restoration-full-20261027/fold_clothes/seed1-standard-l2/result.json",
+      "sha256": "b7b8b0e914553f546380b447461b060a78616f33f7a66c355cbec441135c6556",
+      "native_sha256": "21d1dcbb952b7e18b33725102335366b6c2eae4ede8e3d094b0e09b2da545bbe"
+    },
+    {
+      "case": "seed1-random-l2",
+      "complete": true,
+      "success": false,
+      "score": 0.0,
+      "result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/fold-context-restoration-full-20261027/fold_clothes/seed1-random-l2/result.json",
+      "sha256": "db14899aa2952d9a395e964744a37fd6734c6a5d3db22271d26db8f6d1d72909",
+      "native_sha256": "7046d2412d1e4cde0c60664ae5a70e1e0e9f31989a426b7893c00433afd7feb5"
+    }
+  ],
+  "interrupted_cases": [
+    "seed1-standard-l3"
+  ],
+  "unattempted_count": 43,
+  "successes_completed": 1,
+  "full_suite_success_rate": null,
+  "processes_exited": true,
+  "evidence_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/fold-context-restoration-full-20261027"
+}

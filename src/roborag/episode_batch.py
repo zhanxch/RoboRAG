@@ -16,6 +16,22 @@ from .episode_files import write_json as write
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def normalize_cases(cases, default_seed=0):
+    if not isinstance(cases, list) or not cases:
+        raise ValueError("nonempty case list required")
+    normalized = []
+    for case in cases:
+        if not isinstance(case, dict):
+            raise ValueError("case must be an object")
+        variant, layout, seed = case.get("variant"), case.get("layout"), case.get("seed", default_seed)
+        if variant not in ("standard", "random") or type(layout) is not int or layout < 0 or type(seed) is not int or seed < 0:
+            raise ValueError("cases require standard/random variant and nonnegative integer seed/layout")
+        normalized.append(dict(variant=variant, layout=layout, seed=seed))
+    if len({(c["seed"], c["variant"], c["layout"]) for c in normalized}) != len(normalized):
+        raise ValueError("duplicate cases would overwrite experiment evidence")
+    return normalized
+
+
 def protocol_sources(bank):
     paths = list((ROOT / "src/roborag").rglob("*.py")) + list((ROOT / "prompts").glob("*.txt"))
     paths += list(bank.glob("*.json")) + list((bank / "graphs").glob("*.json"))
@@ -63,6 +79,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--layouts", default="0,1")
     parser.add_argument("--variants", default="standard")
+    parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--cases-file", type=Path, help="JSON list of {variant, layout} cases, in fixed launch order")
     parser.add_argument("--parallel", type=int, choices=[1, 2], default=2)
     parser.add_argument("--model", default="gpt-6-astra")
@@ -71,10 +88,10 @@ def main():
     runtime = json.loads((ROOT / "local.runtime.json").read_text())
     cases = (json.loads(args.cases_file.read_text()) if args.cases_file else
              [dict(variant=variant, layout=int(layout)) for variant in args.variants.split(",") for layout in args.layouts.split(",")])
-    if not cases or any(c["variant"] not in ("standard", "random") or not isinstance(c["layout"], int) or c["layout"] < 0 for c in cases):
-        parser.error("nonempty cases must have standard/random variant and nonnegative integer layout")
-    if len({(c["variant"], c["layout"]) for c in cases}) != len(cases):
-        parser.error("duplicate cases would overwrite experiment evidence")
+    try:
+        cases = normalize_cases(cases, args.seed)
+    except ValueError as exc:
+        parser.error(str(exc))
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     frozen_sources = protocol_sources(args.bank.resolve())
@@ -121,10 +138,11 @@ def main():
                     if protocol_sources(args.bank.resolve()) != frozen_sources:
                         raise RuntimeError("Source or bank changed during frozen suite; refusing to mix revisions")
                     case = cases.pop(0)
-                    key = f"{case['variant']}-l{case['layout']}"
+                    key = (f"seed{case['seed']}-" if case["seed"] else "") + f"{case['variant']}-l{case['layout']}"
                     directory = out / key
                     command = [runtime["policy_python"], str(ROOT / "scripts/run_rag_mcp.py"),
                                "--output", str(directory), "--layout", str(case["layout"]), "--variant", case["variant"],
+                               "--seed", str(case["seed"]),
                                "--model", args.model, "--effort", args.effort, "--task", args.task,
                                "--controller", args.controller, "--max-wall-seconds", str(args.max_wall_seconds)]
                     command += ["--bank", str(args.bank.resolve())]

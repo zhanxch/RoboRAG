@@ -1,0 +1,222 @@
+{
+  "schema": "roborag.v3-clean-software-validation.v1",
+  "base_commit": "1e9ffa05682fb750bd940938b6b8bd6bf6ac091f",
+  "tests": {
+    "passed": 88,
+    "failed": 0,
+    "log_sha256": "e18f801da1d147f2acd9cf7b9a73a24d4047dd6c098e72735d43578c2f182776"
+  },
+  "model_tool_count": 6,
+  "moved_definition_ast_count": 18,
+  "prompt_sha256": "26aa5ab01f3a0b78546089a84fdebf04c428ded0f2bb5fbf3945f4e95df8796b",
+  "history_replay": {
+    "cases": 50,
+    "retrieval_responses": 53,
+    "reference_responses": 241,
+    "all_model_visible_text_equal": true
+  },
+  "baseline_source_integrity": [
+    {
+      "case": "seed1-random-l0",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l1",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l10",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l11",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l12",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l13",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l14",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l15",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l16",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l17",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l18",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l19",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l2",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l20",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l21",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l22",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l23",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l24",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l3",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l4",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l5",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l6",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l7",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l8",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-random-l9",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l0",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l1",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l10",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l11",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l12",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l13",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l14",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l15",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l16",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l17",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l18",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l19",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l2",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l20",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l21",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l22",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l23",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l24",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l3",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l4",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l5",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l6",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l7",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l8",
+      "files_verified": 32
+    },
+    {
+      "case": "seed1-standard-l9",
+      "files_verified": 32
+    }
+  ],
+  "monitor": "Read-only standalone process; no policy imports or output to agent workspace.",
+  "native_test_status": "Not yet launched at this prelaunch validation snapshot. No new success-rate claim."
+}

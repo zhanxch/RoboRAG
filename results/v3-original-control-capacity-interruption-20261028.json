@@ -1,0 +1,74 @@
+{
+  "schema": "roborag.original-control-interruption.v1",
+  "id": "original-control-capacity-1",
+  "observed_at": "2026-10-27T22:13:05.042766+00:00",
+  "case": "seed1-standard-l11",
+  "error": "Selected model is at capacity. Please try a different model.",
+  "audit": {
+    "case": "seed1-standard-l11",
+    "source_and_prompt_verified": true,
+    "original_v3_conditions_match": true,
+    "source_files_verified": 32,
+    "original_success": true,
+    "attempt_wall_seconds": 122.77434873580933,
+    "status": "unscored",
+    "native_score": null,
+    "success": null,
+    "classification": "model_capacity_before_execution",
+    "control_steps_lower_bound": 0,
+    "wall_seconds": 106.77042541000992,
+    "model_usage": null,
+    "failure": {
+      "complete": false,
+      "error": "RuntimeError",
+      "detail": "Persistent Codex agent failed; see agent-events.jsonl and agent-stderr.log",
+      "wall_seconds": 106.77042541000992
+    },
+    "evidence_sha256": {
+      "exit.json": "7f75dc017fa9b688142558e116e3e3390a4374a6448536693d64734fbce0c5a2",
+      "agent-exit.json": "f74250eadb72007e263185e24716e85b6d169002066c8b7f00642c894338bcee",
+      "agent-events.jsonl": "a5422941eb0d8dfcbde8d7c372d57c75078d0844a35c13dba0fc50227bf7c842",
+      "agent-stderr.log": "e61bcd04ab723ad06eef3e98c213365216f3cee0d2dc5b73592e78c801865cae",
+      "actions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "ready.json": "32637ab85c9f4f2e3189d1f18eb7f9b35f827f802b71e64898ae33fd44ef3892"
+    },
+    "artifacts": {
+      "passed": true,
+      "files": 25,
+      "bytes": 2334846,
+      "path_size_sha256": "084251bbcc62a99667e6f7cdd5ed7b904c960db048161c574655b1e49c74b325",
+      "scope": "Required scored-trajectory or unscored-interruption evidence exists; inventory covers paths and sizes, not physical semantics."
+    }
+  },
+  "agent_exit": {
+    "returncode": 1,
+    "wall_seconds": 5.076339228777215,
+    "completed_turns": 0,
+    "usage": null,
+    "accounting": {
+      "reported_usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "known_token_lower_bounds": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "usage_reported_turns": 0,
+      "completed_native_turns": 0,
+      "terminal_usage_available": false,
+      "malformed_event_lines": 0,
+      "model_request_count": null,
+      "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+      "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+    }
+  },
+  "handling": "Preserve as an unscored original-v3 attempt. No retry, replacement, model change or budget extension. Other registered cases continue while their original processes remain healthy.",
+  "interpretation": "No native success or failure is known for this attempt; missing model usage is unknown, not zero. The endpoint failure is distinct from robot policy performance."
+}

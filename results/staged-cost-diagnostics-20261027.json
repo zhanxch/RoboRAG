@@ -1,0 +1,1300 @@
+{
+  "schema": "roborag.staged-cost-diagnostics.v1",
+  "created_at": "2026-10-27T05:17:44.059457+00:00",
+  "scope": {
+    "purpose": "Bounded read-only cost diagnosis from allowed development runs and formal aggregate reports; no tuning or new native tests.",
+    "allowed_development_runs": [
+      "legacy_fold_l0",
+      "staged43_fold_l0",
+      "legacy_push_l0",
+      "staged43_push_l0",
+      "legacy_pour_l0",
+      "staged43_pour_l0",
+      "legacy_pour_l1",
+      "staged815_pour_l1"
+    ],
+    "formal_reports_read": "Aggregate paired/overall/structure_cost fields only for completed fold/push. Formal agent/tool/action trajectories and images were not inspected. Pour formal evaluation was still in progress.",
+    "mutations": "Only this diagnostic result; no source/protocol/worktree/run changes."
+  },
+  "method": {
+    "usage": "Native CLI turn totals; uncached=input-cached. Reasoning is included within output. Actual billing/API request count unknown.",
+    "text_count": "Recursively decode serialized MCP content wrappers before counting text; exclude base64 image data. Compact JSON used for attributable subfields. Character counts are not token estimates.",
+    "images": "Count image content blocks and unique base64 payload hashes without decoding/viewing; log representation can differ from provider accounting.",
+    "rule_repetition": "Exact rule.text strings repeated in initial prompt or earlier prepare/enter replies. Whole reused-context chars include references and metadata, not just duplicated rules.",
+    "code_inspection": "Stage enter returns full context even on session cache reuse; assess echoes checks; observation responses append current execution attribution; execution_status returns full plan/progress only if called."
+  },
+  "formal_aggregate_context": {
+    "fold_clothes": {
+      "source": "results/staged-regression-fold_clothes-81513e4.json",
+      "sha256": "290df2f0e9c61e83829d9375985c9becdfe3c95526362a327c9fe9cc781c2d7f",
+      "baseline": {
+        "planned": 4,
+        "recorded": 4,
+        "scored": 4,
+        "successes": 2,
+        "success_rate": 0.5,
+        "scored_success_rate": 0.5,
+        "mean_progress": 60.0,
+        "mean_control_steps": 373.25,
+        "mean_successful_control_steps": 406.5,
+        "mean_wall_seconds": 720.8734578462318,
+        "mean_agent_wall_seconds": 677.3412067097961,
+        "sum_episode_wall_seconds": 2883.493831384927,
+        "sum_episode_wall_seconds_known_lower_bound": 2883.493831384927,
+        "usage": {
+          "input_tokens": 7848045,
+          "input_tokens_known_lower_bound": 7848045,
+          "cached_input_tokens": 7507968,
+          "cached_input_tokens_known_lower_bound": 7507968,
+          "output_tokens": 40463,
+          "output_tokens_known_lower_bound": 40463,
+          "reasoning_output_tokens": 15004,
+          "reasoning_output_tokens_known_lower_bound": 15004
+        },
+        "uncached_input_tokens": 340077,
+        "input_cache_fraction": 0.9566672973969951,
+        "actual_billed_usd": null,
+        "model_request_count": null
+      },
+      "candidate": {
+        "planned": 4,
+        "recorded": 4,
+        "scored": 4,
+        "successes": 2,
+        "success_rate": 0.5,
+        "scored_success_rate": 0.5,
+        "mean_progress": 60.0,
+        "mean_control_steps": 397.75,
+        "mean_successful_control_steps": 361.5,
+        "mean_wall_seconds": 628.1725862802705,
+        "mean_agent_wall_seconds": 585.9279900955735,
+        "sum_episode_wall_seconds": 2512.690345121082,
+        "sum_episode_wall_seconds_known_lower_bound": 2512.690345121082,
+        "usage": {
+          "input_tokens": 11203443,
+          "input_tokens_known_lower_bound": 11203443,
+          "cached_input_tokens": 10810752,
+          "cached_input_tokens_known_lower_bound": 10810752,
+          "output_tokens": 50628,
+          "output_tokens_known_lower_bound": 50628,
+          "reasoning_output_tokens": 16680,
+          "reasoning_output_tokens_known_lower_bound": 16680
+        },
+        "uncached_input_tokens": 392691,
+        "input_cache_fraction": 0.9649490786002125,
+        "actual_billed_usd": null,
+        "model_request_count": null
+      },
+      "jointly_successful": {
+        "count": 1,
+        "baseline": {
+          "planned": 1,
+          "recorded": 1,
+          "scored": 1,
+          "successes": 1,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 448,
+          "mean_successful_control_steps": 448,
+          "mean_wall_seconds": 804.6130559970625,
+          "mean_agent_wall_seconds": 761.8222575160908,
+          "sum_episode_wall_seconds": 804.6130559970625,
+          "sum_episode_wall_seconds_known_lower_bound": 804.6130559970625,
+          "usage": {
+            "input_tokens": 2145422,
+            "input_tokens_known_lower_bound": 2145422,
+            "cached_input_tokens": 2059904,
+            "cached_input_tokens_known_lower_bound": 2059904,
+            "output_tokens": 11512,
+            "output_tokens_known_lower_bound": 11512,
+            "reasoning_output_tokens": 4214,
+            "reasoning_output_tokens_known_lower_bound": 4214
+          },
+          "uncached_input_tokens": 85518,
+          "input_cache_fraction": 0.9601393105878471,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "candidate": {
+          "planned": 1,
+          "recorded": 1,
+          "scored": 1,
+          "successes": 1,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 401,
+          "mean_successful_control_steps": 401,
+          "mean_wall_seconds": 591.5572232459672,
+          "mean_agent_wall_seconds": 546.3682183420751,
+          "sum_episode_wall_seconds": 591.5572232459672,
+          "sum_episode_wall_seconds_known_lower_bound": 591.5572232459672,
+          "usage": {
+            "input_tokens": 2666338,
+            "input_tokens_known_lower_bound": 2666338,
+            "cached_input_tokens": 2569472,
+            "cached_input_tokens_known_lower_bound": 2569472,
+            "output_tokens": 11558,
+            "output_tokens_known_lower_bound": 11558,
+            "reasoning_output_tokens": 3552,
+            "reasoning_output_tokens_known_lower_bound": 3552
+          },
+          "uncached_input_tokens": 96866,
+          "input_cache_fraction": 0.963670772422701,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      },
+      "structure_cost": {
+        "initial_plans": 4,
+        "plan_revisions": 0,
+        "stage_preparations": 21,
+        "stage_searches": 21,
+        "stage_cache_hits": 0,
+        "stage_context_reuses": 17,
+        "legacy_retrieval_calls": 0,
+        "reference_expansions": 8
+      }
+    },
+    "push_T": {
+      "source": "results/staged-regression-push_T-81513e4.json",
+      "sha256": "04962823e493a9eb62305ef072169e24d692a735d6c2ef2d2c4d6b6cbc1cc323",
+      "baseline": {
+        "planned": 4,
+        "recorded": 4,
+        "scored": 4,
+        "successes": 4,
+        "success_rate": 1.0,
+        "scored_success_rate": 1.0,
+        "mean_progress": 100.0,
+        "mean_control_steps": 397.75,
+        "mean_successful_control_steps": 397.75,
+        "mean_wall_seconds": 818.130194761703,
+        "mean_agent_wall_seconds": 773.8539482934866,
+        "sum_episode_wall_seconds": 3272.520779046812,
+        "sum_episode_wall_seconds_known_lower_bound": 3272.520779046812,
+        "usage": {
+          "input_tokens": 7262777,
+          "input_tokens_known_lower_bound": 7262777,
+          "cached_input_tokens": 6972416,
+          "cached_input_tokens_known_lower_bound": 6972416,
+          "output_tokens": 45568,
+          "output_tokens_known_lower_bound": 45568,
+          "reasoning_output_tokens": 18132,
+          "reasoning_output_tokens_known_lower_bound": 18132
+        },
+        "uncached_input_tokens": 290361,
+        "input_cache_fraction": 0.9600206642720821,
+        "actual_billed_usd": null,
+        "model_request_count": null
+      },
+      "candidate": {
+        "planned": 4,
+        "recorded": 4,
+        "scored": 4,
+        "successes": 4,
+        "success_rate": 1.0,
+        "scored_success_rate": 1.0,
+        "mean_progress": 100.0,
+        "mean_control_steps": 318.25,
+        "mean_successful_control_steps": 318.25,
+        "mean_wall_seconds": 565.5290092070354,
+        "mean_agent_wall_seconds": 525.4592286254629,
+        "sum_episode_wall_seconds": 2262.1160368281417,
+        "sum_episode_wall_seconds_known_lower_bound": 2262.1160368281417,
+        "usage": {
+          "input_tokens": 9322782,
+          "input_tokens_known_lower_bound": 9322782,
+          "cached_input_tokens": 8913280,
+          "cached_input_tokens_known_lower_bound": 8913280,
+          "output_tokens": 48237,
+          "output_tokens_known_lower_bound": 48237,
+          "reasoning_output_tokens": 15649,
+          "reasoning_output_tokens_known_lower_bound": 15649
+        },
+        "uncached_input_tokens": 409502,
+        "input_cache_fraction": 0.9560751286472214,
+        "actual_billed_usd": null,
+        "model_request_count": null
+      },
+      "jointly_successful": {
+        "count": 4,
+        "baseline": {
+          "planned": 4,
+          "recorded": 4,
+          "scored": 4,
+          "successes": 4,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 397.75,
+          "mean_successful_control_steps": 397.75,
+          "mean_wall_seconds": 818.130194761703,
+          "mean_agent_wall_seconds": 773.8539482934866,
+          "sum_episode_wall_seconds": 3272.520779046812,
+          "sum_episode_wall_seconds_known_lower_bound": 3272.520779046812,
+          "usage": {
+            "input_tokens": 7262777,
+            "input_tokens_known_lower_bound": 7262777,
+            "cached_input_tokens": 6972416,
+            "cached_input_tokens_known_lower_bound": 6972416,
+            "output_tokens": 45568,
+            "output_tokens_known_lower_bound": 45568,
+            "reasoning_output_tokens": 18132,
+            "reasoning_output_tokens_known_lower_bound": 18132
+          },
+          "uncached_input_tokens": 290361,
+          "input_cache_fraction": 0.9600206642720821,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "candidate": {
+          "planned": 4,
+          "recorded": 4,
+          "scored": 4,
+          "successes": 4,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 318.25,
+          "mean_successful_control_steps": 318.25,
+          "mean_wall_seconds": 565.5290092070354,
+          "mean_agent_wall_seconds": 525.4592286254629,
+          "sum_episode_wall_seconds": 2262.1160368281417,
+          "sum_episode_wall_seconds_known_lower_bound": 2262.1160368281417,
+          "usage": {
+            "input_tokens": 9322782,
+            "input_tokens_known_lower_bound": 9322782,
+            "cached_input_tokens": 8913280,
+            "cached_input_tokens_known_lower_bound": 8913280,
+            "output_tokens": 48237,
+            "output_tokens_known_lower_bound": 48237,
+            "reasoning_output_tokens": 15649,
+            "reasoning_output_tokens_known_lower_bound": 15649
+          },
+          "uncached_input_tokens": 409502,
+          "input_cache_fraction": 0.9560751286472214,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      },
+      "structure_cost": {
+        "initial_plans": 4,
+        "plan_revisions": 0,
+        "stage_preparations": 26,
+        "stage_searches": 26,
+        "stage_cache_hits": 0,
+        "stage_context_reuses": 9,
+        "legacy_retrieval_calls": 0,
+        "reference_expansions": 4
+      }
+    }
+  },
+  "development_runs": {
+    "legacy_fold_l0": {
+      "directory": "runs/refactor-fold-20261026/seed1-standard-l0",
+      "usage": {
+        "input_tokens": 1499825,
+        "cached_input_tokens": 1426048,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7800,
+        "reasoning_output_tokens": 2512
+      },
+      "uncached_input_tokens": 73777,
+      "cache_fraction": 0.9508095944526862,
+      "initial_prompt_chars": 6559,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 2849,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "retrieve_evidence": {
+          "calls": 1,
+          "request_chars": 195,
+          "response_text_chars": 2079,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_scene": {
+          "calls": 1,
+          "request_chars": 29,
+          "response_text_chars": 4055,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 4,
+          "request_chars": 360,
+          "response_text_chars": 10496,
+          "image_blocks": 8,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_plan": {
+          "calls": 1,
+          "request_chars": 2738,
+          "response_text_chars": 76,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 25,
+          "request_chars": 7824,
+          "response_text_chars": 58010,
+          "image_blocks": 45,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 0,
+        "repeated_rule_chars": 0,
+        "session_reuse_entries": 0,
+        "session_reuse_context_chars": 0,
+        "enter_phase_echo_chars": 0,
+        "assessment_check_echo_chars": 0,
+        "actual_stage_preparations": 0,
+        "preparation_cache_hits": 0,
+        "plan_creations": 0,
+        "plan_revisions": 0
+      },
+      "mcp_calls": 33,
+      "image_blocks": 55,
+      "unique_image_payloads": 55,
+      "native_turns": 1,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 2,
+        "agent_message": 6,
+        "command_execution": 1
+      },
+      "response_text_chars": 77565,
+      "stage_lifecycle_response_chars": 0,
+      "stage_lifecycle_request_chars": 0,
+      "stage_lifecycle_calls": 0,
+      "legacy_retrieval_planning_response_chars": 2155,
+      "legacy_retrieval_planning_calls": 2,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "a8fd11276739af77e85f690474545a837a56ce49599f8c84a08aa0e70d2090de",
+        "mcp-calls.jsonl": "06fb3b156a7aff53921be867278339b2216f7e9ee04aaba4a4ee2760a0b47cce",
+        "agent-prompt.txt": "26aa5ab01f3a0b78546089a84fdebf04c428ded0f2bb5fbf3945f4e95df8796b"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    },
+    "staged43_fold_l0": {
+      "directory": "runs/staged-v1-dev-43f8941-20261027/fold_clothes",
+      "usage": {
+        "input_tokens": 2567853,
+        "cached_input_tokens": 2440704,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12079,
+        "reasoning_output_tokens": 3865
+      },
+      "uncached_input_tokens": 127149,
+      "cache_fraction": 0.9504843151068227,
+      "initial_prompt_chars": 8236,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 3062,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 176
+        },
+        "get_task_sop": {
+          "calls": 1,
+          "request_chars": 2,
+          "response_text_chars": 5900,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_scene": {
+          "calls": 3,
+          "request_chars": 42,
+          "response_text_chars": 8952,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "prepare_stage": {
+          "calls": 4,
+          "request_chars": 770,
+          "response_text_chars": 15369,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 2,
+          "request_chars": 181,
+          "response_text_chars": 5134,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_graph_plan": {
+          "calls": 1,
+          "request_chars": 3488,
+          "response_text_chars": 141,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "enter_stage": {
+          "calls": 5,
+          "request_chars": 342,
+          "response_text_chars": 32812,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "assess_stage": {
+          "calls": 6,
+          "request_chars": 5570,
+          "response_text_chars": 8586,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 32,
+          "request_chars": 10133,
+          "response_text_chars": 81642,
+          "image_blocks": 59,
+          "error_calls": 0,
+          "observation_attribution_chars": 6326
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 5820,
+        "repeated_rule_chars": 5076,
+        "session_reuse_entries": 4,
+        "session_reuse_context_chars": 19317,
+        "enter_phase_echo_chars": 2418,
+        "assessment_check_echo_chars": 3537,
+        "actual_stage_preparations": 4,
+        "preparation_cache_hits": 0,
+        "plan_creations": 1,
+        "plan_revisions": 0
+      },
+      "mcp_calls": 55,
+      "image_blocks": 63,
+      "unique_image_payloads": 63,
+      "native_turns": 1,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 2,
+        "agent_message": 6
+      },
+      "response_text_chars": 161598,
+      "stage_lifecycle_response_chars": 62808,
+      "stage_lifecycle_request_chars": 10172,
+      "stage_lifecycle_calls": 17,
+      "legacy_retrieval_planning_response_chars": 0,
+      "legacy_retrieval_planning_calls": 0,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "a4ab4f151b4dc780f07a623ab5e3b93a31940a3f243bf686dfb422ae8d4a9f04",
+        "mcp-calls.jsonl": "d9c42b26ea1583595f1ba5174f0c80e2ac3414cf5103ca02c67db1f381f67296",
+        "agent-prompt.txt": "85fd1c6dd467979ff9c4a4cf8096276e777a313f0c0c8c925fdffc3dcfccd3cd"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    },
+    "legacy_push_l0": {
+      "directory": "runs/refactor-push-t-20261026/seed1-standard-l0",
+      "usage": {
+        "input_tokens": 2481515,
+        "cached_input_tokens": 2396032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12395,
+        "reasoning_output_tokens": 4285
+      },
+      "uncached_input_tokens": 85483,
+      "cache_fraction": 0.9655520921695013,
+      "initial_prompt_chars": 9480,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 2946,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "retrieve_evidence": {
+          "calls": 3,
+          "request_chars": 849,
+          "response_text_chars": 5068,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 2,
+          "request_chars": 166,
+          "response_text_chars": 7995,
+          "image_blocks": 8,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_planar": {
+          "calls": 8,
+          "request_chars": 654,
+          "response_text_chars": 6077,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_plan": {
+          "calls": 3,
+          "request_chars": 4875,
+          "response_text_chars": 228,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 29,
+          "request_chars": 9467,
+          "response_text_chars": 71151,
+          "image_blocks": 56,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 0,
+        "repeated_rule_chars": 0,
+        "session_reuse_entries": 0,
+        "session_reuse_context_chars": 0,
+        "enter_phase_echo_chars": 0,
+        "assessment_check_echo_chars": 0,
+        "actual_stage_preparations": 0,
+        "preparation_cache_hits": 0,
+        "plan_creations": 0,
+        "plan_revisions": 0
+      },
+      "mcp_calls": 46,
+      "image_blocks": 66,
+      "unique_image_payloads": 66,
+      "native_turns": 1,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 2,
+        "agent_message": 9,
+        "command_execution": 3
+      },
+      "response_text_chars": 93465,
+      "stage_lifecycle_response_chars": 0,
+      "stage_lifecycle_request_chars": 0,
+      "stage_lifecycle_calls": 0,
+      "legacy_retrieval_planning_response_chars": 5296,
+      "legacy_retrieval_planning_calls": 6,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "46dc467bae9d99d4432e80dd6f516b8a7462c50580fa22cfbe9ab8039041dff7",
+        "mcp-calls.jsonl": "df64ed1d4783e6e310ce1f97c7a1e341e6d6c3358ad9d1b90fd73db171009911",
+        "agent-prompt.txt": "665c1f51132203eaeca8d263c99c8d4c4523ec1cab87dc478d8668a35397a282"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    },
+    "staged43_push_l0": {
+      "directory": "runs/staged-v1-dev-43f8941-20261027/push_T",
+      "usage": {
+        "input_tokens": 2833731,
+        "cached_input_tokens": 2728448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 11649,
+        "reasoning_output_tokens": 2657
+      },
+      "uncached_input_tokens": 105283,
+      "cache_fraction": 0.9628465087194232,
+      "initial_prompt_chars": 10168,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 3159,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 176
+        },
+        "get_task_sop": {
+          "calls": 1,
+          "request_chars": 2,
+          "response_text_chars": 6387,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_planar": {
+          "calls": 8,
+          "request_chars": 466,
+          "response_text_chars": 6032,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "prepare_stage": {
+          "calls": 4,
+          "request_chars": 1306,
+          "response_text_chars": 18406,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 1,
+          "request_chars": 84,
+          "response_text_chars": 3997,
+          "image_blocks": 4,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_graph_plan": {
+          "calls": 1,
+          "request_chars": 3255,
+          "response_text_chars": 148,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "enter_stage": {
+          "calls": 5,
+          "request_chars": 193,
+          "response_text_chars": 34319,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "assess_stage": {
+          "calls": 7,
+          "request_chars": 4403,
+          "response_text_chars": 6860,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 31,
+          "request_chars": 10139,
+          "response_text_chars": 83507,
+          "image_blocks": 56,
+          "error_calls": 0,
+          "observation_attribution_chars": 6263
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 10841,
+        "repeated_rule_chars": 9211,
+        "session_reuse_entries": 1,
+        "session_reuse_context_chars": 6189,
+        "enter_phase_echo_chars": 2245,
+        "assessment_check_echo_chars": 2970,
+        "actual_stage_preparations": 7,
+        "preparation_cache_hits": 0,
+        "plan_creations": 1,
+        "plan_revisions": 0
+      },
+      "mcp_calls": 59,
+      "image_blocks": 62,
+      "unique_image_payloads": 62,
+      "native_turns": 1,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 2,
+        "agent_message": 7,
+        "command_execution": 6
+      },
+      "response_text_chars": 162815,
+      "stage_lifecycle_response_chars": 66120,
+      "stage_lifecycle_request_chars": 9159,
+      "stage_lifecycle_calls": 18,
+      "legacy_retrieval_planning_response_chars": 0,
+      "legacy_retrieval_planning_calls": 0,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "f8bfa9d8c993ae93a2c1abfc104b2652d7c2245bc5a6c1b51be5dfa2b292680c",
+        "mcp-calls.jsonl": "c5fd94fa8eb8c1926112ac06832d9056ffcc7e5baddb1d1d1439eea58fd6883d",
+        "agent-prompt.txt": "058f20b567f890930b3f756f3b1a334fac83ac7e077aa0f625278abf78f1cf43"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    },
+    "legacy_pour_l0": {
+      "directory": "runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0",
+      "usage": {
+        "input_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "output_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "uncached_input_tokens": null,
+      "cache_fraction": null,
+      "initial_prompt_chars": 13313,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 2919,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "retrieve_evidence": {
+          "calls": 1,
+          "request_chars": 241,
+          "response_text_chars": 2161,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_rim": {
+          "calls": 13,
+          "request_chars": 4496,
+          "response_text_chars": 8440,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 5,
+          "request_chars": 490,
+          "response_text_chars": 21106,
+          "image_blocks": 20,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_plan": {
+          "calls": 2,
+          "request_chars": 2711,
+          "response_text_chars": 152,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 28,
+          "request_chars": 6704,
+          "response_text_chars": 70308,
+          "image_blocks": 54,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 0,
+        "repeated_rule_chars": 0,
+        "session_reuse_entries": 0,
+        "session_reuse_context_chars": 0,
+        "enter_phase_echo_chars": 0,
+        "assessment_check_echo_chars": 0,
+        "actual_stage_preparations": 0,
+        "preparation_cache_hits": 0,
+        "plan_creations": 0,
+        "plan_revisions": 0
+      },
+      "mcp_calls": 50,
+      "image_blocks": 76,
+      "unique_image_payloads": 73,
+      "native_turns": 0,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 3,
+        "agent_message": 8,
+        "command_execution": 30
+      },
+      "response_text_chars": 105086,
+      "stage_lifecycle_response_chars": 0,
+      "stage_lifecycle_request_chars": 0,
+      "stage_lifecycle_calls": 0,
+      "legacy_retrieval_planning_response_chars": 2313,
+      "legacy_retrieval_planning_calls": 3,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "8e15d368763a3aa221d1021b9eadf5945dcf085172e721d0abbd9fa06424d457",
+        "mcp-calls.jsonl": "d46f8bb6939604ac1665d027b46afca472089f66a3ee4b749774d1b04c6a0ed2",
+        "agent-prompt.txt": "b1dd7a4c6e037b9f5e9b03d0bdf110926df43a8f8e63aede8d531b9dc559e634"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    },
+    "staged43_pour_l0": {
+      "directory": "runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase",
+      "usage": {
+        "input_tokens": 5026429,
+        "cached_input_tokens": 4898944,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 23702,
+        "reasoning_output_tokens": 9571
+      },
+      "uncached_input_tokens": 127485,
+      "cache_fraction": 0.9746370634102263,
+      "initial_prompt_chars": 10489,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 3132,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 176
+        },
+        "get_task_sop": {
+          "calls": 1,
+          "request_chars": 2,
+          "response_text_chars": 9006,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "prepare_stage": {
+          "calls": 5,
+          "request_chars": 1066,
+          "response_text_chars": 35605,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_rim": {
+          "calls": 13,
+          "request_chars": 4397,
+          "response_text_chars": 6423,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 6,
+          "request_chars": 588,
+          "response_text_chars": 25511,
+          "image_blocks": 24,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_graph_plan": {
+          "calls": 1,
+          "request_chars": 4034,
+          "response_text_chars": 144,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "enter_stage": {
+          "calls": 7,
+          "request_chars": 142,
+          "response_text_chars": 47345,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 28,
+          "request_chars": 9068,
+          "response_text_chars": 73063,
+          "image_blocks": 64,
+          "error_calls": 0,
+          "observation_attribution_chars": 5131
+        },
+        "assess_stage": {
+          "calls": 7,
+          "request_chars": 7219,
+          "response_text_chars": 8779,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 26221,
+        "repeated_rule_chars": 21084,
+        "session_reuse_entries": 5,
+        "session_reuse_context_chars": 32823,
+        "enter_phase_echo_chars": 2617,
+        "assessment_check_echo_chars": 4287,
+        "actual_stage_preparations": 6,
+        "preparation_cache_hits": 0,
+        "plan_creations": 1,
+        "plan_revisions": 0
+      },
+      "mcp_calls": 69,
+      "image_blocks": 90,
+      "unique_image_payloads": 90,
+      "native_turns": 1,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 2,
+        "agent_message": 7,
+        "command_execution": 10
+      },
+      "response_text_chars": 209008,
+      "stage_lifecycle_response_chars": 100879,
+      "stage_lifecycle_request_chars": 12463,
+      "stage_lifecycle_calls": 21,
+      "legacy_retrieval_planning_response_chars": 0,
+      "legacy_retrieval_planning_calls": 0,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "3520a392b871bad895e44f0759d598d1fec68b030f4ac8438d9cef2c5c337e64",
+        "mcp-calls.jsonl": "eee4616bf3d25849b14e2abef36616c547859307fa4555e1046f206b6886d921",
+        "agent-prompt.txt": "9ada1788665a1c17b930a3f85e790c084c01f1e40159daa0310dbba32278ef7a"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    },
+    "legacy_pour_l1": {
+      "directory": "runs/pour-balls-rim-v3-development-20261026/seed1-standard-l1",
+      "usage": {
+        "input_tokens": 6187696,
+        "cached_input_tokens": 6046976,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 32142,
+        "reasoning_output_tokens": 14807
+      },
+      "uncached_input_tokens": 140720,
+      "cache_fraction": 0.9772580941274426,
+      "initial_prompt_chars": 13313,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 2919,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "retrieve_evidence": {
+          "calls": 2,
+          "request_chars": 494,
+          "response_text_chars": 4372,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_rim": {
+          "calls": 5,
+          "request_chars": 1898,
+          "response_text_chars": 5794,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 5,
+          "request_chars": 490,
+          "response_text_chars": 21061,
+          "image_blocks": 20,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_plan": {
+          "calls": 6,
+          "request_chars": 13281,
+          "response_text_chars": 456,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 51,
+          "request_chars": 16488,
+          "response_text_chars": 129764,
+          "image_blocks": 94,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 0,
+        "repeated_rule_chars": 0,
+        "session_reuse_entries": 0,
+        "session_reuse_context_chars": 0,
+        "enter_phase_echo_chars": 0,
+        "assessment_check_echo_chars": 0,
+        "actual_stage_preparations": 0,
+        "preparation_cache_hits": 0,
+        "plan_creations": 0,
+        "plan_revisions": 0
+      },
+      "mcp_calls": 70,
+      "image_blocks": 116,
+      "unique_image_payloads": 102,
+      "native_turns": 1,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 2,
+        "agent_message": 11,
+        "command_execution": 13
+      },
+      "response_text_chars": 164366,
+      "stage_lifecycle_response_chars": 0,
+      "stage_lifecycle_request_chars": 0,
+      "stage_lifecycle_calls": 0,
+      "legacy_retrieval_planning_response_chars": 4828,
+      "legacy_retrieval_planning_calls": 8,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "18a5121dc5c1112bea42454c707da9ecfb3439722019d27cedba605a10228145",
+        "mcp-calls.jsonl": "bac87c19cd3193e1867614009dc14df1e15aa2d92b1600af2cf2d61ac853d42c",
+        "agent-prompt.txt": "b1dd7a4c6e037b9f5e9b03d0bdf110926df43a8f8e63aede8d531b9dc559e634"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    },
+    "staged815_pour_l1": {
+      "directory": "runs/staged-v1-transition-dev-81513e4-20261027/pour_balls_into_vase",
+      "usage": {
+        "input_tokens": 5222863,
+        "cached_input_tokens": 5072896,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22153,
+        "reasoning_output_tokens": 7765
+      },
+      "uncached_input_tokens": 149967,
+      "cache_fraction": 0.9712864381087538,
+      "initial_prompt_chars": 10489,
+      "tool_metrics": {
+        "observe": {
+          "calls": 1,
+          "request_chars": 59,
+          "response_text_chars": 3132,
+          "image_blocks": 2,
+          "error_calls": 0,
+          "observation_attribution_chars": 176
+        },
+        "get_task_sop": {
+          "calls": 1,
+          "request_chars": 2,
+          "response_text_chars": 9006,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "prepare_stage": {
+          "calls": 5,
+          "request_chars": 888,
+          "response_text_chars": 35496,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "measure_rim": {
+          "calls": 4,
+          "request_chars": 1233,
+          "response_text_chars": 5754,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "read_action_reference": {
+          "calls": 4,
+          "request_chars": 332,
+          "response_text_chars": 17159,
+          "image_blocks": 16,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "record_graph_plan": {
+          "calls": 1,
+          "request_chars": 3338,
+          "response_text_chars": 144,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "enter_stage": {
+          "calls": 9,
+          "request_chars": 483,
+          "response_text_chars": 63677,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "execute_chunk": {
+          "calls": 40,
+          "request_chars": 13344,
+          "response_text_chars": 106840,
+          "image_blocks": 72,
+          "error_calls": 0,
+          "observation_attribution_chars": 7513
+        },
+        "assess_stage": {
+          "calls": 8,
+          "request_chars": 8758,
+          "response_text_chars": 10868,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        },
+        "revise_plan": {
+          "calls": 1,
+          "request_chars": 1139,
+          "response_text_chars": 92,
+          "image_blocks": 0,
+          "error_calls": 0,
+          "observation_attribution_chars": 0
+        }
+      },
+      "summary": {
+        "stage_return_rule_chars": 30801,
+        "repeated_rule_chars": 25664,
+        "session_reuse_entries": 6,
+        "session_reuse_context_chars": 38775,
+        "enter_phase_echo_chars": 3027,
+        "assessment_check_echo_chars": 5485,
+        "actual_stage_preparations": 7,
+        "preparation_cache_hits": 0,
+        "plan_creations": 1,
+        "plan_revisions": 1
+      },
+      "mcp_calls": 74,
+      "image_blocks": 90,
+      "unique_image_payloads": 87,
+      "native_turns": 1,
+      "malformed_event_lines": 0,
+      "non_mcp_item_counts": {
+        "error": 2,
+        "agent_message": 11,
+        "command_execution": 9
+      },
+      "response_text_chars": 252168,
+      "stage_lifecycle_response_chars": 119283,
+      "stage_lifecycle_request_chars": 14608,
+      "stage_lifecycle_calls": 25,
+      "legacy_retrieval_planning_response_chars": 0,
+      "legacy_retrieval_planning_calls": 0,
+      "context_recovery_commands": 0,
+      "source_sha256": {
+        "agent-events.jsonl": "7e51f8e8648335d99d72e846d91bd2fa3b3b74b3cf7a2a722f2a19955179f856",
+        "mcp-calls.jsonl": "5f8c40581d4c69a7d25a9b7a0ec3baff45369a66bd7d3a88f23953e1f3f9dbef",
+        "agent-prompt.txt": "9ada1788665a1c17b930a3f85e790c084c01f1e40159daa0310dbba32278ef7a"
+      },
+      "count_scope": "Completed MCP event items, including tool-visible failures; characters are decoded text, not tokens or billing. Images are blocks preserved in these logs, not verified provider image-token consumption.",
+      "execution_status_calls": 0
+    }
+  },
+  "development_comparisons": {
+    "fold_l0": {
+      "baseline": "legacy_fold_l0",
+      "candidate": "staged43_fold_l0",
+      "additional_mcp_calls": 22,
+      "additional_decoded_response_chars": 84033,
+      "additional_stage_vs_legacy_retrieval_plan_response_chars": 60653,
+      "share_of_additional_response_chars": 0.7217759689645734,
+      "observed_image_block_change": 8,
+      "outcome_caveat": "Both native-successful development runs"
+    },
+    "push_l0": {
+      "baseline": "legacy_push_l0",
+      "candidate": "staged43_push_l0",
+      "additional_mcp_calls": 13,
+      "additional_decoded_response_chars": 69350,
+      "additional_stage_vs_legacy_retrieval_plan_response_chars": 60824,
+      "share_of_additional_response_chars": 0.8770583994232156,
+      "observed_image_block_change": -4,
+      "outcome_caveat": "Both native-successful development runs"
+    },
+    "pour_l0": {
+      "baseline": "legacy_pour_l0",
+      "candidate": "staged43_pour_l0",
+      "additional_mcp_calls": 19,
+      "additional_decoded_response_chars": 103922,
+      "additional_stage_vs_legacy_retrieval_plan_response_chars": 98566,
+      "share_of_additional_response_chars": 0.9484613460095072,
+      "observed_image_block_change": 14,
+      "outcome_caveat": "Legacy l0 incomplete with missing terminal usage; legacy l1 native failure vs candidate success. Not a successful-pair cost comparison."
+    },
+    "pour_l1": {
+      "baseline": "legacy_pour_l1",
+      "candidate": "staged815_pour_l1",
+      "additional_mcp_calls": 4,
+      "additional_decoded_response_chars": 87802,
+      "additional_stage_vs_legacy_retrieval_plan_response_chars": 114455,
+      "share_of_additional_response_chars": 1.303558005512403,
+      "observed_image_block_change": -26,
+      "outcome_caveat": "Legacy l0 incomplete with missing terminal usage; legacy l1 native failure vs candidate success. Not a successful-pair cost comparison."
+    }
+  },
+  "findings": [
+    {
+      "claim": "A reduction in control steps alone does not establish lower inference cost. Formal push has 4/4 matched successes and steps 1591 to 1273, but uncached input 290361 to 409502 (+41.0%) and output 45568 to 48237 (+5.9%).",
+      "evidence": "formal_aggregate_context.push_T",
+      "status": "measured aggregate; no formal trace causal attribution"
+    },
+    {
+      "claim": "Formal fold cache fraction rises 95.67% to 96.49% while uncached input rises 340077 to 392691 (+15.5%). High cache percentage is compatible with higher absolute cost. Overall 2/4 counts conceal a failed case-preservation gate; only one pair is jointly successful.",
+      "evidence": "formal_aggregate_context.fold_clothes",
+      "status": "measured aggregate"
+    },
+    {
+      "claim": "Stage lifecycle adds substantial repeated nonvisual output: dev fold 17 calls/62808 response chars, push 18/66120, pour43 21/100879, pour815 25/119283. Legacy retrieval+planning was 2/2155, 6/5296, 3/2313, 8/4828 respectively.",
+      "evidence": "development_runs.*.stage_lifecycle_* and legacy_retrieval_planning_*",
+      "status": "measured log-visible text/calls, not tokens"
+    },
+    {
+      "claim": "In dev push, total decoded tool response text increased 69350 chars; lifecycle minus old retrieval/planning accounts arithmetically for 60824 (87.7%) of that text increase. This does not establish that 87.7% of token cost is caused by those fields.",
+      "evidence": "development_comparisons.push_l0",
+      "status": "measured text volume decomposition"
+    },
+    {
+      "claim": "Server cache reuse avoids retrieval computation but still returns full context. Reused-context responses total 19317/6189/32823/38775 chars across fold43/push43/pour43/pour815. Repeated rule text is 5076/9211/21084/25664 chars, even though task-global paragraphs were already in the initial prompt.",
+      "evidence": "development_runs.*.summary; src/roborag/execution/episode.py:345 and :411",
+      "status": "observed mechanism; exact token savings of any change untested"
+    },
+    {
+      "claim": "Repeated full planning is not the observed cause: three 43 development episodes each create one plan with zero revision; pour815 uses one plan plus one explicit revision. Formal fold/push aggregates each contain four initial plans and zero revision.",
+      "evidence": "development_runs.*.summary and formal_aggregate_context.*.structure_cost",
+      "status": "measured"
+    },
+    {
+      "claim": "Images do not uniformly explain higher cost. Dev push has 66 to 62 logged image blocks with unchanged 56 motion-feedback blocks but uncached input rises 85483 to 105283. Fold has 55 to 63 images and more control steps, so motion/observation volume confounds its protocol overhead.",
+      "evidence": "development_runs legacy/staged fold/push",
+      "status": "measured development associations, not formal causal explanation"
+    },
+    {
+      "claim": "execution_status was never called and episode-context.json was not read by logged command items in these eight runs. Its full-plan response is a potential future compaction overhead, not a demonstrated cause here.",
+      "evidence": "development_runs.*.execution_status_calls/context_recovery_commands; src/roborag/execution/episode.py:60",
+      "status": "observed absence in allowed logs"
+    },
+    {
+      "claim": "The staged interface registers seven lifecycle tools replacing one record_plan tool, increasing static schema surface by six tools. Static schemas and initial prompts may affect input but provider prefix accounting is not exposed; no token attribution is available.",
+      "evidence": "src/roborag/mcp/server.py:15 and src/roborag/mcp/stages.py",
+      "status": "code fact; cost magnitude hypothesis"
+    }
+  ],
+  "bounded_followups_for_a_future_registered_change": [
+    "Prioritize a compact enter_stage acknowledgement when the same context is already available, retaining full guidance for first entry, changed references, or explicit context recovery. A server cache hit must not be mistaken for model context retention after compaction.",
+    "Consider compact assessment acknowledgements and one-time version metadata while keeping complete evidence/checks in the append-only ledger and recoverable state. Avoid echoing checks and plan-phase objects unchanged on every transition.",
+    "Measure real request-level token/cache attribution if provider instrumentation becomes available before further cache engineering. Exact-query cache hits are zero in these runs but per-stage context reuse works; speeding lexical BM25 or broadening semantic reuse has no demonstrated end-to-end cost value here."
+  ],
+  "limitations": [
+    "Four candidate development episodes, only two matched legacy-success pairs, cannot causally explain the formal regression token increase.",
+    "No private evaluator state, images, formal regression trajectories or formal pour output were inspected; no protocol/code optimization or rerun was performed.",
+    "Tool calls are not API requests. Decoded text characters, image blocks and cache fractions cannot be converted into billed cost with the available logs.",
+    "Development timings and success outcomes differ; provider load and scenario trajectories confound comparisons. Preserve failures and missing usage rather than imputing zero."
+  ],
+  "source_code_sha256": {
+    "src/roborag/experience/library.py": "569a7db0126870b16592a8d2f19d90b7960ed0aa402cc0db7d2f4f515ef959ab",
+    "src/roborag/execution/episode.py": "9d70ced76c97cf5965538d93dede512f05f2a561b729be3ba09321dc80f03d15",
+    "src/roborag/mcp/session.py": "c00a97b229573cd89fd702faf2133d65d09b7d5cfca197c189e7564a432af660",
+    "src/roborag/mcp/server.py": "678d6a414f705116bd696d97b2da0749b0598f6dc04c4de5b2dd32f5b68ca7ca",
+    "src/roborag/mcp/stages.py": "f01346a973f7a0b0c52f7d82107c7582512391f5611d16b2d9c25e77b2606144",
+    "src/roborag/runtime/agent.py": "d37ac9f53a7043a2bbf27a5d87d54b5c8b1398d55e9711ad1eb33d10eb723e57",
+    "src/roborag/evaluation/usage.py": "77343a538fb03e5488ff9b30b2ce6c62a824da77ccc2723ac63ab7bb123c070b"
+  }
+}

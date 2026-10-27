@@ -1,0 +1,53 @@
+{
+  "schema": "roborag.supplemental-runtime-observation.v1",
+  "observed_at": "2026-10-27T20:44:45.383421+00:00",
+  "scope": "Read-only post-candidate runtime observation during untouched original-v3 control; not historical or prelaunch provenance.",
+  "native_repository": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/policy_compare/upstream/RoboICL/third_party/RoboDojo",
+  "native_git_head": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942",
+  "relevant_tracked_status": "",
+  "latest_relevant_commit": "00ef04cd245bfa76e6f1e0bd8383c82f7964f942 2026-09-29T12:04:29+08:00",
+  "files": {
+    "task/RoboDojo/tasks/fold_clothes.py": {
+      "sha256": "ecea9c287d0579605330168e6f36734704fb14a6b1e5dec82b6f2ee3a56ec20a",
+      "tracked": true
+    },
+    "task/RoboDojo/tasks/fold_clothes_random.py": {
+      "sha256": "9e40abe3f7201a8c13961edc1ca8075260c315584d3d6b93fa1df966d13d1e88",
+      "tracked": true
+    },
+    "env/reward_manager/reward_manager.py": {
+      "sha256": "bc56efd3aaa861b4b38960dc4fb7778a9b4da9cf131f815ac3170300dd233a41",
+      "tracked": true
+    },
+    "src/eval_client/eval_env.py": {
+      "sha256": "4a0a04c936814407081ec885ee4ae3f75429ea6b0bb7bf4846c2d828c441d07c",
+      "tracked": true
+    }
+  },
+  "agent_cli": {
+    "path": "/home/zxc/.codex/packages/standalone/recovered-0.155.0-alpha.16.3/bin/codex",
+    "resolved_path": "/home/zxc/.codex/packages/standalone/recovered-0.155.0-alpha.16.3/bin/codex",
+    "sha256": "a969c7c42b842c759d157d2500bbf33a562ff95f22dcb7112aa4d8f9e68833d3",
+    "size_bytes": 280923720
+  },
+  "hexashell": {
+    "root": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/vendor/HexaShell",
+    "head": "d1a2a24dc4c528a652b359fd689398530ef941d8",
+    "status": ""
+  },
+  "native_score_interpretation": {
+    "declared_process_tiers": [
+      20,
+      100
+    ],
+    "score_trigger": "All grippers open, rising edge. Sleeve checks are the first tier; sleeve and hem/alignment checks are the second.",
+    "success_gate": "RewardManager._score_for_state demotes a completed100 tier to20 if final reward success is false. A reported20 alone does not identify which final physical condition failed.",
+    "return_home": "fold_clothes.get_reward registers a success check when grippers open and both arms at origin, and per-arm origin rising-edge failure queries. Early native termination while going home does not establish a defect in the home controller.",
+    "diagnosis_limit": "Per-condition native truth/counters were not recorded in these policy trajectories. Do not infer a specific failed rule from model final prose or score20 alone."
+  },
+  "limitations": [
+    "Historical CLI executable bytes and service snapshot are unavailable.",
+    "Git status and commit dates observed now do not prove the exact runtime state during historical episodes.",
+    "Native code was not edited or exposed as additional policy context."
+  ]
+}

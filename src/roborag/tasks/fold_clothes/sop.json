@@ -1,0 +1,143 @@
+{
+  "schema": "roborag.sop.v1",
+  "role": "operation_rules",
+  "id": "fold_clothes.interaction-sop",
+  "version": "1.0.0",
+  "task": "fold_clothes",
+  "source_prompt": {
+    "path": "src/roborag/tasks/fold_clothes/prompt.txt",
+    "sha256": "0ed23a529486e40d59846b4b51fbcd0103ddb252c80258c20f9c7c39ede98b38",
+    "source_commit": "210fae4",
+    "selection": "Exact paragraph/bullet references; no instruction text is rewritten."
+  },
+  "experience_source": {
+    "bank": "data/graph-bank/current",
+    "execution_index_sha256": "88659f7e9b9fbc69b7ca842a5c2d98d1eb9e32e963245a25e0125d47c575becb",
+    "graphs": {
+      "fold_clothes-0000": "12fc14d22851fc034086e1637e9f7ac61a94dcbca107da7ac5be04bfcede6b34",
+      "fold_clothes-0001": "4d87dfc8fa3edea86c1a38bed4519b17f998c9051477a9f8e60a9fc6bb429efa",
+      "fold_clothes-0002": "9c0f0a43820c4a3c9becf6306240e9c9deb47a8579e5726e066e2fbdd33b075d"
+    },
+    "mapping_method": "Human-readable reviewed phase-operation association, not chronological or causal inference; based only on TRAIN annotations."
+  },
+  "global_rule_refs": [
+    "p00",
+    "p01",
+    "p03",
+    "p04"
+  ],
+  "stages": [
+    {
+      "id": "measure_bind",
+      "goal": "Bind the current garment, sleeve ends, opposite chest regions, hem and shoulders using supported RGB geometry.",
+      "applicability": "Initial garment or a scene change requiring new measurements.",
+      "completion": [
+        "Current garment points and support height are measured or uncertainty is recorded.",
+        "Current object bindings are supported by RGB; a silhouette is not layer identity."
+      ],
+      "query": "衣物 轮廓 袖口 下摆 桌面 测量",
+      "rule_refs": [
+        "p04"
+      ],
+      "dependencies": [],
+      "branches": [],
+      "lookahead": [],
+      "experience_refs": []
+    },
+    {
+      "id": "fold_sleeve",
+      "goal": "Fold one currently bound sleeve inward toward its opposite chest region, release and inspect.",
+      "applicability": "A sleeve remains unfolded and its grasp and placement regions are currently supported.",
+      "completion": [
+        "The sleeve visibly follows a small lift before transit.",
+        "After supported release the sleeve remains inward near the intended chest region, or its status stays unknown."
+      ],
+      "query": "袖口 夹取 提起 向衣身内折 放下 释放",
+      "rule_refs": [
+        "p02"
+      ],
+      "dependencies": [
+        "Current garment bindings and support height are available."
+      ],
+      "branches": [
+        "Instantiate this stage once per sleeve; choose order from the live garment. Demonstrated left-first order is not mandatory.",
+        "A failed grasp or supported residual can be corrected within this stage; remeasure if current geometry is no longer valid."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "fold_clothes-0000:p01",
+        "fold_clothes-0000:p02",
+        "fold_clothes-0000:p03",
+        "fold_clothes-0000:p04",
+        "fold_clothes-0000:p05",
+        "fold_clothes-0000:p06",
+        "fold_clothes-0001:p01",
+        "fold_clothes-0001:p02",
+        "fold_clothes-0001:p03",
+        "fold_clothes-0001:p04",
+        "fold_clothes-0001:p05",
+        "fold_clothes-0001:p06",
+        "fold_clothes-0002:p01",
+        "fold_clothes-0002:p02",
+        "fold_clothes-0002:p03",
+        "fold_clothes-0002:p04",
+        "fold_clothes-0002:p05",
+        "fold_clothes-0002:p06"
+      ]
+    },
+    {
+      "id": "fold_hem",
+      "goal": "Carry both hem sides toward the shoulders and align the hem and shoulder lines in the table plane.",
+      "applicability": "Both sleeves are inward and current hem targets are supported.",
+      "completion": [
+        "Both held hem regions follow visible lifts without slipping.",
+        "After supported release the hem approaches the shoulder line; preserve unknown when hidden."
+      ],
+      "query": "双手 下摆 下沿 提起 翻折 肩部",
+      "rule_refs": [
+        "p02"
+      ],
+      "dependencies": [
+        "Both sleeves are folded; this rule comes from the public task, not TRAIN next edges."
+      ],
+      "branches": [
+        "Coordinate both arms for the wide hem when appropriate.",
+        "If a hem grasp slips, reacquire from current evidence before continuing transfer."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "fold_clothes-0000:p06",
+        "fold_clothes-0000:p07",
+        "fold_clothes-0001:p06",
+        "fold_clothes-0001:p07",
+        "fold_clothes-0002:p06",
+        "fold_clothes-0002:p07"
+      ]
+    },
+    {
+      "id": "release_inspect_home",
+      "goal": "Release the garment, inspect the folded shape, clear it and return both arms home.",
+      "applicability": "The garment is supported and can be safely released.",
+      "completion": [
+        "The garment remains released and the final shape is visible enough to assess, otherwise unknown.",
+        "Both arms return to initial poses. Task success is recorded separately from native terminal evidence."
+      ],
+      "query": "松开 衣物 撤回 双臂 归位",
+      "rule_refs": [
+        "p02"
+      ],
+      "dependencies": [
+        "The current fold is supported before opening."
+      ],
+      "branches": [
+        "Correct only visible unmet fold criteria; an executed motion is not a completed fold."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "fold_clothes-0000:p08",
+        "fold_clothes-0001:p08",
+        "fold_clothes-0002:p08"
+      ]
+    }
+  ]
+}

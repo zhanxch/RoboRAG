@@ -49,6 +49,11 @@ def control_accounting(path, calls=None):
 
 def workflow_completed(calls):
     names = [c["tool"] for c in calls]
+    if "record_graph_plan" in names:
+        required = ["get_task_sop", "record_graph_plan", "enter_stage", "execute_chunk"]
+        return all(n in names for n in required) and [names.index(n) for n in required] == sorted(
+            names.index(n) for n in required
+        )
     required = ["retrieve_evidence", "record_plan", "execute_chunk"]
     return all(n in names for n in required) and names.index(required[0]) < names.index(
         required[1]
@@ -75,6 +80,7 @@ def summarize(path):
         layout=arguments.get("layout"),
         seed=arguments.get("seed"),
         controller=configuration.get("controller"),
+        architecture=arguments.get("architecture", "legacy"),
         model=configuration.get("model"),
         effort=arguments.get("effort"),
         failure=read_json(path / "sim_failure.json") or read_json(path / "exit.json"),
@@ -96,7 +102,7 @@ def summarize(path):
             for c in calls
             if c["tool"] == "retrieve_evidence"
         ],
-        plan_steps=len(plan.get("steps", [])),
+        plan_steps=len(plan.get("phases", plan.get("steps", []))),
         plan_adaptation=plan.get("adaptation"),
         workflow_verified=workflow_completed(calls),
         wall_seconds=result.get(

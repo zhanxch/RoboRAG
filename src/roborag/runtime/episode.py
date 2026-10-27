@@ -68,10 +68,13 @@ def main():
     parser.add_argument("--max-wall-seconds", type=float, default=5400)
     parser.add_argument("--no-rag", action="store_true")
     parser.add_argument("--controller", choices=["delta"], default="delta")
+    parser.add_argument("--architecture", choices=["legacy", "staged-v1"], default="legacy")
     args = parser.parse_args()
     task = simulation_task(args.task, args.variant)
     spec = task_spec(args.task)
-    prompt = prompt_for(ROOT, args.task, args.controller, no_rag=args.no_rag)
+    prompt = prompt_for(
+        ROOT, args.task, args.controller, no_rag=args.no_rag, architecture=args.architecture
+    )
     runtime = RuntimeConfig.load(ROOT).as_dict()
     sys.path.insert(0, runtime["upstream"])
     from roboicl.paths import python_paths
@@ -148,6 +151,8 @@ def main():
         args.controller,
         "--task",
         args.task,
+        "--architecture",
+        args.architecture,
     ] + (["--no-rag"] if args.no_rag else [])
     save(
         output / "run.json",
@@ -176,7 +181,11 @@ def main():
                 else None
             ),
             controller="RoboICL world link6 delta grammar; native RoboDojo EE control",
-            workflow="MCP retrieval -> GPT new plan -> GPT chunks -> native evaluator",
+            workflow=(
+                "Stage SOP + history -> persistent GPT graph plan -> adaptive stage execution -> offline native evaluator"
+                if args.architecture == "staged-v1"
+                else "MCP retrieval -> GPT new plan -> GPT chunks -> native evaluator"
+            ),
         ),
     )
     processes, started = [], time.monotonic()

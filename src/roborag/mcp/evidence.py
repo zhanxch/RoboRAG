@@ -14,7 +14,6 @@ from roborag.tasks import task_spec
 
 
 def register_tools(server, memory, read_only):
-    @server.tool(annotations=read_only, description=tool_description("retrieve_evidence"))
     def retrieve_evidence(
         goal: str,
         observation: str,
@@ -50,6 +49,11 @@ def register_tools(server, memory, read_only):
         memory.audit("retrieve_evidence", query, result)
         return result["model_context"]
 
+    if memory.architecture == "legacy":
+        server.tool(annotations=read_only, description=tool_description("retrieve_evidence"))(
+            retrieve_evidence
+        )
+
     @server.tool(annotations=read_only, description=tool_description("read_action_reference"))
     def read_action_reference(
         source: str,
@@ -58,7 +62,11 @@ def register_tools(server, memory, read_only):
         section: Literal["start", "end", "close", "open"] = "start",
     ) -> CallToolResult:
         if source not in memory.references or memory.no_rag:
-            raise ToolError("Choose a source from retrieve_evidence first")
+            raise ToolError(
+                "Choose a source from prepare_stage first"
+                if memory.architecture == "staged-v1"
+                else "Choose a source from retrieve_evidence first"
+            )
         graph_id, node_id = source.split(":", 1)
         retriever = memory.bank.retriever()
         phase = next(p for p in retriever.index["phases"] if p["id"] == source)

@@ -1,0 +1,240 @@
+{
+  "schema": "roborag.sop.v1",
+  "role": "operation_rules",
+  "id": "pour_balls_into_vase.interaction-sop",
+  "version": "1.0.0",
+  "task": "pour_balls_into_vase",
+  "source_prompt": {
+    "path": "src/roborag/tasks/pour_balls_into_vase/prompt.txt",
+    "sha256": "9e157bd286a9464501f595beef09378e14478705b4d0fb36e868f66ccb49ff56",
+    "source_commit": "210fae4",
+    "selection": "Exact paragraph/bullet references; no instruction text is rewritten."
+  },
+  "experience_source": {
+    "bank": "data/graph-bank/current",
+    "execution_index_sha256": "88659f7e9b9fbc69b7ca842a5c2d98d1eb9e32e963245a25e0125d47c575becb",
+    "graphs": {
+      "pour_balls_into_vase-0000": "df43f8c261e789a43c336b86251c6230f83883e99799753ccc05d3ca2fd41c6a",
+      "pour_balls_into_vase-0001": "36137251962bafeb0bbb812047e5c437f8830171987550cafa6126ede79fd774",
+      "pour_balls_into_vase-0002": "dbbef1a904754538aa44793b10fb597c5121ceef5f473a78ad1e13d938bef801"
+    },
+    "mapping_method": "Human-readable reviewed phase-operation association, not chronological or causal inference; based only on TRAIN annotations."
+  },
+  "global_rule_refs": [
+    "p00",
+    "p01.heading",
+    "p01.b01",
+    "p02",
+    "p03.heading",
+    "p03.b01",
+    "p03.b02",
+    "p03.b03"
+  ],
+  "stages": [
+    {
+      "id": "measure_and_choose_grasp",
+      "goal": "Measure cup/vase rims and choose a current grasp and arm that support the complete pouring rotation.",
+      "applicability": "The filled cup is supported; the receiving inner opening and planned pouring clearance need binding.",
+      "completion": [
+        "Current rim geometry is supported or unknown is retained.",
+        "The grasp choice is checked against the intended full pour attitude and current clearance."
+      ],
+      "query": "装球 杯子 夹取 抓杯 姿态 杯口 朝上",
+      "rule_refs": [
+        "p03.b03",
+        "p03.b04"
+      ],
+      "dependencies": [],
+      "branches": [
+        "Use direct single-arm pouring when current reach and wrist geometry allow it; handover is conditional."
+      ],
+      "lookahead": [
+        "controlled_pour",
+        "carry_align_lip"
+      ],
+      "experience_refs": [
+        "pour_balls_into_vase-0000:p01",
+        "pour_balls_into_vase-0000:p02",
+        "pour_balls_into_vase-0001:p01",
+        "pour_balls_into_vase-0001:p02",
+        "pour_balls_into_vase-0002:p01",
+        "pour_balls_into_vase-0002:p02"
+      ]
+    },
+    {
+      "id": "acquire_upright_cup",
+      "goal": "Grasp below the lip with stationary closure and verify that the upright cup follows a small lift.",
+      "applicability": "The grasp is selected for the full pouring attitude and the cup is supported.",
+      "completion": [
+        "A current small lift and wrist RGB support that the cup follows the hand upright.",
+        "Current cup-to-gripper geometry is supported before transit."
+      ],
+      "query": "合拢 夹爪 抓起 杯子 提起 杯口 朝上",
+      "rule_refs": [
+        "p03.b04",
+        "p03.b08"
+      ],
+      "dependencies": [
+        "Current measured cup and vase geometry; full-pour grasp lookahead."
+      ],
+      "branches": [
+        "If grasp fails, reacquire the supported cup before transit.",
+        "A changed cup-to-hand transform invalidates the old grasp adaptation; revise only affected assumptions."
+      ],
+      "lookahead": [
+        "controlled_pour"
+      ],
+      "experience_refs": [
+        "pour_balls_into_vase-0000:p02",
+        "pour_balls_into_vase-0001:p02",
+        "pour_balls_into_vase-0002:p02"
+      ]
+    },
+    {
+      "id": "handover",
+      "goal": "Transfer the upright supported grasp to the other arm when current reach or pouring orientation requires it.",
+      "applicability": "The current holding arm cannot execute the necessary grasp-relative rotation or reach.",
+      "completion": [
+        "The receiving hand visibly carries the cup before the giving hand clears.",
+        "The new cup-to-hand transform is verified before pouring."
+      ],
+      "query": "双手 换手 交接 接杯 松开 原手",
+      "rule_refs": [
+        "p03.b01",
+        "p03.b04",
+        "p03.b08"
+      ],
+      "dependencies": [
+        "A verified held cup and a current reason for handover."
+      ],
+      "branches": [
+        "Skip this optional stage when direct pouring remains applicable.",
+        "Recheck full-pour axis and clearance for the new grasp; do not treat the old wrist attitude as preserved."
+      ],
+      "lookahead": [
+        "controlled_pour"
+      ],
+      "experience_refs": [
+        "pour_balls_into_vase-0000:p03",
+        "pour_balls_into_vase-0000:p04",
+        "pour_balls_into_vase-0001:p03",
+        "pour_balls_into_vase-0001:p04"
+      ]
+    },
+    {
+      "id": "carry_align_lip",
+      "goal": "Carry upright and place the actual pouring lip just above the measured inner vase opening.",
+      "applicability": "A verified grasp and current cup-to-hand offset are available.",
+      "completion": [
+        "Current wrist/head evidence supports the low lip above and inside the inner opening with margin."
+      ],
+      "query": "持杯 移到 花瓶 瓶口 杯口 位置 对齐",
+      "rule_refs": [
+        "p03.b05",
+        "p03.b06",
+        "p03.b08"
+      ],
+      "dependencies": [
+        "Verified current grasp; measured inner opening and body clearance."
+      ],
+      "branches": [
+        "Stop near the vase for wrist feedback and update invalid measurements.",
+        "If required collision clearance moves the outflow point too high/outside, return upright and adjust approach before flow."
+      ],
+      "lookahead": [
+        "controlled_pour"
+      ],
+      "experience_refs": [
+        "pour_balls_into_vase-0000:p05",
+        "pour_balls_into_vase-0001:p05",
+        "pour_balls_into_vase-0002:p03",
+        "pour_balls_into_vase-0002:p04"
+      ]
+    },
+    {
+      "id": "controlled_pour",
+      "goal": "Tilt outward along the adapted grasp-relative rotation, keep the actual low rim inside the opening, and hold for ball flow.",
+      "applicability": "The current lip path, grasp and inner-opening clearance support the full tilt.",
+      "completion": [
+        "Observe flow at onset and final inversion, then inspect remaining/spilled balls.",
+        "All-seven-inside remains unknown without sufficient current evidence; an empty cup alone is insufficient."
+      ],
+      "query": "朝向 花瓶口 倾倒 小球 杯口 下倾 向下 保持",
+      "rule_refs": [
+        "p03.b04",
+        "p03.b06",
+        "p03.b07",
+        "p03.b08"
+      ],
+      "dependencies": [
+        "Verified grasp-relative motion and supported low-rim alignment."
+      ],
+      "branches": [
+        "Pause at onset of flow and adapt small geometry/motion changes within the stage.",
+        "On rejected tracking retain the grasp and recover from the fresh measured pose; never repeat deeper tilt from an assumed target.",
+        "If the grasp/path is no longer applicable, revise only affected plan assumptions."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "pour_balls_into_vase-0000:p06",
+        "pour_balls_into_vase-0001:p06",
+        "pour_balls_into_vase-0002:p05"
+      ]
+    },
+    {
+      "id": "restore_place",
+      "goal": "Reverse the supported tilt, carry the cup upright to clear table support, and release only after support.",
+      "applicability": "The cup is still held; pouring has finished or needs safe reversal.",
+      "completion": [
+        "Current evidence supports upright cup and table support before release.",
+        "The released cup remains upright; ball transfer remains a separate evidence question."
+      ],
+      "query": "扶正 杯子 杯口 朝上 恢复 直立 落桌 释放",
+      "rule_refs": [
+        "p03.b08",
+        "p03.b09"
+      ],
+      "dependencies": [
+        "Current grasp and measured safe return/support path."
+      ],
+      "branches": [
+        "Use this stage for safe outward-tilt reversal when necessary; its direction is opposite to controlled_pour."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "pour_balls_into_vase-0000:p07",
+        "pour_balls_into_vase-0000:p08",
+        "pour_balls_into_vase-0001:p07",
+        "pour_balls_into_vase-0001:p08",
+        "pour_balls_into_vase-0002:p06",
+        "pour_balls_into_vase-0002:p07",
+        "pour_balls_into_vase-0002:p08"
+      ]
+    },
+    {
+      "id": "clear_home",
+      "goal": "Withdraw clear of the upright released cup and vase, return both arms home, and retain an evidence-based task outcome.",
+      "applicability": "The cup is supported upright and the fingers are released.",
+      "completion": [
+        "Both arms return to initial poses.",
+        "All seven balls, upright cup and home arms are assessed separately; unknown observations are not converted into success."
+      ],
+      "query": "松开 杯子 撤回 双臂 归位",
+      "rule_refs": [
+        "p03.b09"
+      ],
+      "dependencies": [
+        "Supported upright cup and released fingers."
+      ],
+      "branches": [
+        "If still active, inspect supported unmet requirements without assuming that an empty-looking cup proves success."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "pour_balls_into_vase-0000:p09",
+        "pour_balls_into_vase-0001:p08",
+        "pour_balls_into_vase-0002:p08"
+      ]
+    }
+  ]
+}

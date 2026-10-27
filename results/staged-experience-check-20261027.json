@@ -1,0 +1,576 @@
+{
+  "schema": "roborag.staged-experience-check.v1",
+  "checked_at": "2026-10-27T03:15:20.378393+00:00",
+  "purpose": "Local source-bank validation, separate from portable synthetic tests; no simulator or online model calls.",
+  "implementation_sources": {
+    "src/roborag/experience/__init__.py": "f480e89b3f5ab5d0cf69ef53573bfda358e3e5157605a5d139acf373c6a1fd2d",
+    "src/roborag/experience/library.py": "902083a80ccc54ddc346b0ca1f9ab5d91c4635ec379e5c9cb818b0776036b1d4"
+  },
+  "tasks": {
+    "fold_clothes": {
+      "version": {
+        "architecture": "staged-v1",
+        "sop_id": "fold_clothes.interaction-sop",
+        "sop_version": "1.0.0",
+        "sop_sha256": "d9012af72689114338df0676cdd0ed0b2ae4263fd0d416fd71410faa8b7b8835",
+        "prompt_sha256": "0ed23a529486e40d59846b4b51fbcd0103ddb252c80258c20f9c7c39ede98b38",
+        "experience_index_sha256": "88659f7e9b9fbc69b7ca842a5c2d98d1eb9e32e963245a25e0125d47c575becb",
+        "graph_sha256": {
+          "fold_clothes-0000": "12fc14d22851fc034086e1637e9f7ac61a94dcbca107da7ac5be04bfcede6b34",
+          "fold_clothes-0001": "4d87dfc8fa3edea86c1a38bed4519b17f998c9051477a9f8e60a9fc6bb429efa",
+          "fold_clothes-0002": "9c0f0a43820c4a3c9becf6306240e9c9deb47a8579e5726e066e2fbdd33b075d"
+        },
+        "id": "18ee3d2d735d2ca40f27606604dc798ef83f358d701bbced53027bb99765c236"
+      },
+      "stage_count": 4,
+      "association_count": 27,
+      "intervals_and_chunks_valid": true,
+      "probes": [
+        {
+          "sop_stage": "measure_bind",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [],
+          "rules": [
+            "p04"
+          ],
+          "candidate_count": 0,
+          "first_context_chars": 625,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 1.74
+        },
+        {
+          "sop_stage": "fold_sleeve",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "fold_clothes-0000:p02",
+            "fold_clothes-0002:p01"
+          ],
+          "rules": [
+            "p02"
+          ],
+          "candidate_count": 18,
+          "first_context_chars": 1870,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.98
+        },
+        {
+          "sop_stage": "fold_hem",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "fold_clothes-0002:p07",
+            "fold_clothes-0000:p06"
+          ],
+          "rules": [
+            "p02"
+          ],
+          "candidate_count": 6,
+          "first_context_chars": 1931,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.41
+        },
+        {
+          "sop_stage": "release_inspect_home",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "fold_clothes-0002:p08",
+            "fold_clothes-0000:p08"
+          ],
+          "rules": [
+            "p02"
+          ],
+          "candidate_count": 3,
+          "first_context_chars": 1864,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.25
+        }
+      ]
+    },
+    "push_T": {
+      "version": {
+        "architecture": "staged-v1",
+        "sop_id": "push_T.interaction-sop",
+        "sop_version": "1.0.0",
+        "sop_sha256": "e1c19363929651c5f0ebe5e7df68faed8717674adf79b168b20735b0e415e68f",
+        "prompt_sha256": "669957f19ae9f6f0097cc356a61d9dae35982687d0c9e7a261a349561ecb9176",
+        "experience_index_sha256": "88659f7e9b9fbc69b7ca842a5c2d98d1eb9e32e963245a25e0125d47c575becb",
+        "graph_sha256": {
+          "push_T-0000": "aab91c7b9a276f2587081612106cd8948036138598ba189e1274b2affc5edc3b",
+          "push_T-0001": "f7e9f23d887f72bf064fdd294e87c00aef6362c034445b53928b680d944959bc",
+          "push_T-0002": "417970f3a7fc7f3f4f0dd99ade2c5beb20aee930fcb5757caff39efc5b3fdf4c"
+        },
+        "id": "88bd92fc1cfb664c157c49b9f5b1786bce7f8e293e638da01423412210e629e9"
+      },
+      "stage_count": 5,
+      "association_count": 28,
+      "intervals_and_chunks_valid": true,
+      "probes": [
+        {
+          "sop_stage": "measure_register",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [],
+          "rules": [
+            "p02.b01"
+          ],
+          "candidate_count": 0,
+          "first_context_chars": 623,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.07
+        },
+        {
+          "sop_stage": "establish_planar_contact",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "push_T-0002:p01",
+            "push_T-0000:p01"
+          ],
+          "rules": [
+            "p02.b02",
+            "p02.b03",
+            "p02.b04"
+          ],
+          "candidate_count": 6,
+          "first_context_chars": 1804,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.41
+        },
+        {
+          "sop_stage": "translate_rotate",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "push_T-0001:p03",
+            "push_T-0002:p04"
+          ],
+          "rules": [
+            "p02.b02",
+            "p02.b03",
+            "p02.b04"
+          ],
+          "candidate_count": 11,
+          "first_context_chars": 1899,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.61
+        },
+        {
+          "sop_stage": "release_check_correct",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "push_T-0000:p05",
+            "push_T-0002:p07"
+          ],
+          "rules": [
+            "p02.b03",
+            "p02.b04",
+            "p02.b05"
+          ],
+          "candidate_count": 8,
+          "first_context_chars": 1893,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.46
+        },
+        {
+          "sop_stage": "clear_home",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "push_T-0001:p09",
+            "push_T-0000:p08"
+          ],
+          "rules": [
+            "p02.b03",
+            "p02.b05"
+          ],
+          "candidate_count": 3,
+          "first_context_chars": 1818,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.24
+        }
+      ]
+    },
+    "pour_balls_into_vase": {
+      "version": {
+        "architecture": "staged-v1",
+        "sop_id": "pour_balls_into_vase.interaction-sop",
+        "sop_version": "1.0.0",
+        "sop_sha256": "554d74f98994e239f12644382fca020f03b50f55f9cbf4a35cda95f99a95a09d",
+        "prompt_sha256": "9e157bd286a9464501f595beef09378e14478705b4d0fb36e868f66ccb49ff56",
+        "experience_index_sha256": "88659f7e9b9fbc69b7ca842a5c2d98d1eb9e32e963245a25e0125d47c575becb",
+        "graph_sha256": {
+          "pour_balls_into_vase-0000": "df43f8c261e789a43c336b86251c6230f83883e99799753ccc05d3ca2fd41c6a",
+          "pour_balls_into_vase-0001": "36137251962bafeb0bbb812047e5c437f8830171987550cafa6126ede79fd774",
+          "pour_balls_into_vase-0002": "dbbef1a904754538aa44793b10fb597c5121ceef5f473a78ad1e13d938bef801"
+        },
+        "id": "0d666914eadf0f95e47d781f6270b9377b3aa597f814f97e6920aa60a113a520"
+      },
+      "stage_count": 7,
+      "association_count": 30,
+      "intervals_and_chunks_valid": true,
+      "probes": [
+        {
+          "sop_stage": "measure_and_choose_grasp",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "pour_balls_into_vase-0001:p01",
+            "pour_balls_into_vase-0000:p01"
+          ],
+          "rules": [
+            "p03.b03",
+            "p03.b04"
+          ],
+          "candidate_count": 6,
+          "first_context_chars": 1888,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.41
+        },
+        {
+          "sop_stage": "acquire_upright_cup",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "pour_balls_into_vase-0000:p02",
+            "pour_balls_into_vase-0002:p02"
+          ],
+          "rules": [
+            "p03.b04",
+            "p03.b08"
+          ],
+          "candidate_count": 3,
+          "first_context_chars": 1957,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.26
+        },
+        {
+          "sop_stage": "handover",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "pour_balls_into_vase-0001:p03",
+            "pour_balls_into_vase-0000:p04"
+          ],
+          "rules": [
+            "p03.b01",
+            "p03.b04",
+            "p03.b08"
+          ],
+          "candidate_count": 4,
+          "first_context_chars": 1977,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.29
+        },
+        {
+          "sop_stage": "carry_align_lip",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "pour_balls_into_vase-0001:p05",
+            "pour_balls_into_vase-0000:p05"
+          ],
+          "rules": [
+            "p03.b05",
+            "p03.b06",
+            "p03.b08"
+          ],
+          "candidate_count": 4,
+          "first_context_chars": 1980,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.3
+        },
+        {
+          "sop_stage": "controlled_pour",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "pour_balls_into_vase-0001:p06",
+            "pour_balls_into_vase-0002:p05"
+          ],
+          "rules": [
+            "p03.b04",
+            "p03.b06",
+            "p03.b07",
+            "p03.b08"
+          ],
+          "candidate_count": 3,
+          "first_context_chars": 1998,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.27
+        },
+        {
+          "sop_stage": "restore_place",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "pour_balls_into_vase-0000:p08",
+            "pour_balls_into_vase-0002:p06"
+          ],
+          "rules": [
+            "p03.b08",
+            "p03.b09"
+          ],
+          "candidate_count": 7,
+          "first_context_chars": 1962,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.4
+        },
+        {
+          "sop_stage": "clear_home",
+          "query": {
+            "observation": "当前物体在桌面上"
+          },
+          "selected_sources": [
+            "pour_balls_into_vase-0000:p09",
+            "pour_balls_into_vase-0002:p08"
+          ],
+          "rules": [
+            "p03.b09"
+          ],
+          "candidate_count": 3,
+          "first_context_chars": 1890,
+          "repeated_query_cache_hit": true,
+          "first_elapsed_ms": 0.25
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Uses frozen automatically annotated TRAIN text; no fresh annotation or independent success labels.",
+    "Does not rehash the HDF5 recordings or establish task success/performance.",
+    "Generic textual probes test stage constraints and reference validity, not live-scene applicability."
+  ],
+  "pour_direction_and_missing_recovery": {
+    "outward_stage_with_reverse_words": [
+      "pour_balls_into_vase-0000:p06",
+      "pour_balls_into_vase-0001:p06"
+    ],
+    "restore_stage_with_outward_words": [
+      "pour_balls_into_vase-0000:p07",
+      "pour_balls_into_vase-0002:p06"
+    ],
+    "separate_primary_sources": true,
+    "missing_failure_context_examples": [],
+    "missing_failure_context_warnings": [
+      "库中没有匹配的失败前置情境；未把普通成功示范当作恢复经验。"
+    ]
+  },
+  "source_bank_json_sha256": {
+    "bank.json": "2549078719fba32ee43770a110764251a499d790e52e2296bf504096aae51ba5",
+    "build/cover_blocks-0001/annotation.json": "5d67d0e4536c597fe9feb75c3eb36c777b71f766c6b87ffc06e5c979d17b47df",
+    "build/cover_blocks-0001/codex-1/answer.json": "fede2a08d70dd8cc2a5ae87e4743df4e2f7dd10cae7fd95e6b2b1a15848145fe",
+    "build/cover_blocks-0001/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/cover_blocks-0001/codex-1/execution.json": "00b5d024508a6b02b9a250625b770c243c67a16363301ae7fd54aa5628f9c259",
+    "build/cover_blocks-0001/codex-1/input.json": "0267c15da8cc657ea85e1c66c69adc44dc2fa0fb0f14348a19bb95ac95689260",
+    "build/cover_blocks-0001/codex-1/invocation.json": "831cbe394cec8f4713dc661f5b24acbc3b93697154352c1685497884469ace38",
+    "build/cover_blocks-0001/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/cover_blocks-0001/metadata.json": "fc28d53f4658f338914aecf878b96b468f2526686fdfe42ab71b2255ae6f971b",
+    "build/cover_blocks-0001/usage.json": "66010fa1de5662efd929515f28bc1855cae309561f14fadfad0af4bb8d7c8420",
+    "build/cover_blocks-0002/annotation.json": "f58f4f3fea8247d083352e7477b0547d985c17679f15863e39007839a40bcf93",
+    "build/cover_blocks-0002/codex-1/answer.json": "b9cf0376059e4f3db258cfd8e73abd6c8d451516fa26087dd443811547813286",
+    "build/cover_blocks-0002/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/cover_blocks-0002/codex-1/execution.json": "75e5ad0e68f23fee80583a64e4934f3274586696ed5f62d0779ea34388621fb1",
+    "build/cover_blocks-0002/codex-1/input.json": "202179de3225b52667cefebf6b89f67d98372c1b48da2ca81cee3ebb4dd7fbdb",
+    "build/cover_blocks-0002/codex-1/invocation.json": "7f80df20aed63bac008c93b59f04bd0c83b4bd1763719dceba79c38ecc1e92a8",
+    "build/cover_blocks-0002/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/cover_blocks-0002/metadata.json": "96976d8eddacf25a261abb927141e5b9829e4f1f49ac36d6bac168b8629806b2",
+    "build/cover_blocks-0002/usage.json": "decf0c63334f27a4a734c91808462c5c52e5454633416992beac664cf733fcf2",
+    "build/deposit_coin-0001/annotation.json": "27892f2950deebe15e4521f9a300c8aa4413f1065b86e421b574bd8bab1d0260",
+    "build/deposit_coin-0001/codex-1/answer.json": "4865cb069aeb56a5cb13c918cc7ff620fa137e9507ea358a1222d8e7d4d44ee5",
+    "build/deposit_coin-0001/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/deposit_coin-0001/codex-1/execution.json": "7cf0a84a26fadc7079605fbc513d87c8fb488eb28a2568c0067ca8fc5f408b2a",
+    "build/deposit_coin-0001/codex-1/input.json": "ca8bd8e562f49438b827d15db05384f1e5576d8d9c23e86e13e24ab09e417245",
+    "build/deposit_coin-0001/codex-1/invocation.json": "8a1daa0903132ddbd54b574c5f67eea8b497eac3d4fc4d9ef4e58a2d1b1aa242",
+    "build/deposit_coin-0001/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/deposit_coin-0001/metadata.json": "288d5e79206604d6c20d7c9e018bbe7feefb169990a1d9e2f34c16f4d18b9fd7",
+    "build/deposit_coin-0001/usage.json": "fbb8823bd04cd935394b30666ba48ca4c24100c85b892e17203eae442a89252b",
+    "build/deposit_coin-0002/annotation.json": "0387eb95399e7b4a2014ff27b92ce05fe3ce79bac7ee03f348bc085738b1c8a3",
+    "build/deposit_coin-0002/codex-1/answer.json": "eab6dd9b4db704bd05ade335a5edc798321074817335adf8712662ade33d0463",
+    "build/deposit_coin-0002/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/deposit_coin-0002/codex-1/execution.json": "93458f27d9399e86ecb94928990eb96a9c4eb414e644c8ab3742f13c4f625756",
+    "build/deposit_coin-0002/codex-1/input.json": "29486dfd40b3c3ece0752f8b77750cf511ed14a5f1c500a0a1c9abdf58884c2e",
+    "build/deposit_coin-0002/codex-1/invocation.json": "bb451bfc105cd1438b907caa099aeb5281f723005a8db3e0e8562941566b56cf",
+    "build/deposit_coin-0002/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/deposit_coin-0002/metadata.json": "d77a77791d695c062d307c2499282407e0981619d13f757de9c5c74c8dd14409",
+    "build/deposit_coin-0002/usage.json": "78bd4d0eece2b3e81b45d7a6f74979e946d1ebb7b583ed825e1bd65bb6c891d8",
+    "build/imitate_sorting_sequence-0000/annotation.json": "047a9b41cf64666c2eea46dde0ad998e611aec440bcf10e686ecc1958155fada",
+    "build/imitate_sorting_sequence-0000/codex-1/answer.json": "af667b2d52634f65b7f2762fc1f2c1d3460b6f140e0978c3148e49303e18bc61",
+    "build/imitate_sorting_sequence-0000/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/imitate_sorting_sequence-0000/codex-1/execution.json": "419bc2620ad2811716279e6356915a0cab760124cc4d1a4e110634fa7f94ec32",
+    "build/imitate_sorting_sequence-0000/codex-1/input.json": "4ccb31869c9655148ace5c87450c5a156482838178f223c81b38ddf135742d0c",
+    "build/imitate_sorting_sequence-0000/codex-1/invocation.json": "bfd1a0197d692be9ffd491905fc633146b29b393c4e6e7560d666f5bdea5ce70",
+    "build/imitate_sorting_sequence-0000/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/imitate_sorting_sequence-0000/metadata.json": "dd694d1900801cd64e18c4162a12eb273f7c8603a56a585d43aeb1740cdb60ec",
+    "build/imitate_sorting_sequence-0000/usage.json": "55c2826af520c5a5b36ae978fe2fce2ba75e7d803910a9a2b63e880da014966f",
+    "build/imitate_sorting_sequence-0001/annotation.json": "f77645cab28b740c4e689c9f5978a1a55d8350d57173e5bb9a98ccd8e75b2a45",
+    "build/imitate_sorting_sequence-0001/codex-1/answer.json": "092e39791eee71c970195f205746144c79250c65ae21295f83326ecff84a5a59",
+    "build/imitate_sorting_sequence-0001/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/imitate_sorting_sequence-0001/codex-1/execution.json": "8d7b310e339cc97fa040f0900e5b3655834274c7a97b110d3b06458c15d64ff4",
+    "build/imitate_sorting_sequence-0001/codex-1/input.json": "df4f21acf336b18b0bdb7c1b20a791efc287231f744e52b891ea715243af100c",
+    "build/imitate_sorting_sequence-0001/codex-1/invocation.json": "b26268dfdc9cbe6f8a7bbf2100f231af15f15e04908650675caa02e4e522897d",
+    "build/imitate_sorting_sequence-0001/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/imitate_sorting_sequence-0001/metadata.json": "f2b753ae3f3b2bfcd0155e1c487cf30501a92495cedfd8d5f86610cdac8cc33f",
+    "build/imitate_sorting_sequence-0001/usage.json": "5bb159049031737b15995512f4158d2c24ec16741d9c4c1d4731a9b8723929c1",
+    "build/imitate_sorting_sequence-0002/annotation.json": "316ec6c4a29893e3ed83a0ee2c3558580c7d6c57a50718caf30e3573ee83551b",
+    "build/imitate_sorting_sequence-0002/codex-1/answer.json": "778c24145da36a40fa89c3c171545c9930f5f20453f9cedb949287c21d8d215d",
+    "build/imitate_sorting_sequence-0002/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/imitate_sorting_sequence-0002/codex-1/execution.json": "e15dec3c7525f82ad9df9b802ed8b8e880e20e5ca0c7dde73f17e91f78949e53",
+    "build/imitate_sorting_sequence-0002/codex-1/input.json": "80c0d0f6d6f212d9f652794eb26de78d23decf6b00d02e0caafd4505408cac74",
+    "build/imitate_sorting_sequence-0002/codex-1/invocation.json": "19929f4748edf4368c17a067c58b78ceed6a8466cfcbb11d2dcbef709b09fc29",
+    "build/imitate_sorting_sequence-0002/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/imitate_sorting_sequence-0002/metadata.json": "7dada4913d1c4a569e8ab1311ab0981e88a2ef4fab88979c81c9a933d8a56eca",
+    "build/imitate_sorting_sequence-0002/usage.json": "fdf6eab7bb3b0565af570c6cb5c0211b6f84eed6b5b3c1552e040c16297b1b85",
+    "build/organize_table-0000/annotation.json": "2003155727edaa8b38ec88f3453f1067ee3439e1ad8206e05beb0577d2c3016b",
+    "build/organize_table-0000/codex-1/answer.json": "24af191cabf02e349dc60c3f7dd020e87db7fe13765967a43c439013c070b31c",
+    "build/organize_table-0000/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/organize_table-0000/codex-1/execution.json": "1c8f78220faec0a2329bb7be89ddb69497e84c4226e246b425c7a85f6c70d3e9",
+    "build/organize_table-0000/codex-1/input.json": "d1255ea5a6362a2638678357f3ffa138ed88897d5d66248ae5a741bb60dbdc53",
+    "build/organize_table-0000/codex-1/invocation.json": "6d67bf8a6725e87e4dd6e2049af9a9d578398f1f2232fd391f748e9d12559397",
+    "build/organize_table-0000/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/organize_table-0000/metadata.json": "02a2aa9335ffe05b62a523719306920fb55b815992cf1a655e875f9190bd8c7c",
+    "build/organize_table-0000/usage.json": "f86feccd8d2b49791d898d9f06d58b2f087c20fedef7649e8939f5b2e3042f1f",
+    "build/organize_table-0001/annotation.json": "626a1d6f60287debf260bee97682d33a82afa273cbbe0fa368961af025578e38",
+    "build/organize_table-0001/codex-1/answer.json": "9a81d4f8b6489b37119a39359738dbbeb08715925391c19e2eef48d123a2a375",
+    "build/organize_table-0001/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/organize_table-0001/codex-1/execution.json": "867271cb5c31825306dee0c7fd59bb9a96a020611765b0cdece18f2890015fd9",
+    "build/organize_table-0001/codex-1/input.json": "3ae3483481058e53817706ebc5c96cb697afad78f8509d18b8c1eecd13273c16",
+    "build/organize_table-0001/codex-1/invocation.json": "5be92565acd33c7f7255e767c06d95c5c40cc784842ee741d1e6d26e7c9d6c1c",
+    "build/organize_table-0001/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/organize_table-0001/metadata.json": "ef2dac4a3bea171d8b4cf17efd1495046ec619ac73ccd03d6c8bab12c5a3ce76",
+    "build/organize_table-0001/usage.json": "9418f31c9c3f27ea4d8f59d16005cfdd6e575d1982755271e5cac6c59ace6c34",
+    "build/organize_table-0002/annotation.json": "2af80eb47ba98681ad966af6059f8ba5ff8ed8330ff682a35901d62cf867d9a6",
+    "build/organize_table-0002/codex-1/answer.json": "e9f21439109dd3eac123bfd2c56c8a7160de737c508439cb5661060081556e03",
+    "build/organize_table-0002/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/organize_table-0002/codex-1/execution.json": "7b3eb1385fe3e523ae83ff511f95587bcec5514734b823e03419984c1075b877",
+    "build/organize_table-0002/codex-1/input.json": "7d68ad2b04806533be5fe960baee08a57d261beb9e053200893b9bc059bf94c2",
+    "build/organize_table-0002/codex-1/invocation.json": "4a678c6caa09d4e8bb7f0738574882284d2fc69c38a4525f1b73dffb78ced9fa",
+    "build/organize_table-0002/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/organize_table-0002/metadata.json": "5c3c5accb2b29444b5df21f9d4fad8ae3746b0f2bdd86795bef33fd460413f11",
+    "build/organize_table-0002/usage.json": "0832ed8213fe77fbb634cb08aa81f75068c38b69f1119ee269f07fec68d02163",
+    "build/pour_balls_into_vase-0000/annotation.json": "afcfd04cd4c7ba390a20020ac97ac813d3c5b9d7c7e02dbba7a5e8e97f7174b3",
+    "build/pour_balls_into_vase-0000/codex-1/answer.json": "b54d340827e8fb1ddace0f21d45fe8b6bc156afde60576d7f8566648d1bcac43",
+    "build/pour_balls_into_vase-0000/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/pour_balls_into_vase-0000/codex-1/execution.json": "5a733274bc992221fac5885d697d9f915f7eed47cd29054e5d55774e858c172b",
+    "build/pour_balls_into_vase-0000/codex-1/input.json": "15e9d0d619ea8f4989a1e852d129befc82b8ce1fe57d39a26e8c30ca3065af3a",
+    "build/pour_balls_into_vase-0000/codex-1/invocation.json": "9b7ebaf6d971883fbb6f540f216b4a6ab9fb2ff4ad3d60e996c758296aecc537",
+    "build/pour_balls_into_vase-0000/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/pour_balls_into_vase-0000/metadata.json": "0d6aa95b832bcef7288e9170b4d13024afbb58376bac0b32a1f17b843ef72e2e",
+    "build/pour_balls_into_vase-0000/usage.json": "47f06fc1d1c5b5c0f0c52c44f51cc36bdc69113bea4ee6701f303030fcc73608",
+    "build/pour_balls_into_vase-0001/annotation.json": "33f8caf79e00cd34248774f5f8979f7d11250e5c14813acc49abb0576dc87906",
+    "build/pour_balls_into_vase-0001/codex-1/answer.json": "d5d2730b9d9ce2973f660138308abbc0ad2f4f614d43cf67822e73e86bd2473b",
+    "build/pour_balls_into_vase-0001/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/pour_balls_into_vase-0001/codex-1/execution.json": "7ca44604f42c1c345385c6ddf6e6d3c73137e3ae547ecf730a04221ec29f63f3",
+    "build/pour_balls_into_vase-0001/codex-1/input.json": "16132f32ef85811d908e781feec56f27df09ca49cb7dbe043e338dc9325a9ca7",
+    "build/pour_balls_into_vase-0001/codex-1/invocation.json": "a6546a375067757702b13101dc9d5b3f6bd8a7b0ea3e8fd1a94df83af1e01a22",
+    "build/pour_balls_into_vase-0001/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/pour_balls_into_vase-0001/metadata.json": "acb3afae6a28dcdb801c1a0ff7a7c31bbb4fc739596f0380354907af66416563",
+    "build/pour_balls_into_vase-0001/usage.json": "20149e09d971fdc1c43a0e8677c27a5b2eb04843f44a07eba6fe6bf194b7bf2a",
+    "build/pour_balls_into_vase-0002/annotation.json": "11dd39f37f37c618b5803a458c411f52bedc477bba83ff20ab0e6e67ceb92ed2",
+    "build/pour_balls_into_vase-0002/codex-1/answer.json": "d00d1c52b1d08996dbeba2dc946b6ccfa668d067245b0af90efb159b6c8e0988",
+    "build/pour_balls_into_vase-0002/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/pour_balls_into_vase-0002/codex-1/execution.json": "710196df219b10463eb22e793acee1073213ac3f449d446ba4b50dc317c3b707",
+    "build/pour_balls_into_vase-0002/codex-1/input.json": "81c8da1053b469e0083d1bc962e60b5bc62a7eab6ebed8411adbbc8191ca8674",
+    "build/pour_balls_into_vase-0002/codex-1/invocation.json": "9657adc5d02c490038a88868ca048407302f7a44b16ebdd582870aafd2efe84c",
+    "build/pour_balls_into_vase-0002/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/pour_balls_into_vase-0002/metadata.json": "da25fa0871646539bee847eba7b39d4b01da4541a3c46cc348919ef62ed1d692",
+    "build/pour_balls_into_vase-0002/usage.json": "c85c4cbb6aa85583cb41ccac9c65f18016f991591d0bfb6ba81fb705ab37f495",
+    "build/push_T-0000/annotation.json": "817b4b28981ed472ad980b11a39754f71faf748a7dee7ad2cc01c4bd56f66cb1",
+    "build/push_T-0000/codex-1/answer.json": "a19502e37045af34a11617684dc91d85e792e1e2afe2b95190db777274a00133",
+    "build/push_T-0000/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/push_T-0000/codex-1/execution.json": "64d3bf9c8485633e0547420d23421435ca3c76a06c5894dc7cec467240ae8b72",
+    "build/push_T-0000/codex-1/input.json": "bce3803875deb1fd2697c8ae7f272435a8d9e5f3ba2606980d5636d8139d2e26",
+    "build/push_T-0000/codex-1/invocation.json": "5da1d5609ef90f45e7edefbfab99acc1b4a143577df1d2d9a526466b268c9092",
+    "build/push_T-0000/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/push_T-0000/metadata.json": "5f5e29c4c12a3f6da0a7bb0327a2614701aed6160f4a5ce5bd4e11c45c873af5",
+    "build/push_T-0000/usage.json": "5e2f70f99e6f6c38aed1f6a04a42719ef3ca58673350defda6659a57343a85ac",
+    "build/push_T-0001/annotation.json": "a3919f9275c2edf1c4c73decd16baf85f930173af10ff950a6e9358ee0ac2143",
+    "build/push_T-0001/codex-1/answer.json": "f069021557880d63920796b495206902374dc32ac4308617d888b494924f9c1f",
+    "build/push_T-0001/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/push_T-0001/codex-1/execution.json": "dfc40f114a1b3b7b4721f248ee0e1ccb596a63fca9b827ef4ce698377d0efba2",
+    "build/push_T-0001/codex-1/input.json": "3a2c0c22e55b4428781ffb12305b5f51634c15188ba9e979bace10858e4e7fda",
+    "build/push_T-0001/codex-1/invocation.json": "7ef04b5078c5894d4629e712b56e5f61a807e6871d37be9030189b54ce00408d",
+    "build/push_T-0001/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/push_T-0001/metadata.json": "9be0983c90f69031fa24fa85b89af61ceba9cdbe537968187f4e7005c976fa45",
+    "build/push_T-0001/usage.json": "b2f6c4fe522012249280bbf5341b63bfca1afd755522883f964c82549116f7bd",
+    "build/push_T-0002/annotation.json": "135967de99f25f0c322c173086431eec2d7fdcf6ac019305fad322dc0519d61c",
+    "build/push_T-0002/codex-1/answer.json": "3342f9acce909d32d0f39968c659725477b76b464f0031fdd694d806c817997a",
+    "build/push_T-0002/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/push_T-0002/codex-1/execution.json": "e68ed401f7f4140e7c276cfe7fb126d1b6928c9e4d7b7f05e17dcc3a5a59684b",
+    "build/push_T-0002/codex-1/input.json": "c03bfe3e6d8fbe9204d2f494d106d598f4aacaac3a5c903818ae5f1b710820fa",
+    "build/push_T-0002/codex-1/invocation.json": "4c02d0e0b0ddc8aa195890fe9c5dd4a11cc7e85f9506fe669952afd4f9dfb386",
+    "build/push_T-0002/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/push_T-0002/metadata.json": "b572e47c8d0261be70c3be389f75494f690d0e280e74207e32e02e352f69983f",
+    "build/push_T-0002/usage.json": "9d32f0056f499ded09bb1e6f17c28db1a4fc35fccfa9171397693cf55c19991e",
+    "build/put_bottles_into_dustbin-0001/annotation.json": "9a70e94423c6e3acd0254ccf0f3a3cd1fae923197ff6f6c49ef7f21c38ed2a9c",
+    "build/put_bottles_into_dustbin-0001/codex-1/answer.json": "ec5703f75ae8673e0f9d90686d96c0c2d869eb6e29a5c2ca9458434d15a23da7",
+    "build/put_bottles_into_dustbin-0001/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/put_bottles_into_dustbin-0001/codex-1/execution.json": "dca7e9c0f8512fdf04bffed6a31229e1ae877bba28b113c7bdbe99a4428cdd56",
+    "build/put_bottles_into_dustbin-0001/codex-1/input.json": "fc4f63fdf5ca8c0ab03b5169aea33c199c09423a76230e8fe30e9412bd95b10b",
+    "build/put_bottles_into_dustbin-0001/codex-1/invocation.json": "2df7ef4ba5a31e1dd277900e90daf14e2c08412318910db41050b795cc24e64f",
+    "build/put_bottles_into_dustbin-0001/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/put_bottles_into_dustbin-0001/metadata.json": "fbaa6cc1868beba8ac55bf0a20e3478935c9d31619ebc1b81451ed97f675bae6",
+    "build/put_bottles_into_dustbin-0001/usage.json": "b18cd92d482f0619810d9b477e78abd0983aedfa44155d065b3efbe256a229af",
+    "build/put_bottles_into_dustbin-0002/annotation.json": "c530d1a92d4274ca1f9dfe5218338801d15c922e400ae19b6016494c080ec740",
+    "build/put_bottles_into_dustbin-0002/codex-1/answer.json": "c1346e9aaee82cd07d98f7675af49c0e6f5bf25dd41ee9bbcc71a62bff0663de",
+    "build/put_bottles_into_dustbin-0002/codex-1/event_validation.json": "32f0721ed927239a80b7e207c7d62a00291a5ac173fe6bc100b998336ddf941e",
+    "build/put_bottles_into_dustbin-0002/codex-1/execution.json": "084308958f518f558afe988ed52be355ca498783ecf3773268d503a52d545467",
+    "build/put_bottles_into_dustbin-0002/codex-1/input.json": "3b5f9afd37c4487c6e1d8a7a3d18a1c79cd1d931bf4d14b27f9807c5780ea700",
+    "build/put_bottles_into_dustbin-0002/codex-1/invocation.json": "95886d11ea0a4064f613c71f5778b1f7d13cc048666ae9c9b93a49c4d9965264",
+    "build/put_bottles_into_dustbin-0002/codex-1/schema.json": "17ce0185e39bbe5db68f7fa50e319ef38fc02cd97907af567b9039c261a00f25",
+    "build/put_bottles_into_dustbin-0002/metadata.json": "7195820e2287a628d0b866eca00dbf3cb9b6210c4c9c8c7287c6cb9d5e0d1d0f",
+    "build/put_bottles_into_dustbin-0002/usage.json": "f95385985b276bb12c5d3a2fbacbdf29e8aa19af05fffc516b0043d279f8cd37",
+    "execution-index.json": "88659f7e9b9fbc69b7ca842a5c2d98d1eb9e32e963245a25e0125d47c575becb",
+    "graphs/cover_blocks-0000.json": "80eb440c2b472e948c193e771ea1b2a97f6626f64a7c70301cc53c9fa4ac9c27",
+    "graphs/cover_blocks-0001.json": "b7503004a74f134e6bfb8d73f7491a4a5e287e1bb9c63fad5e29b691e3b43c74",
+    "graphs/cover_blocks-0002.json": "fa87c6e8167017c973f598b287661b7b695ba5ebd44faa9049ee71f65394a686",
+    "graphs/deposit_coin-0000.json": "7d04b687831295e7a07d602aed1488919fc4e8a59eb2e8b6e6de019916a4dc78",
+    "graphs/deposit_coin-0001.json": "91a1b3ac8a5a79ffe857e4311204a27eba79fd64fd0d5eb9820936c51174324b",
+    "graphs/deposit_coin-0002.json": "40621672ccda0ee7778d38cdb61566e864df5bee4ccc1d6d2daa496b1d421b64",
+    "graphs/fold_clothes-0000.json": "12fc14d22851fc034086e1637e9f7ac61a94dcbca107da7ac5be04bfcede6b34",
+    "graphs/fold_clothes-0001.json": "4d87dfc8fa3edea86c1a38bed4519b17f998c9051477a9f8e60a9fc6bb429efa",
+    "graphs/fold_clothes-0002.json": "9c0f0a43820c4a3c9becf6306240e9c9deb47a8579e5726e066e2fbdd33b075d",
+    "graphs/imitate_sorting_sequence-0000.json": "34aa3eee54a5423aaa20f4876b719d72bd66063ad6a470cebf29ad94f4ade305",
+    "graphs/imitate_sorting_sequence-0001.json": "26b1e9ac3b319cb6c24b0aee79126ff59ea6d44ded16a7960d24bfafe338c107",
+    "graphs/imitate_sorting_sequence-0002.json": "17c69f681d71dafa3109a5f6c80356fe1cba89fc255821dac08ac7ee03bbe6b3",
+    "graphs/organize_table-0000.json": "d5d942ac5f552a0b081ae232cfc3a4b3bc9a81ba6cea7fb4e08931f0180cd51c",
+    "graphs/organize_table-0001.json": "c6106499e5d9c414a7e378573bb649ed1001baf89fe0d96b690a779b5733b13a",
+    "graphs/organize_table-0002.json": "5b43ad0a87b8f27159e0763b4c25a1e6ce51c7f63c5badcbc863af1ea7b99210",
+    "graphs/pour_balls_into_vase-0000.json": "df43f8c261e789a43c336b86251c6230f83883e99799753ccc05d3ca2fd41c6a",
+    "graphs/pour_balls_into_vase-0001.json": "36137251962bafeb0bbb812047e5c437f8830171987550cafa6126ede79fd774",
+    "graphs/pour_balls_into_vase-0002.json": "dbbef1a904754538aa44793b10fb597c5121ceef5f473a78ad1e13d938bef801",
+    "graphs/push_T-0000.json": "aab91c7b9a276f2587081612106cd8948036138598ba189e1274b2affc5edc3b",
+    "graphs/push_T-0001.json": "f7e9f23d887f72bf064fdd294e87c00aef6362c034445b53928b680d944959bc",
+    "graphs/push_T-0002.json": "417970f3a7fc7f3f4f0dd99ade2c5beb20aee930fcb5757caff39efc5b3fdf4c",
+    "graphs/put_bottles_into_dustbin-0000.json": "ffa93bda091082e0c511f5a7e051bd76560ecfdb404c7681a317988eb11e28bf",
+    "graphs/put_bottles_into_dustbin-0001.json": "b3981f197547bf72e0f15e16556fe63089908ca02642576be5a93f1ebcb1b232",
+    "graphs/put_bottles_into_dustbin-0002.json": "35adb8bb4107eba891d19569cd206e06221456b956557fab18366fa4dcca7733",
+    "graphs/stack_blocks-0000.json": "dce2cd6a9943feca2877c268a3f45a31cbc31bd54af1cc1394ad374f5cd4bfac",
+    "graphs/stack_blocks-0001.json": "cb6cf71670bbccb07eb88e15e730e27ee1e3b2b9a045d4b21ae9e742f4d8764c",
+    "graphs/stack_blocks-0002.json": "9015239569901eaf84a949dba60144b53df90c4f9e23d34d97a783eca426ec0c",
+    "graphs/stack_blocks-0003.json": "5eeab2a8c8fb5fce7f6bd736ec8588092084586f752b2427f588ca5725f13565",
+    "graphs/stack_blocks-0004.json": "65616daaa386d62b374c38ff8fb19af8b6d713248b2e6f6e6e4f34b071aae772",
+    "graphs/stack_blocks-0005.json": "4d195a5a8e1d9dad1419f2542e1c777e10d98dd077f1189936707aa3b491b158",
+    "search-index.json": "c2162ed3f198be82c088d81197077f87d231e5e297d4c540ed693578da308dc0"
+  },
+  "source_bank_unchanged": true,
+  "passed": true
+}

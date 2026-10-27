@@ -67,3 +67,19 @@ python -m roborag verify-evidence --output results/refactor-evidence-check.json
 ```
 
 最后一条命令需要本机已保留的冻结回合；它仅验证历史结果和检索回放，不是原生策略重评。原始数据和冻结工作树被 Git 忽略，应另行备份；包的 wheel 不包含它们。
+
+## 选择阶段式候选与回退
+
+三个适配任务可显式选择新路径，输出仍必须是全新目录：
+
+```bash
+python -m roborag run --task push_T --seed 1 --variant standard --layout 0 \
+  --architecture staged-v1 --model gpt-6-astra --effort xhigh \
+  --max-wall-seconds 2160 --output runs/staged-push-development
+```
+
+`batch` 和 `mcp` 同样接受 `--architecture staged-v1`。省略选项或指定 `--architecture legacy` 即回退；旧提示词、工具合同和图库不需要迁移或恢复。新路径暂不支持 `--no-rag`，会明确拒绝，避免把未实现的消融记成有效对照。
+
+每个新回合另存 `sop-index.json`、`gpt-plan.json`、不可覆盖的 `plan-versions/`、`episode-ledger.jsonl`、`execution-state.json` 和当前观测快照。SOP 和新代码进入来源哈希；图库或原提示词与 SOP 声明版本不符时拒绝运行，需发布新 SOP/索引并重新验证。不要通过修改冻结文件来消除版本错误。
+
+开发与正式比较预算、场景和采用门槛见 [阶段式协议](../experiments/staged_v1/protocol.json)。旧的 122 例成绩只属于旧路径；新路径必须单独报告原生成功、未完成、缓存与成本。持久状态用于同一回合的模型上下文恢复，不意味着支持崩溃后从任意仿真中点恢复动力学。

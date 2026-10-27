@@ -23,7 +23,11 @@ def register_tools(server, memory, read_only):
         cameras: list[Literal["head", "wrist_l", "wrist_r"]] = ["head", "wrist_r"],
     ) -> CallToolResult:
         if memory.plan is None:
-            raise ToolError("record_plan must precede execution")
+            raise ToolError(
+                "record_graph_plan must precede execution"
+                if memory.execution
+                else "record_plan must precede execution"
+            )
         if return_home and (actions or segments or targets):
             raise ToolError("Leave actions, segments and targets empty for return_home")
         if not return_home and sum(bool(value) for value in (actions, segments, targets)) != 1:
@@ -54,6 +58,19 @@ def register_tools(server, memory, read_only):
                     request["action_encoding"] = dict(segments=encoding)
                 elif target_values:
                     request["action_encoding"] = dict(targets=target_values)
-            receipt = await memory.submit(request)
+            action_id = None
+            if memory.execution:
+                try:
+                    action_id = memory.execution.start_action(request)
+                except ValueError as exc:
+                    raise ToolError(str(exc)) from exc
+            try:
+                receipt = await memory.submit(request)
+            except BaseException as exc:
+                if memory.execution:
+                    memory.execution.fail_action(action_id, exc)
+                raise
+            if memory.execution:
+                memory.execution.finish_action(action_id, request, receipt, memory.state())
             memory.audit("execute_chunk", request, receipt)
             return memory.observation(cameras, receipt=receipt["result"])

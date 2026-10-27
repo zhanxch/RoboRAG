@@ -105,6 +105,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--task", choices=sorted(TASKS), required=True)
     parser.add_argument("--controller", choices=["delta"], default="delta")
+    parser.add_argument("--architecture", choices=["legacy", "staged-v1"], default="legacy")
     parser.add_argument("--max-wall-seconds", type=float, default=1800)
     parser.add_argument("--no-rag", action="store_true")
     parser.add_argument("--bank", type=Path, default=ROOT / "data/graph-bank/current")
@@ -148,6 +149,7 @@ def main():
             effort=args.effort,
             task=args.task,
             controller=args.controller,
+            architecture=args.architecture,
             bank=str(args.bank.resolve()),
             no_rag=args.no_rag,
             max_wall_seconds=args.max_wall_seconds,
@@ -249,6 +251,8 @@ def main():
                         args.task,
                         "--controller",
                         args.controller,
+                        "--architecture",
+                        args.architecture,
                         "--max-wall-seconds",
                         str(args.max_wall_seconds),
                     ]

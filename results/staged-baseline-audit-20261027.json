@@ -1,0 +1,577 @@
+{
+  "schema": "roborag.staged-baseline-audit.v1",
+  "audited_at": "2026-10-27T03:06:10.501355+00:00",
+  "baseline_commit": "210fae415678444a9843e11c52f7e7ffc4eb1c5c",
+  "scope": "Baseline evidence, source integrity, offline validation, and historical paired-regression metadata. No simulation or model invocation.",
+  "source_reports": {
+    "results/refactor-fold-20261026.json": "ff47a745a845edacd66dc36ec879307a8fc6c9fa283fce2414b26cbf1b4e151e",
+    "results/refactor-push-t-20261026.json": "f3f1b61e0941c4a51f5d20631c6cb173607a77dd5ff1103da875e52d7f27bf91",
+    "results/pour-balls-rim-v3-heldout-20261026.json": "dbed1656082459f7ddf3504a82058a0321d02c2b8805e1691a8ca3240d4dc784"
+  },
+  "native_integrity": {
+    "passed": true,
+    "native_episodes_verified": 122,
+    "unique_task_seed_variant_layout_cases": 122,
+    "checks": [
+      "Native SHA-256 matches source report",
+      "Native eval_time=1 with no policy_error; success matches source report",
+      "Required run/result/events/MCP/episode-end files exist",
+      "Current saved layout hash matches run manifest",
+      "Run task/seed/variant/layout matches report",
+      "push_T result.json hash matches finished[] receipt"
+    ],
+    "errors": []
+  },
+  "pour_v3_source_integrity": {
+    "passed": true,
+    "frozen_sources": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/frozen-sources.json",
+    "frozen_sources_sha256": "05d57384aa8e227da1bb6a8de152054b5fce57ba81c2a93812cf3cf538314fe0",
+    "source_entries_verified": 138,
+    "baseline_commit_tracked_entries_verified": 95,
+    "preserved_ignored_or_external_entries_verified": 43,
+    "baseline_source_mismatches": [],
+    "initial_live_source_audit": {
+      "all_138_matched": true,
+      "evidence": "Read-only tool transcript before candidate edits and before/just after baseline commit."
+    },
+    "live_worktree_drift_at_artifact_write": [
+      "/home/zxc/文档/ChatGPT/RoboRAG/src/roborag/runtime/batch.py",
+      "/home/zxc/文档/ChatGPT/RoboRAG/src/roborag/runtime/episode.py"
+    ],
+    "scope_note": "Candidate development started after the initial 138-file equality check. For reproducibility this report verifies tracked source bytes directly from baseline commit, plus preserved ignored/external source bytes; expected new working-tree changes do not invalidate the baseline snapshot."
+  },
+  "offline_validation": {
+    "source_state": "Immediately before baseline commit 210fae4, before candidate development.",
+    "python": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/astra_robodojo/.venv/bin/python",
+    "pythonpath": "$PWD/src:$PWD/.runtime/mcp",
+    "unittest": {
+      "command": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/astra_robodojo/.venv/bin/python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "tests_run": 104,
+      "skipped": 0,
+      "elapsed_seconds": 2.07
+    },
+    "ruff": {
+      "command": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/astra_robodojo/.venv/bin/python -m ruff check src tests scripts",
+      "exit_code": 0,
+      "result": "All checks passed!"
+    },
+    "doctor": {
+      "command": "/home/zxc/文档/ChatGPT/infiniDojo/reproduction/astra_robodojo/.venv/bin/python -m roborag doctor",
+      "exit_code": 0,
+      "result": "All configured path, CLI, vendor tool and policy dependency checks passed."
+    },
+    "evidence_note": "Observed command output is retained in the originating Codex conversation tool transcript. No separate command log files were saved; no log hashes are claimed."
+  },
+  "tasks": {
+    "fold_clothes": {
+      "source_report": "results/refactor-fold-20261026.json",
+      "source_report_sha256": "ff47a745a845edacd66dc36ec879307a8fc6c9fa283fce2414b26cbf1b4e151e",
+      "native_cases_verified": 50,
+      "native_successes": 37,
+      "success_rate": 0.74,
+      "mean_native_control_steps": 385.44,
+      "mean_episode_wall_seconds": 687.4882059956504,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "max_wall_seconds": [
+        2160.0
+      ],
+      "unique_source_manifest_digests": [
+        "5e33ebd9e68e88700053ca7b15b2a97051c19ff94030af1b00537ba93e7142ba"
+      ],
+      "usage": {
+        "input_tokens": 94319629,
+        "cached_input_tokens": 90312192,
+        "output_tokens": 532244,
+        "reasoning_output_tokens": 198215
+      },
+      "uncached_input_tokens": 4007437,
+      "input_cache_fraction": 0.9575121632422876,
+      "actual_billed_usd": null,
+      "model_request_count": null,
+      "tool_counts": {
+        "observe": 50,
+        "measure_scene": 162,
+        "retrieve_evidence": 52,
+        "read_action_reference": 241,
+        "record_plan": 77,
+        "execute_chunk": 1281
+      },
+      "record_plan_per_episode": {
+        "min": 1,
+        "max": 4,
+        "mean": 1.54
+      },
+      "malformed_mcp_lines": 0
+    },
+    "push_T": {
+      "source_report": "results/refactor-push-t-20261026.json",
+      "source_report_sha256": "f3f1b61e0941c4a51f5d20631c6cb173607a77dd5ff1103da875e52d7f27bf91",
+      "native_cases_verified": 50,
+      "native_successes": 50,
+      "success_rate": 1.0,
+      "mean_native_control_steps": 320.24,
+      "mean_episode_wall_seconds": 621.2604781075241,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "max_wall_seconds": [
+        2160.0
+      ],
+      "unique_source_manifest_digests": [
+        "5e33ebd9e68e88700053ca7b15b2a97051c19ff94030af1b00537ba93e7142ba"
+      ],
+      "usage": {
+        "input_tokens": 82124126,
+        "cached_input_tokens": 78353792,
+        "output_tokens": 482632,
+        "reasoning_output_tokens": 173411
+      },
+      "uncached_input_tokens": 3770334,
+      "input_cache_fraction": 0.9540898127792556,
+      "actual_billed_usd": null,
+      "model_request_count": null,
+      "tool_counts": {
+        "observe": 50,
+        "retrieve_evidence": 128,
+        "read_action_reference": 82,
+        "measure_planar": 379,
+        "record_plan": 81,
+        "execute_chunk": 1051
+      },
+      "record_plan_per_episode": {
+        "min": 1,
+        "max": 5,
+        "mean": 1.62
+      },
+      "malformed_mcp_lines": 0
+    },
+    "pour_balls_into_vase": {
+      "source_report": "results/pour-balls-rim-v3-heldout-20261026.json",
+      "source_report_sha256": "dbed1656082459f7ddf3504a82058a0321d02c2b8805e1691a8ca3240d4dc784",
+      "native_cases_verified": 22,
+      "native_successes": 16,
+      "success_rate": 0.7272727272727273,
+      "mean_native_control_steps": 502.3636363636364,
+      "mean_episode_wall_seconds": 1505.3801731776437,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "max_wall_seconds": [
+        3600.0
+      ],
+      "unique_source_manifest_digests": [
+        "c4ab3b149eb7f2c0f570b53b3ac8970b9df23915ba77c7011aa0f7ec4b88ba1e"
+      ],
+      "usage": {
+        "input_tokens": 97003608,
+        "cached_input_tokens": 94418048,
+        "output_tokens": 546569,
+        "reasoning_output_tokens": 248809
+      },
+      "uncached_input_tokens": 2585560,
+      "input_cache_fraction": 0.9733457336968332,
+      "actual_billed_usd": null,
+      "model_request_count": null,
+      "tool_counts": {
+        "observe": 22,
+        "retrieve_evidence": 31,
+        "measure_rim": 169,
+        "read_action_reference": 111,
+        "record_plan": 81,
+        "execute_chunk": 743
+      },
+      "record_plan_per_episode": {
+        "min": 1,
+        "max": 8,
+        "mean": 3.6818181818181817
+      },
+      "malformed_mcp_lines": 0
+    }
+  },
+  "proposed_paired_regression": {
+    "role": "Historical-scene paired regression; reserved from this development round, not new generalization holdout.",
+    "selection_source": "Parent implementation protocol supplied case identities before this metadata lookup. No per-step trajectory content or images inspected.",
+    "matched_baseline_cases": 12,
+    "all_cases_available": true,
+    "by_task": {
+      "fold_clothes": {
+        "cases": 4,
+        "baseline_successes": 2
+      },
+      "push_T": {
+        "cases": 4,
+        "baseline_successes": 4
+      },
+      "pour_balls_into_vase": {
+        "cases": 4,
+        "baseline_successes": 4
+      }
+    },
+    "cases": [
+      {
+        "task": "fold_clothes",
+        "seed": 1,
+        "variant": "random",
+        "layout": 3,
+        "baseline_success": false,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l3",
+        "run_json_sha256": "21172578a493a7a71dc57f7794fe98dfd12c244192dc99f4eee693ca1ee468d4",
+        "result_json_sha256": "a0203936531f67b9e0487d15286aab13cee6f0cb91a2de3cb4f5bc031ee622c6",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l3/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l3/_result.json",
+        "native_sha256": "b66f531b6551e52f2d07215a9daa18c75f5b2c39c8da3deab13f40f522c7facc",
+        "layout_sha256": "60c59be237cac036cf29dc146e524f89e40cdb8833d5514cdd5005f7e69e38ad",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      },
+      {
+        "task": "fold_clothes",
+        "seed": 1,
+        "variant": "random",
+        "layout": 4,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l4",
+        "run_json_sha256": "aafd0e6adaf248cc4e784a537cd05e29b939658aa8aadfd55e4e63c1937be265",
+        "result_json_sha256": "eb53f5747a6a5bb410ccfd02b434bcc69a2e2567fb33f1bfcf827aa4e01ec577",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l4/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l4/_result.json",
+        "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+        "layout_sha256": "21515a8878c7edf703fc1f102af693210d5234af3920d357a5c10405b9e9dffd",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      },
+      {
+        "task": "fold_clothes",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 3,
+        "baseline_success": false,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l3",
+        "run_json_sha256": "98a3eb69bd3ebae35b617eda89017ed2f8291ad2c45ea9853b49ab8b6d44f248",
+        "result_json_sha256": "91430b2d0941f37845702b5744089efe473fff1a8f5dbe2850054c773bcf2653",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l3/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l3/_result.json",
+        "native_sha256": "b66f531b6551e52f2d07215a9daa18c75f5b2c39c8da3deab13f40f522c7facc",
+        "layout_sha256": "d486ac216d4262ee96946fcfd5fc10b8c0a449c0088a41b614ea7b3c5cada261",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      },
+      {
+        "task": "fold_clothes",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 4,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4",
+        "run_json_sha256": "f5932054ef137a714e0283bd078146e521b846292e8950983c8e7fa5a267821b",
+        "result_json_sha256": "a49444dbc208130fe0980aa821a2c720df7cab641f7a366fea253d296fd8403e",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l4/_result.json",
+        "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+        "layout_sha256": "a0c3aec1489e51c69459ecc3601c603f572ca5fe20de861b747e621ec3e43139",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      },
+      {
+        "task": "push_T",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 3,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l3",
+        "run_json_sha256": "ec59fe049953048220ca6517a080938e9bc821af02fd569feda9510f19c29b94",
+        "result_json_sha256": "842f36ab706ba7b814968bf10ccce2a64f2b88d3784652e39a755849b71a5633",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l3/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l3/_result.json",
+        "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+        "layout_sha256": "360b57c09baa5f0e280ff5b2129140564fdf8ef5204c810b6269bccd37fca85e",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true,
+          "reported_result_hash": true
+        }
+      },
+      {
+        "task": "push_T",
+        "seed": 1,
+        "variant": "random",
+        "layout": 3,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l3",
+        "run_json_sha256": "187438a2a0ffcb69e376573c6c85d95802dae5e6b3454f7acba1eec5943cc5dc",
+        "result_json_sha256": "362f4968b57cd8ec60fa52fea831989ad4cb8dfdf8fb8f2474b6fdc61de247bc",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l3/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l3/_result.json",
+        "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+        "layout_sha256": "d568d20fbca9ea23bd5d42779910620488e2401c06cd2a0e20ca7930349604dc",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true,
+          "reported_result_hash": true
+        }
+      },
+      {
+        "task": "push_T",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 4,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l4",
+        "run_json_sha256": "90132905de7d4efdb2664e4fe2f26f6297de1640cdfa85365e1714e7db812fbf",
+        "result_json_sha256": "c193ee10fe3728a8317a3ae0ee97b2f7fbb316dfeff3154bf3bf9fcccb2630a7",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l4/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l4/_result.json",
+        "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+        "layout_sha256": "e1e7d257cdf2211577531ba7fa14c3e8a292bee70d9f9a55d1ffd052e2a2c60e",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true,
+          "reported_result_hash": true
+        }
+      },
+      {
+        "task": "push_T",
+        "seed": 1,
+        "variant": "random",
+        "layout": 4,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l4",
+        "run_json_sha256": "1b16eed74e6411125942aa40b9c68585c112a0e9669245af467aaf73271f08cf",
+        "result_json_sha256": "040a5e7f4814cae5e7d7cb36606bdfcf73cb14bb9f0cfea23307e7b2863b3fc8",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l4/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l4/_result.json",
+        "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+        "layout_sha256": "f3afdefa48ab59877e700728d2630187432945f27ea239ea1896e92195df7b30",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 2160.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true,
+          "reported_result_hash": true
+        }
+      },
+      {
+        "task": "pour_balls_into_vase",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 3,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l3",
+        "run_json_sha256": "4feea3443b7d3841b0185fb70a48e26bdab4c9f05fed812539cf6675809b5b98",
+        "result_json_sha256": "d536e51e803d10e2a89bc1ed1587c57acd78f9cc4ae0de0662da0d375d10e2ff",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l3/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l3/_result.json",
+        "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+        "layout_sha256": "5e3e885514bd3a0e8d3c20481af661f3e0e259b0862bf6a330dfa2196486fbef",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 3600.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      },
+      {
+        "task": "pour_balls_into_vase",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 4,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l4",
+        "run_json_sha256": "994776c354d2e8c388eb7a95e40a163493104a2f802b8d8c8612ffc378d013ab",
+        "result_json_sha256": "da9f03dfbee47c743f106b35f0530160ef108ec40009cc4872c9b0fdb986e230",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l4/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l4/_result.json",
+        "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+        "layout_sha256": "329ec7c52c7d42d825d81902e7f8ca0e0b44df2c5d7fd9d691fc393a1674356c",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 3600.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      },
+      {
+        "task": "pour_balls_into_vase",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 5,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5",
+        "run_json_sha256": "4201c84b68ceff088030d0efb1ddf2a4bea63edd6568eb1e56b893f59edde763",
+        "result_json_sha256": "fd1a52f2ae7491cb2e83f08220818790d1ea966ff87aaee0447514fe0da12c6b",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l5/_result.json",
+        "native_sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5",
+        "layout_sha256": "943a36fdf06fb1f41f7a7071e2c604812d5908e66cdb7e6686be822a82371daf",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 3600.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      },
+      {
+        "task": "pour_balls_into_vase",
+        "seed": 1,
+        "variant": "standard",
+        "layout": 6,
+        "baseline_success": true,
+        "baseline_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l6",
+        "run_json_sha256": "996135a8a2455a39670cc864b13054d2ea0a41cf6ed42a0fbbc11879d73f5e33",
+        "result_json_sha256": "b0f97aed73da45cd89b6d7e3109e48dd5a852ed7391338cce356a4662d297fd2",
+        "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l6/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l6/_result.json",
+        "native_sha256": "0d4366d03be196625243688d60cdd43a116e7150f009b1d930401dd64dcbd215",
+        "layout_sha256": "56d0369d1513b4b35e400147c68793d7f6250367e321503fbe073531ea888ca6",
+        "model": "gpt-6-astra",
+        "effort": "xhigh",
+        "controller": "delta",
+        "no_rag": false,
+        "max_wall_seconds": 3600.0,
+        "checks": {
+          "unique_case": true,
+          "native_hash": true,
+          "native_scored_once": true,
+          "native_success_matches": true,
+          "required_files_exist": true,
+          "layout_hash": true,
+          "case_identity": true
+        }
+      }
+    ],
+    "acceptance": "All cases scored; success count at least matching baseline; no loss on baseline-successful cases; structural execution evidence complete. Keep legacy default if not met.",
+    "development": "Seed 1 / standard layout 0 per task; after an actual problem, a revised version may additionally use layout 1, once per version/case, preserving all attempts.",
+    "budgets_seconds": {
+      "fold_clothes": {
+        "development": 2160,
+        "regression": 2160
+      },
+      "push_T": {
+        "development": 2160,
+        "regression": 2160
+      },
+      "pour_balls_into_vase": {
+        "development": 2160,
+        "regression": 3600
+      }
+    }
+  },
+  "resource_snapshot": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "memory_used_mib": 571,
+    "memory_total_mib": 24564,
+    "gpu_utilization_percent": 0,
+    "native_simulator_processes_observed": 0,
+    "preserve_existing_dashboard_pid": 1372914,
+    "note": "Point-in-time observation, not a resource reservation or native initialization test."
+  },
+  "limitations": [
+    "Historical outcomes were read as evaluation metadata, not online policy guidance. No candidate performance is established.",
+    "Four paired cases per task only support a small-sample engineering check, not complete absence of regression, seed generalization, or RAG causal benefit.",
+    "Historical baseline and candidate runs occur at different times; matching model alias and effort cannot prove identical provider weights or infrastructure load.",
+    "Cached input is a subset of input; reasoning output is a subset of output. Billing and model API request counts are unknown.",
+    "Plan tool counts do not establish whether revisions were necessary. Tool calls are not model requests.",
+    "Subsequently edited candidate code does not inherit the frozen native results.",
+    "Doctor checks paths/imports and cannot replace native initialization or regression.",
+    "Original native runs, bank assets, external vendor files and source snapshots are ignored by Git and need separate preservation.",
+    "The existing native runner retains CLI history/compaction but disables online multi_agent; changing it changes a comparison factor."
+  ]
+}

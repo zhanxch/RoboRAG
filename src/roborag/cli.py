@@ -21,6 +21,7 @@ COMMANDS = {
     "browse-bank": ("bank.server", "Browse historical evidence locally"),
     "summarize": ("evaluation.episode", "Summarize one episode"),
     "evaluate": ("evaluation.suite", "Validate a declared task suite and matched comparison"),
+    "evaluate-staged": ("evaluation.staged", "Audit staged execution evidence and paired gate"),
     "diagnostics": (
         "evaluation.diagnostics",
         "Inspect recorded push_T actions without running policy",

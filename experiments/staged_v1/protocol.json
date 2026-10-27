@@ -1,0 +1,151 @@
+{
+  "schema": "roborag.staged-validation.v1",
+  "registered_at": "2026-10-27",
+  "baseline_snapshot": "210fae4",
+  "candidate": "staged-v1",
+  "objective": "Preserve native task use while adding versioned stage SOP, scene-bound persistent graph plans and evidence-linked execution. No RAG-only causal claim.",
+  "comparison": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "seed": 1,
+    "controller": "delta",
+    "bank": "data/graph-bank/current",
+    "bank_mutation": false,
+    "online_agent": "one persistent native CLI with native history/compaction; stage state recoverable through execution_status",
+    "max_parallel": 2,
+    "development_wall_seconds": {
+      "fold_clothes": 2160,
+      "push_T": 2160,
+      "pour_balls_into_vase": 2160
+    },
+    "regression_wall_seconds": {
+      "fold_clothes": 2160,
+      "push_T": 2160,
+      "pour_balls_into_vase": 3600
+    },
+    "native_step_limits": {
+      "fold_clothes": 500,
+      "push_T": 600,
+      "pour_balls_into_vase": 600
+    },
+    "regression_workers": {
+      "fold_clothes": 2,
+      "push_T": 2,
+      "pour_balls_into_vase": 1
+    },
+    "wall_time_caveat": "Concurrent wall time and provider load are not controlled causal speed measurements; report per-run topology."
+  },
+  "development": {
+    "initial": {
+      "fold_clothes": [
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 0
+        }
+      ],
+      "push_T": [
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 0
+        }
+      ],
+      "pour_balls_into_vase": [
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 0
+        }
+      ]
+    },
+    "repair_budget": "At most two materially changed candidates after initial implementation; preserve every attempted case/revision, no same-revision retry. Standard layout 1 may be added when an actual failure requires a second development scene. No additional optional tuning after useful delivery."
+  },
+  "regression": {
+    "fold_clothes": [
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 3
+      },
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 4
+      },
+      {
+        "seed": 1,
+        "variant": "random",
+        "layout": 3
+      },
+      {
+        "seed": 1,
+        "variant": "random",
+        "layout": 4
+      }
+    ],
+    "push_T": [
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 3
+      },
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 4
+      },
+      {
+        "seed": 1,
+        "variant": "random",
+        "layout": 3
+      },
+      {
+        "seed": 1,
+        "variant": "random",
+        "layout": 4
+      }
+    ],
+    "pour_balls_into_vase": [
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 3
+      },
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 4
+      },
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 5
+      },
+      {
+        "seed": 1,
+        "variant": "standard",
+        "layout": 6
+      }
+    ]
+  },
+  "regression_scope": "Fixed historical cases reserved from this development round, selected by index before new trials; not previously unseen generalization holdout. Do not inspect their action traces for tuning before candidate freeze.",
+  "acceptance": {
+    "functional": "All three tasks have usable native scored episodes and coherent SOP-plan-execution evidence. Any incomplete/timeout remains explicit, not passed. Repair implementation faults before final frozen regression.",
+    "effect": "For each task every baseline-successful matched regression case must remain successful, with all 4 scored; candidate successes >= matched baseline. This strict engineering gate is not a statistical equivalence test.",
+    "structure": "One initial graph plan, normal actions/feedback/stage transitions do not create plan revisions; revisions carry explicit invalidation evidence, affected nodes and parent relationship. Every dispatched action has phase ownership, expected effect and actual evidence; completed phases have live evidence.",
+    "cost": "Report input, cached input, uncached input, output, reasoning breakdown, wall time, control steps, retrieval/reference/cache and planning/revision counts. Missing data stays unknown. Cost improvement only if comparable successful paired cases actually improve; no necessary numeric cost-win gate above effectiveness.",
+    "default": "Keep legacy as default throughout. A failed gate blocks default adoption; even all 12 passing only supports opt-in staged delivery plus an explicit limited-scope acceptance record. Broad default promotion requires a separately registered larger regression."
+  },
+  "evidence": {
+    "baseline_reports": {
+      "fold_clothes": "results/refactor-fold-20261026.json",
+      "push_T": "results/refactor-push-t-20261026.json",
+      "pour_balls_into_vase": "results/pour-balls-rim-v3-heldout-20261026.json"
+    },
+    "freeze": "Commit candidate implementation before regression and archive full protocol_sources, SOP/sidecar versions, actual prompt, source/bank/scene hashes. Freeze cannot reuse prior performance for changed sources.",
+    "failures": "Retain all failures, timeouts, partial costs and unscored attempts; no cherry-picking retries.",
+    "oracle": "Only current RGB/calibration/proprioception and measurements derived from these enter policy. Native evaluation used offline only.",
+    "analysis": "Offline complete information may explain development failures; fixes must address general problems. Final regression traces stay uninspected until frozen run completion; any later tuning needs a new validation protocol."
+  }
+}

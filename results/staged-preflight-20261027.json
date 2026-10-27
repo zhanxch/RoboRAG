@@ -1,0 +1,21 @@
+{
+  "schema": "roborag.staged-preflight.v1",
+  "baseline_commit": "210fae4",
+  "tests": {
+    "count": 134,
+    "passed": true,
+    "skipped": 0,
+    "wall_seconds": 2.198,
+    "log": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-preflight-20261027/unittest.log",
+    "sha256": "f4ed86b6933654c872ce089981cc3cb2c5b937ce3faa81c6cd9a760ff53f08cb"
+  },
+  "ruff_check": "passed",
+  "ruff_format": {
+    "passed": true,
+    "files": 132
+  },
+  "git_diff_check": "passed",
+  "native_validation": "not yet run; no performance claim",
+  "task_prompts": "legacy unchanged; staged SOP exact-source coverage verified",
+  "scope": "offline state/protocol/geometry/retrieval/audit tests; not native task success"
+}

@@ -2,6 +2,20 @@
 
 RoboRAG 是同一个 Python 包中的分层框架。任务按独立目录组织，配置和专用工具归任务所有，运行器与底层协议共享。当前上线链路为图经验检索 + 持续模型会话 + MCP + RoboDojo；早期文本双记忆和独立视觉检索原型已退出当前代码。
 
+## 阶段式候选：Experience — Planning — Adaptive Execution
+
+`--architecture staged-v1` 为 fold_clothes、push_T、pour_balls_into_vase 提供独立的阶段式路径。默认 `legacy` 保留原提示词、工具 schema 和控制行为；下面原有流程说明描述 legacy。新路径的实现不继承旧路径成绩，比较条件见 [预登记协议](../experiments/staged_v1/protocol.json) 和 [基线核验](staged-baseline.md)。
+
+`experience/` 读取任务 `sop.json`，把有来源和版本的操作规则关联到 TRAIN 图中的具体阶段及动作窗口。SOP 引用原任务提示词的精确片段，校验全文覆盖和来源哈希；不会覆盖冻结经验图。新索引写入回合的 `sop-index.json`。历史阶段的前后关系只表示示范时序，计划依赖由模型根据当前任务构造。详见 [SOP 与经验索引](stage-experience.md)。
+
+模型先观察和测量当前场景，读取 SOP 概览及必要阶段示例，再用 `record_graph_plan` 建立对象绑定、目标、显式依赖、预期效果和经验适配。`gpt-plan.json` 是当前未来计划，`plan-versions/` 保存各版；只有带当前证据的失效事件才能通过 `revise_plan` 局部修改。动作、测量、阶段切换、经验采用均不会自动改变计划版本。
+
+`prepare_stage` 可以在规划前或提前查看后续阶段；`enter_stage` 选择计划阶段，渐进提供该阶段的操作细则与历史经验。已有适用准备可复用，有信息缺口、状态变化或异常时才明确刷新。缓存身份不等于当前适用性；采用何种操作、如何适配仍由模型结合当前证据记录。
+
+`execution/` 管理当前阶段和追加式 `episode-ledger.jsonl`。动作自动携带阶段、计划版本和预期反馈，收到的测量与 RGB 快照有可引用 ID。`assess_stage` 将预期效果与实际证据、met/unmet/unknown 及后续决定连接起来，并记录新增经验的采用和适配。证据机制能检查来源、时效与归属，不能证明模型视觉判断必然正确。动作执行、模型阶段判断和原生任务成功分别记录，在线状态不含原生评分。
+
+`execution_status` 和工作区 `episode-context.json` 供模型在历史压缩后恢复计划与阶段，不重开模型会话。控制器、几何测量、TCP 到 delta 转换、短动作段和 IK 连续性检查继续共用旧路径。阶段层不会把历史坐标转换成当前目标，也不会在线回写长期 RAG。
+
 ## 一次回合如何运行
 
 1. `runtime/episode.py` 读取 `RuntimeConfig`、`TaskSpec` 和提示词，记录布局、源码、图库和提示词哈希，启动仿真子进程与 MCP 服务。
@@ -62,6 +76,6 @@ TCP 到 link6 使用 0.145 m 的工具偏移。目标编译器插值的是 link6
 
 ## 当前研究能力边界
 
-检索是词法 BM25、显式条件及多样性选择，尚非学习型多模态检索。底层支持可选本体状态距离和 interaction 标注，但当前 MCP 请求未传入 state/stage/action_space，默认已验证图库也没有 interaction enrichment。因此“交互阶段感知和经验持续更新”仍有研究工作待完成，不能仅凭项目名称视为已验证贡献。
+检索是词法 BM25、显式条件及多样性选择，尚非学习型多模态检索。底层支持可选本体状态距离和 interaction 标注，但当前 MCP 请求未传入 state/stage/action_space，默认已验证图库也没有 interaction enrichment。阶段式候选新增 SOP 到历史片段的显式阶段关联，但并未完成学习型检索或在线经验更新；是否改善任务效果和成本必须由该候选自己的证据支持。
 
 原始图库的部分匹配限制仅进入检索日志，没有全部进入模型上下文。这次重构保持既有输出；未来修复应建立新的策略版本和评估记录。

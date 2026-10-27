@@ -43,6 +43,12 @@ python -m roborag run --task push_T --seed 1 --variant standard --layout 0 \
   --model gpt-6-astra --effort xhigh --output runs/push-t-refactor-dev
 ```
 
+## 阶段式候选
+
+`fold_clothes`、`push_T`、`pour_balls_into_vase` 新增 `--architecture staged-v1`：有独立版本的阶段 SOP 和历史片段索引，任务开始生成场景绑定的 graph plan，按阶段提供操作细则与经验，以当前证据更新执行记录。只有计划不再适用才局部修订。`--architecture legacy` 仍是默认，也是一键回退路径。
+
+新结构不继承上面的旧版成绩；验收条件与固定比较范围在实验前登记于 [验证协议](experiments/staged_v1/protocol.json)。实现关系见 [架构](docs/architecture.md)、[SOP 与经验](docs/stage-experience.md)，运行入口见 [运行指南](docs/runtime.md)。
+
 ## 代码阅读顺序
 
 ```text

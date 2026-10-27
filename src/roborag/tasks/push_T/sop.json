@@ -1,0 +1,177 @@
+{
+  "schema": "roborag.sop.v1",
+  "role": "operation_rules",
+  "id": "push_T.interaction-sop",
+  "version": "1.0.0",
+  "task": "push_T",
+  "source_prompt": {
+    "path": "src/roborag/tasks/push_T/prompt.txt",
+    "sha256": "669957f19ae9f6f0097cc356a61d9dae35982687d0c9e7a261a349561ecb9176",
+    "source_commit": "210fae4",
+    "selection": "Exact paragraph/bullet references; no instruction text is rewritten."
+  },
+  "experience_source": {
+    "bank": "data/graph-bank/current",
+    "execution_index_sha256": "88659f7e9b9fbc69b7ca842a5c2d98d1eb9e32e963245a25e0125d47c575becb",
+    "graphs": {
+      "push_T-0000": "aab91c7b9a276f2587081612106cd8948036138598ba189e1274b2affc5edc3b",
+      "push_T-0001": "f7e9f23d887f72bf064fdd294e87c00aef6362c034445b53928b680d944959bc",
+      "push_T-0002": "417970f3a7fc7f3f4f0dd99ade2c5beb20aee930fcb5757caff39efc5b3fdf4c"
+    },
+    "mapping_method": "Human-readable reviewed phase-operation association, not chronological or causal inference; based only on TRAIN annotations."
+  },
+  "global_rule_refs": [
+    "p00",
+    "p01.heading",
+    "p01.b01",
+    "p02.heading",
+    "p02.b01",
+    "p02.b03",
+    "p03",
+    "p04.heading",
+    "p04.b01",
+    "p04.b02",
+    "p04.b03"
+  ],
+  "stages": [
+    {
+      "id": "measure_register",
+      "goal": "Measure support and block planes, bind block and target, and save the unobstructed target registration.",
+      "applicability": "Initial unobstructed scene, or an explicitly invalidated registration.",
+      "completion": [
+        "Valid current measured planes and block/target match are saved, or measurement remains unknown."
+      ],
+      "query": "T形块 灰色垫 桌面 轮廓 初始 测量",
+      "rule_refs": [
+        "p02.b01"
+      ],
+      "dependencies": [],
+      "branches": [],
+      "lookahead": [],
+      "experience_refs": []
+    },
+    {
+      "id": "establish_planar_contact",
+      "goal": "Choose and verify a controlled contact that can slide and rotate the T block without lifting.",
+      "applicability": "Current block and target geometry support a contact choice.",
+      "completion": [
+        "Small planar motion and current RGB support contact; closure alone does not."
+      ],
+      "query": "接近 T形块 下降 边缘 接触 开始推移",
+      "rule_refs": [
+        "p02.b02",
+        "p02.b03",
+        "p02.b04"
+      ],
+      "dependencies": [
+        "Valid current block/support measurements."
+      ],
+      "branches": [
+        "A parallel-sided patch may admit opposing-finger contact; choose from measured geometry.",
+        "Reposition or switch arm if current contact/reach is unsuitable."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "push_T-0000:p01",
+        "push_T-0000:p02",
+        "push_T-0001:p01",
+        "push_T-0001:p02",
+        "push_T-0002:p01",
+        "push_T-0002:p02"
+      ]
+    },
+    {
+      "id": "translate_rotate",
+      "goal": "Move the block toward the saved target using controlled planar translation and modest yaw changes.",
+      "applicability": "Planar contact is currently supported and the target remains applicable.",
+      "completion": [
+        "Current visual evidence shows progress toward the target; final residuals remain for released checking."
+      ],
+      "query": "T形块 沿桌面 推移 平移 旋转 调整 方向",
+      "rule_refs": [
+        "p02.b02",
+        "p02.b03",
+        "p02.b04"
+      ],
+      "dependencies": [
+        "Current planar contact and saved target geometry."
+      ],
+      "branches": [
+        "Release/reposition/recontact or change arm when wrist range or tracking requires it.",
+        "IK-rejected suffixes are not executed; continue only from returned measured poses."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "push_T-0000:p02",
+        "push_T-0000:p03",
+        "push_T-0000:p04",
+        "push_T-0001:p02",
+        "push_T-0001:p03",
+        "push_T-0001:p04",
+        "push_T-0001:p05",
+        "push_T-0002:p02",
+        "push_T-0002:p03",
+        "push_T-0002:p04",
+        "push_T-0002:p05"
+      ]
+    },
+    {
+      "id": "release_check_correct",
+      "goal": "Release stationary, clear the view and correct only supported residuals against the saved target.",
+      "applicability": "The block is near the saved goal or a residual check is needed.",
+      "completion": [
+        "Released planar_check or current views support residual satisfaction, unmet or unknown."
+      ],
+      "query": "小幅 微调 修正 对齐 灰垫 残差",
+      "rule_refs": [
+        "p02.b03",
+        "p02.b04",
+        "p02.b05"
+      ],
+      "dependencies": [
+        "The initial target registration remains valid."
+      ],
+      "branches": [
+        "Occlusion may retain unknown; a failed measurement is not a motion instruction.",
+        "A supported correction can reuse contact/reposition guidance without replanning the whole task."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "push_T-0000:p05",
+        "push_T-0000:p06",
+        "push_T-0000:p07",
+        "push_T-0001:p06",
+        "push_T-0001:p07",
+        "push_T-0001:p08",
+        "push_T-0002:p06",
+        "push_T-0002:p07"
+      ]
+    },
+    {
+      "id": "clear_home",
+      "goal": "Release stationary, withdraw without dragging or lifting the block, and return both arms home.",
+      "applicability": "The block is supported and contact can be released.",
+      "completion": [
+        "The fingers are clear and both arms return home.",
+        "Task success requires native terminal evidence, separately from visual alignment."
+      ],
+      "query": "张开 夹爪 撤回 归位",
+      "rule_refs": [
+        "p02.b03",
+        "p02.b05"
+      ],
+      "dependencies": [
+        "Stationary release before lifting or withdrawing fingers."
+      ],
+      "branches": [
+        "If the native episode remains active, inspect a supported residual and correct within the existing plan when applicable."
+      ],
+      "lookahead": [],
+      "experience_refs": [
+        "push_T-0000:p08",
+        "push_T-0001:p09",
+        "push_T-0002:p08"
+      ]
+    }
+  ]
+}

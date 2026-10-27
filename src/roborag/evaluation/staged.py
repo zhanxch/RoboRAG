@@ -131,6 +131,7 @@ def audit_structure(path):
     active, current, sop_seen = None, None, False
     progress, last_step, known_refs, prepared = {}, {}, set(), set()
     entered_steps = {}
+    dispatch_gate, latest_observation, latest_entry = None, None, None
     counts = Counter()
 
     def live(ids, minimum=None, presented=False):
@@ -259,6 +260,8 @@ def audit_structure(path):
             elif record.get("observation_id") not in evidence:
                 errors.append("Measurement lacks its preceding observation")
             evidence[key] = record
+            if kind == "observation_recorded":
+                latest_observation = key
         elif kind == "observation_presented":
             record = evidence.get(event.get("evidence_id"))
             if not record or record.get("kind") != "observation":
@@ -275,6 +278,7 @@ def audit_structure(path):
                 errors.append("Stage entered before its declared dependencies completed")
             if active and active != stage and progress.get(active) == "active":
                 errors.append("Stage switched without assessing previous active phase")
+            latest_entry = dict(event=event, from_stage_id=active, sequence=sequence)
             active = stage
             progress[stage] = "active"
             entry_step = event.get("entered_at_step")
@@ -284,6 +288,94 @@ def audit_structure(path):
                 entered_steps[stage] = entry_step
             if event.get("revisit"):
                 last_step.pop(stage, None)
+        elif kind == "stage_transition_rejected":
+            saved_gate = event.get("dispatch_gate")
+            if not isinstance(saved_gate, dict) or not saved_gate:
+                errors.append("Dispatch guard rejection lacks its persisted gate")
+                continue
+            if (
+                stage != active
+                or not event.get("error")
+                or not isinstance(event.get("observed_at_step"), int)
+            ):
+                errors.append("Dispatch guard rejection lacks active ownership or failure evidence")
+            if event.get("attempted_stage_id") == active:
+                errors.append("Dispatch guard incorrectly latches a same-stage rejection")
+            if dispatch_gate is None:
+                expected_gate = dict(
+                    target_stage_id=event.get("attempted_stage_id"),
+                    from_stage_id=active,
+                    rejected_event_id=event.get("id"),
+                    observed_at_step=event.get("observed_at_step"),
+                    error=event.get("error"),
+                )
+                if saved_gate != expected_gate or not isinstance(
+                    saved_gate.get("target_stage_id"), str
+                ):
+                    errors.append("Dispatch guard does not identify its first rejected transition")
+                dispatch_gate = saved_gate
+            elif saved_gate != dispatch_gate:
+                errors.append("Dispatch guard was overwritten by a later rejected transition")
+        elif kind == "action_dispatch_blocked":
+            if dispatch_gate is None or event.get("dispatch_gate") != dispatch_gate:
+                errors.append("Blocked action lacks its unresolved dispatch guard")
+            if event.get("action_id") is not None or stage != active:
+                errors.append(
+                    "Blocked action allocated dispatch identity or changed phase ownership"
+                )
+        elif kind == "stage_transition_resolved":
+            before_errors = len(errors)
+            if dispatch_gate is None:
+                errors.append("Dispatch guard resolution has no preceding rejection")
+            else:
+                for field in ("rejected_event_id", "target_stage_id", "from_stage_id"):
+                    if event.get(field) != dispatch_gate.get(field):
+                        errors.append("Dispatch guard resolution refers to a different rejection")
+            if not latest_entry or latest_entry["sequence"] != sequence - 1:
+                errors.append(
+                    "Dispatch guard resolution lacks its immediately preceding validated entry"
+                )
+            elif event.get("entered_stage_id") != active or stage != active:
+                errors.append("Dispatch guard resolution names the wrong entered stage")
+            else:
+                entry = latest_entry["event"]
+                same_stage = active == latest_entry["from_stage_id"]
+                expected_resolution = "resumed_current" if same_stage else "entered_target"
+                if event.get("resolution") != expected_resolution:
+                    errors.append(
+                        "Dispatch guard resolution kind differs from the actual transition"
+                    )
+                if event.get("requested_reason") != entry.get("reason") or event.get(
+                    "current_observation"
+                ) != entry.get("current_observation"):
+                    errors.append("Dispatch guard resolution differs from its entry explanation")
+                if same_stage and (
+                    event.get("requested_reason") not in ("exception", "revisit")
+                    or not str(event.get("current_observation", "")).strip()
+                ):
+                    errors.append(
+                        "Dispatch guard recovery resume lacks an explicit current-stage recovery"
+                    )
+            obs = event.get("observation_id")
+            live([obs], presented=True)
+            observed_step = event.get("observed_at_step")
+            latest_step = max((record.get("step", -1) for record in evidence.values()), default=-1)
+            if (
+                obs != latest_observation
+                or evidence.get(obs, {}).get("kind") != "observation"
+                or not isinstance(observed_step, int)
+                or observed_step != latest_step
+                or evidence.get(obs, {}).get("step") != observed_step
+                or (
+                    dispatch_gate is not None
+                    and observed_step < dispatch_gate.get("observed_at_step", observed_step)
+                )
+            ):
+                errors.append(
+                    "Dispatch guard resolution lacks the latest presented current-step observation"
+                )
+            if len(errors) == before_errors:
+                dispatch_gate = None
         elif kind == "stage_progress_invalidated":
             cause = event.get("cause_stage")
             ancestors = set(phases.get(stage, {}).get("depends_on", []))
@@ -304,6 +396,10 @@ def audit_structure(path):
             last_step.pop(stage, None)
             entered_steps.pop(stage, None)
         elif kind == "action_submitted":
+            if dispatch_gate is not None:
+                errors.append(
+                    "Action dispatched while a rejected stage transition remains unresolved"
+                )
             key = event.get("action_id")
             if not key or key in submitted or stage != active or progress.get(stage) != "active":
                 errors.append("Action has missing, duplicate or wrong active-phase ownership")
@@ -419,6 +515,19 @@ def audit_structure(path):
     if bad_commands or len(native_ids) != len(set(native_ids)) or set(native_ids) != set(received):
         errors.append("Native command receipts are missing, duplicated or unaccounted")
     state = _json(path / "execution-state.json", errors, {})
+    guard_events = any(
+        counts[kind]
+        for kind in (
+            "stage_transition_rejected",
+            "stage_transition_resolved",
+            "action_dispatch_blocked",
+        )
+    )
+    guard_instrumented = "dispatch_gate" in state or guard_events
+    if guard_instrumented and (
+        "dispatch_gate" not in state or state["dispatch_gate"] != dispatch_gate
+    ):
+        errors.append("Execution state dispatch guard differs from the recorded lifecycle")
     if (
         state.get("role") != "CURRENT_EXECUTION_STATE"
         or state.get("plan_version") != current
@@ -465,6 +574,29 @@ def audit_structure(path):
         "passed": not errors,
         "errors": sorted(set(errors)),
         "unresolved_actions": unresolved,
+        "dispatch_guard": {
+            "instrumented": guard_instrumented,
+            "status": "blocked"
+            if dispatch_gate is not None
+            else "clear"
+            if guard_instrumented
+            else "not_instrumented",
+            "rejected_transitions": counts["stage_transition_rejected"]
+            if guard_instrumented
+            else None,
+            "resolved_transitions": counts["stage_transition_resolved"]
+            if guard_instrumented
+            else None,
+            "blocked_action_attempts": counts["action_dispatch_blocked"]
+            if guard_instrumented
+            else None,
+            "unresolved_gate": dispatch_gate,
+            "scope": "Recorded guard lifecycle only; older runs without this instrumentation do not establish guarded dispatch.",
+        },
+        "final_active_stage": active,
+        "final_phase_statuses": {
+            phase["id"]: progress.get(phase["id"], "pending") for phase in latest.get("phases", [])
+        },
         "event_counts": dict(counts),
         "cost": cost,
         "interpretation": "Coherent recorded attribution only; model claims and references are not independently proven correct or native task success. Counts describe durable records, not model API requests.",

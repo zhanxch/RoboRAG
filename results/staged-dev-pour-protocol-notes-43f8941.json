@@ -1,0 +1,337 @@
+{
+  "schema": "roborag.staged-development-protocol-notes.v1",
+  "candidate_commit": "43f8941",
+  "task": "pour_balls_into_vase",
+  "observed_at": "2026-10-27T03:55:20.028154+00:00",
+  "evidence_scope": "Completed public online tool calls, action receipts, episode ledger, agent events and saved graph plan only. No native jobs, private evaluator state, reserved regression traces or source edits.",
+  "run_path": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase",
+  "evidence_paths": {
+    "mcp-calls.jsonl": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase/mcp-calls.jsonl",
+    "episode-ledger.jsonl": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase/episode-ledger.jsonl",
+    "agent-events.jsonl": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase/agent-events.jsonl",
+    "gpt-plan.json": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase/gpt-plan.json",
+    "execution-state.json": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase/execution-state.json"
+  },
+  "counts": {
+    "successful_mcp_calls": 66,
+    "started_mcp_calls": 69,
+    "tool_errors": 3,
+    "ledger_events": 142,
+    "initial_plans": 1,
+    "plan_revisions": 0,
+    "submitted_actions": 27,
+    "received_actions": 27,
+    "unknown_action_responses": 0,
+    "stage_entries": 6,
+    "entries_reusing_context": 5,
+    "stage_preparations_including_entry": 6,
+    "stage_assessments": 6,
+    "effect_checks": 11,
+    "measurement_results": 13,
+    "failed_measurements": 10,
+    "reference_expansions": 6
+  },
+  "tool_counts": {
+    "observe": 1,
+    "get_task_sop": 1,
+    "prepare_stage": 5,
+    "measure_rim": 13,
+    "read_action_reference": 6,
+    "record_graph_plan": 1,
+    "enter_stage": 6,
+    "execute_chunk": 27,
+    "assess_stage": 6
+  },
+  "recorded_ownership_and_evidence_checks": {
+    "violations": [],
+    "submitted_received_id_sets_equal": true,
+    "interpretation": "No detected ledger ownership or accepted live-evidence invariant violation. This does not establish that every action semantically belongs to its recorded phase; see boundary mismatch below."
+  },
+  "lookahead": {
+    "first_pour_preparation_mcp_call": 3,
+    "before_plan_mcp_call": 16,
+    "before_first_motion_mcp_call": 19,
+    "before_grasp_closure_mcp_call": 40,
+    "preview_stage": "controlled_pour",
+    "related_reference_calls": [
+      7,
+      8,
+      10,
+      11,
+      12,
+      14
+    ],
+    "initial_plan_measure_phase_adoption": [
+      {
+        "source": "pour_balls_into_vase-0002:p05",
+        "adopted": "Side-grasp outward roll about predominantly local approach axis.",
+        "adaptation": "Use right arm with horizontal +Y approach, roll toward +X receiver; own full tilt from upright and current rim geometry."
+      }
+    ],
+    "initial_plan_adaptation": "Use direct right-arm side grasp, no handover currently required. 0000:p02 close event found, but its overhead/in-rim grasp is unsuitable for current side roll; adopt stationary closure then small lift only, change orientation to horizontal approach +Y, closing -X, cup axis +Z. 0002:p05 is outward pouring not restoration; start is already tilted, p04 also partially tilted; its 0.4372 rad local relative axis [0.8866,-0.2879,0.3620] primarily rolls local +X. Current adaptation uses pure local +X / world +Y roll from measured upright home-yaw grasp, cup tilts +X from vase left. Full intended tilt ~120-140 degrees with horizontal approach and coordinated lip-centered translation, rather than interpreting reference partial angle as full tilt. Retain live reachability checks. First acquire clear views and valid rim geometry before contact. Restoration and home do not depend on proving seven captured.",
+    "observation": "The agent explicitly distinguished outward pouring from restoration, recognized already-tilted historical start poses, selected a direct right side grasp and adapted the whole rotation from current upright state."
+  },
+  "recorded_experience_adoptions": [
+    {
+      "record": "initial_plan",
+      "phase": "measure",
+      "source": "pour_balls_into_vase-0002:p05",
+      "adopted": "Side-grasp outward roll about predominantly local approach axis.",
+      "adaptation": "Use right arm with horizontal +Y approach, roll toward +X receiver; own full tilt from upright and current rim geometry."
+    },
+    {
+      "record": "initial_plan",
+      "phase": "grasp",
+      "source": "pour_balls_into_vase-0000:p02",
+      "adopted": "Closure followed by lift verifies cup follows hand; close command event exists.",
+      "adaptation": "Change overhead historical grasp to horizontal side grasp below current measured lip."
+    },
+    {
+      "record": "execution_assessment",
+      "ledger_event_id": "event-00076",
+      "phase": "grasp",
+      "source": "pour_balls_into_vase-0002:p05",
+      "adopted": "Side roll with retained grasp.",
+      "adaptation": "Use actual upright-cup quaternion as zero and world +Y roll; wrist approach stays near horizontal although initial grasp is pitched 9 deg. Smaller motions avoided rejected low wrist leveling."
+    },
+    {
+      "record": "execution_assessment",
+      "ledger_event_id": "event-00131",
+      "phase": "restore",
+      "source": "pour_balls_into_vase-0001:p08",
+      "adopted": "Open after table placement, pause, then withdraw before home.",
+      "adaptation": "Placed current cup at its original measured footprint on vase's front-left, not historical right-side location; reversed own supported pour rotation."
+    }
+  ],
+  "measurements": {
+    "failed_evidence_ids": [
+      "measurement-00003",
+      "measurement-00004",
+      "measurement-00005",
+      "measurement-00009",
+      "measurement-00010",
+      "measurement-00011",
+      "measurement-00012",
+      "measurement-00013",
+      "measurement-00016",
+      "measurement-00019"
+    ],
+    "successful_evidence_ids": [
+      "measurement-00002",
+      "measurement-00017",
+      "measurement-00020"
+    ],
+    "accepted_measure_stage_evidence": [
+      "measurement-00017",
+      "measurement-00020",
+      "observation-00018"
+    ],
+    "note": "Failed rim fits remained explicit; accepted measurement completion cites valid two-wrist fits and a current RGB anchor. Older stable geometry is retained as context, not proof of later grasp or capture."
+  },
+  "tool_errors": [
+    {
+      "agent_event_line": 113,
+      "event_item_id": "item_58",
+      "tool": "assess_stage",
+      "arguments": {
+        "stage_id": "grasp",
+        "decision": "complete",
+        "checks": [
+          {
+            "effect": "Cup follows a small lift upright.",
+            "status": "met",
+            "evidence_ids": [
+              "observation-00025",
+              "observation-00026"
+            ],
+            "observation": "After stationary closure, a 3 cm lift moved cup upward with hand in head view while wrist cup boundary stayed fixed and balls stayed inside."
+          },
+          {
+            "effect": "Cup-to-gripper offset is supported by current RGB.",
+            "status": "met",
+            "evidence_ids": [
+              "measurement-00017",
+              "observation-00026"
+            ],
+            "observation": "Upright cup rim remains approximately 2.35 cm above TCP, 1.42 cm behind it in Y, and 1.5 mm right. Current hand approach is pitched down ~9 degrees and closing axis ~6.5 degrees; use measured upright quaternion as zero tilt."
+          }
+        ],
+        "experience": [
+          {
+            "source": "pour_balls_into_vase-0002:p05",
+            "adopted": "Pour by side roll, with current feedback throughout.",
+            "adaptation": "Horizontal wrist leveling hit continuity limits near low table height; retained reachable 9 degree downward approach for side grasp. Adapt outward rotation around world +Y, near current local +X, from verified upright-cup attitude rather than treating wrist pitch as cup tilt."
+          }
+        ],
+        "rationale": "Grasp verified by live lift; contact geometry remains stable and permits direct right-arm carry."
+      },
+      "message": "Error executing tool assess_stage: Effect evidence predates this stage's current visit"
+    },
+    {
+      "agent_event_line": 115,
+      "event_item_id": "item_59",
+      "tool": "enter_stage",
+      "arguments": {
+        "stage_id": "align"
+      },
+      "message": "Error executing tool enter_stage: Complete this phase's explicit dependencies first"
+    },
+    {
+      "agent_event_line": 131,
+      "event_item_id": "item_67",
+      "tool": "execute_chunk",
+      "arguments": {
+        "targets": [
+          {
+            "steps": 16,
+            "right": {
+              "tcp_xyz": [
+                0.289924,
+                -0.028072,
+                0.965759
+              ],
+              "quaternion_wxyz": [
+                0.579486,
+                0.299739,
+                0.388811,
+                0.650522
+              ],
+              "gripper": 0
+            }
+          },
+          {
+            "steps": 8
+          }
+        ],
+        "cameras": [
+          "head",
+          "wrist_r",
+          "wrist_l"
+        ],
+        "subgoal": "Increase outward roll to 65 degrees and pause at potential flow onset",
+        "expected_feedback": "Inspect balls approaching low edge and actual rim-to-vase overlap before deeper tilt."
+      },
+      "message": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold"
+    }
+  ],
+  "carry_transition_boundary": {
+    "classification": "Real semantic stage-transition gap after rejected tool calls, not merely an unprompted label preference.",
+    "attempted_grasp_completion": {
+      "event_item_id": "item_58",
+      "failed_reason": "measurement-00017 at step 87 predates grasp entered_at_step 103; current RGB evidence was also supplied"
+    },
+    "rejected_align_entry": {
+      "event_item_id": "item_59",
+      "failed_reason": "grasp dependency not completed"
+    },
+    "subsequent_dispatch": {
+      "event_item_id": "item_60",
+      "action_id": "action-00013",
+      "submitted_ledger_event": "event-00072",
+      "received_ledger_event": "event-00074",
+      "recorded_phase": "grasp",
+      "step_before": 188,
+      "step_after": 212,
+      "subgoal": "Carry verified upright cup above the left side of the vase with bottom clearance",
+      "expected_feedback": "Cup stays attached upright, clears vase body, and wrist views support lip alignment."
+    },
+    "later_recovery": {
+      "corrected_assessment_item": "item_61",
+      "corrected_assessment_ledger": "event-00076",
+      "successful_align_entry_item": "item_62",
+      "successful_align_entry_ledger": "event-00077",
+      "first_explicit_align_action": "action-00014"
+    },
+    "limited_conclusion": "The carry also provided retention evidence, but the agent had explicitly attempted to enter align and been rejected before dispatching this next-stage transport. Automatic active-phase ownership stayed internally accurate; dispatch was not gated on the failed transition. Strict semantic phase confinement is therefore not demonstrated. Alignment was subsequently assessed before any outward pouring, and no causal native-performance harm is inferred."
+  },
+  "stage_transitions": [
+    {
+      "ledger_event_id": "event-00011",
+      "stage_id": "measure",
+      "entered_at_step": 0,
+      "context_reused": true
+    },
+    {
+      "ledger_event_id": "event-00047",
+      "stage_id": "grasp",
+      "entered_at_step": 103,
+      "context_reused": true
+    },
+    {
+      "ledger_event_id": "event-00077",
+      "stage_id": "align",
+      "entered_at_step": 212,
+      "context_reused": true
+    },
+    {
+      "ledger_event_id": "event-00083",
+      "stage_id": "pour",
+      "entered_at_step": 224,
+      "context_reused": true
+    },
+    {
+      "ledger_event_id": "event-00110",
+      "stage_id": "restore",
+      "entered_at_step": 344,
+      "context_reused": true
+    },
+    {
+      "ledger_event_id": "event-00133",
+      "stage_id": "home",
+      "entered_at_step": 424,
+      "context_reused": false
+    }
+  ],
+  "terminal_online_assessment": {
+    "ledger_event_id": "event-00142",
+    "stage_id": "home",
+    "decision": "blocked",
+    "checks": [
+      {
+        "effect": "Fingers clear the objects and both arms are at origin.",
+        "status": "unmet",
+        "evidence_ids": [
+          "observation-00040",
+          "observation-00041"
+        ],
+        "observation": "Fingers cleared objects, but return_home ended with episode_over after only the left waypoint. Left maximum joint error is 0.393902 rad; right remains at withdrawal pose with joints far from initial zero. Both arms at origin is unsupported and visibly unmet in final state."
+      },
+      {
+        "effect": "Visible ball outcome is recorded without assuming complete capture.",
+        "status": "met",
+        "evidence_ids": [
+          "observation-00041"
+        ],
+        "observation": "Cup is upright on table and visibly empty; vase remains upright and no spilled balls are visible on tabletop. Vase interior is occluded, so all-seven-inside is unknown."
+      }
+    ],
+    "rationale": "Episode ended at step 454 during automatic home return, before both arms reached origin. No further live correction is available after episode end; native task success is not inferred."
+  },
+  "final_public_stage_statuses": {
+    "measure": "complete",
+    "grasp": "complete",
+    "align": "complete",
+    "pour": "complete",
+    "restore": "complete",
+    "home": "blocked"
+  },
+  "reported_usage": {
+    "input_tokens": 5026429,
+    "cached_input_tokens": 4898944,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 23702,
+    "reasoning_output_tokens": 9571
+  },
+  "reported_cached_input_fraction": 0.9746370634102263,
+  "conclusions": [
+    "One persistent plan, no revisions during normal feedback or recovery.",
+    "All 27 recorded motion requests have matching phase/version/feedback/observation receipts; no unknown response was seen.",
+    "Pre-grasp pouring lookahead and concrete experience adaptation are present.",
+    "Three tool errors were retained in agent events; the failed assessment/entry sequence exposed the phase-dispatch gap described above.",
+    "Visible empty cup/no visible spill were explicitly separated from unknown all-seven capture; terminal home remained blocked rather than being promoted to task success."
+  ],
+  "limitations": [
+    "Structural evidence checks do not machine-verify visual semantics, geometric accuracy, grasp attachment or ball capture.",
+    "This review does not reassess native success and does not justify a broad no-regression claim."
+  ]
+}

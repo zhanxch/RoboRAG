@@ -82,6 +82,8 @@ python -m roborag run --task push_T --seed 1 --variant standard --layout 0 \
 
 每个新回合另存 `sop-index.json`、`gpt-plan.json`、不可覆盖的 `plan-versions/`、`episode-ledger.jsonl`、`execution-state.json` 和当前观测快照。SOP 和新代码进入来源哈希；图库或原提示词与 SOP 声明版本不符时拒绝运行，需发布新 SOP/索引并重新验证。不要通过修改冻结文件来消除版本错误。
 
+若 `enter_stage` 的跨阶段校验失败，状态中的 `dispatch_gate` 会阻止后续动作。先补齐评估并成功进入就绪阶段；若需要在原阶段继续恢复，则用 `reason="revisit"` 或 `"exception"` 明确重新进入当前阶段并描述当前观察。两条路径都要求已有当前步的可见观测，普通重复 `entry` 不能清除限制。`revisit` 可复用已有参考，`exception` 会刷新准备；只有实际信息缺口才需要额外检索。
+
 开发与正式比较预算、场景和采用门槛见 [阶段式协议](../experiments/staged_v1/protocol.json)。旧的 122 例成绩只属于旧路径；新路径必须单独报告原生成功、未完成、缓存与成本。持久状态用于同一回合的模型上下文恢复，不意味着支持崩溃后从任意仿真中点恢复动力学。
 
 阶段式回合使用独立审计入口，可读取本轮基线索引中的原始回合：

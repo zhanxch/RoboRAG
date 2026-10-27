@@ -2,6 +2,12 @@
 
 本目录是该任务的策略开发入口。任务配置见 [task.json](task.json)，任务提示词见 [prompt.txt](prompt.txt)。公共运行器、RAG 和动作协议复用 `roborag` 底层；仿真环境与成功判定由 RoboDojo 同名任务实现。
 
+## 可选阶段式路径
+
+`--architecture staged-v1` 使用独立版本的 [sop.json](sop.json)：测量并绑定当前衣物、袖子折叠、下摆折叠、释放检查与归位。计划将左右袖子分别实例化，不能从示范的左先右后直接推导必要依赖；双手下摆操作可使用 `prepare_stage(arm="both")`。原测量与动作控制保持共用。
+
+默认仍为 `legacy`，下述历史成绩属于旧路径。阶段式实现、证据和比较范围见 [架构](../../../../docs/architecture.md)、[开发记录](../../../../docs/staged-development.md) 与 [验证协议](../../../../experiments/staged_v1/protocol.json)。
+
 ## 修改位置
 
 - [tools.py](tools.py)：模型可见的 `measure_scene` 工具、参数校验与回合请求。

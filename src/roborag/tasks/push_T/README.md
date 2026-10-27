@@ -2,6 +2,12 @@
 
 本目录是该任务的策略开发入口。任务配置见 [task.json](task.json)，任务提示词见 [prompt.txt](prompt.txt)。公共运行器、RAG 和动作协议复用 `roborag` 底层；仿真环境与成功判定由 RoboDojo 同名任务实现。
 
+## 可选阶段式路径
+
+`--architecture staged-v1` 使用独立版本的 [sop.json](sop.json)：测量并登记当前 T 块与目标、建立平面接触、平移旋转、释放检查与修正、退离归位。阶段内允许重新接触、换臂和小幅几何修正；回访已完成阶段会使依赖它的完成记录等待重新验证，不自动重写计划。原平面测量和 IK 连续性保护保持共用。
+
+默认仍为 `legacy`，下述历史成绩属于旧路径。阶段式实现、证据和比较范围见 [架构](../../../../docs/architecture.md)、[开发记录](../../../../docs/staged-development.md) 与 [验证协议](../../../../experiments/staged_v1/protocol.json)。
+
 ## 修改位置
 
 - [tools.py](tools.py)：模型可见的 `measure_planar` 工具、参数校验与回合请求。

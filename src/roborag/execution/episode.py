@@ -30,6 +30,7 @@ class StagedEpisode:
         self.in_flight = None
         self.last_action = None
         self.last_observation = None
+        self.dispatch_gate = None
         self.sop_seen = False
         self._library = None
 
@@ -71,6 +72,7 @@ class StagedEpisode:
             recent_evidence=list(self.evidence.values())[-8:],
             last_action=self.last_action,
             in_flight=self.in_flight,
+            dispatch_gate=copy.deepcopy(self.dispatch_gate),
             task_success="unknown: native evaluation is separate and unavailable to this policy",
             recovery_file="episode-context.json",
         )
@@ -281,11 +283,48 @@ class StagedEpisode:
         }
 
     def enter(self, stage_id, observation, reason):
+        try:
+            return self._enter(stage_id, observation, reason)
+        except ValueError as exc:
+            if self.plan is not None and stage_id != self.active:
+                if self.dispatch_gate is None:
+                    self.dispatch_gate = dict(
+                        target_stage_id=stage_id,
+                        from_stage_id=self.active,
+                        rejected_event_id=f"event-{self.events + 1:05d}",
+                        observed_at_step=self.memory.state()["step"],
+                        error=str(exc),
+                    )
+                self.event(
+                    "stage_transition_rejected",
+                    attempted_stage_id=stage_id,
+                    requested_reason=reason,
+                    current_observation=observation,
+                    error=str(exc),
+                    observed_at_step=self.memory.state()["step"],
+                    dispatch_gate=copy.deepcopy(self.dispatch_gate),
+                )
+                self.persist()
+            raise
+
+    def _enter(self, stage_id, observation, reason):
         self._idle()
         self.library.validate_version()
         phase = self._phase(stage_id)
         if phase is None:
             raise ValueError("Unknown current plan phase")
+        gate = self.dispatch_gate
+        resuming_current = stage_id == self.active
+        if gate is not None:
+            if resuming_current and (
+                reason not in ("exception", "revisit") or not observation.strip()
+            ):
+                raise ValueError(
+                    "A rejected stage transition blocks movement; enter a ready phase or "
+                    "explicitly resume the current phase with reason=exception/revisit "
+                    "and an observed recovery need"
+                )
+            self._live_evidence([self.last_observation], current=True)
         revisit = self.progress[stage_id]["status"] == "complete"
         if revisit and (
             reason not in ("revisit", "state_change", "exception") or not observation.strip()
@@ -354,6 +393,20 @@ class StagedEpisode:
             current_observation=observation,
             entered_at_step=progress["entered_at_step"],
         )
+        if gate is not None:
+            self.dispatch_gate = None
+            self.event(
+                "stage_transition_resolved",
+                resolution="resumed_current" if resuming_current else "entered_target",
+                rejected_event_id=gate["rejected_event_id"],
+                target_stage_id=gate["target_stage_id"],
+                entered_stage_id=stage_id,
+                from_stage_id=gate["from_stage_id"],
+                observation_id=self.last_observation,
+                observed_at_step=self.memory.state()["step"],
+                requested_reason=reason,
+                current_observation=observation,
+            )
         self.persist()
         return dict(
             stage_id=stage_id, plan_version=self.plan["version"], phase=phase, context=context
@@ -488,6 +541,20 @@ class StagedEpisode:
 
     def start_action(self, request):
         self._idle()
+        if self.dispatch_gate is not None:
+            self.event(
+                "action_dispatch_blocked",
+                subgoal=request["subgoal"],
+                expected_feedback=request["expected_feedback"],
+                dispatch_gate=copy.deepcopy(self.dispatch_gate),
+                observed_at_step=self.memory.state()["step"],
+            )
+            self.persist()
+            raise ValueError(
+                "Movement blocked after rejected stage transition; successfully enter a ready "
+                "phase, or explicitly resume the current phase with reason=exception/revisit "
+                "and current observation before issuing recovery actions"
+            )
         if self.active is None or self.progress[self.active]["status"] != "active":
             raise ValueError("enter_stage must select an active graph-plan phase before movement")
         self.actions += 1

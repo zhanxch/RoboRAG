@@ -2,6 +2,12 @@
 
 本目录是该任务的策略开发入口。任务配置见 [task.json](task.json)，任务提示词见 [prompt.txt](prompt.txt)。公共运行器、RAG 和动作协议复用 `roborag` 底层；仿真环境与成功判定由 RoboDojo 同名任务实现。
 
+## 可选阶段式路径
+
+`--architecture staged-v1` 使用独立版本的 [sop.json](sop.json)：测量与抓姿选择、直立抓杯、按需换手、运输并对齐杯沿、受控倾倒、扶正放置、退离归位。抓取前可提前准备倾倒阶段，检查完整旋转是否与当前抓姿兼容；倾倒示例与扶正示例分开索引。空杯外观不能证明七球都进入，恢复和归位不应被不可观察的成功条件阻塞。原圆口测量和短动作控制保持共用。
+
+默认仍为 `legacy`，下述 rim-v3 成绩属于旧路径。阶段式实现、证据和比较范围见 [架构](../../../../docs/architecture.md)、[开发记录](../../../../docs/staged-development.md) 与 [验证协议](../../../../experiments/staged_v1/protocol.json)。
+
 本任务是[基础版测试名单](../../../../experiments/robodojo-basic-test-suite-v1.json)中 Precision 类的第一项，当前冻结候选为 `rim-delta-v3`。正式评估布局 3–24 已全部完成：**16/22 原生成功，72.73%，6 失败，0 未评分**；[完整报告](../../../../results/pour-balls-rim-v3-heldout-20261026.json)保留全部用例，失败布局为 7、10、14、18、20、24。这是该任务冻结 22 例成绩，不是全 25 布局或完整基础名单成绩，不自动替换 [results/current.json](../../../../results/current.json)。
 
 ## 策略与测量边界

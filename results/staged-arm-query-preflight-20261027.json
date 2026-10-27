@@ -1,0 +1,28 @@
+{
+  "schema": "roborag.staged-preflight.v1",
+  "candidate_commit": "85319e7fe5169305c91e14d5e1c29dbfa4451b8d",
+  "change": "Constrain stage arm query schema; normalize both to an unfiltered query and count successful searches only.",
+  "tests": {
+    "count": 135,
+    "passed": true,
+    "skipped": 0,
+    "wall_seconds": 1.732,
+    "log": "/home/zxc/文档/ChatGPT/RoboRAG/runs/staged-v1-preflight-20261027/unittest-armfix.log",
+    "sha256": "0a6ea198d437cff91e949ce9874b0743bb5a47422e08904105a7b635c4b097e2"
+  },
+  "ruff_check": "passed",
+  "git_diff_check": "passed",
+  "scope": "Regression of staged protocol plus unchanged legacy tools/prompts and geometry; native trials use separate source snapshots.",
+  "native_validation": "Pending for this candidate; initial 43f8941 development scores do not transfer.",
+  "ruff_format": {
+    "passed": true,
+    "files": 132
+  },
+  "wheel": {
+    "path": "/tmp/roborag-staged-wheel-85319e7/roborag-0.2.0-py3-none-any.whl",
+    "sha256": "62621150449ba6d10da4a26c27567147854d3679b5a2feca68c45c91e728adb8",
+    "installed_into": "/tmp/roborag-staged-installed-85319e7",
+    "verified": "All three installed SOP resources and assembled staged/control prompts load from target installation outside repository",
+    "probe_note": "First ad-hoc probe omitted required root argument to prompt_for; corrected invocation passed. No product code change."
+  }
+}

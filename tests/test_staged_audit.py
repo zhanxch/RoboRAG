@@ -247,6 +247,7 @@ class StagedAuditTests(unittest.TestCase):
     def test_coherent_native_run_and_scoped_cost_gate(self):
         structure = audit_structure(self.path)
         self.assertTrue(structure["passed"], structure["errors"])
+        self.assertFalse(structure["dispatch_guard"]["instrumented"])
         baseline = fixture(self.root, "baseline", "legacy")
         report = evaluate([self.path], "push_T", self.cases, [baseline])
         self.assertTrue(report["gate"]["passed"], report["gate"])
@@ -255,6 +256,172 @@ class StagedAuditTests(unittest.TestCase):
         self.assertEqual(report["overall"]["usage"]["output_tokens"], 60)
         self.assertEqual(report["structure_cost"]["stage_searches"], 1)
         self.assertIsNone(report["overall"]["model_request_count"])
+
+    def add_guard(self, before_kind="action_submitted", resolve=True):
+        events, _ = read_jsonl(self.path / "episode-ledger.jsonl")
+        offset = next(i for i, event in enumerate(events) if event["kind"] == before_kind)
+        step = 0 if before_kind == "action_submitted" else 1
+        gate = dict(
+            target_stage_id="attempted_next",
+            from_stage_id="align",
+            rejected_event_id=f"event-{offset + 1:05d}",
+            observed_at_step=step,
+            error="Assess current phase before switching",
+        )
+        base = dict(role="CURRENT_EXECUTION_RECORD", plan_version=1, stage_id="align")
+        inserted = [
+            base
+            | dict(
+                kind="stage_transition_rejected",
+                attempted_stage_id="attempted_next",
+                requested_reason="entry",
+                current_observation="want next phase",
+                error=gate["error"],
+                observed_at_step=step,
+                dispatch_gate=gate,
+            ),
+            base
+            | dict(
+                kind="action_dispatch_blocked",
+                subgoal="carry",
+                expected_feedback="at target",
+                dispatch_gate=gate,
+                observed_at_step=step,
+            ),
+        ]
+        if resolve:
+            inserted += [
+                base
+                | dict(
+                    kind="stage_entered",
+                    entered_at_step=0,
+                    context_reused=True,
+                    reason="exception",
+                    current_observation="Current grasp needs recovery",
+                ),
+                base
+                | dict(
+                    kind="stage_transition_resolved",
+                    resolution="resumed_current",
+                    rejected_event_id=gate["rejected_event_id"],
+                    target_stage_id=gate["target_stage_id"],
+                    entered_stage_id="align",
+                    from_stage_id="align",
+                    observation_id=f"obs-{step}",
+                    observed_at_step=step,
+                    requested_reason="exception",
+                    current_observation="Current grasp needs recovery",
+                ),
+            ]
+        events[offset:offset] = inserted
+        ledger_write(self.path / "episode-ledger.jsonl", events)
+        state = read_json(self.path / "execution-state.json")
+        state["dispatch_gate"] = None if resolve else gate
+        write_json(self.path / "execution-state.json", state)
+        return gate
+
+    def test_transition_guard_blocks_dispatch_until_explicit_recovery_resume(self):
+        self.add_guard()
+        structure = audit_structure(self.path)
+        self.assertTrue(structure["passed"], structure["errors"])
+        self.assertTrue(structure["dispatch_guard"]["instrumented"])
+        self.assertEqual(structure["dispatch_guard"]["blocked_action_attempts"], 1)
+        self.mutate(
+            lambda events: events.remove(
+                next(e for e in events if e["kind"] == "stage_transition_resolved")
+            )
+        )
+        errors = audit_structure(self.path)["errors"]
+        self.assertTrue(any("Action dispatched while" in error for error in errors))
+
+    def test_pending_guard_is_a_coherent_safe_stop_but_summary_must_preserve_it(self):
+        self.add_guard(before_kind="stage_assessed", resolve=False)
+        audited = audit_structure(self.path)
+        self.assertTrue(audited["passed"], audited["errors"])
+        self.assertIsNotNone(audited["dispatch_guard"]["unresolved_gate"])
+        state = read_json(self.path / "execution-state.json")
+        state["dispatch_gate"] = None
+        write_json(self.path / "execution-state.json", state)
+        self.assertTrue(
+            any("recorded lifecycle" in error for error in audit_structure(self.path)["errors"])
+        )
+
+    def test_guard_resolution_requires_live_current_observation_and_explicit_resume(self):
+        self.add_guard(before_kind="stage_assessed")
+        original, _ = read_jsonl(self.path / "episode-ledger.jsonl")
+        self.assertTrue(audit_structure(self.path)["passed"])
+        for change in (
+            dict(observation_id="obs-0"),
+            dict(requested_reason="entry"),
+            dict(rejected_event_id="unrelated"),
+        ):
+            events = copy.deepcopy(original)
+            next(e for e in events if e["kind"] == "stage_transition_resolved").update(change)
+            ledger_write(self.path / "episode-ledger.jsonl", events)
+            self.assertFalse(audit_structure(self.path)["passed"], change)
+
+    def test_valid_different_stage_can_resolve_a_gate_from_a_typo_target(self):
+        gate = self.add_guard(before_kind="stage_assessed", resolve=False)
+        plan = read_json(self.path / "gpt-plan.json")
+        phase = copy.deepcopy(plan["phases"][0])
+        phase.update(id="inspect", depends_on=["align"])
+        plan["phases"].append(phase)
+        write_json(self.path / "gpt-plan.json", plan)
+        write_json(self.path / "plan-versions/v001.json", plan)
+
+        def change(events):
+            events.extend(
+                [
+                    dict(
+                        role="CURRENT_EXECUTION_RECORD",
+                        kind="stage_entered",
+                        plan_version=1,
+                        stage_id="inspect",
+                        entered_at_step=1,
+                        context_reused=True,
+                        reason="entry",
+                        current_observation="Inspect after alignment",
+                    ),
+                    dict(
+                        role="CURRENT_EXECUTION_RECORD",
+                        kind="stage_transition_resolved",
+                        plan_version=1,
+                        stage_id="inspect",
+                        resolution="entered_target",
+                        rejected_event_id=gate["rejected_event_id"],
+                        target_stage_id="attempted_next",
+                        entered_stage_id="inspect",
+                        from_stage_id="align",
+                        observation_id="obs-1",
+                        observed_at_step=1,
+                        requested_reason="entry",
+                        current_observation="Inspect after alignment",
+                    ),
+                ]
+            )
+
+        self.mutate(change)
+        state = read_json(self.path / "execution-state.json")
+        state.update(dispatch_gate=None, active_stage="inspect")
+        state["stages"].append(dict(**phase, execution=dict(status="active")))
+        write_json(self.path / "execution-state.json", state)
+        audited = audit_structure(self.path)
+        self.assertTrue(audited["passed"], audited["errors"])
+
+        # A rejected empty ID is still a recorded failed request, not a
+        # missing plan phase in the successfully corrected transition.
+        def empty_target(events):
+            for event in events:
+                if event["kind"] == "stage_transition_rejected":
+                    event["attempted_stage_id"] = ""
+                if "dispatch_gate" in event:
+                    event["dispatch_gate"]["target_stage_id"] = ""
+                if event["kind"] == "stage_transition_resolved":
+                    event["target_stage_id"] = ""
+
+        self.mutate(empty_target)
+        audited = audit_structure(self.path)
+        self.assertTrue(audited["passed"], audited["errors"])
 
     def test_wrong_receipt_phase_and_native_unowned_dispatch_fail(self):
         self.mutate(

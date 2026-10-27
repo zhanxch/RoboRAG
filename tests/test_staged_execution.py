@@ -265,6 +265,151 @@ class StagedExecutionTests(unittest.IsolatedAsyncioTestCase):
             self.assertIsNone(self.execution.plan)
         await responder
 
+    async def test_failed_assessment_and_transition_block_dispatch_until_valid_entry(self):
+        self.plan([phase(), phase("home", ["fold"], "release_inspect_home")])
+        receipt = {"result": {"plan_ok": True, "measured_at_step": 0}}
+        self.execution.measurement({"measure": {}}, receipt, self.state)
+        old_measurement = receipt["result"]["evidence_id"]
+        self.state["step"] = 1
+        current = self.execution.observation(self.state, ["head"])
+        self.execution.enter("fold", "current sleeve visible", "entry")
+        original_plan = copy.deepcopy(self.execution.plan)
+        arguments = dict(
+            subgoal="clear the arms after folding",
+            expected_feedback="hands clear of the cloth",
+            segments=[dict(delta=[0, 0, 0, 0, 0, 0, 1] * 2, repeat=1)],
+        )
+
+        async def submit(request):
+            before = self.state["step"]
+            self.state["step"] += len(request["actions"])
+            return {
+                "step_before": before,
+                "step_after": self.state["step"],
+                "result": {"step": self.state["step"], "executed_rows": 1},
+            }
+
+        self.memory.submit = AsyncMock(side_effect=submit)
+        async with Client(create_server(self.memory)) as client:
+            bad = await client.call_tool(
+                "assess_stage",
+                dict(
+                    stage_id="fold",
+                    checks=[self.check([old_measurement, current])],
+                    decision="complete",
+                    rationale="combine a pre-visit fit with the current view",
+                ),
+            )
+            self.assertTrue(bad.is_error)
+            self.assertIsNone(self.execution.dispatch_gate)
+            rejected = await client.call_tool("enter_stage", {"stage_id": "home"})
+            self.assertTrue(rejected.is_error)
+            self.assertEqual(self.execution.active, "fold")
+            self.assertEqual(self.execution.plan, original_plan)
+            gate = copy.deepcopy(self.execution.dispatch_gate)
+            self.assertEqual(gate["target_stage_id"], "home")
+            self.assertEqual(gate["from_stage_id"], "fold")
+            for filename in ("execution-state.json", "episode-context.json"):
+                self.assertEqual(
+                    json.loads((self.path / filename).read_text())["dispatch_gate"], gate
+                )
+            blocked = await client.call_tool("execute_chunk", arguments)
+            self.assertTrue(blocked.is_error)
+            self.memory.submit.assert_not_awaited()
+            self.assertEqual(self.execution.actions, 0)
+            self.assertIsNone(self.execution.in_flight)
+            corrected = await client.call_tool(
+                "assess_stage",
+                dict(
+                    stage_id="fold",
+                    checks=[self.check([current])],
+                    decision="complete",
+                    rationale="use evidence from this stage visit",
+                ),
+            )
+            self.assertFalse(corrected.is_error)
+            self.assertEqual(self.execution.dispatch_gate, gate)
+            entered = await client.call_tool("enter_stage", {"stage_id": "home"})
+            self.assertFalse(entered.is_error)
+            self.assertIsNone(self.execution.dispatch_gate)
+            result = await client.call_tool("execute_chunk", arguments)
+            self.assertFalse(result.is_error)
+            self.memory.submit.assert_awaited_once()
+            self.assertEqual(self.execution.last_action["stage_id"], "home")
+            self.assertEqual(self.execution.plan, original_plan)
+
+        ledger = [
+            json.loads(line)
+            for line in (self.path / "episode-ledger.jsonl").read_text().splitlines()
+        ]
+        rejected = next(e for e in ledger if e["kind"] == "stage_transition_rejected")
+        blocked = next(e for e in ledger if e["kind"] == "action_dispatch_blocked")
+        resolved = next(e for e in ledger if e["kind"] == "stage_transition_resolved")
+        self.assertEqual(rejected["id"], gate["rejected_event_id"])
+        self.assertNotIn("action_id", blocked)
+        self.assertEqual(resolved["rejected_event_id"], rejected["id"])
+        self.assertEqual(resolved["resolution"], "entered_target")
+        self.assertEqual(resolved["entered_stage_id"], "home")
+        self.assertEqual(resolved["observation_id"], current)
+        self.assertEqual(resolved["observed_at_step"], 1)
+
+    def test_explicit_recovery_requires_current_presented_observation_and_allows_actions(self):
+        self.plan([phase(), phase("home", ["fold"], "release_inspect_home")])
+        self.execution.enter("fold", "", "entry")
+        with self.assertRaisesRegex(ValueError, "dependencies"):
+            self.execution.enter("home", "", "entry")
+        gate = copy.deepcopy(self.execution.dispatch_gate)
+        with self.assertRaisesRegex(ValueError, "Unknown current plan phase"):
+            self.execution.enter("typo", "", "entry")
+        self.assertEqual(self.execution.dispatch_gate, gate)
+        for observation, reason in (("", "entry"), ("need recovery", "entry"), ("", "revisit")):
+            with self.assertRaisesRegex(ValueError, "explicitly resume"):
+                self.execution.enter("fold", observation, reason)
+        self.state["step"] = 1
+        with self.assertRaisesRegex(ValueError, "current observed step"):
+            self.execution.enter("fold", "need recovery", "revisit")
+        self.execution.observation(self.state, [])
+        with self.assertRaisesRegex(ValueError, "presented RGB"):
+            self.execution.enter("fold", "need recovery", "exception")
+        current = self.execution.observation(self.state, ["head"])
+        self.execution.enter(
+            "fold", "sleeve still raised; lower before retrying completion", "revisit"
+        )
+        self.assertIsNone(self.execution.dispatch_gate)
+        self.assertEqual(self.execution.plan["version"], 1)
+        action = self.execution.start_action(
+            dict(subgoal="lower sleeve", expected_feedback="sleeve supported")
+        )
+        self.assertEqual(action, "action-00001")
+        ledger = [
+            json.loads(line)
+            for line in (self.path / "episode-ledger.jsonl").read_text().splitlines()
+        ]
+        resolved = next(e for e in ledger if e["kind"] == "stage_transition_resolved")
+        self.assertEqual(resolved["resolution"], "resumed_current")
+        self.assertEqual(resolved["observation_id"], current)
+        self.assertEqual(resolved["observed_at_step"], 1)
+        self.assertEqual(resolved["entered_stage_id"], "fold")
+
+    def test_corrected_stage_name_resolves_gate_with_original_target_preserved(self):
+        self.plan([phase(), phase("home", ["fold"], "release_inspect_home")])
+        self.execution.enter("fold", "", "entry")
+        self.finish("fold")
+        with self.assertRaisesRegex(ValueError, "Unknown current plan phase"):
+            self.execution.enter("hoem", "", "entry")
+        self.execution.enter("home", "", "entry")
+        self.assertIsNone(self.execution.dispatch_gate)
+        self.assertEqual(self.execution.active, "home")
+        self.assertEqual(self.execution.plan["version"], 1)
+        ledger = [
+            json.loads(line)
+            for line in (self.path / "episode-ledger.jsonl").read_text().splitlines()
+        ]
+        resolved = next(e for e in ledger if e["kind"] == "stage_transition_resolved")
+        self.assertEqual(resolved["target_stage_id"], "hoem")
+        self.assertEqual(resolved["entered_stage_id"], "home")
+        self.assertEqual(resolved["resolution"], "entered_target")
+
     def test_local_revision_preserves_completed_history_and_versions(self):
         self.plan([phase(), phase("home", ["fold"], "release_inspect_home")])
         self.execution.enter("fold", "", "entry")

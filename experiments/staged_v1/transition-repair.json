@@ -1,0 +1,40 @@
+{
+  "schema": "roborag.staged-development-repair.v1",
+  "registered_at": "2026-10-27",
+  "parent_protocol": {
+    "path": "experiments/staged_v1/protocol.json",
+    "sha256": "8e6ac4b232ef33f04e4227f877ec126881901aa192f5ad5f0fbaa81ca16597bd"
+  },
+  "trigger": {
+    "candidate_commit": "43f894150a8631c177fa32408ad338fdce01787f",
+    "task": "pour_balls_into_vase",
+    "run": "runs/staged-v1-dev-43f8941-20261027/pour_balls_into_vase",
+    "evidence": "agent-events.jsonl items 58–62; episode-ledger action-00013",
+    "finding": "A grasp assessment rejected prior-stage measurement evidence; enter align then failed its dependency check; the model nevertheless dispatched transport under the retained grasp phase before correcting assessment/entry. Native success does not erase this semantic transition failure."
+  },
+  "repair": {
+    "policy": "After a rejected different-stage transition, persist a dispatch gate. Allow observation, assessment and context access; release only by successful target entry or explicit current-stage recovery with live observation, preserving the same plan.",
+    "includes_previous_fix": "85319e7 arm enum and bimanual query normalization; that commit has no native performance claim",
+    "excluded": "No geometry thresholds, controller, TRAIN graph, task operation rules, model or success oracle changes."
+  },
+  "development_case": {
+    "task": "pour_balls_into_vase",
+    "seed": 1,
+    "variant": "standard",
+    "layout": 1,
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "architecture": "staged-v1",
+    "controller": "delta",
+    "max_wall_seconds": 2160,
+    "native_step_limit": 600,
+    "workers": 1
+  },
+  "acceptance": {
+    "offline": "Reproduce failed assessment/entry, verify dispatch cannot continue under stale ownership, verify evidence-bound explicit recovery and corrected transition both resume without replanning. Legacy remains unchanged.",
+    "native": "Retain scored native outcome, structural audit and all failed requests/costs. A scored success supports this one development scene only; a run with no rejected transition does not demonstrate runtime activation of the guard.",
+    "next": "If implementation is usable, freeze the repaired source for the original 12 reserved historical paired cases. No reserved trajectory tuning.",
+    "attempts": "One attempt per candidate/case; preserve all attempts. Within the original at-most-two-material-repair-candidate budget."
+  },
+  "status": "registered before the additional development run"
+}

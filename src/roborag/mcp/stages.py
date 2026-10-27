@@ -91,7 +91,7 @@ def register_tools(server, memory, read_only):
         )
 
     @server.tool(
-        description="Enter one ready phase of the current graph plan and prepare its SOP guidance/experience. Reuses previous applicable preparation. Explicit dependencies must be complete. Assess a previous active phase before switching. reason=revisit with an observed recovery need reopens a phase without replanning. Use prepare_stage for lookahead; it does not change action ownership."
+        description="Enter one ready phase of the current graph plan and prepare its SOP guidance/experience. Reuses previous applicable preparation. Explicit dependencies must be complete. Assess a previous active phase before switching. A rejected switch blocks movement until a ready phase is entered or the current phase is explicitly resumed with reason=exception/revisit and an observed recovery need; both require a presented observation at the current step. reason=revisit reopens a completed phase without replanning. Use prepare_stage for lookahead; it does not change action ownership."
     )
     def enter_stage(
         stage_id: str,

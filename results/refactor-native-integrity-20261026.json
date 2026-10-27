@@ -1,0 +1,1730 @@
+{
+  "schema": "roborag.refactor-native-integrity.v1",
+  "audited_at": "2026-10-26T19:33:56.029058+00:00",
+  "valid": true,
+  "errors": [],
+  "audit_script": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-native-integrity-20261026/audit.py",
+  "audit_script_sha256": "78914e12809c37761b1736246ec091cbf1796a4bb1e1e27df44d067a09cc21af",
+  "native_episodes_verified": 122,
+  "unique_current_source_files_verified": 231,
+  "checks": [
+    "Fixed unique cases exactly covered once",
+    "Each native verdict scored once and agrees with embedded result and success flag",
+    "Native result, layout and delivered prompt hashes match run manifests",
+    "Per-task protocol is constant and every recorded source hash still matches",
+    "Model, effort, controller, RAG mode and wall budgets match declarations"
+  ],
+  "tasks": {
+    "fold_clothes": {
+      "overall": {
+        "planned": 50,
+        "recorded": 50,
+        "scored": 50,
+        "successes": 37,
+        "success_rate": 0.74,
+        "scored_success_rate": 0.74,
+        "mean_progress": 78.8,
+        "mean_control_steps": 385.44,
+        "mean_successful_control_steps": 359.43243243243245,
+        "mean_wall_seconds": 687.4882059956504,
+        "mean_agent_wall_seconds": 644.2146437716717,
+        "sum_episode_wall_seconds": 34374.410299782525,
+        "sum_episode_wall_seconds_known_lower_bound": 34374.410299782525,
+        "usage": {
+          "input_tokens": 94319629,
+          "input_tokens_known_lower_bound": 94319629,
+          "cached_input_tokens": 90312192,
+          "cached_input_tokens_known_lower_bound": 90312192,
+          "output_tokens": 532244,
+          "output_tokens_known_lower_bound": 532244,
+          "reasoning_output_tokens": 198215,
+          "reasoning_output_tokens_known_lower_bound": 198215
+        },
+        "uncached_input_tokens": 4007437,
+        "input_cache_fraction": 0.9575121632422876,
+        "actual_billed_usd": null,
+        "model_request_count": null
+      },
+      "by_variant": {
+        "random": {
+          "planned": 25,
+          "recorded": 25,
+          "scored": 25,
+          "successes": 18,
+          "success_rate": 0.72,
+          "scored_success_rate": 0.72,
+          "mean_progress": 76.8,
+          "mean_control_steps": 383.4,
+          "mean_successful_control_steps": 360.94444444444446,
+          "mean_wall_seconds": 697.8771352707595,
+          "mean_agent_wall_seconds": 653.4979837404331,
+          "sum_episode_wall_seconds": 17446.928381768987,
+          "sum_episode_wall_seconds_known_lower_bound": 17446.928381768987,
+          "usage": {
+            "input_tokens": 47320180,
+            "input_tokens_known_lower_bound": 47320180,
+            "cached_input_tokens": 45317120,
+            "cached_input_tokens_known_lower_bound": 45317120,
+            "output_tokens": 274046,
+            "output_tokens_known_lower_bound": 274046,
+            "reasoning_output_tokens": 103211,
+            "reasoning_output_tokens_known_lower_bound": 103211
+          },
+          "uncached_input_tokens": 2003060,
+          "input_cache_fraction": 0.9576700680343988,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "standard": {
+          "planned": 25,
+          "recorded": 25,
+          "scored": 25,
+          "successes": 19,
+          "success_rate": 0.76,
+          "scored_success_rate": 0.76,
+          "mean_progress": 80.8,
+          "mean_control_steps": 387.48,
+          "mean_successful_control_steps": 358,
+          "mean_wall_seconds": 677.0992767205415,
+          "mean_agent_wall_seconds": 634.9313038029103,
+          "sum_episode_wall_seconds": 16927.48191801354,
+          "sum_episode_wall_seconds_known_lower_bound": 16927.48191801354,
+          "usage": {
+            "input_tokens": 46999449,
+            "input_tokens_known_lower_bound": 46999449,
+            "cached_input_tokens": 44995072,
+            "cached_input_tokens_known_lower_bound": 44995072,
+            "output_tokens": 258198,
+            "output_tokens_known_lower_bound": 258198,
+            "reasoning_output_tokens": 95004,
+            "reasoning_output_tokens_known_lower_bound": 95004
+          },
+          "uncached_input_tokens": 2004377,
+          "input_cache_fraction": 0.9573531808851632,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      },
+      "cases_file": "experiments/fold_clothes/all.json",
+      "cases_sha256": "42b0934fd39ed957f88676e6ac8aa87acc5a018c19faa234490a3827bc1e0521",
+      "max_wall_seconds": 2160,
+      "source_entries": 135,
+      "policy_prompt_sha256": "26aa5ab01f3a0b78546089a84fdebf04c428ded0f2bb5fbf3945f4e95df8796b",
+      "failed_cases": [
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 0
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 15
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 17
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 2
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 21
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 3
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 6
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 12
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 15
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 16
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 18
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 21
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 3
+        }
+      ],
+      "cases": [
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 0,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-random-l0",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l0/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l0/_result.json",
+          "native_sha256": "ecbb55778c109da79d622963470c9f197543dc4b44ace23019875677ef8c0706",
+          "run_manifest_sha256": "ba7f9e6aa593d61a04da21d586460e64efde5cbb27fccfc263d1c90787a6efa3",
+          "result_manifest_sha256": "55a0d1d8dd32a944990ff962cd10f03fa6b10c7f7d996aaed06c59cb755b4f85"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 1,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l1",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l1/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l1/_result.json",
+          "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+          "run_manifest_sha256": "fba4f2ab90efa86af8a6f70d555b7a0049a0af0e574ed46a9c353ca98e1d5949",
+          "result_manifest_sha256": "fed59ce99bd01cbc23b702232fadf3c52087f37016de679724550e7b1b06cdb0"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 10,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l10",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l10/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l10/_result.json",
+          "native_sha256": "362097c722449728e0294af1d7ce9ab51d85cbcd1b8a9f35c3c425320ede9b6a",
+          "run_manifest_sha256": "6fcc197c388c69bd4ac72efe2e6fe34696aab4d6a7544a78f3099b2436fc0cb8",
+          "result_manifest_sha256": "b812075e2e72fd5a0c77a3720e074d2f016002b23be005d5618395bc78daa796"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 11,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l11",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l11/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l11/_result.json",
+          "native_sha256": "ca7098523fb70ced5242a7968ec532d81adea112985fd90562a0d0f06de36776",
+          "run_manifest_sha256": "6b83468cadffa3b39cf87648c718feaf5a5a3064597cfe917ae9bd538ff2cebc",
+          "result_manifest_sha256": "5b38bb006d1e9c35bb8c98103f9be7c7f139a2e2f46284ebeab5d60f7e661096"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 12,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l12",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l12/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l12/_result.json",
+          "native_sha256": "34960f3b1f9cfe0884ff1356e3ff890febcc4dab731f230c8adfcb1cceb61e78",
+          "run_manifest_sha256": "95505db3be754d9e2649ef49e9022ad88e180bb54a20d867d9c22bc0dca28f40",
+          "result_manifest_sha256": "1da550b849a6455d427e52158cc94de9a523d9b981ace6ac5fed8535fb6b6702"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 13,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l13",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l13/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l13/_result.json",
+          "native_sha256": "13b1079b646db550d54c76ae498e32c531a767c88f9147c9cf7aee17982a34bd",
+          "run_manifest_sha256": "5a6a5bc0aaf101e9fe583d33a00ff44ddc0567af48fa5573f9fdf88faae772dc",
+          "result_manifest_sha256": "c411881f10b07afe1254be03ae7999b4d3c5a314bca973799d46da4beba4e3a7"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 14,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l14",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l14/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l14/_result.json",
+          "native_sha256": "bc39ec9c577a01cbf37d599656e4048b66a01cf73c6dd0b860f0b42aee379d80",
+          "run_manifest_sha256": "2a75722b14c4502193bafcb95869121c3c1448dd71889a99e55ceed280800aed",
+          "result_manifest_sha256": "a6c7c7db0ee91b18fe97cbec2ad829eb9618589409072630d8477db01593f3c1"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 15,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-random-l15",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l15/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l15/_result.json",
+          "native_sha256": "9b87605d2d267413b3ea822cacb059333c051332f6a1dfe705b2e9abddfa1a47",
+          "run_manifest_sha256": "8399b1ca700e3092a3ed8a5554c88e15b3c1d91ee92359b7d930a3d5a927b706",
+          "result_manifest_sha256": "97c5cc931ae6aaee3666f9016a3342187b82f839aeefecc0bd27439f3747a072"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 16,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l16",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l16/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l16/_result.json",
+          "native_sha256": "2ed2c1d65535064cc242e519fd876d834920106809190ee89a7305170edb84ae",
+          "run_manifest_sha256": "1e61242e21430a3b8bbe1ede07ca82a5d2dddef0430988b64ccaa8f0995be44b",
+          "result_manifest_sha256": "b87390ef09779b19875521c66b43228af5df7f0f200a2e10734dfa48e4bbc3ff"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 17,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-random-l17",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l17/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l17/_result.json",
+          "native_sha256": "fc47acf9ad8c3889cdb306c06b2dde09917adee01fdaba1e6f9bdcb07a208b16",
+          "run_manifest_sha256": "9aeaaa7bd9c3f67070d9020fc24fcb05e2e2f40784585f8dfb7e172d6e734b9e",
+          "result_manifest_sha256": "4e51d36b40f63a2ac9a6b6f18998abc48daa0c4d7f5776e54be7692fcdd992e0"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 18,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l18",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l18/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l18/_result.json",
+          "native_sha256": "60078173b45acc9943a05a2da7f49d0148e8b62d5a5321fc658cc7e3634ee41b",
+          "run_manifest_sha256": "54187338c641a41f33504e3b65499200218f537da364acde243627ff1b091fc2",
+          "result_manifest_sha256": "1064375f8ace8be251e33f65fc9c51c647e7caf6e6b57ae9460117434b380312"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 19,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l19",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l19/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l19/_result.json",
+          "native_sha256": "22e688bdbfc97f01d5c0f947210df8136e6a85b19a201b7a7f0f5733e6eff976",
+          "run_manifest_sha256": "cbc34a10af1804bed5b831c6a1e9e3f837505b87b456a2eee732837947b0a8a1",
+          "result_manifest_sha256": "91cb05f116f225bb12f14d06353425d4923dd4fde782f42f30c568a5c629470e"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 2,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-random-l2",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l2/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l2/_result.json",
+          "native_sha256": "21d1dcbb952b7e18b33725102335366b6c2eae4ede8e3d094b0e09b2da545bbe",
+          "run_manifest_sha256": "834057c4aeb976908d8dedcc4c10af08a38f1a763dd29b3a22c75787154fd86a",
+          "result_manifest_sha256": "4cdce2959e72110fbca4ff3adaf042f371ff39d9895141f7cdc26fbd817fd5e4"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 20,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l20",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l20/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l20/_result.json",
+          "native_sha256": "56db59c75454944d882ef1c5117519f8d76431576f9f2a90e66a3b31a9cea2be",
+          "run_manifest_sha256": "f0408e8e69d31ab292c09734c0dbc53735ba2f9842cc9bdadadb0142e9503b5e",
+          "result_manifest_sha256": "5601f8f3ed5edcf84307e7a5dea625348b864f1498f7dbb71ad156d4353ca8f4"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 21,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-random-l21",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l21/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l21/_result.json",
+          "native_sha256": "379cd7f333d36605593341bb4f78c5cbfa60a5bff80d7578556e0554d597f506",
+          "run_manifest_sha256": "fbaf99625f44ba3fd4704df2da7eff3bc0d781652d06e015a79755df28d43c28",
+          "result_manifest_sha256": "240dd1dfce517d094f95c149b7bfe238e89d3fbd31c889a87d61c2401073f650"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 22,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l22",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l22/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l22/_result.json",
+          "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d",
+          "run_manifest_sha256": "c349985f16e52681e64d9db839c7a65b43d8261e5aa1716395a1ad3d9a14155a",
+          "result_manifest_sha256": "6993f561ddc81bafb4139416f55d346c1022c54844d09f21d6788022c983a9ee"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 23,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l23",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l23/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l23/_result.json",
+          "native_sha256": "195b05fd00819b01099166e71cf4c65a5257de40103a8a7f0e5f96100f614028",
+          "run_manifest_sha256": "cdaa734cd7b7b32554c6208e1e5dcfb47cecfefcbaa3f1c00266817a2fee512d",
+          "result_manifest_sha256": "40385d88fbaa2513650d5149b7504aea4f8f0a536bfa5db8ab7105f9ddaf240c"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 24,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l24",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l24/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l24/_result.json",
+          "native_sha256": "6df02cc60901c6463022478208a8d470e44097e690d51958c41c92647f94ddd9",
+          "run_manifest_sha256": "8fcd5a6b767a7c088a4e04aebecfd5ff0bd7de50231f0726d99a369c9cbd04bd",
+          "result_manifest_sha256": "eaec16c439edcaea5edbe5bcfffe40e05553b5301b23562d4e5f634b7eb4d108"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 3,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-random-l3",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l3/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l3/_result.json",
+          "native_sha256": "b66f531b6551e52f2d07215a9daa18c75f5b2c39c8da3deab13f40f522c7facc",
+          "run_manifest_sha256": "21172578a493a7a71dc57f7794fe98dfd12c244192dc99f4eee693ca1ee468d4",
+          "result_manifest_sha256": "a0203936531f67b9e0487d15286aab13cee6f0cb91a2de3cb4f5bc031ee622c6"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 4,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l4",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l4/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l4/_result.json",
+          "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+          "run_manifest_sha256": "aafd0e6adaf248cc4e784a537cd05e29b939658aa8aadfd55e4e63c1937be265",
+          "result_manifest_sha256": "eb53f5747a6a5bb410ccfd02b434bcc69a2e2567fb33f1bfcf827aa4e01ec577"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 5,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l5",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l5/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l5/_result.json",
+          "native_sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5",
+          "run_manifest_sha256": "7b881c89c0e137d5cfc208534ec8c7d09a210c991d6c89c83a71bba8501c9c77",
+          "result_manifest_sha256": "44d42c2d65971959030983c2a17be1ae876821e4f6c37eafdd333d569a570f7f"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 6,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-random-l6",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l6/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l6/_result.json",
+          "native_sha256": "3738c7205a9fc025d44cacdd806219107c6312f00ee08a7b86223bd62700b47a",
+          "run_manifest_sha256": "afc50335df4bfb7525a1a35ec73f0b6cb0cac6b29ccf7c3518ffdd8bfb5dfae7",
+          "result_manifest_sha256": "7d03d850d0ab88db3519c711fe20d9c1b1e45c9ae0221a0f91dc91c7f5d8c942"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 7,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l7",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l7/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l7/_result.json",
+          "native_sha256": "0a6c48e1585d26c3ecfe9911fcb4e59335ae6b75a143789a651b0185fbb61144",
+          "run_manifest_sha256": "9383c139b1d0cca3f7817099f1cafc26769c138c055e61d97e195f2e5c12cdb6",
+          "result_manifest_sha256": "4976650c08090b60f4d025334cd27e996c66241b569037fe085efb23ae51719e"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 8,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l8",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l8/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l8/_result.json",
+          "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+          "run_manifest_sha256": "4e343e413a405d86f83c20a5ba75110c73523e179b677970d461278b31e59e12",
+          "result_manifest_sha256": "8e8169ddb7685d9c279f92b1df6cec989056e6fc632f591b761403e523819f20"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 9,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-random-l9",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-random-l9/native/eval_result/RoboDojo/fold_clothes_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l9/_result.json",
+          "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+          "run_manifest_sha256": "349cc29d63a8353b324218c84d9b9920d9f252bf0ef797a2abba2246f504a6c0",
+          "result_manifest_sha256": "2c24698b57da4536d1936ca895309fca26213cbb91523e81a380a7d862479716"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 0,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l0",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l0/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l0/_result.json",
+          "native_sha256": "117b7aac5c033705b64fc53e97b00912e1fec4f50cff9869aee75b750b3529a6",
+          "run_manifest_sha256": "a514fa4e8a9a58f8ffdb2244499c7e5ecdae71214fe6d519b2cc27779c81a42e",
+          "result_manifest_sha256": "e197c8c2d38f453089de2595fdb7c9327f8f825e1e15c61e899def5e15828295"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 1,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l1",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l1/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l1/_result.json",
+          "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+          "run_manifest_sha256": "8f73f174d9f49f42cda5cc751fee1452a737cfa0de3d4e6b03f23a6056ae8eae",
+          "result_manifest_sha256": "9d0e1bcd18a3929eac78c808eabc32616957e6c54ae040d5304401bcf80be9c0"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 10,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l10",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l10/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l10/_result.json",
+          "native_sha256": "362097c722449728e0294af1d7ce9ab51d85cbcd1b8a9f35c3c425320ede9b6a",
+          "run_manifest_sha256": "acd0fc03289d1f88d4c3c9cbdb6ba7d906d164f0ef1ff50fa73f5e79fce19aeb",
+          "result_manifest_sha256": "6813c8bd256ea23958407facda076573493a04bd0c645dd64a2f4b2bfb53b84a"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 11,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l11",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l11/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l11/_result.json",
+          "native_sha256": "ca7098523fb70ced5242a7968ec532d81adea112985fd90562a0d0f06de36776",
+          "run_manifest_sha256": "b7bc59a1697578855f6754a85d343df87ae86549c9fa06be313436d6642836d9",
+          "result_manifest_sha256": "9bad670df456fb7d6c134b508a1e9b76e5f6022caac54361fa7da235a46bea30"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 12,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l12",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l12/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l12/_result.json",
+          "native_sha256": "3425b47d8e7bf3d11a41b9cf8ad1e83d733ff3ee3ac13c58692a0634064a45ce",
+          "run_manifest_sha256": "5c63c91fe21f888158e3b982f8cc1e25b43e0a0d3d85042fa301921da6907a67",
+          "result_manifest_sha256": "73e0d6e9fde8180ca87f7ef82cd3c18c179b9e3f31b83512251bf03e8de25aac"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 13,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l13",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l13/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l13/_result.json",
+          "native_sha256": "13b1079b646db550d54c76ae498e32c531a767c88f9147c9cf7aee17982a34bd",
+          "run_manifest_sha256": "ac672d4ab7e283e30386840417fb11fbb69cc63430706fd9e78be8289ca86b23",
+          "result_manifest_sha256": "3eb34cfe5dd143edc8a3afae4b8e2670dd3ee2587a91add34a8d41fe6019b3fa"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 14,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l14",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l14/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l14/_result.json",
+          "native_sha256": "bc39ec9c577a01cbf37d599656e4048b66a01cf73c6dd0b860f0b42aee379d80",
+          "run_manifest_sha256": "3fe9bbe7b530fdffcec649a0a6dd0b49f948a1a9051479a77e08f2075577cb95",
+          "result_manifest_sha256": "7e7b01c38c7b258a410958716f86a6447dfae2ff107d520fcd445374a6f6e069"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 15,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l15",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l15/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l15/_result.json",
+          "native_sha256": "9b87605d2d267413b3ea822cacb059333c051332f6a1dfe705b2e9abddfa1a47",
+          "run_manifest_sha256": "b5e93c2e08455b55f1c062248cb8d462269c8e8f6e87f4064ef67c1dc0d5d422",
+          "result_manifest_sha256": "3be60dce7431eb9a52561ffa65b809313aaca89d0a78d254ea3f92eb622bc619"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 16,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l16",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l16/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l16/_result.json",
+          "native_sha256": "05c10f0ba62dba20de6647adf90d18d522a3927fded8b3893d7f225d73db3fbc",
+          "run_manifest_sha256": "238ad6d0747d32735a372b8620a3ddcfd92f728e44491a8d3aad7e2184c7fac1",
+          "result_manifest_sha256": "6910279e615b8512e9b9930b3e5b027d1bed63b521470d20b5434eb3fc8b4e41"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 17,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l17",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l17/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l17/_result.json",
+          "native_sha256": "665a8d51e96dd69593c59397ad78fffecc357909170b69ce1c417aae7d71c6cf",
+          "run_manifest_sha256": "da998be0216fdf8362a80187c9f2e2696c21ece5cbfe2da5c0514ea21fd12782",
+          "result_manifest_sha256": "6f58a39f0a9f35134af87a61eb4fc2905ed05a7cbda98983b61f4740a41b02af"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 18,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l18",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l18/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l18/_result.json",
+          "native_sha256": "ebbaf86af73a34f81b7dd613544781f2f7f88cdc6e759573e2c7db6e61b7c3d5",
+          "run_manifest_sha256": "575644f14ac3fec22e9854d242263b9eb9530fa68ac957acdc766ee06970c470",
+          "result_manifest_sha256": "1c355f50470e1f1f0d86bd5ecead8ffbb090a2ece17a925dff93c9b99f5c0a99"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 19,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l19",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l19/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l19/_result.json",
+          "native_sha256": "22e688bdbfc97f01d5c0f947210df8136e6a85b19a201b7a7f0f5733e6eff976",
+          "run_manifest_sha256": "9d26e118eebb75bcbb337b193bb95b9ee8d35545f4704af9738fdec2e0082619",
+          "result_manifest_sha256": "57e8421f0ac056b4a9502a952ddbf419025aa2058a02d89333f2dc5176435f11"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 2,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l2",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l2/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l2/_result.json",
+          "native_sha256": "cc6468b7f7528bd52d7561d2f877115ef92241bd4a3fd3868f48e41f5da17fd0",
+          "run_manifest_sha256": "4706286c6c58b72433a7068deafa5e4a90acf67ea0dfa8aabc2f6a73156cd72c",
+          "result_manifest_sha256": "451a59f8659136e21ba89b20c9c7d40461d6046078c6528d40abfb9eff546e36"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 20,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l20",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l20/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l20/_result.json",
+          "native_sha256": "56db59c75454944d882ef1c5117519f8d76431576f9f2a90e66a3b31a9cea2be",
+          "run_manifest_sha256": "cf24e09eab33b3df736612e7105a9ef85a149e48320c34ace514b22ffd0d6323",
+          "result_manifest_sha256": "cca544de825b87ba1d181019d68440b2d831c9e4370508cdf0138ace1b4ad83f"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 21,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l21",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l21/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l21/_result.json",
+          "native_sha256": "ea23c46acaeb2b78a2865e85eb53e2c546d896dd0e29d950b2a81f1d9a6e9bdc",
+          "run_manifest_sha256": "cb7c7a1e628f6a41b0eaead8cffd9da43c62c5a7254bc827989f260cbd93b0c7",
+          "result_manifest_sha256": "9f5ff7b4ec3f51d0943f0641fade342f60441e4d0d11b0e6149716d67721626b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 22,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l22",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l22/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l22/_result.json",
+          "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d",
+          "run_manifest_sha256": "217c03ec4484bfbb3d1c0226e68b2001b7ad347f1474dcb3d71dcf607892bf1d",
+          "result_manifest_sha256": "3e0e699a2e60e14626977ed21b30025517a2c549d1c1e302a88095cbf3842514"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 23,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l23",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l23/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l23/_result.json",
+          "native_sha256": "195b05fd00819b01099166e71cf4c65a5257de40103a8a7f0e5f96100f614028",
+          "run_manifest_sha256": "2f2603e82774055daea896fe6f55fdb8ed618f077dadf660f887859800a701d4",
+          "result_manifest_sha256": "ba85ee2dccad9660c59382d95b67f35918bdd2ed80637d086c2b4a50841bdaf2"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 24,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l24",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l24/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l24/_result.json",
+          "native_sha256": "6df02cc60901c6463022478208a8d470e44097e690d51958c41c92647f94ddd9",
+          "run_manifest_sha256": "d97761a8d8c3897d054e674dcd49a9b12bb55086afc7d167056a491427c20f8c",
+          "result_manifest_sha256": "2de2d9e0c299c439055ce7c4eca8018675aa8bcca00ccec5cab92271a2b21965"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 3,
+          "success": false,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l3",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l3/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l3/_result.json",
+          "native_sha256": "b66f531b6551e52f2d07215a9daa18c75f5b2c39c8da3deab13f40f522c7facc",
+          "run_manifest_sha256": "98a3eb69bd3ebae35b617eda89017ed2f8291ad2c45ea9853b49ab8b6d44f248",
+          "result_manifest_sha256": "91430b2d0941f37845702b5744089efe473fff1a8f5dbe2850054c773bcf2653"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 4,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l4",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l4/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l4/_result.json",
+          "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+          "run_manifest_sha256": "f5932054ef137a714e0283bd078146e521b846292e8950983c8e7fa5a267821b",
+          "result_manifest_sha256": "a49444dbc208130fe0980aa821a2c720df7cab641f7a366fea253d296fd8403e"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 5,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l5",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l5/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l5/_result.json",
+          "native_sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5",
+          "run_manifest_sha256": "ab2ea68713752312c926b0db521e9331dd2f022a48e526bef60045f90105a825",
+          "result_manifest_sha256": "180c72a4c8f05f23d3ac20f716bc7768a54bd84eae0de4e6910556ef951d695f"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 6,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l6",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l6/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l6/_result.json",
+          "native_sha256": "0d4366d03be196625243688d60cdd43a116e7150f009b1d930401dd64dcbd215",
+          "run_manifest_sha256": "cf8d2c74f119a4a8d0d3662184e73ad304bdb7ea4079ba7d4690402d0d73d786",
+          "result_manifest_sha256": "345bfc849c4ee9a314ead83908fab9505f992802b58402ece0e494cb4c635604"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 7,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l7",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l7/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l7/_result.json",
+          "native_sha256": "0a6c48e1585d26c3ecfe9911fcb4e59335ae6b75a143789a651b0185fbb61144",
+          "run_manifest_sha256": "80f684498ced2ff629fc318e43d164135a1246f79dd269d77513ad72f49d8469",
+          "result_manifest_sha256": "817860e18d3db70c29056cd2df0ce884f512ed882cf3605ca0a2a2f5757e2678"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 8,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l8",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l8/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l8/_result.json",
+          "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+          "run_manifest_sha256": "4ced3f09963d9d5cb71b0e523efd362bd46c098a668938f1c4bf69e478042347",
+          "result_manifest_sha256": "848c7d7495ef8cc60f8a87f5bf7d564aa74dbc757ecda602e4b304fad3888610"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 9,
+          "success": true,
+          "run": "runs/refactor-fold-20261026/seed1-standard-l9",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-fold-20261026/seed1-standard-l9/native/eval_result/RoboDojo/fold_clothes/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l9/_result.json",
+          "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+          "run_manifest_sha256": "1db2136ee10f9c49f4f43f517b4f090a278b6f74f8487019155b53464ce7b5ad",
+          "result_manifest_sha256": "d62f888f088096e6ff695c85a070a874a13669005e8b1b587682b957a8f61490"
+        }
+      ]
+    },
+    "push_T": {
+      "overall": {
+        "planned": 50,
+        "recorded": 50,
+        "scored": 50,
+        "successes": 50,
+        "success_rate": 1.0,
+        "scored_success_rate": 1.0,
+        "mean_progress": 100.0,
+        "mean_control_steps": 320.24,
+        "mean_successful_control_steps": 320.24,
+        "mean_wall_seconds": 621.2604781075241,
+        "mean_agent_wall_seconds": 582.1372803809261,
+        "sum_episode_wall_seconds": 31063.023905376205,
+        "sum_episode_wall_seconds_known_lower_bound": 31063.023905376205,
+        "usage": {
+          "input_tokens": 82124126,
+          "input_tokens_known_lower_bound": 82124126,
+          "cached_input_tokens": 78353792,
+          "cached_input_tokens_known_lower_bound": 78353792,
+          "output_tokens": 482632,
+          "output_tokens_known_lower_bound": 482632,
+          "reasoning_output_tokens": 173411,
+          "reasoning_output_tokens_known_lower_bound": 173411
+        },
+        "uncached_input_tokens": 3770334,
+        "input_cache_fraction": 0.9540898127792556,
+        "actual_billed_usd": null,
+        "model_request_count": null
+      },
+      "by_variant": {
+        "random": {
+          "planned": 25,
+          "recorded": 25,
+          "scored": 25,
+          "successes": 25,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 319.64,
+          "mean_successful_control_steps": 319.64,
+          "mean_wall_seconds": 645.3104934206,
+          "mean_agent_wall_seconds": 603.4961316150752,
+          "sum_episode_wall_seconds": 16132.762335514999,
+          "sum_episode_wall_seconds_known_lower_bound": 16132.762335514999,
+          "usage": {
+            "input_tokens": 42495968,
+            "input_tokens_known_lower_bound": 42495968,
+            "cached_input_tokens": 40474752,
+            "cached_input_tokens_known_lower_bound": 40474752,
+            "output_tokens": 250669,
+            "output_tokens_known_lower_bound": 250669,
+            "reasoning_output_tokens": 91563,
+            "reasoning_output_tokens_known_lower_bound": 91563
+          },
+          "uncached_input_tokens": 2021216,
+          "input_cache_fraction": 0.9524374641848374,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "standard": {
+          "planned": 25,
+          "recorded": 25,
+          "scored": 25,
+          "successes": 25,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 320.84,
+          "mean_successful_control_steps": 320.84,
+          "mean_wall_seconds": 597.2104627944483,
+          "mean_agent_wall_seconds": 560.778429146777,
+          "sum_episode_wall_seconds": 14930.261569861206,
+          "sum_episode_wall_seconds_known_lower_bound": 14930.261569861206,
+          "usage": {
+            "input_tokens": 39628158,
+            "input_tokens_known_lower_bound": 39628158,
+            "cached_input_tokens": 37879040,
+            "cached_input_tokens_known_lower_bound": 37879040,
+            "output_tokens": 231963,
+            "output_tokens_known_lower_bound": 231963,
+            "reasoning_output_tokens": 81848,
+            "reasoning_output_tokens_known_lower_bound": 81848
+          },
+          "uncached_input_tokens": 1749118,
+          "input_cache_fraction": 0.955861738514316,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      },
+      "cases_file": "experiments/push_T/all.json",
+      "cases_sha256": "42b0934fd39ed957f88676e6ac8aa87acc5a018c19faa234490a3827bc1e0521",
+      "max_wall_seconds": 2160,
+      "source_entries": 135,
+      "policy_prompt_sha256": "665c1f51132203eaeca8d263c99c8d4c4523ec1cab87dc478d8668a35397a282",
+      "failed_cases": [],
+      "cases": [
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 0,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l0",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l0/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l0/_result.json",
+          "native_sha256": "117b7aac5c033705b64fc53e97b00912e1fec4f50cff9869aee75b750b3529a6",
+          "run_manifest_sha256": "ea81f0c890c748d51fce3684ca98ed5da580d5481d1187e21b05818f64f561f4",
+          "result_manifest_sha256": "1e42caf0f3a7d266e44cc4da4f5155d867167464322ac37ae6394a6bb4284eff"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 1,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l1",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l1/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l1/_result.json",
+          "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+          "run_manifest_sha256": "d4de3051484d9ddbe7fc57e40409c313b96e28723d1bd474e8dffe23ef72f164",
+          "result_manifest_sha256": "415c81d9952e657d843bad7a29483383506e54464a1819d9409f6d1a0aa4d03f"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 10,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l10",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l10/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l10/_result.json",
+          "native_sha256": "362097c722449728e0294af1d7ce9ab51d85cbcd1b8a9f35c3c425320ede9b6a",
+          "run_manifest_sha256": "03f90af3829f461d985592a3b613f8b48c12388c434878de010ac59c3ada1882",
+          "result_manifest_sha256": "a89fecaba7378f41a9a2ee6bdf01805ad1ad3165de30de118ecf92c654a1d8df"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 11,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l11",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l11/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l11/_result.json",
+          "native_sha256": "ca7098523fb70ced5242a7968ec532d81adea112985fd90562a0d0f06de36776",
+          "run_manifest_sha256": "f935a950e3dbfa7bd964560f65f812bff095feebdcdd1c4854799c9d928ffe68",
+          "result_manifest_sha256": "f0ffb020a077f4cd2f1423b4b49d3d8a2ac4d3bdfc64e5d78ecc15d70ec00f3a"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 12,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l12",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l12/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l12/_result.json",
+          "native_sha256": "34960f3b1f9cfe0884ff1356e3ff890febcc4dab731f230c8adfcb1cceb61e78",
+          "run_manifest_sha256": "d87f06db3474a81b9351f181634ed7cfe35a144b440d0b29fe008e02eb938e16",
+          "result_manifest_sha256": "3ab82e269e7b8db5b7364e063c08f22e405dfea5f2420ae1c6d30626c704dacd"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 13,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l13",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l13/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l13/_result.json",
+          "native_sha256": "13b1079b646db550d54c76ae498e32c531a767c88f9147c9cf7aee17982a34bd",
+          "run_manifest_sha256": "66bd374e8682aeb208e0f3f08afd34cf2ff5ab3e65b446b2c63e57552872489a",
+          "result_manifest_sha256": "35f452861adb988688bcde0f7ca2b2cdefbe822e2bcd2147fabb3485da2f4488"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 14,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l14",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l14/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l14/_result.json",
+          "native_sha256": "bc39ec9c577a01cbf37d599656e4048b66a01cf73c6dd0b860f0b42aee379d80",
+          "run_manifest_sha256": "420853040e9c7ed40c9aa7be983ca3f0af5ef64d21b26079ea2297d7723f7d2d",
+          "result_manifest_sha256": "bf1a5e48ae12e0f8020f94696443884a2990279ae1f58c3758edbab58d464100"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 15,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l15",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l15/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l15/_result.json",
+          "native_sha256": "c05f0ced10f4402b26683d761ebeedc814fd73127e0317cc7cbb1ca60f2dec12",
+          "run_manifest_sha256": "2ecceee89e9bd05cc96bbae06ce179602fc7cf27b18d931075b9c05d1e504a30",
+          "result_manifest_sha256": "49e14e5ac561af7a2bb804694d7f015f3600c35a5ba4003918b4fc924048e472"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 16,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l16",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l16/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l16/_result.json",
+          "native_sha256": "2ed2c1d65535064cc242e519fd876d834920106809190ee89a7305170edb84ae",
+          "run_manifest_sha256": "5abad88819d759770c1f4b51eaef542f6f0d30bd9548a3c800c8fed658f4519e",
+          "result_manifest_sha256": "969e852b75ded0b0061b6c89a54f62a6205cb8d60eb918f61540c15c08618df8"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 17,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l17",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l17/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l17/_result.json",
+          "native_sha256": "665a8d51e96dd69593c59397ad78fffecc357909170b69ce1c417aae7d71c6cf",
+          "run_manifest_sha256": "bcfa01e00f0111d8784083d21864a0d3a6cf5dfa610d7ee28b6383aa4cf2d2c5",
+          "result_manifest_sha256": "5d32b5d2d9682ee415f6fc78feeee2c256d2c399fbe0e16dabb9de536b95ba52"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 18,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l18",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l18/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l18/_result.json",
+          "native_sha256": "60078173b45acc9943a05a2da7f49d0148e8b62d5a5321fc658cc7e3634ee41b",
+          "run_manifest_sha256": "1acaad8227c58ff0b6aad8eed64287700b3dbb0b3570544eedf735b4d1457a5c",
+          "result_manifest_sha256": "ecb66869f7ffe155fec90702b85dea55db71bcc5b7f8f43e69bb95ba7ee4141a"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 19,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l19",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l19/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l19/_result.json",
+          "native_sha256": "22e688bdbfc97f01d5c0f947210df8136e6a85b19a201b7a7f0f5733e6eff976",
+          "run_manifest_sha256": "32868ea81ca1e267a749fdefa2b1bea87a3a4ca6f0d20e2285427cc25c2db7b0",
+          "result_manifest_sha256": "4238425edb58b6eedf5160453693233c401d22ccb38f0caacdb4dc76cba2fc02"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 2,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l2",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l2/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l2/_result.json",
+          "native_sha256": "cc6468b7f7528bd52d7561d2f877115ef92241bd4a3fd3868f48e41f5da17fd0",
+          "run_manifest_sha256": "5d26c71a6bd5af6fa9a7a15930cdade3a5833c79034c45fb8f0ff23d2d8ed2b5",
+          "result_manifest_sha256": "2e8433fdbc47e0f435a458d939e0ff465fcb55b5ed8594fff913021d31331ede"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 20,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l20",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l20/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l20/_result.json",
+          "native_sha256": "56db59c75454944d882ef1c5117519f8d76431576f9f2a90e66a3b31a9cea2be",
+          "run_manifest_sha256": "0711ad311566b347ff11bcb045351a77f7ba491917875c6b7db002e6c8cec49a",
+          "result_manifest_sha256": "e34828118cb0d851dea5ef7be8d2fc3f4d9689a04e644fcfda9b354f3bcde121"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 21,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l21",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l21/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l21/_result.json",
+          "native_sha256": "b2a537f7c1c3bdbb0e3adf933c4c260648d7876175be4aac1f7b86b9cd05398a",
+          "run_manifest_sha256": "729ef8c571cf1f5e26d56d4c59dfbdecfb4cbc02cfc8ee9da9dafe5575119dd1",
+          "result_manifest_sha256": "89ba7db86e36053188647623eaa9d01dc0de186536a8f1f509910f2b8a20f90d"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 22,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l22",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l22/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l22/_result.json",
+          "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d",
+          "run_manifest_sha256": "4a51e846749a4af462b82cd87676104e439add3005c0163883744f44b6696999",
+          "result_manifest_sha256": "b723fdddbdd8b39fc3a853029140bf19d85070a22b189b16a41f80a3e79510ea"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 23,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l23",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l23/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l23/_result.json",
+          "native_sha256": "195b05fd00819b01099166e71cf4c65a5257de40103a8a7f0e5f96100f614028",
+          "run_manifest_sha256": "9027db2427e5a6cc9c69a4abd7eb1b7091cebdb351cc78bcea9d6477f92a937a",
+          "result_manifest_sha256": "8baa5a2d7db8767982dcd5936cadd5c3f6bdae49c0189fb6bd3d3947786a0508"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 24,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l24",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l24/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l24/_result.json",
+          "native_sha256": "6df02cc60901c6463022478208a8d470e44097e690d51958c41c92647f94ddd9",
+          "run_manifest_sha256": "b7ed6328d96835da6086ef0365066354afcaf75749d2fad1d5e5293ca6c3b904",
+          "result_manifest_sha256": "77235ba35a182061862a6bebb3d3d806a64a48b45c143a6ad5221882c2c1e740"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 3,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l3",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l3/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l3/_result.json",
+          "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+          "run_manifest_sha256": "187438a2a0ffcb69e376573c6c85d95802dae5e6b3454f7acba1eec5943cc5dc",
+          "result_manifest_sha256": "362f4968b57cd8ec60fa52fea831989ad4cb8dfdf8fb8f2474b6fdc61de247bc"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 4,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l4",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l4/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l4/_result.json",
+          "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+          "run_manifest_sha256": "1b16eed74e6411125942aa40b9c68585c112a0e9669245af467aaf73271f08cf",
+          "result_manifest_sha256": "040a5e7f4814cae5e7d7cb36606bdfcf73cb14bb9f0cfea23307e7b2863b3fc8"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 5,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l5",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l5/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l5/_result.json",
+          "native_sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5",
+          "run_manifest_sha256": "ef0b172afc79c8460bbd90b616cdf020478803c1d100e99a68c8d2179ff67068",
+          "result_manifest_sha256": "e065d8c2b8b131dbcf674c5c6f21947c8776ca0ee896ead19dc527cb5cdfc662"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 6,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l6",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l6/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l6/_result.json",
+          "native_sha256": "0d4366d03be196625243688d60cdd43a116e7150f009b1d930401dd64dcbd215",
+          "run_manifest_sha256": "81333b5b52d45dd1ecb82fe09ee288aff2d66fd506bd7b9f81ad0eaedd4b9d22",
+          "result_manifest_sha256": "825a84c0083fced67a9472ad9e14b15c958135b8bdde12694effcb7b97a849b1"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 7,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l7",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l7/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l7/_result.json",
+          "native_sha256": "0a6c48e1585d26c3ecfe9911fcb4e59335ae6b75a143789a651b0185fbb61144",
+          "run_manifest_sha256": "4e930ef9f4381042c0f9502c150358330e3eb831f4f818684e9331251b281ecb",
+          "result_manifest_sha256": "c4c7c649309b297a38950ab99d6cbf2bb2a22efbdbb847f906218ff56ba9b6a5"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 8,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l8",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l8/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l8/_result.json",
+          "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+          "run_manifest_sha256": "bf0336d09295004eb7eb36856284f5c4cafef9b48bce34d5e9c8917b5826191f",
+          "result_manifest_sha256": "e777e39eb6a746529178039ef4d0ce0d65873d68919961a13adca85c74e48588"
+        },
+        {
+          "seed": 1,
+          "variant": "random",
+          "layout": 9,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-random-l9",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-random-l9/native/eval_result/RoboDojo/push_T_random/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-random-l9/_result.json",
+          "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+          "run_manifest_sha256": "b0cdd8706738d236ebccca60795d71048d2970ad31e2cdd2e4707d8b4567884e",
+          "result_manifest_sha256": "593a0d8d09812c90bf5d4064b82585e08523aa2498167f6fa32dd1f943a9d65f"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 0,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l0",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l0/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l0/_result.json",
+          "native_sha256": "117b7aac5c033705b64fc53e97b00912e1fec4f50cff9869aee75b750b3529a6",
+          "run_manifest_sha256": "bf3c483e57a5e296531426c23219752311cadbabd79d8789f7389fc040a8a8d9",
+          "result_manifest_sha256": "8f0ec4d5f6e01fd8f7284757ddd1226b886bab701e8459d7ef8b6f44e850a647"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 1,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l1",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l1/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l1/_result.json",
+          "native_sha256": "8ae6a937232fc1b8c6d1e3b297a60df76889c266a3fa45274dc4e42ae609b509",
+          "run_manifest_sha256": "cd94d8c2d54549c6ee6ed2f145fffee5a183c7e60b65d0b5b5be2173201c8679",
+          "result_manifest_sha256": "2d338e818fe32abe278651bed2cd8270ca5f6b628af04a8620b763fda6e460a8"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 10,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l10",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l10/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l10/_result.json",
+          "native_sha256": "362097c722449728e0294af1d7ce9ab51d85cbcd1b8a9f35c3c425320ede9b6a",
+          "run_manifest_sha256": "15cb86007310ed59a324fbc538324d10e6232c720f5f3a7a3999c0b2cd6a39d3",
+          "result_manifest_sha256": "0d230797dcfb311236fcd69a85ded32242f529f49ae3153b3fe8e0b2188fc630"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 11,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l11",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l11/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l11/_result.json",
+          "native_sha256": "ca7098523fb70ced5242a7968ec532d81adea112985fd90562a0d0f06de36776",
+          "run_manifest_sha256": "f9f26904aa15df264736796a26e5897a2a0f1288a2a8bfdaabbd343374569683",
+          "result_manifest_sha256": "799dbf5a2222a11a67116a5af37d120641e7ef7a612db936035d227054f8025b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 12,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l12",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l12/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l12/_result.json",
+          "native_sha256": "34960f3b1f9cfe0884ff1356e3ff890febcc4dab731f230c8adfcb1cceb61e78",
+          "run_manifest_sha256": "7109f764447a1111931fab030b5e00f4c477695a6dabca2d7222567278b2de78",
+          "result_manifest_sha256": "bd00458314830dd8f618acef525b88e50003da3342a8317cf2f3f552f1d09d51"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 13,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l13",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l13/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l13/_result.json",
+          "native_sha256": "13b1079b646db550d54c76ae498e32c531a767c88f9147c9cf7aee17982a34bd",
+          "run_manifest_sha256": "b0a6a4ff03414739045ce113358a07b7d853c327a421899fa55f937ce8b8920b",
+          "result_manifest_sha256": "8c77117b7380829b4fe0ee669b6e75a33552ef63a8299d76022ffd3c8d1e4677"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 14,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l14",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l14/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l14/_result.json",
+          "native_sha256": "bc39ec9c577a01cbf37d599656e4048b66a01cf73c6dd0b860f0b42aee379d80",
+          "run_manifest_sha256": "341fe35485638c7f0e578630dd754cec486f28537c925700123c6e946977ef56",
+          "result_manifest_sha256": "f835c9298a8fc04ea7b5a961ce7ac863f7462d461f5cb83cab56b4aac9bb8405"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 15,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l15",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l15/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l15/_result.json",
+          "native_sha256": "c05f0ced10f4402b26683d761ebeedc814fd73127e0317cc7cbb1ca60f2dec12",
+          "run_manifest_sha256": "877856faba15b8de132efc580052c693933f478735926f93efb5b00e8c9e9592",
+          "result_manifest_sha256": "8b8e09051f4bdbec003b9ce4aaef65f94e72ca0ff5a8b868675244a079d82a04"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 16,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l16",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l16/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l16/_result.json",
+          "native_sha256": "2ed2c1d65535064cc242e519fd876d834920106809190ee89a7305170edb84ae",
+          "run_manifest_sha256": "2eef064bae00400717f7024aafb7d66c9d356a2ee4f02ff19c34cab8bf773f0a",
+          "result_manifest_sha256": "8e0b7ffe9ac887c722f8679444e4840cbf414e2344ba42134368dba02dae54bf"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 17,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l17",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l17/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l17/_result.json",
+          "native_sha256": "665a8d51e96dd69593c59397ad78fffecc357909170b69ce1c417aae7d71c6cf",
+          "run_manifest_sha256": "4dbaa05e20c85705cd95d10a723e5430e647fbbb27be7793b96eb1c9f996f0b5",
+          "result_manifest_sha256": "7df43591eeb21858ca15768e6dd5c09db78490a8d912b564563e3fb9bb5ec984"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 18,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l18",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l18/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l18/_result.json",
+          "native_sha256": "60078173b45acc9943a05a2da7f49d0148e8b62d5a5321fc658cc7e3634ee41b",
+          "run_manifest_sha256": "c67d9097b988adb403c2038204fb70ec1e3e6511749d83ea25b59c578e95192a",
+          "result_manifest_sha256": "b9f58fa3cb992c2f99cb51f930318afc6289f76f4a346f8432a92b604e6b8243"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 19,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l19",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l19/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l19/_result.json",
+          "native_sha256": "22e688bdbfc97f01d5c0f947210df8136e6a85b19a201b7a7f0f5733e6eff976",
+          "run_manifest_sha256": "1fa57664d87fc0e559b7b95dbed6169db7f87151a39539ab84c8b3e5d3adf1ec",
+          "result_manifest_sha256": "c32bd8f23ba4daf672d874dea752dc1bedc26ffe3335c4b8bbfc8975ea4fe391"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 2,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l2",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l2/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l2/_result.json",
+          "native_sha256": "cc6468b7f7528bd52d7561d2f877115ef92241bd4a3fd3868f48e41f5da17fd0",
+          "run_manifest_sha256": "8986e973c29bd7eae17a76edc9f8fb8b1b0b3d95dde94f9950e9474dc08f9124",
+          "result_manifest_sha256": "35dc67adadf6c4c6cedf0ba1c7811dbb30718f7944f5b93bccd3b49e86da9b42"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 20,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l20",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l20/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l20/_result.json",
+          "native_sha256": "56db59c75454944d882ef1c5117519f8d76431576f9f2a90e66a3b31a9cea2be",
+          "run_manifest_sha256": "8f878055455e2e8ad92387addc81a544970a3b2cc0c1c9eea8feadb701571494",
+          "result_manifest_sha256": "c0f16f0397549b82163c59644fd9ca681a1211562bb45663ad6e05e7c22c4540"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 21,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l21",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l21/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l21/_result.json",
+          "native_sha256": "b2a537f7c1c3bdbb0e3adf933c4c260648d7876175be4aac1f7b86b9cd05398a",
+          "run_manifest_sha256": "7d5757b1626e33b109666a8026b36b696fadad5cb9a208cececda398a7364944",
+          "result_manifest_sha256": "7e3de22aee2cefb656b3d95d7361cb22e963b30759cf0e1e03a0db99a33c3007"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 22,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l22",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l22/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l22/_result.json",
+          "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d",
+          "run_manifest_sha256": "68a2cd126a7e2e270fbd48c19b1bde01f432d8e86d70d98acaffd7a1deeb8185",
+          "result_manifest_sha256": "54cb81478abefd28ff65fa1363f28598a4395c9a1119dddd66d86e3e5ee9309b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 23,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l23",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l23/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l23/_result.json",
+          "native_sha256": "195b05fd00819b01099166e71cf4c65a5257de40103a8a7f0e5f96100f614028",
+          "run_manifest_sha256": "b7f2892ab54285bb2bd0da07229ac10df68c911299c1a023c807270408b878e3",
+          "result_manifest_sha256": "03363a00d086e14b3754963eed7afa3f6b71a2d3bdcf5e09534a3b0fc119c964"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 24,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l24",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l24/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l24/_result.json",
+          "native_sha256": "6df02cc60901c6463022478208a8d470e44097e690d51958c41c92647f94ddd9",
+          "run_manifest_sha256": "2ed83acbcecb68bd3952c88ed99add990f36fa9afd6775a6c058e7a5e69ed48d",
+          "result_manifest_sha256": "2a80dd46b12e11e9792597b930fe3caa3afb8fcdc2d10eb71e2d679609832d36"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 3,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l3",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l3/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l3/_result.json",
+          "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+          "run_manifest_sha256": "ec59fe049953048220ca6517a080938e9bc821af02fd569feda9510f19c29b94",
+          "result_manifest_sha256": "842f36ab706ba7b814968bf10ccce2a64f2b88d3784652e39a755849b71a5633"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 4,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l4",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l4/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l4/_result.json",
+          "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+          "run_manifest_sha256": "90132905de7d4efdb2664e4fe2f26f6297de1640cdfa85365e1714e7db812fbf",
+          "result_manifest_sha256": "c193ee10fe3728a8317a3ae0ee97b2f7fbb316dfeff3154bf3bf9fcccb2630a7"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 5,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l5",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l5/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l5/_result.json",
+          "native_sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5",
+          "run_manifest_sha256": "0b2380a9b08eae3077d90a8dde6b797dcf238373cfa7e2584ec4fd01cc5406ff",
+          "result_manifest_sha256": "655d436c485c26a31953bffd730e85c25b9e1d73cec409db42b115c99794149e"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 6,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l6",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l6/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l6/_result.json",
+          "native_sha256": "0d4366d03be196625243688d60cdd43a116e7150f009b1d930401dd64dcbd215",
+          "run_manifest_sha256": "8292694f8347e52b56e54510f9b4f035af00be2e8f6253a2913e7cb9a26e5836",
+          "result_manifest_sha256": "869f8de8d0734db8c93f0593f716ed01dc48d367a3a87f057386986fe18a0af9"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 7,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l7",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l7/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l7/_result.json",
+          "native_sha256": "0a6c48e1585d26c3ecfe9911fcb4e59335ae6b75a143789a651b0185fbb61144",
+          "run_manifest_sha256": "c4cb4c4118e6602335f517237f65f146d6dfab0cde5063d6089b64bf5d8e11dd",
+          "result_manifest_sha256": "cff36786814da3d863b1a6ec213b1822b6f1ade931415aa226a251c935db434f"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 8,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l8",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l8/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l8/_result.json",
+          "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+          "run_manifest_sha256": "89916c78e8b8923452cf6ed3a8bd2d686eec0041deb864703792d466e9098bb3",
+          "result_manifest_sha256": "3e64ac548f8ffcb572882c77dc20d43c97bae775c4b116fb1b15255097362aa9"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 9,
+          "success": true,
+          "run": "runs/refactor-push-t-20261026/seed1-standard-l9",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/refactor-push-t-20261026/seed1-standard-l9/native/eval_result/RoboDojo/push_T/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l9/_result.json",
+          "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+          "run_manifest_sha256": "90bf6a150439e453c6ebd925c4a5528fc3ea80563273c57e448fd3a07acd7962",
+          "result_manifest_sha256": "c4cc2d3313286eb872c4b08190f67cb1e8fbabf2b20b41809770bace75763309"
+        }
+      ]
+    },
+    "pour_balls_into_vase": {
+      "overall": {
+        "planned": 22,
+        "recorded": 22,
+        "scored": 22,
+        "successes": 16,
+        "success_rate": 0.7272727272727273,
+        "scored_success_rate": 0.7272727272727273,
+        "mean_progress": 72.72727272727273,
+        "mean_control_steps": 502.3636363636364,
+        "mean_successful_control_steps": 465.75,
+        "mean_wall_seconds": 1505.3801731776437,
+        "mean_agent_wall_seconds": 1466.6062548114198,
+        "sum_episode_wall_seconds": 33118.36380990816,
+        "sum_episode_wall_seconds_known_lower_bound": 33118.36380990816,
+        "usage": {
+          "input_tokens": 97003608,
+          "input_tokens_known_lower_bound": 97003608,
+          "cached_input_tokens": 94418048,
+          "cached_input_tokens_known_lower_bound": 94418048,
+          "output_tokens": 546569,
+          "output_tokens_known_lower_bound": 546569,
+          "reasoning_output_tokens": 248809,
+          "reasoning_output_tokens_known_lower_bound": 248809
+        },
+        "uncached_input_tokens": 2585560,
+        "input_cache_fraction": 0.9733457336968332,
+        "actual_billed_usd": null,
+        "model_request_count": null
+      },
+      "by_variant": {
+        "standard": {
+          "planned": 22,
+          "recorded": 22,
+          "scored": 22,
+          "successes": 16,
+          "success_rate": 0.7272727272727273,
+          "scored_success_rate": 0.7272727272727273,
+          "mean_progress": 72.72727272727273,
+          "mean_control_steps": 502.3636363636364,
+          "mean_successful_control_steps": 465.75,
+          "mean_wall_seconds": 1505.3801731776437,
+          "mean_agent_wall_seconds": 1466.6062548114198,
+          "sum_episode_wall_seconds": 33118.36380990816,
+          "sum_episode_wall_seconds_known_lower_bound": 33118.36380990816,
+          "usage": {
+            "input_tokens": 97003608,
+            "input_tokens_known_lower_bound": 97003608,
+            "cached_input_tokens": 94418048,
+            "cached_input_tokens_known_lower_bound": 94418048,
+            "output_tokens": 546569,
+            "output_tokens_known_lower_bound": 546569,
+            "reasoning_output_tokens": 248809,
+            "reasoning_output_tokens_known_lower_bound": 248809
+          },
+          "uncached_input_tokens": 2585560,
+          "input_cache_fraction": 0.9733457336968332,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      },
+      "cases_file": "experiments/pour_balls_into_vase/heldout.json",
+      "cases_sha256": "096ff2ad6f3ad4730f2e450da2c394c6a5a16cda30ec7498bb17dc4704e85061",
+      "max_wall_seconds": 3600,
+      "source_entries": 138,
+      "policy_prompt_sha256": "b1dd7a4c6e037b9f5e9b03d0bdf110926df43a8f8e63aede8d531b9dc559e634",
+      "failed_cases": [
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 10
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 14
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 18
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 20
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 24
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 7
+        }
+      ],
+      "cases": [
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 10,
+          "success": false,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l10",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l10/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l10/_result.json",
+          "native_sha256": "c5974d4b4246bc31ba26e09420d6cfa4bdf9d4385e64ef777005adbdd18c0d6a",
+          "run_manifest_sha256": "d7853684c029ceb0e2719a11452ae39a49bb376c4cceedfd322296c9e1d370cd",
+          "result_manifest_sha256": "9935ad61120b87c6bb3bc655c03c8880d9e5dcf44f8af4847cc852589ae00f74"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 11,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l11",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l11/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l11/_result.json",
+          "native_sha256": "ca7098523fb70ced5242a7968ec532d81adea112985fd90562a0d0f06de36776",
+          "run_manifest_sha256": "53c1eab4e12a044630adb6583aceaf574505f5abc053ef24a9efc6a4a5d06d0d",
+          "result_manifest_sha256": "ec74526c9b86b999f3bf433c38aebea27d9d017d00d5c50a4550d43e4841d1db"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 12,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l12",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l12/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l12/_result.json",
+          "native_sha256": "34960f3b1f9cfe0884ff1356e3ff890febcc4dab731f230c8adfcb1cceb61e78",
+          "run_manifest_sha256": "75a98ddbf37c137683d91dbf0cea126ad507da87a0f478b1e560bb09fd74d1fd",
+          "result_manifest_sha256": "6c4245252ef130a340e61410b953599e3761a4fa6b4a22ca1428d4acb3866e5e"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 13,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l13",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l13/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l13/_result.json",
+          "native_sha256": "13b1079b646db550d54c76ae498e32c531a767c88f9147c9cf7aee17982a34bd",
+          "run_manifest_sha256": "67145cf9ac1a0f9520445768e68b185b6c963e23dce4bd143ce9a7284122761d",
+          "result_manifest_sha256": "9596a16dc3f6dfcdfd1faf1c3d62a9c35e787c5bb701414187f8653c9db6f4b4"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 14,
+          "success": false,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l14",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l14/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l14/_result.json",
+          "native_sha256": "e13b610683e828d30b404a327a31d444b2f5f9c11744966b606f929ebe2f6805",
+          "run_manifest_sha256": "1df745394377c1d625fb0c0bf5ed47a55bab3e4bcf3662e00e1385d286435ada",
+          "result_manifest_sha256": "8ba82d339abb11601c6af67c82ccd7d230d3ed5957a762e464b18f596b44c633"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 15,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l15",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l15/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l15/_result.json",
+          "native_sha256": "c05f0ced10f4402b26683d761ebeedc814fd73127e0317cc7cbb1ca60f2dec12",
+          "run_manifest_sha256": "fe4fe7ec16673a2d026a02527726f10a4d3a9e93070e66a5d06411bc604f5b73",
+          "result_manifest_sha256": "acb72ace150f048e2d3e628582809e581281611db92c3a159ce473ba308627b1"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 16,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l16",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l16/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l16/_result.json",
+          "native_sha256": "2ed2c1d65535064cc242e519fd876d834920106809190ee89a7305170edb84ae",
+          "run_manifest_sha256": "c16cb2f0c8444717e869fc1e4f93e1dd64625e957f84f62d0c1e7cf1ea469230",
+          "result_manifest_sha256": "e46b574b89faa1655852a7bd1699e09a59ff91bad274f0dd1888fc3c187471c5"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 17,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l17",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l17/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l17/_result.json",
+          "native_sha256": "665a8d51e96dd69593c59397ad78fffecc357909170b69ce1c417aae7d71c6cf",
+          "run_manifest_sha256": "922eb48d8ae91fc1a50e870c73c8de12cf9b9ed81da7da3b4fd53d4c17a5227a",
+          "result_manifest_sha256": "9273c37d2f6bf9cb70c74083b8fad62c9ae2d4c7a5e9f28df41a546b90343ed0"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 18,
+          "success": false,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l18",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l18/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l18/_result.json",
+          "native_sha256": "1095df25ec677e3db821b32b2a65ac78ae9b742db2441859b1cab2dd51f30a20",
+          "run_manifest_sha256": "e17923027fe2e3ef25929ed35a9bef8c9a4bf479e44a979d6d19dc4b352b51b8",
+          "result_manifest_sha256": "4fead2ad42b635105768bbf9f87005db2bc13418288b0d14a286708633cdcb56"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 19,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l19",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l19/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l19/_result.json",
+          "native_sha256": "22e688bdbfc97f01d5c0f947210df8136e6a85b19a201b7a7f0f5733e6eff976",
+          "run_manifest_sha256": "18649d680cf14cff2ca08106a2213d2922a07f07c0349ad2b5c799f636d0789e",
+          "result_manifest_sha256": "24754900835c2d5250c23f92f64df542897aa08200367f7c15a7d16bd38b15fd"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 20,
+          "success": false,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l20",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l20/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l20/_result.json",
+          "native_sha256": "b389ed71b42e9faff00510db10f15f0d68ab1d4eb00d39c0637bd1c0abe499a1",
+          "run_manifest_sha256": "435b93b256fc9f33cd168b1179170522f4f3ae32a4f385545d573da753075ac2",
+          "result_manifest_sha256": "ad77288e34926f753570888df71bdc758c522c14cc324b43ecd07aa3d97dce7b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 21,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l21",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l21/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l21/_result.json",
+          "native_sha256": "b2a537f7c1c3bdbb0e3adf933c4c260648d7876175be4aac1f7b86b9cd05398a",
+          "run_manifest_sha256": "14f0652e7c32ca374f47d6b1ca5e2a3908997ef84f886a623864c08c117daeb7",
+          "result_manifest_sha256": "183bc202b051899443087ca699098e7e3ede8e3c3811146836593fbc5dc3038a"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 22,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l22",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l22/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l22/_result.json",
+          "native_sha256": "7ce50bfff06c7f66661a62979085b751bcce94384cad7dbc213c1d7c4043d16d",
+          "run_manifest_sha256": "080a7ccbfeaeb658a6ae94457e7532f9bdfa64e5a577bb413561da7df5e64208",
+          "result_manifest_sha256": "cd6c6550ee68f4ef1d3ef7869eff3c5e2e1b65ce78d87b4b7f91a3bdd026709b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 23,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l23",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l23/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l23/_result.json",
+          "native_sha256": "195b05fd00819b01099166e71cf4c65a5257de40103a8a7f0e5f96100f614028",
+          "run_manifest_sha256": "cba60b2d0d15dfd2c91d96a29710b99ed9526e8739038489cd98e1914c80b25c",
+          "result_manifest_sha256": "954d5c7813aae8c886069cc1f817cae8f296b51e561b948791cc19e9c020749b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 24,
+          "success": false,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l24",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l24/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l24/_result.json",
+          "native_sha256": "cc7eea7f4e6ed34a110039381352fd819f1ccd91df4e8ee89bbdb0285d0eb213",
+          "run_manifest_sha256": "f207f9727e4a30556f04a48aa6817cdfc218ee227e200050fc9e7550eacd56d0",
+          "result_manifest_sha256": "462d1684360a9f0b95c2a1467202c66f92b103d767af98f5fcf9d41d0b43302b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 3,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l3",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l3/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l3/_result.json",
+          "native_sha256": "da320cac65f46500da326a25e3b5f36a433d844b25f08c9dff59c323ba942bdc",
+          "run_manifest_sha256": "4feea3443b7d3841b0185fb70a48e26bdab4c9f05fed812539cf6675809b5b98",
+          "result_manifest_sha256": "d536e51e803d10e2a89bc1ed1587c57acd78f9cc4ae0de0662da0d375d10e2ff"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 4,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l4",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l4/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l4/_result.json",
+          "native_sha256": "ea87682a5ef1824a77f04e22e412b395f7fe5087366e664618da42c5a80b599e",
+          "run_manifest_sha256": "994776c354d2e8c388eb7a95e40a163493104a2f802b8d8c8612ffc378d013ab",
+          "result_manifest_sha256": "da9f03dfbee47c743f106b35f0530160ef108ec40009cc4872c9b0fdb986e230"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 5,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l5/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l5/_result.json",
+          "native_sha256": "337d6321d7ef110d2646d798766a26a47fdae428e7d373aee7c29f2a8e2653a5",
+          "run_manifest_sha256": "4201c84b68ceff088030d0efb1ddf2a4bea63edd6568eb1e56b893f59edde763",
+          "result_manifest_sha256": "fd1a52f2ae7491cb2e83f08220818790d1ea966ff87aaee0447514fe0da12c6b"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 6,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l6",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l6/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l6/_result.json",
+          "native_sha256": "0d4366d03be196625243688d60cdd43a116e7150f009b1d930401dd64dcbd215",
+          "run_manifest_sha256": "996135a8a2455a39670cc864b13054d2ea0a41cf6ed42a0fbbc11879d73f5e33",
+          "result_manifest_sha256": "b0f97aed73da45cd89b6d7e3109e48dd5a852ed7391338cce356a4662d297fd2"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 7,
+          "success": false,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l7",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l7/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l7/_result.json",
+          "native_sha256": "d22fd198bf5675844f47b4c72e68dcc1d9eb05807736c35e0f1af3d27004b813",
+          "run_manifest_sha256": "b15816a7bcc661aecc6312cbe90af65a5cf4bb6a0c340e443fac663b15f8c82e",
+          "result_manifest_sha256": "359a3b92bef019513aea9d80c2923ec5547d178184b0b682ebd285f18504f65f"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 8,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l8",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l8/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l8/_result.json",
+          "native_sha256": "42dc8b169e10d702acfbea193b5de88aa1be5668cc3b2568a32d5b1839010d52",
+          "run_manifest_sha256": "d54d5a63ecfc385c1dc7a24167b188a39ef954777103d067cf5b16717dad0c56",
+          "result_manifest_sha256": "ca29a3b1f324e26250928cd07fb7ce2687fe35e6640d9d1087af70ce0547e0b5"
+        },
+        {
+          "seed": 1,
+          "variant": "standard",
+          "layout": 9,
+          "success": true,
+          "run": "runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l9",
+          "native_result": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-heldout-20261026/seed1-standard-l9/native/eval_result/RoboDojo/pour_balls_into_vase/RoboRAGMCP/arx_x5/1_gpt_plan_chunk/seed1-standard-l9/_result.json",
+          "native_sha256": "c002ab3a8deb34e7e3e50f9d40562d50064e254081210811610a980af176ae2c",
+          "run_manifest_sha256": "0af6ef89d80b5610a46044aaa0a5244f0d86078d95d85892fc6b95c0857a7255",
+          "result_manifest_sha256": "2df289076fe38f6dcb6742d5400b5a529780b84899a1a7bb7d8ab452609c1f33"
+        }
+      ]
+    }
+  },
+  "interpretation": [
+    "Development attempts are excluded from heldout22.",
+    "No causal RAG-only effect or cross-seed statistical-equivalence claim."
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "schema": "roborag.refactor-basic-validation.v1",
+  "started_at": "2026-10-26T04:46:02.609170+00:00",
+  "status": "complete",
+  "regression_commit": "a8a3ee6a46619cb40e0cc50d8191594470a2fb4c",
+  "regression_checkout": "/home/zxc/文档/ChatGPT/RoboRAG/work/native-regression-20261026",
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "seed": 1,
+  "max_concurrent_simulators": 2,
+  "offline_baseline": {
+    "tests_passed": 95,
+    "tests_skipped": 0,
+    "doctor_passed": true,
+    "test_log": "/tmp/roborag-refactor-regression-offline-20261026.log",
+    "test_log_sha256": "314f2b555520e94f7c6e1d9abee2208a7cbfb1e2328fc9faea29f2d3ad436e3f"
+  },
+  "tasks": {
+    "fold_clothes": {
+      "mode": "frozen_regression",
+      "planned": 50,
+      "reference_by_variant": {
+        "standard": {
+          "successes": 19,
+          "planned": 25
+        },
+        "random": {
+          "successes": 18,
+          "planned": 25
+        }
+      },
+      "stop_rule": "Stop at 20 cumulative native failures, or infrastructure/evidence validation failure; otherwise complete all 50. No policy optimization.",
+      "report": "results/refactor-fold-20261026.json",
+      "live_progress": "runs/refactor-fold-20261026/status.json",
+      "historical_reference_successes": 37,
+      "historical_reference_success_rate": 0.74,
+      "early_stop_native_failures": 20,
+      "notifications": "Only final results, early-stop threshold reached, or infrastructure/evidence anomaly; no per-case progress notifications.",
+      "status": "complete",
+      "final_summary": {
+        "planned": 50,
+        "recorded": 50,
+        "scored": 50,
+        "successes": 37,
+        "success_rate": 0.74,
+        "native_failures": 13,
+        "incomplete": 0,
+        "unrun": 0,
+        "stop_reason": {
+          "kind": "suite_complete",
+          "meets_expectation": true
+        },
+        "by_variant": {
+          "random": {
+            "planned": 25,
+            "scored": 25,
+            "successes": 18,
+            "success_rate": 0.72
+          },
+          "standard": {
+            "planned": 25,
+            "scored": 25,
+            "successes": 19,
+            "success_rate": 0.76
+          }
+        }
+      },
+      "final_audit": {
+        "verified_at": "2026-10-26T19:33:35.359793+00:00",
+        "native_results_verified": 50,
+        "declared_cases_verified": true,
+        "source_and_bank_verified_unchanged": true,
+        "git_commit_verified": true,
+        "owned_simulator_processes_remaining": [],
+        "source_commit": "a8a3ee6a46619cb40e0cc50d8191594470a2fb4c"
+      },
+      "evidence_integrity_verified": true
+    },
+    "push_T": {
+      "mode": "frozen_regression",
+      "planned": 50,
+      "stop_rule": "Complete all 50 even if an individual native case fails; stop only for infrastructure/evidence validation failure. No policy optimization.",
+      "report": "results/refactor-push-t-20261026.json",
+      "live_progress": "results/refactor-push-t-20261026.json",
+      "notifications": "Only final results, early-stop threshold reached, or infrastructure/evidence anomaly; no per-case progress notifications.",
+      "historical_reference_successes": 50,
+      "historical_reference_success_rate": 1.0,
+      "status": "complete",
+      "final_summary": {
+        "planned": 50,
+        "attempted": 50,
+        "scored": 50,
+        "successes": 50,
+        "native_failures": 0,
+        "incomplete": 0,
+        "unrun": 0,
+        "full_suite_success_rate": 1.0,
+        "by_variant": {
+          "standard": {
+            "planned": 25,
+            "scored": 25,
+            "successes": 25,
+            "scored_success_rate": 1.0
+          },
+          "random": {
+            "planned": 25,
+            "scored": 25,
+            "successes": 25,
+            "scored_success_rate": 1.0
+          }
+        },
+        "stop_reason": "all_planned_cases_complete"
+      },
+      "final_audit": "runs/refactor-push-t-20261026/final-audit.json",
+      "evidence_integrity_verified": true
+    },
+    "pour_balls_into_vase": {
+      "mode": "task_optimization_and_native_validation",
+      "roster_position": 3,
+      "development_layouts": [
+        0,
+        1,
+        2
+      ],
+      "heldout_layouts": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "status": "complete",
+      "offline_rag_report": "results/pour-rag-offline-check-20261026.json",
+      "development_reports": [
+        "results/pour-balls-baseline-dev0-20261026.json",
+        "results/pour-balls-rim-v1-dev0-20261026.json",
+        "results/pour-balls-rim-v2-dev0-20261026.json",
+        "results/pour-balls-rim-v3-dev0-20261026.json",
+        "results/pour-balls-rim-v3-dev1-20261026.json",
+        "results/pour-balls-rim-v3-dev2-20261026.json"
+      ],
+      "development_source_snapshots": [
+        "runs/pour-balls-rim-v1-dev0-20261026/source-snapshot/manifest.json",
+        "runs/pour-balls-rim-v2-dev0-20261026/source-snapshot/manifest.json"
+      ],
+      "rag_validation_scope": "Actual MCP retrieval and reference expansion verified in development and frozen heldout. Heldout full-task native success is16/22. No causal RAG-only benefit is established without an ablation.",
+      "heldout_scored": 22,
+      "train_rotation_audit": "results/pour-train-rotation-catalog-20261026.json",
+      "development_rag_adaptation_status": "v3 dev0 plan used earlier upright-held TRAIN context and adapted approach-axis roll. Measured step184-to236 rotation was [0.786508,-0.011651,0.005471]rad in the initial gripper frame (45.07 degrees), consistent with its declared adapted local-X roll. The policy later reported perceived cup-rim displacement and occlusion, returned to the table to regrasp, and timed out at step324. Physical slip/collision causation is not established. Native final success is unknown; partial rotation consistency does not establish a complete pour or task success.",
+      "development_execution_notes": [
+        "v3 dev0 hit the predeclared 2160-second wall limit and has no native terminal score. Preserve it as incomplete, not a native failure or success; no retry or replacement.",
+        "An external development supervisor exited143 before persisting its group record. Preserve this infrastructure event separately; resume remaining layouts1/2 with the same frozen policy and retain the original attempt.",
+        "v3 dev0 timing audit: 13 measurement submission-to-completion intervals total1.52s. Prior model/visual/local-computation intervals total335.98s and cannot all be attributed to point selection. Four websocket reconnects and HTTPS fallback were logged without timestamps; their wall-time contribution is unknown. Do not attribute the wall timeout solely to grasp or measurement strategy.",
+        "v3 dev1 reached native terminal failure at600steps (2005.35s); dev2 then started under the same frozen source manifest. Report specific control rejection categories after audit; do not equate every rejected command with a joint-limit failure.",
+        "All three fixed v3 development attempts are complete as attempts: one native success, one native failure, one timeout with score unknown. Freeze v3 without a further policy change. Heldout22 uses a uniformly registered3600-second wall budget, versus2160seconds in development; never pool these as a25-case rate."
+      ],
+      "v3_development_summary": {
+        "attempted": 3,
+        "native_scored": 2,
+        "native_successes": 1,
+        "native_failures": 1,
+        "incomplete": 1,
+        "incomplete_layouts": [
+          0
+        ],
+        "scored_success_rate": 0.5,
+        "full_suite_success_rate": null,
+        "policy_sources_constant": true,
+        "note": "Three development attempts only. Exclude all development and earlier revisions from the frozen heldout success rate."
+      },
+      "heldout_group": "runs/pour-balls-rim-v3-heldout-20261026",
+      "heldout_protocol": "runs/pour-balls-rim-v3-heldout-20261026/protocol.json",
+      "heldout_report": "results/pour-balls-rim-v3-heldout-20261026.json",
+      "heldout_live_progress": "runs/pour-balls-rim-v3-heldout-20261026/supervisor.json",
+      "heldout_max_wall_seconds": 3600,
+      "heldout_native_step_limit": 600,
+      "heldout_frozen_source_count": 138,
+      "heldout_source_revision_matches_fixed_v3_development": true,
+      "heldout_worker_rule": "One worker while either regression is active; up to two after both regressions end, with shared global maximum of two simulators.",
+      "heldout_verification": "results/pour-balls-rim-v3-heldout-verification-20261026.json",
+      "heldout_summary": {
+        "planned": 22,
+        "recorded": 22,
+        "scored": 22,
+        "successes": 16,
+        "success_rate": 0.7272727272727273,
+        "mean_control_steps": 502.3636363636364,
+        "mean_wall_seconds": 1505.3801731776437
+      },
+      "heldout_failure_layouts": [
+        7,
+        10,
+        14,
+        18,
+        20,
+        24
+      ],
+      "heldout_unscored_layouts": [],
+      "evidence_integrity_verified": true,
+      "online_audit": {
+        "totals": {
+          "tool_observe": 22,
+          "tool_retrieve_evidence": 31,
+          "tool_measure_rim": 169,
+          "tool_read_action_reference": 111,
+          "tool_record_plan": 81,
+          "tool_execute_chunk": 743,
+          "expanded_phases": 111,
+          "phase_context_returned": 111,
+          "delivered_reference_images": 440,
+          "fit_rim_success_count": 44,
+          "fit_rim_failure_count": 103,
+          "table_plane_success_count": 22,
+          "malformed_native_event_lines": 0
+        },
+        "detail_report": "results/pour-balls-rim-v3-heldout-20261026.json"
+      },
+      "development_group": "runs/pour-balls-rim-v3-development-20261026",
+      "heldout_workers_used": 1,
+      "heldout_attempts_per_layout": 1,
+      "heldout_policy_changes": 0,
+      "heldout_retries": 0
+    }
+  },
+  "interpretation": [
+    "Historical selected success counts are comparison references, not automatic early-stop thresholds or a statistical equivalence test. The user-amended fold stopping rule is20 native failures; push completes all50 unless infrastructure/evidence fails.",
+    "Stopped or incomplete suites do not receive a full-suite success rate; report scored and unrun counts separately.",
+    "Development and frozen heldout results remain separate; do not pool historical results with new runs."
+  ],
+  "updated_at": "2026-10-26T19:34:51.048955+00:00",
+  "current_development_offline": {
+    "policy_version": "rim-delta-v3",
+    "tests_passed": 104,
+    "tests_skipped": 0,
+    "ruff_passed": true,
+    "diff_check_passed": true,
+    "test_log": "/tmp/roborag-pour-v3-tests-20261026.log",
+    "test_log_sha256": "a6e0fb9fa4c04483048aaf75d02beff65d4f273cfb2dd407ff5d03214263fd14",
+    "scope": "Offline behavior and explicit upgraded protocol checks; not native task success.",
+    "wheel": {
+      "path": "/tmp/roborag-pour-v3-wheel-20261026/roborag-0.2.0-py3-none-any.whl",
+      "sha256": "81a046b6712869454745d40d61b67fabed06a6d3f9d9e4412dc391621107b5d8",
+      "task_resources_match_current_source": true,
+      "installed_target": "/tmp/roborag-pour-v3-wheel-target-20261026",
+      "catalog_tasks": 11,
+      "installed_prompt_contracts_verified": 2,
+      "installed_tool_contract_verified": true
+    }
+  },
+  "protocol_amendments": [
+    {
+      "at": "2026-10-26T06:53:35.312712+00:00",
+      "reason": "User explicitly relaxed fold early stopping to 20 cumulative failures and requested quiet full-suite completion for both regression tasks.",
+      "fold_previous_stop_failures": 14,
+      "fold_current_stop_failures": 20,
+      "push_previous_stop": "first_native_failure",
+      "push_current_stop": "infrastructure_or_evidence_failure_only",
+      "policy_sources_changed": false,
+      "native_attempts_restarted": false,
+      "historical_metrics_role": "Reference values, not revised or pooled with current runs."
+    }
+  ],
+  "completed_at": "2026-10-26T19:34:51.048955+00:00",
+  "final_native_integrity": {
+    "report": "results/refactor-native-integrity-20261026.json",
+    "valid": true,
+    "native_episodes_verified": 122,
+    "errors": []
+  },
+  "final_summary": {
+    "fold_clothes": {
+      "successes": 37,
+      "scored": 50,
+      "success_rate": 0.74
+    },
+    "push_T": {
+      "successes": 50,
+      "scored": 50,
+      "success_rate": 1.0
+    },
+    "pour_balls_into_vase_heldout": {
+      "successes": 16,
+      "scored": 22,
+      "success_rate": 0.7272727272727273
+    },
+    "formal_native_unscored": 0,
+    "pour_v3_development": {
+      "successes": 1,
+      "failures": 1,
+      "timeout_unscored": 1
+    }
+  }
+}

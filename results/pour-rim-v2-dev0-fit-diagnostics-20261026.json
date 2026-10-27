@@ -1,0 +1,459 @@
+{
+  "role": "offline_diagnosis_of_recorded_development_requests",
+  "native_policy_evaluation": false,
+  "scored": false,
+  "geometry_thresholds_unchanged": true,
+  "method": "Report unconstrained circle residuals for recorded points and nearest-edge refinement; no native fit acceptance is replaced.",
+  "cases": [
+    {
+      "step": 0,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/002_step000",
+      "snap": 4.0,
+      "refinement_failure": null,
+      "best_height": 0.9165371216467612,
+      "center_world": [
+        0.3335894959053372,
+        -0.0447631580436816,
+        0.9165371216467612
+      ],
+      "radius": 0.0375034289483997,
+      "max_residual": 0.005364631959073503,
+      "rms_residual": 0.0028240340263518287,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.33274824579316714,
+            -0.044074269696977954
+          ],
+          "circle_radius_m": 0.036097112736162965,
+          "combined_fit_max_residual": 0.005364631959073503,
+          "worst_point_index": 5
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.3341732761764014,
+            -0.04509648760600002
+          ],
+          "circle_radius_m": 0.038608313536828254,
+          "combined_fit_max_residual": 0.004044374694503222,
+          "worst_point_index": 6
+        }
+      ]
+    },
+    {
+      "step": 0,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/002_step000",
+      "snap": 0,
+      "refinement_failure": null,
+      "best_height": 0.9159747918657024,
+      "center_world": [
+        0.3354036047550919,
+        -0.043692864124395235,
+        0.9159747918657024
+      ],
+      "radius": 0.03631668096038934,
+      "max_residual": 0.005803011990938748,
+      "rms_residual": 0.0025502623943011522,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.33421220518803824,
+            -0.04275001387568598
+          ],
+          "circle_radius_m": 0.03422980076039092,
+          "combined_fit_max_residual": 0.005803011990938748,
+          "worst_point_index": 4
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.33616266047170146,
+            -0.04413196702132907
+          ],
+          "circle_radius_m": 0.03795192133880026,
+          "combined_fit_max_residual": 0.003376252669763276,
+          "worst_point_index": 5
+        }
+      ]
+    },
+    {
+      "step": 29,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/006_step029",
+      "snap": 4.0,
+      "refinement_failure": null,
+      "best_height": 0.8344077221654184,
+      "center_world": [
+        0.18811271405606728,
+        -0.13356581524840067,
+        0.8344077221654184
+      ],
+      "radius": 0.03565427812043491,
+      "max_residual": 0.007097002830197853,
+      "rms_residual": 0.0023860069746331663,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.18791523691498435,
+            -0.13489223726632166
+          ],
+          "circle_radius_m": 0.036754461557233,
+          "combined_fit_max_residual": 0.007097002830197853,
+          "worst_point_index": 9
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.1881847717154742,
+            -0.1328559456377778
+          ],
+          "circle_radius_m": 0.03499173748005229,
+          "combined_fit_max_residual": 0.003391602030988712,
+          "worst_point_index": 14
+        }
+      ]
+    },
+    {
+      "step": 29,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/006_step029",
+      "snap": 0,
+      "refinement_failure": null,
+      "best_height": 0.8339406901800767,
+      "center_world": [
+        0.18782940075797988,
+        -0.13300204713167474,
+        0.8339406901800767
+      ],
+      "radius": 0.03477351726750461,
+      "max_residual": 0.0030981102402569127,
+      "rms_residual": 0.0014252348654650387,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.1871574514373842,
+            -0.1342712514442394
+          ],
+          "circle_radius_m": 0.03459410933359583,
+          "combined_fit_max_residual": 0.0029838475301365436,
+          "worst_point_index": 5
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.1883356364908283,
+            -0.13217007527083677
+          ],
+          "circle_radius_m": 0.03506864165314288,
+          "combined_fit_max_residual": 0.0030981102402569127,
+          "worst_point_index": 15
+        }
+      ]
+    },
+    {
+      "step": 29,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/007_step029",
+      "snap": 4.0,
+      "refinement_failure": "boundary_not_supported_by_rgb"
+    },
+    {
+      "step": 29,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/007_step029",
+      "snap": 0,
+      "refinement_failure": null,
+      "best_height": 0.9171363112583013,
+      "center_world": [
+        0.3339348567632173,
+        -0.0436386581546001,
+        0.9171363112583013
+      ],
+      "radius": 0.03528843283355535,
+      "max_residual": 0.004105157021954648,
+      "rms_residual": 0.0020064818782449534,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.33422919387759886,
+            -0.043304853515909895
+          ],
+          "circle_radius_m": 0.03455809280662925,
+          "combined_fit_max_residual": 0.004105157021954648,
+          "worst_point_index": 12
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.333678374596378,
+            -0.0438543446562653
+          ],
+          "circle_radius_m": 0.03592023366508242,
+          "combined_fit_max_residual": 0.0028306965089577724,
+          "worst_point_index": 6
+        }
+      ]
+    },
+    {
+      "step": 29,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/008_step029",
+      "snap": 0.0,
+      "refinement_failure": null,
+      "best_height": 0.9171363112583013,
+      "center_world": [
+        0.3339348567632173,
+        -0.0436386581546001,
+        0.9171363112583013
+      ],
+      "radius": 0.03528843283355535,
+      "max_residual": 0.004105157021954648,
+      "rms_residual": 0.0020064818782449534,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.33422919387759886,
+            -0.043304853515909895
+          ],
+          "circle_radius_m": 0.03455809280662925,
+          "combined_fit_max_residual": 0.004105157021954648,
+          "worst_point_index": 12
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.333678374596378,
+            -0.0438543446562653
+          ],
+          "circle_radius_m": 0.03592023366508242,
+          "combined_fit_max_residual": 0.0028306965089577724,
+          "worst_point_index": 6
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/010_step049",
+      "snap": 4.0,
+      "refinement_failure": null,
+      "best_height": 0.9181163529998799,
+      "center_world": [
+        0.3334293572038251,
+        -0.04544392753145792,
+        0.9181163529998799
+      ],
+      "radius": 0.03718130707103644,
+      "max_residual": 0.00712742428178972,
+      "rms_residual": 0.0021723161925568143,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.33225529989199737,
+            -0.04558595168325289
+          ],
+          "circle_radius_m": 0.036635877746995484,
+          "combined_fit_max_residual": 0.00712742428178972,
+          "worst_point_index": 5
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.33434191870875546,
+            -0.04529409370347781
+          ],
+          "circle_radius_m": 0.03764216814616378,
+          "combined_fit_max_residual": 0.002787969033541726,
+          "worst_point_index": 10
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/010_step049",
+      "snap": 0,
+      "refinement_failure": null,
+      "best_height": 0.9174511816610383,
+      "center_world": [
+        0.3341618129172906,
+        -0.043899296284754294,
+        0.9174511816610383
+      ],
+      "radius": 0.03604681328053387,
+      "max_residual": 0.005725031061472978,
+      "rms_residual": 0.0024968708014425456,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.3335663161425417,
+            -0.043242858742347554
+          ],
+          "circle_radius_m": 0.034270896713663665,
+          "combined_fit_max_residual": 0.005725031061472978,
+          "worst_point_index": 5
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.3345507514127312,
+            -0.044227789506342215
+          ],
+          "circle_radius_m": 0.03750319429644785,
+          "combined_fit_max_residual": 0.0034328652329066525,
+          "worst_point_index": 9
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/011_step049",
+      "snap": 4.0,
+      "refinement_failure": null,
+      "best_height": 0.8348736240949881,
+      "center_world": [
+        0.18872346751850416,
+        -0.13329499905471798,
+        0.8348736240949881
+      ],
+      "radius": 0.035913210765533,
+      "max_residual": 0.003819901926137903,
+      "rms_residual": 0.0014503423475432783,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.18867805606524385,
+            -0.13269024033232252
+          ],
+          "circle_radius_m": 0.03594951405566292,
+          "combined_fit_max_residual": 0.0030534612605798844,
+          "worst_point_index": 10
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.18866298307106363,
+            -0.13377193804524587
+          ],
+          "circle_radius_m": 0.035882933025531215,
+          "combined_fit_max_residual": 0.003819901926137903,
+          "worst_point_index": 9
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/011_step049",
+      "snap": 0,
+      "refinement_failure": null,
+      "best_height": 0.8330157348076758,
+      "center_world": [
+        0.18801531222285192,
+        -0.13339142904225523,
+        0.8330157348076758
+      ],
+      "radius": 0.03558024215870006,
+      "max_residual": 0.004695477326080003,
+      "rms_residual": 0.0016970321684088286,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.18770649330860978,
+            -0.13367057804327673
+          ],
+          "circle_radius_m": 0.03450840283258951,
+          "combined_fit_max_residual": 0.004695477326080003,
+          "worst_point_index": 4
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.1881241483089985,
+            -0.13318743195794377
+          ],
+          "circle_radius_m": 0.036358710604894706,
+          "combined_fit_max_residual": 0.002818544921970277,
+          "worst_point_index": 10
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/012_step049",
+      "snap": 0.0,
+      "refinement_failure": null,
+      "best_height": 0.8333771264169993,
+      "center_world": [
+        0.18771789024381483,
+        -0.1332323523610679,
+        0.8333771264169993
+      ],
+      "radius": 0.035101107962294,
+      "max_residual": 0.002213926669270741,
+      "rms_residual": 0.0009849255484257902,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.18759450738918163,
+            -0.13363938227943004
+          ],
+          "circle_radius_m": 0.03482053275132943,
+          "combined_fit_max_residual": 0.002213926669270741,
+          "worst_point_index": 4
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.18782336862960924,
+            -0.1329271168301932
+          ],
+          "circle_radius_m": 0.03530667393456515,
+          "combined_fit_max_residual": 0.001980237587075391,
+          "worst_point_index": 15
+        }
+      ]
+    },
+    {
+      "step": 49,
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/013_step049",
+      "snap": 0.0,
+      "refinement_failure": null,
+      "best_height": 0.9167778514328883,
+      "center_world": [
+        0.33465059863013813,
+        -0.04338689256359643,
+        0.9167778514328883
+      ],
+      "radius": 0.03608086084883593,
+      "max_residual": 0.0021578591996067806,
+      "rms_residual": 0.0011252889305846552,
+      "per_view": [
+        {
+          "camera": "head",
+          "circle_center_xy": [
+            0.3343158667564476,
+            -0.04332988839120066
+          ],
+          "circle_radius_m": 0.035707689432888545,
+          "combined_fit_max_residual": 0.0015599826769726807,
+          "worst_point_index": 3
+        },
+        {
+          "camera": "wrist_r",
+          "circle_center_xy": [
+            0.3349805574509967,
+            -0.043377973567619174
+          ],
+          "circle_radius_m": 0.03646862464381117,
+          "combined_fit_max_residual": 0.0021578591996067806,
+          "worst_point_index": 8
+        }
+      ]
+    }
+  ]
+}

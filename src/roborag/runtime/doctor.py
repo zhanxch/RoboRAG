@@ -28,6 +28,7 @@ def inspect_runtime(root=PROJECT_ROOT, bank=None):
         "vendor/HexaShell/hexashell/server/core.py",
         "vendor/HexaShell/tasks/fold_clothes/tools/cloth_view/tool.py",
         "vendor/HexaShell/tasks/push_T/tools/planar_contact/tool.py",
+        "vendor/HexaShell/tasks/pour_balls_into_vase/tools/rim_geometry/tool.py",
         "vendor/HexaShell/tools/table_plane/tool.py",
         "data/hexashell-agent-python",
         "data/Assets/Eval_Layout/RoboDojo/arx_x5/1",

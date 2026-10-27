@@ -1,0 +1,3215 @@
+{
+  "run": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0",
+  "complete": false,
+  "native": null,
+  "task": "pour_balls_into_vase",
+  "variant": "standard",
+  "layout": 0,
+  "seed": 1,
+  "controller": "RoboICL world link6 delta grammar; native RoboDojo EE control",
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "failure": {
+    "complete": false,
+    "error": "TimeoutExpired",
+    "detail": "Command '['/usr/bin/bwrap', '--die-with-parent', '--unshare-pid', '--ro-bind', '/usr', '/usr', '--ro-bind', '/lib', '/lib', '--ro-bind', '/lib64', '/lib64', '--symlink', 'usr/bin', '/bin', '--symlink', 'usr/sbin', '/sbin', '--ro-bind', '/etc', '/etc', '--proc', '/proc', '--dev', '/dev', '--tmpfs', '/tmp', '--dir', '/home/zxc/.codex', '--ro-bind', '/home/zxc/.codex/packages/standalone/recovered-0.155.0-alpha.16.3/bin', '/home/zxc/.codex/packages/standalone/recovered-0.155.0-alpha.16.3/bin', '--bind', '/tmp/roborag-mcp-9yqopk7m', '/tmp/roborag-mcp-9yqopk7m', '--ro-bind', '/tmp/roborag-mcp-9yqopk7m/bin', '/usr/local/bin', '--ro-bind', '/home/zxc/文档/ChatGPT/RoboRAG/data/hexashell-agent-python', '/opt/hexashell-python', '--ro-bind', '/home/zxc/.codex/auth.json', '/home/zxc/.codex/auth.json', '--ro-bind', '/home/zxc/.codex/models_cache.json', '/home/zxc/.codex/models_cache.json', '--ro-bind', '/run/systemd/resolve', '/run/systemd/resolve', '--chdir', '/tmp/roborag-mcp-9yqopk7m', '--', '/home/zxc/.codex/packages/standalone/recovered-0.155.0-alpha.16.3/bin/codex', '--no-daemon', 'exec', '--ignore-user-config', '--ignore-rules', '--ephemeral', '--skip-git-repo-check', '--model', 'gpt-6-astra', '--cd', '/tmp/roborag-mcp-9yqopk7m', '-c', 'model_reasoning_effort=\"xhigh\"', '-c', 'approval_policy=\"never\"', '-c', 'default_permissions=\"hexashell\"', '-c', 'permissions.hexashell.filesystem={\":minimal\"=\"read\", \"/home/zxc/.codex/packages/standalone/recovered-0.155.0-alpha.16.3/bin\"=\"read\", \"/tmp/roborag-mcp-9yqopk7m\"=\"write\", \"/opt/hexashell-python\"=\"read\"}', '-c', 'permissions.hexashell.network.enabled=false', '-c', 'project_doc_max_bytes=0', '-c', 'skills.max_context_tokens=1', '-c', 'web_search=\"disabled\"', '-c', 'features.respect_system_proxy=true', '-c', 'shell_environment_policy.set={PATH=\"/tmp/roborag-mcp-9yqopk7m/bin:/usr/local/bin:/usr/bin:/bin\", PYTHONPATH=\"/opt/hexashell-python\"}', '-c', 'shell_environment_policy.experimental_use_profile=false', '-c', 'features.multi_agent=false', '-c', 'features.apps=false', '-c', 'features.plugins=false', '-c', 'features.hooks=false', '-c', 'features.browser_use=false', '-c', 'features.computer_use=false', '-c', 'features.image_generation=false', '-c', 'features.memories=false', '-c', 'features.goals=false', '-c', 'features.code_mode=true', '-c', 'features.code_mode_host=true', '-c', 'mcp_servers.roborag.url=\"http://127.0.0.1:35895/mcp\"', '-c', 'mcp_servers.roborag.tool_timeout_sec=600', '-c', 'mcp_servers.roborag.default_tools_approval_mode=\"approve\"', '--output-last-message', '/tmp/roborag-mcp-9yqopk7m/agent-final.txt', '--json', '-']' timed out after 2117.557249720907 seconds",
+    "wall_seconds": 2160.158332881052
+  },
+  "reported_usage": {
+    "input_tokens": null,
+    "cached_input_tokens": null,
+    "cache_write_input_tokens": null,
+    "output_tokens": null,
+    "reasoning_output_tokens": null
+  },
+  "actual_billed_usd": null,
+  "cached_input_fraction": null,
+  "uncached_input_tokens": null,
+  "completed_native_turns": 0,
+  "model_request_count": null,
+  "tool_counts": {
+    "execute_chunk": 28,
+    "measure_rim": 13,
+    "observe": 1,
+    "read_action_reference": 5,
+    "record_plan": 2,
+    "retrieve_evidence": 1
+  },
+  "native_control_steps": 324,
+  "native_control_steps_complete": false,
+  "control_steps_status": "lower_bound",
+  "executed_delta_rows": 324,
+  "executed_waypoints": 0,
+  "recorded_action_chunks": 28,
+  "action_log_rows": 324,
+  "malformed_action_records": 0,
+  "malformed_command_records": 0,
+  "control_step_note": "Native action dispatches; partial-run counters are lower bounds, not PhysX substeps.",
+  "malformed_mcp_records": 0,
+  "retrieval_context_chars": [
+    2161
+  ],
+  "plan_steps": 3,
+  "plan_adaptation": "采用0002:p02侧握方向，但水平腕姿下降遇IK奇异区，退回后改用示例q=[.763308,-.065297,.090115,.636378]，成功抓杯。已验证杯轴仍直立，当前杯缘中心到TCP局部偏移[-.007053,.000847,.025515]。完整示例p02末到p05末旋转局部轴[.877851,.006037,.478895]角94.544度，包括转向；当前将转向部分去除，绕起始局部+X纯滚转，世界实测轴[.172896,.959834,-.220966]，至120度时杯轴[.773934,-.467868,-.426761]、q=[.438265,.627991,.596479,.240343]，轴已向下约25度，+X保持原方向，闭合轴随滚转变化。纯滚转与已选侧握对应，避免向下俯冲手指。根据当前杯半径和深度，以p_low=tcp+R@c_local-r*(ez-n*nz)/norm固定最低缘，30度时出流缘z=.955（尚无流），45度及以后目标[.327,-.04,.926]，距瓶口约12mm且在内口中心左8mm，有球半径及误差余量。先30度确认间隙，再45/60/75/90/110/120度小段反馈，必要时停止/扶正。头和右腕被杯遮挡时把左腕移到远离物体的观察位置，以取得另一视角；左手保持空且不接近杯。",
+  "workflow_verified": true,
+  "wall_seconds": 2160.158332881052,
+  "agent_wall_seconds": 2117.7147955240216,
+  "role": "development_candidate_only",
+  "policy_version": "rim-delta-v3",
+  "heldout": false,
+  "rag_audit": {
+    "tool_counts": {
+      "observe": 1,
+      "retrieve_evidence": 1,
+      "measure_rim": 13,
+      "read_action_reference": 5,
+      "record_plan": 2,
+      "execute_chunk": 28
+    },
+    "expanded_phases": [
+      {
+        "source": "pour_balls_into_vase-0001:p04",
+        "section": "close",
+        "operation": "右夹爪收拢接住杯子，左夹爪随后张开并向左下方撤离，右手带杯移开。",
+        "phase_interval": [
+          170,
+          213
+        ],
+        "window_selection": {
+          "section": "close",
+          "command_event_found": false,
+          "fallback": "phase_start"
+        },
+        "delivered_images": {
+          "provenance": "actual completed native MCP response in agent-events.jsonl",
+          "count": 4,
+          "labels": [
+            "HISTORICAL pour_balls_into_vase-0001:p04 phase context cam_head frame 170",
+            "HISTORICAL pour_balls_into_vase-0001:p04 phase context cam_head frame 191",
+            "HISTORICAL pour_balls_into_vase-0001:p04 phase context cam_head frame 212",
+            "HISTORICAL pour_balls_into_vase-0001:p04 phase context cam_left_wrist frame 191"
+          ]
+        },
+        "phase_context_returned": true,
+        "phase_context": {
+          "role": "HISTORICAL_PHASE_CONTEXT",
+          "interval": [
+            170,
+            213
+          ],
+          "frequency": 25.0,
+          "duration_s": 1.72,
+          "sampled_states": [
+            {
+              "frame": 170,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.142952,
+                  -0.184626,
+                  1.035243,
+                  0.811604,
+                  -0.546985,
+                  0.080243,
+                  0.188858
+                ],
+                "left_ee_joint_state": [
+                  0.050174
+                ],
+                "right_ee_pose": [
+                  0.123998,
+                  -0.205348,
+                  1.109307,
+                  0.06657,
+                  -0.374278,
+                  -0.085319,
+                  0.92098
+                ],
+                "right_ee_joint_state": [
+                  0.86
+                ]
+              }
+            },
+            {
+              "frame": 191,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.232357,
+                  -0.270013,
+                  1.031317,
+                  0.85823,
+                  -0.329275,
+                  0.007209,
+                  0.393658
+                ],
+                "left_ee_joint_state": [
+                  0.777789
+                ],
+                "right_ee_pose": [
+                  0.152683,
+                  -0.194759,
+                  1.101363,
+                  0.121042,
+                  -0.35396,
+                  -0.10051,
+                  0.921932
+                ],
+                "right_ee_joint_state": [
+                  0.609635
+                ]
+              }
+            },
+            {
+              "frame": 212,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.298704,
+                  -0.351983,
+                  0.924178,
+                  0.712344,
+                  -0.005488,
+                  -0.001029,
+                  0.701809
+                ],
+                "left_ee_joint_state": [
+                  0.999994
+                ],
+                "right_ee_pose": [
+                  0.261738,
+                  -0.210232,
+                  1.085536,
+                  0.551556,
+                  -0.251465,
+                  -0.269748,
+                  0.748189
+                ],
+                "right_ee_joint_state": [
+                  0.612364
+                ]
+              }
+            }
+          ],
+          "measured_robot_motion": {
+            "left": {
+              "ee_path_length_m": 0.284541,
+              "ee_z_range_m": [
+                0.924178,
+                1.041067
+              ],
+              "gripper_command_range": [
+                0.05651,
+                0.999994
+              ]
+            },
+            "right": {
+              "ee_path_length_m": 0.189456,
+              "ee_z_range_m": [
+                1.085536,
+                1.135194
+              ],
+              "gripper_command_range": [
+                0.562156,
+                0.76
+              ]
+            }
+          },
+          "semantics": "Sparse recorded samples across this phase, not the short transition interval. EE is link6, not contact/TCP. Gripper values are commands, not proof of holding. Images and motion do not independently establish success. Adapt from current observations; do not replay historical coordinates."
+        }
+      },
+      {
+        "source": "pour_balls_into_vase-0001:p06",
+        "section": "start",
+        "operation": "右手继续转动并稍微降低杯子，使杯口朝下对着花瓶口，保持倾倒姿态。",
+        "phase_interval": [
+          245,
+          278
+        ],
+        "window_selection": {
+          "section": "start"
+        },
+        "delivered_images": {
+          "provenance": "actual completed native MCP response in agent-events.jsonl",
+          "count": 4,
+          "labels": [
+            "HISTORICAL pour_balls_into_vase-0001:p06 phase context cam_head frame 245",
+            "HISTORICAL pour_balls_into_vase-0001:p06 phase context cam_head frame 261",
+            "HISTORICAL pour_balls_into_vase-0001:p06 phase context cam_head frame 277",
+            "HISTORICAL pour_balls_into_vase-0001:p06 phase context cam_right_wrist frame 261"
+          ]
+        },
+        "phase_context_returned": true,
+        "phase_context": {
+          "role": "HISTORICAL_PHASE_CONTEXT",
+          "interval": [
+            245,
+            278
+          ],
+          "frequency": 25.0,
+          "duration_s": 1.32,
+          "sampled_states": [
+            {
+              "frame": 245,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.298906,
+                  -0.352065,
+                  0.923521,
+                  0.711045,
+                  -0.004146,
+                  -0.000778,
+                  0.703133
+                ],
+                "left_ee_joint_state": [
+                  1.0
+                ],
+                "right_ee_pose": [
+                  0.224044,
+                  -0.220638,
+                  1.019827,
+                  0.559689,
+                  -0.351486,
+                  -0.46926,
+                  0.585662
+                ],
+                "right_ee_joint_state": [
+                  0.614423
+                ]
+              }
+            },
+            {
+              "frame": 261,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.298906,
+                  -0.352065,
+                  0.923521,
+                  0.711045,
+                  -0.004146,
+                  -0.000778,
+                  0.703133
+                ],
+                "left_ee_joint_state": [
+                  1.0
+                ],
+                "right_ee_pose": [
+                  0.229796,
+                  -0.202883,
+                  0.970121,
+                  0.534309,
+                  -0.404902,
+                  -0.548568,
+                  0.499642
+                ],
+                "right_ee_joint_state": [
+                  0.615256
+                ]
+              }
+            },
+            {
+              "frame": 277,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.298906,
+                  -0.352065,
+                  0.923521,
+                  0.711045,
+                  -0.004146,
+                  -0.000778,
+                  0.703133
+                ],
+                "left_ee_joint_state": [
+                  1.0
+                ],
+                "right_ee_pose": [
+                  0.223095,
+                  -0.195294,
+                  0.961218,
+                  0.521268,
+                  -0.423344,
+                  -0.576812,
+                  0.46513
+                ],
+                "right_ee_joint_state": [
+                  0.614678
+                ]
+              }
+            }
+          ],
+          "measured_robot_motion": {
+            "left": {
+              "ee_path_length_m": 0.0,
+              "ee_z_range_m": [
+                0.923521,
+                0.923521
+              ],
+              "gripper_command_range": [
+                1.0,
+                1.0
+              ]
+            },
+            "right": {
+              "ee_path_length_m": 0.076636,
+              "ee_z_range_m": [
+                0.957211,
+                1.019827
+              ],
+              "gripper_command_range": [
+                0.613436,
+                0.684725
+              ]
+            }
+          },
+          "semantics": "Sparse recorded samples across this phase, not the short transition interval. EE is link6, not contact/TCP. Gripper values are commands, not proof of holding. Images and motion do not independently establish success. Adapt from current observations; do not replay historical coordinates."
+        }
+      },
+      {
+        "source": "pour_balls_into_vase-0002:p02",
+        "section": "close",
+        "operation": "左夹爪合拢，左臂随即向上抬起，保持杯口大致朝上。",
+        "phase_interval": [
+          68,
+          89
+        ],
+        "window_selection": {
+          "section": "close",
+          "command_event_found": false,
+          "fallback": "phase_start"
+        },
+        "delivered_images": {
+          "provenance": "actual completed native MCP response in agent-events.jsonl",
+          "count": 4,
+          "labels": [
+            "HISTORICAL pour_balls_into_vase-0002:p02 phase context cam_head frame 68",
+            "HISTORICAL pour_balls_into_vase-0002:p02 phase context cam_head frame 78",
+            "HISTORICAL pour_balls_into_vase-0002:p02 phase context cam_head frame 88",
+            "HISTORICAL pour_balls_into_vase-0002:p02 phase context cam_left_wrist frame 78"
+          ]
+        },
+        "phase_context_returned": true,
+        "phase_context": {
+          "role": "HISTORICAL_PHASE_CONTEXT",
+          "interval": [
+            68,
+            89
+          ],
+          "frequency": 25.0,
+          "duration_s": 0.84,
+          "sampled_states": [
+            {
+              "frame": 68,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.098192,
+                  -0.191091,
+                  0.861934,
+                  0.763308,
+                  -0.065297,
+                  0.090115,
+                  0.636378
+                ],
+                "left_ee_joint_state": [
+                  0.927802
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            },
+            {
+              "frame": 78,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.114048,
+                  -0.199297,
+                  0.889649,
+                  0.7712,
+                  -0.108266,
+                  0.067353,
+                  0.623693
+                ],
+                "left_ee_joint_state": [
+                  0.6174
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            },
+            {
+              "frame": 88,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.180763,
+                  -0.283424,
+                  1.015422,
+                  0.783416,
+                  -0.081465,
+                  0.03773,
+                  0.614979
+                ],
+                "left_ee_joint_state": [
+                  0.615493
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            }
+          ],
+          "measured_robot_motion": {
+            "left": {
+              "ee_path_length_m": 0.210886,
+              "ee_z_range_m": [
+                0.861934,
+                1.015422
+              ],
+              "gripper_command_range": [
+                0.614651,
+                0.827802
+              ]
+            },
+            "right": {
+              "ee_path_length_m": 0.0,
+              "ee_z_range_m": [
+                0.9215,
+                0.9215
+              ],
+              "gripper_command_range": [
+                1.0,
+                1.0
+              ]
+            }
+          },
+          "semantics": "Sparse recorded samples across this phase, not the short transition interval. EE is link6, not contact/TCP. Gripper values are commands, not proof of holding. Images and motion do not independently establish success. Adapt from current observations; do not replay historical coordinates."
+        }
+      },
+      {
+        "source": "pour_balls_into_vase-0002:p05",
+        "section": "start",
+        "operation": "左腕逐渐转动，让杯口向花瓶口下倾，并在倾斜位置短暂停留。",
+        "phase_interval": [
+          135,
+          180
+        ],
+        "window_selection": {
+          "section": "start"
+        },
+        "delivered_images": {
+          "provenance": "actual completed native MCP response in agent-events.jsonl",
+          "count": 4,
+          "labels": [
+            "HISTORICAL pour_balls_into_vase-0002:p05 phase context cam_head frame 135",
+            "HISTORICAL pour_balls_into_vase-0002:p05 phase context cam_head frame 157",
+            "HISTORICAL pour_balls_into_vase-0002:p05 phase context cam_head frame 179",
+            "HISTORICAL pour_balls_into_vase-0002:p05 phase context cam_left_wrist frame 157"
+          ]
+        },
+        "phase_context_returned": true,
+        "phase_context": {
+          "role": "HISTORICAL_PHASE_CONTEXT",
+          "interval": [
+            135,
+            180
+          ],
+          "frequency": 25.0,
+          "duration_s": 1.8,
+          "sampled_states": [
+            {
+              "frame": 135,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.273677,
+                  -0.339131,
+                  0.945584,
+                  0.471459,
+                  0.301446,
+                  0.374112,
+                  0.739525
+                ],
+                "left_ee_joint_state": [
+                  0.611397
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            },
+            {
+              "frame": 157,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.24433,
+                  -0.330784,
+                  0.936193,
+                  0.375763,
+                  0.430191,
+                  0.455582,
+                  0.682776
+                ],
+                "left_ee_joint_state": [
+                  0.733431
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            },
+            {
+              "frame": 179,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.249265,
+                  -0.319216,
+                  0.942964,
+                  0.367584,
+                  0.460461,
+                  0.454306,
+                  0.668179
+                ],
+                "left_ee_joint_state": [
+                  0.765854
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            }
+          ],
+          "measured_robot_motion": {
+            "left": {
+              "ee_path_length_m": 0.071727,
+              "ee_z_range_m": [
+                0.933829,
+                0.947478
+              ],
+              "gripper_command_range": [
+                0.610176,
+                0.8
+              ]
+            },
+            "right": {
+              "ee_path_length_m": 0.0,
+              "ee_z_range_m": [
+                0.9215,
+                0.9215
+              ],
+              "gripper_command_range": [
+                1.0,
+                1.0
+              ]
+            }
+          },
+          "semantics": "Sparse recorded samples across this phase, not the short transition interval. EE is link6, not contact/TCP. Gripper values are commands, not proof of holding. Images and motion do not independently establish success. Adapt from current observations; do not replay historical coordinates."
+        }
+      },
+      {
+        "source": "pour_balls_into_vase-0002:p04",
+        "section": "start",
+        "operation": "左臂在瓶口旁做小幅位置和姿态调整，夹爪开度先增大后收小。",
+        "phase_interval": [
+          120,
+          135
+        ],
+        "window_selection": {
+          "section": "start"
+        },
+        "delivered_images": {
+          "provenance": "actual completed native MCP response in agent-events.jsonl",
+          "count": 4,
+          "labels": [
+            "HISTORICAL pour_balls_into_vase-0002:p04 phase context cam_head frame 120",
+            "HISTORICAL pour_balls_into_vase-0002:p04 phase context cam_head frame 127",
+            "HISTORICAL pour_balls_into_vase-0002:p04 phase context cam_head frame 134",
+            "HISTORICAL pour_balls_into_vase-0002:p04 phase context cam_left_wrist frame 127"
+          ]
+        },
+        "phase_context_returned": true,
+        "phase_context": {
+          "role": "HISTORICAL_PHASE_CONTEXT",
+          "interval": [
+            120,
+            135
+          ],
+          "frequency": 25.0,
+          "duration_s": 0.6,
+          "sampled_states": [
+            {
+              "frame": 120,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.283972,
+                  -0.318817,
+                  0.945809,
+                  0.50595,
+                  0.253155,
+                  0.356964,
+                  0.743306
+                ],
+                "left_ee_joint_state": [
+                  0.742531
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            },
+            {
+              "frame": 127,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.279795,
+                  -0.317413,
+                  0.939984,
+                  0.481324,
+                  0.277625,
+                  0.359152,
+                  0.749841
+                ],
+                "left_ee_joint_state": [
+                  0.799999
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            },
+            {
+              "frame": 134,
+              "recorded_state": {
+                "left_ee_pose": [
+                  -0.275274,
+                  -0.337186,
+                  0.944265,
+                  0.474676,
+                  0.29516,
+                  0.370815,
+                  0.74166
+                ],
+                "left_ee_joint_state": [
+                  0.613492
+                ],
+                "right_ee_pose": [
+                  0.300471,
+                  -0.3523,
+                  0.9215,
+                  0.707,
+                  -0.0,
+                  -0.0,
+                  0.707214
+                ],
+                "right_ee_joint_state": [
+                  1.0
+                ]
+              }
+            }
+          ],
+          "measured_robot_motion": {
+            "left": {
+              "ee_path_length_m": 0.03563,
+              "ee_z_range_m": [
+                0.938759,
+                0.945809
+              ],
+              "gripper_command_range": [
+                0.611397,
+                0.8
+              ]
+            },
+            "right": {
+              "ee_path_length_m": 0.0,
+              "ee_z_range_m": [
+                0.9215,
+                0.9215
+              ],
+              "gripper_command_range": [
+                1.0,
+                1.0
+              ]
+            }
+          },
+          "semantics": "Sparse recorded samples across this phase, not the short transition interval. EE is link6, not contact/TCP. Gripper values are commands, not proof of holding. Images and motion do not independently establish success. Adapt from current observations; do not replay historical coordinates."
+        }
+      }
+    ],
+    "malformed_native_event_lines": 0,
+    "plan_evidence_refs": [
+      "pour_balls_into_vase-0002:p02",
+      "pour_balls_into_vase-0002:p04",
+      "pour_balls_into_vase-0002:p05",
+      "pour_balls_into_vase-0002:p06",
+      "pour_balls_into_vase-0002:p07",
+      "pour_balls_into_vase-0002:p08"
+    ],
+    "recorded_plans": [
+      {
+        "role": "gpt_generated_current_plan",
+        "current_scene": "原生任务为把杯内所有球倒进花瓶。当前黄色杯位于右前侧约x=.18,y=-.14，黑色高颈喇叭口花瓶在其右后方。桌面测量z=.7649。杯口在右腕图被边缘和手指遮挡，先空手换观察点再拟合杯口；花瓶只用内口边缘。",
+        "steps": [
+          {
+            "subgoal": "测量并侧握黄色杯",
+            "current_objects": "当前右前方装球黄色杯、测量桌面",
+            "completion_observation": "杯口拟合通过；静止闭合后抬升几厘米，杯子保持直立跟随右手且球未掉落",
+            "evidence_refs": [
+              "pour_balls_into_vase-0002:p02"
+            ]
+          },
+          {
+            "subgoal": "保持直立搬运并对齐低杯缘",
+            "current_objects": "当前黑色花瓶内口和已抓杯",
+            "completion_observation": "当前头腕双视角确认低杯缘投影在内口范围、杯和手指不碰外壁",
+            "evidence_refs": [
+              "pour_balls_into_vase-0002:p04"
+            ]
+          },
+          {
+            "subgoal": "分段滚转倒球并停留",
+            "current_objects": "右手杯与花瓶内口",
+            "completion_observation": "观察实际落球路径、充分物理停留，检查杯内余球及桌面溢出",
+            "evidence_refs": [
+              "pour_balls_into_vase-0002:p05"
+            ]
+          },
+          {
+            "subgoal": "沿原路扶正杯、放稳、松手并双臂归位",
+            "current_objects": "空杯与原空置桌面位置",
+            "completion_observation": "杯子直立受桌面支撑，手指离开；return_home后原生任务确认七球入瓶和双臂原点",
+            "evidence_refs": [
+              "pour_balls_into_vase-0002:p06",
+              "pour_balls_into_vase-0002:p07",
+              "pour_balls_into_vase-0002:p08"
+            ]
+          }
+        ],
+        "adaptation": "采用0002:p02侧夹杯身和0002:p05向外倾倒的思路，换为右臂，省去0001的换手。已检查p02 close窗口，command_event_found=false（示例闭合命令停在约.615，未跨.5），依据腕图确认是侧握而非杯内抓取。p05开头已倾斜，已查看前驱p04，采用p02末帧88近直立为完整旋转基准，到p05末179的相对轴在起始夹爪坐标为[.87785,.00604,.47890]，角94.54度；该动作含转向，+X仍大致水平，杯轴主要随局部+X滚转。当前选水平+X朝世界+Y、+Y朝-X的侧握，从花瓶左侧绕局部+X正向滚转（世界+Y）令杯口向+X下倾，最终视余球逐步达到约110-120度；保持接近轴水平，闭合轴从水平转到竖直。抓点在杯口下约3-4cm，待测量确定。通过当前杯到TCP变换协调平移，低杯缘固定在内口中心附近并略高于口沿，杯体留在左侧，避免前俯使手指垂直下插。历史坐标不作为目标，完整旋转可达性逐段检查。",
+        "observed_at_step": 0
+      },
+      {
+        "role": "gpt_generated_current_plan",
+        "current_scene": "杯抓持已用3cm小升验证；杯内七球可见。桌高.7649，源杯口中心初始[.189246,-.131401,.833208]、半径.035716、深约.0683。花瓶内口最终通过snap=0几何检验中心[.335044,-.039789,.914367]半径.035905（误差<.003）。",
+        "steps": [
+          {
+            "subgoal": "保持抓杯，补充观察视角并预倾到30度",
+            "current_objects": "右手黄色杯、黑色花瓶内口，左手仅观察",
+            "completion_observation": "杯无滑动，实际低缘在两视图可核对，杯体指尖不撞花瓶",
+            "evidence_refs": [
+              "pour_balls_into_vase-0002:p02",
+              "pour_balls_into_vase-0002:p04",
+              "pour_balls_into_vase-0002:p05"
+            ]
+          },
+          {
+            "subgoal": "保持低缘对内口逐段滚转倒七球",
+            "current_objects": "黄色杯中七球与测量内口",
+            "completion_observation": "观察实际球路径、最后充分停留、检查余球和桌面",
+            "evidence_refs": [
+              "pour_balls_into_vase-0002:p05"
+            ]
+          },
+          {
+            "subgoal": "反向扶正后放杯回原桌面，松手并归位",
+            "current_objects": "黄色杯、原杯桌面位置",
+            "completion_observation": "杯直立放稳，双手离开并return_home，原生成功条件成立",
+            "evidence_refs": [
+              "pour_balls_into_vase-0002:p06",
+              "pour_balls_into_vase-0002:p07",
+              "pour_balls_into_vase-0002:p08"
+            ]
+          }
+        ],
+        "adaptation": "采用0002:p02侧握方向，但水平腕姿下降遇IK奇异区，退回后改用示例q=[.763308,-.065297,.090115,.636378]，成功抓杯。已验证杯轴仍直立，当前杯缘中心到TCP局部偏移[-.007053,.000847,.025515]。完整示例p02末到p05末旋转局部轴[.877851,.006037,.478895]角94.544度，包括转向；当前将转向部分去除，绕起始局部+X纯滚转，世界实测轴[.172896,.959834,-.220966]，至120度时杯轴[.773934,-.467868,-.426761]、q=[.438265,.627991,.596479,.240343]，轴已向下约25度，+X保持原方向，闭合轴随滚转变化。纯滚转与已选侧握对应，避免向下俯冲手指。根据当前杯半径和深度，以p_low=tcp+R@c_local-r*(ez-n*nz)/norm固定最低缘，30度时出流缘z=.955（尚无流），45度及以后目标[.327,-.04,.926]，距瓶口约12mm且在内口中心左8mm，有球半径及误差余量。先30度确认间隙，再45/60/75/90/110/120度小段反馈，必要时停止/扶正。头和右腕被杯遮挡时把左腕移到远离物体的观察位置，以取得另一视角；左手保持空且不接近杯。",
+        "observed_at_step": 166
+      }
+    ],
+    "semantic_limit": "Tool delivery and citation are audited mechanics. Correct adaptation of the reference motion must be established from the recorded plan, generated motion and native feedback; it is not inferred from an ID or phase_context presence."
+  },
+  "measurement_audit": {
+    "native_calls": [
+      {
+        "request": {
+          "command": "table_plane",
+          "arguments": {
+            "views": null,
+            "zmin": null,
+            "zmax": null,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 0,
+        "result": {
+          "table_z": 0.7649,
+          "conf": 1.0,
+          "n_agree": 3,
+          "pairs": {
+            "head<-wrist_l": {
+              "z": 0.7649,
+              "contrast": 0.646,
+              "used": true
+            },
+            "head<-wrist_r": {
+              "z": 0.7645,
+              "contrast": 0.491,
+              "used": true
+            },
+            "wrist_l<-wrist_r": {
+              "z": 0.7656,
+              "contrast": 0.567,
+              "used": true
+            }
+          },
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "cpu_s": 0.54,
+          "cached": false,
+          "plan_ok": true,
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 0,
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  483.0,
+                  169.0
+                ],
+                [
+                  486.0,
+                  162.0
+                ],
+                [
+                  494.0,
+                  159.0
+                ],
+                [
+                  504.0,
+                  160.0
+                ],
+                [
+                  514.0,
+                  164.0
+                ],
+                [
+                  522.0,
+                  171.0
+                ],
+                [
+                  525.0,
+                  178.0
+                ],
+                [
+                  522.0,
+                  184.0
+                ],
+                [
+                  513.0,
+                  188.0
+                ],
+                [
+                  502.0,
+                  185.0
+                ],
+                [
+                  492.0,
+                  180.0
+                ],
+                [
+                  486.0,
+                  174.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  315.0,
+                  129.0
+                ],
+                [
+                  323.0,
+                  121.0
+                ],
+                [
+                  344.0,
+                  115.0
+                ],
+                [
+                  373.0,
+                  113.0
+                ],
+                [
+                  401.0,
+                  115.0
+                ],
+                [
+                  427.0,
+                  121.0
+                ],
+                [
+                  448.0,
+                  130.0
+                ],
+                [
+                  453.0,
+                  136.0
+                ],
+                [
+                  440.0,
+                  143.0
+                ],
+                [
+                  413.0,
+                  148.0
+                ],
+                [
+                  384.0,
+                  149.0
+                ],
+                [
+                  355.0,
+                  146.0
+                ],
+                [
+                  330.0,
+                  139.0
+                ]
+              ]
+            },
+            "zmin": 0.94,
+            "zmax": 1.02,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 0,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "boundary_not_supported_by_rgb",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 0,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  483.0,
+                  169.0
+                ],
+                [
+                  486.0,
+                  162.0
+                ],
+                [
+                  494.0,
+                  159.0
+                ],
+                [
+                  504.0,
+                  160.0
+                ],
+                [
+                  514.0,
+                  164.0
+                ],
+                [
+                  522.0,
+                  171.0
+                ],
+                [
+                  525.0,
+                  178.0
+                ],
+                [
+                  522.0,
+                  184.0
+                ],
+                [
+                  513.0,
+                  188.0
+                ],
+                [
+                  502.0,
+                  185.0
+                ],
+                [
+                  492.0,
+                  180.0
+                ],
+                [
+                  486.0,
+                  174.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  315.0,
+                  129.0
+                ],
+                [
+                  323.0,
+                  121.0
+                ],
+                [
+                  344.0,
+                  115.0
+                ],
+                [
+                  373.0,
+                  113.0
+                ],
+                [
+                  401.0,
+                  115.0
+                ],
+                [
+                  427.0,
+                  121.0
+                ],
+                [
+                  448.0,
+                  130.0
+                ],
+                [
+                  453.0,
+                  136.0
+                ],
+                [
+                  440.0,
+                  143.0
+                ],
+                [
+                  413.0,
+                  148.0
+                ],
+                [
+                  384.0,
+                  149.0
+                ],
+                [
+                  355.0,
+                  146.0
+                ],
+                [
+                  330.0,
+                  139.0
+                ]
+              ]
+            },
+            "zmin": 0.94,
+            "zmax": 1.02,
+            "tolerance": 0.003,
+            "snap": 0.0
+          }
+        },
+        "step": 0,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "inconsistent_multiview_boundary",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 0,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  400.0,
+                  233.0
+                ],
+                [
+                  404.0,
+                  227.0
+                ],
+                [
+                  412.0,
+                  224.0
+                ],
+                [
+                  420.0,
+                  225.0
+                ],
+                [
+                  429.0,
+                  230.0
+                ],
+                [
+                  435.0,
+                  237.0
+                ],
+                [
+                  437.0,
+                  244.0
+                ],
+                [
+                  434.0,
+                  251.0
+                ],
+                [
+                  427.0,
+                  254.0
+                ],
+                [
+                  418.0,
+                  253.0
+                ],
+                [
+                  409.0,
+                  249.0
+                ],
+                [
+                  402.0,
+                  243.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  276.0,
+                  371.0
+                ],
+                [
+                  281.0,
+                  352.0
+                ],
+                [
+                  297.0,
+                  338.0
+                ],
+                [
+                  319.0,
+                  331.0
+                ],
+                [
+                  341.0,
+                  332.0
+                ],
+                [
+                  365.0,
+                  342.0
+                ],
+                [
+                  383.0,
+                  360.0
+                ],
+                [
+                  388.0,
+                  380.0
+                ],
+                [
+                  380.0,
+                  398.0
+                ],
+                [
+                  360.0,
+                  413.0
+                ],
+                [
+                  336.0,
+                  418.0
+                ],
+                [
+                  312.0,
+                  412.0
+                ],
+                [
+                  292.0,
+                  400.0
+                ],
+                [
+                  279.0,
+                  384.0
+                ]
+              ]
+            },
+            "zmin": 0.8,
+            "zmax": 0.9,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 10,
+        "result": {
+          "center_world": [
+            0.18924589148120274,
+            -0.13140061010836146,
+            0.8332081730714856
+          ],
+          "radius_m": 0.035716044177626825,
+          "normal_world": [
+            0.0,
+            -1.772240475404615e-28,
+            1.0
+          ],
+          "max_residual_m": 0.002724687384838706,
+          "samples": 26,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "rms_residual_m": 0.001211219271360141,
+          "plan_ok": true,
+          "plan_fail_reason": null,
+          "cameras": [
+            "head",
+            "wrist_r"
+          ],
+          "refinement": {
+            "head": {
+              "pixels": [
+                [
+                  400.33284886102047,
+                  233.054979803089
+                ],
+                [
+                  403.7968497821034,
+                  226.7236957797362
+                ],
+                [
+                  411.9804567270689,
+                  223.46986406461505
+                ],
+                [
+                  420.7632229730411,
+                  222.49712961076108
+                ],
+                [
+                  431.0618320907617,
+                  227.34177580624046
+                ],
+                [
+                  437.39456003872147,
+                  235.70479079628433
+                ],
+                [
+                  437.47966299752517,
+                  244.01994116851768
+                ],
+                [
+                  434.2180352368805,
+                  251.24601875490336
+                ],
+                [
+                  426.8022625082816,
+                  252.73606125706743
+                ],
+                [
+                  417.5567687364019,
+                  254.7435493342337
+                ],
+                [
+                  408.82807318624543,
+                  249.24828116054437
+                ],
+                [
+                  401.7070252897228,
+                  243.19915773980043
+                ]
+              ],
+              "normal_shifts_px": [
+                -0.3373590713621329,
+                0.34294902415233713,
+                0.5304960409874243,
+                2.6166523444865044,
+                3.3641206034836446,
+                2.7224042059237794,
+                0.48007732855935153,
+                0.3287317938468065,
+                -1.279312808314309,
+                1.799004789859517,
+                0.30199729132736,
+                0.35425694938053637
+              ],
+              "max_shift_px": 3.3641206034836446
+            },
+            "wrist_r": {
+              "pixels": [
+                [
+                  275.6254948203962,
+                  371.0164996359192
+                ],
+                [
+                  280.7344976133124,
+                  351.83574061687614
+                ],
+                [
+                  296.4272082551818,
+                  336.95966488944896
+                ],
+                [
+                  318.94480610344004,
+                  330.4840202427127
+                ],
+                [
+                  341.0770966941169,
+                  331.6222542203175
+                ],
+                [
+                  367.13010212431277,
+                  338.7225453806403
+                ],
+                [
+                  382.7684173980341,
+                  360.12947640550175
+                ],
+                [
+                  389.37262579461253,
+                  380.07600561066124
+                ],
+                [
+                  381.3665696550883,
+                  399.033301739676
+                ],
+                [
+                  360.5677126677093,
+                  414.51452013640835
+                ],
+                [
+                  335.9429178918505,
+                  420.62438114861095
+                ],
+                [
+                  311.77384385433805,
+                  412.60138841938357
+                ],
+                [
+                  291.2063900539168,
+                  400.891284741023
+                ],
+                [
+                  279.4823301314965,
+                  383.7894378032618
+                ]
+              ],
+              "normal_shifts_px": [
+                0.3748684669794372,
+                0.3122061214663047,
+                1.1875973750295379,
+                0.5189233817701453,
+                0.38553310404127256,
+                3.908841751972539,
+                -0.2653198845072563,
+                1.374728491334797,
+                1.7132498671897347,
+                1.617426634090098,
+                2.625001862905089,
+                0.6425065238496336,
+                1.1934007022382065,
+                -0.5262877487122513
+              ],
+              "max_shift_px": 3.908841751972539
+            }
+          },
+          "rgb_refined": true,
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 10,
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  483.0,
+                  169.0
+                ],
+                [
+                  486.0,
+                  162.0
+                ],
+                [
+                  494.0,
+                  159.0
+                ],
+                [
+                  504.0,
+                  160.0
+                ],
+                [
+                  514.0,
+                  164.0
+                ],
+                [
+                  522.0,
+                  171.0
+                ],
+                [
+                  525.0,
+                  178.0
+                ],
+                [
+                  522.0,
+                  184.0
+                ],
+                [
+                  513.0,
+                  188.0
+                ],
+                [
+                  502.0,
+                  185.0
+                ],
+                [
+                  492.0,
+                  180.0
+                ],
+                [
+                  486.0,
+                  174.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  477.0,
+                  187.0
+                ],
+                [
+                  485.0,
+                  180.0
+                ],
+                [
+                  501.0,
+                  176.0
+                ],
+                [
+                  521.0,
+                  176.0
+                ],
+                [
+                  544.0,
+                  180.0
+                ],
+                [
+                  566.0,
+                  186.0
+                ],
+                [
+                  584.0,
+                  193.0
+                ],
+                [
+                  594.0,
+                  201.0
+                ],
+                [
+                  591.0,
+                  208.0
+                ],
+                [
+                  579.0,
+                  214.0
+                ],
+                [
+                  559.0,
+                  216.0
+                ],
+                [
+                  538.0,
+                  214.0
+                ],
+                [
+                  515.0,
+                  207.0
+                ],
+                [
+                  495.0,
+                  199.0
+                ],
+                [
+                  482.0,
+                  192.0
+                ]
+              ]
+            },
+            "zmin": 0.88,
+            "zmax": 0.94,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 10,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "boundary_not_supported_by_rgb",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 10,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  484.0,
+                  168.0
+                ],
+                [
+                  487.0,
+                  162.0
+                ],
+                [
+                  493.0,
+                  159.0
+                ],
+                [
+                  502.0,
+                  160.0
+                ],
+                [
+                  511.0,
+                  163.0
+                ],
+                [
+                  520.0,
+                  170.0
+                ],
+                [
+                  524.0,
+                  177.0
+                ],
+                [
+                  522.0,
+                  182.0
+                ],
+                [
+                  516.0,
+                  186.0
+                ],
+                [
+                  507.0,
+                  185.0
+                ],
+                [
+                  498.0,
+                  181.0
+                ],
+                [
+                  491.0,
+                  175.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  457.0,
+                  116.0
+                ],
+                [
+                  466.0,
+                  109.0
+                ],
+                [
+                  483.0,
+                  104.0
+                ],
+                [
+                  506.0,
+                  103.0
+                ],
+                [
+                  531.0,
+                  105.0
+                ],
+                [
+                  555.0,
+                  108.0
+                ],
+                [
+                  582.0,
+                  114.0
+                ],
+                [
+                  606.0,
+                  120.0
+                ],
+                [
+                  624.0,
+                  127.0
+                ],
+                [
+                  630.0,
+                  132.0
+                ],
+                [
+                  618.0,
+                  136.0
+                ],
+                [
+                  597.0,
+                  139.0
+                ],
+                [
+                  570.0,
+                  140.0
+                ],
+                [
+                  542.0,
+                  137.0
+                ],
+                [
+                  515.0,
+                  133.0
+                ],
+                [
+                  488.0,
+                  126.0
+                ]
+              ]
+            },
+            "zmin": 0.88,
+            "zmax": 0.94,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 27,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "boundary_not_supported_by_rgb",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 27,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  484.0,
+                  168.0
+                ],
+                [
+                  487.0,
+                  162.0
+                ],
+                [
+                  493.0,
+                  159.0
+                ],
+                [
+                  502.0,
+                  160.0
+                ],
+                [
+                  511.0,
+                  163.0
+                ],
+                [
+                  520.0,
+                  170.0
+                ],
+                [
+                  524.0,
+                  177.0
+                ],
+                [
+                  522.0,
+                  182.0
+                ],
+                [
+                  516.0,
+                  186.0
+                ],
+                [
+                  507.0,
+                  185.0
+                ],
+                [
+                  498.0,
+                  181.0
+                ],
+                [
+                  491.0,
+                  175.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  457.0,
+                  116.0
+                ],
+                [
+                  466.0,
+                  109.0
+                ],
+                [
+                  483.0,
+                  104.0
+                ],
+                [
+                  506.0,
+                  103.0
+                ],
+                [
+                  531.0,
+                  105.0
+                ],
+                [
+                  555.0,
+                  108.0
+                ],
+                [
+                  582.0,
+                  114.0
+                ],
+                [
+                  606.0,
+                  120.0
+                ],
+                [
+                  624.0,
+                  127.0
+                ],
+                [
+                  630.0,
+                  132.0
+                ],
+                [
+                  618.0,
+                  136.0
+                ],
+                [
+                  597.0,
+                  139.0
+                ],
+                [
+                  570.0,
+                  140.0
+                ],
+                [
+                  542.0,
+                  137.0
+                ],
+                [
+                  515.0,
+                  133.0
+                ],
+                [
+                  488.0,
+                  126.0
+                ]
+              ]
+            },
+            "zmin": 0.88,
+            "zmax": 0.94,
+            "tolerance": 0.003,
+            "snap": 0.0
+          }
+        },
+        "step": 27,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "inconsistent_multiview_boundary",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 27,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  484.0,
+                  168.0
+                ],
+                [
+                  487.0,
+                  162.0
+                ],
+                [
+                  493.0,
+                  159.0
+                ],
+                [
+                  502.0,
+                  160.0
+                ],
+                [
+                  511.0,
+                  163.0
+                ],
+                [
+                  520.0,
+                  170.0
+                ],
+                [
+                  524.0,
+                  177.0
+                ],
+                [
+                  522.0,
+                  182.0
+                ],
+                [
+                  516.0,
+                  186.0
+                ],
+                [
+                  507.0,
+                  185.0
+                ],
+                [
+                  498.0,
+                  181.0
+                ],
+                [
+                  491.0,
+                  175.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  302.0,
+                  270.0
+                ],
+                [
+                  306.0,
+                  259.0
+                ],
+                [
+                  317.0,
+                  251.0
+                ],
+                [
+                  332.0,
+                  246.0
+                ],
+                [
+                  349.0,
+                  245.0
+                ],
+                [
+                  366.0,
+                  249.0
+                ],
+                [
+                  383.0,
+                  256.0
+                ],
+                [
+                  396.0,
+                  266.0
+                ],
+                [
+                  400.0,
+                  277.0
+                ],
+                [
+                  394.0,
+                  287.0
+                ],
+                [
+                  381.0,
+                  294.0
+                ],
+                [
+                  364.0,
+                  299.0
+                ],
+                [
+                  346.0,
+                  298.0
+                ],
+                [
+                  328.0,
+                  293.0
+                ],
+                [
+                  312.0,
+                  285.0
+                ],
+                [
+                  304.0,
+                  278.0
+                ]
+              ]
+            },
+            "zmin": 0.88,
+            "zmax": 0.95,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 87,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "inconsistent_multiview_boundary",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 87,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  490.0,
+                  160.0
+                ],
+                [
+                  495.0,
+                  158.0
+                ],
+                [
+                  500.0,
+                  158.0
+                ],
+                [
+                  505.0,
+                  159.0
+                ],
+                [
+                  510.0,
+                  161.0
+                ],
+                [
+                  515.0,
+                  164.0
+                ],
+                [
+                  520.0,
+                  169.0
+                ],
+                [
+                  523.0,
+                  174.0
+                ],
+                [
+                  524.0,
+                  179.0
+                ],
+                [
+                  521.0,
+                  184.0
+                ],
+                [
+                  515.0,
+                  187.0
+                ],
+                [
+                  508.0,
+                  187.0
+                ],
+                [
+                  500.0,
+                  185.0
+                ],
+                [
+                  493.0,
+                  182.0
+                ],
+                [
+                  487.0,
+                  177.0
+                ],
+                [
+                  484.0,
+                  171.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  302.0,
+                  270.0
+                ],
+                [
+                  306.0,
+                  259.0
+                ],
+                [
+                  317.0,
+                  251.0
+                ],
+                [
+                  332.0,
+                  246.0
+                ],
+                [
+                  349.0,
+                  245.0
+                ],
+                [
+                  366.0,
+                  248.0
+                ],
+                [
+                  383.0,
+                  255.0
+                ],
+                [
+                  396.0,
+                  265.0
+                ],
+                [
+                  399.0,
+                  276.0
+                ],
+                [
+                  393.0,
+                  286.0
+                ],
+                [
+                  380.0,
+                  293.0
+                ],
+                [
+                  364.0,
+                  297.0
+                ],
+                [
+                  346.0,
+                  297.0
+                ],
+                [
+                  328.0,
+                  292.0
+                ],
+                [
+                  313.0,
+                  284.0
+                ],
+                [
+                  305.0,
+                  277.0
+                ]
+              ]
+            },
+            "zmin": 0.88,
+            "zmax": 0.95,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 87,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "boundary_not_supported_by_rgb",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 87,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  490.0,
+                  160.0
+                ],
+                [
+                  495.0,
+                  158.0
+                ],
+                [
+                  500.0,
+                  158.0
+                ],
+                [
+                  505.0,
+                  159.0
+                ],
+                [
+                  510.0,
+                  161.0
+                ],
+                [
+                  515.0,
+                  164.0
+                ],
+                [
+                  520.0,
+                  169.0
+                ],
+                [
+                  523.0,
+                  174.0
+                ],
+                [
+                  524.0,
+                  179.0
+                ],
+                [
+                  521.0,
+                  184.0
+                ],
+                [
+                  515.0,
+                  187.0
+                ],
+                [
+                  508.0,
+                  187.0
+                ],
+                [
+                  500.0,
+                  185.0
+                ],
+                [
+                  493.0,
+                  182.0
+                ],
+                [
+                  487.0,
+                  177.0
+                ],
+                [
+                  484.0,
+                  171.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  302.0,
+                  270.0
+                ],
+                [
+                  306.0,
+                  259.0
+                ],
+                [
+                  317.0,
+                  251.0
+                ],
+                [
+                  332.0,
+                  246.0
+                ],
+                [
+                  349.0,
+                  245.0
+                ],
+                [
+                  366.0,
+                  248.0
+                ],
+                [
+                  383.0,
+                  255.0
+                ],
+                [
+                  396.0,
+                  265.0
+                ],
+                [
+                  399.0,
+                  276.0
+                ],
+                [
+                  393.0,
+                  286.0
+                ],
+                [
+                  380.0,
+                  293.0
+                ],
+                [
+                  364.0,
+                  297.0
+                ],
+                [
+                  346.0,
+                  297.0
+                ],
+                [
+                  328.0,
+                  292.0
+                ],
+                [
+                  313.0,
+                  284.0
+                ],
+                [
+                  305.0,
+                  277.0
+                ]
+              ]
+            },
+            "zmin": 0.88,
+            "zmax": 0.95,
+            "tolerance": 0.003,
+            "snap": 0.0
+          }
+        },
+        "step": 87,
+        "result": {
+          "center_world": [
+            0.33504379376548976,
+            -0.03978886640950584,
+            0.9143674776771755
+          ],
+          "radius_m": 0.0359045316105251,
+          "normal_world": [
+            0.0,
+            -1.934442212377105e-27,
+            1.0
+          ],
+          "max_residual_m": 0.0025202450828489056,
+          "samples": 32,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "rms_residual_m": 0.0011888163117340204,
+          "plan_ok": true,
+          "plan_fail_reason": null,
+          "cameras": [
+            "head",
+            "wrist_r"
+          ],
+          "refinement": {},
+          "rgb_refined": false,
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 87,
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  400.0,
+                  232.0
+                ],
+                [
+                  404.0,
+                  225.0
+                ],
+                [
+                  411.0,
+                  222.0
+                ],
+                [
+                  419.0,
+                  222.0
+                ],
+                [
+                  427.0,
+                  227.0
+                ],
+                [
+                  433.0,
+                  233.0
+                ],
+                [
+                  436.0,
+                  240.0
+                ],
+                [
+                  434.0,
+                  246.0
+                ],
+                [
+                  429.0,
+                  251.0
+                ],
+                [
+                  422.0,
+                  253.0
+                ],
+                [
+                  413.0,
+                  251.0
+                ],
+                [
+                  405.0,
+                  246.0
+                ],
+                [
+                  401.0,
+                  239.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  135.0,
+                  160.0
+                ],
+                [
+                  144.0,
+                  130.0
+                ],
+                [
+                  172.0,
+                  101.0
+                ],
+                [
+                  214.0,
+                  80.0
+                ],
+                [
+                  265.0,
+                  69.0
+                ],
+                [
+                  319.0,
+                  69.0
+                ],
+                [
+                  373.0,
+                  80.0
+                ],
+                [
+                  421.0,
+                  99.0
+                ],
+                [
+                  464.0,
+                  129.0
+                ],
+                [
+                  491.0,
+                  158.0
+                ],
+                [
+                  487.0,
+                  184.0
+                ],
+                [
+                  461.0,
+                  211.0
+                ],
+                [
+                  418.0,
+                  232.0
+                ],
+                [
+                  365.0,
+                  248.0
+                ],
+                [
+                  311.0,
+                  251.0
+                ],
+                [
+                  253.0,
+                  245.0
+                ]
+              ]
+            },
+            "zmin": 0.82,
+            "zmax": 0.86,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 295,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "boundary_not_supported_by_rgb",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 295,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  401.0,
+                  235.0
+                ],
+                [
+                  405.0,
+                  228.0
+                ],
+                [
+                  412.0,
+                  226.0
+                ],
+                [
+                  421.0,
+                  227.0
+                ],
+                [
+                  429.0,
+                  232.0
+                ],
+                [
+                  435.0,
+                  239.0
+                ],
+                [
+                  436.0,
+                  247.0
+                ],
+                [
+                  432.0,
+                  252.0
+                ],
+                [
+                  424.0,
+                  255.0
+                ],
+                [
+                  414.0,
+                  254.0
+                ],
+                [
+                  406.0,
+                  249.0
+                ],
+                [
+                  402.0,
+                  242.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  123.0,
+                  196.0
+                ],
+                [
+                  132.0,
+                  159.0
+                ],
+                [
+                  161.0,
+                  127.0
+                ],
+                [
+                  202.0,
+                  101.0
+                ],
+                [
+                  253.0,
+                  87.0
+                ],
+                [
+                  308.0,
+                  85.0
+                ],
+                [
+                  365.0,
+                  94.0
+                ],
+                [
+                  418.0,
+                  111.0
+                ],
+                [
+                  463.0,
+                  137.0
+                ],
+                [
+                  500.0,
+                  172.0
+                ],
+                [
+                  519.0,
+                  205.0
+                ],
+                [
+                  511.0,
+                  240.0
+                ],
+                [
+                  483.0,
+                  270.0
+                ],
+                [
+                  437.0,
+                  295.0
+                ],
+                [
+                  380.0,
+                  310.0
+                ],
+                [
+                  319.0,
+                  315.0
+                ]
+              ]
+            },
+            "zmin": 0.82,
+            "zmax": 0.86,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 324,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "boundary_not_supported_by_rgb",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 324,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      },
+      {
+        "request": {
+          "command": "fit_rim",
+          "arguments": {
+            "views": {
+              "head": [
+                [
+                  399.0,
+                  237.0
+                ],
+                [
+                  401.0,
+                  232.0
+                ],
+                [
+                  407.0,
+                  227.0
+                ],
+                [
+                  414.0,
+                  225.0
+                ],
+                [
+                  422.0,
+                  227.0
+                ],
+                [
+                  430.0,
+                  232.0
+                ],
+                [
+                  436.0,
+                  240.0
+                ],
+                [
+                  437.0,
+                  246.0
+                ],
+                [
+                  433.0,
+                  252.0
+                ]
+              ],
+              "wrist_r": [
+                [
+                  111.0,
+                  201.0
+                ],
+                [
+                  117.0,
+                  168.0
+                ],
+                [
+                  138.0,
+                  136.0
+                ],
+                [
+                  171.0,
+                  112.0
+                ],
+                [
+                  212.0,
+                  95.0
+                ],
+                [
+                  260.0,
+                  84.0
+                ],
+                [
+                  312.0,
+                  82.0
+                ],
+                [
+                  365.0,
+                  87.0
+                ],
+                [
+                  419.0,
+                  100.0
+                ],
+                [
+                  465.0,
+                  121.0
+                ],
+                [
+                  501.0,
+                  147.0
+                ],
+                [
+                  524.0,
+                  179.0
+                ],
+                [
+                  531.0,
+                  209.0
+                ],
+                [
+                  519.0,
+                  245.0
+                ],
+                [
+                  491.0,
+                  278.0
+                ],
+                [
+                  447.0,
+                  303.0
+                ]
+              ]
+            },
+            "zmin": 0.82,
+            "zmax": 0.86,
+            "tolerance": 0.003,
+            "snap": 4.0
+          }
+        },
+        "step": 324,
+        "result": {
+          "plan_ok": false,
+          "plan_fail_reason": "geometry_fit_failed",
+          "plan_detail": "boundary_not_supported_by_rgb",
+          "role": "CURRENT_RGB_MEASUREMENT",
+          "measured_at_step": 324,
+          "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+          "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+        }
+      }
+    ],
+    "fit_rim_success_count": 2,
+    "fit_rim_failure_count": 10,
+    "table_plane_success_count": 1,
+    "note": "These are native policy calls only; offline replay is excluded. Measurement acceptance is not task success."
+  },
+  "ik_guard": {
+    "rejected_event_count": 6,
+    "rejected_events": [
+      {
+        "attempted_step": 16,
+        "failed_checks": [
+          {
+            "arm": "right_arm_joint_state",
+            "passed": false,
+            "limit_rad": 0.25,
+            "current_joints": [
+              1.1904345750808716,
+              1.0406262874603271,
+              -0.010066688060760498,
+              1.020577073097229,
+              1.1898181438446045,
+              -0.00010628117888700217
+            ],
+            "target_joints": [
+              1.153659462928772,
+              1.3199361562728882,
+              -0.05136135593056679,
+              1.371235966682434,
+              1.1530388593673706,
+              -5.9463694924488664e-05
+            ],
+            "normalized_target_joints": [
+              1.153659462928772,
+              1.3199361562728882,
+              -0.05136135593056679,
+              1.371235966682434,
+              1.1530388593673706,
+              -5.9463694924488664e-05
+            ],
+            "max_current_delta_rad": 0.3506588935852051,
+            "current_delta_joint_index": 3,
+            "previous_target": [
+              1.1858420372009277,
+              1.0641896724700928,
+              -0.01537853479385376,
+              1.0794943571090698,
+              1.185119867324829,
+              -6.816332461312413e-05
+            ],
+            "max_target_delta_rad": 0.29174160957336426,
+            "target_delta_joint_index": 3,
+            "error": "joint_target_jump"
+          }
+        ]
+      },
+      {
+        "attempted_step": 36,
+        "failed_checks": [
+          {
+            "arm": "right_arm_joint_state",
+            "passed": false,
+            "limit_rad": 0.25,
+            "current_joints": [
+              0.7226468324661255,
+              1.8649425506591797,
+              -0.0358535572886467,
+              1.7842081785202026,
+              0.721295177936554,
+              -0.00013286458852235228
+            ],
+            "target_joints": [
+              3.8678648471832275,
+              1.2356277704238892,
+              -0.5544441938400269,
+              -7.631192207336426,
+              -7.009533882141113,
+              -3.1365785598754883
+            ],
+            "normalized_target_joints": [
+              -2.4153204599963587,
+              1.2356277704238892,
+              -0.5544441938400269,
+              -1.3480069001568395,
+              -0.726348574961527,
+              -3.1365785598754883
+            ],
+            "max_current_delta_rad": 3.137967292462484,
+            "current_delta_joint_index": 0,
+            "previous_target": [
+              0.7237799763679504,
+              1.878584861755371,
+              -0.06134343519806862,
+              1.9398009777069092,
+              0.7238544821739197,
+              -0.0001108395226765424
+            ],
+            "max_target_delta_rad": 3.139100436364309,
+            "target_delta_joint_index": 0,
+            "error": "joint_target_jump"
+          }
+        ]
+      },
+      {
+        "attempted_step": 36,
+        "failed_checks": [
+          {
+            "arm": "right_arm_joint_state",
+            "passed": false,
+            "limit_rad": 0.25,
+            "current_joints": [
+              0.7226468324661255,
+              1.8649425506591797,
+              -0.0358535572886467,
+              1.7842081785202026,
+              0.721295177936554,
+              -0.00013286458852235228
+            ],
+            "target_joints": [
+              0.7053096294403076,
+              1.6953659057617188,
+              -0.01615152135491371,
+              1.5863888263702393,
+              0.7132591009140015,
+              0.010531981475651264
+            ],
+            "normalized_target_joints": [
+              0.7053096294403076,
+              1.6953659057617188,
+              -0.01615152135491371,
+              1.5863888263702393,
+              0.7132591009140015,
+              0.010531981475651264
+            ],
+            "max_current_delta_rad": 0.19781935214996338,
+            "current_delta_joint_index": 3,
+            "previous_target": [
+              0.7237799763679504,
+              1.878584861755371,
+              -0.06134343519806862,
+              1.9398009777069092,
+              0.7238544821739197,
+              -0.0001108395226765424
+            ],
+            "max_target_delta_rad": 0.3534121513366699,
+            "target_delta_joint_index": 3,
+            "error": "joint_target_jump"
+          }
+        ]
+      },
+      {
+        "attempted_step": 88,
+        "failed_checks": [
+          {
+            "arm": "right_arm_joint_state",
+            "passed": false,
+            "limit_rad": 0.25,
+            "current_joints": [
+              -0.229400634765625,
+              0.1480223834514618,
+              0.49241024255752563,
+              -0.34560638666152954,
+              -0.22235649824142456,
+              0.00022814833209849894
+            ],
+            "target_joints": [
+              0.0028121727518737316,
+              0.14994485676288605,
+              0.4720320701599121,
+              -0.33547917008399963,
+              0.019171060994267464,
+              0.002576582133769989
+            ],
+            "normalized_target_joints": [
+              0.0028121727518737316,
+              0.14994485676288605,
+              0.4720320701599121,
+              -0.33547917008399963,
+              0.019171060994267464,
+              0.002576582133769989
+            ],
+            "max_current_delta_rad": 0.24152755923569202,
+            "current_delta_joint_index": 4,
+            "previous_target": [
+              -0.25718608498573303,
+              0.14391182363033295,
+              0.49402350187301636,
+              -0.35011354088783264,
+              -0.2571871280670166,
+              -1.7353640657802316e-07
+            ],
+            "max_target_delta_rad": 0.27635818906128407,
+            "target_delta_joint_index": 4,
+            "error": "joint_target_jump"
+          }
+        ]
+      },
+      {
+        "attempted_step": 221,
+        "failed_checks": [
+          {
+            "arm": "left_arm_joint_state",
+            "passed": false,
+            "limit_rad": 0.25,
+            "current_joints": [
+              -0.4252788722515106,
+              2.4639875888824463,
+              2.4047493934631348,
+              0.05351245403289795,
+              1.31151282787323,
+              -0.0003651881997939199
+            ],
+            "target_joints": [
+              -0.4051509499549866,
+              2.6700398921966553,
+              2.7985877990722656,
+              -0.12819363176822662,
+              1.3979837894439697,
+              -0.0003410648205317557
+            ],
+            "normalized_target_joints": [
+              -0.4051509499549866,
+              2.6700398921966553,
+              2.7985877990722656,
+              -0.12819363176822662,
+              1.3979837894439697,
+              -0.0003410648205317557
+            ],
+            "max_current_delta_rad": 0.39383840560913086,
+            "current_delta_joint_index": 2,
+            "previous_target": [
+              -0.4220643937587738,
+              2.479231357574463,
+              2.437464714050293,
+              0.04214268550276756,
+              1.3227076530456543,
+              -0.00035938876681029797
+            ],
+            "max_target_delta_rad": 0.36112308502197266,
+            "target_delta_joint_index": 2,
+            "error": "joint_target_jump"
+          }
+        ]
+      },
+      {
+        "attempted_step": 225,
+        "failed_checks": [
+          {
+            "arm": "left_arm_joint_state",
+            "passed": false,
+            "limit_rad": 0.25,
+            "error": "ik_failed"
+          }
+        ]
+      }
+    ]
+  },
+  "source_snapshot": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/source-snapshot",
+  "motion_adaptation_audit": {
+    "status": "direction_consistent_for_executed_partial_tilt; task outcome unknown",
+    "reference_grasp": "pour_balls_into_vase-0002:p02",
+    "reference_pour": "pour_balls_into_vase-0002:p05",
+    "reference_predecessor": "pour_balls_into_vase-0002:p04",
+    "reference_full_rotation_from_grasp_end88_to_pour_end179": {
+      "initial_gripper_local_axis": [
+        0.877851,
+        0.006037,
+        0.478895
+      ],
+      "angle_deg": 94.544,
+      "source": "verified TRAIN HDF5 orientation audit and current recorded plan; includes heading change"
+    },
+    "recorded_adaptation": "采用0002:p02侧握方向，但水平腕姿下降遇IK奇异区，退回后改用示例q=[.763308,-.065297,.090115,.636378]，成功抓杯。已验证杯轴仍直立，当前杯缘中心到TCP局部偏移[-.007053,.000847,.025515]。完整示例p02末到p05末旋转局部轴[.877851,.006037,.478895]角94.544度，包括转向；当前将转向部分去除，绕起始局部+X纯滚转，世界实测轴[.172896,.959834,-.220966]，至120度时杯轴[.773934,-.467868,-.426761]、q=[.438265,.627991,.596479,.240343]，轴已向下约25度，+X保持原方向，闭合轴随滚转变化。纯滚转与已选侧握对应，避免向下俯冲手指。根据当前杯半径和深度，以p_low=tcp+R@c_local-r*(ez-n*nz)/norm固定最低缘，30度时出流缘z=.955（尚无流），45度及以后目标[.327,-.04,.926]，距瓶口约12mm且在内口中心左8mm，有球半径及误差余量。先30度确认间隙，再45/60/75/90/110/120度小段反馈，必要时停止/扶正。头和右腕被杯遮挡时把左腕移到远离物体的观察位置，以取得另一视角；左手保持空且不接近杯。",
+    "native_proprioceptive_motion_segments": [
+      {
+        "start_step": 148,
+        "end_step": 184,
+        "start_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/023_step148/state.json",
+        "end_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/025_step184/state.json",
+        "start_local_relative_rotvec_rad": [
+          -0.0007671612699655192,
+          0.001533375430007732,
+          9.460355852144886e-05
+        ],
+        "angle_deg": 0.09838748872055261,
+        "start_approach": [
+          0.17289624456941965,
+          0.9598338639114425,
+          -0.22096570390588158
+        ],
+        "end_approach": [
+          0.17272076793443003,
+          0.9595203762498521,
+          -0.2224593982853571
+        ]
+      },
+      {
+        "start_step": 184,
+        "end_step": 199,
+        "start_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/025_step184/state.json",
+        "end_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/026_step199/state.json",
+        "start_local_relative_rotvec_rad": [
+          0.5224534832868245,
+          -0.013403034400828412,
+          -0.0011380904837456933
+        ],
+        "angle_deg": 29.944299304725252,
+        "start_approach": [
+          0.17272076793443003,
+          0.9595203762498521,
+          -0.2224593982853571
+        ],
+        "end_approach": [
+          0.17780992161799136,
+          0.9613296157348155,
+          -0.2103069225806798
+        ]
+      },
+      {
+        "start_step": 199,
+        "end_step": 236,
+        "start_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/026_step199/state.json",
+        "end_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/029_step236/state.json",
+        "start_local_relative_rotvec_rad": [
+          0.2640882717154335,
+          0.0030885043366302017,
+          0.004055218961890471
+        ],
+        "angle_deg": 15.133961793193057,
+        "start_approach": [
+          0.17780992161799136,
+          0.9613296157348155,
+          -0.2103069225806798
+        ],
+        "end_approach": [
+          0.1728138040064603,
+          0.9622592520682567,
+          -0.21022017256642128
+        ]
+      },
+      {
+        "start_step": 184,
+        "end_step": 236,
+        "start_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/025_step184/state.json",
+        "end_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/029_step236/state.json",
+        "start_local_relative_rotvec_rad": [
+          0.7865077319365555,
+          -0.011651121462360803,
+          0.005470715039704033
+        ],
+        "angle_deg": 45.06960785015021,
+        "start_approach": [
+          0.17272076793443003,
+          0.9595203762498521,
+          -0.2224593982853571
+        ],
+        "end_approach": [
+          0.1728138040064603,
+          0.9622592520682567,
+          -0.21022017256642128
+        ]
+      },
+      {
+        "start_step": 236,
+        "end_step": 254,
+        "start_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/029_step236/state.json",
+        "end_state": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l0/observations/030_step254/state.json",
+        "start_local_relative_rotvec_rad": [
+          -0.7814565573952025,
+          0.011116941585958533,
+          -0.004809397147700961
+        ],
+        "angle_deg": 44.77954086469046,
+        "start_approach": [
+          0.1728138040064603,
+          0.9622592520682567,
+          -0.21022017256642128
+        ],
+        "end_approach": [
+          0.17234092725015082,
+          0.9597532707662882,
+          -0.22174819964989595
+        ]
+      }
+    ],
+    "interpretation": "The current plan explicitly removes the historical heading component and uses current right-hand side-grasp local +X roll. Actual 184→199 and 184→236 rotations are dominated by positive local X and preserve the measured approach direction, consistent with the declared adapted direction. This confirms a partial-direction adaptation only: no full tilt, ball transfer, final restoration or native task success was reached. Historical and current axis vectors need not numerically match because the chosen grasp and heading differ.",
+    "feedback_evidence": [
+      {
+        "steps": [
+          140,
+          148
+        ],
+        "observed_by_policy": "Short test lift was treated as stable upright cup attachment; does not prove resistance to later roll."
+      },
+      {
+        "steps": [
+          184,
+          236
+        ],
+        "observed_by_policy": "Executed partial roll to about45°, policy still reported seven balls retained."
+      },
+      {
+        "steps": [
+          236,
+          254
+        ],
+        "observed_by_policy": "Policy perceived cup/rim shift and obscured outlet, chose to return upright instead of continuing pour; physical slip cause is not established."
+      },
+      {
+        "steps": [
+          254,
+          324
+        ],
+        "observed_by_policy": "Returned cup to table, attempted a nearer-side grasp; observed cup bias on short lift and released back onto table."
+      }
+    ]
+  },
+  "failure_analysis": {
+    "terminal": "wall_time_budget_exhausted",
+    "native_success": null,
+    "completed_native_episode": false,
+    "timeout_seconds": 2160.158332881052,
+    "last_native_control_step": 324,
+    "policy_limitations_observed": "Partial roll adaptation was directionally consistent, but the run returned the full cup to the table and spent remaining control on regrasp/remeasurement. The task never reached a scored native terminal state.",
+    "timing_audit": "/home/zxc/文档/ChatGPT/RoboRAG/results/pour-balls-rim-v3-dev0-timing-20261026.json",
+    "measurement_submission_to_audit_seconds": 1.5206966400146484,
+    "measurement_backend_seconds": 0.9163501368602738,
+    "intercall_time_immediately_preceding_measurements_seconds": 335.97875690460205,
+    "timing_limits": [
+      "Submission-to-audit includes simulator processing, RGB snapshot saves and IPC; it is not pure geometry CPU time.",
+      "Time before a request includes model thinking, vision interpretation, local calculations and unrecorded non-MCP work. It cannot be attributed solely to selecting rim points.",
+      "A measurement-related interval or high call count is not a causal estimate of avoidable wall time."
+    ],
+    "transport_observation": "After the final measure_rim completion, four websocket reconnect error events and one HTTPS fallback event were recorded; events carry no timestamps so their wall-time contribution cannot be quantified. Timeout is not attributed solely to measurement or grasp.",
+    "supervisor_anomaly": "Original outer supervisor returned143 after launcher return1; cause unknown and tracked separately in group supervisor.json/continuation-process.json."
+  }
+}

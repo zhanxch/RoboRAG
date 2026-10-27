@@ -1,0 +1,27 @@
+{
+  "role": "actual_policy_local_calculations_audit_not_measure_rim_success",
+  "run": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v3-development-20261026/seed1-standard-l1",
+  "executions": [
+    {
+      "id": "item_19",
+      "command": "/bin/bash -lc \"cat > /tmp/roborag-mcp-9i_16cjv/geometry.py <<'PY'\nimport json,numpy as np,cv2\nfrom scipy.optimize import least_squares\ns=json.load(open('obs/state.json'))\npoints={'head':[[314.8,193.4],[317,187.8],[322.7,182.8],[330,180.4],[339,179.9],[347,181.8],[352,185.6],[354.7,191.5],[351.8,198.2],[344.4,203.6],[334.5,207.7],[325,208],[318.3,203.4],[315,198.3]],'wrist_r':[[242.3,309.7],[248.2,300.3],[261,291.9],[276,286.2],[293,284],[309,285.1],[321.4,290.3],[328.3,298.9],[326.1,308.4],[317.4,317.5],[302.1,325.1],[285,329.4],[269,330],[254,325.7],[245.4,319.6]]}\ndef residual(v):\n x,y,z,r=v; out=[]\n for name,pts in points.items():\n  c=s['cameras'][name];T=np.array(c['extrinsics_world']);K=np.array(c['intrinsics']);d=np.c_[pts,np.ones(len(pts))]@np.linalg.inv(K).T@T[:3,:3].T;p=T[:3,3]+d*((z-T[2,3])/d[:,2])[:,None];out.extend(np.linalg.norm(p[:,:2]-[x,y],axis=1)-r)\n return out\nfit=least_squares(residual,[.025,-.09,.90,.04]);print('Diagnostic ONLY failed boundary',fit.x,'residuals',np.round(residual(fit.x),4))\nfor name,pts in points.items():\n im=cv2.imread('obs/'+name+'.png');\n for i,p in enumerate(pts):cv2.circle(im,tuple(np.rint(p).astype(int)),1,(0,0,255),-1)\n cv2.imwrite('obs/'+name+'_points.png',im)\nPY\npython geometry.py\"",
+      "aggregated_output": "Diagnostic ONLY failed boundary [ 0.02534732 -0.08826038  0.91387011  0.03306802] residuals [ 0.0013 -0.0001 -0.0018 -0.0029 -0.0014  0.0016  0.0027  0.0025 -0.0016\n -0.0053 -0.0019  0.003   0.0028  0.0027  0.003   0.0001 -0.0037 -0.0044\n -0.0026  0.0014  0.004   0.0046  0.0017 -0.0016 -0.0041 -0.0034 -0.0009\n  0.0012  0.0029]\n",
+      "exit_code": 0
+    },
+    {
+      "id": "item_25",
+      "command": "/bin/bash -lc \"cat > opening_geometry.py <<'PY'\nimport json,numpy as np,cv2\nfrom scipy.optimize import least_squares\ns=json.load(open('obs/state.json'))\npts={'head':[[314.5,193],[318,186.5],[326,181.7],[336,180],[345,181.3],[352.2,185.6],[355,191.6],[352.7,198.2],[345.8,204],[335.8,207.6],[326.2,208],[318.4,203.4]],'wrist_r':[[287.9,262],[293.1,256],[303.2,250.9],[316.9,247.5],[331.7,246.4],[345.8,247.5],[358.5,251.3],[367.8,257],[369.4,264],[364.4,271.7],[352.8,277.5],[339.1,281.2],[324,282.8],[307.9,281.2],[295.6,276.4],[289.3,269.7]]}\nrays={}\nfor name,p in pts.items():\n c=s['cameras'][name];T=np.array(c['extrinsics_world']);K=np.array(c['intrinsics']);rays[name]=(T[:3,3],np.c_[p,np.ones(len(p))]@np.linalg.inv(K).T@T[:3,:3].T)\ndef residual(v):\n c=v[:3];r=v[3];n=np.r_[v[4:6],1];n=n/np.linalg.norm(n);out=[]\n for o,d in rays.values():\n  p=o+d*((c-o)@n/(d@n))[:,None];out.extend(np.linalg.norm(p-c,axis=1)-r)\n return out\nf=least_squares(residual,[.025,-.088,.914,.035,0,0]); v=f.x;n=np.r_[v[4:6],1];n/=np.linalg.norm(n); print('RGB oblique circle',v[:4],n,'max residual',max(abs(np.array(residual(v)))),'rms',np.mean(np.array(residual(v))**2)**.5)\nu=np.cross([0,1,0],n);u/=np.linalg.norm(u);w=np.cross(n,u);ang=np.linspace(0,2*np.pi,200);p=v[:3]+v[3]*(np.cos(ang)[:,None]*u+np.sin(ang)[:,None]*w)\nfor name in pts:\n c=s['cameras'][name];T=np.array(c['extrinsics_world']);K=np.array(c['intrinsics']);pc=(p-T[:3,3])@T[:3,:3];uv=pc@K.T;uv=uv[:,:2]/uv[:,2:];im=cv2.imread('obs/'+name+'.png');cv2.polylines(im,[np.rint(uv).astype(int)],True,(0,0,255),1);cv2.imwrite('obs/'+name+'_fit.png',im)\njson.dump({'center':v[:3].tolist(),'radius':v[3],'normal':n.tolist(),'residual':max(abs(np.array(residual(v))))},open('obs/opening.json','w'))\nPY\npython opening_geometry.py\"",
+      "aggregated_output": "RGB oblique circle [ 0.02530032 -0.08777904  0.91282031  0.03578339] [-0.07834318  0.09833664  0.99206464] max residual 0.003604398470802503 rms 0.0013641128643314927\n",
+      "exit_code": 0
+    },
+    {
+      "id": "item_28",
+      "command": "/bin/bash -lc \"python - <<'PY'\np='opening_geometry.py'\ns=open(p).read();a=s.index(\\\"pts=\\\");b=s.index('\\\\nrays=',a);s=s[:a]+\\\"pts=\\\"+repr({'head':[[315,193],[318.2,187.3],[325,182.8],[334.7,180.9],[343.9,181.9],[350.6,185.1],[354.5,191],[352.6,197.7],[347,202.6],[338.2,206.1],[328.3,206.8],[320.2,203.8],[316.1,199.6]],'wrist_r':[[289,262.4],[294.3,256.5],[305,251.9],[317.6,248.7],[332,247.8],[345.8,248.9],[358.1,252.5],[366.8,258],[368.2,264],[362.8,270.9],[352,276],[338.9,279.5],[324,280.6],[309.2,279],[298,275],[291.4,269]]})+s[b:];open(p,'w').write(s)\nPY\npython opening_geometry.py\"",
+      "aggregated_output": "RGB oblique circle [ 0.02550566 -0.08751259  0.91283656  0.0345884 ] [-0.0771254   0.13297153  0.98811449] max residual 0.0028137115595784704 rms 0.0012149498226871212\n",
+      "exit_code": 0
+    }
+  ],
+  "native_tool_accepted_vase_fit": false,
+  "policy_local_final_fit_max_residual_m": 0.0028137115595784704,
+  "limit": "Local oblique fit is preserved as actual policy evidence, not counted as vendor measure_rim acceptance; its broader geometric assumptions were not independently validated."
+}

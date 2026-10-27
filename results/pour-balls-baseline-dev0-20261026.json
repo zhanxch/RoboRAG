@@ -1,0 +1,115 @@
+{
+  "run": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-baseline-a8a3ee6-dev0-20261026",
+  "complete": true,
+  "native": {
+    "success_rate": 0.0,
+    "eval_time": 1,
+    "score": 0.0,
+    "details": {
+      "0": {
+        "layout_id": 0,
+        "success": false,
+        "score": 0.0
+      }
+    }
+  },
+  "task": "pour_balls_into_vase",
+  "variant": "standard",
+  "layout": 0,
+  "seed": 1,
+  "controller": "RoboICL world link6 delta grammar; native RoboDojo EE control",
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "failure": null,
+  "reported_usage": {
+    "input_tokens": 7112553,
+    "cached_input_tokens": 6928256,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 29364,
+    "reasoning_output_tokens": 14438
+  },
+  "actual_billed_usd": null,
+  "cached_input_fraction": 0.9740884883388566,
+  "uncached_input_tokens": 184297,
+  "completed_native_turns": 1,
+  "model_request_count": null,
+  "tool_counts": {
+    "execute_chunk": 65,
+    "observe": 1,
+    "read_action_reference": 2,
+    "record_plan": 5,
+    "retrieve_evidence": 2
+  },
+  "native_control_steps": 600,
+  "native_control_steps_complete": true,
+  "control_steps_status": "final_counter",
+  "executed_delta_rows": 590,
+  "executed_waypoints": 1,
+  "recorded_action_chunks": 65,
+  "action_log_rows": 600,
+  "malformed_action_records": 0,
+  "malformed_command_records": 0,
+  "control_step_note": "Native action dispatches; partial-run counters are lower bounds, not PhysX substeps.",
+  "malformed_mcp_records": 0,
+  "retrieval_context_chars": [
+    2156,
+    761
+  ],
+  "plan_steps": 3,
+  "plan_adaptation": "Finish by grasping cup body from above with jaws along world Y, lifting and rotating about world +Y by 90 degrees to turn mouth from -X to +Z. Move cup toward reachable clear area during lift. Release upright, clear fingers, return home, and inspect native result.",
+  "workflow_verified": true,
+  "wall_seconds": 1465.9874325300334,
+  "agent_wall_seconds": 1427.8010298400186,
+  "role": "development_baseline_only",
+  "heldout": false,
+  "rag_audit": {
+    "tool_counts": {
+      "observe": 1,
+      "retrieve_evidence": 2,
+      "read_action_reference": 2,
+      "record_plan": 5,
+      "execute_chunk": 65
+    },
+    "expanded_phases": [
+      {
+        "source": "pour_balls_into_vase-0000:p02",
+        "section": "close",
+        "phase_interval": [
+          47,
+          93
+        ],
+        "operation": "右夹爪下降夹住杯子，随后抬起并向右前方移动，同时调整杯子的朝向。",
+        "phase_context_returned": false
+      },
+      {
+        "source": "pour_balls_into_vase-0001:p06",
+        "section": "start",
+        "phase_interval": [
+          245,
+          278
+        ],
+        "operation": "右手继续转动并稍微降低杯子，使杯口朝下对着花瓶口，保持倾倒姿态。",
+        "phase_context_returned": false
+      }
+    ],
+    "plan_evidence_refs": [
+      "pour_balls_into_vase-0000:p02",
+      "pour_balls_into_vase-0001:p05",
+      "pour_balls_into_vase-0001:p06",
+      "pour_balls_into_vase-0001:p07",
+      "pour_balls_into_vase-0001:p08"
+    ]
+  },
+  "failure_analysis": {
+    "observed": "At step95 the requested pouring continuation executed 1 of22 rows, right EE tracking error was 0.0714309m. RGB at step115 shows dropped cup and scattered balls. Recovery consumed the remaining budget; native full-task success remained false at step600.",
+    "cause_limit": "The tracking excursion is measured, but the audit does not prove whether its root cause was IK branch selection, contact dynamics or another native-control effect.",
+    "evidence": [
+      "commands.jsonl",
+      "observations/007_step094/head.png",
+      "observations/008_step095/head.png",
+      "observations/009_step115/head.png",
+      "episode_end.json",
+      "result.json"
+    ]
+  }
+}

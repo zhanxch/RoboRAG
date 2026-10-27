@@ -1,0 +1,95 @@
+{
+  "native_policy_evaluation": false,
+  "task": "pour_balls_into_vase",
+  "audit_directory": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-rag-offline-check-20261026-v2",
+  "checks": [
+    {
+      "mode": "plan",
+      "sources": [
+        "pour_balls_into_vase-0001",
+        "pour_balls_into_vase-0000"
+      ]
+    },
+    {
+      "mode": "action",
+      "sources": [
+        "pour_balls_into_vase-0002:p06",
+        "pour_balls_into_vase-0001:p06"
+      ]
+    }
+  ],
+  "phase_reference": {
+    "source": "pour_balls_into_vase-0002:p06",
+    "interval": [
+      180,
+      199
+    ],
+    "frames": [
+      180,
+      189,
+      198
+    ],
+    "image_blocks": 4,
+    "semantic_title": "扶正杯子并抬离瓶口"
+  },
+  "passed": true,
+  "passed_scope": "MCP retrieval and full-phase reference plumbing against actual TRAIN assets; not native policy success or retrieval relevance certification",
+  "quality_findings": [
+    {
+      "initial_query_top1": "pour_balls_into_vase-0002:p06",
+      "initial_query_top1_title": "扶正杯子并抬离瓶口",
+      "finding": "Broad pouring query ranked the adjacent restore/upright phase first. Rank alone is not an instruction to execute.",
+      "mitigation": "State the current stage, desired rotation direction and active arm explicitly; check returned action semantics before using the reference."
+    }
+  ],
+  "stage_queries": [
+    {
+      "stage": "pour",
+      "query": {
+        "mode": "action",
+        "task": "pour_balls_into_vase",
+        "goal": "倾斜杯子向花瓶倒球",
+        "observation": "左手持杯已经对准瓶口，需要继续转动杯口朝下并停留让小球落入花瓶",
+        "arm": "left",
+        "held_object": "",
+        "target_object": "",
+        "k": 2,
+        "max_context_chars": 6000
+      },
+      "returned": [
+        {
+          "source": "pour_balls_into_vase-0000:p06",
+          "title": "在花瓶口倾倒杯中小球"
+        },
+        {
+          "source": "pour_balls_into_vase-0002:p05",
+          "title": "朝向花瓶口倾倒小球"
+        }
+      ]
+    },
+    {
+      "stage": "restore",
+      "query": {
+        "mode": "action",
+        "task": "pour_balls_into_vase",
+        "goal": "扶正杯子并放回桌面",
+        "observation": "倾倒已经结束，左手仍持杯，需要将杯口转回朝上并放回桌面",
+        "arm": "left",
+        "held_object": "",
+        "target_object": "",
+        "k": 2,
+        "max_context_chars": 6000
+      },
+      "returned": [
+        {
+          "source": "pour_balls_into_vase-0000:p07",
+          "title": "扶正杯子并移离花瓶"
+        },
+        {
+          "source": "pour_balls_into_vase-0002:p06",
+          "title": "扶正杯子并抬离瓶口"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 {
   "name": "pour_balls_into_vase",
+  "capabilities": ["rim_geometry"],
+  "whole_phase_reference": true,
+  "ik_joint_increment_rad": 0.25,
   "prompt_file": "prompt.txt",
   "protocol_prompt": "robot.basic.delta.txt"
 }

@@ -21,7 +21,7 @@ export PYTHONPATH="$PWD/src:$PWD/.runtime/mcp"
 仓库还需具备：
 
 - `vendor/RoboICL`，包含其 RoboDojo 原生环境，以及 push_T 使用的 `ik_continuity.py`。
-- `vendor/HexaShell`，包含机器人几何、cloth_view、table_plane、planar_contact。
+- `vendor/HexaShell`，包含机器人几何、cloth_view、table_plane、planar_contact，以及 pour_balls_into_vase 的 rim_geometry。圆口测量只依赖 RGB、标定与已有 numpy/OpenCV；实际工具源码进入运行来源哈希。
 - `data/Assets` 指向配置的资产目录，TRAIN HDF5 位于图库记录的 `source.path`。
 - `data/graph-bank/current` 为选定的原始 TRAIN 图库，详见 [图库来源](graph-bank.md)。
 - 本机策略 CLI、bubblewrap 和 NVIDIA 工具。运行器沿用既有模型工作目录隔离配置。

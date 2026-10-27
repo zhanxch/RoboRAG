@@ -53,6 +53,15 @@ CAPABILITIES = MappingProxyType(
                 measure_function="measure_planar",
                 tool_position="before_evidence",
             ),
+            MeasurementCapability(
+                name="rim_geometry",
+                request_key="rim_measure",
+                tool_module="roborag.tasks.pour_balls_into_vase.tools",
+                register_function="register_tools",
+                backend_module="roborag.tasks.pour_balls_into_vase.measurements",
+                measure_function="measure_rim",
+                tool_position="before_evidence",
+            ),
         )
     }
 )

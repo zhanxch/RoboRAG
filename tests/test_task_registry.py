@@ -175,7 +175,7 @@ class CapabilityTests(unittest.IsolatedAsyncioTestCase):
 
 
 class CatalogCompatibilityTests(unittest.IsolatedAsyncioTestCase):
-    async def test_all_existing_task_protocols_match_pre_migration_catalog(self):
+    async def test_unchanged_task_protocols_match_pre_migration_catalog(self):
         baseline = json.loads((Path(__file__).parent / "fixtures/task-catalog.json").read_text())
         self.assertTrue(set(baseline["tasks"]) <= set(TASK_SPECS))
         for name, expected in baseline["tasks"].items():
@@ -188,7 +188,22 @@ class CatalogCompatibilityTests(unittest.IsolatedAsyncioTestCase):
                     "support_robots",
                     "ik_joint_increment_rad",
                 ):
-                    self.assertEqual(getattr(spec, field), expected["spec"][field])
+                    pouring_overrides = {
+                        "whole_phase_reference": True,
+                        "ik_joint_increment_rad": 0.25,
+                    }
+                    expected_value = expected["spec"][field]
+                    if name == "pour_balls_into_vase":
+                        # Intentional rim-v1 changes; preserve the old catalog.
+                        expected_value = pouring_overrides.get(field, expected_value)
+                    self.assertEqual(getattr(spec, field), expected_value)
+                for variant, native in expected["simulation_tasks"].items():
+                    self.assertEqual(simulation_task(name, variant), native)
+                if name == "pour_balls_into_vase":
+                    # rim-v1 intentionally changes this task's prompt and tools.
+                    # Keep its historical fixture intact; the new contract is
+                    # checked in tests/tasks/pour_balls_into_vase/.
+                    continue
                 measurement = expected["spec"]["measurement"]
                 self.assertEqual(
                     spec.capabilities, (measurement + "_geometry",) if measurement else ()
@@ -201,8 +216,6 @@ class CatalogCompatibilityTests(unittest.IsolatedAsyncioTestCase):
                     hashlib.sha256(prompt_for(temp, name, no_rag=True).encode()).hexdigest(),
                     expected["no_rag_prompt_sha256"],
                 )
-                for variant, native in expected["simulation_tasks"].items():
-                    self.assertEqual(simulation_task(name, variant), native)
                 async with Client(
                     create_server(EpisodeSession(temp, temp, temp, temp, name))
                 ) as client:

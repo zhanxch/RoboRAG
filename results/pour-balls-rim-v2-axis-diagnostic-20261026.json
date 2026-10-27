@@ -1,0 +1,134 @@
+{
+  "role": "development_only_kinematic_diagnostic",
+  "scored": false,
+  "task": "pour_balls_into_vase",
+  "native_run": "runs/pour-balls-rim-v2-dev0-20261026",
+  "historical_reference": {
+    "source_start": "pour_balls_into_vase-0001:p04",
+    "source_end": "pour_balls_into_vase-0001:p06",
+    "start": {
+      "ee_position": [
+        0.261738,
+        -0.210232,
+        1.085536
+      ],
+      "quaternion_wxyz": [
+        0.551556,
+        -0.251465,
+        -0.269748,
+        0.748189
+      ],
+      "approach_world": [
+        -0.2651022468169307,
+        0.9610011730155219,
+        -0.07872448282082262
+      ],
+      "closing_axis_world": [
+        -0.6896722952370602,
+        -0.24604356140664835,
+        -0.68103941961738
+      ]
+    },
+    "end": {
+      "ee_position": [
+        0.223095,
+        -0.195294,
+        0.961218
+      ],
+      "quaternion_wxyz": [
+        0.521268,
+        -0.423344,
+        -0.576812,
+        0.46513
+      ],
+      "approach_world": [
+        -0.09811768016441119,
+        0.9732960570857556,
+        0.2075276032253917
+      ],
+      "closing_axis_world": [
+        0.0034650342761026187,
+        0.20886667141362505,
+        -0.9779379873540337
+      ]
+    },
+    "world_relative_rotation_vector_rad": [
+      0.4218643608171882,
+      -0.7814928221855594,
+      -0.21252761741232234
+    ],
+    "start_local_relative_rotation_vector_rad": [
+      -0.8461215819622315,
+      0.04607280039591466,
+      -0.3403294342539484
+    ]
+  },
+  "current_measured_states": {
+    "97": {
+      "ee_position": [
+        0.16320331394672394,
+        -0.26214510202407837,
+        0.8340128064155579
+      ],
+      "quaternion_wxyz": [
+        0.7618514806873738,
+        -0.06671477776695779,
+        0.08849698202252054,
+        0.6382003948407324
+      ],
+      "approach_world": [
+        0.1697370803960776,
+        0.9606197185919999,
+        -0.2199979086056108
+      ],
+      "closing_axis_world": [
+        -0.9842359445467156,
+        0.17649878890527715,
+        0.011304113286999831
+      ],
+      "joints": [
+        0.7267575263977051,
+        1.93443763256073,
+        0.28346195816993713,
+        1.302150845527649,
+        0.8715255856513977,
+        0.28306815028190613
+      ],
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/016_step097"
+    },
+    "243": {
+      "ee_position": [
+        0.3098854720592499,
+        -0.046347860246896744,
+        1.0939661264419556
+      ],
+      "quaternion_wxyz": [
+        0.5023981388500802,
+        -0.575403458301458,
+        0.5067276414806494,
+        0.39966744627772294
+      ],
+      "approach_world": [
+        0.16698605949060405,
+        -0.18156131231202915,
+        -0.9690981094849654
+      ],
+      "closing_axis_world": [
+        -0.9847300369875984,
+        0.018353585121131805,
+        -0.17311816821929504
+      ],
+      "joints": [
+        -0.011429984122514725,
+        2.444563865661621,
+        2.8777172565460205,
+        -2.187288284301758,
+        0.16980662941932678,
+        0.038843538612127304
+      ],
+      "observation": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v2-dev0-20261026/observations/024_step243"
+    }
+  },
+  "observed": "The retrieved handover-to-pour change is dominated by roll around the historical gripper local X approach axis, keeping approach roughly horizontal. This development attempt pitched the approach toward downward vertical and encountered a native IK failure at attempted step244 while three balls remained visibly in the cup.",
+  "inference_limit": "This is evidence to reconsider grasp/pouring axis; it does not prove the roll alternative is reachable or successful in this current scene. No historical world positions are current targets."
+}

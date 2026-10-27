@@ -1,0 +1,1383 @@
+{
+  "role": "offline_train_reference_audit",
+  "scored": false,
+  "native_policy_evaluation": false,
+  "sources": [
+    {
+      "graph": "pour_balls_into_vase-0000",
+      "source": "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/pour_balls_into_vase/train/episode_0000000.hdf5",
+      "source_sha256": "def19279bdc74357f827cd0722542b75f8fa2d778543c5acbe3d612b6060c366",
+      "graph_sha256": "df43f8c261e789a43c336b86251c6230f83883e99799753ccc05d3ca2fd41c6a"
+    },
+    {
+      "graph": "pour_balls_into_vase-0001",
+      "source": "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/pour_balls_into_vase/train/episode_0000001.hdf5",
+      "source_sha256": "e5f079c821fddc97e0857c68939b1deb8169dcd5c85abe97af3973f7a9fdf391",
+      "graph_sha256": "36137251962bafeb0bbb812047e5c437f8830171987550cafa6126ede79fd774"
+    },
+    {
+      "graph": "pour_balls_into_vase-0002",
+      "source": "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/pour_balls_into_vase/train/episode_0000002.hdf5",
+      "source_sha256": "49e8130025a3cba94a22792398c4dfa9545571e322dc8b1b1261844b6d3574f3",
+      "graph_sha256": "dbbef1a904754538aa44793b10fb597c5121ceef5f473a78ad1e13d938bef801"
+    }
+  ],
+  "phases": [
+    {
+      "source": "pour_balls_into_vase-0000:p01",
+      "operation": "右臂抬起并向黄色杯伸出，调整夹爪方向后从上方接近杯身。",
+      "interval": [
+        0,
+        47
+      ],
+      "active_arm": "right",
+      "start_frame": 0,
+      "end_frame": 46,
+      "start_quaternion_wxyz": [
+        0.707,
+        -0.0,
+        -0.0,
+        0.707214
+      ],
+      "end_quaternion_wxyz": [
+        0.503281,
+        -0.490704,
+        0.270886,
+        0.657676
+      ],
+      "relative_rotation_angle_deg": 69.64250968392417,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.3306911412007394,
+        1.1463764546048503,
+        0.2321271019061669
+      ],
+      "relative_rotation_axis_world": [
+        -0.9430561256210004,
+        -0.2723492332256992,
+        0.1909739225393911
+      ],
+      "approach_world_start": [
+        -0.00030264160176585175,
+        0.9999999542040294,
+        0.0
+      ],
+      "approach_world_end": [
+        -0.011834775732096847,
+        0.39614232843491287,
+        -0.9181128436665814
+      ],
+      "closing_axis_world_start": [
+        -0.9999999542040294,
+        -0.00030264160176585175,
+        -0.0
+      ],
+      "closing_axis_world_end": [
+        -0.9278421678246693,
+        -0.3466574494232958,
+        -0.13761367797480445
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p02",
+      "operation": "右夹爪下降夹住杯子，随后抬起并向右前方移动，同时调整杯子的朝向。",
+      "interval": [
+        47,
+        93
+      ],
+      "active_arm": "right",
+      "start_frame": 47,
+      "end_frame": 92,
+      "start_quaternion_wxyz": [
+        0.500206,
+        -0.493093,
+        0.274568,
+        0.656708
+      ],
+      "end_quaternion_wxyz": [
+        0.091847,
+        -0.255084,
+        0.533512,
+        0.801162
+      ],
+      "relative_rotation_angle_deg": 64.79789433089871,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.101488212746108,
+        0.029794618293687104,
+        1.1259795853575782
+      ],
+      "relative_rotation_axis_world": [
+        -0.39695634146183983,
+        0.8756432833277796,
+        0.27508999134133727
+      ],
+      "approach_world_start": [
+        -0.013306238356124767,
+        0.38620354917477506,
+        -0.9223176039877028
+      ],
+      "approach_world_end": [
+        -0.8529924635242877,
+        -0.12501218223962415,
+        -0.5067305116750458
+      ],
+      "closing_axis_world_start": [
+        -0.9277539290793484,
+        -0.3488125679953735,
+        -0.1326741854555898
+      ],
+      "closing_axis_world_end": [
+        -0.41934968640538206,
+        -0.4138577519895351,
+        0.8080022287282852
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p03",
+      "operation": "右手保持杯的位置，左臂抬起并横向伸向杯子，逐步将张开的夹爪靠近杯口和杯身。",
+      "interval": [
+        93,
+        167
+      ],
+      "active_arm": "left",
+      "start_frame": 93,
+      "end_frame": 166,
+      "start_quaternion_wxyz": [
+        0.707125,
+        -0.006316,
+        -0.001978,
+        0.707057
+      ],
+      "end_quaternion_wxyz": [
+        0.915539,
+        -0.025082,
+        0.38785,
+        0.103598
+      ],
+      "relative_rotation_angle_deg": 87.88419970282868,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.5801945709903896,
+        0.6479789237895914,
+        -1.2634281123734739
+      ],
+      "relative_rotation_axis_world": [
+        -0.41270744138576554,
+        0.37322045264145376,
+        -0.8308905232068322
+      ],
+      "approach_world_start": [
+        0.0001321438575188072,
+        0.9999811771163998,
+        -0.006134162607908092
+      ],
+      "approach_world_end": [
+        0.6776799652737222,
+        0.17023975201041822,
+        -0.7153798232421978
+      ],
+      "closing_axis_world_start": [
+        -0.9999312048829836,
+        6.018505388039053e-05,
+        -0.011729530213270428
+      ],
+      "closing_axis_world_end": [
+        -0.20915193041395105,
+        0.9772767165982006,
+        0.03443383799634407
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p04",
+      "operation": "左夹爪收拢接取杯子，随后右夹爪张开并退离，左手带杯向花瓶方向移动。",
+      "interval": [
+        167,
+        201
+      ],
+      "active_arm": "right",
+      "start_frame": 167,
+      "end_frame": 200,
+      "start_quaternion_wxyz": [
+        0.093035,
+        -0.257066,
+        0.536489,
+        0.798399
+      ],
+      "end_quaternion_wxyz": [
+        0.670895,
+        -0.054316,
+        0.035479,
+        0.738709
+      ],
+      "relative_rotation_angle_deg": 93.49761354788527,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.44936968339708616,
+        -1.1272968192378472,
+        -1.090951175938418
+      ],
+      "relative_rotation_axis_world": [
+        0.735070988537706,
+        -0.2884519068527203,
+        -0.6135683655822138
+      ],
+      "approach_world_start": [
+        -0.8505230984019655,
+        -0.12726807972055698,
+        -0.5103070594935588
+      ],
+      "approach_world_end": [
+        -0.09389941019826259,
+        0.987338120328679,
+        -0.1278527939086569
+      ],
+      "closing_axis_world_start": [
+        -0.4243843281768146,
+        -0.40704799430768274,
+        0.8088324130053187
+      ],
+      "closing_axis_world_end": [
+        -0.9950464292065327,
+        -0.09728234677453224,
+        -0.0204633508831873
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p05",
+      "operation": "左手调整杯子的高度、朝向与夹爪开度，并将杯口逐渐移向花瓶口附近。",
+      "interval": [
+        201,
+        231
+      ],
+      "active_arm": "left",
+      "start_frame": 201,
+      "end_frame": 230,
+      "start_quaternion_wxyz": [
+        0.831519,
+        0.03795,
+        0.310773,
+        0.458863
+      ],
+      "end_quaternion_wxyz": [
+        0.62736,
+        0.38391,
+        0.427732,
+        0.525431
+      ],
+      "relative_rotation_angle_deg": 48.91738912883007,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.6771824982516915,
+        0.00923545218529974,
+        0.5198662641965731
+      ],
+      "relative_rotation_axis_world": [
+        0.6338553646571787,
+        0.7654455522571558,
+        0.11099767216051093
+      ],
+      "approach_world_start": [
+        0.3857292635142503,
+        0.7866949371926627,
+        -0.48200001147737165
+      ],
+      "approach_world_end": [
+        0.08193506980836363,
+        0.987690109518194,
+        -0.13324748363641475
+      ],
+      "closing_axis_world_start": [
+        -0.7395195561728435,
+        0.5760087333767505,
+        0.3483170468289369
+      ],
+      "closing_axis_world_end": [
+        -0.330847647296922,
+        0.15307063140847532,
+        0.9311869930783516
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p06",
+      "operation": "左手进一步转动杯子，使杯口朝向花瓶口，并在倾倒姿态附近短暂停留、微调。",
+      "interval": [
+        231,
+        262
+      ],
+      "active_arm": "left",
+      "start_frame": 231,
+      "end_frame": 261,
+      "start_quaternion_wxyz": [
+        0.62016,
+        0.390717,
+        0.432114,
+        0.525375
+      ],
+      "end_quaternion_wxyz": [
+        0.531412,
+        0.457471,
+        0.563551,
+        0.436728
+      ],
+      "relative_rotation_angle_deg": 22.215358496161112,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.36917399305719273,
+        0.10094004498243206,
+        -0.06210567653606631
+      ],
+      "relative_rotation_axis_world": [
+        -0.16239428308323345,
+        0.9839846919087907,
+        0.07349981572116175
+      ],
+      "approach_world_start": [
+        0.07451682992614844,
+        0.9893020878794536,
+        -0.12541379898205512
+      ],
+      "approach_world_end": [
+        -0.016642654235284604,
+        0.9797819637395093,
+        -0.1993748369046507
+      ],
+      "closing_axis_world_start": [
+        -0.3139646743265055,
+        0.14264232703735394,
+        0.9386582710509825
+      ],
+      "closing_axis_world_end": [
+        0.05145150462974807,
+        0.1999774804748568,
+        0.978448644525743
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p07",
+      "operation": "左手将杯子从瓶口移开，转回杯口朝上的姿态，并移向花瓶左前侧。",
+      "interval": [
+        262,
+        293
+      ],
+      "active_arm": "left",
+      "start_frame": 262,
+      "end_frame": 292,
+      "start_quaternion_wxyz": [
+        0.539238,
+        0.44679,
+        0.555717,
+        0.448084
+      ],
+      "end_quaternion_wxyz": [
+        0.798212,
+        0.054162,
+        -0.058474,
+        0.597081
+      ],
+      "relative_rotation_angle_deg": 92.79160708463435,
+      "relative_rotation_vector_start_gripper_rad": [
+        -1.532998364547345,
+        -0.5202406472273342,
+        0.045909421069776024
+      ],
+      "relative_rotation_axis_world": [
+        0.0422337891343823,
+        -0.9910105828833954,
+        -0.12694223752741005
+      ],
+      "approach_world_start": [
+        -0.019201738467861496,
+        0.9798258484796171,
+        -0.19892863014410578
+      ],
+      "approach_world_end": [
+        0.2801507522640981,
+        0.9468594974287307,
+        0.1580273651456327
+      ],
+      "closing_axis_world_start": [
+        0.013329762475979834,
+        0.19919851326248667,
+        0.9798684961495339
+      ],
+      "closing_axis_world_end": [
+        -0.9595277618326584,
+        0.2811221243039617,
+        0.016638073783842258
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p08",
+      "operation": "左手下降，待杯底落到桌面后逐渐张开夹爪。",
+      "interval": [
+        293,
+        324
+      ],
+      "active_arm": "left",
+      "start_frame": 293,
+      "end_frame": 323,
+      "start_quaternion_wxyz": [
+        0.809745,
+        0.040423,
+        -0.081406,
+        0.5797
+      ],
+      "end_quaternion_wxyz": [
+        0.822425,
+        -0.054296,
+        0.079553,
+        0.560661
+      ],
+      "relative_rotation_angle_deg": 21.593042365273167,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.029267376337764665,
+        0.37321862807517164,
+        -0.04338243490987761
+      ],
+      "relative_rotation_axis_world": [
+        -0.9020248897887194,
+        0.41227993922869083,
+        -0.127970113351655
+      ],
+      "approach_world_start": [
+        0.31464195372301335,
+        0.9322369934651629,
+        0.17870262721179866
+      ],
+      "approach_world_end": [
+        0.35866136574071167,
+        0.9135640857410893,
+        -0.19173597985003982
+      ],
+      "closing_axis_world_start": [
+        -0.9453996922751373,
+        0.32462778942926623,
+        -0.02891747181798049
+      ],
+      "closing_axis_world_end": [
+        -0.9308417180490335,
+        0.3654226116049631,
+        -0.00010424649511907302
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0000:p09",
+      "operation": "左臂抬起并向后撤回初始位置，右臂保持停放。",
+      "interval": [
+        324,
+        355
+      ],
+      "active_arm": "left",
+      "start_frame": 324,
+      "end_frame": 354,
+      "start_quaternion_wxyz": [
+        0.823098,
+        -0.054312,
+        0.079781,
+        0.559638
+      ],
+      "end_quaternion_wxyz": [
+        0.707039,
+        -0.001238,
+        0.001392,
+        0.707172
+      ],
+      "relative_rotation_angle_deg": 24.13544628568544,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.03678772886259735,
+        -0.1873372931527444,
+        0.3754957657847569
+      ],
+      "relative_rotation_axis_world": [
+        0.4449352634770395,
+        -0.08393182928919778,
+        0.8916210289953834
+      ],
+      "approach_world_start": [
+        0.36088048052725274,
+        0.9126078791423895,
+        -0.19212531770084026
+      ],
+      "approach_world_end": [
+        -0.00018849511025398336,
+        0.9999930654099974,
+        -0.0037193549857703796
+      ],
+      "closing_axis_world_start": [
+        -0.9299401451243348,
+        0.3677109110593556,
+        -0.00011123861714056049
+      ],
+      "closing_axis_world_end": [
+        -0.999999958594994,
+        -0.00018768507013677826,
+        0.00021813831553996448
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p01",
+      "operation": "左臂抬起并向黄色杯移动，从杯口上方逐渐下降，对准杯身附近。",
+      "interval": [
+        0,
+        65
+      ],
+      "active_arm": "left",
+      "start_frame": 0,
+      "end_frame": 64,
+      "start_quaternion_wxyz": [
+        0.707,
+        -0.0,
+        -0.0,
+        0.707214
+      ],
+      "end_quaternion_wxyz": [
+        0.67233,
+        -0.290458,
+        0.494785,
+        0.467755
+      ],
+      "relative_rotation_angle_deg": 72.55905420252566,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.30939414447293223,
+        1.1882855603164764,
+        -0.30985070874806186
+      ],
+      "relative_rotation_axis_world": [
+        -0.9383957662359451,
+        0.2440270630971521,
+        -0.24467157249388852
+      ],
+      "approach_world_start": [
+        -0.00030264160176585175,
+        0.9999999542040294,
+        0.0
+      ],
+      "approach_world_end": [
+        0.07278651221385707,
+        0.34154277352912166,
+        -0.937043572887503
+      ],
+      "closing_axis_world_start": [
+        -0.9999999542040294,
+        -0.00030264160176585175,
+        -0.0
+      ],
+      "closing_axis_world_end": [
+        -0.9163995811329841,
+        0.3936790719930416,
+        0.07230903106797065
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p02",
+      "operation": "左夹爪收拢，抬起黄色杯并向身体前方移动，同时调整杯子朝向。",
+      "interval": [
+        65,
+        114
+      ],
+      "active_arm": "left",
+      "start_frame": 65,
+      "end_frame": 113,
+      "start_quaternion_wxyz": [
+        0.672478,
+        -0.292147,
+        0.495694,
+        0.465522
+      ],
+      "end_quaternion_wxyz": [
+        0.81252,
+        -0.546047,
+        0.079032,
+        0.188143
+      ],
+      "relative_rotation_angle_deg": 67.24821485743082,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.3948776283740578,
+        -0.3187484941853191,
+        -1.0583237866816742
+      ],
+      "relative_rotation_axis_world": [
+        -0.13247885922123298,
+        -0.9911576250585109,
+        -0.007477576332803169
+      ],
+      "approach_world_start": [
+        0.07515327068703337,
+        0.3364756428735566,
+        -0.9386885147150081
+      ],
+      "approach_world_end": [
+        0.9167123025643893,
+        0.21942954480951132,
+        -0.33390002873882246
+      ],
+      "closing_axis_world_start": [
+        -0.9157378163575597,
+        0.3958786775348986,
+        0.06858807743265388
+      ],
+      "closing_axis_world_end": [
+        -0.39205030427577564,
+        0.33286971870254284,
+        -0.8576096485512286
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p03",
+      "operation": "左手保持位置，右手抬起并从右侧接近杯身和杯口附近，逐步调整夹爪对准杯子。",
+      "interval": [
+        114,
+        170
+      ],
+      "active_arm": "right",
+      "start_frame": 114,
+      "end_frame": 169,
+      "start_quaternion_wxyz": [
+        0.609787,
+        -0.052153,
+        -0.020801,
+        0.790574
+      ],
+      "end_quaternion_wxyz": [
+        0.066479,
+        -0.376218,
+        -0.083896,
+        0.920327
+      ],
+      "relative_rotation_angle_deg": 75.72411263635945,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.5881356951233818,
+        0.42992266447823163,
+        1.1027158356780535
+      ],
+      "relative_rotation_axis_world": [
+        -0.2912584394178462,
+        -0.48749515063163695,
+        0.8231142081014752
+      ],
+      "approach_world_start": [
+        -0.2508797972896283,
+        0.9663331144727968,
+        -0.057093249909429544
+      ],
+      "approach_world_end": [
+        -0.7080810499682282,
+        0.18549125119525395,
+        -0.6813326811521011
+      ],
+      "closing_axis_world_start": [
+        -0.9619937764858132,
+        -0.2554543046684171,
+        -0.09649389736630899
+      ],
+      "closing_axis_world_end": [
+        -0.0592384804297451,
+        -0.9770840021399267,
+        -0.20444474852291536
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p04",
+      "operation": "右夹爪收拢接住杯子，左夹爪随后张开并向左下方撤离，右手带杯移开。",
+      "interval": [
+        170,
+        213
+      ],
+      "active_arm": "left",
+      "start_frame": 170,
+      "end_frame": 212,
+      "start_quaternion_wxyz": [
+        0.811604,
+        -0.546985,
+        0.080243,
+        0.188858
+      ],
+      "end_quaternion_wxyz": [
+        0.712344,
+        -0.005488,
+        -0.001029,
+        0.701809
+      ],
+      "relative_rotation_angle_deg": 88.94244022388504,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.7283110189996825,
+        -0.976845373733919,
+        0.9618163890884606
+      ],
+      "relative_rotation_axis_world": [
+        0.6304991971663361,
+        0.46370167431726195,
+        0.6224560382934473
+      ],
+      "approach_world_start": [
+        0.9157874273636596,
+        0.21877239788758923,
+        -0.33685609064578925
+      ],
+      "approach_world_end": [
+        0.014927145875558212,
+        0.9998691312279835,
+        -0.006237045246500601
+      ],
+      "closing_axis_world_start": [
+        -0.3943392802549445,
+        0.33028008183283475,
+        -0.857561426133725
+      ],
+      "closing_axis_world_end": [
+        -0.9998465426431098,
+        0.014869027329060147,
+        -0.009263001182520863
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p05",
+      "operation": "右手向花瓶口靠近并逐渐旋转杯子，使杯口朝向花瓶开口。",
+      "interval": [
+        213,
+        245
+      ],
+      "active_arm": "right",
+      "start_frame": 213,
+      "end_frame": 244,
+      "start_quaternion_wxyz": [
+        0.556247,
+        -0.260182,
+        -0.277164,
+        0.738969
+      ],
+      "end_quaternion_wxyz": [
+        0.560205,
+        -0.350557,
+        -0.466945,
+        0.587574
+      ],
+      "relative_rotation_angle_deg": 29.77162114753617,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.4681375690872143,
+        0.0034516589269137942,
+        -0.2254612551235794
+      ],
+      "relative_rotation_axis_world": [
+        0.5175780670956368,
+        -0.8199607430796283,
+        -0.2444940168385479
+      ],
+      "approach_world_start": [
+        -0.24578955368010497,
+        0.9663242980171889,
+        -0.07618954234881431
+      ],
+      "approach_world_end": [
+        -0.12656089880189514,
+        0.9857047811697797,
+        0.11121341319055444
+      ],
+      "closing_axis_world_start": [
+        -0.6778720964641258,
+        -0.22753914260411318,
+        -0.6990817973730368
+      ],
+      "closing_axis_world_end": [
+        -0.3309418800036228,
+        0.06373381529927369,
+        -0.9414964008678235
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p06",
+      "operation": "右手继续转动并稍微降低杯子，使杯口朝下对着花瓶口，保持倾倒姿态。",
+      "interval": [
+        245,
+        278
+      ],
+      "active_arm": "right",
+      "start_frame": 245,
+      "end_frame": 277,
+      "start_quaternion_wxyz": [
+        0.559689,
+        -0.351486,
+        -0.46926,
+        0.585662
+      ],
+      "end_quaternion_wxyz": [
+        0.521268,
+        -0.423344,
+        -0.576812,
+        0.46513
+      ],
+      "relative_rotation_angle_deg": 20.76128106571236,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.34844867306376603,
+        0.012517786725548857,
+        -0.09862208073119638
+      ],
+      "relative_rotation_axis_world": [
+        0.3653290350709986,
+        -0.9028137329806022,
+        -0.22685250643473748
+      ],
+      "approach_world_start": [
+        -0.1264108533364609,
+        0.9854546752607298,
+        0.1135754338117052
+      ],
+      "approach_world_end": [
+        -0.09811768016441119,
+        0.9732960570857556,
+        0.2075276032253917
+      ],
+      "closing_axis_world_start": [
+        -0.3257008071418599,
+        0.06691439738389177,
+        -0.9431020345911101
+      ],
+      "closing_axis_world_end": [
+        0.0034650342761026187,
+        0.20886667141362505,
+        -0.9779379873540337
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p07",
+      "operation": "右手将杯子转回杯口朝上的姿态，向花瓶右侧移开并逐步下降至桌面。",
+      "interval": [
+        278,
+        333
+      ],
+      "active_arm": "right",
+      "start_frame": 278,
+      "end_frame": 332,
+      "start_quaternion_wxyz": [
+        0.530852,
+        -0.416057,
+        -0.561041,
+        0.479923
+      ],
+      "end_quaternion_wxyz": [
+        0.647317,
+        -0.155204,
+        0.003154,
+        0.746246
+      ],
+      "relative_rotation_angle_deg": 80.26179197317842,
+      "relative_rotation_vector_start_gripper_rad": [
+        1.3195092096842598,
+        0.2800437449457537,
+        0.37789248912725526
+      ],
+      "relative_rotation_axis_world": [
+        -0.36190025967534006,
+        0.9322059318266888,
+        -0.004505853310575272
+      ],
+      "approach_world_start": [
+        -0.0901857837409345,
+        0.976385885269327,
+        0.196308755428447
+      ],
+      "approach_world_end": [
+        -0.11378538954171286,
+        0.9651358184225419,
+        -0.2357238577757693
+      ],
+      "closing_axis_world_start": [
+        -0.04268608263306861,
+        0.19314126634249482,
+        -0.9802419852184767
+      ],
+      "closing_axis_world_end": [
+        -0.9670938708718896,
+        -0.16194202746836867,
+        -0.19622493384241324
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0001:p08",
+      "operation": "右夹爪张开，短暂停留后向后上方撤离，再退回初始区域。",
+      "interval": [
+        333,
+        377
+      ],
+      "active_arm": "right",
+      "start_frame": 333,
+      "end_frame": 376,
+      "start_quaternion_wxyz": [
+        0.647326,
+        -0.157053,
+        0.0044,
+        0.745845
+      ],
+      "end_quaternion_wxyz": [
+        0.706975,
+        4.8e-05,
+        -0.000172,
+        0.707239
+      ],
+      "relative_rotation_angle_deg": 19.789561556661287,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.21672246011020263,
+        -0.22980409452697895,
+        -0.13970605746588272
+      ],
+      "relative_rotation_axis_world": [
+        0.6651774699448308,
+        0.6278404391569941,
+        -0.40417238455508847
+      ],
+      "approach_world_start": [
+        -0.11260744796285804,
+        0.9642269611547499,
+        -0.23997068580468012
+      ],
+      "approach_world_end": [
+        -0.00037337951999805163,
+        0.9999998819040808,
+        0.0003110941307032868
+      ],
+      "closing_axis_world_start": [
+        -0.9669910919670358,
+        -0.16189998213410384,
+        -0.196765403060031
+      ],
+      "closing_axis_world_end": [
+        -0.9999999149280582,
+        -0.00037332496003550375,
+        -0.0001754204957257438
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p01",
+      "operation": "左臂向杯子伸出并逐步降低，将张开的夹爪对准杯身两侧。",
+      "interval": [
+        0,
+        68
+      ],
+      "active_arm": "left",
+      "start_frame": 0,
+      "end_frame": 67,
+      "start_quaternion_wxyz": [
+        0.707215,
+        0.001146,
+        -0.001616,
+        0.706996
+      ],
+      "end_quaternion_wxyz": [
+        0.763436,
+        -0.061221,
+        0.090867,
+        0.636523
+      ],
+      "relative_rotation_angle_deg": 16.44911340182791,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.042345086387176205,
+        0.21977118518930142,
+        -0.1798023080685745
+      ],
+      "relative_rotation_axis_world": [
+        -0.7650476781492059,
+        0.15018019514393935,
+        -0.6262171820902371
+      ],
+      "approach_world_start": [
+        0.00030841396876163385,
+        0.9999923233974947,
+        0.0039061524424496754
+      ],
+      "approach_world_end": [
+        0.17316404365412935,
+        0.9607623651437254,
+        -0.21667923691204477
+      ],
+      "closing_axis_world_start": [
+        -0.999999731139087,
+        0.00031101024791785337,
+        -0.0006640740761672918
+      ],
+      "closing_axis_world_end": [
+        -0.9830142200311478,
+        0.1821816374312843,
+        0.022201220673887065
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p02",
+      "operation": "左夹爪合拢，左臂随即向上抬起，保持杯口大致朝上。",
+      "interval": [
+        68,
+        89
+      ],
+      "active_arm": "left",
+      "start_frame": 68,
+      "end_frame": 88,
+      "start_quaternion_wxyz": [
+        0.763308,
+        -0.065297,
+        0.090115,
+        0.636378
+      ],
+      "end_quaternion_wxyz": [
+        0.783416,
+        -0.081465,
+        0.03773,
+        0.614979
+      ],
+      "relative_rotation_angle_deg": 7.127823340989779,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.08492766368727422,
+        -0.060262185222249576,
+        -0.0680596257408145
+      ],
+      "relative_rotation_axis_world": [
+        0.3278554632787292,
+        -0.8604011591504173,
+        -0.3901546366902591
+      ],
+      "approach_world_start": [
+        0.17380504672258035,
+        0.9597359044082454,
+        -0.22067804495112137
+      ],
+      "approach_world_end": [
+        0.24075447634720737,
+        0.9574215246894795,
+        -0.15931511598104783
+      ],
+      "closing_axis_world_start": [
+        -0.9832728498909864,
+        0.18151907310444193,
+        0.015010954885086344
+      ],
+      "closing_axis_world_end": [
+        -0.9697162237358914,
+        0.23032848864024158,
+        -0.08123566177550892
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p03",
+      "operation": "左臂持杯向花瓶方向横移，再降低到瓶口附近，逐渐调整杯子朝向。",
+      "interval": [
+        89,
+        120
+      ],
+      "active_arm": "left",
+      "start_frame": 89,
+      "end_frame": 119,
+      "start_quaternion_wxyz": [
+        0.779093,
+        -0.079843,
+        0.03417,
+        0.620864
+      ],
+      "end_quaternion_wxyz": [
+        0.510393,
+        0.247271,
+        0.350619,
+        0.745267
+      ],
+      "relative_rotation_angle_deg": 63.01091104854696,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.8956981820095661,
+        0.08985755876167462,
+        0.6317402527178378
+      ],
+      "relative_rotation_axis_world": [
+        0.07879649111933361,
+        0.8969931399907002,
+        0.43496484892104204
+      ],
+      "approach_world_start": [
+        0.22672099793071482,
+        0.9619646385101482,
+        -0.15238642772025712
+      ],
+      "approach_world_end": [
+        -0.35671242767373235,
+        0.9341534309946146,
+        0.010658860356638267
+      ],
+      "closing_axis_world_start": [
+        -0.9728775742642809,
+        0.21630637166808492,
+        -0.08198035782696603
+      ],
+      "closing_axis_world_end": [
+        -0.5873619774646573,
+        -0.23313102375119654,
+        0.7750198921276322
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p04",
+      "operation": "左臂在瓶口旁做小幅位置和姿态调整，夹爪开度先增大后收小。",
+      "interval": [
+        120,
+        135
+      ],
+      "active_arm": "left",
+      "start_frame": 120,
+      "end_frame": 134,
+      "start_quaternion_wxyz": [
+        0.50595,
+        0.253155,
+        0.356964,
+        0.743306
+      ],
+      "end_quaternion_wxyz": [
+        0.474676,
+        0.29516,
+        0.370815,
+        0.74166
+      ],
+      "relative_rotation_angle_deg": 6.210991181762159,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.08014462138826443,
+        -0.026948504737674787,
+        0.06783557089380715
+      ],
+      "relative_rotation_axis_world": [
+        0.3375476480411554,
+        0.9194507655462868,
+        0.20167269284221795
+      ],
+      "approach_world_start": [
+        -0.35985426355715433,
+        0.9328858183304467,
+        0.015131389812946427
+      ],
+      "approach_world_end": [
+        -0.3751265703422457,
+        0.9229958686000851,
+        0.08578276499646281
+      ],
+      "closing_axis_world_start": [
+        -0.5714169194412886,
+        -0.23318257238619078,
+        0.7868345392212946
+      ],
+      "closing_axis_world_end": [
+        -0.48519686906559245,
+        -0.27435789817108747,
+        0.8302480002746704
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p05",
+      "operation": "左腕逐渐转动，让杯口向花瓶口下倾，并在倾斜位置短暂停留。",
+      "interval": [
+        135,
+        180
+      ],
+      "active_arm": "left",
+      "start_frame": 135,
+      "end_frame": 179,
+      "start_quaternion_wxyz": [
+        0.471459,
+        0.301446,
+        0.374112,
+        0.739525
+      ],
+      "end_quaternion_wxyz": [
+        0.367584,
+        0.460461,
+        0.454306,
+        0.668179
+      ],
+      "relative_rotation_angle_deg": 25.050018637500585,
+      "relative_rotation_vector_start_gripper_rad": [
+        0.3876372635809045,
+        -0.12586702837229732,
+        0.15825081341070033
+      ],
+      "relative_rotation_axis_world": [
+        0.09353665549540095,
+        0.9949548858988468,
+        0.03627215329625012
+      ],
+      "approach_world_start": [
+        -0.3737136247876433,
+        0.922860294749023,
+        0.09309674013534303
+      ],
+      "approach_world_end": [
+        -0.30571495708271945,
+        0.909604711984366,
+        0.28134966314490084
+      ],
+      "closing_axis_world_start": [
+        -0.47176216345831645,
+        -0.2755334583736381,
+        0.8375689669787152
+      ],
+      "closing_axis_world_end": [
+        -0.07284346920393625,
+        -0.31697574507707516,
+        0.9456321726904007
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p06",
+      "operation": "左夹爪收拢，左腕将杯口转回朝上，同时向上抬起杯子。",
+      "interval": [
+        180,
+        199
+      ],
+      "active_arm": "left",
+      "start_frame": 180,
+      "end_frame": 198,
+      "start_quaternion_wxyz": [
+        0.374843,
+        0.448608,
+        0.450715,
+        0.674611
+      ],
+      "end_quaternion_wxyz": [
+        0.644152,
+        0.06776,
+        0.050687,
+        0.760203
+      ],
+      "relative_rotation_angle_deg": 72.28751490142744,
+      "relative_rotation_vector_start_gripper_rad": [
+        -1.2235787521470547,
+        0.05132110287035311,
+        -0.30330658061007526
+      ],
+      "relative_rotation_axis_world": [
+        0.07607234392134955,
+        -0.9607285023360024,
+        -0.2668590326174734
+      ],
+      "approach_world_start": [
+        -0.3164874657704517,
+        0.9101347449070625,
+        0.267376943888499
+      ],
+      "approach_world_end": [
+        -0.16095439714813958,
+        0.9862406916900918,
+        0.037722408371266974
+      ],
+      "closing_axis_world_start": [
+        -0.10135766964328186,
+        -0.31269772025855924,
+        0.9444293295686994
+      ],
+      "closing_axis_world_end": [
+        -0.9725025008092797,
+        -0.16499888440657445,
+        0.16436013526486062
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p07",
+      "operation": "左臂将杯子移向花瓶左后侧的空桌面，保持直立并缓慢下降。",
+      "interval": [
+        199,
+        225
+      ],
+      "active_arm": "left",
+      "start_frame": 199,
+      "end_frame": 224,
+      "start_quaternion_wxyz": [
+        0.648172,
+        0.059582,
+        0.051018,
+        0.757443
+      ],
+      "end_quaternion_wxyz": [
+        0.708978,
+        -0.020097,
+        0.101034,
+        0.697666
+      ],
+      "relative_rotation_angle_deg": 14.559313644091192,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.02874662752110953,
+        0.17267916323626217,
+        -0.1841911867730191
+      ],
+      "relative_rotation_axis_world": [
+        -0.7592203892138053,
+        -0.21682096366478565,
+        -0.6136554980748657
+      ],
+      "approach_world_start": [
+        -0.1526458254507248,
+        0.9879865027493999,
+        0.02412306691689832
+      ],
+      "approach_world_end": [
+        0.006107980781013378,
+        0.9851993107715475,
+        -0.17130385467363538
+      ],
+      "closing_axis_world_start": [
+        -0.9758274810868153,
+        -0.15454018283630666,
+        0.15452526992269694
+      ],
+      "closing_axis_world_end": [
+        -0.9933212367505702,
+        0.02571595183185349,
+        0.11247937785078287
+      ]
+    },
+    {
+      "source": "pour_balls_into_vase-0002:p08",
+      "operation": "左夹爪张开，左臂向后抬起并撤回初始位置附近。",
+      "interval": [
+        225,
+        254
+      ],
+      "active_arm": "left",
+      "start_frame": 225,
+      "end_frame": 253,
+      "start_quaternion_wxyz": [
+        0.709612,
+        -0.023124,
+        0.102383,
+        0.696731
+      ],
+      "end_quaternion_wxyz": [
+        0.690856,
+        -0.006872,
+        0.009109,
+        0.722902
+      ],
+      "relative_rotation_angle_deg": 11.464438699415664,
+      "relative_rotation_vector_start_gripper_rad": [
+        -0.11332386934294793,
+        -0.15264754509060585,
+        0.06239645018222716
+      ],
+      "relative_rotation_axis_world": [
+        0.788604561981225,
+        -0.5240286618405233,
+        0.32170919537997505
+      ],
+      "approach_world_start": [
+        0.008167542624170965,
+        0.9840820771669513,
+        -0.1775267772654621
+      ],
+      "approach_world_end": [
+        -0.045341060464006155,
+        0.9987176608979942,
+        -0.022521590672910687
+      ],
+      "closing_axis_world_start": [
+        -0.9935520925309812,
+        0.028062655779611756,
+        0.10984865396491561
+      ],
+      "closing_axis_world_end": [
+        -0.9989680492120323,
+        -0.04526956143515798,
+        0.0036747055630331205
+      ]
+    }
+  ],
+  "limitations": [
+    "Only three existing TRAIN records are read; no heldout evaluation scene enters this report.",
+    "Phase start may already be tilted; these angles are wrist changes across annotated phases, not total cup inversion angles.",
+    "A dominant roll axis in a reference does not establish the feasible axis, target coordinates or success of a current grasp.",
+    "Policy must select evidence by current intent and verify scene-relative adaptation; this report is not an executable template."
+  ]
+}

@@ -8,6 +8,7 @@ from pathlib import Path
 
 from roborag.evaluation.comparison import aggregate, candidate_rows
 from roborag.io import read_json, write_json
+from roborag.tasks import TASKS
 
 
 def case_key(row):
@@ -77,9 +78,7 @@ def paired(baseline, candidate):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--task", choices=["fold_clothes", "push_T", "stack_blocks"], default="push_T"
-    )
+    parser.add_argument("--task", choices=sorted(TASKS), default="push_T")
     parser.add_argument("--runs", type=Path, nargs="+", required=True)
     parser.add_argument("--cases", type=Path, required=True)
     parser.add_argument("--baseline", type=Path, nargs="+")

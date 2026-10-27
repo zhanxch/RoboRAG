@@ -1,0 +1,169 @@
+{
+  "run": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v1-dev0-20261026",
+  "complete": true,
+  "native": {
+    "success_rate": 0.0,
+    "eval_time": 1,
+    "score": 0.0,
+    "details": {
+      "0": {
+        "layout_id": 0,
+        "success": false,
+        "score": 0.0
+      }
+    }
+  },
+  "task": "pour_balls_into_vase",
+  "variant": "standard",
+  "layout": 0,
+  "seed": 1,
+  "controller": "RoboICL world link6 delta grammar; native RoboDojo EE control",
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "failure": null,
+  "reported_usage": {
+    "input_tokens": 5963984,
+    "cached_input_tokens": 5792512,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 21039,
+    "reasoning_output_tokens": 8041
+  },
+  "actual_billed_usd": null,
+  "cached_input_fraction": 0.9712487491582807,
+  "uncached_input_tokens": 171472,
+  "completed_native_turns": 1,
+  "model_request_count": null,
+  "tool_counts": {
+    "execute_chunk": 48,
+    "measure_rim": 5,
+    "observe": 1,
+    "read_action_reference": 3,
+    "record_plan": 2,
+    "retrieve_evidence": 2
+  },
+  "native_control_steps": 600,
+  "native_control_steps_complete": true,
+  "control_steps_status": "final_counter",
+  "executed_delta_rows": 580,
+  "executed_waypoints": 2,
+  "recorded_action_chunks": 48,
+  "action_log_rows": 600,
+  "malformed_action_records": 0,
+  "malformed_command_records": 0,
+  "control_step_note": "Native action dispatches; partial-run counters are lower bounds, not PhysX substeps.",
+  "malformed_mcp_records": 0,
+  "retrieval_context_chars": [
+    2195,
+    2104
+  ],
+  "plan_steps": 3,
+  "plan_adaptation": "原倾倒未全部捕获，需要增加桌面散球回收。新检索0002:p05是左腕倾倒阶段、0001:p03是交接接近阶段，均不是捏小球，不采用为散球动作。采用已验证的静止闭合和小幅抬起验证原则，从当前RGB定位散球，逐个捏起放至瓶口中心；保留杯直立和最终回原点要求。",
+  "workflow_verified": true,
+  "wall_seconds": 1049.4989242110169,
+  "agent_wall_seconds": 1011.4105566779617,
+  "role": "development_candidate_only",
+  "policy_version": "rim-delta-v1",
+  "heldout": false,
+  "rag_audit": {
+    "expanded_phases": [
+      {
+        "source": "pour_balls_into_vase-0000:p02",
+        "section": "close",
+        "operation": "右夹爪下降夹住杯子，随后抬起并向右前方移动，同时调整杯子的朝向。",
+        "phase_interval": [
+          47,
+          93
+        ],
+        "phase_context_returned": true
+      },
+      {
+        "source": "pour_balls_into_vase-0001:p04",
+        "section": "close",
+        "operation": "右夹爪收拢接住杯子，左夹爪随后张开并向左下方撤离，右手带杯移开。",
+        "phase_interval": [
+          170,
+          213
+        ],
+        "phase_context_returned": true
+      },
+      {
+        "source": "pour_balls_into_vase-0001:p06",
+        "section": "start",
+        "operation": "右手继续转动并稍微降低杯子，使杯口朝下对着花瓶口，保持倾倒姿态。",
+        "phase_interval": [
+          245,
+          278
+        ],
+        "phase_context_returned": true
+      }
+    ],
+    "plan_evidence_refs": [
+      "pour_balls_into_vase-0000:p02",
+      "pour_balls_into_vase-0001:p04",
+      "pour_balls_into_vase-0001:p05",
+      "pour_balls_into_vase-0001:p06",
+      "pour_balls_into_vase-0001:p07",
+      "pour_balls_into_vase-0001:p08"
+    ]
+  },
+  "measurement_audit": {
+    "native_calls": [
+      {
+        "command": "table_plane",
+        "step": 0,
+        "plan_ok": true,
+        "plan_fail_reason": null,
+        "plan_detail": null
+      },
+      {
+        "command": "fit_rim",
+        "step": 0,
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb"
+      },
+      {
+        "command": "fit_rim",
+        "step": 0,
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb"
+      },
+      {
+        "command": "fit_rim",
+        "step": 7,
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb"
+      },
+      {
+        "command": "fit_rim",
+        "step": 7,
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb"
+      }
+    ],
+    "fit_rim_success_count": 0,
+    "table_plane_success_count": 1,
+    "offline_replay_report": "results/pour-rim-v1-dev0-fit-diagnostics-20261026.json",
+    "offline_replay_is_native_success": false
+  },
+  "failure_analysis": {
+    "observed": "Cup remained held through tipping and was restored upright on the table. RGB at step208 shows balls escaping outside the vase, and step324 shows at least three scattered balls. Recovery exhausted the600step native budget; full-task verdict remained false.",
+    "cause_limit": "All four current rim fits failed, so tipping used manually inferred geometry. The audit establishes failed capture and tracking excursions, but does not isolate the relative contribution of geometric estimation, flow velocity, contact or grasp offset.",
+    "evidence": [
+      "observations/015_step142/head.png",
+      "observations/018_step184/head.png",
+      "observations/019_step208/head.png",
+      "observations/026_step324/head.png",
+      "commands.jsonl",
+      "episode_end.json",
+      "result.json"
+    ]
+  },
+  "ik_guard": {
+    "rejected_event_count": 4,
+    "note": "Rejections are pre-dispatch guards, not proof of the original baseline failure cause."
+  }
+}

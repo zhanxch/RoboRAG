@@ -1,0 +1,736 @@
+{
+  "role": "offline_diagnosis_of_recorded_development_requests",
+  "geometry_tolerance_unchanged": true,
+  "runs": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v1-dev0-20261026",
+  "attempts": [
+    {
+      "attempt": 1,
+      "snapshot": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v1-dev0-20261026/observations/002_step000",
+      "original_arguments": {
+        "views": {
+          "head": [
+            [
+              484.0,
+              164.0
+            ],
+            [
+              492.0,
+              159.0
+            ],
+            [
+              503.0,
+              159.0
+            ],
+            [
+              514.0,
+              164.0
+            ],
+            [
+              522.0,
+              171.0
+            ],
+            [
+              525.0,
+              180.0
+            ],
+            [
+              520.0,
+              186.0
+            ],
+            [
+              512.0,
+              188.0
+            ],
+            [
+              501.0,
+              185.0
+            ],
+            [
+              491.0,
+              180.0
+            ],
+            [
+              485.0,
+              172.0
+            ]
+          ],
+          "wrist_r": [
+            [
+              317.0,
+              129.0
+            ],
+            [
+              328.0,
+              121.0
+            ],
+            [
+              350.0,
+              115.0
+            ],
+            [
+              379.0,
+              113.0
+            ],
+            [
+              407.0,
+              116.0
+            ],
+            [
+              433.0,
+              123.0
+            ],
+            [
+              452.0,
+              132.0
+            ],
+            [
+              445.0,
+              139.0
+            ],
+            [
+              421.0,
+              145.0
+            ],
+            [
+              389.0,
+              147.0
+            ],
+            [
+              357.0,
+              144.0
+            ],
+            [
+              331.0,
+              138.0
+            ]
+          ]
+        },
+        "zmin": 0.95,
+        "zmax": 1.08,
+        "tolerance": 0.003,
+        "snap": 2.0
+      },
+      "native_result": {
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb",
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 0,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "same_geometry_checks_with_snap0": {
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "inconsistent_multiview_boundary",
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 0,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "per_view_edge_diagnostics": {
+        "head": {
+          "refinement_status": "boundary_not_supported_by_rgb",
+          "unsupported_points": [
+            {
+              "point_index": 5,
+              "pixel": [
+                525.0,
+                180.0
+              ],
+              "max_gradient_in_search": 10.98
+            }
+          ],
+          "out_of_bounds_refinement": false
+        },
+        "wrist_r": {
+          "refinement_status": "boundary_not_supported_by_rgb",
+          "unsupported_points": [
+            {
+              "point_index": 1,
+              "pixel": [
+                328.0,
+                121.0
+              ],
+              "max_gradient_in_search": 2.24
+            },
+            {
+              "point_index": 2,
+              "pixel": [
+                350.0,
+                115.0
+              ],
+              "max_gradient_in_search": 23.51
+            },
+            {
+              "point_index": 4,
+              "pixel": [
+                407.0,
+                116.0
+              ],
+              "max_gradient_in_search": 14.87
+            }
+          ],
+          "out_of_bounds_refinement": false
+        }
+      }
+    },
+    {
+      "attempt": 2,
+      "snapshot": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v1-dev0-20261026/observations/003_step000",
+      "original_arguments": {
+        "views": {
+          "head": [
+            [
+              484.0,
+              164.0
+            ],
+            [
+              492.0,
+              159.0
+            ],
+            [
+              503.0,
+              159.0
+            ],
+            [
+              514.0,
+              164.0
+            ],
+            [
+              522.0,
+              171.0
+            ],
+            [
+              525.0,
+              180.0
+            ],
+            [
+              520.0,
+              186.0
+            ],
+            [
+              512.0,
+              188.0
+            ],
+            [
+              501.0,
+              185.0
+            ],
+            [
+              491.0,
+              180.0
+            ],
+            [
+              485.0,
+              172.0
+            ]
+          ],
+          "wrist_r": [
+            [
+              317.0,
+              129.0
+            ],
+            [
+              328.0,
+              121.0
+            ],
+            [
+              350.0,
+              115.0
+            ],
+            [
+              379.0,
+              113.0
+            ],
+            [
+              407.0,
+              116.0
+            ],
+            [
+              433.0,
+              123.0
+            ],
+            [
+              452.0,
+              132.0
+            ],
+            [
+              445.0,
+              139.0
+            ],
+            [
+              421.0,
+              145.0
+            ],
+            [
+              389.0,
+              147.0
+            ],
+            [
+              357.0,
+              144.0
+            ],
+            [
+              331.0,
+              138.0
+            ]
+          ]
+        },
+        "zmin": 0.86,
+        "zmax": 0.95,
+        "tolerance": 0.003,
+        "snap": 2.0
+      },
+      "native_result": {
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb",
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 0,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "same_geometry_checks_with_snap0": {
+        "center_world": [
+          0.3354661136775835,
+          -0.0414761967826435,
+          0.9150817572425017
+        ],
+        "radius_m": 0.03562232425136998,
+        "normal_world": [
+          0.0,
+          2.1426727724218623e-29,
+          1.0
+        ],
+        "max_residual_m": 0.0028384277982445097,
+        "samples": 23,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "rms_residual_m": 0.0014266408103058765,
+        "plan_ok": true,
+        "plan_fail_reason": null,
+        "cameras": [
+          "head",
+          "wrist_r"
+        ],
+        "refinement": {},
+        "rgb_refined": false,
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 0,
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "per_view_edge_diagnostics": {
+        "head": {
+          "refinement_status": "boundary_not_supported_by_rgb",
+          "unsupported_points": [
+            {
+              "point_index": 5,
+              "pixel": [
+                525.0,
+                180.0
+              ],
+              "max_gradient_in_search": 10.98
+            }
+          ],
+          "out_of_bounds_refinement": false
+        },
+        "wrist_r": {
+          "refinement_status": "boundary_not_supported_by_rgb",
+          "unsupported_points": [
+            {
+              "point_index": 1,
+              "pixel": [
+                328.0,
+                121.0
+              ],
+              "max_gradient_in_search": 2.24
+            },
+            {
+              "point_index": 2,
+              "pixel": [
+                350.0,
+                115.0
+              ],
+              "max_gradient_in_search": 23.51
+            },
+            {
+              "point_index": 4,
+              "pixel": [
+                407.0,
+                116.0
+              ],
+              "max_gradient_in_search": 14.87
+            }
+          ],
+          "out_of_bounds_refinement": false
+        }
+      }
+    },
+    {
+      "attempt": 3,
+      "snapshot": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v1-dev0-20261026/observations/005_step007",
+      "original_arguments": {
+        "views": {
+          "head": [
+            [
+              400.0,
+              232.0
+            ],
+            [
+              404.0,
+              226.0
+            ],
+            [
+              413.0,
+              224.0
+            ],
+            [
+              424.0,
+              227.0
+            ],
+            [
+              433.0,
+              234.0
+            ],
+            [
+              437.0,
+              242.0
+            ],
+            [
+              434.0,
+              250.0
+            ],
+            [
+              427.0,
+              254.0
+            ],
+            [
+              417.0,
+              254.0
+            ],
+            [
+              407.0,
+              250.0
+            ],
+            [
+              402.0,
+              243.0
+            ]
+          ],
+          "wrist_r": [
+            [
+              116.0,
+              430.0
+            ],
+            [
+              124.0,
+              409.0
+            ],
+            [
+              141.0,
+              389.0
+            ],
+            [
+              162.0,
+              374.0
+            ],
+            [
+              186.0,
+              365.0
+            ],
+            [
+              212.0,
+              363.0
+            ],
+            [
+              237.0,
+              369.0
+            ],
+            [
+              256.0,
+              382.0
+            ],
+            [
+              265.0,
+              401.0
+            ],
+            [
+              263.0,
+              421.0
+            ],
+            [
+              253.0,
+              441.0
+            ],
+            [
+              237.0,
+              457.0
+            ],
+            [
+              216.0,
+              471.0
+            ],
+            [
+              192.0,
+              477.0
+            ],
+            [
+              167.0,
+              477.0
+            ],
+            [
+              144.0,
+              470.0
+            ],
+            [
+              127.0,
+              456.0
+            ]
+          ]
+        },
+        "zmin": 0.81,
+        "zmax": 0.9,
+        "tolerance": 0.003,
+        "snap": 3.0
+      },
+      "native_result": {
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb",
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 7,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "same_geometry_checks_with_snap0": {
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "inconsistent_multiview_boundary",
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 7,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "per_view_edge_diagnostics": {
+        "head": {
+          "refinement_status": "boundary_not_supported_by_rgb",
+          "unsupported_points": [
+            {
+              "point_index": 3,
+              "pixel": [
+                424.0,
+                227.0
+              ],
+              "max_gradient_in_search": 62.84
+            }
+          ],
+          "out_of_bounds_refinement": false
+        },
+        "wrist_r": {
+          "refinement_status": "refinement_out_of_bounds",
+          "unsupported_points": [
+            {
+              "point_index": 16,
+              "pixel": [
+                127.0,
+                456.0
+              ],
+              "max_gradient_in_search": 11.67
+            }
+          ],
+          "out_of_bounds_refinement": true
+        }
+      }
+    },
+    {
+      "attempt": 4,
+      "snapshot": "/home/zxc/文档/ChatGPT/RoboRAG/runs/pour-balls-rim-v1-dev0-20261026/observations/006_step007",
+      "original_arguments": {
+        "views": {
+          "head": [
+            [
+              484.0,
+              165.0
+            ],
+            [
+              490.0,
+              160.0
+            ],
+            [
+              500.0,
+              158.0
+            ],
+            [
+              511.0,
+              162.0
+            ],
+            [
+              520.0,
+              169.0
+            ],
+            [
+              525.0,
+              177.0
+            ],
+            [
+              522.0,
+              183.0
+            ],
+            [
+              514.0,
+              188.0
+            ],
+            [
+              504.0,
+              186.0
+            ],
+            [
+              494.0,
+              181.0
+            ],
+            [
+              487.0,
+              174.0
+            ]
+          ],
+          "wrist_r": [
+            [
+              386.0,
+              182.0
+            ],
+            [
+              396.0,
+              176.0
+            ],
+            [
+              416.0,
+              171.0
+            ],
+            [
+              441.0,
+              169.0
+            ],
+            [
+              466.0,
+              170.0
+            ],
+            [
+              491.0,
+              174.0
+            ],
+            [
+              510.0,
+              180.0
+            ],
+            [
+              517.0,
+              185.0
+            ],
+            [
+              508.0,
+              192.0
+            ],
+            [
+              485.0,
+              197.0
+            ],
+            [
+              456.0,
+              199.0
+            ],
+            [
+              429.0,
+              197.0
+            ],
+            [
+              405.0,
+              192.0
+            ],
+            [
+              391.0,
+              187.0
+            ]
+          ]
+        },
+        "zmin": 0.88,
+        "zmax": 0.94,
+        "tolerance": 0.003,
+        "snap": 3.0
+      },
+      "native_result": {
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "boundary_not_supported_by_rgb",
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 7,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "same_geometry_checks_with_snap0": {
+        "plan_ok": false,
+        "plan_fail_reason": "geometry_fit_failed",
+        "plan_detail": "inconsistent_multiview_boundary",
+        "role": "CURRENT_RGB_MEASUREMENT",
+        "measured_at_step": 7,
+        "source": "HexaShell calibrated RGB geometry; motion programs excluded",
+        "scope": "horizontal circular boundary only; attachment and ball capture unverified"
+      },
+      "per_view_edge_diagnostics": {
+        "head": {
+          "refinement_status": "boundary_not_supported_by_rgb",
+          "unsupported_points": [
+            {
+              "point_index": 6,
+              "pixel": [
+                522.0,
+                183.0
+              ],
+              "max_gradient_in_search": 34.29
+            }
+          ],
+          "out_of_bounds_refinement": false
+        },
+        "wrist_r": {
+          "refinement_status": "boundary_not_supported_by_rgb",
+          "unsupported_points": [
+            {
+              "point_index": 4,
+              "pixel": [
+                466.0,
+                170.0
+              ],
+              "max_gradient_in_search": 26.51
+            },
+            {
+              "point_index": 6,
+              "pixel": [
+                510.0,
+                180.0
+              ],
+              "max_gradient_in_search": 4.31
+            },
+            {
+              "point_index": 11,
+              "pixel": [
+                429.0,
+                197.0
+              ],
+              "max_gradient_in_search": 9.9
+            },
+            {
+              "point_index": 12,
+              "pixel": [
+                405.0,
+                192.0
+              ],
+              "max_gradient_in_search": 15.3
+            }
+          ],
+          "out_of_bounds_refinement": false
+        }
+      }
+    }
+  ],
+  "scored": false,
+  "native_policy_evaluation": false
+}

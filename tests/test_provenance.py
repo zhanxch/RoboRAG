@@ -25,6 +25,7 @@ class TaskProvenanceTests(unittest.TestCase):
             for relative in (
                 "vendor/HexaShell/tools/table_plane/tool.py",
                 "vendor/HexaShell/tasks/push_T/tools/planar_contact/tool.py",
+                "vendor/HexaShell/tasks/pour_balls_into_vase/tools/rim_geometry/tool.py",
                 "native/third_party/RoboDojo/src/eval_client/ik_continuity.py",
                 "native/third_party/RoboDojo/src/eval_client/eval_env.py",
             ):

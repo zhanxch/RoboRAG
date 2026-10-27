@@ -47,7 +47,7 @@ python -m roborag run --task push_T --seed 1 --variant standard --layout 0 \
 
 `fold_clothes`、`push_T`、`pour_balls_into_vase` 新增 `--architecture staged-v1`：有独立版本的阶段 SOP 和历史片段索引，任务开始生成场景绑定的 graph plan，按阶段提供操作细则与经验，以当前证据更新执行记录。只有计划不再适用才局部修订。`--architecture legacy` 仍是默认，也是一键回退路径。
 
-新结构不继承上面的旧版成绩；验收条件与固定比较范围在实验前登记于 [验证协议](experiments/staged_v1/protocol.json)。实现关系见 [架构](docs/architecture.md)、[SOP 与经验](docs/stage-experience.md)，运行入口见 [运行指南](docs/runtime.md)。
+新结构不继承上面的旧版成绩；验收条件与固定比较范围在实验前登记于 [验证协议](experiments/staged_v1/protocol.json)，开发与各批次正式结果见 [冻结验证](docs/staged-validation.md)。实现关系见 [架构](docs/architecture.md)、[SOP 与经验](docs/stage-experience.md)，运行入口见 [运行指南](docs/runtime.md)。
 
 ## 代码阅读顺序
 
@@ -60,6 +60,8 @@ src/roborag/
     pour_balls_into_vase/  倒球任务及圆口测量
     registry.py / spec.py 自动发现任务与校验配置
   bank/                   TRAIN 图结构、索引、检索、参考片段与浏览器
+  experience/             有版本的 SOP、阶段到历史片段的关联与检索缓存
+  execution/              持久 graph plan、阶段进度、证据与动作归属
   mcp/                    模型工具、当前回合会话和调用审计
   control/                目标到 delta 转换、执行约束与关节归位
   backends/               RoboDojo 仿真与动作派发适配
@@ -69,6 +71,8 @@ src/roborag/
 ```
 
 先从 [fold_clothes](src/roborag/tasks/fold_clothes/README.md) 或 [push_T](src/roborag/tasks/push_T/README.md) 进入具体任务，再读 `runtime/episode.py` → `mcp/server.py` → `mcp/evidence.py` / `mcp/motion.py`。详见 [架构与一次回合的流程](docs/architecture.md)、[图库说明](docs/graph-bank.md) 和 [开发与重构说明](docs/development.md)。
+
+阶段式路径从任务 `sop.json` → `experience/library.py` → `mcp/stages.py` → `execution/episode.py` 阅读；其中 `mcp/motion.py` 将当前阶段绑定到共用的动作执行接口。倒球适配见 [pour_balls_into_vase](src/roborag/tasks/pour_balls_into_vase/README.md)。
 
 任务测试放在 `tests/tasks/<任务名>/`，固定场景列表放在 `experiments/<任务名>/`。当前注册 11 个任务；扩展到 42 个任务时逐个新增目录与验证记录，不向一个 `task.py` 堆叠逻辑，也不预建未经实现的任务。
 

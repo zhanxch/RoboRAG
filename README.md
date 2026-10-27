@@ -6,12 +6,12 @@ RoboRAG 是一个统一的机器人检索增强操作框架。模型观察当前
 
 **当前维护一套 `roborag` Python 包，按任务分目录开发。** 每个任务拥有自己的配置、提示词和专用工具；检索、delta 动作协议、进程管理和评估共用底层实现。它复用 HexaShell 的机器人几何与视觉测量能力，以及 RoboICL/RoboDojo 的仿真和原生评价接口；目前不是脱离这些依赖即可运行的独立机器人平台，也尚未完成真机后端验证。
 
-## 当前版本与成绩
+## legacy 基线成绩
 
 - **重构后的 fold_clothes：37/50（74%）**，标准 19/25、随机 18/25；与历史 v3 汇总一致，13 次原生失败未触发 20 次停止线。
 - **重构后的 push_T：50/50（100%）**，标准与随机各 25/25；与历史汇总一致。两项回归均使用冻结的 `a8a3ee6`，完整跑完各 50 例。
 - **pour_balls_into_vase v3：正式留出测试 16/22（72.73%）**，标准布局 3–24，各一次；22 例均有原生评分。三例开发尝试为 1 成功、1 失败、1 超时未评分，单独记录。
-- 本轮于 2026-10-26—27 完成，均使用 seed 1、原始 TRAIN 图库、`gpt-6-astra` / `xhigh`。122 例正式结果、固定场景、提示词及来源哈希已独立核验。见 [本轮验证记录](results/refactor-basic-validation-20261026.json) 与 [原生证据核验](results/refactor-native-integrity-20261026.json)。
+- 这些 legacy 基线于 2026-10-26—27 完成，均使用 seed 1、原始 TRAIN 图库、`gpt-6-astra` / `xhigh`。122 例正式结果、固定场景、提示词及来源哈希已独立核验。见 [基线验证记录](results/refactor-basic-validation-20261026.json) 与 [原生证据核验](results/refactor-native-integrity-20261026.json)。
 
 “最佳”指当前已完成对照中的工程默认选择，不代表统计意义上的全局最优。暂无完成的 no-RAG / interaction-bank 原生消融，不能把系统成功率归因于 RAG 的单独贡献。完整口径见 [结果说明](docs/results.md)；[历史版本选择汇总](results/current.json) 保留重构前结果，不与本轮合并。
 

@@ -1,0 +1,18 @@
+{
+  "change": "Restore v3 execution implementation, schemas and prompt. Preserve SOP, retrieval normalization and record_plan.",
+  "offline_tests": {
+    "passed": 97,
+    "failed": 0
+  },
+  "history_replay": "results/v3-execution-aligned-replay-20261028.json",
+  "exact_execution_reference": "b2d5686",
+  "source_sha256": {
+    "src/roborag/action_targets.py": "3a77e94663ec2ab66d81822bda6f14f0c8ec88bf71620e9a40e8d39a458a18ba",
+    "src/roborag/rag_execution.py": "b0acfcd0b54aef091bd6d6263f22a8e277c43581fa83936f3876a505128766ba",
+    "src/roborag/mcp/motion.py": "525c9dd7ee186d030ff94e36375d48d8405ab099d5298c8802d394a6e7ac83af",
+    "src/roborag/mcp/schemas.py": "bd78937b6ed951b71214b4ad034b4601a45f7e72d7397ccb5ee3001bb3137b9c",
+    "prompts/robot.delta.txt": "bb93a8e9835bf5e972b91a8050f2bef996332fcaa83cc7d4bd74a9da101734ef",
+    "prompts/stack_blocks.delta.txt": "9fdb9bfa0c7a1bd973b6451b0b3c0d745f892cb78a47abffecda84f567aeadb6"
+  },
+  "native_validation": "pending new independent50-case suite"
+}

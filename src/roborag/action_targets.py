@@ -1,8 +1,7 @@
 """Compile GPT's explicit current-scene targets into the existing delta grammar.
 
 This is a coordinate conversion/interpolator, not a task policy. It neither
-retrieves demonstrations nor selects objects, grasps or targets. Durations are
-only extended when necessary to satisfy the existing per-row motion limits.
+retrieves demonstrations nor selects objects, grasps, targets or durations.
 """
 from __future__ import annotations
 
@@ -15,19 +14,11 @@ TCP_OFFSET_M = .145
 
 
 def compile_targets(state, segments):
-    """Return delta rows, extending too-short target segments as necessary."""
-    actions, _ = compile_targets_with_timing(state, segments)
-    return actions
-
-
-def compile_targets_with_timing(state, segments):
     """Interpolate link6 translation and world rotation to each TCP endpoint.
 
     Each segment explicitly selects steps and optional left/right targets:
     tcp_xyz, quaternion_wxyz, gripper. Omitted fields hold the previous target.
     Each call starts from measured state; later segments use requested targets.
-    Both arms share max(requested steps, minimum steps for either arm). Return
-    rows and per-segment timing; compiled steps do not imply execution completed.
     """
     import numpy as np
     from scipy.spatial.transform import Rotation
@@ -39,14 +30,14 @@ def compile_targets_with_timing(state, segments):
         position[side] = np.asarray(pose[:3], dtype=float)
         rotation[side] = Rotation.from_quat(np.asarray(pose[3:])[[1,2,3,0]])
         grip[side] = state[f"{side}_ee_joint_state"][0]
-    actions, timing = [], []
-    for index, segment in enumerate(segments):
-        requested = segment.get("steps")
-        if type(requested) is not int or requested < 1:
-            raise ValueError("Target segment steps must be positive integers")
-        # Empty arm targets (or a segment containing only steps) explicitly
-        # retain the previous targets and grippers, matching omitted fields.
-        motion, minimum = [], 1
+    actions = []
+    for segment in segments:
+        count = segment.get("steps")
+        if type(count) is not int or not 1 <= count <= 24 or len(actions) + count > 24:
+            raise ValueError("Target segments need integer steps; total must be 1–24")
+        if not any(segment.get(s) for s in ("left", "right")):
+            raise ValueError("Specify an arm target or explicit gripper hold")
+        row = []
         for side in ("left", "right"):
             target = segment.get(side) or {}
             end_rotation = rotation[side]
@@ -64,19 +55,11 @@ def compile_targets_with_timing(state, segments):
             value = target.get("gripper")
             if value is not None:
                 grip[side] = value
-            delta = end_position-position[side]
-            rotvec = (end_rotation*rotation[side].inv()).as_rotvec()
-            minimum = max(minimum, math.ceil(np.linalg.norm(delta)/.0350001),
-                          math.ceil(np.linalg.norm(rotvec)/.3500001))
-            motion.append((delta, rotvec, grip[side]))
+            delta = (end_position-position[side])/count
+            rotvec = (end_rotation*rotation[side].inv()).as_rotvec()/count
+            row.extend([*delta, *rotvec, grip[side]])
             position[side], rotation[side] = end_position, end_rotation
-        count = max(requested, minimum)
-        row = []
-        for delta, rotvec, gripper in motion:
-            row.extend([*(delta/count), *(rotvec/count), gripper])
         actions.extend([row[:] for _ in range(count)])
-        timing.append(dict(segment=index+1, requested_steps=requested,
-                           minimum_steps=minimum, compiled_steps=count))
     # Same execution limits as hand-authored rows, checked before any movement.
     validate_delta_actions(actions)
-    return actions, timing
+    return actions

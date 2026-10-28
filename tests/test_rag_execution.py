@@ -21,15 +21,9 @@ class DeltaEncodingTests(unittest.TestCase):
         self.assertEqual(actions[1][7],.01)
         self.assertEqual(move[7],.01)
 
-    def test_long_expansion_has_no_24_row_cap(self):
+    def test_invalid_tail_and_total_horizon_are_rejected(self):
         row = [0]*14
-        self.assertEqual(expand_delta_actions(segments=[dict(delta=row, repeat=30), dict(delta=row, repeat=26)]),
-                         [row]*56)
-        self.assertEqual(expand_delta_actions(actions=[row]*56), [row]*56)
-
-    def test_invalid_tail_and_repeat_are_rejected(self):
-        row = [0]*14
-        for segments in ([dict(delta=row,repeat=0)],
+        for segments in ([dict(delta=row,repeat=24),dict(delta=row,repeat=1)],
                          [dict(delta=row,repeat=1),dict(delta=[0]*13,repeat=1)],
                          [dict(delta=row,repeat=True)]):
             with self.assertRaises(ValueError):
@@ -72,11 +66,11 @@ class ChunkContract(unittest.TestCase):
         api._env = SimpleNamespace(take_action=take_action,
             robot_manager=SimpleNamespace(process_name=lambda name:name+"_joint_state"))
         row = [0,0,0,0,0,0,1, .01,0,0,0,0,.1,0]
-        result = execute_delta_actions(api, [row]*30)
+        result = execute_delta_actions(api, [row, row])
         self.assertAlmostEqual(commands[1]["right_ee_pose"][0], .02)
         self.assertTrue(np.allclose(geometry.pose_to_matrix(commands[1]["right_ee_pose"])[:3,:3],
                                    Rotation.from_rotvec([0,0,.2]).as_matrix()))
-        self.assertEqual(result["executed_rows"], 30)
+        self.assertEqual(result["executed_rows"], 2)
         self.assertEqual(commands[1]["right_gripper_joint_state"], [0])
 
     def test_failed_motion_does_not_close_gripper_or_run_remaining_waypoints(self):
@@ -93,48 +87,6 @@ class ChunkContract(unittest.TestCase):
         self.assertEqual(len(moves), 1)
         self.assertEqual(grips, [])
         self.assertTrue(result["waypoints"][0]["stopped_tail"])
-
-    def test_long_delta_chunks_still_stop_at_native_end_or_tracking_error(self):
-        import io
-
-        from hexashell.server import geometry
-
-        from roborag.action_targets import compile_targets
-        for cause in ("native_end", "tracking_error", "invalid_tail"):
-            with self.subTest(cause=cause):
-                poses = {side: np.eye(4) for side in ("left", "right")}
-                arms = {side: SimpleNamespace(ee=lambda side=side: poses[side], joints=lambda: np.zeros(6),
-                    _robot=SimpleNamespace(gripper_name=side+"_gripper")) for side in poses}
-                api = SimpleNamespace(step=0, over=False, arm=lambda side: arms[side], geometry=geometry,
-                                      _action_log=io.StringIO())
-                commands = []
-                def take_action(command):
-                    commands.append(command)
-                    api.step += 1
-                    for side in poses:
-                        poses[side] = geometry.pose_to_matrix(command[side+"_ee_pose"])
-                    if api.step == 3:
-                        if cause == "native_end":
-                            api.over = True
-                        else:
-                            poses["left"][0, 3] -= .05
-                api._env = SimpleNamespace(take_action=take_action,
-                    robot_manager=SimpleNamespace(process_name=lambda name: name+"_joint_state"))
-                state = {f"{side}_{name}": value for side in poses for name, value in
-                         (("ee_pose", [0, 0, 0, 1, 0, 0, 0]), ("ee_joint_state", [1]))}
-                rows = compile_targets(state, [dict(steps=2, left=dict(tcp_xyz=[1.195, 0, 0]))])
-                self.assertEqual(len(rows), 30)  # auto-extension also exceeds the old cap
-                if cause == "invalid_tail":
-                    with self.assertRaises(ValueError):
-                        execute_delta_actions(api, rows+[[0]*13])
-                    self.assertEqual(commands, [])
-                else:
-                    result = execute_delta_actions(api, rows)
-                    self.assertEqual(len(commands), 3)
-                    self.assertEqual(result["submitted_rows"], 30)
-                    self.assertEqual(result["executed_rows"], 3)
-                    self.assertEqual(result["discarded_rows"], 27)
-                    self.assertEqual(result["episode_over"], cause == "native_end")
 
     def test_native_termination_during_home_stops_tail(self):
         joints = np.full(6, .2)

@@ -24,22 +24,6 @@ def expected_tools():
     tools = copy.deepcopy(CONTRACT["tools"])
     retrieve = next(t for t in tools if t["name"] == "retrieve_evidence")
     retrieve["input_schema"]["properties"]["arm"]["enum"] = ["", "left", "right", "both", "左臂", "右臂", "双臂"]
-    motion = next(t for t in tools if t["name"] == "execute_chunk")
-    motion["description"] = motion["description"].replace("Submit 1-24 NEW", "Submit NEW").replace(
-        "Segments expand EXACTLY to actions, with <=24 total rows;", "Segments expand EXACTLY to actions;").replace(
-        "Total steps<=24; same delta limits. No IK/grasp/fold planner is added.",
-        "No per-call step cap; same delta limits and native episode budget apply.\n            No IK/grasp/fold planner is added.")
-    motion["description"] = motion["description"].replace(
-        "motion during rotation. Gripper applies from the segment's first row.",
-        "motion during rotation. Gripper applies from the segment's first row.\n"
-        "            Too-short target segments are extended to meet both arms' per-row limits;\n"
-        "            requested steps are never shortened. execution.target_timing reports requested\n"
-        "            and compiled steps when extended; executed_rows reports actual execution.")
-    definitions = motion["input_schema"]["$defs"]
-    del definitions["DeltaSegment"]["properties"]["repeat"]["maximum"]
-    del definitions["TargetSegment"]["properties"]["steps"]["maximum"]
-    for name in ("ArmTarget", "TargetSegment"):
-        definitions[name]["additionalProperties"] = False
     return tools
 
 
@@ -54,14 +38,8 @@ class V3ContractTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(
                 [t.model_dump(mode="json", exclude_none=True) for t in tools], expected_tools()
             )
-        # Only the documented step cap removal and target timing changes affect the
-        # assembled prompt. Task instructions and plan requirements stay v3.
-        original_prompt = prompt_for(ROOT, "fold_clothes", "delta").replace(
-            "Generate action rows at 25 Hz;", "Generate 1-24 rows at 25 Hz;").replace(
-            "without a per-call step cap.", "with at most 24 expanded rows.").replace(
-            "it does not choose targets or grasps. It only extends too-short target segments "
-            "to meet per-row motion limits and reports adjusted timing.",
-            "it does not choose targets, timing or grasps.")
+        # Execution prompt is restored exactly; SOP adaptation is applied by the runner.
+        original_prompt = prompt_for(ROOT, "fold_clothes", "delta")
         self.assertEqual(
             hashlib.sha256(original_prompt.encode()).hexdigest(),
             CONTRACT["prompt_sha256"],
@@ -88,15 +66,14 @@ class V3ContractTests(unittest.IsolatedAsyncioTestCase):
                         ast.dump(node, include_attributes=False).encode()
                     ).hexdigest()
         for name, digest in CONTRACT["mcp_definitions_ast_sha256"].items():
-            if name in {"retrieve_evidence", "read_action_reference", "execute_delta_chunk", "DeltaSegment", "ArmTarget", "TargetSegment"}:
+            if name in {"retrieve_evidence", "read_action_reference"}:
                 continue  # Explicit changes covered by exact schemas and behavior tests.
             with self.subTest(definition=name):
                 self.assertEqual(definitions[name], digest)
 
     def test_retrieval_actions_geometry_transport_and_prompts_are_unchanged(self):
         for name, digest in CONTRACT["unchanged_policy_files"].items():
-            if name in {"prompts/robot.delta.txt", "src/roborag/action_targets.py",
-                        "src/roborag/rag_execution.py", "src/roborag/graph_retrieval.py"}:
+            if name in {"src/roborag/graph_retrieval.py"}:
                 continue  # Targeted, documented interface fixes; not an exact v3 policy claim.
             with self.subTest(file=name):
                 self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), digest)

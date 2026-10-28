@@ -65,8 +65,8 @@ def main():
     args = parser.parse_args()
     if args.bank is None:
         args.bank = default_bank(ROOT, args.task)
-        if args.task == "fold_clothes" and not (args.bank / "manifest.json").exists():
-            parser.error("Build the standalone fold SOP package with scripts/build_v3_sop_package.py first")
+        if args.task == "fold_clothes" and not (args.bank / "execution-index.json").exists():
+            parser.error("Restore the full v3 evidence with scripts/restore_v3_evidence.py first")
     task = simulation_task(args.task, args.variant)
     prompt = prompt_for(ROOT, args.task, args.controller, no_rag=args.no_rag)
     if (args.bank / "manifest.json").exists():

@@ -16,7 +16,9 @@ SCHEMA = "roborag.manipulation-sop-package.v1"
 
 
 def default_bank(root, task):
-    return Path(root) / ("artifacts/fold-v3-sop" if task == "fold_clothes" else "data/graph-bank/v1")
+    # The default fold reference retains all v3 information. The compact SOP
+    # archive remains an explicit opt-in; it must not limit recovery queries.
+    return Path(root) / ("artifacts/fold-v3-full" if task == "fold_clothes" else "data/graph-bank/v1")
 
 
 def open_evidence_bank(directory, data_root):

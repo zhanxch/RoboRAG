@@ -97,7 +97,7 @@ class SOPStoreTests(unittest.TestCase):
             self.assertIsNone(memory["initial_image"])
             paths = evidence_source_paths(root)
             self.assertEqual(set(paths), {p for p in root.rglob("*") if p.is_file()})
-            self.assertEqual(default_bank(root, "fold_clothes"), root / "artifacts/fold-v3-sop")
+            self.assertEqual(default_bank(root, "fold_clothes"), root / "artifacts/fold-v3-full")
             self.assertEqual(default_bank(root, "stack_blocks"), root / "data/graph-bank/v1")
 
     def test_normalization_does_not_mutate_historical_input(self):

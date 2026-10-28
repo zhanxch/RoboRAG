@@ -12,7 +12,7 @@ from roborag.episode_files import read_jsonl, write_json
 from roborag.rag_mcp import EpisodeMemory, create_server
 
 
-async def verify(baseline, data):
+async def verify(baseline, data, bank_override=None):
     rows = []
     for directory in sorted(baseline.glob("seed1-*-l*")):
         if not directory.is_dir():
@@ -30,11 +30,14 @@ async def verify(baseline, data):
         assert bank_files
         for p, digest in bank_files.items():
             assert hashlib.sha256(Path(p).read_bytes()).hexdigest() == digest, p
+            if bank_override is not None:
+                copied = bank_override / Path(p).relative_to(bank)
+                assert hashlib.sha256(copied.read_bytes()).hexdigest() == digest, copied
         calls, malformed = read_jsonl(directory / "mcp-calls.jsonl")
         assert not malformed
         counts = dict(retrieve_evidence=0, read_action_reference=0)
         with tempfile.TemporaryDirectory() as tmp:
-            memory = EpisodeMemory(bank, data, tmp, tmp, "fold_clothes", controller="delta")
+            memory = EpisodeMemory(bank_override or bank, data, tmp, tmp, "fold_clothes", controller="delta")
             async with Client(create_server(memory)) as client:
                 for call in calls:
                     name = call["tool"]
@@ -79,6 +82,7 @@ async def verify(baseline, data):
         schema="roborag.v3-history-replay.v1",
         source_commit="1e9ffa05682fb750bd940938b6b8bd6bf6ac091f",
         baseline=str(baseline),
+        replay_bank=str(bank_override) if bank_override else "original per-episode bank",
         passed=True,
         cases=rows,
         retrieval_responses=sum(r["retrieve_evidence"] for r in rows),
@@ -92,8 +96,9 @@ def main():
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--data", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--bank", type=Path, help="Replay a verified byte-identical copy of the original bank")
     args = parser.parse_args()
-    report = asyncio.run(verify(args.baseline.resolve(), args.data.resolve()))
+    report = asyncio.run(verify(args.baseline.resolve(), args.data.resolve(), args.bank.resolve() if args.bank else None))
     write_json(args.output, report)
     print(json.dumps({k: v for k, v in report.items() if k != "cases"}))
 

@@ -1,0 +1,1000 @@
+{
+  "passed": true,
+  "generated_at": "2026-10-28T10:21:02.075164+00:00",
+  "native_test": false,
+  "unit_tests_passed": 11,
+  "default_bank": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-evidence-context/artifacts/fold-v3-full",
+  "original_metadata_equal": {
+    "bank.json": "47fa24bf427b329c5098dba86a46fd8aa8111a561ebe4b85b1338ba0d82d9d4f",
+    "execution-index.json": "4a2529a791f234469f88e1a034205f9662d8b2a8dd98572720a94038d80189a2",
+    "graphs/cover_blocks-0000.json": "80eb440c2b472e948c193e771ea1b2a97f6626f64a7c70301cc53c9fa4ac9c27",
+    "graphs/deposit_coin-0000.json": "7d04b687831295e7a07d602aed1488919fc4e8a59eb2e8b6e6de019916a4dc78",
+    "graphs/fold_clothes-0000.json": "12fc14d22851fc034086e1637e9f7ac61a94dcbca107da7ac5be04bfcede6b34",
+    "graphs/fold_clothes-0001.json": "4d87dfc8fa3edea86c1a38bed4519b17f998c9051477a9f8e60a9fc6bb429efa",
+    "graphs/fold_clothes-0002.json": "9c0f0a43820c4a3c9becf6306240e9c9deb47a8579e5726e066e2fbdd33b075d",
+    "graphs/put_bottles_into_dustbin-0000.json": "ffa93bda091082e0c511f5a7e051bd76560ecfdb404c7681a317988eb11e28bf",
+    "graphs/stack_blocks-0000.json": "dce2cd6a9943feca2877c268a3f45a31cbc31bd54af1cc1394ad374f5cd4bfac",
+    "graphs/stack_blocks-0001.json": "cb6cf71670bbccb07eb88e15e730e27ee1e3b2b9a045d4b21ae9e742f4d8764c",
+    "graphs/stack_blocks-0002.json": "9015239569901eaf84a949dba60144b53df90c4f9e23d34d97a783eca426ec0c",
+    "graphs/stack_blocks-0003.json": "5eeab2a8c8fb5fce7f6bd736ec8588092084586f752b2427f588ca5725f13565",
+    "graphs/stack_blocks-0004.json": "65616daaa386d62b374c38ff8fb19af8b6d713248b2e6f6e6e4f34b071aae772",
+    "graphs/stack_blocks-0005.json": "4d195a5a8e1d9dad1419f2542e1c777e10d98dd077f1189936707aa3b491b158",
+    "search-index.json": "cfa86ce25f0f1c20b65b9cfcdcb0b817499673f5c6e06a6f87b49f65b11c6df3"
+  },
+  "original_train_sources_verified": {
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/fold_clothes/train/episode_0000000.hdf5": "5a1fbba99a9f13900ec4439ba503674627335e28aeba6840223beb3e17cc93ac",
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/fold_clothes/train/episode_0000001.hdf5": "9c7ada4f69becfdd82e73f122fa3c2fa6aedf1a5c5031ec4fff550e0a1ee754a",
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/fold_clothes/train/episode_0000002.hdf5": "56604d1ae7142b2945baf4aa33e061d9f7f464383156d1d074c5f590bbc31cab"
+  },
+  "counts": {
+    "demonstrations": 3,
+    "phases": 24,
+    "windows": 189
+  },
+  "section_probes": 96,
+  "section_probe_scope": "All 24 original fold phases × 4 selectors with known valid source IDs; raw action arrays and two head images returned. Missing command events retain the original explicit start fallback.",
+  "checks": [
+    {
+      "source": "fold_clothes-0000:p01",
+      "section": "start",
+      "window": "fold_clothes-0000:p01:0:10",
+      "action_rows": 10,
+      "image_sha256": [
+        "1cfd7ce0225eb25cf79bfc1c49d55d89a1c7411600597b97319a3bcde781ee8f",
+        "365ac64ce2f99857347c7caf9f7299a89544ce3f8fa955ceae5d8bbbc3b892e8"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p01",
+      "section": "end",
+      "window": "fold_clothes-0000:p01:50:53",
+      "action_rows": 3,
+      "image_sha256": [
+        "54b086af5924b2aaccd96689d3afb87175dba4ae9242513a6999a43c95c50cf6",
+        "8c6658a4117989325a1cbe4ceadfb68bdee4223b95dc12612e1250203b13d3ba"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p01",
+      "section": "close",
+      "window": "fold_clothes-0000:p01:35:45",
+      "action_rows": 10,
+      "image_sha256": [
+        "b6ce49bf86d2c9b942eb2ef70c7c7ea66b0f5b967a6e164cec489ac21677aa3c",
+        "566be8d503c5510373927f105776593cda371b0b876d6c25fa25024368b98b80"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p01",
+      "section": "open",
+      "window": "fold_clothes-0000:p01:0:10",
+      "action_rows": 10,
+      "image_sha256": [
+        "1cfd7ce0225eb25cf79bfc1c49d55d89a1c7411600597b97319a3bcde781ee8f",
+        "365ac64ce2f99857347c7caf9f7299a89544ce3f8fa955ceae5d8bbbc3b892e8"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p02",
+      "section": "start",
+      "window": "fold_clothes-0000:p02:53:63",
+      "action_rows": 10,
+      "image_sha256": [
+        "8c6658a4117989325a1cbe4ceadfb68bdee4223b95dc12612e1250203b13d3ba",
+        "88f150a145036c331fb2540d9f76764d799c531d0be84e14176a8ac0c4e82916"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p02",
+      "section": "end",
+      "window": "fold_clothes-0000:p02:63:68",
+      "action_rows": 5,
+      "image_sha256": [
+        "88f150a145036c331fb2540d9f76764d799c531d0be84e14176a8ac0c4e82916",
+        "3e0926b3f6b373ac488da074280055b06a411a29e4ce91b78c752d0f8ff00f91"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p02",
+      "section": "close",
+      "window": "fold_clothes-0000:p02:53:63",
+      "action_rows": 10,
+      "image_sha256": [
+        "8c6658a4117989325a1cbe4ceadfb68bdee4223b95dc12612e1250203b13d3ba",
+        "88f150a145036c331fb2540d9f76764d799c531d0be84e14176a8ac0c4e82916"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p02",
+      "section": "open",
+      "window": "fold_clothes-0000:p02:53:63",
+      "action_rows": 10,
+      "image_sha256": [
+        "8c6658a4117989325a1cbe4ceadfb68bdee4223b95dc12612e1250203b13d3ba",
+        "88f150a145036c331fb2540d9f76764d799c531d0be84e14176a8ac0c4e82916"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p03",
+      "section": "start",
+      "window": "fold_clothes-0000:p03:68:78",
+      "action_rows": 10,
+      "image_sha256": [
+        "3e0926b3f6b373ac488da074280055b06a411a29e4ce91b78c752d0f8ff00f91",
+        "a3e425776a91ff33963ff616c339cf947867fd947edfd54732f1cfcc74f11137"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p03",
+      "section": "end",
+      "window": "fold_clothes-0000:p03:113:118",
+      "action_rows": 5,
+      "image_sha256": [
+        "4fdcdb019dc34ef332ea47aca655275411fffc464fed0f133eb62c123f1968f2",
+        "66f3832b280a537ca887caacbe70320d176374a877bb1873b93d5424ced28e6c"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p03",
+      "section": "close",
+      "window": "fold_clothes-0000:p03:68:78",
+      "action_rows": 10,
+      "image_sha256": [
+        "3e0926b3f6b373ac488da074280055b06a411a29e4ce91b78c752d0f8ff00f91",
+        "a3e425776a91ff33963ff616c339cf947867fd947edfd54732f1cfcc74f11137"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p03",
+      "section": "open",
+      "window": "fold_clothes-0000:p03:78:88",
+      "action_rows": 10,
+      "image_sha256": [
+        "a3e425776a91ff33963ff616c339cf947867fd947edfd54732f1cfcc74f11137",
+        "5bbe67a57325d6e953c4dbc42614ba2518897bc8a114f44e6a5908bbe36e9637"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p04",
+      "section": "start",
+      "window": "fold_clothes-0000:p04:118:128",
+      "action_rows": 10,
+      "image_sha256": [
+        "66f3832b280a537ca887caacbe70320d176374a877bb1873b93d5424ced28e6c",
+        "3a2de9649a11c45bee550ab7887151c12bb4c63e1356fb83dab7c53766e65420"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p04",
+      "section": "end",
+      "window": "fold_clothes-0000:p04:153:157",
+      "action_rows": 4,
+      "image_sha256": [
+        "b6b73537bbb8f67e0616244c65004129aff11df550e5c9de69376d46543dd532",
+        "2a8e27e4ed0dca07c518b7022f8842a6ac0849390c92d5f4a18d4e6216a74de5"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p04",
+      "section": "close",
+      "window": "fold_clothes-0000:p04:133:143",
+      "action_rows": 10,
+      "image_sha256": [
+        "7fe4bc50136ab55ec0cf422fa729f2a1fa6590de8110106ccf44cfb831113c6f",
+        "acb43f5d6aba60fbdaac977af7bec2bc5cab12bcc1a75ad637bdb17362caa383"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p04",
+      "section": "open",
+      "window": "fold_clothes-0000:p04:118:128",
+      "action_rows": 10,
+      "image_sha256": [
+        "66f3832b280a537ca887caacbe70320d176374a877bb1873b93d5424ced28e6c",
+        "3a2de9649a11c45bee550ab7887151c12bb4c63e1356fb83dab7c53766e65420"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p05",
+      "section": "start",
+      "window": "fold_clothes-0000:p05:157:167",
+      "action_rows": 10,
+      "image_sha256": [
+        "2a8e27e4ed0dca07c518b7022f8842a6ac0849390c92d5f4a18d4e6216a74de5",
+        "3fdde36cf3ee707c2c7eb61e590027ef3117685cf403c50c9176910aa972313d"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p05",
+      "section": "end",
+      "window": "fold_clothes-0000:p05:167:171",
+      "action_rows": 4,
+      "image_sha256": [
+        "3fdde36cf3ee707c2c7eb61e590027ef3117685cf403c50c9176910aa972313d",
+        "d255c4ecf9c752cf88a3f74455802b76d7a120e40b15c98d07c494e8c41e3d11"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p05",
+      "section": "close",
+      "window": "fold_clothes-0000:p05:157:167",
+      "action_rows": 10,
+      "image_sha256": [
+        "2a8e27e4ed0dca07c518b7022f8842a6ac0849390c92d5f4a18d4e6216a74de5",
+        "3fdde36cf3ee707c2c7eb61e590027ef3117685cf403c50c9176910aa972313d"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p05",
+      "section": "open",
+      "window": "fold_clothes-0000:p05:157:167",
+      "action_rows": 10,
+      "image_sha256": [
+        "2a8e27e4ed0dca07c518b7022f8842a6ac0849390c92d5f4a18d4e6216a74de5",
+        "3fdde36cf3ee707c2c7eb61e590027ef3117685cf403c50c9176910aa972313d"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p06",
+      "section": "start",
+      "window": "fold_clothes-0000:p06:171:181",
+      "action_rows": 10,
+      "image_sha256": [
+        "d255c4ecf9c752cf88a3f74455802b76d7a120e40b15c98d07c494e8c41e3d11",
+        "78452862686ec3c37d21c5bceb574b2dbd1c24614f6217555faad29ff651ae28"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p06",
+      "section": "end",
+      "window": "fold_clothes-0000:p06:221:222",
+      "action_rows": 1,
+      "image_sha256": [
+        "ae9fc7d1bf1659e1700aaf213df77d46f1f2a065c7680c7821bfba96603da474",
+        "a5ef9d4096a9606375dc38fdd977fd32c6219b8dc6dd889437994619f377d7b7"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p06",
+      "section": "close",
+      "window": "fold_clothes-0000:p06:171:181",
+      "action_rows": 10,
+      "image_sha256": [
+        "d255c4ecf9c752cf88a3f74455802b76d7a120e40b15c98d07c494e8c41e3d11",
+        "78452862686ec3c37d21c5bceb574b2dbd1c24614f6217555faad29ff651ae28"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p06",
+      "section": "open",
+      "window": "fold_clothes-0000:p06:176:186",
+      "action_rows": 10,
+      "image_sha256": [
+        "5207ec8616eb935732510c6190cfc317a806d8aa766a261c62a869d8574685ba",
+        "a5a4a82cbe9aba521e7f8917f4df28dde041dc93a28c24b021afd3a1d872af4c"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p07",
+      "section": "start",
+      "window": "fold_clothes-0000:p07:222:232",
+      "action_rows": 10,
+      "image_sha256": [
+        "a5ef9d4096a9606375dc38fdd977fd32c6219b8dc6dd889437994619f377d7b7",
+        "2288a58d95e901ca6f066e77d7aca7c5b570e2ddc4b78b0058d87e32bfb53295"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p07",
+      "section": "end",
+      "window": "fold_clothes-0000:p07:257:260",
+      "action_rows": 3,
+      "image_sha256": [
+        "a1d3c618511564d952d3f6cf74337deede1a5477873095a2b3f7fa3ab1673ca0",
+        "60b8a4d165918a308c96bc4da8f23f7fe9bb16bb84a1c45fc29d3fd8b9ec7957"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p07",
+      "section": "close",
+      "window": "fold_clothes-0000:p07:222:232",
+      "action_rows": 10,
+      "image_sha256": [
+        "a5ef9d4096a9606375dc38fdd977fd32c6219b8dc6dd889437994619f377d7b7",
+        "2288a58d95e901ca6f066e77d7aca7c5b570e2ddc4b78b0058d87e32bfb53295"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p07",
+      "section": "open",
+      "window": "fold_clothes-0000:p07:222:232",
+      "action_rows": 10,
+      "image_sha256": [
+        "a5ef9d4096a9606375dc38fdd977fd32c6219b8dc6dd889437994619f377d7b7",
+        "2288a58d95e901ca6f066e77d7aca7c5b570e2ddc4b78b0058d87e32bfb53295"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p08",
+      "section": "start",
+      "window": "fold_clothes-0000:p08:260:270",
+      "action_rows": 10,
+      "image_sha256": [
+        "60b8a4d165918a308c96bc4da8f23f7fe9bb16bb84a1c45fc29d3fd8b9ec7957",
+        "ae42d996f5e7db2132aaa162f839c3dfe3412b4eef31a73e452e3d282526c203"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p08",
+      "section": "end",
+      "window": "fold_clothes-0000:p08:295:299",
+      "action_rows": 4,
+      "image_sha256": [
+        "29a78de2b2f29c0d57cdef797dd01846ea31d18c36c7950919a34596151a13d3",
+        "cbc2c9640368d4021c8783bdda854e04c3c41aab98d04aab7d17f986ec6c910e"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p08",
+      "section": "close",
+      "window": "fold_clothes-0000:p08:260:270",
+      "action_rows": 10,
+      "image_sha256": [
+        "60b8a4d165918a308c96bc4da8f23f7fe9bb16bb84a1c45fc29d3fd8b9ec7957",
+        "ae42d996f5e7db2132aaa162f839c3dfe3412b4eef31a73e452e3d282526c203"
+      ]
+    },
+    {
+      "source": "fold_clothes-0000:p08",
+      "section": "open",
+      "window": "fold_clothes-0000:p08:265:275",
+      "action_rows": 10,
+      "image_sha256": [
+        "dd1d20ed7c9260c6c4de656572ff1a09d304ef26e3bd602b536ce620602eb4f2",
+        "4f19e5b77da19b19102e50f10a9793d03ab5dc5ddf572fe2931dd55e59a06712"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p01",
+      "section": "start",
+      "window": "fold_clothes-0001:p01:0:10",
+      "action_rows": 10,
+      "image_sha256": [
+        "48be7bb84adbff8dd9e5569bd759a5cd8f27d0006cfbcaa354cfe107e6392c28",
+        "2a19172619cdc69e2111ff3d345499defc3544c754a8f9d5a109154f9c326bea"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p01",
+      "section": "end",
+      "window": "fold_clothes-0001:p01:50:53",
+      "action_rows": 3,
+      "image_sha256": [
+        "4fdc4a69fbcfeeee17a45bfc2846c0678a0387ee769689d4aa7cb463797d1d07",
+        "52861198f61c774d299c0451430ecf64b80c635406c1a8034c21393b1f91d2ea"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p01",
+      "section": "close",
+      "window": "fold_clothes-0001:p01:35:45",
+      "action_rows": 10,
+      "image_sha256": [
+        "5388cd48564c68e0f0301f5985649a48759cb3e3845d0a4cd2d672923af1af13",
+        "9f71cf0204242a1fa8d5c577df49c7c5a30a7f41e66e00068eb0f001f70e8362"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p01",
+      "section": "open",
+      "window": "fold_clothes-0001:p01:0:10",
+      "action_rows": 10,
+      "image_sha256": [
+        "48be7bb84adbff8dd9e5569bd759a5cd8f27d0006cfbcaa354cfe107e6392c28",
+        "2a19172619cdc69e2111ff3d345499defc3544c754a8f9d5a109154f9c326bea"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p02",
+      "section": "start",
+      "window": "fold_clothes-0001:p02:53:63",
+      "action_rows": 10,
+      "image_sha256": [
+        "52861198f61c774d299c0451430ecf64b80c635406c1a8034c21393b1f91d2ea",
+        "2e5709469fd38f9c85ec35ff456650584695dd3a0cb2b6a8489a9ec468815375"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p02",
+      "section": "end",
+      "window": "fold_clothes-0001:p02:68:69",
+      "action_rows": 1,
+      "image_sha256": [
+        "0e7a58d1daacbb8a80bf9888c5aea030d50a3587bbc0ff9508555e63f7acd581",
+        "869f537cedf23b502ddd826483d8ae4aac1523c4571be46be57dcd6da738d91f"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p02",
+      "section": "close",
+      "window": "fold_clothes-0001:p02:53:63",
+      "action_rows": 10,
+      "image_sha256": [
+        "52861198f61c774d299c0451430ecf64b80c635406c1a8034c21393b1f91d2ea",
+        "2e5709469fd38f9c85ec35ff456650584695dd3a0cb2b6a8489a9ec468815375"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p02",
+      "section": "open",
+      "window": "fold_clothes-0001:p02:53:63",
+      "action_rows": 10,
+      "image_sha256": [
+        "52861198f61c774d299c0451430ecf64b80c635406c1a8034c21393b1f91d2ea",
+        "2e5709469fd38f9c85ec35ff456650584695dd3a0cb2b6a8489a9ec468815375"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p03",
+      "section": "start",
+      "window": "fold_clothes-0001:p03:69:79",
+      "action_rows": 10,
+      "image_sha256": [
+        "869f537cedf23b502ddd826483d8ae4aac1523c4571be46be57dcd6da738d91f",
+        "897c416241ac107e28728c1011efa1fac4d03fe44af3a4656c02d01b88aa4c1e"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p03",
+      "section": "end",
+      "window": "fold_clothes-0001:p03:114:118",
+      "action_rows": 4,
+      "image_sha256": [
+        "560c4baa4b62d4f85c582a2ef895ae8c451698c2ea92ee4d705582b4decfe986",
+        "58af4fe2edfd3d3a978b91a160611cc66b74bde7add1ab650c1e18d89243d546"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p03",
+      "section": "close",
+      "window": "fold_clothes-0001:p03:69:79",
+      "action_rows": 10,
+      "image_sha256": [
+        "869f537cedf23b502ddd826483d8ae4aac1523c4571be46be57dcd6da738d91f",
+        "897c416241ac107e28728c1011efa1fac4d03fe44af3a4656c02d01b88aa4c1e"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p03",
+      "section": "open",
+      "window": "fold_clothes-0001:p03:74:84",
+      "action_rows": 10,
+      "image_sha256": [
+        "a216ddce88587a9bd640556ebf1c7d9589c5868c22a3b6bee73223084c65238c",
+        "fbaee1e1a3f47afeeb4adbee06700358b5051f28eb7698833cbdc951e1c944a5"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p04",
+      "section": "start",
+      "window": "fold_clothes-0001:p04:118:128",
+      "action_rows": 10,
+      "image_sha256": [
+        "58af4fe2edfd3d3a978b91a160611cc66b74bde7add1ab650c1e18d89243d546",
+        "bbbe8a7a32100466945c17c270e1191ddca31db72c661d23a4b4ce897b350750"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p04",
+      "section": "end",
+      "window": "fold_clothes-0001:p04:153:158",
+      "action_rows": 5,
+      "image_sha256": [
+        "257e2f8162d15d832a95ccc31b50b1a0470f3098b21524ec2c8994f4fd95e6c2",
+        "0003ecea46e706a6228df230dad4d50de0277705632f471f2e4fe9e188251add"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p04",
+      "section": "close",
+      "window": "fold_clothes-0001:p04:138:148",
+      "action_rows": 10,
+      "image_sha256": [
+        "4358f0cc62fb072b38bb9b911d23a0dfc1ab3f05c87331ab72829c7987149c64",
+        "c7a08268657b6e507e1f7af015f33c66ded2142e321b49a28896431ee6d0fe03"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p04",
+      "section": "open",
+      "window": "fold_clothes-0001:p04:118:128",
+      "action_rows": 10,
+      "image_sha256": [
+        "58af4fe2edfd3d3a978b91a160611cc66b74bde7add1ab650c1e18d89243d546",
+        "bbbe8a7a32100466945c17c270e1191ddca31db72c661d23a4b4ce897b350750"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p05",
+      "section": "start",
+      "window": "fold_clothes-0001:p05:158:168",
+      "action_rows": 10,
+      "image_sha256": [
+        "0003ecea46e706a6228df230dad4d50de0277705632f471f2e4fe9e188251add",
+        "60059a3217f224b8e6cfcb75307226016df06cb2b9c5273379fead761a7b94a8"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p05",
+      "section": "end",
+      "window": "fold_clothes-0001:p05:168:172",
+      "action_rows": 4,
+      "image_sha256": [
+        "60059a3217f224b8e6cfcb75307226016df06cb2b9c5273379fead761a7b94a8",
+        "528c32b8ff331d24d145540ad03d409a1c2539e9eedb3549f81171e78bfef33e"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p05",
+      "section": "close",
+      "window": "fold_clothes-0001:p05:158:168",
+      "action_rows": 10,
+      "image_sha256": [
+        "0003ecea46e706a6228df230dad4d50de0277705632f471f2e4fe9e188251add",
+        "60059a3217f224b8e6cfcb75307226016df06cb2b9c5273379fead761a7b94a8"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p05",
+      "section": "open",
+      "window": "fold_clothes-0001:p05:158:168",
+      "action_rows": 10,
+      "image_sha256": [
+        "0003ecea46e706a6228df230dad4d50de0277705632f471f2e4fe9e188251add",
+        "60059a3217f224b8e6cfcb75307226016df06cb2b9c5273379fead761a7b94a8"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p06",
+      "section": "start",
+      "window": "fold_clothes-0001:p06:172:182",
+      "action_rows": 10,
+      "image_sha256": [
+        "528c32b8ff331d24d145540ad03d409a1c2539e9eedb3549f81171e78bfef33e",
+        "62e038bfa67824beca4c8155cc8c51ff9011d10f0ba19cf03e6d5af0a5b358be"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p06",
+      "section": "end",
+      "window": "fold_clothes-0001:p06:222:223",
+      "action_rows": 1,
+      "image_sha256": [
+        "d7268a89fba3759a13c696ef8e603668f8d1d0d9b399ff321f16538db06333ec",
+        "f9ee47cbaf88e48ed729e283b14ba4e29549da5be0ed6c75ddc9ca26232a2da3"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p06",
+      "section": "close",
+      "window": "fold_clothes-0001:p06:172:182",
+      "action_rows": 10,
+      "image_sha256": [
+        "528c32b8ff331d24d145540ad03d409a1c2539e9eedb3549f81171e78bfef33e",
+        "62e038bfa67824beca4c8155cc8c51ff9011d10f0ba19cf03e6d5af0a5b358be"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p06",
+      "section": "open",
+      "window": "fold_clothes-0001:p06:182:192",
+      "action_rows": 10,
+      "image_sha256": [
+        "62e038bfa67824beca4c8155cc8c51ff9011d10f0ba19cf03e6d5af0a5b358be",
+        "39ecb9ee584347b03e8e7f2f36b59fef7e506c06be4ae077f72306df148b7433"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p07",
+      "section": "start",
+      "window": "fold_clothes-0001:p07:223:233",
+      "action_rows": 10,
+      "image_sha256": [
+        "f9ee47cbaf88e48ed729e283b14ba4e29549da5be0ed6c75ddc9ca26232a2da3",
+        "8d4367d6ad07f6f318bb091bd523bb0661e28bc1fb03ddd0d5987aa98c542fa7"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p07",
+      "section": "end",
+      "window": "fold_clothes-0001:p07:258:261",
+      "action_rows": 3,
+      "image_sha256": [
+        "44a3c592354432c2afacc5b5be5de95b563870cba04a587c685f7d2e4ce6c0a0",
+        "6907309824ac205f056209ebd01de58ab3fc083d23ed709f154a44bed8a09266"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p07",
+      "section": "close",
+      "window": "fold_clothes-0001:p07:223:233",
+      "action_rows": 10,
+      "image_sha256": [
+        "f9ee47cbaf88e48ed729e283b14ba4e29549da5be0ed6c75ddc9ca26232a2da3",
+        "8d4367d6ad07f6f318bb091bd523bb0661e28bc1fb03ddd0d5987aa98c542fa7"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p07",
+      "section": "open",
+      "window": "fold_clothes-0001:p07:223:233",
+      "action_rows": 10,
+      "image_sha256": [
+        "f9ee47cbaf88e48ed729e283b14ba4e29549da5be0ed6c75ddc9ca26232a2da3",
+        "8d4367d6ad07f6f318bb091bd523bb0661e28bc1fb03ddd0d5987aa98c542fa7"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p08",
+      "section": "start",
+      "window": "fold_clothes-0001:p08:261:271",
+      "action_rows": 10,
+      "image_sha256": [
+        "6907309824ac205f056209ebd01de58ab3fc083d23ed709f154a44bed8a09266",
+        "b957b751bced0e0e3adf14aad05b587ebc0615688aaf653f4d91ec09abe8c227"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p08",
+      "section": "end",
+      "window": "fold_clothes-0001:p08:296:301",
+      "action_rows": 5,
+      "image_sha256": [
+        "83895f6385ad96b791e18ce75739faab62ab1cc23599384fd2ef6efb4a839a2d",
+        "e6ed37d68e271d566558ee344c300bbbeb4b8c81c400ad406a33025614ebdb1b"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p08",
+      "section": "close",
+      "window": "fold_clothes-0001:p08:261:271",
+      "action_rows": 10,
+      "image_sha256": [
+        "6907309824ac205f056209ebd01de58ab3fc083d23ed709f154a44bed8a09266",
+        "b957b751bced0e0e3adf14aad05b587ebc0615688aaf653f4d91ec09abe8c227"
+      ]
+    },
+    {
+      "source": "fold_clothes-0001:p08",
+      "section": "open",
+      "window": "fold_clothes-0001:p08:271:281",
+      "action_rows": 10,
+      "image_sha256": [
+        "b957b751bced0e0e3adf14aad05b587ebc0615688aaf653f4d91ec09abe8c227",
+        "1415b12e8f338e34f51b93e02444044609b2a8c814e27d2bc88b7927b78bd550"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p01",
+      "section": "start",
+      "window": "fold_clothes-0002:p01:0:10",
+      "action_rows": 10,
+      "image_sha256": [
+        "28ef6dbe6718df72aef248cfd4fde4095f0573798d7d5b9e1e200ad1fcdbb7dc",
+        "a90fcc6cdddbb1421daa6100daccf2bed54ebe1a48bd4f270465efeef4ea31df"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p01",
+      "section": "end",
+      "window": "fold_clothes-0002:p01:50:54",
+      "action_rows": 4,
+      "image_sha256": [
+        "840b1e52159a7931996bc5964bb5f0603edc341ddad4e41f60d5238784427c91",
+        "4ff45af40486c8f038904297256a4f3d07385d356502910c6e73b6f04f73047d"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p01",
+      "section": "close",
+      "window": "fold_clothes-0002:p01:35:45",
+      "action_rows": 10,
+      "image_sha256": [
+        "341508134e6c86e755fda007a758e1f71111828143fae2385f34e24dc9840b1f",
+        "30f4db27c9d5d761b6e55278186f104a6ea57e665c272581601d5e1c337f8e28"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p01",
+      "section": "open",
+      "window": "fold_clothes-0002:p01:0:10",
+      "action_rows": 10,
+      "image_sha256": [
+        "28ef6dbe6718df72aef248cfd4fde4095f0573798d7d5b9e1e200ad1fcdbb7dc",
+        "a90fcc6cdddbb1421daa6100daccf2bed54ebe1a48bd4f270465efeef4ea31df"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p02",
+      "section": "start",
+      "window": "fold_clothes-0002:p02:54:64",
+      "action_rows": 10,
+      "image_sha256": [
+        "4ff45af40486c8f038904297256a4f3d07385d356502910c6e73b6f04f73047d",
+        "c2cbcb82bee48afc5036bb31227501678c0aebbcbd0b27b1886a35fa1eff1baa"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p02",
+      "section": "end",
+      "window": "fold_clothes-0002:p02:79:81",
+      "action_rows": 2,
+      "image_sha256": [
+        "ef911f8ccf87153570fd6629fd7585008195146d5749f408f8d55c7e07378a5e",
+        "22a30b74c790e593739c826b2328599cdaf60a47c0acfa784d90283bb22eae75"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p02",
+      "section": "close",
+      "window": "fold_clothes-0002:p02:54:64",
+      "action_rows": 10,
+      "image_sha256": [
+        "4ff45af40486c8f038904297256a4f3d07385d356502910c6e73b6f04f73047d",
+        "c2cbcb82bee48afc5036bb31227501678c0aebbcbd0b27b1886a35fa1eff1baa"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p02",
+      "section": "open",
+      "window": "fold_clothes-0002:p02:54:64",
+      "action_rows": 10,
+      "image_sha256": [
+        "4ff45af40486c8f038904297256a4f3d07385d356502910c6e73b6f04f73047d",
+        "c2cbcb82bee48afc5036bb31227501678c0aebbcbd0b27b1886a35fa1eff1baa"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p03",
+      "section": "start",
+      "window": "fold_clothes-0002:p03:81:91",
+      "action_rows": 10,
+      "image_sha256": [
+        "22a30b74c790e593739c826b2328599cdaf60a47c0acfa784d90283bb22eae75",
+        "881c53439277235f89f913cd2f1d4252b65f49535a62eb571af26c897c78b63b"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p03",
+      "section": "end",
+      "window": "fold_clothes-0002:p03:131:133",
+      "action_rows": 2,
+      "image_sha256": [
+        "55251cc7ea84a0c59af9e85e4094083525e67ebd53845f0ae9f16fd0d769b593",
+        "469af76f310acac08f7ca749bb067f60d0c5d1f0ac4a4400cef17b32bc5fb791"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p03",
+      "section": "close",
+      "window": "fold_clothes-0002:p03:81:91",
+      "action_rows": 10,
+      "image_sha256": [
+        "22a30b74c790e593739c826b2328599cdaf60a47c0acfa784d90283bb22eae75",
+        "881c53439277235f89f913cd2f1d4252b65f49535a62eb571af26c897c78b63b"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p03",
+      "section": "open",
+      "window": "fold_clothes-0002:p03:81:91",
+      "action_rows": 10,
+      "image_sha256": [
+        "22a30b74c790e593739c826b2328599cdaf60a47c0acfa784d90283bb22eae75",
+        "881c53439277235f89f913cd2f1d4252b65f49535a62eb571af26c897c78b63b"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p04",
+      "section": "start",
+      "window": "fold_clothes-0002:p04:133:143",
+      "action_rows": 10,
+      "image_sha256": [
+        "469af76f310acac08f7ca749bb067f60d0c5d1f0ac4a4400cef17b32bc5fb791",
+        "0d31aea56985b44336f529fdf2a328a257753727ad5e29e89a90a39f196a5b7c"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p04",
+      "section": "end",
+      "window": "fold_clothes-0002:p04:158:160",
+      "action_rows": 2,
+      "image_sha256": [
+        "b4514d5800bf68556fbb616ae44796fd018d9fac307e75770a88b11f432c3a2e",
+        "249d471a4996cc289feaf0de5e86215f874e88c1e59dbc0fc26715aa3a2218d0"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p04",
+      "section": "close",
+      "window": "fold_clothes-0002:p04:143:153",
+      "action_rows": 10,
+      "image_sha256": [
+        "0d31aea56985b44336f529fdf2a328a257753727ad5e29e89a90a39f196a5b7c",
+        "44bde33f65325e8e0dda97e552f128956a923cfc61141122fef2db786208694e"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p04",
+      "section": "open",
+      "window": "fold_clothes-0002:p04:133:143",
+      "action_rows": 10,
+      "image_sha256": [
+        "469af76f310acac08f7ca749bb067f60d0c5d1f0ac4a4400cef17b32bc5fb791",
+        "0d31aea56985b44336f529fdf2a328a257753727ad5e29e89a90a39f196a5b7c"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p05",
+      "section": "start",
+      "window": "fold_clothes-0002:p05:160:170",
+      "action_rows": 10,
+      "image_sha256": [
+        "249d471a4996cc289feaf0de5e86215f874e88c1e59dbc0fc26715aa3a2218d0",
+        "381699dd02ce2b05e51bc3e759b8784fd6948d42af2625eccd3489102b86f620"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p05",
+      "section": "end",
+      "window": "fold_clothes-0002:p05:195:199",
+      "action_rows": 4,
+      "image_sha256": [
+        "638e7474914981084ef255a411c7bb25a61ea6b5e0e31d9936e6e5669b693619",
+        "f190a21b33f4b4fdfa203ccb1456fcc916b2a47886eecb51caf45bfbea517bd9"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p05",
+      "section": "close",
+      "window": "fold_clothes-0002:p05:160:170",
+      "action_rows": 10,
+      "image_sha256": [
+        "249d471a4996cc289feaf0de5e86215f874e88c1e59dbc0fc26715aa3a2218d0",
+        "381699dd02ce2b05e51bc3e759b8784fd6948d42af2625eccd3489102b86f620"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p05",
+      "section": "open",
+      "window": "fold_clothes-0002:p05:185:195",
+      "action_rows": 10,
+      "image_sha256": [
+        "2d71a7d58bfb138a812d279c69293db5cec8c1a2113ee9179f926f0001325299",
+        "638e7474914981084ef255a411c7bb25a61ea6b5e0e31d9936e6e5669b693619"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p06",
+      "section": "start",
+      "window": "fold_clothes-0002:p06:199:209",
+      "action_rows": 10,
+      "image_sha256": [
+        "f190a21b33f4b4fdfa203ccb1456fcc916b2a47886eecb51caf45bfbea517bd9",
+        "4ee7909b8b644c911753485c76cb0a02e4fb6ec58fa9bd78378ed3f62afd8319"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p06",
+      "section": "end",
+      "window": "fold_clothes-0002:p06:239:240",
+      "action_rows": 1,
+      "image_sha256": [
+        "9586d0f1fc924e8456e2a96969118a6bcdd11767354912bc45687814b890fd5f",
+        "e215026d740da39a403eb8eabe16898f3c694e4ee690400f60247f4673d143d8"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p06",
+      "section": "close",
+      "window": "fold_clothes-0002:p06:229:239",
+      "action_rows": 10,
+      "image_sha256": [
+        "52013a5ef03d8dd1c6e6fe1afbea1fa72866b982fcc46f1d622b7586eaebc8d2",
+        "9586d0f1fc924e8456e2a96969118a6bcdd11767354912bc45687814b890fd5f"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p06",
+      "section": "open",
+      "window": "fold_clothes-0002:p06:199:209",
+      "action_rows": 10,
+      "image_sha256": [
+        "f190a21b33f4b4fdfa203ccb1456fcc916b2a47886eecb51caf45bfbea517bd9",
+        "4ee7909b8b644c911753485c76cb0a02e4fb6ec58fa9bd78378ed3f62afd8319"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p07",
+      "section": "start",
+      "window": "fold_clothes-0002:p07:240:250",
+      "action_rows": 10,
+      "image_sha256": [
+        "e215026d740da39a403eb8eabe16898f3c694e4ee690400f60247f4673d143d8",
+        "2b926f9de3be9c7b1e80f2c84447e7ea1a059cb0b02bf9d12a1ec1099e5fb889"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p07",
+      "section": "end",
+      "window": "fold_clothes-0002:p07:260:265",
+      "action_rows": 5,
+      "image_sha256": [
+        "bc9aa9ec040669b672d1487d845d0539ca4680a009649b9c37ef3f3dee7abbcf",
+        "02174b72965c190fc6952dce8c6d9e3401af449cba4ff270fd966feda64758db"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p07",
+      "section": "close",
+      "window": "fold_clothes-0002:p07:240:250",
+      "action_rows": 10,
+      "image_sha256": [
+        "e215026d740da39a403eb8eabe16898f3c694e4ee690400f60247f4673d143d8",
+        "2b926f9de3be9c7b1e80f2c84447e7ea1a059cb0b02bf9d12a1ec1099e5fb889"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p07",
+      "section": "open",
+      "window": "fold_clothes-0002:p07:240:250",
+      "action_rows": 10,
+      "image_sha256": [
+        "e215026d740da39a403eb8eabe16898f3c694e4ee690400f60247f4673d143d8",
+        "2b926f9de3be9c7b1e80f2c84447e7ea1a059cb0b02bf9d12a1ec1099e5fb889"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p08",
+      "section": "start",
+      "window": "fold_clothes-0002:p08:265:275",
+      "action_rows": 10,
+      "image_sha256": [
+        "02174b72965c190fc6952dce8c6d9e3401af449cba4ff270fd966feda64758db",
+        "7b9d002db7b211c546bec4c1bae457abfb3a306d0b78767a9523ee59f074ad60"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p08",
+      "section": "end",
+      "window": "fold_clothes-0002:p08:300:305",
+      "action_rows": 5,
+      "image_sha256": [
+        "333afe8dd373d4dfe196c3cecdd286f5f78e824fe94aa021138069c50a176f74",
+        "0fddececa7245fcc0b710000b3d4cf2f68bd5334c9e3eb42917d3d2eebee6319"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p08",
+      "section": "close",
+      "window": "fold_clothes-0002:p08:265:275",
+      "action_rows": 10,
+      "image_sha256": [
+        "02174b72965c190fc6952dce8c6d9e3401af449cba4ff270fd966feda64758db",
+        "7b9d002db7b211c546bec4c1bae457abfb3a306d0b78767a9523ee59f074ad60"
+      ]
+    },
+    {
+      "source": "fold_clothes-0002:p08",
+      "section": "open",
+      "window": "fold_clothes-0002:p08:270:280",
+      "action_rows": 10,
+      "image_sha256": [
+        "6a8a3bec0ade1fdb7528ca925f6b232255080952a1f85976002cf7f910ed802c",
+        "6749b23978658404e9b3fec6ac6dd01d337fbd33da0e4ec3351a01add17a1be8"
+      ]
+    }
+  ],
+  "prompt_sha256": "26aa5ab01f3a0b78546089a84fdebf04c428ded0f2bb5fbf3945f4e95df8796b",
+  "limits": "Information and interface alignment, not proof of restored success rate. Chinese/English arm aliases remain the documented compatibility change; no stage gate or subagent was introduced."
+}

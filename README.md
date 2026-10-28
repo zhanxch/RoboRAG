@@ -6,7 +6,9 @@
 
 ## 当前执行方式
 
-原版已经通过 `record_plan` 记录 `current_scene`、`steps` 和 `adaptation`。模型依据当前观察决定下一步；历史 graph 提供参考，不强制当前计划按示范节点执行。沿用原版参考图像和控制器，没有移植阶段 SOP、graph plan、阶段准入或阶段驱动执行。
+原版已经通过 `record_plan` 记录 `current_scene`、`steps` 和 `adaptation`。模型依据当前观察决定下一步。当前 fold 默认使用 manipulation SOP 示范目录，按明确引用展开经验片段；SOP 保留 v3 实际使用的历史内容，不要求当前计划按示范节点执行。沿用原版控制器，没有加入 graph plan、阶段准入或阶段驱动执行。
+
+独立 SOP 包只含 3 份示范概览、16 段已返回的操作文字、19 个实际展开的窗口和 37 张历史头部图片，约 3.56 MB。完整轨迹与原始动作数组不进入运行时包。缺失片段明确报错；不会回退读取旧完整图库。目录、来源和验证见 [SOP 包说明](docs/rag-mcp.md#独立-manipulation-sop-包)。
 
 基础修复接受检索参数中的“双臂”等等价写法，取消 delta 单次调用的 24 步上限，支持空目标保持段，并将速度超限的目标段自动延长后执行。回执区分请求、编译和实际执行步数，保留原版的跟踪误差与回合终止机制。[接口说明及历史回放](docs/rag-mcp.md#2026-10-28-基础接口修复的验证边界)列出具体变化；任务计划格式保持 v3，提示只同步接口说明。
 
@@ -16,13 +18,20 @@
 
 在本分支的工作目录中，使用 `local.runtime.json` 指定的策略 Python 环境。原生运行需要现有 RoboDojo/Isaac Sim、资产、HexaShell、MCP 依赖及已登录的策略 CLI；配置入口见[MCP 运行说明](docs/rag-mcp.md#运行)和[依赖配置](docs/runtime.md#local-setup)。这里的 `python` 指策略解释器。
 
-先将 `--bank` 替换为已有的 fold TRAIN 图库路径。输出目录必须是新的；以下命令会启动仿真并调用模型：
+当前工作区已生成 `artifacts/fold-v3-sop`。在保留原始 v3 日志和 TRAIN 归档的机器上，可离线重建到一个不存在的输出目录：
+
+```bash
+PYTHONPATH=src:.runtime/mcp python scripts/build_v3_sop_package.py
+PYTHONPATH=src:.runtime/mcp python scripts/verify_v3_sop_package.py
+```
+
+fold 默认读取独立 SOP 包；包不存在时明确提示构建，不自动回退旧图库。显式 `--bank` 仍可用于其他任务或登记过的旧库对照。输出目录必须是新的；以下命令会启动仿真并调用模型：
 
 ```bash
 python scripts/run_rag_mcp.py --task fold_clothes \
   --seed 1 --variant standard --layout 0 --controller delta \
   --model gpt-6-astra --effort xhigh --max-wall-seconds 1800 \
-  --bank /path/to/fold-clothes-bank --output runs/fold-single
+  --output runs/fold-single
 ```
 
 在另一终端查看运行中的交互，或去掉 `--follow` 读取已有轨迹快照：
@@ -37,6 +46,7 @@ PYTHONPATH=src python -m roborag.interaction_monitor runs/fold-single --follow
 
 - `src/roborag/rag_runner.py`：启动模型、MCP 和仿真进程，保存回合结果及来源。
 - `src/roborag/mcp/`：从原版 `rag_mcp.py` 移出的会话、观察、检索、计划与动作工具；旧导入入口保留。
+- `src/roborag/sop_store.py`：独立示范目录、轻量文字检索与按引用读取经验片段；不读取完整轨迹。
 - `src/roborag/interaction_monitor.py`：独立读取交互日志。
 - `prompts/`：沿用原版任务提示，动作协议说明同步已批准的接口变化。
 - `experiments/fold_clothes/`：预先登记的条件与固定场景。

@@ -1,4 +1,4 @@
-"""Unchanged v3 whole-example retrieval and reference expansion."""
+"""Retrieve example overviews and expand explicitly cited historical experiences."""
 
 import base64
 import json
@@ -10,10 +10,34 @@ from mcp.types import CallToolResult, ImageContent, TextContent
 from roborag.graph_chunks import select_reference_window
 from roborag.graph_retrieval import RetrievalArm
 from roborag.graph_server import frame_bytes
+from roborag.sop_store import SOPStore
+
+SOP_RETRIEVAL_DESCRIPTION = """Retrieve 1-2 manipulation SOP demonstrations as historical examples, not a new plan.
+
+Describe the CURRENT visible scene. Use once before planning; query again only
+for an information gap/recovery. Chinese queries match the original Chinese labels.
+Each overview preserves the v3 historical scene, operation directory and reported
+outcome. available_sections lists the independently stored experience sections.
+Use read_action_reference with the cited source and section to expand one directly.
+The SOP's recorded order does not constrain your current plan or execution.
+This package contains measured summaries and selected images, without raw action arrays.
+"""
+
+SOP_REFERENCE_DESCRIPTION = """Expand a cited manipulation SOP experience directly, without searching again.
+
+Use source=demonstration_id:phase_id and one of its available_sections from retrieval.
+Returns the archived before/after robot states, measured displacement and gripper
+summary, operation, historical feedback and optional recorded head images.
+Images are historical and do not replace current feedback. Command events do not
+prove physical grasp/release. Missing sections return an explicit error; there is
+no fallback to a full trajectory or another demonstration. include_actions must
+remain false because raw action arrays are not stored in this package.
+"""
 
 
 def register_tools(server, memory, read_only):
-    @server.tool(annotations=read_only)
+    @server.tool(annotations=read_only,
+                 description=SOP_RETRIEVAL_DESCRIPTION if isinstance(memory.bank, SOPStore) else None)
     def retrieve_evidence(goal: str, observation: str, mode: Literal["plan", "action"] = "plan",
                           arm: RetrievalArm = "", held_object: str = "", target_object: str = "") -> str:
         """Retrieve 1-2 cited examples from recorded demonstrations, not a new plan.
@@ -41,7 +65,8 @@ def register_tools(server, memory, read_only):
         memory.audit("retrieve_evidence", query, result)
         return result["model_context"]
 
-    @server.tool(annotations=read_only)
+    @server.tool(annotations=read_only,
+                 description=SOP_REFERENCE_DESCRIPTION if isinstance(memory.bank, SOPStore) else None)
     def read_action_reference(source: str, include_actions: bool = False, images: bool = True,
                               section: Literal["start", "end", "close", "open"] = "start") -> CallToolResult:
         """Expand graph_id:phase_id from a retrieved graph into historical before/action/after evidence.
@@ -58,23 +83,34 @@ def register_tools(server, memory, read_only):
         """
         if source not in memory.references or memory.no_rag:
             raise ToolError("Choose a source from retrieve_evidence first")
-        graph_id, node_id = source.split(":", 1)
-        retriever = memory.bank.retriever()
-        phase = next(p for p in retriever.index["phases"] if p["id"] == source)
-        graph = memory.bank.graph(graph_id)
-        window, selection = select_reference_window(memory.bank.source(graph),
-            retriever.by_phase[(graph_id, node_id)], section)
-        transition = retriever.chunk(window["id"])
-        if not include_actions:
-            transition.pop("actions", None)
-        packet = {"role": "HISTORICAL_REFERENCE", "source": source,
-                  "phase_interval": [phase["start"], phase["end"]], "window_section": section,
-                  "window_selection": selection,
-                  "before": phase["cue"], "operation": phase["action"], "phase_feedback": phase["feedback"],
-                  "transition": transition}
+        illustrations = None
+        if isinstance(memory.bank, SOPStore):
+            try:
+                packet, illustrations = memory.bank.reference(source, section, include_actions=include_actions, images=images)
+            except ValueError as exc:
+                raise ToolError(str(exc)) from exc
+        else:
+            graph_id, node_id = source.split(":", 1)
+            retriever = memory.bank.retriever()
+            phase = next(p for p in retriever.index["phases"] if p["id"] == source)
+            graph = memory.bank.graph(graph_id)
+            window, selection = select_reference_window(memory.bank.source(graph),
+                retriever.by_phase[(graph_id, node_id)], section)
+            transition = retriever.chunk(window["id"])
+            if not include_actions:
+                transition.pop("actions", None)
+            packet = {"role": "HISTORICAL_REFERENCE", "source": source,
+                      "phase_interval": [phase["start"], phase["end"]], "window_section": section,
+                      "window_selection": selection,
+                      "before": phase["cue"], "operation": phase["action"], "phase_feedback": phase["feedback"],
+                      "transition": transition}
         memory.audit("read_action_reference", dict(source=source, include_actions=include_actions, images=images, section=section), packet)
         content = [TextContent(type="text", text=json.dumps(packet, ensure_ascii=False, separators=(",", ":")))]
-        if images:
+        if illustrations is not None:
+            for label, raw in illustrations:
+                content += [TextContent(type="text", text=label),
+                            ImageContent(type="image", mimeType="image/jpeg", data=base64.b64encode(raw).decode())]
+        elif images:
             graph = memory.bank.graph(graph_id)
             for label, frame in (("before", window["start"]), ("after", window["end"])):
                 content += [TextContent(type="text", text=f"HISTORICAL {source} {label} frame {frame}"),

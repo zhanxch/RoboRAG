@@ -10,12 +10,12 @@ from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import CallToolResult, ImageContent, TextContent
 
 from roborag.episode_files import write_json
-from roborag.graph_server import BankStore
+from roborag.sop_store import open_evidence_bank
 
 
 class EpisodeMemory:
     def __init__(self, bank, data, workspace, output, task, no_rag=False, controller="tcp"):
-        self.bank = BankStore(bank, data)
+        self.bank = open_evidence_bank(bank, data)
         self.workspace, self.output = Path(workspace), Path(output)
         self.task, self.no_rag = task, no_rag
         self.controller = controller

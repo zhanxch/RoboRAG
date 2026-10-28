@@ -21,6 +21,7 @@ from .hexashell_agent import run_agent
 from .episode_files import write_json as save, read_jsonl
 from .rag_accounting import control_accounting, workflow_completed
 from .rag_tasks import prompt_for, simulation_task
+from .sop_store import default_bank, evidence_source_paths, sop_prompt
 
 
 def digest(path):
@@ -53,7 +54,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--task", choices=["stack_blocks", "fold_clothes"], default="stack_blocks")
     parser.add_argument("--variant", choices=["standard", "random"], default="standard")
-    parser.add_argument("--bank", type=Path, default=ROOT / "data/graph-bank/v1")
+    parser.add_argument("--bank", type=Path, help="Evidence package; fold defaults to artifacts/fold-v3-sop")
     parser.add_argument("--layout", type=int, default=0)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--model", default="gpt-6-astra")
@@ -62,8 +63,14 @@ def main():
     parser.add_argument("--no-rag", action="store_true")
     parser.add_argument("--controller", choices=["tcp", "delta"], default="delta")
     args = parser.parse_args()
+    if args.bank is None:
+        args.bank = default_bank(ROOT, args.task)
+        if args.task == "fold_clothes" and not (args.bank / "manifest.json").exists():
+            parser.error("Build the standalone fold SOP package with scripts/build_v3_sop_package.py first")
     task = simulation_task(args.task, args.variant)
     prompt = prompt_for(ROOT, args.task, args.controller, no_rag=args.no_rag)
+    if (args.bank / "manifest.json").exists():
+        prompt = sop_prompt(prompt)
     runtime = json.loads((ROOT / "local.runtime.json").read_text())
     sys.path.insert(0, runtime["upstream"])
     from roboicl.paths import python_paths
@@ -94,10 +101,9 @@ def main():
         "--port", str(port), "--controller", args.controller, "--task", args.task] + (["--no-rag"] if args.no_rag else [])
     paths = [ROOT / "src/roborag" / name for name in ("rag_mcp.py", "rag_execution.py", "rag_sim.py",
         "hexashell_adapter.py", "hexashell_agent.py", "graph_retrieval.py", "graph_chunks.py",
-        "rag_tasks.py", "rag_accounting.py", "episode_files.py", "scene_measurements.py", "action_targets.py")]
+        "rag_tasks.py", "rag_accounting.py", "episode_files.py", "scene_measurements.py", "action_targets.py", "sop_store.py")]
     paths += sorted((ROOT / "src/roborag/mcp").glob("*.py"))
-    paths += [Path(__file__).resolve(), args.bank.resolve() / "execution-index.json"]
-    paths += sorted((args.bank.resolve() / "graphs").glob("*.json"))
+    paths += [Path(__file__).resolve(), *evidence_source_paths(args.bank.resolve())]
     paths += sorted((hexa / "tasks/fold_clothes/tools/cloth_view").glob("*.py"))
     paths += [hexa / "tools/table_plane/tool.py"]
     save(output / "run.json", dict(started_at=datetime.now(timezone.utc).isoformat(),

@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-28T02:55:17.924401+00:00",
+  "batch_complete": true,
+  "processes_checked": 52,
+  "live_pids": [],
+  "source_sha256": {
+    "runs/v3-original-control-20261028/status.json": "3de60bc0183e441fe88602c50a00bfacd6fafc42f3d756b8e49bd6a0d2492912",
+    "runs/v3-original-control-20261028.completed-audit.json": "d80fda6df74496851ee3f0fa3fcc34cab76e165e35d02b8dc37d8981ee64c438",
+    "runs/v3-original-control-20261028.runtime-incidents.jsonl": "eca93301b53b846145972c5d8a99b669b3889fae5a1403999583bdc5049a40b3"
+  }
+}

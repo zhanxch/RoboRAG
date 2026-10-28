@@ -59,7 +59,14 @@
 
 已登记原版 `1e9ffa0` 在当前环境下的[50 例对照协议](../experiments/fold_clothes/v3-original-control-20261028.json)，使用同一组场景和预算，区分原版自身的重现波动与重构引入的偏差。对照是额外的诊断证据，不覆盖这次结果，不从多次尝试挑选最高成绩。发现具体输入或执行差异后，再决定必要修复。调度器仅复用已验证的 seed 透传；每个策略、MCP 和仿真子进程均由原版目录启动，逐例核对原版源码哈希。
 
-对照的 standard 11 在模型启动时收到 `Selected model is at capacity`，执行任何动作前退出，没有原生评分。按登记协议保留为未评分中断，不补跑、不换模型，也不将它算作机器人任务失败。模型用量未返回，不能记为零；退出耗时和来源核验见[中断记录](../results/v3-original-control-capacity-interruption-20261028.json)。其余病例继续原定测试。
+这轮原版对照已结束：50 次尝试中，45 次取得评分，33 成功、12 失败；5 次未评分。
+standard 11 在模型启动时收到 `Selected model is at capacity`；standard/random 23 和 24 在持续连接错误期间达到原定 1800 秒超时。
+未评分尝试没有补跑、替换或延长预算，原生成败与缺失的模型用量保持未知，不能记为失败或零消耗。
+全部 50 次的来源与日志核验通过，调度器、监控及 50 个工作进程均已结束，详见[对照最终汇总](../results/v3-original-control-20261028-summary.json)。
+
+只比较双方都有评分的同一组 45 例，历史 v3 与当前原版均为 33 次成功，但有 9 例由失败变成功、另 9 例由成功变失败。
+同一组上的首轮重构为 31 次成功、当前原版为 33 次。这个顺序运行的诊断对照反映了逐例重现波动，不能证明统计等效，
+也不能把首轮重构的 35/50 改判为通过。后续基础接口修复的成绩需要另行验证。
 
 ## 证据入口
 
@@ -70,6 +77,8 @@
 - [历史参考文本及图像回放](../results/v3-clean-visual-history-20261027.json)
 - [网络和延迟记录](../results/v3-clean-runtime-incidents-20261027.json)
 - [原生评分逻辑与当前运行依赖补充记录](../results/v3-runtime-observation-20261028.json)（对照运行期间观测，不是历史环境快照）
+- [原版对照 50 次尝试核验](../results/v3-original-control-20261028-completed-audit.json)
+- [原版对照终止状态](../results/v3-original-control-20261028-terminal.json)
 - [standard 0 首次决策的三组记录](../results/v3-first-decision-example-20261028.json)（测得抓取点和主要示范相同，生成的检索请求及首段动作不同；单例差异，不作失败因果归因）
 - [登记协议](../experiments/fold_clothes/v3-clean-20261027.json)
 - [原生轨迹目录](../runs/v3-clean-fold-20261027)

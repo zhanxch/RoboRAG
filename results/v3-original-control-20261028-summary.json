@@ -1,0 +1,1278 @@
+{
+  "schema": "roborag.original-v3-control-final-summary.v1",
+  "generated_at": "2026-10-28T02:55:19.086267+00:00",
+  "counts": {
+    "attempts_closed": 50,
+    "scored": 45,
+    "unscored": 5,
+    "successes": 33,
+    "scored_failures": 12
+  },
+  "attempt_span_seconds": 16057.42507314682,
+  "attempt_span_note": "First worker start to last worker end; distinct from sum of episode times.",
+  "comparisons": {
+    "history": {
+      "both_scored": {
+        "count": 45,
+        "excluded_unscored": [
+          {
+            "case": "seed1-random-l23",
+            "baseline_success": true,
+            "control_success": null
+          },
+          {
+            "case": "seed1-random-l24",
+            "baseline_success": true,
+            "control_success": null
+          },
+          {
+            "case": "seed1-standard-l11",
+            "baseline_success": true,
+            "control_success": null
+          },
+          {
+            "case": "seed1-standard-l23",
+            "baseline_success": true,
+            "control_success": null
+          },
+          {
+            "case": "seed1-standard-l24",
+            "baseline_success": false,
+            "control_success": null
+          }
+        ],
+        "baseline_successes": 33,
+        "control_successes": 33,
+        "joint_success": {
+          "count": 24,
+          "cases": [
+            "seed1-random-l1",
+            "seed1-random-l10",
+            "seed1-random-l11",
+            "seed1-random-l13",
+            "seed1-random-l14",
+            "seed1-random-l17",
+            "seed1-random-l18",
+            "seed1-random-l20",
+            "seed1-random-l21",
+            "seed1-random-l4",
+            "seed1-random-l7",
+            "seed1-random-l9",
+            "seed1-standard-l1",
+            "seed1-standard-l10",
+            "seed1-standard-l12",
+            "seed1-standard-l13",
+            "seed1-standard-l15",
+            "seed1-standard-l18",
+            "seed1-standard-l20",
+            "seed1-standard-l21",
+            "seed1-standard-l5",
+            "seed1-standard-l6",
+            "seed1-standard-l8",
+            "seed1-standard-l9"
+          ]
+        },
+        "gains": {
+          "count": 9,
+          "cases": [
+            "seed1-random-l15",
+            "seed1-random-l19",
+            "seed1-random-l3",
+            "seed1-random-l5",
+            "seed1-random-l6",
+            "seed1-standard-l17",
+            "seed1-standard-l2",
+            "seed1-standard-l3",
+            "seed1-standard-l7"
+          ]
+        },
+        "losses": {
+          "count": 9,
+          "cases": [
+            "seed1-random-l12",
+            "seed1-random-l16",
+            "seed1-random-l22",
+            "seed1-random-l8",
+            "seed1-standard-l0",
+            "seed1-standard-l14",
+            "seed1-standard-l16",
+            "seed1-standard-l19",
+            "seed1-standard-l22"
+          ]
+        },
+        "joint_failure": {
+          "count": 3,
+          "cases": [
+            "seed1-random-l0",
+            "seed1-random-l2",
+            "seed1-standard-l4"
+          ]
+        }
+      },
+      "by_variant": {
+        "random": {
+          "count": 23,
+          "excluded_unscored": [
+            {
+              "case": "seed1-random-l23",
+              "baseline_success": true,
+              "control_success": null
+            },
+            {
+              "case": "seed1-random-l24",
+              "baseline_success": true,
+              "control_success": null
+            }
+          ],
+          "baseline_successes": 16,
+          "control_successes": 17,
+          "joint_success": {
+            "count": 12,
+            "cases": [
+              "seed1-random-l1",
+              "seed1-random-l10",
+              "seed1-random-l11",
+              "seed1-random-l13",
+              "seed1-random-l14",
+              "seed1-random-l17",
+              "seed1-random-l18",
+              "seed1-random-l20",
+              "seed1-random-l21",
+              "seed1-random-l4",
+              "seed1-random-l7",
+              "seed1-random-l9"
+            ]
+          },
+          "gains": {
+            "count": 5,
+            "cases": [
+              "seed1-random-l15",
+              "seed1-random-l19",
+              "seed1-random-l3",
+              "seed1-random-l5",
+              "seed1-random-l6"
+            ]
+          },
+          "losses": {
+            "count": 4,
+            "cases": [
+              "seed1-random-l12",
+              "seed1-random-l16",
+              "seed1-random-l22",
+              "seed1-random-l8"
+            ]
+          },
+          "joint_failure": {
+            "count": 2,
+            "cases": [
+              "seed1-random-l0",
+              "seed1-random-l2"
+            ]
+          }
+        },
+        "standard": {
+          "count": 22,
+          "excluded_unscored": [
+            {
+              "case": "seed1-standard-l11",
+              "baseline_success": true,
+              "control_success": null
+            },
+            {
+              "case": "seed1-standard-l23",
+              "baseline_success": true,
+              "control_success": null
+            },
+            {
+              "case": "seed1-standard-l24",
+              "baseline_success": false,
+              "control_success": null
+            }
+          ],
+          "baseline_successes": 17,
+          "control_successes": 16,
+          "joint_success": {
+            "count": 12,
+            "cases": [
+              "seed1-standard-l1",
+              "seed1-standard-l10",
+              "seed1-standard-l12",
+              "seed1-standard-l13",
+              "seed1-standard-l15",
+              "seed1-standard-l18",
+              "seed1-standard-l20",
+              "seed1-standard-l21",
+              "seed1-standard-l5",
+              "seed1-standard-l6",
+              "seed1-standard-l8",
+              "seed1-standard-l9"
+            ]
+          },
+          "gains": {
+            "count": 4,
+            "cases": [
+              "seed1-standard-l17",
+              "seed1-standard-l2",
+              "seed1-standard-l3",
+              "seed1-standard-l7"
+            ]
+          },
+          "losses": {
+            "count": 5,
+            "cases": [
+              "seed1-standard-l0",
+              "seed1-standard-l14",
+              "seed1-standard-l16",
+              "seed1-standard-l19",
+              "seed1-standard-l22"
+            ]
+          },
+          "joint_failure": {
+            "count": 1,
+            "cases": [
+              "seed1-standard-l4"
+            ]
+          }
+        }
+      },
+      "all_attempts": {
+        "baseline": {
+          "planned": 50,
+          "recorded": 50,
+          "scored": 50,
+          "successes": 37,
+          "success_rate": 0.74,
+          "scored_success_rate": 0.74,
+          "mean_progress": 78.4,
+          "mean_control_steps": 389.48,
+          "mean_successful_control_steps": 378.43243243243245,
+          "mean_wall_seconds": 474.0424238859746,
+          "mean_agent_wall_seconds": 428.9804343816615,
+          "sum_episode_wall_seconds": 23702.12119429873,
+          "sum_episode_wall_seconds_known_lower_bound": 23702.12119429873,
+          "usage": {
+            "input_tokens": 93614914,
+            "input_tokens_known_lower_bound": 93614914,
+            "cached_input_tokens": 89768064,
+            "cached_input_tokens_known_lower_bound": 89768064,
+            "output_tokens": 542667,
+            "output_tokens_known_lower_bound": 542667,
+            "reasoning_output_tokens": 205340,
+            "reasoning_output_tokens_known_lower_bound": 205340
+          },
+          "uncached_input_tokens": 3846850,
+          "input_cache_fraction": 0.9589077227587903,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "candidate": {
+          "planned": 50,
+          "recorded": 50,
+          "scored": 45,
+          "successes": 33,
+          "success_rate": null,
+          "scored_success_rate": 0.7333333333333333,
+          "mean_progress": 77.77777777777777,
+          "mean_control_steps": 372.5777777777778,
+          "mean_successful_control_steps": 363.72727272727275,
+          "mean_wall_seconds": 632.8394226976344,
+          "mean_agent_wall_seconds": 586.7518099986249,
+          "sum_episode_wall_seconds": 31641.97113488172,
+          "sum_episode_wall_seconds_known_lower_bound": 31641.97113488172,
+          "usage": {
+            "input_tokens": null,
+            "input_tokens_known_lower_bound": 78091741,
+            "cached_input_tokens": null,
+            "cached_input_tokens_known_lower_bound": 74688640,
+            "output_tokens": null,
+            "output_tokens_known_lower_bound": 450697,
+            "reasoning_output_tokens": null,
+            "reasoning_output_tokens_known_lower_bound": 160045
+          },
+          "uncached_input_tokens": null,
+          "input_cache_fraction": null,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      },
+      "usage_coverage": {
+        "baseline": {
+          "attempts": 50,
+          "known_attempts": {
+            "input_tokens": 50,
+            "cached_input_tokens": 50,
+            "output_tokens": 50,
+            "reasoning_output_tokens": 50
+          },
+          "known_uncached_attempts": 50,
+          "uncached_input_tokens_known_lower_bound": 3846850,
+          "note": "Missing usage remains unknown; known lower bounds are not full totals."
+        },
+        "candidate": {
+          "attempts": 50,
+          "known_attempts": {
+            "input_tokens": 45,
+            "cached_input_tokens": 45,
+            "output_tokens": 45,
+            "reasoning_output_tokens": 45
+          },
+          "known_uncached_attempts": 45,
+          "uncached_input_tokens_known_lower_bound": 3403101,
+          "note": "Missing usage remains unknown; known lower bounds are not full totals."
+        }
+      },
+      "jointly_successful": {
+        "count": 24,
+        "baseline": {
+          "planned": 24,
+          "recorded": 24,
+          "scored": 24,
+          "successes": 24,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 367.2916666666667,
+          "mean_successful_control_steps": 367.2916666666667,
+          "mean_wall_seconds": 435.47720330027124,
+          "mean_agent_wall_seconds": 388.47722243233875,
+          "sum_episode_wall_seconds": 10451.45287920651,
+          "sum_episode_wall_seconds_known_lower_bound": 10451.45287920651,
+          "usage": {
+            "input_tokens": 39129063,
+            "input_tokens_known_lower_bound": 39129063,
+            "cached_input_tokens": 37423360,
+            "cached_input_tokens_known_lower_bound": 37423360,
+            "output_tokens": 235768,
+            "output_tokens_known_lower_bound": 235768,
+            "reasoning_output_tokens": 88074,
+            "reasoning_output_tokens_known_lower_bound": 88074
+          },
+          "uncached_input_tokens": 1705703,
+          "input_cache_fraction": 0.9564082840419664,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "candidate": {
+          "planned": 24,
+          "recorded": 24,
+          "scored": 24,
+          "successes": 24,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 368.7083333333333,
+          "mean_successful_control_steps": 368.7083333333333,
+          "mean_wall_seconds": 499.29088771649793,
+          "mean_agent_wall_seconds": 456.9145938213721,
+          "sum_episode_wall_seconds": 11982.98130519595,
+          "sum_episode_wall_seconds_known_lower_bound": 11982.98130519595,
+          "usage": {
+            "input_tokens": 38205848,
+            "input_tokens_known_lower_bound": 38205848,
+            "cached_input_tokens": 36502912,
+            "cached_input_tokens_known_lower_bound": 36502912,
+            "output_tokens": 222271,
+            "output_tokens_known_lower_bound": 222271,
+            "reasoning_output_tokens": 77143,
+            "reasoning_output_tokens_known_lower_bound": 77143
+          },
+          "uncached_input_tokens": 1702936,
+          "input_cache_fraction": 0.955427347143296,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      }
+    },
+    "refactor": {
+      "both_scored": {
+        "count": 45,
+        "excluded_unscored": [
+          {
+            "case": "seed1-random-l23",
+            "baseline_success": false,
+            "control_success": null
+          },
+          {
+            "case": "seed1-random-l24",
+            "baseline_success": true,
+            "control_success": null
+          },
+          {
+            "case": "seed1-standard-l11",
+            "baseline_success": true,
+            "control_success": null
+          },
+          {
+            "case": "seed1-standard-l23",
+            "baseline_success": true,
+            "control_success": null
+          },
+          {
+            "case": "seed1-standard-l24",
+            "baseline_success": true,
+            "control_success": null
+          }
+        ],
+        "baseline_successes": 31,
+        "control_successes": 33,
+        "joint_success": {
+          "count": 21,
+          "cases": [
+            "seed1-random-l1",
+            "seed1-random-l14",
+            "seed1-random-l17",
+            "seed1-random-l18",
+            "seed1-random-l19",
+            "seed1-random-l20",
+            "seed1-random-l3",
+            "seed1-random-l4",
+            "seed1-random-l5",
+            "seed1-random-l9",
+            "seed1-standard-l1",
+            "seed1-standard-l12",
+            "seed1-standard-l13",
+            "seed1-standard-l15",
+            "seed1-standard-l17",
+            "seed1-standard-l18",
+            "seed1-standard-l2",
+            "seed1-standard-l21",
+            "seed1-standard-l5",
+            "seed1-standard-l8",
+            "seed1-standard-l9"
+          ]
+        },
+        "gains": {
+          "count": 12,
+          "cases": [
+            "seed1-random-l10",
+            "seed1-random-l11",
+            "seed1-random-l13",
+            "seed1-random-l15",
+            "seed1-random-l21",
+            "seed1-random-l6",
+            "seed1-random-l7",
+            "seed1-standard-l10",
+            "seed1-standard-l20",
+            "seed1-standard-l3",
+            "seed1-standard-l6",
+            "seed1-standard-l7"
+          ]
+        },
+        "losses": {
+          "count": 10,
+          "cases": [
+            "seed1-random-l0",
+            "seed1-random-l16",
+            "seed1-random-l2",
+            "seed1-random-l22",
+            "seed1-random-l8",
+            "seed1-standard-l0",
+            "seed1-standard-l16",
+            "seed1-standard-l19",
+            "seed1-standard-l22",
+            "seed1-standard-l4"
+          ]
+        },
+        "joint_failure": {
+          "count": 2,
+          "cases": [
+            "seed1-random-l12",
+            "seed1-standard-l14"
+          ]
+        }
+      },
+      "by_variant": {
+        "random": {
+          "count": 23,
+          "excluded_unscored": [
+            {
+              "case": "seed1-random-l23",
+              "baseline_success": false,
+              "control_success": null
+            },
+            {
+              "case": "seed1-random-l24",
+              "baseline_success": true,
+              "control_success": null
+            }
+          ],
+          "baseline_successes": 15,
+          "control_successes": 17,
+          "joint_success": {
+            "count": 10,
+            "cases": [
+              "seed1-random-l1",
+              "seed1-random-l14",
+              "seed1-random-l17",
+              "seed1-random-l18",
+              "seed1-random-l19",
+              "seed1-random-l20",
+              "seed1-random-l3",
+              "seed1-random-l4",
+              "seed1-random-l5",
+              "seed1-random-l9"
+            ]
+          },
+          "gains": {
+            "count": 7,
+            "cases": [
+              "seed1-random-l10",
+              "seed1-random-l11",
+              "seed1-random-l13",
+              "seed1-random-l15",
+              "seed1-random-l21",
+              "seed1-random-l6",
+              "seed1-random-l7"
+            ]
+          },
+          "losses": {
+            "count": 5,
+            "cases": [
+              "seed1-random-l0",
+              "seed1-random-l16",
+              "seed1-random-l2",
+              "seed1-random-l22",
+              "seed1-random-l8"
+            ]
+          },
+          "joint_failure": {
+            "count": 1,
+            "cases": [
+              "seed1-random-l12"
+            ]
+          }
+        },
+        "standard": {
+          "count": 22,
+          "excluded_unscored": [
+            {
+              "case": "seed1-standard-l11",
+              "baseline_success": true,
+              "control_success": null
+            },
+            {
+              "case": "seed1-standard-l23",
+              "baseline_success": true,
+              "control_success": null
+            },
+            {
+              "case": "seed1-standard-l24",
+              "baseline_success": true,
+              "control_success": null
+            }
+          ],
+          "baseline_successes": 16,
+          "control_successes": 16,
+          "joint_success": {
+            "count": 11,
+            "cases": [
+              "seed1-standard-l1",
+              "seed1-standard-l12",
+              "seed1-standard-l13",
+              "seed1-standard-l15",
+              "seed1-standard-l17",
+              "seed1-standard-l18",
+              "seed1-standard-l2",
+              "seed1-standard-l21",
+              "seed1-standard-l5",
+              "seed1-standard-l8",
+              "seed1-standard-l9"
+            ]
+          },
+          "gains": {
+            "count": 5,
+            "cases": [
+              "seed1-standard-l10",
+              "seed1-standard-l20",
+              "seed1-standard-l3",
+              "seed1-standard-l6",
+              "seed1-standard-l7"
+            ]
+          },
+          "losses": {
+            "count": 5,
+            "cases": [
+              "seed1-standard-l0",
+              "seed1-standard-l16",
+              "seed1-standard-l19",
+              "seed1-standard-l22",
+              "seed1-standard-l4"
+            ]
+          },
+          "joint_failure": {
+            "count": 1,
+            "cases": [
+              "seed1-standard-l14"
+            ]
+          }
+        }
+      },
+      "all_attempts": {
+        "baseline": {
+          "planned": 50,
+          "recorded": 50,
+          "scored": 50,
+          "successes": 35,
+          "success_rate": 0.7,
+          "scored_success_rate": 0.7,
+          "mean_progress": 74.8,
+          "mean_control_steps": 374.38,
+          "mean_successful_control_steps": 361.45714285714286,
+          "mean_wall_seconds": 620.5465637765592,
+          "mean_agent_wall_seconds": 577.4401218655705,
+          "sum_episode_wall_seconds": 31027.32818882796,
+          "sum_episode_wall_seconds_known_lower_bound": 31027.32818882796,
+          "usage": {
+            "input_tokens": 88693616,
+            "input_tokens_known_lower_bound": 88693616,
+            "cached_input_tokens": 84680192,
+            "cached_input_tokens_known_lower_bound": 84680192,
+            "output_tokens": 517563,
+            "output_tokens_known_lower_bound": 517563,
+            "reasoning_output_tokens": 194243,
+            "reasoning_output_tokens_known_lower_bound": 194243
+          },
+          "uncached_input_tokens": 4013424,
+          "input_cache_fraction": 0.9547495729568631,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "candidate": {
+          "planned": 50,
+          "recorded": 50,
+          "scored": 45,
+          "successes": 33,
+          "success_rate": null,
+          "scored_success_rate": 0.7333333333333333,
+          "mean_progress": 77.77777777777777,
+          "mean_control_steps": 372.5777777777778,
+          "mean_successful_control_steps": 363.72727272727275,
+          "mean_wall_seconds": 632.8394226976344,
+          "mean_agent_wall_seconds": 586.7518099986249,
+          "sum_episode_wall_seconds": 31641.97113488172,
+          "sum_episode_wall_seconds_known_lower_bound": 31641.97113488172,
+          "usage": {
+            "input_tokens": null,
+            "input_tokens_known_lower_bound": 78091741,
+            "cached_input_tokens": null,
+            "cached_input_tokens_known_lower_bound": 74688640,
+            "output_tokens": null,
+            "output_tokens_known_lower_bound": 450697,
+            "reasoning_output_tokens": null,
+            "reasoning_output_tokens_known_lower_bound": 160045
+          },
+          "uncached_input_tokens": null,
+          "input_cache_fraction": null,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      },
+      "usage_coverage": {
+        "baseline": {
+          "attempts": 50,
+          "known_attempts": {
+            "input_tokens": 50,
+            "cached_input_tokens": 50,
+            "output_tokens": 50,
+            "reasoning_output_tokens": 50
+          },
+          "known_uncached_attempts": 50,
+          "uncached_input_tokens_known_lower_bound": 4013424,
+          "note": "Missing usage remains unknown; known lower bounds are not full totals."
+        },
+        "candidate": {
+          "attempts": 50,
+          "known_attempts": {
+            "input_tokens": 45,
+            "cached_input_tokens": 45,
+            "output_tokens": 45,
+            "reasoning_output_tokens": 45
+          },
+          "known_uncached_attempts": 45,
+          "uncached_input_tokens_known_lower_bound": 3403101,
+          "note": "Missing usage remains unknown; known lower bounds are not full totals."
+        }
+      },
+      "jointly_successful": {
+        "count": 21,
+        "baseline": {
+          "planned": 21,
+          "recorded": 21,
+          "scored": 21,
+          "successes": 21,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 355.57142857142856,
+          "mean_successful_control_steps": 355.57142857142856,
+          "mean_wall_seconds": 574.386021748662,
+          "mean_agent_wall_seconds": 531.3622875847144,
+          "sum_episode_wall_seconds": 12062.1064567219,
+          "sum_episode_wall_seconds_known_lower_bound": 12062.1064567219,
+          "usage": {
+            "input_tokens": 34771701,
+            "input_tokens_known_lower_bound": 34771701,
+            "cached_input_tokens": 33091968,
+            "cached_input_tokens_known_lower_bound": 33091968,
+            "output_tokens": 204191,
+            "output_tokens_known_lower_bound": 204191,
+            "reasoning_output_tokens": 74487,
+            "reasoning_output_tokens_known_lower_bound": 74487
+          },
+          "uncached_input_tokens": 1679733,
+          "input_cache_fraction": 0.9516925272076854,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        },
+        "candidate": {
+          "planned": 21,
+          "recorded": 21,
+          "scored": 21,
+          "successes": 21,
+          "success_rate": 1.0,
+          "scored_success_rate": 1.0,
+          "mean_progress": 100.0,
+          "mean_control_steps": 355.1904761904762,
+          "mean_successful_control_steps": 355.1904761904762,
+          "mean_wall_seconds": 493.8624744332795,
+          "mean_agent_wall_seconds": 451.7458481829214,
+          "sum_episode_wall_seconds": 10371.111963098869,
+          "sum_episode_wall_seconds_known_lower_bound": 10371.111963098869,
+          "usage": {
+            "input_tokens": 32825183,
+            "input_tokens_known_lower_bound": 32825183,
+            "cached_input_tokens": 31331200,
+            "cached_input_tokens_known_lower_bound": 31331200,
+            "output_tokens": 190003,
+            "output_tokens_known_lower_bound": 190003,
+            "reasoning_output_tokens": 63722,
+            "reasoning_output_tokens_known_lower_bound": 63722
+          },
+          "uncached_input_tokens": 1493983,
+          "input_cache_fraction": 0.9544866817650339,
+          "actual_billed_usd": null,
+          "model_request_count": null
+        }
+      }
+    }
+  },
+  "observed_runtime_incidents": [
+    {
+      "id": "original-control-network-1",
+      "observed_at": "2026-10-27T21:43:45.114308+00:00",
+      "cases": [
+        {
+          "case": "seed1-standard-l7",
+          "event_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l7/agent-events.jsonl",
+          "stderr_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l7/agent-stderr.log",
+          "event_log_sha256_at_observation": "c5db42aeaedb98f01dae8b0b15d5f8183b90a8affe0c86bc048d9d543e5a5c04",
+          "messages": [
+            "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)",
+            "Falling back from WebSockets to HTTPS transport. stream disconnected before completion: tls handshake eof",
+            "Reconnecting... waiting for network (Connection failed: error sending request)"
+          ],
+          "stderr_first_matching_time": "2026-10-27T21:40:17.362684Z",
+          "stderr_last_matching_time": "2026-10-27T21:41:16.676482Z",
+          "scored_at_observation": true,
+          "native_at_observation": {
+            "success_rate": 1.0,
+            "eval_time": 1,
+            "score": 100.0,
+            "details": {
+              "0": {
+                "layout_id": 7,
+                "success": true,
+                "score": 1.0
+              }
+            }
+          },
+          "wall_seconds_at_observation": 753.6440938480664
+        },
+        {
+          "case": "seed1-random-l6",
+          "event_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l6/agent-events.jsonl",
+          "stderr_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l6/agent-stderr.log",
+          "event_log_sha256_at_observation": "cdb5a03c322b990cfd7856fd9242458e2aa11c9da7381576c18c6857c006c737",
+          "messages": [
+            "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)",
+            "Falling back from WebSockets to HTTPS transport. stream disconnected before completion: tls handshake eof"
+          ],
+          "stderr_first_matching_time": "2026-10-27T21:40:32.722817Z",
+          "stderr_last_matching_time": "2026-10-27T21:41:04.090561Z",
+          "scored_at_observation": false,
+          "native_at_observation": null,
+          "wall_seconds_at_observation": null
+        }
+      ],
+      "observation_gap": {
+        "last_health_utc": "2026-10-27T21:35:36Z",
+        "next_health_utc": "2026-10-27T21:42:40Z",
+        "note": "Assistant observation gap; not a precise measure of network outage. Original driver3048081 and running worker handles were re-polled and confirmed live; no restart."
+      },
+      "handling": "Native CLI transport retries/fallback within original episode budgets. Preserve all scored outcomes and elapsed costs; no policy edit, manual restart, result replacement or budget extension.",
+      "causality": "No claim that connection errors caused an episode outcome."
+    },
+    {
+      "id": "original-control-network-1-resolution",
+      "incident_id": "original-control-network-1",
+      "observed_at": "2026-10-27T21:46:03.530934+00:00",
+      "cases": [
+        {
+          "case": "seed1-standard-l7",
+          "native": {
+            "success_rate": 1.0,
+            "eval_time": 1,
+            "score": 100.0,
+            "details": {
+              "0": {
+                "layout_id": 7,
+                "success": true,
+                "score": 1.0
+              }
+            }
+          },
+          "wall_seconds": 753.6440938480664,
+          "control_steps": 287,
+          "source_hashes": {
+            "agent-events.jsonl": "c5db42aeaedb98f01dae8b0b15d5f8183b90a8affe0c86bc048d9d543e5a5c04",
+            "agent-stderr.log": "f61a8578320845a5db57b44f1942edf5bcf489e29e30c272c36d4253a135c568",
+            "episode_end.json": "a829e2c76b8238db001b549927c7fdac06b954b3e4b4d818f5e51e63b535c444",
+            "result.json": "f64abd13b82d70b9e557a069debdc157f26d2a9102010d39f796ff748d01e1c5"
+          }
+        },
+        {
+          "case": "seed1-random-l6",
+          "native": {
+            "success_rate": 1.0,
+            "eval_time": 1,
+            "score": 100.0,
+            "details": {
+              "0": {
+                "layout_id": 6,
+                "success": true,
+                "score": 1.0
+              }
+            }
+          },
+          "wall_seconds": 1043.0352383989375,
+          "control_steps": 452,
+          "source_hashes": {
+            "agent-events.jsonl": "3c762ff5fe41b5a8f8ee6af4c369f7435aa432cb33e5fe852851d1fee0aab3ad",
+            "agent-stderr.log": "111370cd953e2f8fc73c8f8fc3d68acf16500a04054f5576c698ba3fa4460897",
+            "episode_end.json": "4ffb745046be2187cbd317ba38c5382eb295f98678ee1e11011ef8a251341d05",
+            "result.json": "86dd335c98769366d9782ca0ff341cf8b7e2b819ddffd0245f78cb28998db230"
+          }
+        }
+      ],
+      "handling": "Both original episodes completed and were audited; no restarts, budget extensions or replacements. Costs include waiting time.",
+      "causality": "Successful outcomes do not demonstrate that connection delay has no performance effect."
+    },
+    {
+      "schema": "roborag.original-control-interruption.v1",
+      "id": "original-control-capacity-1",
+      "observed_at": "2026-10-27T22:13:05.042766+00:00",
+      "case": "seed1-standard-l11",
+      "error": "Selected model is at capacity. Please try a different model.",
+      "audit": {
+        "case": "seed1-standard-l11",
+        "source_and_prompt_verified": true,
+        "original_v3_conditions_match": true,
+        "source_files_verified": 32,
+        "original_success": true,
+        "attempt_wall_seconds": 122.77434873580933,
+        "status": "unscored",
+        "native_score": null,
+        "success": null,
+        "classification": "model_capacity_before_execution",
+        "control_steps_lower_bound": 0,
+        "wall_seconds": 106.77042541000992,
+        "model_usage": null,
+        "failure": {
+          "complete": false,
+          "error": "RuntimeError",
+          "detail": "Persistent Codex agent failed; see agent-events.jsonl and agent-stderr.log",
+          "wall_seconds": 106.77042541000992
+        },
+        "evidence_sha256": {
+          "exit.json": "7f75dc017fa9b688142558e116e3e3390a4374a6448536693d64734fbce0c5a2",
+          "agent-exit.json": "f74250eadb72007e263185e24716e85b6d169002066c8b7f00642c894338bcee",
+          "agent-events.jsonl": "a5422941eb0d8dfcbde8d7c372d57c75078d0844a35c13dba0fc50227bf7c842",
+          "agent-stderr.log": "e61bcd04ab723ad06eef3e98c213365216f3cee0d2dc5b73592e78c801865cae",
+          "actions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready.json": "32637ab85c9f4f2e3189d1f18eb7f9b35f827f802b71e64898ae33fd44ef3892"
+        },
+        "artifacts": {
+          "passed": true,
+          "files": 25,
+          "bytes": 2334846,
+          "path_size_sha256": "084251bbcc62a99667e6f7cdd5ed7b904c960db048161c574655b1e49c74b325",
+          "scope": "Required scored-trajectory or unscored-interruption evidence exists; inventory covers paths and sizes, not physical semantics."
+        }
+      },
+      "agent_exit": {
+        "returncode": 1,
+        "wall_seconds": 5.076339228777215,
+        "completed_turns": 0,
+        "usage": null,
+        "accounting": {
+          "reported_usage": {
+            "input_tokens": null,
+            "cached_input_tokens": null,
+            "cache_write_input_tokens": null,
+            "output_tokens": null,
+            "reasoning_output_tokens": null
+          },
+          "known_token_lower_bounds": {
+            "input_tokens": 0,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 0,
+            "reasoning_output_tokens": 0
+          },
+          "usage_reported_turns": 0,
+          "completed_native_turns": 0,
+          "terminal_usage_available": false,
+          "malformed_event_lines": 0,
+          "model_request_count": null,
+          "model_request_count_note": "Native CLI turn totals aggregate multiple model/tool round trips; a turn is not one API request.",
+          "token_note": "Cached input is part of input; reasoning output is retained as a breakdown, not added again to output."
+        }
+      },
+      "handling": "Preserve as an unscored original-v3 attempt. No retry, replacement, model change or budget extension. Other registered cases continue while their original processes remain healthy.",
+      "interpretation": "No native success or failure is known for this attempt; missing model usage is unknown, not zero. The endpoint failure is distinct from robot policy performance."
+    },
+    {
+      "id": "original-control-network-2",
+      "observed_at": "2026-10-27T23:42:37.271312+00:00",
+      "cases": [
+        {
+          "case": "seed1-random-l20",
+          "event_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l20/agent-events.jsonl",
+          "stderr_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l20/agent-stderr.log",
+          "event_log_sha256_at_observation": "205ad743f39407bb8c13960b602701a75e131f0cdfd20e43b345f6a1e311f3a1",
+          "messages": [
+            "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)"
+          ],
+          "stderr_first_matching_time": "2026-10-27T23:40:58.291428Z",
+          "stderr_last_matching_time": "2026-10-27T23:41:21.286087Z",
+          "scored_at_observation": false,
+          "native_at_observation": null,
+          "wall_seconds_at_observation": null
+        },
+        {
+          "case": "seed1-standard-l21",
+          "event_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l21/agent-events.jsonl",
+          "stderr_log": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l21/agent-stderr.log",
+          "event_log_sha256_at_observation": "0b9d5c73a5fc4aa41f7e41de3d1b1b7f140d7aa1ba9e357cec561e42a5c450e7",
+          "messages": [
+            "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+            "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)"
+          ],
+          "stderr_first_matching_time": "2026-10-27T23:40:58.117705Z",
+          "stderr_last_matching_time": "2026-10-27T23:41:21.209800Z",
+          "scored_at_observation": false,
+          "native_at_observation": null,
+          "wall_seconds_at_observation": null
+        }
+      ],
+      "observation_gap": {
+        "last_health_utc": "2026-10-27T23:34:56Z",
+        "next_health_utc": "2026-10-27T23:42:12Z",
+        "note": "Assistant observation gap, not measured outage duration. Re-polled original driver3048081 and worker3121197/3122681, all live; no restart."
+      },
+      "handling": "Native CLI retries within original episode budgets. Preserve elapsed costs and outcomes; no manual retry, model change or budget extension.",
+      "causality": "Connection error logs do not establish the cause of a robot outcome."
+    },
+    {
+      "id": "original-control-network-2-resolution",
+      "incident_id": "original-control-network-2",
+      "observed_at": "2026-10-27T23:45:45.258497+00:00",
+      "cases": [
+        {
+          "case": "seed1-random-l20",
+          "native": {
+            "success_rate": 1.0,
+            "eval_time": 1,
+            "score": 100.0,
+            "details": {
+              "0": {
+                "layout_id": 20,
+                "success": true,
+                "score": 1.0
+              }
+            }
+          },
+          "wall_seconds": 785.1979094399139,
+          "control_steps": 432,
+          "source_hashes": {
+            "agent-events.jsonl": "49c818c5b9483c24702f354944a492471db49455786ef2855916e76e705afcfa",
+            "agent-stderr.log": "99d7ad3b4bddff25eed47b9ea0da5229073528b09a68195e376e12a727966c1b",
+            "episode_end.json": "1113f9a3340337b5e2ff17c82fd0751de92d1dd531ba58b5d98d8b79f35c5bab",
+            "result.json": "91b1ad736a99c6546901a69f2db9971f18fd038d64ea11ddb0c8b823f567824f"
+          }
+        },
+        {
+          "case": "seed1-standard-l21",
+          "native": {
+            "success_rate": 1.0,
+            "eval_time": 1,
+            "score": 100.0,
+            "details": {
+              "0": {
+                "layout_id": 21,
+                "success": true,
+                "score": 1.0
+              }
+            }
+          },
+          "wall_seconds": 717.4750975719653,
+          "control_steps": 296,
+          "source_hashes": {
+            "agent-events.jsonl": "7d0b50810bfef57061989d05dd0e58eebf92a3e17e4c145e59e6f4d9ac5eb7bd",
+            "agent-stderr.log": "377b155c9803176e336f17a7af9ee7f52d7546c517f01ebe0a45717fccdda9a6",
+            "episode_end.json": "acb19c56f5828952abd8c52f588c92dc1f08ad857a8d8ba3c8148605ded885e8",
+            "result.json": "60e0654c29fa090daf2e3d440868a6b3e8e0186bf294de67bc239dffdc86cebc"
+          }
+        }
+      ],
+      "handling": "Both original sessions completed and were audited without manual restarts, replacements or budget extensions. All waiting time retained.",
+      "causality": "Successful outcomes do not establish that connection delays have no effect on performance."
+    },
+    {
+      "id": "original-control-network-3-terminal",
+      "observed_at": "2026-10-28T02:55:17.924223+00:00",
+      "cases": [
+        {
+          "audit": {
+            "case": "seed1-standard-l23",
+            "source_and_prompt_verified": true,
+            "original_v3_conditions_match": true,
+            "source_files_verified": 32,
+            "original_success": true,
+            "attempt_wall_seconds": 1812.9927761554718,
+            "network_error_events": 26,
+            "network_messages": [
+              "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... waiting for network (Connection failed: error sending request)"
+            ],
+            "command_records": 23,
+            "status": "unscored",
+            "native_score": null,
+            "success": null,
+            "classification": "wall_timeout_with_sustained_network_failures",
+            "control_steps_lower_bound": 259,
+            "wall_seconds": 1800.1015129229054,
+            "model_usage": null,
+            "failure": {
+              "complete": false,
+              "error": "TimeoutExpired",
+              "wall_seconds": 1800.1015129229054
+            },
+            "evidence_sha256": {
+              "exit.json": "4267ae6e3479f7b02c2a7a343aafe13efe468c32502dc30225c40d5449d7194d",
+              "agent-exit.json": "9502cf7f87afe2c589e5f25af6041af18eaca0e8b28177e2bf04d36389785e2f",
+              "agent-events.jsonl": "d71117871328201cbf32b014063924ab2a65e895770f2a70f8d2e69960c8a954",
+              "agent-stderr.log": "c5ea7cb8a86b0499ebb6944b71401a91882109429ab7007628dedc5e1cefa093",
+              "actions.jsonl": "65cbd4e4b16005c3023eb61106231ae85902671eb9d55138995c9aabb0071d7d",
+              "ready.json": "a9afcc851c12a8b6f77e69cae0ef5ee44a0337901a28024645b4336d246d9d3e"
+            },
+            "artifacts": {
+              "passed": true,
+              "files": 144,
+              "bytes": 47360800,
+              "path_size_sha256": "aef25083c0dc15a3a56e790dd9b28d787a83c6eb3f5547dce707c2d23a899c9f",
+              "scope": "Required scored-trajectory or unscored-interruption evidence exists; inventory covers paths and sizes, not physical semantics."
+            }
+          },
+          "first_matching_stderr_time": "2026-10-28T00:03:06.730662Z",
+          "last_matching_stderr_time": "2026-10-28T00:24:12.076353Z"
+        },
+        {
+          "audit": {
+            "case": "seed1-random-l23",
+            "source_and_prompt_verified": true,
+            "original_v3_conditions_match": true,
+            "source_files_verified": 32,
+            "original_success": true,
+            "attempt_wall_seconds": 1813.1020488739014,
+            "network_error_events": 29,
+            "network_messages": [
+              "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... waiting for network (Connection failed: error sending request)"
+            ],
+            "command_records": 12,
+            "status": "unscored",
+            "native_score": null,
+            "success": null,
+            "classification": "wall_timeout_with_sustained_network_failures",
+            "control_steps_lower_bound": 125,
+            "wall_seconds": 1800.0703545750584,
+            "model_usage": null,
+            "failure": {
+              "complete": false,
+              "error": "TimeoutExpired",
+              "wall_seconds": 1800.0703545750584
+            },
+            "evidence_sha256": {
+              "exit.json": "af6d43dad1b5013bd61282a9bea21b6f5be22a2b57ad42754a451d8bc44f7eca",
+              "agent-exit.json": "27fbccb474944f6568f293e6f5ca6204d98309e3107614cce64a7261cdd77030",
+              "agent-events.jsonl": "93d7c1f4871e18e0e7634fca6bdce697e1aa5fa9a9a9728d606a2666a819da9e",
+              "agent-stderr.log": "ed82e6bfa4e81bb95efaf03b708d0b375ad473011c39b9409e500a82e02d6501",
+              "actions.jsonl": "9f10d644252b40e27adbaf83b1a16e4050b5e00cadb3e34af431eb44a43f8649",
+              "ready.json": "37e909aad4bd26273d07f9dd23097e10858ffb15778769a07025dd41158389bc"
+            },
+            "artifacts": {
+              "passed": true,
+              "files": 89,
+              "bytes": 36250270,
+              "path_size_sha256": "85c967ff0544502f9457839e5cf425f2ed878c68d77afd4c00719eae544377b1",
+              "scope": "Required scored-trajectory or unscored-interruption evidence exists; inventory covers paths and sizes, not physical semantics."
+            }
+          },
+          "first_matching_stderr_time": "2026-10-28T00:03:07.919083Z",
+          "last_matching_stderr_time": "2026-10-28T00:27:30.539378Z"
+        },
+        {
+          "audit": {
+            "case": "seed1-standard-l24",
+            "source_and_prompt_verified": true,
+            "original_v3_conditions_match": true,
+            "source_files_verified": 32,
+            "original_success": false,
+            "attempt_wall_seconds": 1812.3756310939789,
+            "network_error_events": 32,
+            "network_messages": [
+              "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... waiting for network (Connection failed: error sending request)"
+            ],
+            "command_records": 0,
+            "status": "unscored",
+            "native_score": null,
+            "success": null,
+            "classification": "wall_timeout_with_sustained_network_failures",
+            "control_steps_lower_bound": 0,
+            "wall_seconds": 1800.0062415250577,
+            "model_usage": null,
+            "failure": {
+              "complete": false,
+              "error": "TimeoutExpired",
+              "wall_seconds": 1800.0062415250577
+            },
+            "evidence_sha256": {
+              "exit.json": "4811d1a9cca3e33b63f77a7829040f9f8c2d8dc1ba88e1c265a67629764f2881",
+              "agent-exit.json": "dda0b62db82b703ec02db79ef062f284d8d56f98fd4fcd2274b08f6faa0262da",
+              "agent-events.jsonl": "4bd19249ab6c44ebc5c3e320e30be40021fd22dc5d6376bb0f10fb5c5ef785a8",
+              "agent-stderr.log": "f3331dda21e24d915f3caacb166c86faf12733216c14ef90272ac74b39e3bad3",
+              "actions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "ready.json": "473b4eb7f35089d8b3698ce740536d527cd60710c989986a456fb673d73fb973"
+            },
+            "artifacts": {
+              "passed": true,
+              "files": 25,
+              "bytes": 2329208,
+              "path_size_sha256": "16ee2a75be44b97e436a0dd2a9b784eab587be621da746c535e5a7ce377f6ee0",
+              "scope": "Required scored-trajectory or unscored-interruption evidence exists; inventory covers paths and sizes, not physical semantics."
+            }
+          },
+          "first_matching_stderr_time": "2026-10-28T00:27:24.809113Z",
+          "last_matching_stderr_time": "2026-10-28T00:55:16.405899Z"
+        },
+        {
+          "audit": {
+            "case": "seed1-random-l24",
+            "source_and_prompt_verified": true,
+            "original_v3_conditions_match": true,
+            "source_files_verified": 32,
+            "original_success": true,
+            "attempt_wall_seconds": 1811.9506330490112,
+            "network_error_events": 32,
+            "network_messages": [
+              "Reconnecting... 2/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 3/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 4/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... 5/5 (stream disconnected before completion: tls handshake eof)",
+              "Reconnecting... waiting for network (Connection failed: error sending request)"
+            ],
+            "command_records": 0,
+            "status": "unscored",
+            "native_score": null,
+            "success": null,
+            "classification": "wall_timeout_with_sustained_network_failures",
+            "control_steps_lower_bound": 0,
+            "wall_seconds": 1800.0063695150893,
+            "model_usage": null,
+            "failure": {
+              "complete": false,
+              "error": "TimeoutExpired",
+              "wall_seconds": 1800.0063695150893
+            },
+            "evidence_sha256": {
+              "exit.json": "59033b302bd81bdf0dde3828cd3c3898c10bfdb8b0bf83a69d6bc841d9aef460",
+              "agent-exit.json": "8307220eb5835cf8d5d9debf2187c4ca1c98b301bc8cb410f64ca816095d92d3",
+              "agent-events.jsonl": "eb64c0a017629a4cc7aabc3ebe64c3aa51f2930fb0d39b800b44f5577fc1ae62",
+              "agent-stderr.log": "29697ee8ce677107f90b866917b2b47e0b733dd93f8008096a084cde9c53d8b5",
+              "actions.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "ready.json": "e77915e3bebc333fecaac489137fe09e766bef1963fb69b8133897066da4c51d"
+            },
+            "artifacts": {
+              "passed": true,
+              "files": 25,
+              "bytes": 2811559,
+              "path_size_sha256": "af6c853bbd697714885a5e5a896052d38912a60612943cfc27bac8458f59873d",
+              "scope": "Required scored-trajectory or unscored-interruption evidence exists; inventory covers paths and sizes, not physical semantics."
+            }
+          },
+          "first_matching_stderr_time": "2026-10-28T00:30:28.065088Z",
+          "last_matching_stderr_time": "2026-10-28T00:58:05.734933Z"
+        }
+      ],
+      "observation_gap": {
+        "last_health_utc": "2026-10-28T00:02:19Z",
+        "next_health_utc": "2026-10-28T02:14:33Z",
+        "note": "Assistant observation gap, not measured outage duration."
+      },
+      "handling": "All original attempts reached their registered 1800-second wall timeout. No retries, replacements, model changes or budget extensions. All driver, monitor and worker processes confirmed nonlive at postflight.",
+      "interpretation": "Four native outcomes and their terminal token usage remain unknown. Persistent network errors and wall timeout are observed; no physical success or failure is imputed."
+    }
+  ],
+  "source_sha256": {
+    "runs/v3-original-control-20261028/status.json": "3de60bc0183e441fe88602c50a00bfacd6fafc42f3d756b8e49bd6a0d2492912",
+    "runs/v3-original-control-20261028.completed-audit.json": "d80fda6df74496851ee3f0fa3fcc34cab76e165e35d02b8dc37d8981ee64c438",
+    "experiments/fold_clothes/v3-original-control-20261028.json": "6b7cddd02aac1aaa37432f604cdc3caede3a4aea6c50c20a71d9d74f376e9817",
+    "results/v3-original-control-vs-history-20261028.json": "703406b4c40f7b08956ae77a7e81bd49e215a54787c1a6aae098322cba398f1d",
+    "results/v3-original-control-vs-refactor-20261028.json": "cc71e1270869c246cf16e90abc50028b9450219010deef96a08f5372ecc0e76a",
+    "runs/v3-original-control-20261028.runtime-incidents.jsonl": "eca93301b53b846145972c5d8a99b669b3889fae5a1403999583bdc5049a40b3"
+  },
+  "candidate_acceptance": {
+    "scored": 50,
+    "successes": 35,
+    "acceptance_passed": false
+  },
+  "interpretation": [
+    "Control is the candidate side of both comparisons; gains and losses are relative to each named baseline.",
+    "Both-scored comparisons exclude unknown outcomes explicitly; all-attempt cost summaries retain them.",
+    "Recorded runtime incidents are observations, not an exhaustive proof of service stability or causal explanations.",
+    "Sequential diagnostic control, not randomized concurrent treatment or statistical equivalence evidence.",
+    "Historical and refactor results remain immutable; this control cannot make the failed refactor gate pass."
+  ]
+}

@@ -89,17 +89,46 @@ def main():
             events = [json.loads(line) for line in (path / "agent-events.jsonl").read_text().splitlines()]
             assert entry["returncode"] != 0 and not failure["complete"]
             assert not list(path.rglob("_result.json")), "Unaccounted native score"
-            assert agent_exit["returncode"] == 1 and agent_exit["completed_turns"] == 0
-            assert any(event.get("type") == "turn.failed"
-                       and event.get("error", {}).get("message")
-                       == "Selected model is at capacity. Please try a different model."
-                       for event in events)
-            assert (path / "actions.jsonl").stat().st_size == 0
+            assert agent_exit["completed_turns"] == 0 and agent_exit["usage"] is None
             assert read(path / "ready.json")["step"] == 0
+            if agent_exit["returncode"] == 1:
+                assert any(event.get("type") == "turn.failed"
+                           and event.get("error", {}).get("message")
+                           == "Selected model is at capacity. Please try a different model."
+                           for event in events)
+                assert (path / "actions.jsonl").stat().st_size == 0
+                classification, lower_bound = "model_capacity_before_execution", 0
+            else:
+                # Reviewed terminal evidence for the prolonged connection outage.
+                # Do not classify arbitrary timeouts as network interruptions.
+                expected_steps = {"seed1-standard-l23": 259, "seed1-random-l23": 125,
+                                  "seed1-standard-l24": 0, "seed1-random-l24": 0}
+                assert path.name in expected_steps
+                assert agent_exit["returncode"] == -15
+                assert failure["error"] == agent_exit["interruption"]["type"] == "TimeoutExpired"
+                assert 1800 <= failure["wall_seconds"] < 1801
+                assert not (path / "episode_end.json").exists()
+                network = [event["message"] for event in events if event.get("type") == "error"]
+                assert sum("waiting for network" in message for message in network) >= 10
+                assert network[-1] == "Reconnecting... waiting for network (Connection failed: error sending request)"
+                actions = [json.loads(line) for line in (path / "actions.jsonl").read_text().splitlines()]
+                lower_bound = max((a["step"] for a in actions), default=0)
+                assert lower_bound == len(actions) == expected_steps[path.name]
+                commands_path = path / "commands.jsonl"
+                commands = [json.loads(line) for line in commands_path.read_text().splitlines()] if commands_path.exists() else []
+                if lower_bound:
+                    assert commands[-1]["step_after"] == lower_bound
+                for command in commands:
+                    assert all((Path(command["observation"]) / name).is_file()
+                               for name in ("state.json", "head.png", "wrist_l.png", "wrist_r.png"))
+                classification = "wall_timeout_with_sustained_network_failures"
+                report.update(network_error_events=len(network), network_messages=list(dict.fromkeys(network)),
+                              command_records=len(commands))
             report.update(status="unscored", native_score=None, success=None,
-                          classification="model_capacity_before_execution",
-                          control_steps_lower_bound=0, wall_seconds=failure["wall_seconds"],
-                          model_usage=agent_exit["usage"], failure=failure,
+                          classification=classification,
+                          control_steps_lower_bound=lower_bound, wall_seconds=failure["wall_seconds"],
+                          model_usage=agent_exit["usage"],
+                          failure={k: failure[k] for k in ("complete", "error", "wall_seconds")},
                           evidence_sha256={name: sha(path / name) for name in
                                            ("exit.json", "agent-exit.json", "agent-events.jsonl",
                                             "agent-stderr.log", "actions.jsonl", "ready.json")})

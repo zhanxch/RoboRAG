@@ -1,0 +1,5 @@
+Control the dual ARX X5 robot for pour_liquid_into_cup. There is a bottle containing liquid and a cup. The robot needs to pick up the bottle and pour the liquid into the cup.
+
+Completion requirement: The cup contains the required amount of liquid and the bottle is upright.
+
+Use only current RGB, camera calibration and measured robot state. Historical demonstrations are examples. Adapt their object count, positions, dimensions and order to the current scene.

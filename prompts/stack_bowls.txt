@@ -1,0 +1,5 @@
+Control the dual ARX X5 robot for stack_bowls. There are three bowls. The robot needs to stack all the bowls together.
+
+Completion requirement: All three bowls are stacked together, all bowls are upright, the bottom bowl is strictly and stably placed on the table, and the robot returns to origin.
+
+Use only current RGB, camera calibration and measured robot state. Historical demonstrations are examples. Adapt their object count, positions, dimensions and order to the current scene.

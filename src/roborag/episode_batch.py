@@ -12,6 +12,7 @@ import time
 import psutil
 
 from .episode_files import write_json as write
+from .rag_tasks import TASKS
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -71,7 +72,7 @@ def resource_sample(active):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--task", choices=["stack_blocks", "fold_clothes"], required=True)
+    parser.add_argument("--task", choices=sorted(TASKS), required=True)
     parser.add_argument("--controller", choices=["delta", "tcp"], default="delta")
     parser.add_argument("--max-wall-seconds", type=float, default=1800)
     parser.add_argument("--no-rag", action="store_true")

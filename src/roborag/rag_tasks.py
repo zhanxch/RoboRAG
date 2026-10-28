@@ -1,7 +1,12 @@
 """Task instructions stay separate from the robot protocol and process runner."""
 from pathlib import Path
 
-TASKS = {"stack_blocks", "fold_clothes"}
+GENERALIZATION_TASKS = {
+    "stack_bowls", "pack_objects_into_box", "hang_mugs", "sweep_blocks",
+    "pour_liquid_into_cup", "make_toast", "arrange_largest_number",
+    "sort_nesting_dolls_by_size", "store_laptop_and_headphones",
+}
+TASKS = {"stack_blocks", "fold_clothes", *GENERALIZATION_TASKS}
 
 
 def simulation_task(task, variant):
@@ -17,7 +22,8 @@ def prompt_for(root, task, controller, *, no_rag=False):
     if specific.is_file():
         prompt = specific.read_text()
     elif controller == "delta":
-        prompt = (directory / f"{task}.txt").read_text() + "\n\n" + (directory / "robot.delta.txt").read_text()
+        protocol = "robot.generalization.delta.txt" if task in GENERALIZATION_TASKS else "robot.delta.txt"
+        prompt = (directory / f"{task}.txt").read_text() + "\n\n" + (directory / protocol).read_text()
     else:
         raise ValueError(f"No {controller} protocol configured for {task}")
     if no_rag:

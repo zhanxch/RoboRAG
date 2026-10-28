@@ -1,0 +1,275 @@
+{
+  "schema": "roborag.task-suite.v1",
+  "suite_id": "robodojo-generalization-v1",
+  "name": "Generalization 专项测试名单",
+  "version": 1,
+  "created_on": "2026-10-28",
+  "status": "roster_listed_protocol_pending",
+  "benchmark": "RoboDojo simulation",
+  "scope": "Complete Generalization category",
+  "base_task_count": 12,
+  "configuration_count": 24,
+  "categories": [
+    "Generalization"
+  ],
+  "task_catalog_source": "https://robodojo-benchmark.com/doc/sim-tasks/#generalization",
+  "tasks": [
+    {
+      "category": "Generalization",
+      "task": "stack_bowls",
+      "name_zh": "叠碗",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "stack_bowls",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "stack_bowls_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "push_T",
+      "name_zh": "推 T 形块",
+      "in_basic_suite": true,
+      "configurations": [
+        {
+          "task_id": "push_T",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "push_T_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "pack_objects_into_box",
+      "name_zh": "物品装箱",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "pack_objects_into_box",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "pack_objects_into_box_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "fold_clothes",
+      "name_zh": "叠衣服",
+      "in_basic_suite": true,
+      "configurations": [
+        {
+          "task_id": "fold_clothes",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "fold_clothes_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "hang_mugs",
+      "name_zh": "挂杯子",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "hang_mugs",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "hang_mugs_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "sweep_blocks",
+      "name_zh": "扫积木",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "sweep_blocks",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "sweep_blocks_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "pour_liquid_into_cup",
+      "name_zh": "向杯中倒液体",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "pour_liquid_into_cup",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "pour_liquid_into_cup_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "make_toast",
+      "name_zh": "制作吐司",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "make_toast",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "make_toast_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "arrange_largest_number",
+      "name_zh": "排列最大数字",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "arrange_largest_number",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "arrange_largest_number_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "sort_nesting_dolls_by_size",
+      "name_zh": "按大小排列套娃",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "sort_nesting_dolls_by_size",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "sort_nesting_dolls_by_size_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "store_laptop_and_headphones",
+      "name_zh": "收纳笔记本和耳机",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "store_laptop_and_headphones",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "store_laptop_and_headphones_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    },
+    {
+      "category": "Generalization",
+      "task": "stack_blocks",
+      "name_zh": "叠积木",
+      "in_basic_suite": false,
+      "configurations": [
+        {
+          "task_id": "stack_blocks",
+          "variant": "standard",
+          "within_task_weight": 0.5
+        },
+        {
+          "task_id": "stack_blocks_random",
+          "variant": "random",
+          "within_task_weight": 0.5
+        }
+      ]
+    }
+  ],
+  "aggregation": {
+    "variant_results": "Report standard and random results separately.",
+    "base_task": "Equal-weight mean of standard and random success rates.",
+    "category": "Equal-weight mean of all twelve base-task success rates.",
+    "scope": "Full Generalization category; not a full RoboDojo score."
+  },
+  "reference_baseline": {
+    "model": "HexaShell-preview",
+    "path": "results/hexashell-generalization-20261028.json",
+    "sha256": "e443ca1eb3a50a96a637df4bb3dbd4e0c915ed11139f52e2cea1f0706c657d02",
+    "data_generated_at": "2026-10-26T00:00:00.000Z",
+    "summary": {
+      "standard_success_rate_pct": 38.0,
+      "random_success_rate_pct": 31.0,
+      "mean_success_rate_pct": 34.5,
+      "random_minus_standard_pp": -7.0
+    }
+  },
+  "evaluation_protocol": {
+    "status": "not_yet_frozen",
+    "pending": [
+      "evaluation layouts and seeds",
+      "repetitions",
+      "model and controller versions",
+      "training demonstrations and retrieval-bank access",
+      "step and inference budgets",
+      "baseline and ablation implementations"
+    ]
+  },
+  "reference_comparison": {
+    "models": [
+      "HexaShell-preview",
+      "VPP2",
+      "WorldScape-R²SI",
+      "PyRUA_Lean"
+    ],
+    "path": "results/generalization-four-model-comparison-20261028.json",
+    "sha256": "de00a17f805480d30c060021ff67e586cb810ba9c790ae039207b8f72050669a",
+    "data_generated_at": "2026-10-26T00:00:00.000Z",
+    "metric": "full-task successRate (%)"
+  }
+}

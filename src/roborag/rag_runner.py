@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from .hexashell_agent import run_agent
 from .episode_files import write_json as save, read_jsonl
 from .rag_accounting import control_accounting, workflow_completed
-from .rag_tasks import prompt_for, simulation_task
+from .rag_tasks import TASKS, prompt_for, simulation_task
 from .sop_store import default_bank, evidence_source_paths, sop_prompt
 
 
@@ -52,9 +52,9 @@ def stop(process):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--task", choices=["stack_blocks", "fold_clothes"], default="stack_blocks")
+    parser.add_argument("--task", choices=sorted(TASKS), default="stack_blocks")
     parser.add_argument("--variant", choices=["standard", "random"], default="standard")
-    parser.add_argument("--bank", type=Path, help="Evidence package; fold defaults to artifacts/fold-v3-sop")
+    parser.add_argument("--bank", type=Path, help="Full TRAIN evidence bank for the selected task")
     parser.add_argument("--layout", type=int, default=0)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--model", default="gpt-6-astra")

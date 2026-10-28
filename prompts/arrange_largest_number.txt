@@ -1,0 +1,6 @@
+Control the dual ARX X5 robot for arrange_largest_number. There are several number tiles on the table and a pad for placement. The robot needs to determine the order that forms the largest possible number, then place all visible number tiles on the pads from left to right in that order.
+
+Completion requirement: All digits are correctly ordered on the pads, have valid orientation, and the robot returns to origin.
+Preserve the initial readable orientation of each tile. Determine the number of tiles from the current scene.
+
+Use only current RGB, camera calibration and measured robot state. Historical demonstrations are examples. Adapt their object count, positions, dimensions and order to the current scene.

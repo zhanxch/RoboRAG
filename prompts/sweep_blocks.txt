@@ -1,0 +1,5 @@
+Control the dual ARX X5 robot for sweep_blocks. There is a broom and a dustpan on the left side, and the blocks are on the right side. The robot needs to pick up the broom, hand it over to the right hand, grasp the dustpan with the left hand, and sweep the blocks into the dustpan.
+
+Completion requirement: The dustpan is positioned left of the broom, stably placed upright on the table, all blocks are inside the dustpan, and the robot returns to origin.
+
+Use only current RGB, camera calibration and measured robot state. Historical demonstrations are examples. Adapt their object count, positions, dimensions and order to the current scene.

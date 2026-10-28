@@ -1,0 +1,5 @@
+Control the dual ARX X5 robot for sort_nesting_dolls_by_size. There are five nesting dolls of different sizes on the table. The robot needs to sort them by size and arrange them in a straight row from left to right, from smallest to largest.
+
+Completion requirement: All five nesting dolls stand in a one horizontal straight row, are ordered from left to right from smallest to largest, and the robot returns to origin.
+
+Use only current RGB, camera calibration and measured robot state. Historical demonstrations are examples. Adapt their object count, positions, dimensions and order to the current scene.

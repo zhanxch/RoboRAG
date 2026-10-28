@@ -18,6 +18,9 @@ SCHEMA = "roborag.manipulation-sop-package.v1"
 def default_bank(root, task):
     # The default fold reference retains all v3 information. The compact SOP
     # archive remains an explicit opt-in; it must not limit recovery queries.
+    from .rag_tasks import GENERALIZATION_TASKS
+    if task in GENERALIZATION_TASKS:
+        return Path(root) / "artifacts/generalization-v3-full" / task
     return Path(root) / ("artifacts/fold-v3-full" if task == "fold_clothes" else "data/graph-bank/v1")
 
 

@@ -1,0 +1,66 @@
+{
+  "task": "stack_blocks",
+  "bank": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks",
+  "passed": true,
+  "generated_at": "2026-10-28T16:46:24.828063+00:00",
+  "metadata_sha256": {
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/bank.json": "47fa24bf427b329c5098dba86a46fd8aa8111a561ebe4b85b1338ba0d82d9d4f",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/search-index.json": "cfa86ce25f0f1c20b65b9cfcdcb0b817499673f5c6e06a6f87b49f65b11c6df3",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/execution-index.json": "4a2529a791f234469f88e1a034205f9662d8b2a8dd98572720a94038d80189a2",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/stack_blocks-0005.json": "4d195a5a8e1d9dad1419f2542e1c777e10d98dd077f1189936707aa3b491b158",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/stack_blocks-0001.json": "cb6cf71670bbccb07eb88e15e730e27ee1e3b2b9a045d4b21ae9e742f4d8764c",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/fold_clothes-0000.json": "12fc14d22851fc034086e1637e9f7ac61a94dcbca107da7ac5be04bfcede6b34",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/cover_blocks-0000.json": "80eb440c2b472e948c193e771ea1b2a97f6626f64a7c70301cc53c9fa4ac9c27",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/stack_blocks-0000.json": "dce2cd6a9943feca2877c268a3f45a31cbc31bd54af1cc1394ad374f5cd4bfac",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/fold_clothes-0002.json": "9c0f0a43820c4a3c9becf6306240e9c9deb47a8579e5726e066e2fbdd33b075d",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/fold_clothes-0001.json": "4d87dfc8fa3edea86c1a38bed4519b17f998c9051477a9f8e60a9fc6bb429efa",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/put_bottles_into_dustbin-0000.json": "ffa93bda091082e0c511f5a7e051bd76560ecfdb404c7681a317988eb11e28bf",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/deposit_coin-0000.json": "7d04b687831295e7a07d602aed1488919fc4e8a59eb2e8b6e6de019916a4dc78",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/stack_blocks-0003.json": "5eeab2a8c8fb5fce7f6bd736ec8588092084586f752b2427f588ca5725f13565",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/stack_blocks-0004.json": "65616daaa386d62b374c38ff8fb19af8b6d713248b2e6f6e6e4f34b071aae772",
+    "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-generalization/artifacts/generalization-v3-full/stack_blocks/graphs/stack_blocks-0002.json": "9015239569901eaf84a949dba60144b53df90c4f9e23d34d97a783eca426ec0c"
+  },
+  "source_sha256": {
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/stack_blocks/train/episode_0000000.hdf5": "b5a7bca9b023ba6c65b3b81b52fbb2c0e87764cd8711be7f9a661fffd33a8cfc",
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/stack_blocks/train/episode_0000001.hdf5": "7169c78365248b83d091b0e38127e454362cd1059f562f9b5f904e05ff3f8775",
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/stack_blocks/train/episode_0000002.hdf5": "32b3dbeeaca73706baaa1a55a873103d94b306334ca7a59a08808d324b5e044c",
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/stack_blocks/train/episode_0000003.hdf5": "f08121cabeb10e92d1af7c2da14fff3353b709b746da36e89bf0e1f6bf6c7623",
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/stack_blocks/train/episode_0000004.hdf5": "107a0340837aefa8a98b7943a58541f6e5d357d8fd334ca7c4001c1242409893",
+    "/home/zxc/文档/ChatGPT/RoboRAG/data/runtime-data/stack_blocks/train/episode_0000005.hdf5": "e288acec35c29a07616c479e63a79c8f0f6e12a2175f20e537784ec06834d1a6"
+  },
+  "demonstrations": [
+    {
+      "id": "stack_blocks-0000",
+      "frames": 267,
+      "phases": 9
+    },
+    {
+      "id": "stack_blocks-0001",
+      "frames": 268,
+      "phases": 9
+    },
+    {
+      "id": "stack_blocks-0002",
+      "frames": 266,
+      "phases": 8
+    },
+    {
+      "id": "stack_blocks-0003",
+      "frames": 262,
+      "phases": 9
+    },
+    {
+      "id": "stack_blocks-0004",
+      "frames": 264,
+      "phases": 8
+    },
+    {
+      "id": "stack_blocks-0005",
+      "frames": 262,
+      "phases": 8
+    }
+  ],
+  "phases": 51,
+  "sections": 204,
+  "images": 1224
+}

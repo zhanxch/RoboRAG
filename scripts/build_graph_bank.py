@@ -110,7 +110,7 @@ def annotate(meta, attachments, measurements, directory, model, effort):
 不要求固定阶段类别。title 用简短中文自然语言描述具体阶段；summary 简述局部目标；objects 填具体对象或角色。
 cue 描述此阶段开始时看得到的状态与操作线索；action 描述示范实际采取的操作，可保留对后续执行有用的相对关系；feedback 描述片段末尾可见变化，遮挡处写不确定。
 不要虚构恢复分支、隐藏接触、精确物体位姿或未出现的失败。夹爪指令不等于抓持成功。
-start_frame 包含，end_frame 不包含，范围 0..{meta['frames']}；按时间排序、无重叠，尽量覆盖完整示范；边界是估计值。
+start_frame 包含，end_frame 不包含，范围 0..{meta['frames']}；按时间排序、无重叠且无空隙，完整覆盖示范。第一段从0开始，后一段start_frame等于前一段end_frame，最后一段end_frame必须等于{meta['frames']}；边界是估计值。
 整图 title 描述这条示范的策略，summary 用一两句概括。只返回 schema JSON。
 本体状态中的 gripper 是数据原始值，变化只能用于边界候选；结合画面识别开闭与抓持。
 测量摘要：{json.dumps(measurements, ensure_ascii=False)}"""
@@ -129,6 +129,8 @@ def main():
     parser.add_argument("--model", default="gpt-6-astra")
     parser.add_argument("--effort", default="medium")
     parser.add_argument("--prepare-only", action="store_true")
+    parser.add_argument("--require-full-coverage", action="store_true",
+                        help="Reject phase annotations with unindexed gaps in a new full bank")
     args = parser.parse_args()
     root = args.output.resolve()
     root.mkdir(parents=True, exist_ok=True)
@@ -152,8 +154,12 @@ def main():
         source = ROOT / "data" / row["path"]
         if row.get("split") != "train":
             raise ValueError("Use training demonstrations for this bank")
+        with source.open("rb") as stream:
+            actual_sha256 = hashlib.file_digest(stream, "sha256").hexdigest()
+        if actual_sha256 != row["sha256"]:
+            raise ValueError(f"TRAIN source differs from manifest: {source}")
         meta = {"id": graph_id, "task": task, "episode": row["episode"], "path": row["path"],
-                "sha256": hashlib.sha256(source.read_bytes()).hexdigest()}
+                "sha256": actual_sha256}
         job = root / "build" / graph_id
         print(f"[{index+1}/{len(entries)}] preparing {graph_id}", flush=True)
         meta, images, measurements = prepare_episode(source, meta, job)
@@ -170,6 +176,11 @@ def main():
             write_json(job / "annotation.json", annotation)
             write_json(job / "usage.json", usage)
         graph = make_graph(meta, annotation, args.model)
+        if args.require_full_coverage:
+            phases = annotation["phases"]
+            if (phases[0]["start_frame"] != 0 or phases[-1]["end_frame"] != meta["frames"] or
+                    any(a["end_frame"] != b["start_frame"] for a, b in zip(phases, phases[1:]))):
+                raise ValueError(f"Incomplete phase coverage in {job / 'annotation.json'}")
         write_json(destination, graph)
         bank = publish_bank(root)
         print(f"[{index+1}/{len(entries)}] saved {graph_id}: {sum(n['kind']=='phase' for n in graph['nodes'])} phases; bank={bank['counts']}", flush=True)

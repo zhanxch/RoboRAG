@@ -1,0 +1,144 @@
+{
+  "schema": "roborag.generalization-evaluation-plan.v1",
+  "status": "registered_candidate_conditions",
+  "base_commit": "c9f7a99daf125068ce2881b4feac1b514f8b0bd1",
+  "remaining_base_tasks": 10,
+  "planned_native_attempts": 500,
+  "tasks": [
+    {
+      "task": "stack_bowls",
+      "bank": "artifacts/generalization-v3-full/stack_bowls",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 800,
+        "random": 800
+      }
+    },
+    {
+      "task": "pack_objects_into_box",
+      "bank": "artifacts/generalization-v3-full/pack_objects_into_box",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 1300,
+        "random": 1300
+      }
+    },
+    {
+      "task": "hang_mugs",
+      "bank": "artifacts/generalization-v3-full/hang_mugs",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 800,
+        "random": 800
+      }
+    },
+    {
+      "task": "sweep_blocks",
+      "bank": "artifacts/generalization-v3-full/sweep_blocks",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 1000,
+        "random": 1000
+      }
+    },
+    {
+      "task": "pour_liquid_into_cup",
+      "bank": "artifacts/generalization-v3-full/pour_liquid_into_cup",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 400,
+        "random": 400
+      }
+    },
+    {
+      "task": "make_toast",
+      "bank": "artifacts/generalization-v3-full/make_toast",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 1400,
+        "random": 1400
+      }
+    },
+    {
+      "task": "arrange_largest_number",
+      "bank": "artifacts/generalization-v3-full/arrange_largest_number",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 1050,
+        "random": 1050
+      }
+    },
+    {
+      "task": "sort_nesting_dolls_by_size",
+      "bank": "artifacts/generalization-v3-full/sort_nesting_dolls_by_size",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 1050,
+        "random": 1050
+      }
+    },
+    {
+      "task": "store_laptop_and_headphones",
+      "bank": "artifacts/generalization-v3-full/store_laptop_and_headphones",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 800,
+        "random": 800
+      }
+    },
+    {
+      "task": "stack_blocks",
+      "bank": "artifacts/generalization-v3-full/stack_blocks",
+      "cases_file": "experiments/generalization/cases-seed1-50.json",
+      "case_count": 50,
+      "native_step_limits": {
+        "standard": 550,
+        "random": 550
+      }
+    }
+  ],
+  "conditions": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "seed": 1,
+    "parallel": 2,
+    "controller": "delta",
+    "max_rows_per_call": 24,
+    "max_wall_seconds": 5400,
+    "native_step_budget": "Task-specific native limit; never overridden",
+    "train_episodes_for_new_tasks": [
+      0,
+      1,
+      2
+    ],
+    "stack_blocks_bank": "All six existing TRAIN demonstrations and unchanged original full-bank metadata",
+    "context": "Single persistent native agent per episode; full original TRAIN state/action/RGB access; no stage gating"
+  },
+  "scoring": {
+    "source": "Native _result.json only",
+    "unscored": "Separate from failure",
+    "retests": "At most one supplemental attempt after the first pass, only if native scoring is absent due to interruption; retain all attempt costs",
+    "aggregation": "Per-variant/task results; same-scene pairing when a verified baseline exists; do not relabel mixed historical versions as one candidate sweep"
+  },
+  "completed_references": {
+    "fold_clothes": "../v3-evidence-context/results/v3-evidence-context-fold-20261029-merged-final.json",
+    "push_T": "../../results/selected-evidence.json:tasks.push_T"
+  },
+  "gates": [
+    "All selected TRAIN hashes match pinned public source manifests",
+    "Full-bank annotation coverage and raw actions/state/images accessible",
+    "No fold policy/controller regressions",
+    "Freeze source, prompt, TRAIN, layouts, native task configs and CLI before native batch launch",
+    "Verify native outcomes and trajectory evidence before reporting"
+  ],
+  "launch_order": "stack_blocks first using its verified existing full bank; remaining tasks in roster order after bank verification"
+}

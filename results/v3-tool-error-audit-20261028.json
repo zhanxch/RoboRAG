@@ -1,0 +1,3382 @@
+{
+  "schema": "roborag.v3-tool-error-audit.v1",
+  "generated_at": "2026-10-28T02:22:04.482421+00:00",
+  "cohorts": {
+    "historical_v3": {
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50",
+      "attempt_logs": 50,
+      "native_by_variant": {
+        "random": {
+          "scored": 25,
+          "success": 18
+        },
+        "standard": {
+          "scored": 25,
+          "success": 19
+        }
+      },
+      "completed_tool_calls": {
+        "observe": 50,
+        "retrieve_evidence": 99,
+        "measure_scene": 182,
+        "read_action_reference": 241,
+        "record_plan": 78,
+        "execute_chunk": 1319
+      },
+      "failure_counts": {
+        "arm_schema_backend_mismatch": 46,
+        "per_step_translation_limit": 1,
+        "empty_target_hold_rejected": 5
+      },
+      "failed_retrieval_arm_values": {
+        "双臂": 42,
+        "both": 3,
+        "右臂": 1
+      },
+      "affected_retrieval_cases": 35,
+      "failed_calls": [
+        {
+          "case": "seed1-random-l0",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "把衬衫两只袖子向内折到对侧胸前，再双臂抓下摆向肩线对折，放开并回初始姿态",
+            "observation": "桌上平铺一件蓝灰色细条纹长袖衬衫，领口在图像上方，下摆在下方。左袖向左下展开，右袖向右下展开，衣身略偏斜。双臂张开未接触衣服，桌周有杂物但衣服区域无遮挡。",
+            "held_object": "无",
+            "target_object": "蓝灰色长袖衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l0",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "折叠衣服",
+            "observation": "蓝灰色长袖衬衫平铺桌面，领口朝上，下摆朝下，两袖展开。先将左右袖子内折至对侧胸部，再将下摆对齐肩线，双臂释放回位。",
+            "held_object": "无",
+            "target_object": "衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l1",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央摊开一件红色白色格纹长袖上衣，领口和肩线在图像上方，下摆朝机器人且衣身略旋转，左袖伸向左下，右袖伸向右侧。双手空手张开，周围杂物未遮挡衣服。",
+            "goal": "先将两只袖口向内折到对侧胸部，再双手抓住下摆两角向肩线折起，对齐下摆和肩线，松手并双臂回初始姿态。",
+            "held_object": "无",
+            "target_object": "红色格纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l1",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "红色格纹长袖上衣平铺在桌面，领口在远端，下摆在近端，左袖向左下方伸出，右袖向右侧伸出，两只机械手张开且未抓物。",
+            "goal": "折叠衣服：袖子向内折到对侧胸部，下摆向肩线折叠，释放后双臂回初始位置。",
+            "target_object": "上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l11",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面平铺一件白底深灰竖条纹长袖上衣，领口和肩部在图像上方远端，下摆在下方近端。左右长袖向两侧斜下伸展，衣身平整。双臂张开未抓取，桌面四周有杂物但衣服附近可操作。",
+            "goal": "先把左右袖口分别向内折到对侧胸部，再双臂抓住宽下摆两角向肩线折齐，松开并双臂回初始姿态。",
+            "target_object": "条纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l11",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺条纹长袖上衣，领口朝远端，下摆朝机器人，左右袖子向两侧展开，双手空闲。",
+            "goal": "折叠衣服：左右袖子向内折到对侧胸部，下摆向肩膀翻折，松手并回到初始姿态。",
+            "target_object": "长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l12",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 5,
+                "left": {
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 5,
+                "left": {
+                  "tcp_xyz": [
+                    0.04,
+                    -0.09,
+                    0.867
+                  ]
+                }
+              },
+              {
+                "steps": 9,
+                "left": {
+                  "tcp_xyz": [
+                    -0.23,
+                    -0.24,
+                    0.94
+                  ]
+                }
+              }
+            ],
+            "cameras": [
+              "head"
+            ],
+            "subgoal": "左袖在右胸支持后静止张开，抬起撤离以观察释放形状",
+            "expected_feedback": "左袖留在胸部不随夹爪离开，衣身未拖动"
+          },
+          "response": "Error executing tool execute_chunk: Per-arm translation norm must be <=0.035 m per row",
+          "category": "per_step_translation_limit"
+        },
+        {
+          "case": "seed1-random-l13",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面平铺一件蓝色竖条纹长袖衬衫，领口肩部在图像上方、下摆在下方，两袖向左右斜下方展开；双臂张开未抓持，周围杂物不遮挡衣物。",
+            "goal": "先把两侧袖口分别向内折到对侧胸部，再双手提下摆向肩线对折，释放并双臂回到初始姿态。",
+            "held_object": "无",
+            "target_object": "蓝色条纹长袖衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l14",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅白底红蓝格纹长袖衬衫，领口朝画面上方、下摆朝机器人。左袖向左下伸，右袖向右伸，衣身略斜，双臂在初始位且夹爪张开。周围有玩具和文具但未压住衣服。",
+            "goal": "先将两侧袖口分别向对侧胸部内折，再双手抓下摆两角向肩线折齐，松开后双臂回初始位。",
+            "target_object": "格纹长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅蓝色碎花长袖上衣，领口和肩线朝图像上方，衣摆朝机器人，左袖斜向左下、右袖斜向右下，双袖均未折叠；双臂张开在衣服两侧，附近有杂物但衣服上方无遮挡。",
+            "goal": "先将两只袖口分别折向对侧胸部，再双臂抓住衣摆两角向肩线对折，衣摆与肩线在桌面平面重合，释放并双臂回到初始位。",
+            "target_object": "浅蓝色碎花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "浅蓝碎花长袖上衣平铺桌面，领口朝远端，衣摆靠近机器人，左右袖口伸向两侧。双手未抓衣服。",
+            "goal": "将左右袖子向对侧胸部内折，然后双手将衣摆向肩线对折，释放衣服并回初始位。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l16",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件绿色白色三角纹长袖上衣，领口在图像上方，下摆在下方，衣身略顺时针倾斜。左袖向左下展开，右袖向右下展开。双臂张开尚未接触衣物，桌上周围有杂物但衣服上无遮挡。",
+            "goal": "先将两袖分别内折到对侧胸部，再双臂抓住下摆两角抬起向肩线翻折，使下摆和肩线在桌面平面重合；松开衣物并双臂回到初始姿态。",
+            "target_object": "花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l18",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件粉紫色花纹长袖上衣，领口肩部在图像上方远端，下摆在图像下方靠近机器人；两袖向左右下方展开，右袖略长伸出。双臂初始张开，衣服未抓取，周围杂物不遮挡衣服。",
+            "goal": "先将左右袖口分别内折到对侧胸部，再双臂同步抓下摆两角向肩线对齐折叠，松开并双臂回初始位。需要轻接触、静止闭合、小幅抬升验证抓取的示范。",
+            "target_object": "花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l18",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "花纹长袖上衣平铺在桌面，领口远离机器人，下摆朝向机器人，两袖左右展开，双手未抓衣服。",
+            "goal": "将两袖向对侧胸前内折，再双手将下摆折到肩线，释放并回初始位。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "both"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l19",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件棕米色碎格纹长袖上衣，领口朝远端，衣摆朝机器人，衣身略倾斜；左袖斜向左下伸展，右袖向右下伸展，两只机械臂张开位于两侧。衣物周围有杂物但未覆盖衣物。",
+            "goal": "先将左右袖口分别向对侧胸部内折，再双臂协同抓衣摆两角折向肩线，放开衣物，双臂回初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l19",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 6,
+                "right": {
+                  "tcp_xyz": [
+                    0.2553,
+                    -0.1725,
+                    0.815
+                  ],
+                  "quaternion_wxyz": [
+                    0.23918,
+                    -0.663185,
+                    0.211478,
+                    0.676946
+                  ],
+                  "gripper": 0.75
+                }
+              },
+              {
+                "steps": 5,
+                "right": {
+                  "tcp_xyz": [
+                    0.2553,
+                    -0.1725,
+                    0.771
+                  ]
+                }
+              },
+              {
+                "steps": 3,
+                "right": {}
+              },
+              {
+                "steps": 6,
+                "right": {
+                  "gripper": 0
+                }
+              },
+              {
+                "steps": 4,
+                "right": {
+                  "tcp_xyz": [
+                    0.2553,
+                    -0.1725,
+                    0.821
+                  ]
+                }
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_r"
+            ],
+            "subgoal": "Try alternate demonstrated cuff orientation with narrower pre-opening and stationary closure",
+            "expected_feedback": "Right cuff visibly rises with fingers and remains securely pinched across its width."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-random-l20",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "将长袖衬衫两侧袖口分别向内折到对侧胸部，再双手抓住下摆向肩线折叠，下摆与肩线在桌面上对齐，松开后双臂回初始位置。",
+            "observation": "当前桌面中央平铺一件浅色长袖翻领衬衫，领口在图像上方远端，下摆在下方近端，左右袖子向两侧斜下展开。衣服基本平整，两侧袖口和宽下摆均可见；周边有杂物但未压住衣服，双臂张开尚未接触衣物。",
+            "target_object": "浅色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l20",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "折叠衬衫：袖子向内折，再将下摆折到肩部",
+            "observation": "桌面上平铺浅色长袖衬衫，领口朝远方，下摆朝机器人，两只袖子向左右展开，双手未抓衣服。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l21",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面中央平铺浅粉碎花长袖上衣，领口肩线在图像上方，衣摆在下方；左右长袖斜向外下方伸展，双夹爪张开且未抓布，周围玩具与右侧牛仔裤不是目标。",
+            "goal": "将两只袖口分别向内折至对侧胸部，再双臂抓衣摆向肩线折叠，释放并双臂回初始位。",
+            "target_object": "浅粉碎花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l21",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面平铺浅粉碎花长袖上衣，领口朝远方，衣摆朝机器人，左右袖子向外下方伸展，双手未抓衣服。",
+            "goal": "先将左右袖子向对侧胸部内折，再抓住两衣摆角向肩线对折，松开回初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l21",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 4,
+                "left": {
+                  "tcp_xyz": [
+                    -0.267,
+                    -0.1932,
+                    0.771
+                  ],
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 3,
+                "left": {}
+              }
+            ],
+            "cameras": [
+              "wrist_l"
+            ],
+            "subgoal": "Settle left fingers gently at the measured cloth surface",
+            "expected_feedback": "Stationary cloth remains centered between finger pads before closure."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-random-l22",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件棕绿色格纹长袖上衣，领口朝图像上方，衣摆朝下方，两袖向左右下方展开。两机械臂张开且未抓衣物，周围有杂物但衣物区域可操作。",
+            "goal": "先将左右袖口分别内折到对侧胸部，再双臂抓住衣摆两角向肩线对齐折叠；松开后双臂回初始位。",
+            "target_object": "格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l22",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "action",
+            "observation": "右袖口能随夹爪小幅抬起，但向内平移约13厘米时滑脱，右袖仍伸在桌面上；左袖已折入。当前右手闭合，已失去布料。",
+            "goal": "恢复右袖口稳定夹持，避免搬运滑脱；需要接触高度、夹紧停留及缓慢内折的示例",
+            "held_object": "无，右袖滑脱",
+            "target_object": "右袖口",
+            "arm": "右臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "right",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l23",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件橙棕色绿白格纹长袖上衣，领肩在图像上方，衣摆在下方，两袖分别向左下和右下伸展。衣服略向右旋转，双臂在初始姿态、夹爪张开，尚未抓住衣物。周围有杂物但衣服轮廓基本无遮挡。",
+            "goal": "先将两袖向内折到对侧胸部，再双手抓住衣摆两角向肩线翻折，使衣摆与肩线对齐，释放并双臂回到初始姿态。",
+            "target_object": "格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l3",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件白底细红蓝格纹长袖上衣，领口和肩线在图像上方，下摆在下方，左袖向左下伸出，右袖向右下伸出，衣身略斜。双机械臂张开夹爪位于衣服两侧，周围有杂物但衣服区域基本无遮挡。",
+            "goal": "将两只袖子向内折到对侧胸部，然后双臂协调将下摆向肩部折叠，使下摆线与肩线在桌面平面重合，松开并返回初始姿态。",
+            "target_object": "格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l4",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 10,
+                "right": {
+                  "tcp_xyz": [
+                    0.2499,
+                    -0.1807,
+                    0.7688
+                  ],
+                  "quaternion_wxyz": [
+                    0.23918,
+                    -0.663185,
+                    0.211478,
+                    0.676946
+                  ],
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 5,
+                "right": {}
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_r"
+            ],
+            "subgoal": "Settle open right fingers at remeasured interior cuff point",
+            "expected_feedback": "Cloth spans the grasp gap at fingertip level, with gentle stationary contact before closure."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-random-l6",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅紫色碎花长袖上衣，衣领在图像上方，衣身略向右旋转；左袖朝左上伸出，右袖朝右下伸出，下摆斜向右下。双手张开未接触衣物，周围有玩具和日用品。",
+            "goal": "先将两只袖口折到对侧胸前，再双手抓住下摆两角向肩线翻折，下摆与肩线在桌面平面对齐，松手后双臂回到初始姿态。",
+            "target_object": "浅紫色碎花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l7",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件浅黄色花纹长袖衬衫，衣领朝远处，衣摆朝机器人，左袖斜向左下，右袖斜向右下，衣身略斜，双臂空手张开。周围键盘、杯子等杂物不在衣服上。",
+            "goal": "把左右袖口分别向内折到对侧胸部，再双手抓宽衣摆折向肩线，对齐衣摆与肩线，松开衣服并双臂回到初始位。",
+            "target_object": "浅黄色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l8",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "紫色桌面中央平铺一件白紫竖条纹长袖衬衫，衣领肩部朝远处，下摆朝机器人。左右袖子向两侧斜下方展开，衣身基本平整，双夹爪张开未持物。桌面周围有杂物但衣服区域畅通。",
+            "goal": "先将两只袖口向内折到对侧胸部，再双臂抓住下摆角向肩线折叠，放开衣服并双臂回到初始姿态。",
+            "target_object": "条纹长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件粉棕色方格长袖上衣，领口和肩线在图像上方，宽下摆在下方，左右袖子向左右下方斜伸。双臂在衣服两侧，当前未抓取；桌面有杂物但衣服附近可操作。",
+            "goal": "先将两只袖口向内折至对侧胸部，再双臂同时抓住下摆两角向肩线翻折，使下摆与肩线对齐，释放衣服并双臂回初始姿态。",
+            "held_object": "无",
+            "target_object": "方格长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l0",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件粉红色长袖开衫，白色装饰线和领口可见，衣领朝远端，衣摆朝机器人。衣身在图像中略微倾斜，左袖伸向左方，右袖沿右下方伸展，双臂空手张开。",
+            "goal": "先把两只袖口依次折向对侧胸部，再双手抓衣摆两角向肩线折叠，松开衣服并让双臂回到初始姿态。",
+            "target_object": "粉红色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l1",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件红底白色花纹的长袖上衣，领口和肩线在图像上方，宽下摆在下方；左右袖子斜向两侧展开，双臂张开且未抓衣。",
+            "goal": "先把两只袖口分别向对侧胸部内折，再双手抓下摆两角向肩线翻折，使下摆线与肩线在桌面上对齐；放开衣物并双臂回初始姿态。",
+            "target_object": "红白花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l10",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色带白色花点的长袖上衣，领口朝远处，衣摆朝机器人，衣身略旋转，左袖向左下展开，右袖向右展开。两只机械臂张开且未抓取。",
+            "goal": "先将两袖向内折至对侧胸部，再双手将衣摆向肩线折齐，释放并双臂回初始位。",
+            "target_object": "浅蓝色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l11",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件绿白斜条纹长袖上衣，领口在远端中央，衣身略旋转，左袖斜向左下延伸，右袖向右伸展，衣摆靠近机器人。双手空闲张开。",
+            "goal": "先将左右袖口分别折向对侧胸部，再双手抓衣摆两角向肩线翻折，释放并双臂回初始姿态。",
+            "target_object": "绿白条纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l12",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅绿色碎花长袖衬衫，领口朝远处，下摆朝机器人。左袖向左下方伸出，右袖向右侧伸出，两袖尚未折叠。双臂张开，均未抓布。",
+            "goal": "先将两只袖口向内折到对侧胸部，再双臂抓住下摆两角向肩线折叠，松手并回到初始姿态。",
+            "target_object": "浅绿色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l13",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件红色白花长袖上衣，衣领朝远侧，下摆朝近侧，整体斜放。图像左袖向左伸展，右袖向右下伸展，双臂张开尚未抓衣物。",
+            "goal": "先把两只袖口分别向对侧胸部内折，再双臂抓下摆两角向肩线翻折，对齐下摆和肩线，松开并返回初始姿态。",
+            "target_object": "红色白花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l13",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "红色花纹长袖上衣平铺在桌面，领口在远侧，下摆在近侧，衣服斜放，左右袖子伸展。双手空闲。",
+            "goal": "折叠衣服：左右袖子向对侧胸口内折，然后将下摆折向肩部，松开衣服，双臂归位。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺浅蓝白色图案长袖衬衫，领口在图像上方，衣摆在下方，左袖向左下伸展，右袖向右伸展，衣身略倾斜。双机械臂张开未接触。",
+            "goal": "先将两只袖口向内折到对侧胸部，再双手抓衣摆两角向肩线折叠，使衣摆线与肩线对齐，释放衣服并双臂回到初始姿态。",
+            "held_object": "无",
+            "target_object": "浅蓝色长袖衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l17",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色白色花纹长袖开襟衬衫，衣领在图像上方，下摆在下方，衣身略旋转；左袖向左伸，右袖向右下方伸，两只夹爪张开尚未接触。",
+            "goal": "先分别抓住当前袖口向对侧胸前内折，再双臂抓住宽下摆向肩线对折，释放并双臂回初始姿态。",
+            "target_object": "浅蓝色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l19",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌中央平铺一件金黄色花纹长袖开衫/衬衫，领口肩线在图像上方远端，下摆在下方近端，两只长袖向左右斜下展开；双臂张开在衣服两侧，尚未抓持。",
+            "goal": "先分别把两袖向内折到对侧胸部，再双臂抓下摆两角向肩线折齐，松手并回初始姿态。",
+            "target_object": "金黄色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l19",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 10,
+                "left": {
+                  "tcp_xyz": [
+                    0.075,
+                    -0.065,
+                    0.787
+                  ],
+                  "gripper": 0
+                }
+              },
+              {
+                "steps": 4,
+                "left": {}
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_l"
+            ],
+            "subgoal": "Finish left cuff placement slowly and lower onto opposite chest",
+            "expected_feedback": "Tracking settles and cuff is supported by the torso fabric before opening."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-standard-l2",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件米白色细格纹长袖衬衫，领口远离机器人，下摆靠近机器人。左袖向左前方伸展，右袖向右方伸展，衣身略旋转，双臂空闲张开。",
+            "goal": "先把左右袖口向内折到对侧胸部，再双手抓住下摆两角向肩线折叠，对齐下摆和肩线，释放并双臂回初始位。",
+            "held_object": "无",
+            "target_object": "长袖衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l2",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 12,
+                "left": {
+                  "tcp_xyz": [
+                    0.065,
+                    -0.035,
+                    0.8249
+                  ]
+                }
+              },
+              {
+                "steps": 6,
+                "left": {
+                  "tcp_xyz": [
+                    0.065,
+                    -0.035,
+                    0.7879
+                  ]
+                }
+              },
+              {
+                "steps": 3,
+                "left": {}
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_l"
+            ],
+            "subgoal": "Complete left cuff placement slowly after tracking interruption",
+            "expected_feedback": "Cuff remains clamped and is lowered onto right chest with support before opening."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-standard-l21",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件白底红色斜条纹长袖衬衫，领口在远端中央，左袖向近端左侧伸展，右袖向右侧伸展，衣身和下摆斜向近端右侧，双臂张开尚未接触。",
+            "goal": "将两只袖子分别向内折到对侧胸部，再双手抓住宽下摆折向肩线，使下摆与肩线在桌面平面对齐，释放衣物并双臂回初始位。",
+            "target_object": "红白条纹长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l21",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌上有一件红白条纹长袖上衣，左袖朝左下方，右袖朝右方，下摆在近端，领口在远端。双手空闲。",
+            "goal": "先向内折左右袖子到对侧胸部，再折下摆到肩部，释放并双臂回初始位",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l22",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件蓝色格纹长袖衬衫，衣领朝远处，衣身略斜。画面左袖向左横伸，右袖向右下方伸展；下摆斜向右下，双臂张开未持物。需要根据当前袖口、胸部、肩线与下摆定位。",
+            "goal": "先把两只袖子向内折至对侧胸部，再双手抬起宽下摆向肩线对齐折叠，松开衣物并双臂回到初始姿态。",
+            "held_object": "无",
+            "target_object": "蓝色格纹长袖衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l24",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅米白色格子长袖衬衫，衣领朝远方，衣摆朝机器人。衣身略旋转，画面左袖斜向左下方展开，右袖向右侧展开，两个袖口均未折叠。双机械臂张开夹爪在初始位置。",
+            "goal": "先将两袖分别折到对侧胸部，再双臂协同把宽衣摆折向肩线，松开衣服并双臂回初始姿态。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l3",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件绿色白色斜条纹长袖上衣，领口朝远端，衣身略斜，左袖伸向左边，右袖伸向右下，双臂未接触衣物。",
+            "goal": "先将左右袖口分别向对侧胸部内折，再双手抓住下摆两角向肩部翻折，使下摆线与肩线重合，松手并双臂回到初始姿态。",
+            "target_object": "绿白条纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l5",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件米白色浅黄色方格长袖衬衫，领口在图像上方，衣身倾斜；左侧袖子向左下伸展，右袖向右横伸，宽下摆在下方。双臂空手张开处于初始位置。",
+            "goal": "先分别将两个袖口向对侧胸部内折，再双手抓住下摆两角向肩线对齐折叠，释放衣服并双臂回初始姿态。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l7",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件白底黄色斜条纹长袖上衣，领口在远端，衣摆在近端。衣身略有旋转，左袖向左下伸，右袖向右下伸；双臂空手张开。需要先将两袖折向对侧胸部，再双手将衣摆折向肩线。",
+            "goal": "双袖向内折至对侧胸部，再把衣摆向肩部翻折，衣摆线与肩线在桌面内对齐，释放并双臂回初始姿态",
+            "held_object": "无",
+            "target_object": "条纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色白点长袖上衣，领口在图像上方，衣身略旋转，左袖向左下伸展，右袖向右伸展，下摆在图像下方。两只机械臂张开夹爪停在衣服两侧，尚未抓取。",
+            "goal": "先将两只袖口分别向对侧胸部内折，再双臂抓住下摆两角向肩线翻折，对齐下摆与肩线，松开衣物并双臂回到初始姿态。",
+            "target_object": "浅蓝色长袖上衣",
+            "held_object": "无",
+            "arm": "both"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺蓝色长袖上衣，左袖向左下，右袖向右，下摆靠近机器人。双臂空手。",
+            "goal": "折叠衣服：两袖向胸部内折，再双臂将下摆折向肩线，释放并复位。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "both"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        }
+      ],
+      "event_log_sha256": {
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l0/agent-events.jsonl": "7cfe74f82238709cd76d9030deb0d4d89e3d664f3b69db4db6325e39dd4647ac",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l1/agent-events.jsonl": "e5765bbda1385ac601c067082b545e56ee62e4d88174435021d4269aaf802df5",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l10/agent-events.jsonl": "3ea62b9331a76f1433b67a68f1e46aecce3b98b88eae67ab4f43dbe3cb3517ef",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l11/agent-events.jsonl": "e8e3781a7735cc295935c119e8f3f03cef075822e8ac19472faa7b380ce04abd",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l12/agent-events.jsonl": "e73a13bebf537712ce28356d71ceb3b357c45a14ad3bce12ff176723656401b5",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l13/agent-events.jsonl": "3dfec6d2eb48b6d8023a0ae6284de1045152a0c3c27708daecab8aa8651044a7",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l14/agent-events.jsonl": "03589c911ebc5226fc9f287e5875f4eeb2684fa8fb4f44dbecca5c6c4be758d7",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l15/agent-events.jsonl": "0b68b7a3b124c8abfff6b7d287237eaecb72ae9ea3576bf40e05d3e90afced92",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l16/agent-events.jsonl": "0646f4fe633c5f008b72566d0d19f55002ff00d1c29e937039bef97fa96f1b0f",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l17/agent-events.jsonl": "2b33b804511fb918a333326296b07422fa4f7199d8a4ddc889171046f707c555",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l18/agent-events.jsonl": "0ce0c7d2120d1fc146b04ac0fdb934dfe68b12c6e0df76e4f1e5b2555f237ef8",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l19/agent-events.jsonl": "ab7b6634b2a40797367da89ce292a88d6b3e58889f03da27712edfea8d1d5086",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l2/agent-events.jsonl": "d535da432221ae9c2c581325b172a7e3988dbaad0386117188311f2b3c254829",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l20/agent-events.jsonl": "89ca60e908d94646bb2001cc49be39bdfde8ed269a2bd33ac79d57912673ad91",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l21/agent-events.jsonl": "f2f9a31a15b3c3e1e303f503ef0913518e37b6cf3b2b635f424023ddfec3217f",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l22/agent-events.jsonl": "a65e5a00407451c16bfd97e71db57b74a9150caeabc8f953c415488654ed9e27",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l23/agent-events.jsonl": "1c994b69dd46f47d71f00ad332f8a4d3899b9acfed9d6575623065cc07fd9b3f",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l24/agent-events.jsonl": "1de80786f6cc17ecfdeb4f97ef34fdd96f9619eecdd7bcee7eb6062cdfb7b987",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l3/agent-events.jsonl": "d9090c04b6491f72b9f4a6856b9bc68a38b24c626f4e1c2537f5f5cb4740768f",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l4/agent-events.jsonl": "5cb5afcbe0cf2bd027fb27185216ff3f0002b213a28c1c17aa83a412f2404383",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l5/agent-events.jsonl": "a3c2fc32e03e43a68f2e832880056986a38ad5ebf8c7d62841e08a84570fb1a7",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l6/agent-events.jsonl": "5dd6b95e099ce607448691d8cfb8e7b77fe74c143db78a4510f4fea5ce47e5e5",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l7/agent-events.jsonl": "969846a6a31795f45c04c955c63bc93d0813f0b0aea874112217004befcc9d32",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l8/agent-events.jsonl": "dc43781191a2d2fe7df6cff97ee24eb5deab6649caf940a1f5faa82bdbb01b47",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-random-l9/agent-events.jsonl": "079e32181c43ad10084cbb17df45ed5f5cbfcbd07755f4697800461ec8c590f4",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l0/agent-events.jsonl": "ffc803dd7fc6abe5907494cb5d7dfc4ce184b192ea130e78d7b249f9da4ec51b",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l1/agent-events.jsonl": "9d26a9ea3c8caf1720ac2bebd8704f893acc1e975b7dc84fb006629cd20da4f2",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l10/agent-events.jsonl": "79d5c5f7d90d44de82e63a415084b986484ea3c9c9e909e7a7544f2100f2a865",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l11/agent-events.jsonl": "daff1da4c60655a6cdb0fe082e6c4338d25673b5835cd33f20e568286c189587",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l12/agent-events.jsonl": "e1437cfe024dd667f6673e44cd6641da61539f6a72526151bbce1274386e3208",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l13/agent-events.jsonl": "243dfe564ad8d147704afd3b5db388d57847b434dabfa6c52cde4c029a3c923f",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l14/agent-events.jsonl": "49f320c71053f3c4fe379c59003cc8806fdfd7a1f7b3e0f76d73016f425677a2",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l15/agent-events.jsonl": "e78e7d724462bb26a5d95e5eb8a3fdd9a5ea4a49cc95ef7dcd6ce2d8351f2b6d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l16/agent-events.jsonl": "6e20d2c98fa7733d08d418505b3691248b1a5aad9a8108e5faa8cea4959de544",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l17/agent-events.jsonl": "c54d98d1f47c708a3cc3bd7b14036bdc0bb1a8cc55f5c48bf333102373cba471",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l18/agent-events.jsonl": "071e07657e4163315e9adc1291c0fc37ef44d3435b2d6a75c5077306ae09796c",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l19/agent-events.jsonl": "626f6dc2886f211e3626ba19f9b1123c9905e253d18da36439361273dcdc8e78",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l2/agent-events.jsonl": "91392922f0e8e852b47b00ebe5ec11d62753d5b378526c487e03b680d9322b6a",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l20/agent-events.jsonl": "13c4ed21c5eb31b936fcba6548418f6f3a653c7391eaeb5d2668af6c5d050920",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l21/agent-events.jsonl": "46b0139504b29db0171cead7c4adfbea74e1dee536eb5ebb29b914ba792f0982",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l22/agent-events.jsonl": "f650537a438da68fc231cefedc2ca517a53ec1aa49259fddb98d9903d3be83fe",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l23/agent-events.jsonl": "31659fe9ff97879e37d2d97b49f2a8bad19ab42bac69fad1d836d0ad60f608a6",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l24/agent-events.jsonl": "de2af6625232bf89c38820d8852405c46caae58b126caf0d0950650804e40eb8",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l3/agent-events.jsonl": "5ee8f83a1eede3ce22d1759d4c4ccdc44ebe0201b4815716aafb18dfdf9fb93c",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l4/agent-events.jsonl": "c5bc01cdafb2c74133bcda45ab737270feff697d3f0583caef8c8828eefe22e5",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l5/agent-events.jsonl": "51ef79f5ff411c1a2ba585f45023bacadb8218c73920f5aa5e2639e286764fec",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l6/agent-events.jsonl": "c0fdeffe6971aca60559be1d037043bd725077d678d01dd990895be714c1d174",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l7/agent-events.jsonl": "d6e039d81b916a6e19b464288ef5c6540d5fe6fef404645d0d73e21587d22bcd",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l8/agent-events.jsonl": "fd43ac52ad6c9e30bfe7d56a953f8eae6835277dfbf17f3e7529e96686e3f5e7",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/fold-v3-frozen-baseline/runs/v3-final-seed1-50/seed1-standard-l9/agent-events.jsonl": "525210a539f15f13fb3bb6b5afae06af45684b96d43d1fca1857cee46e723da0"
+      }
+    },
+    "refactor_b2d5686": {
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027",
+      "attempt_logs": 50,
+      "native_by_variant": {
+        "random": {
+          "scored": 25,
+          "success": 16
+        },
+        "standard": {
+          "scored": 25,
+          "success": 19
+        }
+      },
+      "completed_tool_calls": {
+        "observe": 50,
+        "retrieve_evidence": 95,
+        "measure_scene": 152,
+        "read_action_reference": 230,
+        "record_plan": 82,
+        "execute_chunk": 1248
+      },
+      "failure_counts": {
+        "arm_schema_backend_mismatch": 41,
+        "per_step_translation_limit": 2,
+        "empty_target_hold_rejected": 3
+      },
+      "failed_retrieval_arm_values": {
+        "双臂": 40,
+        "both": 1
+      },
+      "affected_retrieval_cases": 35,
+      "failed_calls": [
+        {
+          "case": "seed1-random-l1",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件红色白色格纹长袖上衣，领口和肩线在图像上方，衣摆在下方；左袖向左下伸出，右袖向右伸出，衣身略旋转。双臂张开未抓取，周围杂物未遮挡衣服。",
+            "goal": "先将两袖分别向内折到对侧胸部，再双手抓住衣摆两角向肩线对折，对齐衣摆与肩线，释放并双臂回初始姿态。",
+            "target_object": "红色格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l1",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "红色格纹长袖上衣平铺在桌面，衣领在远端，衣摆在近端，左袖朝左下，右袖朝右侧。双手空闲。",
+            "goal": "将两侧袖子向内折到胸部，然后双手抬起衣摆对齐肩线，松手并回初始位置。",
+            "target_object": "上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l10",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面上平铺一件蓝色长袖上衣，领口和肩部朝图像上方，衣摆朝下，左右袖子向两侧斜下展开；衣服略微旋转，左袖更靠下。两机械臂张开且未抓住衣物，桌面有不相关杂物但衣服周围可操作。",
+            "goal": "先将左右袖口向内折到对侧胸部，再双手抓衣摆向肩线翻折，对齐衣摆和肩线，释放并双臂回初始位。",
+            "target_object": "蓝色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l12",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件浅蓝色花纹长袖衬衫，领口朝远端，衣摆朝机器人。衣身略有旋转，画面左袖向左下伸展，右袖向右伸展。双手张开在衣物两侧，尚未抓取。周围有杂物但衣物上无障碍。",
+            "goal": "先将左右袖口分别折向对侧胸部，再双手抓住衣摆两角抬起向肩线对齐折叠，松手后双臂回初始姿态。",
+            "target_object": "浅蓝色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l13",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺蓝色竖条纹长袖衬衫，领口朝远端，衣摆朝机器人近端，两袖向左右下方展开。左右机械臂均张开且未抓物，周围有杂物但衣服基本无遮挡。",
+            "goal": "先将两只袖口分别向对侧胸部内折，再双手抓住衣摆两角向肩线折齐，释放并双臂回初始姿态。",
+            "held_object": "无",
+            "target_object": "蓝色条纹长袖衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l14",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件白底粉红蓝细格长袖上衣，领口在画面上方，衣身斜置，左袖朝左下伸出，右袖朝右上伸出，下摆在画面下方，双臂空手初始姿态。周围有杂物但衣服未被阻挡。",
+            "goal": "先将两只袖口分别向内折到对侧胸部，再双手抓下摆两角向肩线翻折，使下摆与肩线在桌面平面重合；释放衣物并双臂回初始位。",
+            "held_object": "无",
+            "target_object": "格子长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "将两只袖子向内折到对侧胸部，再双手抓下摆向肩部折叠，使下摆线与肩线对齐，松开衣服后双臂回到初始姿态。",
+            "observation": "俯视当前桌面中央是一件浅蓝白色花纹长袖上衣，领口肩部在图像上方、下摆在下方。左袖伸向左下，右袖伸向右下，衣身略倾斜，当前双手张开没有持物。桌面周围有玩具、杂志和工具。",
+            "held_object": "无",
+            "target_object": "浅蓝白色花纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "折叠长袖上衣：两袖向内折到对侧胸部，然后将下摆向肩线折叠，释放并双臂复位。",
+            "observation": "浅蓝白花纹长袖上衣平铺桌面，领口朝上，下摆朝下，左袖向左下、右袖向右下张开。双手空手张开。",
+            "held_object": "无",
+            "target_object": "上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l16",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件绿色白色花纹长袖上衣，领口在图像上方，衣摆在下方。左袖向左下伸出，右袖向右下伸出，衣身略顺时针倾斜。两只机械臂张开未抓取。旁边有杂物但衣服周围可操作。",
+            "goal": "将左右袖口分别向内折到对侧胸部，然后双臂抓住衣摆两角，将衣摆向肩部折叠并对齐，松手后双臂回到初始位置。",
+            "target_object": "花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l17",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面中央平铺一件浅黄绿色方格长袖衬衫，领口朝远端、下摆朝机器人，双袖向左右下方展开。双臂张开、夹爪为空，周围杂物未遮挡衣服。",
+            "goal": "先将左右袖口分别折到对侧胸前，再双臂抓下摆两角向肩线折叠，对齐下摆与肩线，松开衣服并双臂回初始位。",
+            "target_object": "方格长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l18",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "将长袖上衣两只袖子分别向内折到对侧胸部，再双手抓住下摆向肩线折齐，松开并双臂回初始位。",
+            "observation": "当前桌上平铺一件粉紫色花纹长袖上衣，领口与肩部在图像上方远端，下摆在下方近端；左右袖子向两侧斜下展开。双机械臂张开在左右侧，尚未抓住衣物。周围有文具与玩具但衣服区域畅通。",
+            "held_object": "无",
+            "target_object": "花纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l19",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 5,
+                "left": {
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 4,
+                "left": {
+                  "tcp_xyz": [
+                    0.055,
+                    -0.09,
+                    0.835
+                  ]
+                }
+              },
+              {
+                "steps": 7,
+                "left": {
+                  "tcp_xyz": [
+                    -0.18,
+                    -0.18,
+                    0.89
+                  ]
+                }
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_l"
+            ],
+            "subgoal": "Release supported left sleeve and withdraw clear for inspection",
+            "expected_feedback": "Left cuff stays on opposite chest after fingers open and separate; sleeve remains inward"
+          },
+          "response": "Error executing tool execute_chunk: Per-arm translation norm must be <=0.035 m per row",
+          "category": "per_step_translation_limit"
+        },
+        {
+          "case": "seed1-random-l2",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面平铺一件紫灰色条纹长袖上衣，衣领在图像上方，衣身倾斜，左袖向左下伸出，右袖向右伸出，下摆在图像下方斜线。双臂张开，尚未抓取衣物。周围有杂物，但衣物主要区域无遮挡。",
+            "goal": "先将两袖向内折到对侧胸部，再双臂抓下摆两角折向肩线，下摆线与肩线在桌面平面重合，松开并双臂回初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l2",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "紫色长袖上衣斜铺桌面，衣领朝前，左袖向左下，右袖向右，下摆在后方。双手空闲。",
+            "goal": "折叠长袖上衣：两袖内折到对侧胸部，下摆折到肩线，松手回位。",
+            "target_object": "上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l20",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面中央平铺一件浅粉白色长袖衬衫，领口朝图像上方，下摆朝机器人，两袖斜向左右下方展开。双臂张开空手处于初始位置，周围杂物不遮挡衣服。",
+            "goal": "先把左右袖口分别向对侧胸部折入，再双手抓住下摆两角向肩线翻折，对齐下摆与肩线，松手撤离并回到双臂初始姿态。",
+            "target_object": "浅色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l21",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅色碎花长袖上衣，领口肩线在图像上方，衣摆在下方，两袖斜向左右下方伸展。双机械臂张开夹爪处于初始位姿，周围有玩具杂物但不在衣服上。",
+            "goal": "先将左右袖口分别向对侧胸部内折，再双手协调将宽衣摆折向肩线，使衣摆与肩线在桌面内对齐，松开衣服并双臂回初始姿态。",
+            "target_object": "浅色碎花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l21",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 4,
+                "left": {
+                  "tcp_xyz": [
+                    -0.2686,
+                    -0.1867,
+                    0.771
+                  ]
+                }
+              },
+              {
+                "steps": 4,
+                "left": {}
+              }
+            ],
+            "cameras": [
+              "wrist_l"
+            ],
+            "subgoal": "Settle left fingertips gently at the cloth surface before closure.",
+            "expected_feedback": "Cloth stays between fingers; no table penetration or lateral sweep."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-random-l22",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件棕绿格纹长袖上衣，领口和肩线朝图像上方，宽下摆朝机器人，左右长袖向两侧下方伸展。双臂张开未接触衣物，周边杂物未覆盖衣物。",
+            "goal": "先把两只袖口分别向内折到对侧胸部，再双手将宽下摆折向肩线，使下摆与肩线对齐，释放后双臂回初始姿态。",
+            "target_object": "格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l23",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件橙黄绿色格纹长袖上衣，领口在图像上方，下摆朝机器人。左袖向左下展开，右袖向右下展开，衣身略倾斜。双机械臂张开且未抓持，周围杂物未覆盖衣服。",
+            "goal": "先把左右袖口分别向对侧胸部内折，再双手抓下摆内侧点抬起向肩线折齐，松开并双臂回初始位。",
+            "target_object": "格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l23",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面平铺格纹长袖上衣，领口朝前，下摆朝机器人，左右袖子向两侧展开。双手未抓持。",
+            "goal": "双袖内折到对侧胸部，然后双手折下摆到肩线，释放并回初始位",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l24",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件粉棕色长袖上衣，领口与肩线在图像上方，衣摆在下方略倾斜；左袖伸向左下方，右袖伸向右下方。双臂张开空手，衣物周围有杂物但不遮挡袖口、胸部或衣摆。",
+            "goal": "先将两侧袖口向内折到对侧胸部，再双手提起衣摆两角向肩线折叠，使衣摆与肩线在桌面上对齐，松手并双臂回初始位。",
+            "held_object": "无",
+            "target_object": "长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l24",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 10,
+                "left": {
+                  "tcp_xyz": [
+                    0.055,
+                    -0.055,
+                    0.786
+                  ]
+                }
+              },
+              {
+                "steps": 4,
+                "left": {}
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_l"
+            ],
+            "subgoal": "Set left cuff gently onto opposite chest while maintaining grip",
+            "expected_feedback": "Cuff reaches right chest and is supported by torso before release."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-random-l5",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 10,
+                "left": {
+                  "tcp_xyz": [
+                    0.06,
+                    -0.08,
+                    0.7898
+                  ]
+                }
+              },
+              {
+                "steps": 3,
+                "left": {}
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_l"
+            ],
+            "subgoal": "Recover from interrupted transfer by lowering cuff gradually onto right chest",
+            "expected_feedback": "Tracking improves at lower height and cuff rests on opposite chest while still held"
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-random-l6",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅紫蓝色碎花长袖上衣，领口在图像上方，衣身向右下倾斜。左袖向左伸出，右袖朝右下方伸出，两袖未折，宽下摆斜向右下。周围有玩具、梳子和牛仔裤，目标是中央上衣。",
+            "goal": "先将左右袖口分别向对侧胸部内折，再双臂抓下摆两角向肩部折，使下摆与肩线在桌面平面对齐；松开并双臂回初始姿态。",
+            "target_object": "浅紫蓝色碎花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l7",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 5,
+                "left": {
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 6,
+                "left": {
+                  "tcp_xyz": [
+                    0.06,
+                    -0.087,
+                    0.885
+                  ],
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 8,
+                "left": {
+                  "tcp_xyz": [
+                    -0.24,
+                    -0.17,
+                    0.94
+                  ],
+                  "gripper": 1
+                }
+              }
+            ],
+            "cameras": [
+              "head"
+            ],
+            "subgoal": "Release supported left cuff, pause, and withdraw for released-shape inspection",
+            "expected_feedback": "Left sleeve stays folded across the right chest after fingers clear; right cuff and both hem corners remain visible"
+          },
+          "response": "Error executing tool execute_chunk: Per-arm translation norm must be <=0.035 m per row",
+          "category": "per_step_translation_limit"
+        },
+        {
+          "case": "seed1-random-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面中央平铺一件红灰色方块纹理长袖上衣，领口和肩线在图像上方远端，下摆在图像下方近端，两袖向左右下方斜伸。双臂张开尚未接触。周边有杯子、书本等杂物但衣服周围可操作。",
+            "goal": "先将两只袖口分别向内折到对侧胸部，然后双手抓下摆向肩线翻折，对齐下摆与肩线，松开衣服并双臂回初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l0",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件粉色带白色条纹的长袖上衣。领口在图像上方，衣摆在下方，衣身略倾斜。图像左袖伸向左侧，右袖伸向右下方。双臂初始张开未抓取。",
+            "goal": "先把两只袖口向内折到对侧胸部，再双手协调将衣摆向肩线折齐，松开后双臂回初始位。",
+            "target_object": "粉色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l1",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件红白花纹长袖上衣，领口在远端，衣摆在近端，左右袖子向外下方展开。双臂初始张开，未抓取衣物。",
+            "goal": "先将两袖分别内折到对侧胸部，再双手抓住衣摆两角向肩线折叠，对齐衣摆与肩线，释放后双臂返回初始姿态。",
+            "target_object": "红白花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l10",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色白色花纹长袖衬衣/裙式上衣，领口肩部在图像上方，宽下摆在下方，左袖向左下伸展，右袖向右下伸展。双臂张开未接触衣物。",
+            "goal": "先把两只袖口分别折向对侧胸部，再双臂抓宽下摆向肩线翻折，对齐下摆和肩线，释放并回到初始姿态。",
+            "target_object": "浅蓝色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l12",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅绿色白色碎花长袖衬衫，纽扣面朝上，领口在图像上方远离机器人，下摆在下方靠近机器人。左袖向左下斜伸、右袖向右下斜伸，衣身略有旋转，两袖未折，两机械臂空手张开在左右。",
+            "goal": "先把左右袖口分别折向对侧胸部，再双臂抓下摆两角向肩线折齐，释放衣服并双臂回初始姿态。",
+            "target_object": "浅绿色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺浅蓝色白色图案长袖衬衫，衣领朝远处、下摆朝机器人，衣身略倾斜；画面左袖斜向左下方展开，右袖向右侧展开。双手空闲张开。需要先把两袖向对侧胸部折入，再双手抓宽下摆向肩线翻折。",
+            "goal": "折好衬衫：两袖内折贴近对侧胸部，下摆与肩线在桌平面对齐，松手并双臂回初始姿态",
+            "target_object": "浅蓝色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l16",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面上平铺一件黄色白色斑点长袖衬衫，领口和肩线在图像上方远离机器人，下摆在下方靠近机器人，两只长袖向左右下方展开。两夹爪张开且未抓住衣服。",
+            "goal": "先将左右袖口分别向对侧胸部内折，再双臂抓住宽下摆向肩线折叠，使下摆与肩线在桌面平面对齐，松开后双臂回到初始姿态。",
+            "target_object": "黄色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l19",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件橙黄色花纹长袖衬衫，衣领在图像上方，衣摆在下方，两袖向左右下方展开；双臂张开，尚未抓衣服。需要根据当前衣形将两袖向对侧胸部内折，再双手把宽衣摆向肩线对齐。",
+            "goal": "先内折两只袖口到对侧胸区，再双手抓住衣摆两角向肩部折叠，释放并双臂回初始位姿",
+            "target_object": "橙黄色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l19",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "橙色长袖上衣平铺桌面，衣领远端、衣摆近端，左右袖口展开，双手空闲。",
+            "goal": "两袖向内折到对侧胸部，再将衣摆向肩线对齐，松手回位",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l2",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件米白色细格纹长袖衬衫，领口朝远端、下摆朝机器人，衣身略倾斜；图像左袖向左下伸，右袖向右伸。双臂空手张开位于初始位置。",
+            "goal": "先将两袖依次内折到对侧胸部，再双手抓下摆两角向肩线折叠，对齐后松开并双臂回初始位。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l20",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前木桌上平铺一件浅米白色带小方格花纹的长袖上衣，领口在图像上方远侧，下摆在下方近侧。两袖分别向左下和右下展开，右袖更长地伸向近侧。衣身略倾斜，两机械臂在左右前侧，手爪张开，尚未抓取。",
+            "goal": "把左右袖口分别向内折到对侧胸部，再双臂配合抓下摆两角向肩线对折，使下摆线与肩线在桌面投影对齐，释放并双臂回初始姿态。",
+            "held_object": "无",
+            "target_object": "浅色格纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l22",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件蓝色格纹长袖衬衫，衣身略斜，领口在图像上方，左袖向左伸出，右袖向右下伸出，下摆在图像下方偏左。双臂空手初始姿态，衣服尚未折叠。",
+            "goal": "先将两只袖口向对侧胸部内折，再双臂抓住两侧下摆同时向肩线折，使下摆与肩线对齐，释放后双臂返回初始姿态。",
+            "target_object": "蓝色格纹长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l23",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件米白色细格纹长袖上衣，领口和肩线在图像远端，衣摆在近端；左袖向左下展开，右袖向右下展开，双夹爪张开在两侧，没有抓住衣服。",
+            "goal": "先将两个袖口分别向内折到对侧胸部，再双手抓住衣摆角向肩线折叠，使衣摆与肩线在桌面上对齐；松开并双臂回初始位。",
+            "target_object": "米白色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l3",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件绿色白色条纹长袖上衣，领口远离机器人，衣身斜放，左袖向左伸展，右袖向右下伸展，衣摆在近侧；双臂空手张开位于衣服两侧。",
+            "goal": "先将两只袖口向内折至对侧胸部，再双手协同将下摆折向肩线，松开后双臂返回初始姿态。",
+            "target_object": "绿白条纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l4",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌中央平铺一件白灰方格长袖上衣，领口在图像上方，下摆在下方，衣身略向右倾斜。左袖向左下伸出，右袖向右下伸出，两只机械臂张开夹爪在左右两侧，尚未抓住衣服。",
+            "goal": "先把两只袖口向内折到对侧胸部，再双臂抓下摆两角向肩线折叠，使下摆和肩线在桌面平面对齐，松开并将双臂回到初始姿态。",
+            "target_object": "方格长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l4",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌上平铺白色方格长袖衬衫，袖子向两侧伸出，下摆朝向机器人，领口远离机器人，双臂夹爪张开。",
+            "goal": "将左右袖子折向对侧胸部，再将下摆向肩部对折，松开衣服并双臂回到初始姿态。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "both"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l5",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅米色白点长袖衬衫，衣领在画面上方，衣身略斜，左袖向左下展开，右袖向右展开，下摆在画面下方偏右。双臂张开未抓住衣物。",
+            "goal": "先将左右袖口分别折向对侧胸部，再双手抓下摆两角向肩线折叠，释放衣服后双臂回到初始姿态。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l6",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅绿色白色碎花长袖衬衫，领口朝画面上方，衣身斜置：左袖向左伸展，右袖朝右下伸展，下摆在画面下方且向右倾斜。双臂空手张开。",
+            "goal": "先将两袖向内折到对侧胸部，再双手提起下摆向肩部折，使下摆与肩线在桌面平面对齐，松手并双臂回初始姿态。",
+            "target_object": "浅绿色碎花长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l7",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "先将左右长袖向内折叠，袖口靠近对侧胸部，再双手抓住下摆向肩线折起，释放衣服并双臂回初始姿态。",
+            "observation": "木桌上平铺一件白色黄色斜条纹长袖上衣，领口在图像上方，衣摆在下方。左袖朝左下方伸出，右袖朝右下方伸出，整件衣服略向右旋转，两袖尚未折叠。双夹爪张开，未抓衣物。",
+            "held_object": "无",
+            "target_object": "条纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l8",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件蓝白格子长袖上衣，领口肩线在远端，衣摆在近端，两袖向左右下方展开；双臂张开尚未抓取。",
+            "goal": "先将左右袖口分别向内折到对侧胸部，再双手抓住衣摆向肩线折齐，释放并双臂回初始位。",
+            "target_object": "蓝白格子长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色白色碎花长袖上衣，领口在远侧，衣摆在近侧；衣身略斜，左袖向左下伸展，右袖向右伸展。双臂张开，未抓布料。",
+            "goal": "先把两袖分别向内折到对侧胸前，再双手抓衣摆两角抬起折向肩线，对齐后释放衣物并双臂回初始位。",
+            "held_object": "无",
+            "target_object": "浅蓝色长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        }
+      ],
+      "event_log_sha256": {
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l0/agent-events.jsonl": "d7c7eb16c15c93c3c4efc7229dd0924223a1e4cea0215ad8adfc480e33b9a6f1",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l1/agent-events.jsonl": "e3079907da037d3f7d7548fcaf8f75383f3cdd681c15db4dbb6b138151442112",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l10/agent-events.jsonl": "7fdb241e04b9dfc97c5d71b24230b0e8b65b68d5e391f30760be57495de5b957",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l11/agent-events.jsonl": "8481c82bd08e6869550ed8335291033b196dc011d173e17bf2ddfbb05b9905f3",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l12/agent-events.jsonl": "aa3d5e96d8f455fe7a474a499ac1e0d32382e570b9d4edaed0e3d75466ad6d3a",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l13/agent-events.jsonl": "df1b76b0df335ca18378a822b2cc40569531bfbb7b83c7ccc7e5f0efa0f7b2ef",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l14/agent-events.jsonl": "e9f4b7a9410a9ea7c14efd5a3319486fcbe1f02b43106a9bbe7389c4d99258a1",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l15/agent-events.jsonl": "45fdccf7210fe6663f76c2f1a51ae4f5a4fac79d3477e509f89da557b29e227c",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l16/agent-events.jsonl": "46c9ce8269fe4530ad4b6ce0cb12a4ae81368a7f1ef40ad6d6c824a4809ee9e9",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l17/agent-events.jsonl": "60d78ab3e8a4c722226b3c69690ba443e325d2f2add7dd378d5db18b64fbef25",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l18/agent-events.jsonl": "9309c2935b4b70ee65aa79c5b0eaf82b82643249cb5430c5892f9bfced58b830",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l19/agent-events.jsonl": "d92617d29db00812105022e84bf2646ce9c91334123faa7cdd02e6399ddeafa0",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l2/agent-events.jsonl": "ec44183afa1022b18895eb8defbe4d935b4caaa7fc8dc874053564b814a97329",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l20/agent-events.jsonl": "9860a2a334bb3d97963a43ffe9412774e3cc31d61feaafb0fd10ed15a6508e90",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l21/agent-events.jsonl": "cb3e060a2be8d7c085545ae157499cc0f3620590aa70145a83f2509f9c59e132",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l22/agent-events.jsonl": "f5f0ca390c469e2e51898a258499fcffec36d0a9e47b3ff5f54e475c0b9c532e",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l23/agent-events.jsonl": "f2148000759a7012e752a49025e49eea9a06d5e1284e1c146a430aa1a066d764",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l24/agent-events.jsonl": "03f1be0a48062394777c2905eefeca74c823408e1b95a1d60a84e98bd179268d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l3/agent-events.jsonl": "e7fc84a3e64517b1252960baeefa664e8bc7be0e7e37599746e9cc8afec9539d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l4/agent-events.jsonl": "62425975d66c50bde1caed57a85ccfef6c9595c75dfda97c85443b68e6c97292",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l5/agent-events.jsonl": "059c3c8ca5b10f389fa8aed2ee01aa40cd46f8ea446d722327ea02d0528ca936",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l6/agent-events.jsonl": "23c5f9fce5fdde4f2a85ffbf6497a63944211d83185c593a69bf429f3f034b3c",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l7/agent-events.jsonl": "f07b16bf6c95a519adc75369a34725ef06de469f7f405c5645a67eab31e412bd",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l8/agent-events.jsonl": "a9ee515def2934f62839feecfcb8dac380c2069fed33ee76dd8c659847cb57e5",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-random-l9/agent-events.jsonl": "b6f095bfbc48b0ddc4113514d38d0cc58638662421c0ff7f330fd2920042347a",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l0/agent-events.jsonl": "53d2386992b7408c8a19aa9414971668761cab72b5faa6e4bd85889673833c16",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l1/agent-events.jsonl": "5231b8c34bf8abab1512d1a8ef4d0e16fe4b698875dd40bc7022089719714d65",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l10/agent-events.jsonl": "399fe446bf4818596613a577fafe2efe34d8655b7a99c4919d7f596c5863cfa3",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l11/agent-events.jsonl": "711738fdea3da9f320aed59599115c193c595896f8cd69f0c50983acd46856da",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l12/agent-events.jsonl": "012b190a8726d6897fe37590b8d768502c2fa4d4a3f826bda113d1bc1bf46c7a",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l13/agent-events.jsonl": "57f4fb4a55c9749e2f3774907c077b5dae9643a411e90ec48a4a7e4caa4cd986",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l14/agent-events.jsonl": "753751c28c27584976dae9eb044a9c13a409953faad662743c335671effe7ef0",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l15/agent-events.jsonl": "53512f82f0aac5833ec1346a9a7eabe8a64f3a403cc738da77265a54c79d2801",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l16/agent-events.jsonl": "44915996b79d25a384cbf7b461f4842b6f2f320b688a6f22f0d0701621e3fc6e",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l17/agent-events.jsonl": "0f09beda7b9e8529273ccec98bed60265d0180944bf7a540e8533df254f7cec5",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l18/agent-events.jsonl": "4304812e4f956dfdcda91a054584f6c39e08337696189f21a603c99a4aeea96b",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l19/agent-events.jsonl": "b322458c8893ca0bbb23a29569e58bb7c8d76739a3cc2c27287d769302db8907",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l2/agent-events.jsonl": "c426595ff796f371cce7b3a95f426a447976ed22cef5be9fd37f52659206ceda",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l20/agent-events.jsonl": "63c11dc0a1830fc9dded80a50276cf8bb32f9418ba15c477ac2030a088e7ad3d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l21/agent-events.jsonl": "3eddac6e04f483e269fadda887dd895f06deecf26b37e1ea33325c950a378ab3",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l22/agent-events.jsonl": "6c8557de55bddfc0f95fbc8dbf04cef1967a6dc7b063ee4938bcba9e2e17c962",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l23/agent-events.jsonl": "88a20579fb3496e7196ae822f377b32cea73e16e9b257d6fbb0309f7166a5708",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l24/agent-events.jsonl": "842c74ee04c08d9a676edb609874ce1d099535b0e0c9c2d989c984a40894760c",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l3/agent-events.jsonl": "4b19690b37c9bfaae3a2a914bab7978b73c1339bb7c4f51122b4478b3928de54",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l4/agent-events.jsonl": "7cc1000fcaeb27fd6b0e4286b0641197925d738aad716be71398774c2c380e37",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l5/agent-events.jsonl": "3d30ce379223d8a69a346f10d5410fc724c6c4fa54a2fbf1b64990a31f497cc2",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l6/agent-events.jsonl": "0662aabf19f940f5bda0dc6bda4272176cc1f0e19100910bd89507443e108397",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l7/agent-events.jsonl": "31961d5d1242e2893863aa35f8f5774e1b90b45f0895ec1bbe4cda280ab7b71f",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l8/agent-events.jsonl": "651bd4ee8e827d627f9c9ee4cd3d3af3563108ce44649885d611ed187a8ec58b",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-clean-fold-20261027/seed1-standard-l9/agent-events.jsonl": "c426b90ad124f568748482edf4e5f234b4d60cd5e498ab0b07d4ab2dc25a8eea"
+      }
+    },
+    "current_original_v3": {
+      "directory": "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028",
+      "attempt_logs": 50,
+      "native_by_variant": {
+        "random": {
+          "scored": 23,
+          "success": 17
+        },
+        "standard": {
+          "scored": 22,
+          "success": 16
+        }
+      },
+      "completed_tool_calls": {
+        "observe": 47,
+        "retrieve_evidence": 87,
+        "measure_scene": 139,
+        "read_action_reference": 220,
+        "record_plan": 73,
+        "execute_chunk": 1148
+      },
+      "failure_counts": {
+        "arm_schema_backend_mismatch": 39,
+        "empty_target_hold_rejected": 4,
+        "per_step_translation_limit": 2,
+        "target_total_step_limit": 1
+      },
+      "failed_retrieval_arm_values": {
+        "双臂": 37,
+        "both": 2
+      },
+      "affected_retrieval_cases": 34,
+      "failed_calls": [
+        {
+          "case": "seed1-random-l0",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌上平铺一件蓝灰色长袖衬衫，领口肩线朝画面上方，衣摆朝下，两袖向左右下方展开；左右机械臂空手张开。周围杂物不覆盖衣物。",
+            "goal": "先将左右袖口分别折向对侧胸部，再双手抓住衣摆内侧角向肩线折叠，释放后双臂回初始姿态。",
+            "target_object": "蓝灰色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l10",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面中央平放一件蓝色长袖上衣，领口和双肩在图像上方、下摆在下方；左袖向左下方伸展，右袖向右下方伸展，衣身略有旋转。双臂张开未抓取，桌面四周有杂物但衣服上方无障碍。",
+            "goal": "将左右袖口依次向内折到对侧胸部，再双手协同抓住下摆两角向双肩折叠，使下摆线与肩线对齐，松开并双臂回到初始姿态。",
+            "target_object": "蓝色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l11",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件白底灰色竖条纹长袖上衣，领口肩线在图像上方，宽下摆在下方，两袖向左右下方斜伸。双臂张开空闲，周围有杂物但衣服上无遮挡。",
+            "goal": "先将两侧袖口分别向对侧胸部内折，再双臂抓宽下摆两角向肩线对齐折叠，松开衣物并双臂归位。",
+            "held_object": "无",
+            "target_object": "条纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l11",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "条纹长袖上衣平铺桌面，领口在前方，两袖向左右伸展，下摆靠近机器人，双手未抓物体。",
+            "goal": "将左袖和右袖内折到对侧胸部，再将下摆双手折到肩线，松手归位。",
+            "held_object": "无",
+            "target_object": "长袖上衣",
+            "arm": "both"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l12",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "将长袖上衣两只袖子向内折到对侧胸部，再双手将下摆折向肩线，对齐下摆与肩线；松开衣物并双臂回初始姿态。",
+            "observation": "桌面上平铺一件浅蓝白色花纹长袖衬衫，领口朝图像上方，下摆朝机器人，衣服整体略斜。左袖向左下伸展，右袖向右伸展，双臂尚未接触。周围杂物不遮挡衣物。",
+            "target_object": "花纹长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l12",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "叠衣服：袖子内折，下摆对齐肩线，双臂回位",
+            "observation": "花纹长袖衬衫平铺桌面，领口在上，下摆在下，左袖朝左下，右袖朝右侧，双手空闲。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "both"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l12",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 20,
+                "left": {
+                  "tcp_xyz": [
+                    -0.16,
+                    -0.17,
+                    0.88
+                  ]
+                },
+                "right": {
+                  "tcp_xyz": [
+                    0.217351,
+                    -0.120611,
+                    0.837
+                  ],
+                  "quaternion_wxyz": [
+                    0.357355,
+                    -0.60956,
+                    0.334325,
+                    0.623668
+                  ]
+                }
+              },
+              {
+                "steps": 4
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_r"
+            ],
+            "subgoal": "减速完成左手撤离和右袖上方定位",
+            "expected_feedback": "双臂稳定跟踪到目标，左袖静置胸前，右袖在开放两指中间下方"
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-random-l13",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "将长袖衬衫两只袖子向内折到对侧胸部，再将下摆向肩线对折，下摆与肩线在桌面平面对齐，松开并双臂回到初始姿态。",
+            "observation": "当前桌面中央平铺蓝白竖条纹长袖衬衫，领口肩线在图像上方，下摆在下方，左袖向左下伸展，右袖向右下伸展。双臂张开未抓衣物，周边杂物不在衣服上。",
+            "target_object": "蓝白条纹长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅蓝色碎花长袖上衣，领口和双肩朝图像上方，衣摆朝下，左右袖子斜向外下方展开。周围有杂物但衣服边缘基本无遮挡，双手张开在初始位置。",
+            "goal": "先将两只袖口分别向内折到对侧胸部，再双手抓住衣摆两角向肩部折叠，使衣摆线与肩线在桌面平面内对齐，松开并双臂回到初始姿态。",
+            "target_object": "浅蓝碎花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l15",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 5,
+                "right": {
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 6,
+                "right": {
+                  "tcp_xyz": [
+                    -0.055,
+                    -0.078,
+                    0.866
+                  ]
+                }
+              },
+              {
+                "steps": 8,
+                "right": {
+                  "tcp_xyz": [
+                    0.2,
+                    -0.2,
+                    0.88
+                  ]
+                }
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_r"
+            ],
+            "subgoal": "Release right cuff and withdraw to inspect both sleeve folds",
+            "expected_feedback": "Both sleeves remain inward across opposite chest areas; exposed hem can be rebound from live image."
+          },
+          "response": "Error executing tool execute_chunk: Per-arm translation norm must be <=0.035 m per row",
+          "category": "per_step_translation_limit"
+        },
+        {
+          "case": "seed1-random-l16",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件绿色白色三角纹长袖上衣，领口朝画面上方，衣摆朝下，衣身略顺时针倾斜。左袖向左下伸，右袖向右下伸，两只机械臂张开并未抓住衣物。周围杂物不在折叠区域。",
+            "goal": "先将左右袖口分别内折到对侧胸部，再双臂抓住衣摆两角向肩线翻折，使衣摆线与肩线对齐；松手并双臂返回初始位。",
+            "held_object": "无",
+            "target_object": "花纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l16",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "一件绿色白色花纹长袖上衣平铺在桌上，领口朝远处，衣摆朝机器人，左袖向左外侧，右袖向右外侧，双臂空手。",
+            "goal": "折叠上衣：双袖向对侧胸部内折，再将衣摆向肩部翻折，松开并回到初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l17",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅黄色白色方格长袖上衣，领口和双肩朝图像上方，两袖向左右下方展开，下摆宽且靠近机器人。双臂张开未抓物，桌面有杂物但未压住衣服。",
+            "goal": "先将两袖分别向内折到对侧胸部，再双臂抓住下摆角向肩线折叠，释放衣物并双臂返回初始位。",
+            "held_object": "无",
+            "target_object": "格纹长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l18",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件粉紫色花纹长袖上衣，领口和肩部在图像上方，宽下摆在下方，两袖向左右下方展开。双臂张开且未抓持，周围杂物未遮挡衣服。",
+            "goal": "先把左右袖口分别向对侧胸部内折，再双臂抓住下摆两角向肩线折齐，松开并双臂回到初始姿态。",
+            "target_object": "花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l19",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件棕米色方块迷彩长袖上衣，领口和双肩在图像上方，衣摆朝机器人下方。左袖向左下伸展较长，右袖向右下伸展；衣身略有旋转，衣摆线左低右高。双臂初始张开，未抓衣服。桌周边有杂物但衣服附近可操作。",
+            "goal": "先把两只袖口分别向对侧胸部折入，再用双臂抓住衣摆两角向肩线翻折，使衣摆与肩部在桌面内对齐；放开并双臂回初始位。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l19",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 18,
+                "right": {
+                  "tcp_xyz": [
+                    0.2749,
+                    -0.1493,
+                    0.825
+                  ],
+                  "quaternion_wxyz": [
+                    0.23918,
+                    -0.663185,
+                    0.211478,
+                    0.676946
+                  ],
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 8,
+                "right": {
+                  "tcp_xyz": [
+                    0.2749,
+                    -0.1493,
+                    0.773
+                  ],
+                  "gripper": 1
+                }
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_r"
+            ],
+            "subgoal": "Approach right cuff vertically with the demonstrated right wrist posture",
+            "expected_feedback": "Right fingers align with live inset cuff point, ready for stationary closure; left sleeve stays folded."
+          },
+          "response": "Error executing tool execute_chunk: Target segments need integer steps; total must be 1–24",
+          "category": "target_total_step_limit"
+        },
+        {
+          "case": "seed1-random-l2",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件紫灰色长袖上衣，衣领在图像上方，衣身有顺时针倾斜；左袖向左下伸展，右袖向右伸展，下摆较宽。双臂空手张开，周围杂物未覆盖衣服。",
+            "goal": "把两只袖子分别向内折到对侧胸部，再双手抓住下摆两角向肩线折叠，放开衣服并双臂回到初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l20",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅色长袖有领衬衫，衣领和肩线在图像上方远端，下摆在下方近端，两只袖子分别斜向左下和右下展开。双机械臂张开夹爪在左右两侧，当前未抓衣物。周围杂物未遮挡衣服。",
+            "goal": "先把左右袖口分别向对侧胸部折入，再双臂抓住下摆两角抬起向肩线折叠，使下摆与肩线在桌面平面重合，松手并双臂归位。",
+            "target_object": "浅色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l21",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件浅粉白色碎花长袖上衣，领口和肩线朝图像上方，衣摆朝机器人，左右袖子向外下方展开。两只机械臂在初始位置、夹爪张开。周围有玩具等杂物，衣服主体及袖口可见。",
+            "goal": "先将两袖分别向内折到对侧胸部，再双臂配合将宽衣摆折向肩线，使衣摆与肩线在桌面平面对齐，释放衣物后双臂返回初始姿态。",
+            "target_object": "碎花长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l23",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件棕橙色绿白格纹长袖上衣，领口和肩线朝图像上方、下摆朝机器人，两袖向左右斜下方展开。衣身略倾斜，左袖口在左侧，右袖口更靠近机器人。双手初始张开，尚未抓取，周围有杂物但衣服附近可操作。",
+            "goal": "先将两袖分别向内折到对侧胸部，再双手配合把宽下摆折向肩线，使下摆与肩线在桌面上对齐，放开衣服并双臂回初始位。",
+            "target_object": "格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l3",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件白色细红蓝格纹长袖上衣，领口朝远端，衣摆朝机器人，衣身略倾斜；左袖斜向左近端伸展，右袖向右侧伸展。两只机械臂张开夹爪位于衣服两侧，尚未抓取。桌面周围有杂物但衣服主体可见。",
+            "goal": "先将左右袖口分别折向对侧胸部，再双臂抓住衣摆两角向肩线折叠，使衣摆线与肩线对齐，松开并回初始位。",
+            "target_object": "格纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l4",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "当前桌面上平铺一件浅绿色花纹长袖上衣，领口和肩线在图像上方，衣摆在下方，两只袖子向左右下方展开。双臂张开，尚未抓布；桌面周围有杂物但未压住衣服。",
+            "goal": "先把两袖分别向内折到对侧胸部，再双手抓衣摆向肩线翻折，对齐衣摆与肩线，松开并双臂回初始姿态。",
+            "target_object": "浅绿色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l6",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "将两只袖口分别向内折到对侧胸部，再双手折起下摆对齐肩线，松开衣物并双臂回初始位。",
+            "observation": "桌面中央摊着一件浅蓝紫花纹长袖上衣，衣身斜放，领口在图像上方，左袖伸向左侧，右袖伸向右下方，下摆斜向右下；周围有玩具、刷子等杂物但未压住衣服。机器人两手张开未接触衣物。",
+            "target_object": "浅蓝紫花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l7",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件黄色花纹长袖衬衫，领口在图像上方远离机器人，下摆在下方靠近机器人。左袖向左下伸出，右袖向右伸出，衣身略倾斜。双臂张开、尚未抓住衣物，周围有键盘等杂物但衣服区域清晰。",
+            "goal": "将两只袖子分别向内折到对侧胸部，再双手将下摆向肩线折齐；松开衣服并双臂回到初始位置。",
+            "held_object": "无",
+            "target_object": "黄色长袖衬衫",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-random-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面中央平铺一件粉棕色像素迷彩长袖上衣，领口和肩线朝远方，下摆朝机器人，双袖向左右斜下方展开。左右袖口均未折，衣身平整，周边有杂物但没有覆盖衣物。双臂在初始位置且夹爪打开。",
+            "goal": "先将左右袖口分别向对侧胸部内折，再双臂抓住下摆两角向肩部折，使下摆线与肩线在桌面平面上对齐，释放并双臂回初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l0",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件粉红色长袖开衫，白色条纹和扣子，领口朝远处、下摆朝机器人，衣身略斜；图像左袖向左伸展，右袖斜向右下伸展，两只机械臂初始张开未抓衣物。",
+            "goal": "先把左右袖口折向对侧胸部，再双臂抓下摆两角向肩线翻折，放开衣物并双臂回到初始姿态。",
+            "target_object": "粉红色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l10",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色白色图案长袖衬衫，领口朝图像上方，下摆朝机器人，左袖伸向左下，右袖伸向右侧，衣服整体有少量旋转，双臂张开未抓取。",
+            "goal": "先将两只袖口分别向对侧胸部折入，再双臂抓下摆两角向肩线翻折，对齐下摆与肩部，松开并双臂归位。",
+            "target_object": "浅蓝色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l12",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件浅绿色碎花长袖衬衫，领口在远端、下摆朝机器人，左袖斜向左下伸，右袖斜向右下伸。双臂张开尚未抓布。需要先把左右袖口折到对侧胸部，再双手将宽下摆折向肩线。",
+            "goal": "把两只袖子向内折到对侧胸部，再把下摆折到肩线，松开后双臂回到初始姿态。",
+            "target_object": "浅绿色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l13",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件红白花纹长袖上衣，领口朝远方，上衣整体在桌面有旋转，左袖伸向左侧，右袖伸向右下，衣摆靠近机器人，双臂在初始张开位置，尚未抓布。",
+            "goal": "先分别将两袖向内折到对侧胸部，再双手抓衣摆向肩线对齐折叠，松开并双臂回初始姿态。",
+            "target_object": "红白花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l14",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺一件红底白色花纹长袖上衣，领口朝远端，衣身略斜；左袖向画面左侧伸展，右袖斜向右下方伸展，衣摆朝近端。双臂张开，尚未接触衣物。",
+            "goal": "将两只袖口分别向对侧胸部内折，再双手把衣摆向肩线翻折对齐，松开衣物并双臂回初始姿态。",
+            "target_object": "红白花纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l14",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 14,
+                "left": {
+                  "tcp_xyz": [
+                    0.11,
+                    -0.105,
+                    0.786
+                  ],
+                  "quaternion_wxyz": [
+                    0.858227,
+                    0.075304,
+                    0.499194,
+                    -0.092634
+                  ],
+                  "gripper": 0
+                }
+              },
+              {
+                "steps": 3,
+                "left": {}
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_l"
+            ],
+            "subgoal": "Tilt left wrist for reach and support cuff on right chest",
+            "expected_feedback": "Reduced wrist extension enables supported placement near opposite chest with cuff still pinched."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-standard-l15",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色白色花纹长袖衬衫，领口在图像上方，衣摆在下方，左袖向左下伸出，右袖向右伸出。两只机械臂空手张开，衣服尚未折叠。",
+            "goal": "先将两只袖口分别向内折到对侧胸部，再双臂抓住衣摆两角向肩线翻折，使衣摆和肩线在桌面内对齐，松开并双臂回初始姿态。",
+            "target_object": "浅蓝色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l15",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 5,
+                "left": {
+                  "tcp_xyz": [
+                    -0.2478,
+                    -0.2422,
+                    0.77
+                  ]
+                }
+              },
+              {
+                "steps": 3
+              }
+            ],
+            "cameras": [
+              "wrist_l"
+            ],
+            "subgoal": "Settle left fingers at cloth contact before stationary closure",
+            "expected_feedback": "Inset cuff lies between fingers at table surface without table penetration."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-standard-l16",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件黄色白点长袖开衫，领口和肩在图像上方，下摆在下方，两袖向左右斜下伸展。双臂空手处于初始位置。",
+            "goal": "先将两只袖口向内折到对侧胸部，再双手抓下摆向肩线折叠，对齐下摆和肩线，松开衣服并双臂返回初始姿态。",
+            "target_object": "黄色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l17",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺浅蓝色白花长袖上衣，衣领朝图像上方，衣身倾斜，左袖向左下伸展、右袖向右下伸展；两机械臂张开停在桌前，尚未抓住衣物。需要按当前轮廓确定袖口、胸部、下摆和肩部。",
+            "goal": "先将两袖向内折到对侧胸部，再双臂抓住宽下摆向肩线折齐，释放后双臂返回初始姿态。",
+            "held_object": "无",
+            "target_object": "浅蓝色长袖上衣",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l17",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 8,
+                "left": {
+                  "tcp_xyz": [
+                    -0.1432,
+                    -0.2481,
+                    0.77
+                  ],
+                  "quaternion_wxyz": [
+                    0.68397,
+                    -0.178291,
+                    0.677135,
+                    0.204659
+                  ],
+                  "gripper": 1
+                },
+                "right": {
+                  "tcp_xyz": [
+                    0.0865,
+                    -0.2879,
+                    0.77
+                  ],
+                  "quaternion_wxyz": [
+                    0.356406,
+                    -0.607539,
+                    0.334676,
+                    0.625989
+                  ],
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 4
+              }
+            ],
+            "cameras": [
+              "head",
+              "wrist_l",
+              "wrist_r"
+            ],
+            "subgoal": "Lower both open grippers gently to hem",
+            "expected_feedback": "Each hem inset is between its fingers; cloth remains supported on measured table plane."
+          },
+          "response": "Error executing tool execute_chunk: Specify an arm target or explicit gripper hold",
+          "category": "empty_target_hold_rejected"
+        },
+        {
+          "case": "seed1-standard-l18",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上铺着一件浅橙色碎花长袖开襟衬衫，领口朝远端，衣摆朝机器人。左袖向左下伸出，右袖向右侧伸出，衣身略倾斜。双臂空手张开停在初始位置。",
+            "goal": "先把左右袖口分别向对侧胸部折入，再双手同时提起衣摆两角向肩线翻折，对齐衣摆与肩线，释放并返回初始姿态。",
+            "target_object": "长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l2",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上摊开一件米白色细格纹长袖衬衫，领口在图像上方、下摆在下方，左右袖向两侧斜下伸展。左袖口更靠近机器人，右袖口略靠后，双臂张开未抓物。",
+            "goal": "先将两袖分别向内折到对侧胸部，再双手抓下摆两角向肩线对齐折叠，放开衣物并双臂回初始姿态。",
+            "target_object": "米白色格纹长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l21",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件红白斜纹长袖上衣，领口在图像上方，衣身斜放。左袖向左下方伸出，右袖向右上方伸出，衣摆在下方，双臂空手初始位。",
+            "goal": "先将两袖向内折到对侧胸部，再双手提衣摆对齐肩线，松手并双臂回初始位",
+            "target_object": "红白条纹长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l22",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "goal": "将两只长袖向内折至对侧胸部，再双手将下摆折向肩线，对齐下摆与肩线，松手并双臂回到初始位。",
+            "observation": "木桌上平铺一件蓝色格子长袖上衣，衣服在桌面内有顺时针倾斜，领肩在图像上方，左袖伸向左侧，右袖伸向右下方，下摆斜向右下。双手张开且未接触衣物。",
+            "target_object": "蓝色格子长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l23",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件米白色细格纹长袖上衣，领口和肩线朝远处，下摆朝机器人，两袖向左右下方展开。左右机械臂张开停在两侧，目前没有抓住衣物。",
+            "goal": "先把左右袖口分别向内折到对侧胸部附近，再双臂抓住宽下摆向肩线翻折，使下摆和肩线在桌面平面对齐；释放衣物并双臂返回初始姿态。",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l23",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面平铺米白色长袖上衣，领口朝远处，下摆朝近处，左右袖子向两侧展开，双臂空手。",
+            "goal": "将两只袖子向内折到对侧胸部，再双手将下摆向肩部对齐折叠，放开衣物并双臂回到初始姿态。",
+            "target_object": "上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l5",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件米白色长袖衬衫，有浅色方格纹，衣领朝画面上方，衣身斜放，左袖朝左下方伸出，右袖朝右上方伸出；下摆在画面下方，两只机械臂张开且未抓衣。",
+            "goal": "先将两袖向内折到对侧胸部，再双臂抓下摆向肩部翻折使下摆线与肩线在桌面内对齐，释放并双臂回初始位。",
+            "target_object": "米白色长袖衬衫",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "木桌上平铺一件浅蓝色白花长袖上衣，衣领朝远处，衣摆朝机器人，衣身稍斜；左袖向左下伸出，右袖向右侧伸出，两袖尚未折叠，双手张开未接触衣服。",
+            "goal": "先把两只袖口向内折到对侧胸部，再双手配合把下摆折向肩线，对齐后松开衣服并双臂回初始位。",
+            "target_object": "浅蓝色长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l9",
+          "tool": "retrieve_evidence",
+          "arguments": {
+            "mode": "plan",
+            "observation": "桌面上平铺浅蓝色长袖衣服，左袖朝左下，右袖朝右侧，领口在远端，下摆在近端。机械臂空手。",
+            "goal": "双袖向胸前内折，再将下摆向肩部折叠，释放后双臂回初始位",
+            "target_object": "长袖上衣",
+            "held_object": "无",
+            "arm": "双臂"
+          },
+          "response": "Error executing tool retrieve_evidence",
+          "category": "arm_schema_backend_mismatch",
+          "backend_error": "arm must be left, right or empty",
+          "normalized_arm": "",
+          "offline_original_error_reproduced": true,
+          "offline_normalized_request_accepted": true,
+          "normalized_reference_count": 2
+        },
+        {
+          "case": "seed1-standard-l9",
+          "tool": "execute_chunk",
+          "arguments": {
+            "targets": [
+              {
+                "steps": 6,
+                "right": {
+                  "tcp_xyz": [
+                    -0.08,
+                    -0.075,
+                    0.845
+                  ],
+                  "gripper": 1
+                },
+                "left": {
+                  "tcp_xyz": [
+                    -0.0875,
+                    -0.2531,
+                    0.85
+                  ],
+                  "quaternion_wxyz": [
+                    0.68397,
+                    -0.178291,
+                    0.677135,
+                    0.204659
+                  ],
+                  "gripper": 1
+                }
+              },
+              {
+                "steps": 12,
+                "right": {
+                  "tcp_xyz": [
+                    0.1613,
+                    -0.1959,
+                    0.85
+                  ],
+                  "quaternion_wxyz": [
+                    0.356406,
+                    -0.607539,
+                    0.334676,
+                    0.625989
+                  ],
+                  "gripper": 1
+                }
+              }
+            ],
+            "cameras": [
+              "head"
+            ],
+            "subgoal": "Withdraw from sleeves and align both open hands above live hem inset points",
+            "expected_feedback": "Both sleeves remain inward after release; two grippers hover over unchanged hem corners."
+          },
+          "response": "Error executing tool execute_chunk: Per-arm translation norm must be <=0.035 m per row",
+          "category": "per_step_translation_limit"
+        }
+      ],
+      "event_log_sha256": {
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l0/agent-events.jsonl": "4e4b6842963ff1cca988a7efd2f588e08f5eb870da5873a46f86db172e1bc75d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l1/agent-events.jsonl": "43f05bbbf69d99ae4b1159c5940f23c96318e18ab37499df5f59cba5c3c3a544",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l10/agent-events.jsonl": "4646973549abd88d0b40600b6303540efcbf5231e6083629d1b5755b202ac759",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l11/agent-events.jsonl": "c132701661666952a7b794ab10dc841ce73af9a12f2001b82620da94ffda7efc",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l12/agent-events.jsonl": "764ec2c06e01df2245676dbf0e9518e7f8ee8a935712845cd3351385b14d8e9e",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l13/agent-events.jsonl": "f6518f22dff7cd1b5889f749883f4876e3a6a88044fae85d7426ab3d7efbf2d9",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l14/agent-events.jsonl": "397b68a43ea721fcb9de543d9d4d5b0c9e05031a2638610fddf419b553537de2",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l15/agent-events.jsonl": "dcc02c9b8850e116d221d9627abddb59d435372946c0442c6c5b77987a8ef68e",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l16/agent-events.jsonl": "fb584139fa5e02e1a92db1a4d84839ebdf1814411ec471864c79ebc3bdf88900",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l17/agent-events.jsonl": "27f26fa5645bac7bd541f9d50f9b5809dec46b3678fbd25816a0e896c34e1a28",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l18/agent-events.jsonl": "86ba590cc791d60864153633e8506226b5cff7f5541942c7383e211716c67a1e",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l19/agent-events.jsonl": "d394db22cb5c94f16ab1acdd0fea86d53af98137d9e74710dcdc4b1e6c1d0e90",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l2/agent-events.jsonl": "36f6d7e2c21b4202f7b3a5adae0f86fce69a6e253438e6d75cb9b417a2e7b6e5",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l20/agent-events.jsonl": "49c818c5b9483c24702f354944a492471db49455786ef2855916e76e705afcfa",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l21/agent-events.jsonl": "eb1d83cd42a28ed3d2eb60d77624d01d68548facd1e46eb1039df864267516d4",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l22/agent-events.jsonl": "5bb845b405394b016fb4c3c4eea4e8e01f8d844756623a356cd5d88de551e145",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l23/agent-events.jsonl": "93d7c1f4871e18e0e7634fca6bdce697e1aa5fa9a9a9728d606a2666a819da9e",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l24/agent-events.jsonl": "eb64c0a017629a4cc7aabc3ebe64c3aa51f2930fb0d39b800b44f5577fc1ae62",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l3/agent-events.jsonl": "f907a73a0cdef5f11545552ea78ea258ccd8ea304978cf1732b55922100a7f3d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l4/agent-events.jsonl": "e99b9bae378cb51043be8db60ea55682a534aa597626731361574f17d00d2cba",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l5/agent-events.jsonl": "3cd7a049a843285786434b3dd39c3eb82d14db92c985e0adf8f4597dd8846bff",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l6/agent-events.jsonl": "3c762ff5fe41b5a8f8ee6af4c369f7435aa432cb33e5fe852851d1fee0aab3ad",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l7/agent-events.jsonl": "d89013e9839df6103ee78987a323e6052d6b6cb49d14182a4f96a57ec5705cdc",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l8/agent-events.jsonl": "13c31c49d0e4d73bcce71997e450831844e33fa24d115075ada7aedac75793c8",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-random-l9/agent-events.jsonl": "946c4d9bef1a0796b3c20b99022e04778aa2f8968536813a6e4a96ef3b277a4c",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l0/agent-events.jsonl": "f034b4303aae83692e901e1937997c260f6d9a3a8f6ee77600cf8d1868800676",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l1/agent-events.jsonl": "c61b7c0fb9ac05c5e7e92d81fc2a882296fab902494526c2376072ccec192c9d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l10/agent-events.jsonl": "4d466b44da9ed5b467fc76989d310f656a7afc90e896dabc750a2d474cd49be0",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l11/agent-events.jsonl": "a5422941eb0d8dfcbde8d7c372d57c75078d0844a35c13dba0fc50227bf7c842",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l12/agent-events.jsonl": "d4119f9975ddff63c6f4ee53dac8f88b2511e479de8b4228c17de9e50094b1af",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l13/agent-events.jsonl": "33e58c52e398a354c9a47982efc0c1514de5b1034a650b1eb7ef3e9ce34dd0f8",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l14/agent-events.jsonl": "dd396ab4e969daaf458498af355278d9cafe3ff8e4244d96e1943e3ff35ec20d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l15/agent-events.jsonl": "fa43749da5ba997d9b1f9ef36be7d14978422be71a97bc378bbc2dd02203e26d",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l16/agent-events.jsonl": "df705fb873e7a34f7d1dc0b5b406656960ba1b26b7065eeb105eef126819d8b9",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l17/agent-events.jsonl": "9e4ea6c6d5a592ddf21b3833cbb862710cd7cc97cbd0508622ca74a0c1b698bb",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l18/agent-events.jsonl": "ada7fa64d5bc997807ecf6eae2c846cf54738b73483d1723580afcc0b0671f52",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l19/agent-events.jsonl": "63d3965b82e44d90adf9182b4fa1dec8feeace17bbbb5354cedef4da9fe91d13",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l2/agent-events.jsonl": "1753262687ea5bd3750971bb2934f274f92fcd7a37d02b6c4630e707ab6e1f03",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l20/agent-events.jsonl": "eae05c61b48fbaa2d6d19ddccfb638a0118de65e8a75c29930e114bd427c105b",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l21/agent-events.jsonl": "7d0b50810bfef57061989d05dd0e58eebf92a3e17e4c145e59e6f4d9ac5eb7bd",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l22/agent-events.jsonl": "4c54e5156c205c85f040ec78f24dfc312d693e9e393eee1bc7b7b46be8094257",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l23/agent-events.jsonl": "d71117871328201cbf32b014063924ab2a65e895770f2a70f8d2e69960c8a954",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l24/agent-events.jsonl": "4bd19249ab6c44ebc5c3e320e30be40021fd22dc5d6376bb0f10fb5c5ef785a8",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l3/agent-events.jsonl": "bf7a49aba730a8ad296365ba88b5cacbde6b91fe258611933b1eed662610a7c0",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l4/agent-events.jsonl": "fecfbf0bcabd44dfe36a5849b0486ee7ada58ee2cbff4e63dbaad56a8dd475d1",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l5/agent-events.jsonl": "f1ee02195b3f35e2650e7c8d723f49d660c42ccb4ae0e029b59448c5b9742503",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l6/agent-events.jsonl": "0489d6a498f8e1012d27139c4a9f7aacc9b686eb6d58d7433fa6a431282fb6b2",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l7/agent-events.jsonl": "c5db42aeaedb98f01dae8b0b15d5f8183b90a8affe0c86bc048d9d543e5a5c04",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l8/agent-events.jsonl": "92d18540c4adfba571548248f2fbf63e2dfafbf25259214d19112e222ce0c666",
+        "/home/zxc/文档/ChatGPT/RoboRAG/work/v3-clean-refactor/runs/v3-original-control-20261028/seed1-standard-l9/agent-events.jsonl": "2f97a36572f6b2e52162111cf0893eee7deb46bc4b1d746810213f5833ea4c9d"
+      }
+    }
+  },
+  "interpretation": [
+    "Counts are failed completed MCP invocations, not failed robot episodes.",
+    "Current original includes partial trajectories and unscored interruptions, so exposure differs.",
+    "Retrieval replay only validates this exact failure cause and known-alias normalization; no model or robot calls and no implemented policy fix.",
+    "Action errors are pre-dispatch compiler rejections, distinct from successful tool calls whose robot motion misses a target or native task fails."
+  ]
+}

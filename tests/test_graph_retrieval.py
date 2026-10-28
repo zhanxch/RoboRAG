@@ -68,6 +68,16 @@ class RetrievalTest(unittest.TestCase):
         self.assertNotIn("plan", packet["memories"][0])
         self.assertIsNone(result["results"][0]["node_id"])
 
+    def test_arm_aliases_preserve_canonical_retrieval_and_reject_unknown_values(self):
+        for mode in ("plan", "action"):
+            for alias, canonical in (("双臂", ""), ("both", ""), ("左臂", "left"), ("右臂", "right")):
+                query = dict(mode=mode, task="stack_blocks", goal="堆叠", observation="右爪夹着白色块")
+                self.assertEqual(self.engine.retrieve(dict(query, arm=alias))["model_context"],
+                                 self.engine.retrieve(dict(query, arm=canonical))["model_context"])
+        for invalid in ("third", [], None):
+            with self.assertRaisesRegex(ValueError, "arm must be"):
+                self.engine.retrieve(dict(mode="plan", arm=invalid))
+
     def test_roles_not_just_same_words_and_one_result_per_episode(self):
         result = self.engine.retrieve({"mode": "action", "task": "stack_blocks", "goal": "白色块放到黑色底块上",
                                       "observation": "右爪夹着白色块", "held_object": "白色块", "target_object": "深色底块", "arm": "right", "k": 5})

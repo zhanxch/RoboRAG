@@ -2,11 +2,13 @@
 
 当前分支 `refactor/v3-clean` **直接从原始 fold v3 提交 `1e9ffa0` 开始重构**。模型观察现场，检索历史示范，记录自己的计划，再生成短动作段并查看反馈。本轮拆分原版 MCP 文件、补充来源记录和批次 seed 透传，并增加独立的只读交互监控。
 
-**本版完整 fold_clothes 测试为 35/50，未达到预先登记的历史 v3 37/50 验收线。** 原版在当前环境下的另一轮固定 50 例诊断对照仍在运行，两轮结果单独保留。源码一致性检查通过不等于效果恢复，详见[验证结果](docs/v3-clean-validation-20261027.md)。
+**首轮重构 `b2d5686` 的完整 fold_clothes 测试为 35/50，未达到预先登记的历史 v3 37/50 验收线。** 原版在当前环境的 50 例诊断对照也已结束：33 成功、12 失败、5 例因容量或连接问题未评分，两轮结果单独保留。当前分支随后修复了已查明的基础接口问题，尚未进行新一轮原生效果测试，不能继承旧成绩。详见[验证结果](docs/v3-clean-validation-20261027.md)。
 
 ## 当前执行方式
 
-原版已经通过 `record_plan` 记录 `current_scene`、`steps` 和 `adaptation`。模型依据当前观察决定下一步；历史 graph 提供参考，不强制当前计划按示范节点执行。保留原版动作、参考图像、提示词和控制器，没有移植阶段 SOP、graph plan、阶段准入或阶段驱动执行。
+原版已经通过 `record_plan` 记录 `current_scene`、`steps` 和 `adaptation`。模型依据当前观察决定下一步；历史 graph 提供参考，不强制当前计划按示范节点执行。沿用原版参考图像和控制器，没有移植阶段 SOP、graph plan、阶段准入或阶段驱动执行。
+
+基础修复接受检索参数中的“双臂”等等价写法，取消 delta 单次调用的 24 步上限，支持空目标保持段，并将速度超限的目标段自动延长后执行。回执区分请求、编译和实际执行步数，保留原版的跟踪误差与回合终止机制。[接口说明及历史回放](docs/rag-mcp.md#2026-10-28-基础接口修复的验证边界)列出具体变化；任务计划格式保持 v3，提示只同步接口说明。
 
 独立监控读取已有计划、动作意图与反馈，显示当前交互。它不调用模型、不向模型提供上下文、不控制机器人。模型写下的“抓住”“完成”只是声明，任务成败以原生评价为准。接口与验证边界见[v3 重构说明](docs/v3-clean-refactor.md)。
 
@@ -36,7 +38,7 @@ PYTHONPATH=src python -m roborag.interaction_monitor runs/fold-single --follow
 - `src/roborag/rag_runner.py`：启动模型、MCP 和仿真进程，保存回合结果及来源。
 - `src/roborag/mcp/`：从原版 `rag_mcp.py` 移出的会话、观察、检索、计划与动作工具；旧导入入口保留。
 - `src/roborag/interaction_monitor.py`：独立读取交互日志。
-- `prompts/`：沿用原版任务提示和动作协议。
+- `prompts/`：沿用原版任务提示，动作协议说明同步已批准的接口变化。
 - `experiments/fold_clothes/`：预先登记的条件与固定场景。
 - `tests/fixtures/v3-contract.json`：移动代码前捕获的原版契约，不能从新实现重生成来通过测试。
 
@@ -46,7 +48,7 @@ PYTHONPATH=src python -m roborag.interaction_monitor runs/fold-single --follow
 PYTHONPATH=src:.runtime/mcp python -m unittest discover -s tests -v
 ```
 
-这些检查覆盖工具定义、提示词、移动定义及核心文件一致性、seed 透传和监控行为，不调用模型或仿真。原生测试、参考文本和图像回放的证据统一见[验证结果](docs/v3-clean-validation-20261027.md)。
+这些检查以原版契约为基准，显式列出基础接口修复的允许差异，并核对未改动的计划、观察、参考展开、seed 透传和监控行为，不调用模型或仿真。原生测试、参考文本和图像回放的证据统一见[验证结果](docs/v3-clean-validation-20261027.md)。
 
 ## 研究背景与历史实现
 

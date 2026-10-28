@@ -86,8 +86,8 @@ def execute_chunk(api, waypoints):
 
 
 def validate_delta_actions(actions):
-    if not isinstance(actions, list) or not 1 <= len(actions) <= 24:
-        raise ValueError("Supply 1 to 24 action rows")
+    if not isinstance(actions, list) or not actions:
+        raise ValueError("Supply at least one action row")
     for row in actions:
         if not isinstance(row, list) or len(row) != 14 or any(not math.isfinite(v) for v in row):
             raise ValueError("Each action row needs 14 finite numbers")
@@ -108,10 +108,8 @@ def expand_delta_actions(actions=None, segments=None):
         actions = []
         for segment in segments:
             repeat = segment.get("repeat")
-            if type(repeat) is not int or not 1 <= repeat <= 24:
-                raise ValueError("Segment repeat must be an integer from 1 to 24")
-            if len(actions) + repeat > 24:
-                raise ValueError("Total expanded rows must be <=24")
+            if type(repeat) is not int or repeat < 1:
+                raise ValueError("Segment repeat must be a positive integer")
             actions.extend([segment["delta"][:] for _ in range(repeat)])
     validate_delta_actions(actions)
     return actions

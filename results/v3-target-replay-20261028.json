@@ -1,0 +1,1832 @@
+{
+  "schema": "roborag.v3-target-replay.v1",
+  "passed": true,
+  "generated_at": "2026-10-28T02:52:11.365187+00:00",
+  "totals": {
+    "unchanged_target_calls": 3384,
+    "unchanged_submitted_rows": 48049,
+    "unchanged_explicit_delta_calls": 25
+  },
+  "cohorts": {
+    "historical_v3": {
+      "cases": [
+        {
+          "case": "seed1-random-l0",
+          "counts": {
+            "unchanged_target_calls": 31,
+            "unchanged_submitted_rows": 436
+          },
+          "commands_sha256": "f850d6bd8d1b759756ad8807f048308e26337d047f287906e7f37ed79a8af769",
+          "input_states_sha256": "ac03147ec54bb615e4d087521f2cbbe07204409ff24d68cdd3e92aad2d63f5cc"
+        },
+        {
+          "case": "seed1-random-l1",
+          "counts": {
+            "unchanged_target_calls": 22,
+            "unchanged_submitted_rows": 353
+          },
+          "commands_sha256": "ca00eec4673f67c493328e8082bb9316146fabfc4a4ddf6466f63fcfb596d6f9",
+          "input_states_sha256": "8c2bcd20b35878e12d4e9d2343e96f5e652c895c116126449a0a6d23c1bf90fc"
+        },
+        {
+          "case": "seed1-random-l10",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 322
+          },
+          "commands_sha256": "61578a2370010581f3447cff47418105f85353a9150de08febbf94bab75ddd29",
+          "input_states_sha256": "7bcbd040f9b1bde949ec73171c49ddb1569eec1c3da6191fd68988d921a5b0ec"
+        },
+        {
+          "case": "seed1-random-l11",
+          "counts": {
+            "unchanged_target_calls": 27,
+            "unchanged_submitted_rows": 346
+          },
+          "commands_sha256": "8e15da7fbcbac81a46913389527bf8a42aa8438a4dab6d340e08d6f216cdbc2b",
+          "input_states_sha256": "244fd663701aaed68090cbfe50f97a19cc5c73a83f8b858a76bf5809ec226181"
+        },
+        {
+          "case": "seed1-random-l12",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 343
+          },
+          "commands_sha256": "f836456e94d2583bb87313bf92d78d92790bb7cbece3c18964a2d2643cbbdb1c",
+          "input_states_sha256": "45c94ecba62a40290b3e12d9d8a6450ea693f8a4afc391f238cc8e3bdc3eed52"
+        },
+        {
+          "case": "seed1-random-l13",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 470
+          },
+          "commands_sha256": "0bf24a991b37bcd34d1fc23f828a6a64357332c2c5c9bc5eb302e99a43301874",
+          "input_states_sha256": "f2cad42c4a7ce90b806abb0cd55e94749063535b70c5a0a7e06f57ce1bc022b6"
+        },
+        {
+          "case": "seed1-random-l14",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 291
+          },
+          "commands_sha256": "7bad802e2d4f46544c9e4705eb8bb43a4e2570434379129f38dd9ab61719c095",
+          "input_states_sha256": "d1e9e97c4860f108d768cb8e2eede7e3e995844aaff754915ad46a7666b0a79d"
+        },
+        {
+          "case": "seed1-random-l15",
+          "counts": {
+            "unchanged_target_calls": 32,
+            "unchanged_submitted_rows": 501
+          },
+          "commands_sha256": "537a80afef19fabc96488d22918fc42d77300f96883f5f4d2a64813610785b94",
+          "input_states_sha256": "19effde8b7aebc0f0edb29b5f1abb801a04cd79f8bdc71f5e4f155f23840e067"
+        },
+        {
+          "case": "seed1-random-l16",
+          "counts": {
+            "unchanged_target_calls": 27,
+            "unchanged_submitted_rows": 408
+          },
+          "commands_sha256": "fe1ab39e41d4639736e911c3793d244bb483e49428da99c591c3ff4bf876d41e",
+          "input_states_sha256": "17293e4dc283cdc94e7d9f5a5754b44b156681102d15d3cbbde36950e13d50ba"
+        },
+        {
+          "case": "seed1-random-l17",
+          "counts": {
+            "unchanged_target_calls": 27,
+            "unchanged_submitted_rows": 363
+          },
+          "commands_sha256": "b7f2b7a72f7a8b14c83a4cbe246bedf6f465b450130de39125aac5ce2e1966fc",
+          "input_states_sha256": "f3d22b5f00f99367a774193d3ba8f394f778f2832ede70015f9f9b4d6b8fddcf"
+        },
+        {
+          "case": "seed1-random-l18",
+          "counts": {
+            "unchanged_target_calls": 31,
+            "unchanged_submitted_rows": 361
+          },
+          "commands_sha256": "a94a8b58cc1437f8ba6db0eee36a63394bff7564ad202c76eb4c39816149b133",
+          "input_states_sha256": "c1a52295d1c118114b94b68ca9af8f9d9ac293773bd5557feb9956ceadb16aad"
+        },
+        {
+          "case": "seed1-random-l19",
+          "counts": {
+            "unchanged_target_calls": 28,
+            "unchanged_submitted_rows": 451
+          },
+          "commands_sha256": "277f7930da7f2ca1bd6268ae003195f24e073cc61e4be82d15b0837d9a81bb6c",
+          "input_states_sha256": "96bfeab7e6c8fc96e1e2d4e9fb53b9a49e0d6a8f38fd8357051cca81cd34c3ee"
+        },
+        {
+          "case": "seed1-random-l2",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 373,
+            "unchanged_explicit_delta_calls": 1
+          },
+          "commands_sha256": "e984197eeaebfc4f1057dd025901ed74cfdbdf5c2411de57f9110963843e0fe0",
+          "input_states_sha256": "726f83d9fa9589d88f1cf76656167e948bfe4d4483056f3ad482519b55e39892"
+        },
+        {
+          "case": "seed1-random-l20",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 202
+          },
+          "commands_sha256": "a50fe4aaf1a7b3f69757e2874a7a5a3aefdd15a0297e71281e9494c6174ccf38",
+          "input_states_sha256": "28e6564002021ccdece7547a4fe72ea767ce08611a6180dedc4b855d7ce64917"
+        },
+        {
+          "case": "seed1-random-l21",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 277
+          },
+          "commands_sha256": "e0d365e033dbd753050778b12d370fc880559e6337f9284b09d823d842f5dc8e",
+          "input_states_sha256": "56971ad99b9a7f3490462a42d1291386df4599515fcd8cec957d7e059ec4b2e0"
+        },
+        {
+          "case": "seed1-random-l22",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 415
+          },
+          "commands_sha256": "10c03678d2ae32adf3f9c4037ad59315b5812301ff331198ebccbb996f0f059e",
+          "input_states_sha256": "de343aa5724753bb16a653547ae7355bb56310e936d215c683fbbdee42bf19a3"
+        },
+        {
+          "case": "seed1-random-l23",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 316
+          },
+          "commands_sha256": "c9831b60eef68b816af7ae0736151979cb72149192e3cf759fcf37dc460f22f3",
+          "input_states_sha256": "c7c98b7a8858901b8d52e2f25b5bf0588d4627312f067899653167e76c0b94b5"
+        },
+        {
+          "case": "seed1-random-l24",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 381
+          },
+          "commands_sha256": "912712847ca2db0ad667c317eff87c321a0f75e567f4615b5a5a2ff1eaec84aa",
+          "input_states_sha256": "e8ca9d961f9e656af4ec7e3c977d5a1400793d2fa11293f22c4bdd1a195bf2b3"
+        },
+        {
+          "case": "seed1-random-l3",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 276
+          },
+          "commands_sha256": "089a30651c6752347aba8adc9aa41b21eac87215d184cf5633a9e0bb4ee871c0",
+          "input_states_sha256": "a0d280eaab7eaf174e3bb3928763d50144b121363da82dc033ea60b9cb6f8538"
+        },
+        {
+          "case": "seed1-random-l4",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 361
+          },
+          "commands_sha256": "f4b81a0742a60ecda9666151a0eb3eeb186a58f3d0037415e91aac76d8f98ad5",
+          "input_states_sha256": "9009ba8b4eac77622abf7ca9f3174ab8c1dd30bec1ff898738700713aa66ec90"
+        },
+        {
+          "case": "seed1-random-l5",
+          "counts": {
+            "unchanged_target_calls": 38,
+            "unchanged_submitted_rows": 466,
+            "unchanged_explicit_delta_calls": 2
+          },
+          "commands_sha256": "4b090efa4a6f404565c4c031c1a7d396a7376d418f1301626eddbafae3915796",
+          "input_states_sha256": "c5ea5872c350ac0278d53e4895bde67212de68081675b0a5b9a0315c60d2abe4"
+        },
+        {
+          "case": "seed1-random-l6",
+          "counts": {
+            "unchanged_target_calls": 28,
+            "unchanged_submitted_rows": 369
+          },
+          "commands_sha256": "0260f58fb3ecba17a4362862c36ac9afbdf26ee48e9e3a59cf875bb78d233e6f",
+          "input_states_sha256": "bd5fbb15e16c19e8170c346524d5c845f0cf63b91786322b3bf2e06f1cda64c2"
+        },
+        {
+          "case": "seed1-random-l7",
+          "counts": {
+            "unchanged_target_calls": 16,
+            "unchanged_submitted_rows": 259
+          },
+          "commands_sha256": "10065f05f07e017f791984d2198f57db1bcff17decd1199e60aa19252c29191f",
+          "input_states_sha256": "46e95ca3e680916fdaf86a7096b79fdf69b7ecc3631b5bbf38e66b26b88e2cb2"
+        },
+        {
+          "case": "seed1-random-l8",
+          "counts": {
+            "unchanged_target_calls": 16,
+            "unchanged_submitted_rows": 231
+          },
+          "commands_sha256": "e98920242de6d69c5959a3e661fb72a0333e6803e79c2996a5f388ea8ccae0b9",
+          "input_states_sha256": "b43f649a461f8acce105f109dd5de7f12bab8462aa4a455438e460466aa56932"
+        },
+        {
+          "case": "seed1-random-l9",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 276
+          },
+          "commands_sha256": "22a23c6d5b6464be1140ce39db0c1f1dc29d1708b60259d18a95aa64fcecd257",
+          "input_states_sha256": "70309a189ed09f94fb5a71f9560dc9ef20c159f8e38c04b8263f7832de175d04"
+        },
+        {
+          "case": "seed1-standard-l0",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 479
+          },
+          "commands_sha256": "7240c860bd0fe4db6cbe132618d3aba8a664d06df0ae7afe84fc72f169293693",
+          "input_states_sha256": "d58d929e9ab3926965cf6e1bd5f0d0ccdf5557eb14d22a97e9141fa0a7623491"
+        },
+        {
+          "case": "seed1-standard-l1",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 342
+          },
+          "commands_sha256": "9bfe12be3f86b1f927715ef5a6d4a7cdffcb47226b8844db542ec1eb881b234b",
+          "input_states_sha256": "5eb0efea4c283b135c7b3681b0401af82b852a8df37b83ac7605b1f992b9ace0"
+        },
+        {
+          "case": "seed1-standard-l10",
+          "counts": {
+            "unchanged_target_calls": 21,
+            "unchanged_submitted_rows": 297
+          },
+          "commands_sha256": "b2f4d0b7586aff978a262b6f61033309913936b0de5d88b1e1dafed5aa5fb580",
+          "input_states_sha256": "481e6cd92fb23c273a61d0b4e874c828d97df1ad60d953d78fe840c62e679490"
+        },
+        {
+          "case": "seed1-standard-l11",
+          "counts": {
+            "unchanged_target_calls": 39,
+            "unchanged_submitted_rows": 444
+          },
+          "commands_sha256": "7580b9bfdd2101e23a3f95aa207e7e66444d94d70449c9ab0e9838d931b8aa3a",
+          "input_states_sha256": "fa32e3341fc93d7b1536b6a68a898997c4de0b922d4c05023ee0195064100eb0"
+        },
+        {
+          "case": "seed1-standard-l12",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 344
+          },
+          "commands_sha256": "f80e212556cf6a76595c13caf3b20d9a81f4a06e0c0051284ad83c9d9b00ae38",
+          "input_states_sha256": "eff0f2987d6b08426abccfeec841931f88202f6582cf48d02fcd335da3921c82"
+        },
+        {
+          "case": "seed1-standard-l13",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 265
+          },
+          "commands_sha256": "6a7add68e4a77a2afe3a76e26dc284363409142d3f449daaac4a28a2f8397250",
+          "input_states_sha256": "634b38bb4f49a60bf5628a11330830acf1db7be849f33915bafef6bd433f01ad"
+        },
+        {
+          "case": "seed1-standard-l14",
+          "counts": {
+            "unchanged_target_calls": 21,
+            "unchanged_submitted_rows": 271
+          },
+          "commands_sha256": "f112ab72a5ca2ca7b0ca492f4a6744d1c92129c74388bc85849f4c65117de10f",
+          "input_states_sha256": "acb819fa4d493737ee9c9ac2cc79d9cb532fd6fe308ed4456fe1f7a8b90190ba"
+        },
+        {
+          "case": "seed1-standard-l15",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 278
+          },
+          "commands_sha256": "5cd105ac929354ee49fb23bd47e6a22ae2c1c5f89f0209bf2eb0ab98f00909f5",
+          "input_states_sha256": "5ae9e90278ec5638aaa5c39b7a7f35cfa16431b6fd3f90b4a50f2936abd09714"
+        },
+        {
+          "case": "seed1-standard-l16",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 291
+          },
+          "commands_sha256": "237ce318ff47a8dcf213bb52d0e6837106581d5dfed12c5dc1ccf9b201d43d56",
+          "input_states_sha256": "24889dc44434a2ca9eacc3d76db0a93a7e4e81db9a8bc50b04d377a398f8f728"
+        },
+        {
+          "case": "seed1-standard-l17",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 375
+          },
+          "commands_sha256": "be61de69f32269a25b8b14566e68ba6864aa2adec5271bc7e363b725b7854d94",
+          "input_states_sha256": "60bbfb69d0966fb7da2686e5a5bdeb69157377cc0016d478f188b3b3013a2ffa"
+        },
+        {
+          "case": "seed1-standard-l18",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 239
+          },
+          "commands_sha256": "e07a45ee45c3db14085e9faca0b3761f07018f219d8ec90672700328adb667c0",
+          "input_states_sha256": "97de5c237c21a01f957fffcb863210fc51590613d76449de472aaf6968afc206"
+        },
+        {
+          "case": "seed1-standard-l19",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 283
+          },
+          "commands_sha256": "2e922c694be7dd190240449998068e58b00c7e8c1b97094c48d6d751fde1acc1",
+          "input_states_sha256": "fdf305a6a451c18b65ccc0eee722f4f8cd7599c4767a55bf2cae7cd0716c5446"
+        },
+        {
+          "case": "seed1-standard-l2",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 417
+          },
+          "commands_sha256": "a703d66c2f5d5591608fa6cf7f21e15ee01586f0a785795936b0a725ccd1b518",
+          "input_states_sha256": "8629bccdb04078ba81f42b86151d327e4d37af0e1f672b8992da20654931f89b"
+        },
+        {
+          "case": "seed1-standard-l20",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 299
+          },
+          "commands_sha256": "8ff80307761ae935932e7eb74dad04a9b11e2f8a3908363b9c9b9a74561e9488",
+          "input_states_sha256": "7dca67044544939492c8b6ff0cf008f0928e2fc96ca8d40c717857a5f18d5bcb"
+        },
+        {
+          "case": "seed1-standard-l21",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 297
+          },
+          "commands_sha256": "4bc9f89401dbdf03362016680b934fae78fe4b7ceb051030f78b77c115b047b9",
+          "input_states_sha256": "54f304735a36960f1b45134c521aca5daa6ae2be5b1639adb0dd981d98d0456b"
+        },
+        {
+          "case": "seed1-standard-l22",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 401
+          },
+          "commands_sha256": "ce4d41470f752ceaaba26df4ed69edf263400457f870d95cf00b25a7b1fe5670",
+          "input_states_sha256": "b5ff91b0831f5b16eaed06cd8bdb9b3348b3fe4b19d87925e0eeaf925520c9a0"
+        },
+        {
+          "case": "seed1-standard-l23",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 337
+          },
+          "commands_sha256": "4cb93fa4ba16790887538d6168c9e62140e73fb725c11a873932abc7b5668bba",
+          "input_states_sha256": "502c78e1ba948a9ed1050ba7cb4f2b61a18ed8fb69ac3758a8c24a29a7c8b80d"
+        },
+        {
+          "case": "seed1-standard-l24",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 282
+          },
+          "commands_sha256": "b639ee6f3b778835dc86666f6ae287a994844a4a981286ee6837aa6e8bf6efd6",
+          "input_states_sha256": "25475a87d2e107f1e28541f7c75d3abedb75160664a55542c89572090f8b1629"
+        },
+        {
+          "case": "seed1-standard-l3",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 338
+          },
+          "commands_sha256": "563a0a7eb0cf2f1756fd07ebdf632e231e6c0f402e813bb3bb2c91fc3853ea4a",
+          "input_states_sha256": "b2b1f1cd4618dd556bb74bf5912d2d9288d4fc06dcb44a89e0b30152e00bfdb9"
+        },
+        {
+          "case": "seed1-standard-l4",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 419,
+            "unchanged_explicit_delta_calls": 1
+          },
+          "commands_sha256": "ff3af7d39203fe445ab5fafc476a0849f7431609d2ac03aaa4fab22e0c057224",
+          "input_states_sha256": "f4ae160737b70fd383871bb838b1b13fb7a6834eb4467c444c592893f965c421"
+        },
+        {
+          "case": "seed1-standard-l5",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 261
+          },
+          "commands_sha256": "c51b4c9db0d62849ee008a907cd3ffe52ef66ef1979a81e23a57741eafcd75c8",
+          "input_states_sha256": "434fd2df5d80dd982f2bbbe1b276a85ddff83037d32bb1f3fc38959f90ce8192"
+        },
+        {
+          "case": "seed1-standard-l6",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 397
+          },
+          "commands_sha256": "53c79260cda3dbacdce014ded7caf3e19000f170cf52e747a7502334c7f4c044",
+          "input_states_sha256": "e84013ca496c36feafb01b5e38a8d3df7fca9c2f599d5fd15bf61f5850d8354f"
+        },
+        {
+          "case": "seed1-standard-l7",
+          "counts": {
+            "unchanged_target_calls": 15,
+            "unchanged_submitted_rows": 275
+          },
+          "commands_sha256": "15c4f9d775d6266f62067d7bddf81fdf7fcbb0342f4a849acd6701cc0d3a7fe2",
+          "input_states_sha256": "a4e3dfdae26525df3d075e569337f5de6213026d4eb8ae4f033659620393aab1"
+        },
+        {
+          "case": "seed1-standard-l8",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 229
+          },
+          "commands_sha256": "853cdc354675f723478f4725e10eeafbe6c2330f22004f0f5d9f805dd7efd13c",
+          "input_states_sha256": "779d1c2b8900192167db42054ad73e1794b53f8b6d9fecbf7a401b96d78442fa"
+        },
+        {
+          "case": "seed1-standard-l9",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 315
+          },
+          "commands_sha256": "2ebab6f041b14630047b13277e71c9cff91f4a6fb209ab32946d1c1944ef97e5",
+          "input_states_sha256": "23df36bd2357020c31833457ea1b8570b2b65f69565a7850f1e8e34c1c300ffa"
+        }
+      ],
+      "recovered_calls": [
+        {
+          "case": "seed1-random-l12",
+          "category": "per_step_translation_limit",
+          "original_error": "Per-arm translation norm must be <=0.035 m per row",
+          "observed_at_step": 40,
+          "compiled_rows": 24,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 5,
+              "minimum_steps": 1,
+              "compiled_steps": 5
+            },
+            {
+              "segment": 2,
+              "requested_steps": 5,
+              "minimum_steps": 9,
+              "compiled_steps": 9
+            },
+            {
+              "segment": 3,
+              "requested_steps": 9,
+              "minimum_steps": 10,
+              "compiled_steps": 10
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l19",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 303,
+          "compiled_rows": 24,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 6,
+              "minimum_steps": 2,
+              "compiled_steps": 6
+            },
+            {
+              "segment": 2,
+              "requested_steps": 5,
+              "minimum_steps": 2,
+              "compiled_steps": 5
+            },
+            {
+              "segment": 3,
+              "requested_steps": 3,
+              "minimum_steps": 1,
+              "compiled_steps": 3
+            },
+            {
+              "segment": 4,
+              "requested_steps": 6,
+              "minimum_steps": 1,
+              "compiled_steps": 6
+            },
+            {
+              "segment": 5,
+              "requested_steps": 4,
+              "minimum_steps": 2,
+              "compiled_steps": 4
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l21",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 16,
+          "compiled_rows": 7,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 4,
+              "minimum_steps": 2,
+              "compiled_steps": 4
+            },
+            {
+              "segment": 2,
+              "requested_steps": 3,
+              "minimum_steps": 1,
+              "compiled_steps": 3
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l4",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 195,
+          "compiled_rows": 15,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 10,
+              "minimum_steps": 4,
+              "compiled_steps": 10
+            },
+            {
+              "segment": 2,
+              "requested_steps": 5,
+              "minimum_steps": 1,
+              "compiled_steps": 5
+            }
+          ]
+        },
+        {
+          "case": "seed1-standard-l19",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 34,
+          "compiled_rows": 14,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 10,
+              "minimum_steps": 10,
+              "compiled_steps": 10
+            },
+            {
+              "segment": 2,
+              "requested_steps": 4,
+              "minimum_steps": 1,
+              "compiled_steps": 4
+            }
+          ]
+        },
+        {
+          "case": "seed1-standard-l2",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 56,
+          "compiled_rows": 21,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 12,
+              "minimum_steps": 3,
+              "compiled_steps": 12
+            },
+            {
+              "segment": 2,
+              "requested_steps": 6,
+              "minimum_steps": 2,
+              "compiled_steps": 6
+            },
+            {
+              "segment": 3,
+              "requested_steps": 3,
+              "minimum_steps": 1,
+              "compiled_steps": 3
+            }
+          ]
+        }
+      ],
+      "recovered_categories": {
+        "per_step_translation_limit": 1,
+        "empty_target_hold_rejected": 5
+      }
+    },
+    "refactor_b2d5686": {
+      "cases": [
+        {
+          "case": "seed1-random-l0",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 231
+          },
+          "commands_sha256": "56068e3bb5166a9a053c6a28b81287b897c9a540e805f363dce81a11aedd74b9",
+          "input_states_sha256": "04a0de3641a914580b42dcb818d0730a81b78207b2217c55c3c1cb0cf163a7d0"
+        },
+        {
+          "case": "seed1-random-l1",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 365
+          },
+          "commands_sha256": "39228faffe349b73f50b91cd0c73f2463b80657250d9530b9433a4091eb189f5",
+          "input_states_sha256": "2a30c36a402b4cd6d192dedf6c1ea819044ebb4b5dfaf9087d24c24057440ba5"
+        },
+        {
+          "case": "seed1-random-l10",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 485
+          },
+          "commands_sha256": "6fc881592ee9618805be9519f615c0428155de14a26115c58761c66ada210236",
+          "input_states_sha256": "acfd500c7af7a7ca0b057a8e6349cd1097f528aaddc1fc72faa31bb1a1913599"
+        },
+        {
+          "case": "seed1-random-l11",
+          "counts": {
+            "unchanged_target_calls": 27,
+            "unchanged_submitted_rows": 378
+          },
+          "commands_sha256": "d06e920d34043733ea87d1748a7dbd843ce4f1538e95956ded113505faa1ff4d",
+          "input_states_sha256": "4c95b5835c1b89bc8adac79d7a48a9d878e87d797442cced05338de07ba9d858"
+        },
+        {
+          "case": "seed1-random-l12",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 260
+          },
+          "commands_sha256": "04e26c88d190ef247edb27d43108c6500272d76d04b15937eef7fcb34209c568",
+          "input_states_sha256": "3baee0e505343b32b91f3b1d95598a8436dd0a7a615eb03231ce6557ab0a91e9"
+        },
+        {
+          "case": "seed1-random-l13",
+          "counts": {
+            "unchanged_target_calls": 31,
+            "unchanged_submitted_rows": 422
+          },
+          "commands_sha256": "84e72adb65cc849f8c7700b196d06fffb3cbfa01de0bba5868406f830830de1a",
+          "input_states_sha256": "76bb880061602aa8eaa448bebbd11223c771d3b6415286ebcbb730fd89e79a61"
+        },
+        {
+          "case": "seed1-random-l14",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 306
+          },
+          "commands_sha256": "5a565238ffb6b6984fdf54567c3c90e8dd53677f613f4e07c1bda5a2f305336b",
+          "input_states_sha256": "ef4b5b454f2d162a4f284c15d3bb093e046463bf429c5f7485cb22db8aea643b"
+        },
+        {
+          "case": "seed1-random-l15",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 373,
+            "unchanged_explicit_delta_calls": 1
+          },
+          "commands_sha256": "fcef7daeec95116223fc83883c868a64178189285d1f64863f87fa63065686d5",
+          "input_states_sha256": "2e149fded91426ab3b3a7d24950d84f230c1a7307b300a137f89b1861c0dd025"
+        },
+        {
+          "case": "seed1-random-l16",
+          "counts": {
+            "unchanged_target_calls": 21,
+            "unchanged_submitted_rows": 318
+          },
+          "commands_sha256": "f6782c064406185cc32d1e4f50b903b946f0db66fd1fb6de9b57e95d841b9fab",
+          "input_states_sha256": "e76c9e8a32b899a01041af5d0b5562aa40cc4bae94ecc578c020fcedef10d822"
+        },
+        {
+          "case": "seed1-random-l17",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 308
+          },
+          "commands_sha256": "394fe2f86d554fb08db6b96ca95db848fd8727b3c0d47a4d5ca079e7dde593c7",
+          "input_states_sha256": "33c0b9d376cb37316a9608d6f3b58d2118703db50a76e3c7cbf936160171c462"
+        },
+        {
+          "case": "seed1-random-l18",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 260
+          },
+          "commands_sha256": "b34fed59ec4279fb3f297516e941afa604b590f52e029d516d37631c742c09ed",
+          "input_states_sha256": "7b5e9085f7d1ca388390a2feab6ae3d8b4332950601a205e12be65a3408089be"
+        },
+        {
+          "case": "seed1-random-l19",
+          "counts": {
+            "unchanged_target_calls": 15,
+            "unchanged_submitted_rows": 212
+          },
+          "commands_sha256": "151f5e07c777182866ed9161032fab01fc548d27afb33ab38da81e98164eb2c2",
+          "input_states_sha256": "e4c96ffae0dfe422831e6966dd14d8ff42d3aad386d268a1242b1032d5e8e135"
+        },
+        {
+          "case": "seed1-random-l2",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 253
+          },
+          "commands_sha256": "83fa485206af1ef23645452317202c3657ad28ef9843d9ca17bde68a81c33aa0",
+          "input_states_sha256": "cd733bfbd548bd82ee79fc535345ec0ffe8b98044d52a6772426c68105857993"
+        },
+        {
+          "case": "seed1-random-l20",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 433
+          },
+          "commands_sha256": "3d106341cd68d4d4adaef89be6c5ad4c2942ef71b3487b604250b6c4d8de01e4",
+          "input_states_sha256": "45ef71c6b7f51125e18f11bdbe490a58990cd6390c0dfb438faa5536e8eeabfc"
+        },
+        {
+          "case": "seed1-random-l21",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 278
+          },
+          "commands_sha256": "813ef02b71e69700b358d92c0f24a950e5df6622f46b45cfb4e321e12ad01cec",
+          "input_states_sha256": "7f430b7d29ae5c7d9f3b75fa821211a6ab140fb8a21386b0539656e931b831c4"
+        },
+        {
+          "case": "seed1-random-l22",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 318
+          },
+          "commands_sha256": "eb2f1f130a9d7a1d0b18c779663c69566da4efc344d32c9d2955d563bca007b8",
+          "input_states_sha256": "051fa22519e4c3dc8c2a9a9911a6bfb39dff987eb094bf6c608b3f8aeaab623d"
+        },
+        {
+          "case": "seed1-random-l23",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 402,
+            "unchanged_explicit_delta_calls": 2
+          },
+          "commands_sha256": "4af03aeb547b4909d018fe07df8813c38790e2a7084a036b89e090eee6397b11",
+          "input_states_sha256": "eaa7ef0ed6e5f9dab96ac3753964e687605ee990ec97426de716187df5fac32c"
+        },
+        {
+          "case": "seed1-random-l24",
+          "counts": {
+            "unchanged_target_calls": 22,
+            "unchanged_submitted_rows": 316
+          },
+          "commands_sha256": "69b41f542d9bd3085eb039070df007a5e369472434b2a1f61a8ee250f362a169",
+          "input_states_sha256": "462aa39858f836ff2fc1ec5335fd771d08926b3fb2cc17076182ab283d61e9b9"
+        },
+        {
+          "case": "seed1-random-l3",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 262
+          },
+          "commands_sha256": "5fc81e97be48a60f6e4792406c7c78f0777706131d068bdfd0f3a22d228ed19a",
+          "input_states_sha256": "8f395387078fbea1dc1ffc9e8d2257b91dff9404c1e17e68df7236107f74a2ea"
+        },
+        {
+          "case": "seed1-random-l4",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 254
+          },
+          "commands_sha256": "3aa21482ecf230fce8d6a1a0bacfd59f4fc9fbee8ce8e5c483f99bda593582e0",
+          "input_states_sha256": "b97398057f26821257d88e6ece6979c8ad039b51832e2e810c43b2253f851e10"
+        },
+        {
+          "case": "seed1-random-l5",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 322
+          },
+          "commands_sha256": "27317db06874e9cb554327ddcbb55d1d3b7844d098080ae32cb87daa52a3db75",
+          "input_states_sha256": "79f195e2c0180a66f9f005fee6fcbd4fbb198100dfc70abbc6057e4590e1c801"
+        },
+        {
+          "case": "seed1-random-l6",
+          "counts": {
+            "unchanged_target_calls": 32,
+            "unchanged_submitted_rows": 386,
+            "unchanged_explicit_delta_calls": 3
+          },
+          "commands_sha256": "b2d53f5f27b95fe69a00bd8bc45e2f6328d02825d6751c0e941f4efba3ced727",
+          "input_states_sha256": "77544295aee3bb07f837383ec4d4bd4e03419b66bef69209b6fe5439befd5062"
+        },
+        {
+          "case": "seed1-random-l7",
+          "counts": {
+            "unchanged_target_calls": 21,
+            "unchanged_submitted_rows": 372
+          },
+          "commands_sha256": "1b0455a80f356d54abf1b45b8fb5992b224bf731f77881e4039cff9ff14d6f62",
+          "input_states_sha256": "b36b25957f8ec13b39adca07ea620e2ed45cdc492caf434572803d961dea5875"
+        },
+        {
+          "case": "seed1-random-l8",
+          "counts": {
+            "unchanged_target_calls": 15,
+            "unchanged_submitted_rows": 276
+          },
+          "commands_sha256": "e76f69829af1ed690b90c1e4b1348ddad3f291331e1cb43397beaef4180602ad",
+          "input_states_sha256": "e48c2f50e6680d5a59b6dcb44a920cb50f08a0ccf6d4e2499c5cbaa9597aa32b"
+        },
+        {
+          "case": "seed1-random-l9",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 249
+          },
+          "commands_sha256": "a1166ceeb7a8b73aaf8ff3d09e4acb4ebefb1347f708b98b35326fdc2c23ac47",
+          "input_states_sha256": "0db44bfcb2d15d1aa1d3d8ca19db34cea0cb543747b47226363843be7ee36a34"
+        },
+        {
+          "case": "seed1-standard-l0",
+          "counts": {
+            "unchanged_target_calls": 31,
+            "unchanged_submitted_rows": 318
+          },
+          "commands_sha256": "81bca4dcae164f6f2b83b9d1642948c85c551c19a376769129d29aefd00be409",
+          "input_states_sha256": "f93bc1069f60e22689c0eb05946616bbba373f9f084c26e707bd3dfaff1ee04c"
+        },
+        {
+          "case": "seed1-standard-l1",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 305
+          },
+          "commands_sha256": "fcdcac74a8c135400c2f1bdef31575b3b6e222d9d4f809581fcc08da65301bf8",
+          "input_states_sha256": "f0c52fa1041fd77de07a8bec9e726375be7f2c34b7c22a3a28875dc17fe0e61e"
+        },
+        {
+          "case": "seed1-standard-l10",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 253
+          },
+          "commands_sha256": "10b40655bb21f05f4b76f4362a9d2a64b63763c41affcda61ac146193f77faa5",
+          "input_states_sha256": "f17bfc49152c739f4ce6c6e48acd01cf9c21dd826a35df9a73a946d5f4ad01e2"
+        },
+        {
+          "case": "seed1-standard-l11",
+          "counts": {
+            "unchanged_target_calls": 27,
+            "unchanged_submitted_rows": 446
+          },
+          "commands_sha256": "afc247394451e3ab990071de53280ad50cc5a3304ca029d7079d5989a7f7b69e",
+          "input_states_sha256": "ee629b2f6af6170704ee8c4eb0d4c701048fea253fd9a6d43a4e35963648cf03"
+        },
+        {
+          "case": "seed1-standard-l12",
+          "counts": {
+            "unchanged_target_calls": 28,
+            "unchanged_submitted_rows": 356
+          },
+          "commands_sha256": "d6356d2461a5cbdb1739ba788aad3407b357305f60cb594283cc30d52f92e3cf",
+          "input_states_sha256": "3bb0ec96f704f026147d10c5148b61dfe345fd986e883d5244b4bfbc172a7dbf"
+        },
+        {
+          "case": "seed1-standard-l13",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 398
+          },
+          "commands_sha256": "9ac5869bd9d04c1a8fd703347c8261d254fe22c530fb52b1808a598c9f1ba6bc",
+          "input_states_sha256": "e120564b86689176480123d91f69765a8fb3b42c875d32f8cdfcf2ab1cbb5108"
+        },
+        {
+          "case": "seed1-standard-l14",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 427,
+            "unchanged_explicit_delta_calls": 2
+          },
+          "commands_sha256": "cfc03b2f84942fa539db2ca5a6f2fea965eb2a2a6ced5edf73c1e07eaba6a19a",
+          "input_states_sha256": "0852013807316a97af3b32c4f86b1d9e548d89b2d848a6f3288f2fea05203be3"
+        },
+        {
+          "case": "seed1-standard-l15",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 292
+          },
+          "commands_sha256": "3f34ab2c8c9265c70e91db159189d36715b2e19b58a8a06664e897effa28bdda",
+          "input_states_sha256": "8a049d01686505b0386b034aa7434a2c2a0387b10a677f0e916a6ff0563a4002"
+        },
+        {
+          "case": "seed1-standard-l16",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 311
+          },
+          "commands_sha256": "e9eadfcdec5428d731c180bb2aed183a1275bd93eb8fa33217f41b96e93175b0",
+          "input_states_sha256": "331eb4fcbd516e033aee7b53722ddf72868571c415320e239074d7c00819f6ae"
+        },
+        {
+          "case": "seed1-standard-l17",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 258
+          },
+          "commands_sha256": "d4d5c879adc4f15a54250594b8816436d0e85e5f6694b6c26d9018ca2ee4efeb",
+          "input_states_sha256": "6cc5838d23773073ebf9a2f64f0215f88fc5e4cbe5962a6d0b6e22ee895688c5"
+        },
+        {
+          "case": "seed1-standard-l18",
+          "counts": {
+            "unchanged_target_calls": 21,
+            "unchanged_submitted_rows": 392
+          },
+          "commands_sha256": "05f53d74db75df989ac9b04c67be836662adfb6b9afa18591341431a36aa51c8",
+          "input_states_sha256": "77d9c91281d7a73fd320131d058827fbce0aa9a2d1e593a0f9008e824addd7ee"
+        },
+        {
+          "case": "seed1-standard-l19",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 344
+          },
+          "commands_sha256": "a51a6468982e0e503acb1a5e1dca91ed786ce427dc862b75e9fea3f8be4798d7",
+          "input_states_sha256": "eb6760e99b8e59dfec25c2bd972097a00586f4076e464b0825ad72613583f1df"
+        },
+        {
+          "case": "seed1-standard-l2",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 334
+          },
+          "commands_sha256": "bbd2438c3a3c6bbab13122d811ea758685c4302aaa8c59ef986d4e004a4c9e88",
+          "input_states_sha256": "89ef560fbd383c07d557da32466f2b72adc8b6fa716f64b68ec8eb5701a28e96"
+        },
+        {
+          "case": "seed1-standard-l20",
+          "counts": {
+            "unchanged_target_calls": 22,
+            "unchanged_submitted_rows": 349,
+            "unchanged_explicit_delta_calls": 3
+          },
+          "commands_sha256": "00691de36b7aa209a3ccd12c0d88b3dd89f37c0f0e43510f2360aa982c52cf86",
+          "input_states_sha256": "2272c9615183618ada49a91f8c77802e67ec43f397ce8dee956a1a6d69facd5e"
+        },
+        {
+          "case": "seed1-standard-l21",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 294
+          },
+          "commands_sha256": "9ad0855ddcbae9a2c05706e7204f575a34c4d8242116dfb2290d94ccee56702f",
+          "input_states_sha256": "1e971da06694d7eba611f75e81f25e3ce0dcdcb0a818f89a88b6e83964ac0907"
+        },
+        {
+          "case": "seed1-standard-l22",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 315
+          },
+          "commands_sha256": "b1c8dad4afdc2ba937c2165169b658b126d9a84ebb377a0df6a38ca5448cd900",
+          "input_states_sha256": "5fbc8ae2a63e14b21731351c3886210c47b918386a4ed225c3b83c5f9fc1255e"
+        },
+        {
+          "case": "seed1-standard-l23",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 350
+          },
+          "commands_sha256": "5ba36a147a153b25a8669f2a047410c855f5a52085b7816951fdd1256a9c8f07",
+          "input_states_sha256": "9767ca4ae88581fede1a789d846833b8453c8c0d329dad70565dad6386a69f9b"
+        },
+        {
+          "case": "seed1-standard-l24",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 269
+          },
+          "commands_sha256": "137df53d45a986bbcfddca94e7064c19649c6d0c30c22054992d24060c3b3580",
+          "input_states_sha256": "61c6ca1b538f5a46e07b147a0cacba82231109f039137966412420722457f370"
+        },
+        {
+          "case": "seed1-standard-l3",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 237
+          },
+          "commands_sha256": "c7b63af930c84dd8eabb014422e43dee78d663758dcd89b6c9a130dd570035dc",
+          "input_states_sha256": "db3b0138e234f79afec68f31219018f45abcfb0564b13da96a9af6f7e95b3531"
+        },
+        {
+          "case": "seed1-standard-l4",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 313
+          },
+          "commands_sha256": "22734054e6730bc460dde6338772484ebb8050667d49bb61c8edb4d2a016d7b1",
+          "input_states_sha256": "83375e52445318bd28ac5dc46b5ba2c40e6c606999d6023ed93c8c24cec00208"
+        },
+        {
+          "case": "seed1-standard-l5",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 265
+          },
+          "commands_sha256": "a4e47289b25025432407935a4bb5b3b49d6eecf1a33937a008586a4576e661ac",
+          "input_states_sha256": "18d1b03513198e07a6ffd88cbe7802d39ceb83f0d713a47ad3d2840efbbb3782"
+        },
+        {
+          "case": "seed1-standard-l6",
+          "counts": {
+            "unchanged_target_calls": 22,
+            "unchanged_submitted_rows": 402,
+            "unchanged_explicit_delta_calls": 3
+          },
+          "commands_sha256": "316a62bd79c72b09dc0a86f6830166788de89135e05e8a99626ddc0557aad984",
+          "input_states_sha256": "16ba599de177caae3b4ef4e4eab209d54f1476e87217f523b02339ba9c566393"
+        },
+        {
+          "case": "seed1-standard-l7",
+          "counts": {
+            "unchanged_target_calls": 21,
+            "unchanged_submitted_rows": 259
+          },
+          "commands_sha256": "57ab08853a8a039d362c23fa170bb1c9b12f81f0b8dcc53009fbcbc3a1430e51",
+          "input_states_sha256": "34ca167e701d4385b84162ba85398fe59e2fc9ee978f80e6ea6b5c81f23e4f9a"
+        },
+        {
+          "case": "seed1-standard-l8",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 264
+          },
+          "commands_sha256": "4ced1a91f6e83e82b0d3b09635993cfa312a3e7220f1565a1fd4dc49f688f72f",
+          "input_states_sha256": "94626608d3532244c02fdb9577a020b250aea034ab8c8fe89dc0d17eff133d1a"
+        },
+        {
+          "case": "seed1-standard-l9",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 365
+          },
+          "commands_sha256": "39432fcde86e62dfe0cd8461b2e272a1866a7c939c7087693b4fe3f4384aa233",
+          "input_states_sha256": "916cfac166d51e4b811449498b2d665b5aa08190bae3b0816eec28be9f7bb70c"
+        }
+      ],
+      "recovered_calls": [
+        {
+          "case": "seed1-random-l19",
+          "category": "per_step_translation_limit",
+          "original_error": "Per-arm translation norm must be <=0.035 m per row",
+          "observed_at_step": 27,
+          "compiled_rows": 23,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 5,
+              "minimum_steps": 1,
+              "compiled_steps": 5
+            },
+            {
+              "segment": 2,
+              "requested_steps": 4,
+              "minimum_steps": 10,
+              "compiled_steps": 10
+            },
+            {
+              "segment": 3,
+              "requested_steps": 7,
+              "minimum_steps": 8,
+              "compiled_steps": 8
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l21",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 16,
+          "compiled_rows": 8,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 4,
+              "minimum_steps": 2,
+              "compiled_steps": 4
+            },
+            {
+              "segment": 2,
+              "requested_steps": 4,
+              "minimum_steps": 1,
+              "compiled_steps": 4
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l24",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 14,
+          "compiled_rows": 15,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 10,
+              "minimum_steps": 11,
+              "compiled_steps": 11
+            },
+            {
+              "segment": 2,
+              "requested_steps": 4,
+              "minimum_steps": 1,
+              "compiled_steps": 4
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l5",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 27,
+          "compiled_rows": 14,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 10,
+              "minimum_steps": 11,
+              "compiled_steps": 11
+            },
+            {
+              "segment": 2,
+              "requested_steps": 3,
+              "minimum_steps": 1,
+              "compiled_steps": 3
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l7",
+          "category": "per_step_translation_limit",
+          "original_error": "Per-arm translation norm must be <=0.035 m per row",
+          "observed_at_step": 16,
+          "compiled_rows": 25,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 5,
+              "minimum_steps": 1,
+              "compiled_steps": 5
+            },
+            {
+              "segment": 2,
+              "requested_steps": 6,
+              "minimum_steps": 10,
+              "compiled_steps": 10
+            },
+            {
+              "segment": 3,
+              "requested_steps": 8,
+              "minimum_steps": 10,
+              "compiled_steps": 10
+            }
+          ]
+        }
+      ],
+      "recovered_categories": {
+        "per_step_translation_limit": 2,
+        "empty_target_hold_rejected": 3
+      }
+    },
+    "current_original_v3": {
+      "cases": [
+        {
+          "case": "seed1-random-l0",
+          "counts": {
+            "unchanged_target_calls": 38,
+            "unchanged_submitted_rows": 394,
+            "unchanged_explicit_delta_calls": 1
+          },
+          "commands_sha256": "292acd2a369539479bf4b9f692bb83722ed073569aed47c4de4be8ea95f9745e",
+          "input_states_sha256": "c3052202bd1da06dfef65fade92b17d7e70dc67f5874c796869c18ea378bacd3"
+        },
+        {
+          "case": "seed1-random-l1",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 254
+          },
+          "commands_sha256": "498c25871cfdb78ae255b5caf67530eaf895e226661d6c53106a6c55d4c3561d",
+          "input_states_sha256": "9f9fc80b11e2c8ed2e6d64db82986c48c2377f6b45aa5612d31c0e71ffbccb16"
+        },
+        {
+          "case": "seed1-random-l10",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 396
+          },
+          "commands_sha256": "26b1f781aa8bbe8201bf163c4443f05d23ec413f53ccce489ccd877259f05f7a",
+          "input_states_sha256": "9fcde3c6cfffb053ae7752018f1fc771e31321bf0bfdf4bcf0ebce3df952c634"
+        },
+        {
+          "case": "seed1-random-l11",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 287
+          },
+          "commands_sha256": "954ed786d6a312377b76dfff1f51bca9a74697282f20fd0555513be22661bf46",
+          "input_states_sha256": "cd579c99c0e0f78b84e54e423acfb98a2e366bc054a127e516b91c72486af72b"
+        },
+        {
+          "case": "seed1-random-l12",
+          "counts": {
+            "unchanged_target_calls": 21,
+            "unchanged_submitted_rows": 321
+          },
+          "commands_sha256": "e0c386f9ff3b61717e3e3479b92739798ad5a5cbad707e19ea16c8bb3ec86c0d",
+          "input_states_sha256": "7955806daa290e1070a2aba7768c50f117b5a9faa6000a9150b4332d8e85c849"
+        },
+        {
+          "case": "seed1-random-l13",
+          "counts": {
+            "unchanged_target_calls": 34,
+            "unchanged_submitted_rows": 422
+          },
+          "commands_sha256": "def38d293a2c1725cda9e5a4d5043757de013ee420c929a660b1a8c21a20afd0",
+          "input_states_sha256": "6ee7220cd6967d257af00aa894a902a4687d00524cccb0ab530c1cc605da0b27"
+        },
+        {
+          "case": "seed1-random-l14",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 252
+          },
+          "commands_sha256": "f84f4c564803461efabc78b0b897cbdaeb0fe5d228c621f0e96e8e21a176b8c0",
+          "input_states_sha256": "728085deab67e0804015f8fe1cb50a6a775800ee34a768d7a6efc918f0ea9cbe"
+        },
+        {
+          "case": "seed1-random-l15",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 328
+          },
+          "commands_sha256": "442dd605599ef7f5d09c65c0b47f95d0d072969225bcdd4215fe4701dabdb2ad",
+          "input_states_sha256": "c218cc4a5c823460f9ce52bd6cda25917c9568b94cd3855d8bbf26c92c599077"
+        },
+        {
+          "case": "seed1-random-l16",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 267
+          },
+          "commands_sha256": "61e4b16c011c96c79757d2f0762b8f07be4ed794a53ae80b363afc5150fe5017",
+          "input_states_sha256": "98d975e5ceb6d35e27b6e2496ae9fc8f54067ff04edb83ab0b9860e5a6a39317"
+        },
+        {
+          "case": "seed1-random-l17",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 404
+          },
+          "commands_sha256": "39abbb4719d5ad5093a746c9950b03f8e5df8001379798f9418f17bfa85b5e0a",
+          "input_states_sha256": "8a060c2181b980659aef5ecf521e118250c43d27c64c6b1639110992ee5792c4"
+        },
+        {
+          "case": "seed1-random-l18",
+          "counts": {
+            "unchanged_target_calls": 23,
+            "unchanged_submitted_rows": 313
+          },
+          "commands_sha256": "897fc2d6f65af4af57fba2a690d02b1d92c669cce640591c5290cdf2726402e9",
+          "input_states_sha256": "017b3aab20b1bc2ff88c7c514a872bdbfeb9a3212511cff7fa254f46f42397fe"
+        },
+        {
+          "case": "seed1-random-l19",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 298
+          },
+          "commands_sha256": "085b6d8ce095991f7181bfe066df2a9173a072cd82f8efd5498c2d60227c28cf",
+          "input_states_sha256": "f5df2bd6a18b70e000a06f01175228921a895c54fff2e0206ca6749f7427f6a4"
+        },
+        {
+          "case": "seed1-random-l2",
+          "counts": {
+            "unchanged_target_calls": 32,
+            "unchanged_submitted_rows": 484
+          },
+          "commands_sha256": "e9e64a4b3c20bfa23b2cdad2ab72811ed12cc5dcd6514a79d726f7d07a23d2e8",
+          "input_states_sha256": "581dbf1c2cf9bbf41cb1df0af2e09782bafa6c614b9e6318a4596a111304fadf"
+        },
+        {
+          "case": "seed1-random-l20",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 371
+          },
+          "commands_sha256": "10ed9d2bfcbcaa5375f983d9cf49791d7ef351af86e62c1ef7849e192c8e7d07",
+          "input_states_sha256": "48c5705897bdb4e77483f9e1e7c64d54bd7159d504d9b812773ab137490d794a"
+        },
+        {
+          "case": "seed1-random-l21",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 393
+          },
+          "commands_sha256": "e3ee256da000bc869bb538ece6379ae2e575c2dd37586b1f90c9ff5aebc8ec0a",
+          "input_states_sha256": "5f22ac6b56f1e42383b59a4355146bcef8fda0a76842bdc2d567929db2f8c73b"
+        },
+        {
+          "case": "seed1-random-l22",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 240
+          },
+          "commands_sha256": "55ea2681d101b2e5b8d927cc0a4ad6a94a496e3dfbe2b7f3e444fc7d77b1d463",
+          "input_states_sha256": "1cb479e8d687febc5ef5ec0ee0957c15e5f91d0f489b4caf680ec66539191cc4"
+        },
+        {
+          "case": "seed1-random-l23",
+          "counts": {
+            "unchanged_target_calls": 11,
+            "unchanged_submitted_rows": 140
+          },
+          "commands_sha256": "e927babc82a17ec4a95fa837b90067d113c493fd4e11926917059a7b27286f4c",
+          "input_states_sha256": "c911ab5c05dea01a8b53121c1aa807bdec255410f7388ff0612948bc448dd10f"
+        },
+        {
+          "case": "seed1-random-l24",
+          "counts": {},
+          "commands_sha256": null,
+          "input_states_sha256": "f3c4637f591853f10e178bc9ec5cf8c992cee8ac4006d5e43a5347a397b84c52"
+        },
+        {
+          "case": "seed1-random-l3",
+          "counts": {
+            "unchanged_target_calls": 20,
+            "unchanged_submitted_rows": 241
+          },
+          "commands_sha256": "0f48eb96c21cafb3d28abda57deaa16fa6eca0e808e3d8e2073cc4787849a21c",
+          "input_states_sha256": "71ec904d1774f00c726b625fcb5463fd1c109d53bb9ae29d77d919cd65ae17d5"
+        },
+        {
+          "case": "seed1-random-l4",
+          "counts": {
+            "unchanged_target_calls": 16,
+            "unchanged_submitted_rows": 291
+          },
+          "commands_sha256": "dfa2340362a5746413564ca1963fdcc862af7364218d835b111cae31d4f2ba46",
+          "input_states_sha256": "d95ef7a8b4f01a0a3d5b163cadc8bd3e4f73bb34af46b99bfe01ebb6ed834ca5"
+        },
+        {
+          "case": "seed1-random-l5",
+          "counts": {
+            "unchanged_target_calls": 22,
+            "unchanged_submitted_rows": 327
+          },
+          "commands_sha256": "0ef93ddd39bd59f1bd1ccf58c4a670e939a2acbc3734ffb5e12888358ae8e594",
+          "input_states_sha256": "77575799fd20306d207f0254f02bc4e2b0b1d9b726a7e3c1ad592980e7556687"
+        },
+        {
+          "case": "seed1-random-l6",
+          "counts": {
+            "unchanged_target_calls": 27,
+            "unchanged_submitted_rows": 322
+          },
+          "commands_sha256": "0cecb90755a9601033173a92c0c64f771f9fb86ea253a4425dcc29ee9e2d0e8c",
+          "input_states_sha256": "bc407e964c258dbc2ad6b7e5e0a44967d07ab73437eb6c6d3426b0b6bd3f6265"
+        },
+        {
+          "case": "seed1-random-l7",
+          "counts": {
+            "unchanged_target_calls": 16,
+            "unchanged_submitted_rows": 265
+          },
+          "commands_sha256": "b926a29323b7e86989cc7a57fdaca2067d56dbd2918bbf71db4b12b60e5e820b",
+          "input_states_sha256": "f0d7485021084c2e3c03efeed333ff36cf81cfed1fb91254858cb2c444500657"
+        },
+        {
+          "case": "seed1-random-l8",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 273
+          },
+          "commands_sha256": "6ff0bd9fe69e569e6a45fd8f694f5fe95e13fb2ffb6cbde97f1dfd7b90a786b9",
+          "input_states_sha256": "bd666e1148540560f46b8c211d3adbd5aec707d7fc346a86b873e35c8dcdc924"
+        },
+        {
+          "case": "seed1-random-l9",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 254
+          },
+          "commands_sha256": "3136b08c199136c2832fa900a534935b07261cb6018dd60cace0a33276411a24",
+          "input_states_sha256": "db65daa6383eff897140fafac13304aaa9f9798a56c1b5aa3215a14b5ba842d6"
+        },
+        {
+          "case": "seed1-standard-l0",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 400,
+            "unchanged_explicit_delta_calls": 2
+          },
+          "commands_sha256": "47bb079d28dc55dc001aaf28f04a7cff2beee39a463e8a786031dfbb96da766e",
+          "input_states_sha256": "1d4865c5131387cd3f96fe380e827e622ab1e7151007823b85580075edb56c3d"
+        },
+        {
+          "case": "seed1-standard-l1",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 250
+          },
+          "commands_sha256": "57321844ed3dc826954fae102f19c1a8e6dcc4e7f2cc05846a8e6ca0a693b8a9",
+          "input_states_sha256": "d810c285fa8eaa3bace1e8cad38a94f4ad148c8ad5108f65066a4b7dd1ba5ba5"
+        },
+        {
+          "case": "seed1-standard-l10",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 321
+          },
+          "commands_sha256": "0120804350ab7edb79f9d9161ecd10d454dcb3cdf95bbfe38d21b3ee3ec30ed0",
+          "input_states_sha256": "283d777873b489790edd79ff1a66b9646cce617a92afc06da0917f9ade3cba41"
+        },
+        {
+          "case": "seed1-standard-l11",
+          "counts": {},
+          "commands_sha256": null,
+          "input_states_sha256": "f3c4637f591853f10e178bc9ec5cf8c992cee8ac4006d5e43a5347a397b84c52"
+        },
+        {
+          "case": "seed1-standard-l12",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 343
+          },
+          "commands_sha256": "27044560561a55506ebf46ec010f65166e27e1a35a5f2accc4ff0d4d551289e4",
+          "input_states_sha256": "f811157dccd4f0b1794cdf7d453b5b1b80eed9546c552027fe4ad85544bc0160"
+        },
+        {
+          "case": "seed1-standard-l13",
+          "counts": {
+            "unchanged_target_calls": 33,
+            "unchanged_submitted_rows": 430
+          },
+          "commands_sha256": "221f1cd561b95ebd8b1212bb330977eaa262a1914bce1819bb0708cc15b1a02c",
+          "input_states_sha256": "3bb0c3386733477530d00501f0139a290d7dec830195dc69a71288641d88607b"
+        },
+        {
+          "case": "seed1-standard-l14",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 396
+          },
+          "commands_sha256": "394b3b565fde2bf0bf4eddff7c850228d6d7f04c928913cbdd78669c866da554",
+          "input_states_sha256": "3c325ee9b8e92df9387541c3c72cfb7d66a570f16fe209bbcf5b9bb8c94c77d4"
+        },
+        {
+          "case": "seed1-standard-l15",
+          "counts": {
+            "unchanged_target_calls": 29,
+            "unchanged_submitted_rows": 421
+          },
+          "commands_sha256": "d12cefdb2b79f62cd5321deae198c6cd1912983cb8f189b86e54cbda82fdccf6",
+          "input_states_sha256": "f1a0818bd79d05bc2669ad754b4e0ba9c78c63f512169f39d3a23c4edf9744dd"
+        },
+        {
+          "case": "seed1-standard-l16",
+          "counts": {
+            "unchanged_target_calls": 26,
+            "unchanged_submitted_rows": 349,
+            "unchanged_explicit_delta_calls": 1
+          },
+          "commands_sha256": "254626440e8f851f2b65b2c1af47bc29cd3b2516cd6d8ee021fd3b1d82236f5d",
+          "input_states_sha256": "05237b1443237ae3620c84e5db22c56f3c0242b6d45b69f2f72463aff7c7edfa"
+        },
+        {
+          "case": "seed1-standard-l17",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 302
+          },
+          "commands_sha256": "86927760957c3113156b0017adc714efca0200c32f5302674044ac2caf4b96f2",
+          "input_states_sha256": "abc48cd8f8acc6fd9498e7f397a3e0ce1625c01528ef3b3cd33827972aed2fc3"
+        },
+        {
+          "case": "seed1-standard-l18",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 330
+          },
+          "commands_sha256": "3b8e471df4b5a6baf26f02ea7ff928d8012a8a6996b7dcbae297a63d8de09b94",
+          "input_states_sha256": "1b388bc5dce8d885314c6211b6d94a0815a2c00903ad2bf970a4e5ce419f4b78"
+        },
+        {
+          "case": "seed1-standard-l19",
+          "counts": {
+            "unchanged_target_calls": 17,
+            "unchanged_submitted_rows": 285
+          },
+          "commands_sha256": "071d67f6669506a8597c5c88dc82842df571be00e9324c22d4b0e76653345152",
+          "input_states_sha256": "274a5f43992367e3fe1bdab8f0a521651f9516d437757f15c5292f7da5030c91"
+        },
+        {
+          "case": "seed1-standard-l2",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 261
+          },
+          "commands_sha256": "ecfcf6c17ca824e2e15f9904016d017fb2763bd8cb22e63dbaa72e38d7c89423",
+          "input_states_sha256": "086c21debcd875bc80b43ef085811668e0de8ac50a23cdda2daba59658483e6a"
+        },
+        {
+          "case": "seed1-standard-l20",
+          "counts": {
+            "unchanged_target_calls": 24,
+            "unchanged_submitted_rows": 363
+          },
+          "commands_sha256": "4374d93042cd09cd350ebd1e76acf12ffde63431b2cb0a5643de36b016a9006b",
+          "input_states_sha256": "b4842e3cdce85e3bd2295e899d7bb5bbabbfb8bc177b1e468714cc76a182de5f"
+        },
+        {
+          "case": "seed1-standard-l21",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 304
+          },
+          "commands_sha256": "5af86e5539a380fb8dc3815af8209971cc5aaf99b4c63baaf8f17b2d5043a094",
+          "input_states_sha256": "54b6be30791c63353cf83c5b22e2f0bc3e444fda9e2b75cc899a194f332ec5da"
+        },
+        {
+          "case": "seed1-standard-l22",
+          "counts": {
+            "unchanged_target_calls": 25,
+            "unchanged_submitted_rows": 367,
+            "unchanged_explicit_delta_calls": 1
+          },
+          "commands_sha256": "f8ea55914d2f873ad642ad10894416a16ab299dc3203a669686d24dda3ebf4ca",
+          "input_states_sha256": "7140247aef79f1d52e7d8d305def3c895f4d5740fa3534f660881faede44b0b3"
+        },
+        {
+          "case": "seed1-standard-l23",
+          "counts": {
+            "unchanged_target_calls": 18,
+            "unchanged_submitted_rows": 260
+          },
+          "commands_sha256": "41f1bee69d7fe49314fab4f89d03ff4ff51124635af1837003246168e78d8eb5",
+          "input_states_sha256": "2a5892063e3bbd156ba111804df82eeaad5668789569ea1222823f700a5dc1b4"
+        },
+        {
+          "case": "seed1-standard-l24",
+          "counts": {},
+          "commands_sha256": null,
+          "input_states_sha256": "f3c4637f591853f10e178bc9ec5cf8c992cee8ac4006d5e43a5347a397b84c52"
+        },
+        {
+          "case": "seed1-standard-l3",
+          "counts": {
+            "unchanged_target_calls": 16,
+            "unchanged_submitted_rows": 250
+          },
+          "commands_sha256": "570f6f12164dac2489184621f70b29a5201a07d18b0404ff6bdb256fe8c4ee8e",
+          "input_states_sha256": "36c32c2a94e9825f6e6c3ef4c34e30fc97ec8ed0abd69fbb14a05a9385e4a33b"
+        },
+        {
+          "case": "seed1-standard-l4",
+          "counts": {
+            "unchanged_target_calls": 33,
+            "unchanged_submitted_rows": 407,
+            "unchanged_explicit_delta_calls": 2
+          },
+          "commands_sha256": "e937a88f451e38bf404fac05848415d71fc663e587c0cd6639ce07c0e140a853",
+          "input_states_sha256": "7c85bdf194f61cf65a2f2eb05d23ca2fdcb7f02d260c4e660fa3ce26174df0b3"
+        },
+        {
+          "case": "seed1-standard-l5",
+          "counts": {
+            "unchanged_target_calls": 14,
+            "unchanged_submitted_rows": 229
+          },
+          "commands_sha256": "a823258050bbacbd4f62e7e0c74ebf56f98e0b6c91b11f22d3754f92ebc2ac48",
+          "input_states_sha256": "6e7575d93fd6c839536f41932bf2065b1511196bf91922f77a822263aebd08f1"
+        },
+        {
+          "case": "seed1-standard-l6",
+          "counts": {
+            "unchanged_target_calls": 19,
+            "unchanged_submitted_rows": 290
+          },
+          "commands_sha256": "f5d0624280bd5749ee4cc280ff511a515887a01c73d03abe39b85f34c3303bc6",
+          "input_states_sha256": "3bdb2f28dfa26be0c58ae4ff9844126ef74c0824eda0a6e6980deb04baa10d30"
+        },
+        {
+          "case": "seed1-standard-l7",
+          "counts": {
+            "unchanged_target_calls": 15,
+            "unchanged_submitted_rows": 268
+          },
+          "commands_sha256": "83eea80db197125076a65c52f811b5d0f5a8f80434ba0c899449c2841e4afee0",
+          "input_states_sha256": "4c36f677fe44ea21716eabdd3a78042337b4a738a1ec472befd500a8ec5cc213"
+        },
+        {
+          "case": "seed1-standard-l8",
+          "counts": {
+            "unchanged_target_calls": 13,
+            "unchanged_submitted_rows": 230
+          },
+          "commands_sha256": "4b73110d0a65a8e7bfedf2b7d9767b3bb7bb8899147c7326f6b0f189ea9ff376",
+          "input_states_sha256": "a9eb24b30143bcffaa568c0ba6c7a29030597e60d59979145448cc1d0ae3a79d"
+        },
+        {
+          "case": "seed1-standard-l9",
+          "counts": {
+            "unchanged_target_calls": 22,
+            "unchanged_submitted_rows": 279
+          },
+          "commands_sha256": "3d6eec4e5a58f96a6c6620f5ceffe98e5165c67cbefef49b38342d21773cfc3f",
+          "input_states_sha256": "a4af5308cd5dc5dc76b7d0911f3679fc25f149449e3aee7969695c3b39b0c901"
+        }
+      ],
+      "recovered_calls": [
+        {
+          "case": "seed1-random-l12",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 78,
+          "compiled_rows": 24,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 20,
+              "minimum_steps": 7,
+              "compiled_steps": 20
+            },
+            {
+              "segment": 2,
+              "requested_steps": 4,
+              "minimum_steps": 1,
+              "compiled_steps": 4
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l15",
+          "category": "per_step_translation_limit",
+          "original_error": "Per-arm translation norm must be <=0.035 m per row",
+          "observed_at_step": 109,
+          "compiled_rows": 24,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 5,
+              "minimum_steps": 1,
+              "compiled_steps": 5
+            },
+            {
+              "segment": 2,
+              "requested_steps": 6,
+              "minimum_steps": 10,
+              "compiled_steps": 10
+            },
+            {
+              "segment": 3,
+              "requested_steps": 8,
+              "minimum_steps": 9,
+              "compiled_steps": 9
+            }
+          ]
+        },
+        {
+          "case": "seed1-random-l19",
+          "category": "target_total_step_limit",
+          "original_error": "Target segments need integer steps; total must be 1–24",
+          "observed_at_step": 147,
+          "compiled_rows": 26,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 18,
+              "minimum_steps": 6,
+              "compiled_steps": 18
+            },
+            {
+              "segment": 2,
+              "requested_steps": 8,
+              "minimum_steps": 2,
+              "compiled_steps": 8
+            }
+          ]
+        },
+        {
+          "case": "seed1-standard-l14",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 61,
+          "compiled_rows": 17,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 14,
+              "minimum_steps": 3,
+              "compiled_steps": 14
+            },
+            {
+              "segment": 2,
+              "requested_steps": 3,
+              "minimum_steps": 1,
+              "compiled_steps": 3
+            }
+          ]
+        },
+        {
+          "case": "seed1-standard-l15",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 27,
+          "compiled_rows": 8,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 5,
+              "minimum_steps": 1,
+              "compiled_steps": 5
+            },
+            {
+              "segment": 2,
+              "requested_steps": 3,
+              "minimum_steps": 1,
+              "compiled_steps": 3
+            }
+          ]
+        },
+        {
+          "case": "seed1-standard-l17",
+          "category": "empty_target_hold_rejected",
+          "original_error": "Specify an arm target or explicit gripper hold",
+          "observed_at_step": 169,
+          "compiled_rows": 12,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 8,
+              "minimum_steps": 7,
+              "compiled_steps": 8
+            },
+            {
+              "segment": 2,
+              "requested_steps": 4,
+              "minimum_steps": 1,
+              "compiled_steps": 4
+            }
+          ]
+        },
+        {
+          "case": "seed1-standard-l9",
+          "category": "per_step_translation_limit",
+          "original_error": "Per-arm translation norm must be <=0.035 m per row",
+          "observed_at_step": 129,
+          "compiled_rows": 23,
+          "timing": [
+            {
+              "segment": 1,
+              "requested_steps": 6,
+              "minimum_steps": 11,
+              "compiled_steps": 11
+            },
+            {
+              "segment": 2,
+              "requested_steps": 12,
+              "minimum_steps": 8,
+              "compiled_steps": 12
+            }
+          ]
+        }
+      ],
+      "recovered_categories": {
+        "empty_target_hold_rejected": 4,
+        "per_step_translation_limit": 2,
+        "target_total_step_limit": 1
+      }
+    }
+  },
+  "sources_sha256": {
+    "scripts/verify_v3_target_replay.py": "b9c49ab1b8faffadc9d45b6a03ba8ee08f17add9716729ca7355801ef7e298d8",
+    "src/roborag/action_targets.py": "bb8a95c620eb077c099dc19531a908ef39acd748583e0871b6130c25c0ce36e2",
+    "src/roborag/rag_execution.py": "f5a769cca46cca206e3bad3ab4738cf883771bb73a3d2173f4fc1d53b85866b3",
+    "results/v3-tool-error-audit-20261028.json": "25ef10d0356d60bc0b9cb0cee5900a2d4d63b20b2248a1c99d5658b1464e749b"
+  },
+  "original_source_sha256": "3a77e94663ec2ab66d81822bda6f14f0c8ec88bf71620e9a40e8d39a458a18ba",
+  "scope": "Offline compiler replay only. Existing valid submissions are exactly unchanged; previously rejected targets now compile. No new model calls or robot movement, and no claim that native folding outcomes improve."
+}

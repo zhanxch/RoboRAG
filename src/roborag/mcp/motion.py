@@ -1,11 +1,11 @@
-"""Unchanged v3 action chunks and feedback boundaries."""
+"""V3 action chunks with target timing normalization and original stop checks."""
 
 from typing import Literal
 
 from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import CallToolResult
 
-from roborag.action_targets import compile_targets
+from roborag.action_targets import compile_targets_with_timing
 from roborag.rag_execution import expand_delta_actions, validate_chunk
 
 from .schemas import DeltaSegment, TargetSegment, Waypoint
@@ -49,7 +49,7 @@ def register_tools(server, memory, read_only):
                                       targets: list[TargetSegment] | None = None,
                                       return_home: bool = False,
                                       cameras: list[Literal["head", "wrist_l", "wrist_r"]] = ["head", "wrist_r"]) -> CallToolResult:
-            """Submit 1-24 NEW action rows in the SAME format as historical action references.
+            """Submit NEW action rows in the SAME format as historical action references.
 
             Each row: [L dx,dy,dz,rx,ry,rz,gripper, R dx,dy,dz,rx,ry,rz,gripper].
             EE=link6, not TCP. World translation meters, WORLD ROTVEC radians (not Euler).
@@ -57,14 +57,18 @@ def register_tools(server, memory, read_only):
             PREVIOUS REQUESTED targets. Gripper 0=closed/1=open, held per row. 25Hz.
             Per-arm limits per row: translation norm<=0.035m; rotation norm<=0.35rad.
             Prefer segments=[{delta:[14 numbers],repeat:N},...] for repeated rows.
-            Segments expand EXACTLY to actions, with <=24 total rows; do not supply both.
+            Segments expand EXACTLY to actions; do not supply both.
             To avoid calculating deltas, use targets=[{steps:N,left:{tcp_xyz:[x,y,z],
             quaternion_wxyz:[w,x,y,z],gripper:0},right:{...}},...]. Select ONLY one
             of actions, segments, targets. Omitted arms/fields hold previous targets.
             Targets linearly interpolate LINK6 translation and world rotation to the
             requested fingertip endpoints (local +X 0.145m); this is not straight TCP
             motion during rotation. Gripper applies from the segment's first row.
-            Total steps<=24; same delta limits. No IK/grasp/fold planner is added.
+            Too-short target segments are extended to meet both arms' per-row limits;
+            requested steps are never shortened. execution.target_timing reports requested
+            and compiled steps when extended; executed_rows reports actual execution.
+            No per-call step cap; same delta limits and native episode budget apply.
+            No IK/grasp/fold planner is added.
             Both arms execute together. Large measured tracking error (>4cm) stops tail.
             No implicit grasp verification. Inspect returned RGB and revise from new state.
             When the object is released and fingers clear, return_home=true returns
@@ -86,11 +90,14 @@ def register_tools(server, memory, read_only):
             async with memory.lock:
                 if memory.state()["episode_over"]:
                     return memory.observation(cameras)
+                target_timing = None
                 if target_values:
                     try:
-                        actions = compile_targets(memory.state()["action_state"], target_values)
+                        actions, timing = compile_targets_with_timing(memory.state()["action_state"], target_values)
                     except ValueError as exc:
                         raise ToolError(str(exc)) from exc
+                    if any(t["compiled_steps"] != t["requested_steps"] for t in timing):
+                        target_timing = timing
                 request = dict(subgoal=subgoal, expected_feedback=expected_feedback)
                 if return_home:
                     request["chunk"] = [dict(arm=side,home=True,gripper=1) for side in ("left", "right")]
@@ -100,6 +107,10 @@ def register_tools(server, memory, read_only):
                         request["action_encoding"] = dict(segments=encoding)
                     elif target_values:
                         request["action_encoding"] = dict(targets=target_values)
+                        if target_timing is not None:
+                            request["action_encoding"]["target_timing"] = target_timing
                 receipt = await memory.submit(request)
+                if target_timing is not None:
+                    receipt = {**receipt, "result": {**receipt["result"], "target_timing": target_timing}}
                 memory.audit("execute_chunk", request, receipt)
                 return memory.observation(cameras, receipt=receipt["result"])

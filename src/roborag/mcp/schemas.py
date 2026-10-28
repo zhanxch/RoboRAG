@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class PlanStep(BaseModel):
@@ -24,16 +24,18 @@ class Waypoint(BaseModel):
 
 class DeltaSegment(BaseModel):
     delta: list[float]
-    repeat: int = Field(ge=1, le=24, strict=True)
+    repeat: int = Field(ge=1, strict=True)
 
 
 class ArmTarget(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     tcp_xyz: list[float] | None = None
     quaternion_wxyz: list[float] | None = None
     gripper: float | None = None
 
 
 class TargetSegment(BaseModel):
-    steps: int = Field(ge=1, le=24, strict=True)
+    model_config = ConfigDict(extra="forbid")
+    steps: int = Field(ge=1, strict=True)
     left: ArmTarget | None = None
     right: ArmTarget | None = None

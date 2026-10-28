@@ -13,10 +13,23 @@ import math
 from pathlib import Path
 import re
 import time
+from typing import Literal
 from urllib.parse import urlencode
 
 from .graph_bank import tokens, search_documents, write_json, EXPERIENCE_SEMANTICS
 from .graph_chunks import index_chunks, load_chunk
+
+RetrievalArm = Literal["", "left", "right", "both", "左臂", "右臂", "双臂"]
+ARM_VALUES = {"": "", "left": "left", "right": "right", "both": "",
+              "左臂": "left", "右臂": "right", "双臂": ""}
+
+
+def normalize_arm(arm):
+    """Both arms means no single-arm filter; accept the exposed aliases."""
+    if not isinstance(arm, str) or arm not in ARM_VALUES:
+        raise ValueError("arm must be left, right, both, 左臂, 右臂, 双臂 or empty")
+    return ARM_VALUES[arm]
+
 
 ALIASES = {"黑色": ("深色", "黑块", "black"), "白色": ("白块", "white"),
            "紫色": ("紫块", "purple"), "木纹": ("木块", "wooden", "wood"),
@@ -208,9 +221,7 @@ class GraphRetriever:
         if mode not in ("plan", "action"):
             raise ValueError("mode must be plan or action")
         goal, observation, stage = [str(request.get(k, ""))[:1000] for k in ("goal", "observation", "stage")]
-        task, arm = request.get("task", ""), request.get("arm", "")
-        if arm not in ("", "left", "right"):
-            raise ValueError("arm must be left, right or empty")
+        task, arm = request.get("task", ""), normalize_arm(request.get("arm", ""))
         k = min(5, max(1, int(request.get("k", 2))))
         budget = min(50000, max(1200, int(request.get("max_context_chars", 6000))))
         current = request.get("state", {})

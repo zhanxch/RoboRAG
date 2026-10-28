@@ -8,13 +8,14 @@ from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import CallToolResult, ImageContent, TextContent
 
 from roborag.graph_chunks import select_reference_window
+from roborag.graph_retrieval import RetrievalArm
 from roborag.graph_server import frame_bytes
 
 
 def register_tools(server, memory, read_only):
     @server.tool(annotations=read_only)
     def retrieve_evidence(goal: str, observation: str, mode: Literal["plan", "action"] = "plan",
-                          arm: str = "", held_object: str = "", target_object: str = "") -> str:
+                          arm: RetrievalArm = "", held_object: str = "", target_object: str = "") -> str:
         """Retrieve 1-2 cited examples from recorded demonstrations, not a new plan.
 
         Describe the CURRENT visible scene. Use once before planning; query again only
@@ -27,7 +28,10 @@ def register_tools(server, memory, read_only):
         if memory.no_rag:
             result = dict(model_context=json.dumps({"purpose": "no_rag_control", "memories": []}), diagnostics={})
         else:
-            result = memory.bank.retriever().retrieve(query)
+            try:
+                result = memory.bank.retriever().retrieve(query)
+            except ValueError as exc:
+                raise ToolError(str(exc)) from exc
         packet = json.loads(result["model_context"])
         for example in packet.get("memories", []):
             memory.references.add(example["source"])
